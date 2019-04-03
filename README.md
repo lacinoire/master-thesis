@@ -1,2 +1,5 @@
 # master-thesis
-My master thesis about improving Java Stream Debugging
+
+Welcome to the thesis repo.
+
+You can find an overview on what I have worked on recently in the  [Worklog](worklog.md)
