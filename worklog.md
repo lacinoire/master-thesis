@@ -1,12 +1,26 @@
 # Carolin Master Thesis Work Log
 
+## 11.4.19
+
+- Read on Moritz' proposed topic
+- Analyzed & discussed Anand's additional examples & pointers on stream difficulties
+- Started on topic proposals
+
+## 10.4.19
+
+- JDK compiles ✌🏼
+- Wrote example streams in order to try to narrow topic
+- Read "Closures for Java v0.6", proposals about how to improve lambdas most importantly with throwing exceptions & giving control flow out of lambdas
+- Sorted Literature into Bibdesk
+- Consolidated results from last week & prepared Meeting with supervisors
+
+
 ## 9.4.19
 
 - Watched Andrew Ko's Talk about whyline & learnings from that project
 - Read "Debugging Reinvented: Asking and Answering Why and Why Not Questions about Program Behavior". (mostly technical details about the realisation of the whyline tool)
 - Read second whyline Paper (interrogative debugging)
 - Discussed Milestones with Moritz
-
 
 ## 8.4.19
 
