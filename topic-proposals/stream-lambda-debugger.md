@@ -1,16 +1,17 @@
 # Extending Debuggers with Operations for Lambads & Streams
 
-Master Thesis Topic Proposal
+Master Thesis Topic Proposal  
+*status:* idea, neccessity unclear, solution to be defined further
 
 ## Problem Description
 
-The IntelliJ Debugger can not step into the second & following lambdas of this stream expression: `this.classes.parallelStream().filter(f -> f.contains("ArrayList")).forEach(f -> f.chars().forEach(i -> i++));`
+The IntelliJ Debugger can not step into the nested lambdas of this stream expression: `this.classes.parallelStream().filter(f -> f.contains("ArrayList")).forEach(f -> f.chars().forEach(i -> i++));`
 
 ### Problem Source / Motivation
 
 ## Solution Sketch
 
-**TODO** analyze the missing operations in the IntelliJ Debugger
+analyze the missing operations in the IntelliJ Debugger
 
 + Analyze exsting debugger interfaces and their ability to represent stepping operations within (nested) streams / lambdas
 + Design additional actions
@@ -20,6 +21,18 @@ The IntelliJ Debugger can not step into the second & following lambdas of this s
 ### Existing work which might be useful for solution
 
 ## Discussion
+
+Stepping into it is working for multiline lambdas:
+
+```java
+stringList.stream().filter(f -> f.contains("Hello")).forEach(f -> f.chars().forEach(i -> {
+  i = i + 1;
+  methodToThrowRuntimeException();
+}));
+```
+
++ repeatedly using "step into" always goes to the next lambda for the above example
++ "force step into" also goes into internal java lambda implementation
 
 ### Scope
 
