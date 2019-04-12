@@ -1,6 +1,7 @@
 # Intermediate Language with OO and Functional Features
 
-Master Thesis Topic Proposal
+Master Thesis Topic Proposal  
+*status:* rough idea, feasability & innovativeness not clear
 
 ## Problem Description
 
@@ -8,7 +9,7 @@ Design an Intermediate Language (similar to bytecode or IL) that provides both o
 
 ### Problem Source / Motivation
 
-Java Lambda Instances are currently implemented as Objects of Functional Interfaces, because the language for the JVM is OO. This leads to "strange" restrictions like not beeing able to use `break` or `continue` in a functional `forEach`-Loop. It also leads to complicated internal structures which simulate functional capabilities & in turn pollute stack traces with library function calls.
+Java Lambda Instances are currently implemented as Objects of Functional Interfaces, because the language for the JVM is OO. This leads to "strange" restrictions like not beeing able to use `break` or `continue` in a functional `forEach`-Loop. It also leads to "unexpected" bytecode structures and complicated internal structures which simulate functional capabilities & in turn pollute stack traces with library function calls.
 
 ## Solution Sketch
 
@@ -43,7 +44,8 @@ Java Lambda Instances are currently implemented as Objects of Functional Interfa
 
 #### con Research-Relevance
 
-+ **TODO** Research whether such a language already exists
++ For LISP, combining functional & OO: *CLOS: integrating object-oriented and functional programming* Richard P. Gabriel et al.
++ *C++ lambda expressions and closures* Jaakko Järvi, John Freeman
 
 ### Personal Preference
 

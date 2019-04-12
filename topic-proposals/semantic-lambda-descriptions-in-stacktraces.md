@@ -1,6 +1,7 @@
 # Semantic Lambda Descriptions in Java Stacktraces
 
-Master Thesis Topic Proposal
+Master Thesis Topic Proposal  
+*status:* clearly worked out problem & idea, neccessity & adequateness of solution not assessed
 
 ## Problem Description
 
@@ -18,7 +19,10 @@ Java streams not widely adopted also because of debugging difficulties: Davood M
 
 ### Existing work which might be useful for solution
 
-+ Paper about generating natural language documentation for lambdas: Alqaimi, Anwar et al. *Automatically Generating Documentation for Lambda Expressions in Java*
++ Paper about generating natural language documentation for lambdas: *Automatically Generating Documentation for Lambda Expressions in Java* Alqaimi, Anwar et al.
++ *Code Fragment Summarization* ATT Ying, MP Robillard
++ *Towards automatically generating summary comments for java methods*
+G Sridhara
 
 ## Discussion
 

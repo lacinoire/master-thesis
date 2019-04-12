@@ -1,5 +1,12 @@
 # Carolin Master Thesis Work Log
 
+## 12.4.19
+
+- Wrote proposal for "Analyzing Buildlogs using PBE"
+- Applied for Campus Card
+- Talked to Arie during Lunch
+- Extended other proposals
+
 ## 11.4.19
 
 - Read on Moritz' proposed topic
