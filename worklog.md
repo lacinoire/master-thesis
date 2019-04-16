@@ -1,5 +1,12 @@
 # Carolin Master Thesis Work Log
 
+## 15.4.19
+
+- Meeting with Moritz about PBE topic
+- Read Prose Documentation / Tutorial
+- Talked to Annibale about possible Supervision
+- Downloaded Example Repo & ran some examples
+
 ## 12.4.19
 
 - Wrote proposal for "Analyzing Buildlogs using PBE"
@@ -20,7 +27,6 @@
 - Read "Closures for Java v0.6", proposals about how to improve lambdas most importantly with throwing exceptions & giving control flow out of lambdas
 - Sorted Literature into Bibdesk
 - Consolidated results from last week & prepared Meeting with supervisors
-
 
 ## 9.4.19
 
