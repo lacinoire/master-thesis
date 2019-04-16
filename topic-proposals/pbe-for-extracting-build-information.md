@@ -15,7 +15,7 @@ Heavily influenced by Moritz' research proposal, literature references to be fou
 
 **Build a system which enables developers to extract non-predefined build and test information from semi-structured buildlog files in a language and build system-agnostic way**
 
-*All the proposed options here will spark a wish to discuss in you - let's postpone that to after the topic was selected (if it will be) 🙂*
+**Edit:** As a first step the described webpage should be built as a command-line application.
 
 + **build a system** This could be a webpage enabling the following workflow:
   + A user posts his buildlog  (**language and build system-agnostic**)
@@ -48,8 +48,8 @@ Comments: combination of personal & online study possible
 
 ### Existing work which might be useful for solution
 
-+ TravisTorrent
-+ Microsoft Prose
++ TravisTorrent https://travistorrent.testroots.org/
++ Microsoft Prose https://microsoft.github.io/prose/
 + Ideas from / evaluation against: Logstash, GHTorrent
 
 ## Discussion
@@ -83,8 +83,6 @@ Comments: combination of personal & online study possible
 
 #### con Feasibility & Competence
 
-+ Medium prior experience with web-dev
-
 ### Research-Relevance
 
 #### pro Research-Relevance
@@ -106,5 +104,4 @@ Comments: combination of personal & online study possible
 
 #### con Personal Preference
 
-+ Web-development (→ keep as small as possible, mostly uninteresting to research part anyway)
 + Would need to reask my munich professors / probably search for a new supervisor (should not be difficult)
