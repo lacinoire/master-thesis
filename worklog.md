@@ -1,5 +1,16 @@
 # Carolin Master Thesis Work Log
 
+## 17.4.19
+
+- Read on Prose DSLs & their capabilities
+- Wrote Wrapper for Prose Text Extraction Session
+
+## 16.4.19
+
+- Wrote with Alberto & Anand about ending supervision
+- Collected & activated Campus Card
+- Coded Example System for Text extraction from files
+
 ## 15.4.19
 
 - Meeting with Moritz about PBE topic
