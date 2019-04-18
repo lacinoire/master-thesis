@@ -1,5 +1,10 @@
 # Carolin Master Thesis Work Log
 
+## 18.4.19
+
+- Completed Refactoring Prototype
+- Enabled Saving and Loading Exampleset
+
 ## 17.4.19
 
 - Read on Prose DSLs & their capabilities
