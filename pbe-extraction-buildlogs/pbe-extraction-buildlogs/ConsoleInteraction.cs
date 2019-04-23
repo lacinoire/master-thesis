@@ -32,8 +32,17 @@ namespace pbeextractionbuildlogs
 					new Choice("p", "\U0001F5A8 Print the current program or", () => PrintCurrentProgram(analysisSession)),
 					new Choice("s", "\U0001F4C1 Save the current exampleset or", () => SaveProgram(analysisSession)),
 					new Choice("l", "\U0001F4C2 Load a saved exampleset or", () => analysisSession = LoadProgram(analysisSession)),
-					new Choice("r", "\U0001F5D1 Reset the current exampleset?", () => PrintCurrentProgram(analysisSession)));
+					new Choice("r", "\U0001F5D1 Reset the current exampleset?", () => analysisSession = new AnalysisSession()),
+					new Choice("d", "Print differentiating examples", async () => await analysisSession.PrintSeparatingExamples()),
+					new Choice("td", "TestDiverting", () => TestDiverting(analysisSession))
+					);
 			}
+		}
+
+		private static void TestDiverting(AnalysisSession session)
+		{
+			session.AddExample("mini/5.log", "Execution failed for task ':app:connectedAndroidTest'.").AddExample("mini/6.log", "Execution failed for task ':app:connectedAndroidTest'.").AddInput("mini/7.log");
+			Console.Out.WriteLine("Exectued TestDiverting.");
 		}
 
 		private static void AddInput(AnalysisSession analysisSession)

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.ProgramSynthesis.DslLibrary;
@@ -14,7 +16,7 @@ namespace pbeextractionbuildlogs
 	/// </summary>
 	public class AnalysisSession
 	{
-		private struct ExampleData
+		public struct ExampleData
 		{
 			public string inputPath;
 			public string output;
@@ -26,7 +28,7 @@ namespace pbeextractionbuildlogs
 			}
 		}
 
-		private struct SessionData
+		public struct SessionData
 		{
 			public List<string> inputPaths;
 			public List<ExampleData> examples;
@@ -35,6 +37,9 @@ namespace pbeextractionbuildlogs
 		private RegionSession session;
 		private SessionData data;
 		private Dictionary<string, StringRegion> fileCache;
+
+		private const string SAMPLE_PATH = "../../../samples/";
+		private const string SAVES_PATH = "../../../saves/";
 
 		public AnalysisSession()
 		{
@@ -63,6 +68,7 @@ namespace pbeextractionbuildlogs
 
 			var inputRegion = RegionFromFile(inputPath);
 			var startIndex = inputRegion.S.IndexOf(output, StringComparison.Ordinal);
+
 			var outputRegion = inputRegion.Slice((uint)startIndex, (uint)(startIndex + output.Length));
 			session.Constraints.Add(new RegionExample(inputRegion, outputRegion));
 
@@ -74,7 +80,7 @@ namespace pbeextractionbuildlogs
 			var inputRegion = RegionFromFile(inputPath);
 			RegionProgram topRankedProgram = session.Learn();
 			StringRegion output = topRankedProgram.Run(inputRegion);
-			return output?.S;
+			return output?.Value;
 		}
 
 		public string CurrentProgram()
@@ -86,8 +92,8 @@ namespace pbeextractionbuildlogs
 		public void Save(string name)
 		{
 			XmlSerializer serializer = new XmlSerializer(data.GetType());
-			Directory.CreateDirectory("saves");
-			using (StreamWriter file = new StreamWriter("saves/" + name + ".xml"))
+			Directory.CreateDirectory(SAVES_PATH.Remove(SAVES_PATH.Length - 1));
+			using (StreamWriter file = new StreamWriter(File.Create(SAVES_PATH + name + ".xml")))
 			{
 				serializer.Serialize(file, data);
 			}
@@ -97,7 +103,7 @@ namespace pbeextractionbuildlogs
 		{
 			XmlSerializer serializer = new XmlSerializer(new SessionData().GetType());
 			SessionData data;
-			using (StreamReader file = new StreamReader("saves/" + name + ".xml"))
+			using (StreamReader file = new StreamReader(SAVES_PATH + name + ".xml"))
 			{
 				data = (SessionData)serializer.Deserialize(file);
 			}
@@ -107,13 +113,30 @@ namespace pbeextractionbuildlogs
 			return session;
 		}
 
+		public async Task<AnalysisSession> PrintSeparatingExamples()
+		{
+			foreach (var sigInput in await session.GetSignificantInputsAsync())
+			{
+				Console.Out.WriteLine("Input[Confidence=" + sigInput.Confidence + "]: " + ((StringRegion[])sigInput.Input).Select(sr => sr.Value).Aggregate((i, j) => i + ", " + j));
+				foreach (var x in session.LearnTopK(5))
+				{
+					Console.Out.WriteLine(x.Score + " " + x.Serialize());
+				}
+				foreach (object output in await session.ComputeTopKOutputsAsync(sigInput.Input, 5))
+				{
+					Console.Out.WriteLine("Possible output: " + ((List<StringRegion>)output).Select(sr => sr.Value).Aggregate((i, j) => i + ", " + j));
+				}
+			}
+			return this;
+		}
+
 		private StringRegion RegionFromFile(string path)
 		{
 			if (fileCache.ContainsKey(path))
 			{
 				return fileCache[path];
 			}
-			string text = File.ReadAllText("../../../samples/" + path);
+			string text = File.ReadAllText(SAMPLE_PATH + path);
 			StringRegion region = RegionSession.CreateStringRegion(text);
 			fileCache[path] = region;
 			return region;
