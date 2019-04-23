@@ -1,9 +1,16 @@
 # Carolin Master Thesis Work Log
 
+## 23.4.19
+
+- Added separating examples
+- Tested saving and loading
+- Listened to return2corp talk
+- Started on literature search
+
 ## 18.4.19
 
-- Completed Refactoring Prototype
-- Enabled Saving and Loading Exampleset
+- Completed refactoring prototype
+- Enabled saving and loading exampleset
 
 ## 17.4.19
 
