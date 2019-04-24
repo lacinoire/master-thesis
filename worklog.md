@@ -1,5 +1,11 @@
 # Carolin Master Thesis Work Log
 
+## 24.4.19
+
+- Discussed status & implementation plans / study plans / research contribution with Annibale & Moritz
+- Planned & summarized meeting
+- Read "Oops my tests broke the build"
+
 ## 23.4.19
 
 - Added separating examples

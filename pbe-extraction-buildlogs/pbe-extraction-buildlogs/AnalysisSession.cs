@@ -68,7 +68,6 @@ namespace pbeextractionbuildlogs
 
 			var inputRegion = RegionFromFile(inputPath);
 			var startIndex = inputRegion.S.IndexOf(output, StringComparison.Ordinal);
-
 			var outputRegion = inputRegion.Slice((uint)startIndex, (uint)(startIndex + output.Length));
 			session.Constraints.Add(new RegionExample(inputRegion, outputRegion));
 
@@ -79,6 +78,10 @@ namespace pbeextractionbuildlogs
 		{
 			var inputRegion = RegionFromFile(inputPath);
 			RegionProgram topRankedProgram = session.Learn();
+			if (topRankedProgram == null)
+			{
+				return null;
+			}
 			StringRegion output = topRankedProgram.Run(inputRegion);
 			return output?.Value;
 		}
@@ -118,10 +121,10 @@ namespace pbeextractionbuildlogs
 			foreach (var sigInput in await session.GetSignificantInputsAsync())
 			{
 				Console.Out.WriteLine("Input[Confidence=" + sigInput.Confidence + "]: " + ((StringRegion[])sigInput.Input).Select(sr => sr.Value).Aggregate((i, j) => i + ", " + j));
-				foreach (var x in session.LearnTopK(5))
-				{
-					Console.Out.WriteLine(x.Score + " " + x.Serialize());
-				}
+				//foreach (var x in session.LearnTopK(5))
+				//{
+				//	Console.Out.WriteLine(x.ReferenceKind.ToString() + " " + x.ProgramNode.PrintAST());
+				//}
 				foreach (object output in await session.ComputeTopKOutputsAsync(sigInput.Input, 5))
 				{
 					Console.Out.WriteLine("Possible output: " + ((List<StringRegion>)output).Select(sr => sr.Value).Aggregate((i, j) => i + ", " + j));

@@ -101,7 +101,7 @@ namespace pbeextractionbuildlogs
 			Boolean repeatChoice = true;
 			if (repeatChoice)
 			{
-				Console.WriteLine(intro);
+				Console.WriteLine("\n" + intro);
 				foreach (Choice c in choices)
 				{
 					Console.WriteLine("(" + c.identifier + ") " + c.description);
