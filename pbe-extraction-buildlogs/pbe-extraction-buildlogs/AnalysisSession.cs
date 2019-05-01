@@ -18,40 +18,37 @@ namespace pbeextractionbuildlogs
 	{
 		public struct ExampleData
 		{
-			public string inputPath;
-			public string output;
+			public string InputPath;
+			public string Output;
 
 			public ExampleData(string inputPath, string output)
 			{
-				this.inputPath = inputPath;
-				this.output = output;
+				this.InputPath = inputPath;
+				this.Output = output;
 			}
 		}
 
 		public struct SessionData
 		{
-			public List<string> inputPaths;
-			public List<ExampleData> examples;
+			public List<string> InputPaths;
+			public List<ExampleData> Examples;
 		}
 
-		private RegionSession session;
+		private readonly RegionSession session = new RegionSession();
 		private SessionData data;
-		private Dictionary<string, StringRegion> fileCache;
+		private readonly Dictionary<string, StringRegion> fileCache = new Dictionary<string, StringRegion>();
 
-		private const string SAMPLE_PATH = "../../../samples/";
 		private const string SAVES_PATH = "../../../saves/";
 
 		public AnalysisSession()
 		{
-			session = new RegionSession();
-			data.inputPaths = new List<string>();
-			data.examples = new List<ExampleData>();
-			fileCache = new Dictionary<string, StringRegion>();
+			data.InputPaths = new List<string>();
+			data.Examples = new List<ExampleData>();
 		}
 
 		public AnalysisSession AddInput(string inputPath)
 		{
-			data.inputPaths.Add(inputPath);
+			data.InputPaths.Add(inputPath);
 			session.Inputs.Add(new[] { RegionFromFile(inputPath) });
 			return this;
 		}
@@ -64,7 +61,7 @@ namespace pbeextractionbuildlogs
 		/// <param name="output">Output. Has to be a substring of input.</param>
 		public AnalysisSession AddExample(string inputPath, string output)
 		{
-			data.examples.Add(new ExampleData(inputPath, output));
+			data.Examples.Add(new ExampleData(inputPath, output));
 
 			var inputRegion = RegionFromFile(inputPath);
 			var startIndex = inputRegion.S.IndexOf(output, StringComparison.Ordinal);
@@ -80,6 +77,7 @@ namespace pbeextractionbuildlogs
 			RegionProgram topRankedProgram = session.Learn();
 			if (topRankedProgram == null)
 			{
+				Console.Error.WriteLine("no program found");
 				return null;
 			}
 			StringRegion output = topRankedProgram.Run(inputRegion);
@@ -111,8 +109,8 @@ namespace pbeextractionbuildlogs
 				data = (SessionData)serializer.Deserialize(file);
 			}
 			AnalysisSession session = new AnalysisSession();
-			data.inputPaths.ForEach(ip => session.AddInput(ip));
-			data.examples.ForEach(e => session.AddExample(e.inputPath, e.output));
+			data.InputPaths.ForEach(ip => session.AddInput(ip));
+			data.Examples.ForEach(e => session.AddExample(e.InputPath, e.Output));
 			return session;
 		}
 
@@ -139,7 +137,7 @@ namespace pbeextractionbuildlogs
 			{
 				return fileCache[path];
 			}
-			string text = File.ReadAllText(SAMPLE_PATH + path);
+			string text = File.ReadAllText(path);
 			StringRegion region = RegionSession.CreateStringRegion(text);
 			fileCache[path] = region;
 			return region;

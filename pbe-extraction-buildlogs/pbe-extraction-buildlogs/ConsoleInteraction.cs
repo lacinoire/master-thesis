@@ -18,6 +18,8 @@ namespace pbeextractionbuildlogs
 			}
 		}
 
+		private const string SAMPLE_PATH = "../../../samples/";
+
 		public static void Run()
 		{
 			Console.WriteLine("Welcome to the buildlog analyzer! We make parsing bulidlogs fun with examples \U0001F389");
@@ -41,7 +43,10 @@ namespace pbeextractionbuildlogs
 
 		private static void TestDiverting(AnalysisSession session)
 		{
-			session.AddExample("mini/5.log", "Execution failed for task ':app:connectedAndroidTest'.").AddExample("mini/6.log", "Execution failed for task ':app:connectedAndroidTest'.").AddInput("mini/7.log");
+			session
+				.AddExample("mini/5.log", "Execution failed for task ':app:connectedAndroidTest'.")
+				.AddExample("mini/6.log", "Execution failed for task ':app:connectedAndroidTest'.")
+				.AddInput("mini/7.log");
 			Console.Out.WriteLine("Exectued TestDiverting.");
 		}
 
@@ -122,7 +127,7 @@ namespace pbeextractionbuildlogs
 		private static string RequestBuildlogFilePath()
 		{
 			Console.WriteLine("Please provide the path \U0001F6B6 to your buildlog-file, starting from inside the \"samples\" folder:");
-			return Console.ReadLine();
+			return SAMPLE_PATH + Console.ReadLine();
 		}
 	}
 }
