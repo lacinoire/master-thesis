@@ -1,5 +1,35 @@
 # Carolin Master Thesis Work Log
 
+## 1.5.19
+
+- Prepared meeting with Moritz
+- Discussed with Moritz about "final" study idea & mid-term ToDos
+- Import paper & thesis template
+
+## 30.4.19
+
+- Collected more papers from references / recommendations & skimmed & prioritized
+- Discussed with Sebi about remaining study ideas & refined
+- Read RE with GP machines-humans 1-0 paper
+
+## 29.4.19
+
+- Created & ran simple benchmark on prose extraction
+
+## 28.4.19
+
+- Read google build errors paper
+- Read interaction models for PBE paper
+
+## 26.4.19
+
+- Read build log summarization paper → sooo many ideas 😊
+- Read self-found papers on RE learning with GP
+
+## 25.4.19
+
+- Read prose paper on text extraction
+
 ## 24.4.19
 
 - Discussed status & implementation plans / study plans / research contribution with Annibale & Moritz
