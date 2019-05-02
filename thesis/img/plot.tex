@@ -1,0 +1,25 @@
+\providecommand{\myrootdir}{..}
+\documentclass[tikz]{standalone}
+\onlyifstandalone{
+\usepackage{pgfplots}
+% This small hack is required to set the search path correctly
+% Just provide the current directory this file is in relatively to the root dir
+\pgfplotsset{table/search path={./img/}}
+}
+\begin{document}
+\begin{tikzpicture}
+ \begin{axis}[
+   xlabel={input $i$},
+   ylabel={result},
+   grid=major,
+   legend pos=north west,
+  ]
+  \addlegendentry{$i+2$}
+  \addplot[blue,mark=x,thick] table[y index=1] {\myrootdir/data/plot-mult.dat};
+  \addlegendentry{$2 \cdot i$}
+  \addplot[red,mark=x,thick] table[y index=2] {\myrootdir/data/plot-mult.dat};
+  \addlegendentry{$-1^{i}$}
+  \addplot[green,mark=x,thick] table[y index=3] {\myrootdir/data/plot-mult.dat};
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,44 @@
+\providecommand{\myrootdir}{../..}
+\documentclass[\myrootdir/main.tex]{subfiles}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+
+\includegraphics[height=2.5cm]{\logotumbw}
+
+\vspace{1cm}
+
+{\LARGE \textsc{\ifthenelse{\equal{\mylanguage}{de}}{Fakultät für Informatik}{Department of Informatics}}}\\[0.8em]
+{\Large \textsc{\ifthenelse{\equal{\mylanguage}{de}}{Technische Universität München}{Technical University of Munich}}}
+
+\vfill
+{\Large \myThesisType}
+\vfill
+
+\begin{spacing}{1.1}
+\Huge \bfseries \myTitle
+\end{spacing}
+
+\ifthenelse{\equal{\myTitleDE}{}}{}{
+\vspace{2em}
+\begin{spacing}{1.1}
+\Huge \bfseries \myTitleDE
+\end{spacing}
+}
+
+\vfill
+
+\begin{tabular}{R{0.45\linewidth} p{0.45\linewidth}}
+\ifthenelse{\equal{\mylanguage}{de}}{Autor}{Author}: & \myAuthor \\
+\ifthenelse{\equal{\mylanguage}{de}}{Abgabedatum}{Submission Date}: & \myEndDate \\
+\ifthenelse{\equal{\mylanguage}{de}}{Aufgabensteller}{Supervisor}: & \myReviewFirst \\
+\ifthenelse{\equal{\mylanguage}{de}}{Betreuer}{Advisor}: & \myAdvisor \\
+\end{tabular}
+
+\vfill
+
+\includegraphics[height=2.5cm]{\logoinfbw}
+
+\end{center}
+\end{document}

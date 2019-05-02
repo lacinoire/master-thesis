@@ -1,0 +1,155 @@
+% Nasty hack, to supress warnings
+\usepackage{silence}
+% auxhook.sty: Package auxhook Warning:
+% Cannot patch \document,(auxhook) using \AtBeginDocument instead.
+\WarningFilter{auxhook}{Cannot patch \document}
+
+% Conditional logic
+\usepackage{ifthen}
+% Main language settings
+\ifthenelse{\equal{\mylanguage}{de}}{%
+% Set german as main language and english as a fallback
+\usepackage[english,ngerman]{babel}
+}{%
+% Set english as main language and german as a fallback
+\usepackage[ngerman,english]{babel}
+}
+% Euro symbol support
+\usepackage{eurosym}
+% Use utf-8 encoding -> Umlaute sind direkt möglich
+\usepackage[utf8]{inputenc}
+% And directly use the keyboard symbol and replace it correctly
+\DeclareUnicodeCharacter{20AC}{\euro}
+% Allow direct copy&paste from the pdf
+\usepackage[T1]{fontenc}
+% Better math fonts
+\usepackage[sc]{mathpazo}
+% Better formulas and align environments
+\usepackage{amssymb,amsmath}
+% add light and bold true type fonts aka monospace
+\usepackage[lighttt]{lmodern}
+% Magic for better text spread and hyphenations
+\usepackage[final]{microtype}
+% Allow inclusion of images
+\usepackage{graphicx}
+% Draw directly own images in LaTeX - unbelievable powerful
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+% Awesome plots
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}  % This version can be updated anytime at will
+% Floating Control
+\usepackage{float}
+% Debug package to show the page frames
+%\usepackage{showframe}
+% Set paper and text dimensions
+\usepackage[top=3.75cm,left=2.75cm,right=2.75cm,bottom=3.75cm,
+bindingoffset=0.5cm,heightrounded,
+marginparwidth=2cm,marginparsep=0.25cm,
+headsep=2em,footskip=3em]{geometry}
+
+% Read information from the git directory
+\usepackage[\myrootdir/]{\myrootdir/zyx/gitinfo}
+%% Maybe "\myrootdir/" need to be adjusted, for example to go one level up:
+%% \usepackage[\myrootdir/../]{\myrootdir/zyx/gitinfo}
+%% If you want the git shorttag print on every page uncomment this two lines
+%%\usepackage{eso-pic}
+%%\AddToShipoutPicture{\put(0,-17){\AtTextLowerLeft{\color{gray}{\gitshort}}}}
+
+% Set invisible, but clickable links into the pdf
+\usepackage[pdfusetitle,bookmarksnumbered,hidelinks,bookmarksopen,
+pdfkeywords={git:\ \gitbranch\ \gitid}]{hyperref}
+% Better references
+\ifthenelse{\equal{\mylanguage}{de}}{%
+\usepackage[capitalise,noabbrev,ngerman]{cleveref}
+}{%
+\usepackage[capitalise,noabbrev]{cleveref}
+}
+% control line spacing
+\usepackage{setspace}
+% Pretty priting for source code
+\usepackage{listings}
+\lstset{
+numbers=left, numberstyle=\tiny, numberfirstline=true,
+% Uncomment, if only each fifth number should be printed
+% firstnumber=1, stepnumber=5, numbersep=5pt
+captionpos=b, float=htbp, xleftmargin=2em,frame=single,framexleftmargin=1.5em, basicstyle=\ttfamily \lst@ifdisplaystyle\fontsize{\f@size}{\f@size}\fi \selectfont}
+% Hacky bugfix for some wrongly defined fonts in lighttt
+\ttfamily
+\DeclareFontShape{T1}{lmtt}{m}{it}{<->sub*lmtt/m/sl}{}
+\newcaptionname{ngerman}{\lstlistingname}{Programm}
+% subfiles as an alternative for include or input
+% Hence, all .tex-files can be compiled solely
+\usepackage{subfiles}
+% Even tikz-pictures have their own compilable .tex-file
+\usepackage{standalone}
+\standaloneconfig{mode=buildnew}
+% Package to generate place holder test
+\usepackage{lipsum}
+% Easy quoting commands
+\usepackage[autostyle]{csquotes}
+% Better looking and more powerful lists and enumerations
+\usepackage{enumitem}
+\setlist{noitemsep}
+% Read external csv files
+\usepackage{csvsimple}
+% Add caption control
+\usepackage{caption}
+\captionsetup{format=plain,justification=centering,font=small,labelfont=bf,textfont=it}
+% Setup for shrinking the table of contents
+\usepackage{tocloft}
+% Commands for page filling table-columns with alignments
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% Packages for better tables
+\usepackage{booktabs}
+% Package for column alignment around dots
+\usepackage{dcolumn}
+\newcommand\headcol[1]{\multicolumn{1}{c}{\textbf{#1}}}
+% Wrap text around pictures and tables
+\usepackage{wrapfig}
+% Packages for rotating single pages
+\usepackage{lscape}
+\usepackage{pdflscape}
+% Add several symbols, e.g. for average sign
+\usepackage{wasysym}
+% Situation sensitive spacing at the end of commands
+\usepackage{xspace}
+% Add the library file for the literature references
+\usepackage[style=ieee,uniquename=init]{biblatex}
+% other styles suitable: ieee alphabetic-verb numeric-comp [Just try them^^]
+\addbibresource{\myrootdir/literature.bib}
+% Prevent line break at before citation number in textcite
+\renewcommand\namelabeldelim{\addnbspace}
+% Add command for TODO
+\newcommand{\todo}[1]{\textbf{\textcolor{orange}{TODO:~#1}}\xspace}
+
+% Define TUM corporate design colors
+% Taken from http://portal.mytum.de/corporatedesign/index_print/vorlagen/index_farben
+\definecolor{TUMBlue}{HTML}{0065BD}
+\definecolor{TUMSecondaryBlue}{HTML}{005293}
+\definecolor{TUMSecondaryBlue2}{HTML}{003359}
+\definecolor{TUMBlack}{HTML}{000000}
+\definecolor{TUMWhite}{HTML}{FFFFFF}
+\definecolor{TUMDarkGray}{HTML}{333333}
+\definecolor{TUMGray}{HTML}{808080}
+\definecolor{TUMLightGray}{HTML}{CCCCC6}
+\definecolor{TUMAccentGray}{HTML}{DAD7CB}
+\definecolor{TUMAccentOrange}{HTML}{E37222}
+\definecolor{TUMAccentGreen}{HTML}{A2AD00}
+\definecolor{TUMAccentLightBlue}{HTML}{98C6EA}
+\definecolor{TUMAccentBlue}{HTML}{64A0C8}
+
+% Some language specific titles
+\ifthenelse{\equal{\mylanguage}{de}}{
+\newcommand*{\myAbstractTitle}{Zusammenfassung}
+}{
+\newcommand*{\myAbstractTitle}{Abstract}
+}
+\ifthenelse{\equal{\mylanguage}{de}}{
+\newcommand*{\myAcknowTitle}{Danksagung}
+}{
+\newcommand*{\myAcknowTitle}{Acknowledgments}
+}

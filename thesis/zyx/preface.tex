@@ -1,0 +1,47 @@
+\providecommand{\myrootdir}{..}
+\documentclass[\myrootdir/main.tex]{subfiles}
+
+\begin{document}
+% proper page numbering for the cover page
+\pagenumbering{Alph}
+% Deactivate page anchors as they are needed later for the content
+\hypersetup{pageanchor=false}
+\subfile{\myrootdir/zyx/\myTemplate/1-cover.tex}
+
+% Reset page numbering for subfiles
+\pagenumbering{arabic}
+
+\frontmatter{}
+\cleardoublepage
+\subfile{\myrootdir/zyx/\myTemplate/2-firstpage.tex}
+\cleardoublepage
+\hypersetup{pageanchor=true}
+\subfile{\myrootdir/zyx/\myTemplate/3-statement.tex}
+\cleardoublepage
+
+\IfFileExists{\myrootdir/mini/acknowledgments.tex}{
+\currentpdfbookmark{\myAcknowTitle}{acknowledgments}
+\subfile{\myrootdir/mini/acknowledgments.tex}
+\cleardoublepage
+}{}
+
+\currentpdfbookmark{\myAbstractTitle}{abstract}
+\subfile{\myrootdir/mini/abstract.tex}
+
+\microtypesetup{protrusion=false}
+\cleardoublepage
+\ifthenelse{\equal{\mylanguage}{de}}{
+\currentpdfbookmark{Inhaltsverzeichnis}{contents}
+}{
+\currentpdfbookmark{Contents}{contents}
+}
+\setlength\cftbeforetoctitleskip{0pt}%
+\setlength\cftaftertoctitleskip{1em}%
+%\setlength\cftparskip{0pt}%
+\setlength\cftbeforechapskip{0.9em}%
+%\setlength\cftbeforesecskip{1pt}%
+\tableofcontents
+\microtypesetup{protrusion=true}
+\mainmatter{}
+
+\end{document}
