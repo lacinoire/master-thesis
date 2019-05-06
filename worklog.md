@@ -1,5 +1,20 @@
 # Carolin Master Thesis Work Log
 
+## 6.5.19
+
+- Put all the papers into bibdesk
+- Add keywords to bibdesk papers
+- Add references to paper outlines
+
+## 3.5.19
+
+- Write outline for paper & related work
+- Read "A tale of CI build failures: An open source and a financial organization perspective"
+
+## 2.5.19
+
+- Got paper & thesis template to compile
+
 ## 1.5.19
 
 - Prepared meeting with Moritz
