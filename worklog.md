@@ -1,5 +1,16 @@
 # Carolin Master Thesis Work Log
 
+## 8.5.19
+
+- Read a lot of buildlogs
+- Came up with first version of meta-model
+- Brainstormed study idea for Dereck
+
+## 7.5.19
+
+- Wrote to munich supervisors about changes topic and update
+- Collected various Bulidlogs from TravisTorrent
+
 ## 6.5.19
 
 - Put all the papers into bibdesk
