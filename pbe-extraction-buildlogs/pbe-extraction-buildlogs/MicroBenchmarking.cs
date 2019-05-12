@@ -6,7 +6,7 @@ namespace pbeextractionbuildlogs
 {
 	[SimpleJob(RunStrategy.Monitoring, launchCount: 1, warmupCount: 1, targetCount: 3)]
 	[MinColumn, MaxColumn, MeanColumn, MedianColumn]
-	public class Benchmarking
+	public class MicroBenchmarking
 	{
 
 		private static readonly string SAMPLE_PATH = "../../../benchmark-data/connectbot/";

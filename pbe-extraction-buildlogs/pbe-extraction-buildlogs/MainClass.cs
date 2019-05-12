@@ -7,6 +7,9 @@ using Microsoft.ProgramSynthesis.Extraction.Text.Constraints;
 
 namespace pbeextractionbuildlogs
 {
+	/// <summary>
+	/// Defines the CLI Parameter Interface
+	/// </summary>
 	class MainClass
 	{
 		public static void Main(string[] args)
@@ -15,13 +18,16 @@ namespace pbeextractionbuildlogs
 			{
 				if (args[0] == "-bc")
 				{
-					new Benchmarking().BenchmarkConnectbot();
+					new MicroBenchmarking().BenchmarkConnectbot();
 				}
 				else if (args[0] == "-b")
 				{
-					var summary = BenchmarkRunner.Run<Benchmarking>();
+					var summary = BenchmarkRunner.Run<MicroBenchmarking>();
 					Console.WriteLine("Total Time: " + summary.TotalTime);
 				}
+				// TODO:
+				// parameters for run -analysis, -performance (benchmark), -evaluation (both)
+				// parameters for -file, -folder, -program
 			}
 			else
 			{
