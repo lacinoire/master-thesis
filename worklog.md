@@ -1,5 +1,18 @@
 # Carolin Master Thesis Work Log
 
+## 13.5.19
+
+- Implement AnalysisProgram, adjust AnalysisSession
+
+## 12.5.19
+
+- Implement class outline
+
+## 9.5.19
+
+- Formulate requirements for pbe tool
+- Start on high-level design
+
 ## 8.5.19
 
 - Read a lot of buildlogs
