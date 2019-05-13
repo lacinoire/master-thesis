@@ -35,21 +35,10 @@ namespace pbeextractionbuildlogs
 		}
 
 		private readonly RegionSession session = new RegionSession();
-		private SessionData data;
 		private readonly Dictionary<string, StringRegion> fileCache = new Dictionary<string, StringRegion>();
-
-		// TODO remove saving here
-		private const string SAVES_PATH = "../../../saves/";
-
-		public AnalysisSession()
-		{
-			data.InputPaths = new List<string>();
-			data.Examples = new List<ExampleData>();
-		}
 
 		public AnalysisSession AddInput(string inputPath)
 		{
-			data.InputPaths.Add(inputPath);
 			session.Inputs.Add(new[] { RegionFromFile(inputPath) });
 			return this;
 		}
@@ -60,13 +49,11 @@ namespace pbeextractionbuildlogs
 		/// <returns>The bulider object.</returns>
 		/// <param name="inputPath">Path to file that contains the example input.</param>
 		/// <param name="output">Output. Has to be a substring of input.</param>
-		public AnalysisSession AddExample(string inputPath, string output)
+		public AnalysisSession AddExample(ExampleData exampleData)
 		{
-			data.Examples.Add(new ExampleData(inputPath, output));
-
-			var inputRegion = RegionFromFile(inputPath);
-			var startIndex = inputRegion.S.IndexOf(output, StringComparison.Ordinal);
-			var outputRegion = inputRegion.Slice((uint)startIndex, (uint)(startIndex + output.Length));
+			var inputRegion = RegionFromFile(exampleData.InputPath);
+			var startIndex = inputRegion.S.IndexOf(exampleData.Output, StringComparison.Ordinal);
+			var outputRegion = inputRegion.Slice((uint)startIndex, (uint)(startIndex + exampleData.Output.Length));
 			session.Constraints.Add(new RegionExample(inputRegion, outputRegion));
 
 			return this;
@@ -89,30 +76,6 @@ namespace pbeextractionbuildlogs
 		{
 			RegionProgram topRankedProgram = session.Learn();
 			return topRankedProgram.Serialize();
-		}
-
-		public void Save(string name)
-		{
-			XmlSerializer serializer = new XmlSerializer(data.GetType());
-			Directory.CreateDirectory(SAVES_PATH.Remove(SAVES_PATH.Length - 1));
-			using (StreamWriter file = new StreamWriter(File.Create(SAVES_PATH + name + ".xml")))
-			{
-				serializer.Serialize(file, data);
-			}
-		}
-
-		public static AnalysisSession Load(string name)
-		{
-			XmlSerializer serializer = new XmlSerializer(new SessionData().GetType());
-			SessionData data;
-			using (StreamReader file = new StreamReader(SAVES_PATH + name + ".xml"))
-			{
-				data = (SessionData)serializer.Deserialize(file);
-			}
-			AnalysisSession session = new AnalysisSession();
-			data.InputPaths.ForEach(ip => session.AddInput(ip));
-			data.Examples.ForEach(e => session.AddExample(e.InputPath, e.Output));
-			return session;
 		}
 
 		public async Task<AnalysisSession> PrintSeparatingExamples()

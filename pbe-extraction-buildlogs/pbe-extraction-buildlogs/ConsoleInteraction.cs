@@ -2,6 +2,7 @@
 
 namespace pbeextractionbuildlogs
 {
+	// TODO decide on whether to fix this
 	public class ConsoleInteraction
 	{
 		private struct Choice
@@ -44,8 +45,8 @@ namespace pbeextractionbuildlogs
 		private static void TestDiverting(AnalysisSession session)
 		{
 			session
-				.AddExample("mini/5.log", "Execution failed for task ':app:connectedAndroidTest'.")
-				.AddExample("mini/6.log", "Execution failed for task ':app:connectedAndroidTest'.")
+				//.AddExample("mini/5.log", "Execution failed for task ':app:connectedAndroidTest'.")
+				//.AddExample("mini/6.log", "Execution failed for task ':app:connectedAndroidTest'.")
 				.AddInput("mini/7.log");
 			Console.Out.WriteLine("Exectued TestDiverting.");
 		}
@@ -61,7 +62,7 @@ namespace pbeextractionbuildlogs
 				new Choice("y", "\u2705 Yes!", () =>
 				{
 					Console.WriteLine("Please tell me, what part from that file was interesting? \U0001F50E (in one line, you might need to escape stuff!)");
-					analysisSession.AddExample(inputPath, Console.ReadLine());
+					//analysisSession.AddExample(inputPath, Console.ReadLine());
 					Console.WriteLine("\U0001F44D Thank you! I added the new example.");
 				}),
 				new Choice("n", "\U0001F645 No.", () => { }));
@@ -92,13 +93,14 @@ namespace pbeextractionbuildlogs
 		{
 			Console.WriteLine("Under which name would you like to save the exampleset? \U0001F914");
 			var name = Console.ReadLine();
-			analysisSession.Save(name);
+			//analysisSession.Save(name);
 		}
 
 		private static AnalysisSession LoadProgram(AnalysisSession analysisSession)
 		{
 			Console.Write("What is the name of the exampleset you would like to load? \U0001F9D0\n");
-			return AnalysisSession.Load(Console.ReadLine());
+			//return AnalysisSession.Load(Console.ReadLine());
+			return new AnalysisSession();
 		}
 
 		private static void GiveChoice(string intro, params Choice[] choices)

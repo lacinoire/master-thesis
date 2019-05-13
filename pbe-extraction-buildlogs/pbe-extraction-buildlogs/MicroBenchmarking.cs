@@ -20,9 +20,9 @@ namespace pbeextractionbuildlogs
 		{
 			AnalysisSession analysisSession = new AnalysisSession();
 
-			analysisSession
-				.AddExample(SAMPLE_PATH + "c1.log", "travis_time:start:0479293b")
-				.AddExample(SAMPLE_PATH + "c2.log", "travis_time:start:06da2ef0");
+			//analysisSession
+			//	.AddExample(SAMPLE_PATH + "c1.log", "travis_time:start:0479293b")
+			//	.AddExample(SAMPLE_PATH + "c2.log", "travis_time:start:06da2ef0");
 			//.AddExample(SAMPLE_PATH + "c3.log", ",finish=1413673465672132356,duration=6617901432")
 			//.AddExample(SAMPLE_PATH + "c4.log", ",finish=1413674413184895928,duration=6647705086")
 			//.AddExample(SAMPLE_PATH + "c5.log", "time:end:03f6dbfc:start=1413675524121062671,finish=1413675531309085970")
