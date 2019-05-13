@@ -38,6 +38,7 @@ namespace pbeextractionbuildlogs
 		private SessionData data;
 		private readonly Dictionary<string, StringRegion> fileCache = new Dictionary<string, StringRegion>();
 
+		// TODO remove saving here
 		private const string SAVES_PATH = "../../../saves/";
 
 		public AnalysisSession()
