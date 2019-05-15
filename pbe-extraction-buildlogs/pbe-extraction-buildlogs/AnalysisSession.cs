@@ -28,12 +28,13 @@ namespace pbeextractionbuildlogs
 			}
 		}
 
-		public struct SessionData
+		public class SessionData
 		{
-			public List<string> InputPaths;
-			public List<ExampleData> Examples;
+			public List<string> InputPaths = new List<string>();
+			public List<ExampleData> Examples = new List<ExampleData>();
 		}
 
+		// TODO support sequence regions?
 		private readonly RegionSession session = new RegionSession();
 		private readonly Dictionary<string, StringRegion> fileCache = new Dictionary<string, StringRegion>();
 
@@ -43,12 +44,6 @@ namespace pbeextractionbuildlogs
 			return this;
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns>The bulider object.</returns>
-		/// <param name="inputPath">Path to file that contains the example input.</param>
-		/// <param name="output">Output. Has to be a substring of input.</param>
 		public AnalysisSession AddExample(ExampleData exampleData)
 		{
 			var inputRegion = RegionFromFile(exampleData.InputPath);

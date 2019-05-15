@@ -1,5 +1,14 @@
 # Carolin Master Thesis Work Log
 
+## 15.5.19
+
+- Implement Analyze() and output printing for corresponding results
+- Implement Folder processing
+
+## 14.5.19
+
+- Implement Command Line Arguments
+
 ## 13.5.19
 
 - Implement AnalysisProgram, adjust AnalysisSession

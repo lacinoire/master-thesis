@@ -14,8 +14,9 @@ namespace pbeextractionbuildlogs
 		/// <summary>
 		/// Filename to save the corresponding data under.
 		/// </summary>
-		string saveName;
-		string saveFilePath => Config.PROGRAM_DATA_DIRECTORY + saveName + ".xml";
+		public string SaveName { get; }
+
+		string saveFilePath => Config.PROGRAM_DATA_DIRECTORY + SaveName + ".xml";
 
 		AnalysisSession analysisSession;
 
@@ -35,9 +36,14 @@ namespace pbeextractionbuildlogs
 		public MetaModelObject Target { get; }
 		// MAYBE: private AnalysisSession analysisSession;
 
-		public AnalysisProgram(string saveName, LogKind logKind, MetaModelObject target, SessionData learningData = new SessionData(), bool takeFromFileIfPossible = false)
+		public AnalysisProgram(string saveName, LogKind logKind, MetaModelObject target, SessionData learningData = null, bool takeFromFileIfPossible = false)
 		{
-			if (takeFromFileIfPossible && File.Exists(Config.PROGRAM_DATA_DIRECTORY + saveName + ".xml"))
+			if (learningData == null)
+			{
+				learningData = new SessionData();
+			}
+
+			if (takeFromFileIfPossible && File.Exists(Config.PROGRAM_DATA_DIRECTORY + SaveName + ".xml"))
 			{
 				Load();
 			}
@@ -46,7 +52,7 @@ namespace pbeextractionbuildlogs
 				LearningData = learningData;
 			}
 
-			this.saveName = saveName;
+			SaveName = saveName;
 			LogKind = logKind;
 			Target = target;
 		}
@@ -75,9 +81,10 @@ namespace pbeextractionbuildlogs
 			if (analysisSession == null)
 			{
 				analysisSession = new AnalysisSession();
-				LearningData.InputPaths.ForEach(ip => analysisSession.AddInput(ip));
-				LearningData.Examples.ForEach(ex => analysisSession.AddExample(ex));
+				LearningData.InputPaths.ForEach(ip => analysisSession.AddInput(Config.SAMPLE_DIRECTORY + ip));
+				LearningData.Examples.ForEach(ex => analysisSession.AddExample(new ExampleData(Config.SAMPLE_DIRECTORY + ex.InputPath, ex.Output)));
 			}
+			// FIXME Fix that path prefix thing
 			return analysisSession.Analyze(path);
 		}
 
@@ -87,7 +94,7 @@ namespace pbeextractionbuildlogs
 		/// <returns></returns>
 		public string Describe()
 		{
-			string output = "Program " + this.saveName + ", analyzing " + Target + " in buildlog kind " + LogKind + "\n";
+			string output = "Program " + SaveName + ", analyzing " + Target + " in buildlog kind " + LogKind + "\n";
 			output += "Program is " + (analysisSession == null ? "not " : "") + "learned\n";
 			output += "Examples are:\n";
 			LearningData.Examples.ForEach(ex => output += "  path: " + ex.InputPath + ", output: " + ex.Output + "\n");
@@ -105,7 +112,7 @@ namespace pbeextractionbuildlogs
 		/// <returns></returns>
 		public string Summarize()
 		{
-			string output = "Program " + this.saveName + ", analyzing " + Target + " in buildlog kind " + LogKind + ", ";
+			string output = "Program " + SaveName + ", analyzing " + Target + " in buildlog kind " + LogKind + ", ";
 			output += "Program is " + (analysisSession == null ? "not " : "") + "learned, ";
 			output += "Example count: " + LearningData.Examples.Count + ", Input count: " + LearningData.InputPaths.Count;
 			return output;
@@ -126,6 +133,7 @@ namespace pbeextractionbuildlogs
 
 		public void Load()
 		{
+			// TODO: auch andere sachen serializieren??
 			XmlSerializer serializer = new XmlSerializer(new SessionData().GetType());
 			using (StreamReader file = new StreamReader(saveFilePath))
 			{
