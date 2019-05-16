@@ -29,7 +29,6 @@ namespace pbeextractionbuildlogs
 
 			}
 			return logKinds;
-			// TODO: parse all from a file defined in config
 		}
 
 		public static void SaveLogKind(LogKind logKind)

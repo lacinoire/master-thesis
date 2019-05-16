@@ -31,7 +31,7 @@ namespace pbeextractionbuildlogs
 		public LogKind LogKind { get; }
 
 		/// <summary>
-		/// TODO: enum?
+		/// TODO doc
 		/// </summary>
 		public MetaModelObject Target { get; }
 		// MAYBE: private AnalysisSession analysisSession;
