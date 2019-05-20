@@ -1,5 +1,25 @@
 # Carolin Master Thesis Work Log
 
+## 20.5.19
+
+- Read paper about essential aspects in semi-structured data
+- Look for newer IR summaries
+- Failed at reading that awful IR from database summary paper
+- Read "A Brief Survey of Text Mining: Classification, Clusterind and Extraction Techniques"
+- Answered Mail to Munich Supervisor
+
+## 17.5.17
+
+- Classify new Literature
+- Read "Information extraction for semi-structured documents"
+- Read Annibales Summary of IR
+
+## 16.5.19
+
+- Prepare Meeting
+- Meeting with Moritz and Annibale
+- Collect Literature from Moritz & put into Bibdesk
+
 ## 15.5.19
 
 - Implement Analyze() and output printing for corresponding results
