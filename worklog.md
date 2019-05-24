@@ -1,5 +1,22 @@
 # Carolin Master Thesis Work Log
 
+## 24.5.19
+
+- Wrote summary about IR research & literature for Annibale and Moritz
+- Wrote bullet points for related work and background of paper (they got so long that I will probably move them to the thesis and shorten / redo them for the paper)
+
+
+## 22.5.19
+
+- Investigated incorporating common IR / text mining techniques into our approach
+
+
+## 21.5.19
+
+- Added Keywords to new IR papers
+- Summarized read papers on IR
+
+
 ## 20.5.19
 
 - Read paper about essential aspects in semi-structured data
