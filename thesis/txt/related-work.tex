@@ -1,0 +1,49 @@
+\providecommand{\myrootdir}{..}
+\documentclass[\myrootdir/main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Related Work}
+\paragraph{CI Research}
+- se research community is starting to look into builodlogs
+
+- paper at google: ...et al., large study at google, quantitative analysis of which errors appear during builds at google, java and c++ projects, build parser for error messages in logs, results: very few types of errors make up most of the failures, most dependency issues or type missmatchs, (experienced developers have similar failure rates to all other devs?), most errors fixed in 2 build iterations, emphasize that more specific failure messages \& fix proposals would be valuable,
+... compared to us: we could support this research by enabling easier data extraction form the analyzed logs, tool could also be used by google for more concise information extracted form the logs and given to the user directly -> faster failure resolvement \cite{seo2014programmers},
+
+- ing vs. oss (java): Vasssalo et al., comparing builds from java oss projects and ING Nederland, borad taxonomy and anlaysis of failures during the ci process, oss mainly falis due to unit testing, Ing / industrial ... / bank / mainly duriing release preparation phase -> oss and industrial veeery different
+
+... compared to our approach: flexible enough for different kind of logs e.g. oss and ing -> again, helping research \cite{vassallo2017a-tale}, 
+
+
+- Beller et al., largescale analyzis of over 2 Mio buildlogs of oss in java and ruby obtained from travis ci, tests are central part of ci and main reason for builds to fail, ci adoption \& influence of failed tests orthogonal to chosen programming language, build time main factor in feedback delay (useful to mention in our paper? we minimize more at another stage: understanding)
+
+... compared to our approach: development custom log analysis for build failures specific for java and ruby. With pbe we could replace / simplyfy the manual regex construction\ \cite{beller2017oops}
+
+\todo[inline]{might be far too long... compress \& talk about differentiation to our work once}
+
+
+
+\paragraph{Analyzing Buildlogs}
+Vassallo et al., goal: support developer in finding reasons for a build break fast, developed tool: analyze buildlogs, summarize, link realated stack overflow discussions (thesis: created metamodel of bulildlog structure for maven, contains references to original output of build stages, built specific parser for these logs + the metamodel, tool BART (build abstraction and recovery tool) works with hint generators that operate on the metamodel instantiation to not have every hint generator parse the whole log again), in their evaluation found that "dependency breaks and testing failures seem to be easy to understand" and that a good summary highlighting the locality of the issues seems to be an important factor of fixing time. \cite{vassallo2018un-break}
+
+... compared to our work: they focused on java/maven, we want to explore supporting a wide variety of buildlogs. our metamodel inspired by them, our pbe tool should replace their not closer described "parser" to fill a metamodel instantiation
+
+\paragraph{Information Extraction from semi-structured data using program synthesis}
+- Le et al. developed FlashExtract, a framework to extract revelanvt data from semi-structured documents using examples, users can extract multiple fields and structure them with hierachy and sequence, uses inductive synthesis algorithm to synthesize intended program, domain-independent approach, eliminates the need for the user to understand structure of entire document or to be able to code (yes, developers can code, but still effort \& maintenance of old code difficult)
+
+... compared to our approach: we use exactly their framework for our information extraction, apply it to the domain of buildlogs, MAYBE: adopt internals (ranking, if explained before here) to the specifics of the use case buildlog 
+
+\todo[inlince]{stuff below maybe in theoretical background better}
+technical: extract by generating various programs for slicing substrings, either absolute positions or regexes for slicing boundaries, regexes with lookahead/lookbehind, various programs which comply with examples are generated, ranked by how likely they are intended, make example: regex more likely than absolute positions for slicing boundaries
+
+- include \cite{smith1997information}? other specific approaches of information extraction from semi-structured data? alternatively: rename to program synthesis
+
+for that paper: extract information from semi-structured text documents, exemplary french govermental documents \todo{check that that is correct}, divide into "contexts" by headers / subsections, extract desired "concepts" from specified contexts via possible start regex and keywords, end by next concept starting or end regex, \todo{do they have an evaluation?}
+
+\paragraph{Information retrieval}
+realted topic: Getting Information out of (semi-structured) data. A lot of focus on NLP and text summarization or similarity measurement.
+
+Differentiation: we do not compare different documents -> no use for similarity computations, programmers expect precise information: (TODO why?) rough summarization of buildlogs often uninteresting: a lot of repeated parts that are in all bulidlogs. For developer mostly one specific information (why did it fail?) and maybe supporting data (stacktraces, error messages) relevant. If we want to incorporate our results into another tool (travis button with failed test, predictive CI) they need to be \textbf{exact}. We are not trying to generally summarize bulidlogs here, we are trying to replace regular expression manual creation by pbe.
+
+
+\end{document}
