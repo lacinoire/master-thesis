@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using static pbeextractionbuildlogs.AnalysisSession;
 
 namespace pbeextractionbuildlogs
 {
-	/// <summary>
-	/// Represents one learnt/learnable Program
-	/// </summary>
-	public class AnalysisProgram
+	public class NamedProgram
 	{
 		/// <summary>
 		/// Filename to save the corresponding data under.
 		/// </summary>
-		public string SaveName { get; }
+		public string SaveName { get; protected set; }
+	}
 
+	/// <summary>
+	/// Represents one learnt/learnable Program
+	/// </summary>
+	public class AnalysisProgram<SessionType, OutputType> : NamedProgram where SessionType : AnalysisSession<OutputType>, new()
+	{
 		string saveFilePath => Config.PROGRAM_DATA_DIRECTORY + SaveName + ".xml";
 
-		AnalysisSession analysisSession;
+		SessionType analysisSession;
 
 		/// <summary>
 		/// Data needed for the learning lesson.
 		/// </summary>
-		public SessionData LearningData { get; private set; }
+		public SessionData<ExampleData<OutputType>> LearningData { get; private set; }
 
 		/// <summary>
 		/// LogKind this programm analyzes
@@ -36,11 +38,11 @@ namespace pbeextractionbuildlogs
 		public MetaModelObject Target { get; }
 		// MAYBE: private AnalysisSession analysisSession;
 
-		public AnalysisProgram(string saveName, LogKind logKind, MetaModelObject target, SessionData learningData = null, bool takeFromFileIfPossible = false)
+		public AnalysisProgram(string saveName, LogKind logKind, MetaModelObject target, SessionData<ExampleData<OutputType>> learningData = null, bool takeFromFileIfPossible = false)
 		{
 			if (learningData == null)
 			{
-				learningData = new SessionData();
+				learningData = new SessionData<ExampleData<OutputType>>();
 			}
 
 			if (takeFromFileIfPossible && File.Exists(Config.PROGRAM_DATA_DIRECTORY + SaveName + ".xml"))
@@ -57,33 +59,31 @@ namespace pbeextractionbuildlogs
 			Target = target;
 		}
 
-		public AnalysisProgram AddOnlyInput(string inputPath)
+		public AnalysisProgram<SessionType, OutputType> AddOnlyInput(string inputPath)
 		{
 			LearningData.InputPaths.Add(inputPath);
 			return this;
 		}
 
-		public AnalysisProgram AddWholeFolderAsInput(string folderPath)
+		public AnalysisProgram<SessionType, OutputType> AddWholeFolderAsInput(string folderPath)
 		{
 			throw new NotImplementedException();
 		}
 
-		public AnalysisProgram AddExample(string inputPath, string output)
+		public AnalysisProgram<SessionType, OutputType> AddExample(string inputPath, OutputType output)
 		{
 			LearningData.InputPaths.Add(inputPath);
-			LearningData.Examples.Add(new ExampleData(inputPath, output));
+			LearningData.Examples.Add(new ExampleData<OutputType>(inputPath, output));
 			return this;
 		}
 
-		public string ApplyToFile(string path)
+		public OutputType ApplyToFile(string path)
 		{
-			// TODO create (if not already present) analysis session and fill with data
-			if (analysisSession == null)
-			{
-				analysisSession = new AnalysisSession();
-				LearningData.InputPaths.ForEach(ip => analysisSession.AddInput(Config.SAMPLE_DIRECTORY + ip));
-				LearningData.Examples.ForEach(ex => analysisSession.AddExample(new ExampleData(Config.SAMPLE_DIRECTORY + ex.InputPath, ex.Output)));
-			}
+
+			// TODO not redo session & learning if examples did not change
+			analysisSession = new SessionType();
+			LearningData.InputPaths.ForEach(ip => analysisSession.AddInput(Config.SAMPLE_DIRECTORY + ip));
+			LearningData.Examples.ForEach(ex => analysisSession.AddExample(new ExampleData<OutputType>(Config.SAMPLE_DIRECTORY + ex.InputPath, ex.Output)));
 			// FIXME Fix that path prefix thing
 			return analysisSession.Analyze(path);
 		}
@@ -98,6 +98,7 @@ namespace pbeextractionbuildlogs
 			output += "Program is " + (analysisSession == null ? "not " : "") + "learned\n";
 			output += "Examples are:\n";
 			LearningData.Examples.ForEach(ex => output += "  path: " + ex.InputPath + ", output: " + ex.Output + "\n");
+			// TODO: fix output if OutputType is string[]
 			output += "Inputs are:\n";
 			LearningData.InputPaths.ForEach(ip => output += "  path: " + ip + "\n");
 
@@ -134,10 +135,10 @@ namespace pbeextractionbuildlogs
 		public void Load()
 		{
 			// TODO: auch andere sachen serializieren??
-			XmlSerializer serializer = new XmlSerializer(new SessionData().GetType());
+			XmlSerializer serializer = new XmlSerializer(new SessionData<ExampleData<OutputType>>().GetType());
 			using (StreamReader file = new StreamReader(saveFilePath))
 			{
-				LearningData = (SessionData)serializer.Deserialize(file);
+				LearningData = (SessionData<ExampleData<OutputType>>)serializer.Deserialize(file);
 			}
 		}
 

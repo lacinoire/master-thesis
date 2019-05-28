@@ -25,7 +25,7 @@ namespace pbeextractionbuildlogs
 		{
 			Console.WriteLine("Welcome to the buildlog analyzer! We make parsing bulidlogs fun with examples \U0001F389");
 
-			AnalysisSession analysisSession = new AnalysisSession();
+			RegionAnalysisSession analysisSession = new RegionAnalysisSession();
 
 			while (true)
 			{
@@ -35,14 +35,14 @@ namespace pbeextractionbuildlogs
 					new Choice("p", "\U0001F5A8 Print the current program or", () => PrintCurrentProgram(analysisSession)),
 					new Choice("s", "\U0001F4C1 Save the current exampleset or", () => SaveProgram(analysisSession)),
 					new Choice("l", "\U0001F4C2 Load a saved exampleset or", () => analysisSession = LoadProgram(analysisSession)),
-					new Choice("r", "\U0001F5D1 Reset the current exampleset?", () => analysisSession = new AnalysisSession()),
+					new Choice("r", "\U0001F5D1 Reset the current exampleset?", () => analysisSession = new RegionAnalysisSession()),
 					new Choice("d", "Print differentiating examples", async () => await analysisSession.PrintSeparatingExamples()),
 					new Choice("td", "TestDiverting", () => TestDiverting(analysisSession))
 					);
 			}
 		}
 
-		private static void TestDiverting(AnalysisSession session)
+		private static void TestDiverting(RegionAnalysisSession session)
 		{
 			session
 				//.AddExample("mini/5.log", "Execution failed for task ':app:connectedAndroidTest'.")
@@ -51,7 +51,7 @@ namespace pbeextractionbuildlogs
 			Console.Out.WriteLine("Exectued TestDiverting.");
 		}
 
-		private static void AddInput(AnalysisSession analysisSession)
+		private static void AddInput(RegionAnalysisSession analysisSession)
 		{
 			var inputPath = RequestBuildlogFilePath();
 			analysisSession.AddInput(inputPath);
@@ -68,7 +68,7 @@ namespace pbeextractionbuildlogs
 				new Choice("n", "\U0001F645 No.", () => { }));
 		}
 
-		private static void RunOnTestInput(AnalysisSession analysisSession)
+		private static void RunOnTestInput(RegionAnalysisSession analysisSession)
 		{
 			var inputPath = RequestBuildlogFilePath();
 			var output = analysisSession.Analyze(inputPath);
@@ -83,24 +83,24 @@ namespace pbeextractionbuildlogs
 			}
 		}
 
-		private static void PrintCurrentProgram(AnalysisSession analysisSession)
+		private static void PrintCurrentProgram(RegionAnalysisSession analysisSession)
 		{
 			Console.WriteLine("\U0001F4C3 This is the programm generated for all the examples that I currently have:");
 			Console.WriteLine(analysisSession.CurrentProgram());
 		}
 
-		private static void SaveProgram(AnalysisSession analysisSession)
+		private static void SaveProgram(RegionAnalysisSession analysisSession)
 		{
 			Console.WriteLine("Under which name would you like to save the exampleset? \U0001F914");
 			var name = Console.ReadLine();
 			//analysisSession.Save(name);
 		}
 
-		private static AnalysisSession LoadProgram(AnalysisSession analysisSession)
+		private static RegionAnalysisSession LoadProgram(RegionAnalysisSession analysisSession)
 		{
 			Console.Write("What is the name of the exampleset you would like to load? \U0001F9D0\n");
-			//return AnalysisSession.Load(Console.ReadLine());
-			return new AnalysisSession();
+			//return RegionAnalysisSession.Load(Console.ReadLine());
+			return new RegionAnalysisSession();
 		}
 
 		private static void GiveChoice(string intro, params Choice[] choices)

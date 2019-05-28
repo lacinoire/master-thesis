@@ -18,7 +18,7 @@ namespace pbeextractionbuildlogs
 		[Benchmark]
 		public void BenchmarkConnectbot()
 		{
-			AnalysisSession analysisSession = new AnalysisSession();
+			RegionAnalysisSession analysisSession = new RegionAnalysisSession();
 
 			//analysisSession
 			//	.AddExample(SAMPLE_PATH + "c1.log", "travis_time:start:0479293b")

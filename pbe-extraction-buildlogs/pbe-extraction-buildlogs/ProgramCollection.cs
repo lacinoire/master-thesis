@@ -12,10 +12,10 @@ namespace pbeextractionbuildlogs
 		public List<GeneralResult> FurtherResults { get; set; } = new List<GeneralResult>();
 	}
 
-	public class AnalysisResult : GeneralResult
+	public class AnalysisResult<OutputType> : GeneralResult
 	{
-		public string Output { get; set; }
-		public string DesiredOutput { get; set; }
+		public OutputType Output { get; set; }
+		public OutputType DesiredOutput { get; set; }
 		public bool Successful { get; set; }
 	}
 
@@ -29,7 +29,7 @@ namespace pbeextractionbuildlogs
 	/// </summary>
 	public class ProgramCollection
 	{
-		public List<AnalysisProgram> AnalysisPrograms = new List<AnalysisProgram>();
+		public List<NamedProgram> AnalysisPrograms = new List<NamedProgram>();
 
 		/// <summary>
 		/// If the given path references a folder all files inside are processed by function and the results given back in a list, additionally true is returned. If the path leads to a file an empty list and false is returned.
@@ -55,13 +55,13 @@ namespace pbeextractionbuildlogs
 		/// <param name="path"></param>
 		/// <param name="mightBeFolder"></param>
 		/// <returns></returns>
-		public AnalysisResult Analyze(string programName, string path, bool mightBeFolder)
+		public AnalysisResult<OutputType> Analyze<OutputType>(string programName, string path, bool mightBeFolder)
 		{
-			var result = new AnalysisResult();
+			var result = new AnalysisResult<OutputType>();
 			var wasFolder = false;
 			if (mightBeFolder)
 			{
-				var tuple = IfPathIsFolderRunOnFolder(programName, path, Analyze);
+				var tuple = IfPathIsFolderRunOnFolder(programName, path, Analyze<OutputType>);
 				result.FurtherResults = tuple.Item1;
 				wasFolder = tuple.Item2;
 			}
@@ -70,13 +70,24 @@ namespace pbeextractionbuildlogs
 
 			if (!wasFolder)
 			{
-				var program = GetProgramForSaveName(programName);
-				var output = program.ApplyToFile(path);
-				result.Output = output;
+				if (typeof(OutputType) == typeof(string))
+				{
+					var program = GetProgramForSaveName<RegionAnalysisSession, string>(programName);
+					var output = program.ApplyToFile(path);
+					result.Output = (OutputType)(object)output;
+				}
+
+				if (typeof(OutputType) == typeof(string[]))
+				{
+					var program = GetProgramForSaveName<SequenceAnalysisSession, string[]>(programName);
+					var output = program.ApplyToFile(path);
+					result.Output = (OutputType)(object)output;
+				}
+
 
 				// TODO get desired output from somewhere
 				result.DesiredOutput = result.Output;
-				result.Successful = result.DesiredOutput == result.Output;
+				result.Successful = result.DesiredOutput.Equals(result.Output);
 			}
 			else
 			{
@@ -107,23 +118,33 @@ namespace pbeextractionbuildlogs
 			return result;
 		}
 
-		private AnalysisProgram GetProgramForSaveName(string name)
+		private AnalysisProgram<SessionType, OutputType> GetProgramForSaveName<SessionType, OutputType>(string name) where SessionType : AnalysisSession<OutputType>, new()
 		{
 			var program = AnalysisPrograms.Find(p => p.SaveName == name);
 			if (program == null)
 			{
 				Console.WriteLine("No program found for identifier " + name);
 			}
-			return program;
+			return (pbeextractionbuildlogs.AnalysisProgram<SessionType, OutputType>)program;
 		}
 
-		public AnalysisProgram AddTravisWorkerProgram()
+		public AnalysisProgram<RegionAnalysisSession, string> AddTravisWorkerProgram()
 		{
-			AnalysisProgram program = new AnalysisProgram("travis-worker", new LogKind("all", "all"), MetaModelObject.TravisWorker, takeFromFileIfPossible: false);
+			AnalysisProgram<RegionAnalysisSession, string> program = new AnalysisProgram<RegionAnalysisSession, string>("travis-worker", new LogKind("all", "all"), MetaModelObject.TravisWorker, takeFromFileIfPossible: false);
 			program
 				.AddExample("AdRoll@hologram/1_53661720_bcfe34b206aa75df8a1f6bee9153190bfcc6ca4b_53661722.log", "worker-linux-c55820f2-2.bb.travis-ci.org:travis-linux-11")
 				.AddExample("AdRoll@hologram/3_53664779_e1988cc65bbe55e7930f29b4f5bed04af363dfcc_53664780.log", "worker-linux-c55820f2-1.bb.travis-ci.org:travis-linux-3")
 				.AddExample("ant0ine@go-json-rest/1_5093969_e309d425737489de58a7a765aece0275f85cbb21_5093970.log", "ruby6.worker.travis-ci.org:travis-ruby-3");
+			program.Save();
+			AnalysisPrograms.Add(program);
+			return program;
+		}
+
+		public AnalysisProgram<RegionAnalysisSession, string> AddAndroidBuildFailureProgram()
+		{
+			AnalysisProgram<RegionAnalysisSession, string> program = new AnalysisProgram<RegionAnalysisSession, string>("android-failure", new LogKind("java", "android"), MetaModelObject.BuildFailure, takeFromFileIfPossible: false);
+			program
+				.AddExample("connectbot@connectbot/3_6f3c306c9fbd6397ca529cc99154388c841e45b1_38381359.log", "Execution failed for task ':app:compileDebugNdk'.\n> NDK not configured.\n Download the NDK from http://developer.android.com/tools/sdk/ndk/.Then add ndk.dir=path/to/ndk in local.properties.\n  (On Windows, make sure you escape backslashes, e.g.C:\\ndk rather than C:\ndk)");
 			program.Save();
 			AnalysisPrograms.Add(program);
 			return program;
