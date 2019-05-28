@@ -1,5 +1,15 @@
 # Carolin Master Thesis Work Log
 
+## 28.5.19
+
+- reviewed rw points and sent them to Moritz
+- generic hell to support sequence programs in extraction
+
+## 27.5.19
+
+- shortened rw points for paper
+- screened buildlogs and plannend data collection for extraction examples
+
 ## 24.5.19
 
 - Wrote summary about IR research & literature for Annibale and Moritz
