@@ -1,5 +1,12 @@
 # Carolin Master Thesis Work Log
 
+## 29.5.19
+
+- query ghtorrent in bigquery for popular languages and projects
+- read up on travis api 3 for collecting buildlogs
+- ruby tutorial (decide to write travis log collection in ruby instead of doing it by hand)
+- empty locker xD and review Martijns requirements
+
 ## 28.5.19
 
 - reviewed rw points and sent them to Moritz
@@ -14,7 +21,6 @@
 
 - Wrote summary about IR research & literature for Annibale and Moritz
 - Wrote bullet points for related work and background of paper (they got so long that I will probably move them to the thesis and shorten / redo them for the paper)
-
 
 ## 22.5.19
 
