@@ -1,5 +1,18 @@
 # Carolin Master Thesis Work Log
 
+## 3.6.19
+
+- reading paper about mining buildlogs
+- update to moritz and annibale on mattermost
+- morning paper about ci for ml models
+
+## 31.5.19
+
+- struggle with setting up ruby dev environment
+- queriying travis for repos
+- learning that travis ruby library is broken for logs xD
+- looking into rest api of travis again
+
 ## 29.5.19
 
 - query ghtorrent in bigquery for popular languages and projects
