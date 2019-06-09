@@ -1,5 +1,15 @@
 # Carolin Master Thesis Work Log
 
+## 5.5.19
+
+- feedback and paper discussion with Moritz
+- update ghtorrent query for popular repos in various languages & more continuation on data collection
+- writing half of iteration 1 for introdcution & related work
+
+## 4.5.19
+
+- add bigquery library to
+
 ## 3.6.19
 
 - reading paper about mining buildlogs

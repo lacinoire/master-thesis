@@ -19,6 +19,8 @@ namespace pbeextractionbuildlogs
 		public string InputPath;
 		public OutputType Output;
 
+		public ExampleData() { }
+
 		public ExampleData(string inputPath, OutputType output)
 		{
 			InputPath = inputPath;
@@ -48,7 +50,7 @@ namespace pbeextractionbuildlogs
 			{
 				return fileCache[path];
 			}
-			string text = File.ReadAllText(path);
+			string text = File.ReadAllText(path).Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n\r", "\n").Replace(((char)0x1b).ToString(), "");
 			StringRegion region = RegionSession.CreateStringRegion(text);
 			fileCache[path] = region;
 			return region;
@@ -78,7 +80,7 @@ namespace pbeextractionbuildlogs
 		{
 			var inputRegion = AnalysisUtil.RegionFromFile(exampleData.InputPath);
 			var startIndex = inputRegion.S.IndexOf(exampleData.Output, StringComparison.Ordinal);
-			var outputRegion = inputRegion.Slice((uint)startIndex, (uint)(startIndex + exampleData.Output.Length));
+			var outputRegion = inputRegion.Slice((uint)startIndex, (uint)(startIndex) + ((uint)exampleData.Output.Length));
 			session.Constraints.Add(new RegionExample(inputRegion, outputRegion));
 
 			return this;
@@ -102,10 +104,17 @@ namespace pbeextractionbuildlogs
 			RegionProgram topRankedProgram = session.Learn();
 			if (topRankedProgram == null)
 			{
-				Console.Error.WriteLine("no program found");
-				return null;
+				Console.WriteLine("no program found");
+				return "no program found";
 			}
+			Console.WriteLine("Learned Program:");
+			Console.WriteLine(topRankedProgram);
+			Console.WriteLine();
 			StringRegion output = topRankedProgram.Run(inputRegion);
+			if (output == null)
+			{
+				return "no extraction found for this input";
+			}
 			return output?.Value;
 		}
 

@@ -35,7 +35,6 @@ namespace pbeextractionbuildlogs
 		{
 			// setup
 			ProgramCollection programCollection = new ProgramCollection();
-			programCollection.AddTravisWorkerProgram();
 
 			Parser.Default.ParseArguments<AnalysisOptions, BenchmarkOptions, EvaluateOptions, InteractionOptions>(args)
 				.WithParsed<AnalysisOptions>(opts => Analyze(opts, programCollection))
@@ -43,19 +42,6 @@ namespace pbeextractionbuildlogs
 				.WithParsed<EvaluateOptions>(opts => Evaluate(opts, programCollection))
 				.WithParsed<InteractionOptions>(_ => ConsoleInteraction.Run())
 				.WithNotParsed(errs => Console.WriteLine(errs));
-
-			//if (args.Length == 1)
-			//{
-			//	if (args[0] == "-bc")
-			//	{
-			//		new MicroBenchmarking().BenchmarkConnectbot();
-			//	}
-			//	else if (args[0] == "-b")
-			//	{
-			//		var summary = BenchmarkRunner.Run<MicroBenchmarking>();
-			//		Console.WriteLine("Total Time: " + summary.TotalTime);
-			//	}
-			//}
 		}
 
 		private static void Analyze(AnalysisOptions opts, ProgramCollection programCollection)

@@ -10,7 +10,7 @@ namespace pbeextractionbuildlogs
 		/// <summary>
 		/// Filename to save the corresponding data under.
 		/// </summary>
-		public string SaveName { get; protected set; }
+		public string SaveName { get; set; }
 	}
 
 	/// <summary>
@@ -25,18 +25,28 @@ namespace pbeextractionbuildlogs
 		/// <summary>
 		/// Data needed for the learning lesson.
 		/// </summary>
-		public SessionData<ExampleData<OutputType>> LearningData { get; private set; }
+		public SessionData<ExampleData<OutputType>> LearningData { get; set; }
 
 		/// <summary>
 		/// LogKind this programm analyzes
 		/// </summary>
-		public LogKind LogKind { get; }
+		public LogKind LogKind { get; set; }
 
 		/// <summary>
 		/// TODO doc
 		/// </summary>
-		public MetaModelObject Target { get; }
+		public MetaModelObject Target { get; set; }
 		// MAYBE: private AnalysisSession analysisSession;
+
+		public static AnalysisProgram<SessionType, OutputType> LoadAnalysisProgram(string saveName)
+		{
+			return (new AnalysisProgram<SessionType, OutputType>
+			{
+				SaveName = saveName,
+			}).Load();
+		}
+
+		public AnalysisProgram() { }
 
 		public AnalysisProgram(string saveName, LogKind logKind, MetaModelObject target, SessionData<ExampleData<OutputType>> learningData = null, bool takeFromFileIfPossible = false)
 		{
@@ -124,21 +134,21 @@ namespace pbeextractionbuildlogs
 		/// </summary>
 		public void Save()
 		{
-			XmlSerializer serializer = new XmlSerializer(LearningData.GetType());
+			XmlSerializer serializer = new XmlSerializer(GetType());
 			Directory.CreateDirectory(Config.PROGRAM_DATA_DIRECTORY.Remove(Config.PROGRAM_DATA_DIRECTORY.Length - 1));
 			using (StreamWriter file = new StreamWriter(File.Create(saveFilePath)))
 			{
-				serializer.Serialize(file, LearningData);
+				serializer.Serialize(file, this);
 			}
 		}
 
-		public void Load()
+		public AnalysisProgram<SessionType, OutputType> Load()
 		{
 			// TODO: auch andere sachen serializieren??
-			XmlSerializer serializer = new XmlSerializer(new SessionData<ExampleData<OutputType>>().GetType());
+			XmlSerializer serializer = new XmlSerializer(GetType());
 			using (StreamReader file = new StreamReader(saveFilePath))
 			{
-				LearningData = (SessionData<ExampleData<OutputType>>)serializer.Deserialize(file);
+				return (AnalysisProgram<SessionType, OutputType>)serializer.Deserialize(file);
 			}
 		}
 

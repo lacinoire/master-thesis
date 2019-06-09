@@ -9,8 +9,10 @@ namespace pbeextractionbuildlogs
 	/// </summary>
 	public class LogKind
 	{
-		public string Language { get; }
-		public string BuildTool { get; }
+		public string Language { get; set; }
+		public string BuildTool { get; set; }
+
+		public LogKind() { }
 
 		public LogKind(string language, string buildTool)
 		{

@@ -145,68 +145,70 @@
 
 \section{Introduction}
 
-ci important for sw projects,
-
-broken build stops dev process until its fixed, 
-
-shortening fixing time important to increase dev productivity,
+shortening fixing time for broken builds important to increase dev productivity,
  
 to detect underlying failure huge buildlog has to be read, dev has to find relevant information between a lot of lines unimportant for the task, 
 
-extracting the dev-relevant information from logs and present only them in a structured way could be key improvement on dev productivity, 
+extracting the dev-relevant information from logs and present only them in a structured way could be improvement on dev productivity, 
 
 traditional: regexes built for exact information extraction
 
 hard to maintain, regex understanding effort, don't generalize / have to be redone when a bulidlog changes / language or build tool is switched, 
 
-... our approach ..., 
+... what we do: collected a diverse set of buildlogs from travis ci, designed a metamodel of the contained (extractable?) information, labeled the collected buildlogs, built a tool which uses the PROSE library and can extract information from buildlogs based on examples, evaluated tool/learning ability/accuracy on created dataset, results ...
 
-... paper structure ...
+explicit: contributions
 
 \section{Related Work}
 
-\paragraph{Continious integration and analysis of buildlogs}
-se research community started to look into buildlogs as CI becomes a vital part of a modern se process
+\subsection{Continuous Integration}
+several researchers done this and that
 
-e.g. Seo at al studying the kinds of errors which lead builds to fail at google and their resolvement time \cite{seo2014programmers}
+The software engineering research community started looking into buildlogs as more as continuous integration becomes a vital part of a modern software engineering process.
+Seo et al.~\cite{seo2014programmers} found that few error types such as dependency issues and type mismatches are most prominent cause of build failures at google and that most failures are resolved within two builds.
+Vassalo et al.~\cite{vassallo2017a-tale} found that the reasons for CI builds to fail are very different at open source and industrial projects using java. 
+Beller et al.~\cite{beller2017oops} 
+3 log analysis papers
 
-Vasallo et al compared build failure reasons in java open source software and at one industrial company \cite{vassallo2017a-tale}
 
-Beller et al. conducted a large scale empirical analysis of java and ruby buildlogs from travis ci, found that tests are central to CI and main reason for builds to fail \todo{should I mention a key outcome like this or only what they did?}
+\subsection{Tool}
+improving time developers take to understand buildlogs, vasallo by summarizing relevant information in java/maven buildlogs and augmenting with links to related stack overflow  posts, amar et al. (by removing lines that appear both in passing and failing buildlogs and therefore) reducing the lines needed to be inspected, information retrieval techniques to identify most important lines for investigation and categorize the build failure cause
 
-Vasallo et al. also build a tool to support developers to find reasons for build breaks fast, analyzes and summarizes relevant parts of a buildlog, links to related stack overflow discussions, they found that \begin{quotation}
-	dependency breaks and testing failures seem to be easy to understand
-\end{quotation} and a good summary highlighting the locality of the issues seems to be an important factor of fixing time \cite{vassallo2018un-break}
+bart paper, icse paper???
 
 relation to our work: we could support this research by enabling easier data extraction from the analyzed buildlogs, most focus on single/few languages with our tool they could more easily cover multiple ones 
 
 
-\paragraph{Information Extraction from semi-structured data using program synthesis}
+\subsection{Information Extraction and Retrieval}
+flashextract paper, icse paper???
+
 Le et al. developed FlashExtract as part of the PROSE Framework, tool to synthesize programs based on a few given examples, extract substrings from semi-structured texts, users can extract multiple fields and structure them with hierarchy and sequence, uses inductive synthesis algorithm to synthesize intended program, eliminates the need for the user to understand structure of entire document or to be able to code
 
 we are applying their library to the domain of buildlogs, using programming by example to take away the need to tediously develop and maintain the regular expressions, traditionally used in information extraction
 
-\section{Background}
-
-\paragraph{semi-structured data}
-characteristics of semi-structured data (structure irregular, implicit, partial, rapidly evolving) and explaining why this applies to buildlogs, extract information to build a structured layer above the unformed data for efficient data access (for developers here! -> impact on our work with buildlogs) \cite{abiteboul1997querying}
-
-maybe: reference \cite{smith1997information} and explain approach of first structuring into sections / "contexts" before extracting acutal information. but only if we actually do that and not just always parse the whole log.
-
-program synthesis from example, neccessary theoretical stuff,
-here all the references to prose theoretical papers \cite{le2014flashextract:}, \cite{polozov2015flashmeta:}, \cite{mitchell1982generalization}, 
-
-\section{Data collection}
+\section{Method}
+\subsection{Data collection}
 describe process of collecting buildlog files, sampling
+querying ghtorrent and travis api with (insert fancy name for data collection tool) for x buildlogs of each status of the top-watched repositories on github that also use travis ci,
+\subsection{Meta-Model}
+through manual examination of y of the buildlogs we collected designed a metamodell  of the contained/extractable/useful/interesting information,
 
-\section{Meta-Model}
-describe metamodel of data obtainable from buildlogs
+... explain metamodel + figure ...
+\subsection{Our Tool}
+... interaction and usage and output of tool, maybe integration possibilities ...
 
-\section{Our Tool}
+... necessary or interesting implementation details ...
 
-\section{Evaluation}
+\section{Results}
+... achieved accuracy, samples needed for same accuracy as related tools (travistorrent), aging of learned programs with newer data ...
+
+\section{Analysis}
+... our tool works well for defined cases, limitations of tool/prose/regex usage in general, every x weeks extraction has to be rewritten to keep accuracy, well improved if only y new examples have to be added ...
 
 \section{Conclusion and Future Work}
+... repeat everything and results ...
+
+... future: make avaliable to other researchers, integrate into travis, common extend evaluation and data collection, use dataset to evaluate against existing approaches ...
 
 %%
 %% The acknowledgments section is defined using the "acks" environment
