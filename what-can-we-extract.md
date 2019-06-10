@@ -27,14 +27,14 @@ travis_fold:end:worker_info
 We can extract both by using separate synthesized programs:
 
 ``` console
-mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f facebookgo@rocks-strata/166107245.log -p travis-worker-short
+$ mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f facebookgo@rocks-strata/166107245.log -p travis-worker-short
 ```
 
 ``` bash
 mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f facebookgo@rocks-strata/190839612.log -p travis-worker-long
 ```
 
-To look at the examples used for synthesizing these programs you can inspect the configuring `.xml` files in [`ressources/analysis-programs/`](pbe-extraction-buildlogs/analysis-programs).
+To look at the examples used for synthesizing these programs you can inspect the configuring `.xml` files in [`ressources/ressources/analysis-programs/`](pbe-extraction-buildlogs/ressources/analysis-programs).
 
 Combining both examples into a unified exampleset was not successful. If you try to run the combined set on a file
 
@@ -48,9 +48,10 @@ you will see that the synthesis was not able to find a program.
 
 ## Android failure
 
-One example of extracting the reason for a build to fail is defined in the [`android-failure`](pbe-extraction-buildlogs/ressources/analysis-programs/android-failure) exampleset.
+One example of extracting the reason for a build to fail is defined in the [`android-failure`](pbe-extraction-buildlogs/ressources/analysis-programs/android-failure.xml) exampleset.
 
 This extracts the summarized reason for the builds from the project `connectbot@connectbot` to fail:
+
 [`connectbot@connectbot/5_3995f36cd5af8707a18a741f9018feb23f5ee710_38382864.log`](pbe-extraction-buildlogs/samples/connectbot@connectbot/5_3995f36cd5af8707a18a741f9018feb23f5ee710_38382864.log), line 3933 - 3935
 
 ``` text
@@ -83,7 +84,7 @@ Could not determine the dependencies of task ':app:jacocoTestDebugReport'.
 > Task with path 'testDebug' not found in project ':app'.
 ```
 
-If this example is also added ([`android-failure-with-dependencies`](pbe-extraction-buildlogs/ressources/analysis-programs/android-failure-with-dependencies)) the synthesized program changes to:
+If this example is also added ([`android-failure-with-dependencies`](pbe-extraction-buildlogs/ressources/analysis-programs/android-failure-with-dependencies.xml)) the synthesized program changes to:
 
 ``` ocaml
 let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("Colon◦Line Separator", "ALL CAPS"), 1)) in StartToPosRegion(s, RegexPosition(s, RegexPair("ε", "Line Separator◦Line Separator"), 1))
