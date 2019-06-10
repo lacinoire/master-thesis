@@ -20,4 +20,4 @@ mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f 
 
 execute without arguments for help text 🙂
 
-Find the predefined examplesets in the [program folder](analysis-programs/). The buildlogs used for the examples are inside the [samples folder](samples/).
+Find the predefined examplesets in the [program folder](ressources/analysis-programs/). The buildlogs used for the examples are inside the [samples folder](samples/).
