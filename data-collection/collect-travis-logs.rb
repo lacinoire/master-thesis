@@ -52,39 +52,48 @@ class GHTorrentParser
 
   def self.popular_repos_for_language(language, from, to)
     query File.read('popular-repos-for-language.sql')
-      .replace('?language?', language)
-      .replace('?rank-lower-bound?', from)
-      .replace('?rank-upper-bound?', to)
+      .gsub('?language?', language)
+      .gsub('?rank-lower-bound?', from.to_s)
+      .gsub('?rank-upper-bound?', to.to_s)
   end
 end
 
 if $PROGRAM_NAME == __FILE__
 
+  RESULTS_FILENAME = 'repos-to-analyze.txt'
+  result_file = File.open(RESULTS_FILENAME, 'w')
   active_repos = {}
   languages = GHTorrentParser.popular_languages
-  languages.each do |lang|
+  p languages
+  languages.each do |lang_result|
+    lang = lang_result[:language]
     puts "Current Language: #{lang}"
+    result_file.puts(lang)
     start_index = 0
     batch_size = 5
     active_lang_repos = []
 
-    while active_lang_repos.length < 3 && start_index < 3 * batch_size # TODO: config count of searched repos
-      candidate_repos = GHTorrentParser.popular_repos_for_language lang start_index (start_index + batch_size)
+    while active_lang_repos.length < 3 && start_index < (3 * batch_size) # TODO: config count of searched repos
+      candidate_repos = GHTorrentParser.popular_repos_for_language(lang, start_index, (start_index + batch_size))
       candidate_repos.each do |repo|
+        p repo
         slug = "#{repo[:login]}/#{repo[:name]}"
+        p slug
         active = TravisRequester.repository_active(slug)
-        if active
-          active_repos[repo[:language]] = [] if active_repos[repo[:language]].nil?
-          active_repos[repo[:language]] << slug if active_repos[repo[:language]].length < 3
-        end
+        p active
+        active_lang_repos << slug if active && active_lang_repos.length < 3
       end
       start_index += batch_size
     end
 
     active_repos[lang] = active_lang_repos
+    puts active_lang_repos
+    result_file.puts(active_lang_repos)
+    puts ''
   end
 
   puts active_repos
   puts "language count: #{active_repos.keys.length}"
-  puts "count for travis enabled repos: #{active_repos.transform_values { |_, slugs| slugs.length }}"
+  # puts "count for travis enabled repos: #{active_repos.transform_values { |_, slugs| slugs.length }}"
+  result_file.close
 end

@@ -18,7 +18,7 @@ popular_languages as (
   group by t.language
   order by count(*) desc
   limit 30
-),
+)
 
 select *
 from popular_languages

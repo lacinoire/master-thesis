@@ -21,7 +21,7 @@ rank_watches_popular_languages as (
 tenth_most_watched_per_popular_language as (
   select r.*
   from rank_watches_popular_languages r
-  where r.rank < ?rank-upper-bound? and r.rank > ?rank-lower-bound?
+  where r.rank <= ?rank-upper-bound? and r.rank > ?rank-lower-bound?
 )
 
 select *
