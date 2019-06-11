@@ -37,7 +37,7 @@ end
 # queries the ghtorrent dataset through the google bigquery API
 class GHTorrentParser
   def self.query(sql)
-    bigquery = Google::Cloud::Bigquery.new# project: "nutrimon-61d83"
+    bigquery = Google::Cloud::Bigquery.new
     data = bigquery.query sql
     data
   end
@@ -47,7 +47,7 @@ class GHTorrentParser
   end
 
   def self.popular_languages
-    query File.read('popular-languages.sql')
+    query File.read('popular-langs.sql')
   end
 
   def self.popular_repos_for_language(language, from, to)
@@ -63,23 +63,28 @@ if $PROGRAM_NAME == __FILE__
   active_repos = {}
   languages = GHTorrentParser.popular_languages
   languages.each do |lang|
+    puts "Current Language: #{lang}"
     start_index = 0
     batch_size = 5
+    active_lang_repos = []
 
-  end
-
-  candidate_repos = GHTorrentParser.repos_from_popular_languages
-
-  candidate_repos.each do |repo|
-    slug = "#{repo[:login]}/#{repo[:name]}"
-    active = TravisRequester.repository_active(slug)
-    active.nil? && (puts slug)
-    if active
-      active_repos[repo[:language]] = [] if active_repos[repo[:language]].nil?
-      active_repos[repo[:language]] << slug if active_repos[repo[:language]].length < 3
+    while active_lang_repos.length < 3 && start_index < 3 * batch_size # TODO: config count of searched repos
+      candidate_repos = GHTorrentParser.popular_repos_for_language lang start_index (start_index + batch_size)
+      candidate_repos.each do |repo|
+        slug = "#{repo[:login]}/#{repo[:name]}"
+        active = TravisRequester.repository_active(slug)
+        if active
+          active_repos[repo[:language]] = [] if active_repos[repo[:language]].nil?
+          active_repos[repo[:language]] << slug if active_repos[repo[:language]].length < 3
+        end
+      end
+      start_index += batch_size
     end
+
+    active_repos[lang] = active_lang_repos
   end
 
+  puts active_repos
   puts "language count: #{active_repos.keys.length}"
   puts "count for travis enabled repos: #{active_repos.transform_values { |_, slugs| slugs.length }}"
 end
