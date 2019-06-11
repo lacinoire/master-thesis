@@ -5,7 +5,8 @@ require 'csv'
 require 'httparty'
 require 'google/cloud/bigquery'
 
-class LogCollector
+# retrieves Buildlogs using webrequests to the Travis API or the amazon servers
+class TravisRequester
   include HTTParty
   base_uri 'https://api.travis-ci.org/'
   format :json
@@ -13,62 +14,72 @@ class LogCollector
           'Travis-API-Version' => '3',
           'Authorization' => 'token wnjJqxnQHvEnxu_ZI5bAXA'
 
-  def self.get_latest_log(repo_slug)
-    default_branch = get("/repo/#{repo_slug}")['default_branch']['name']
-    last_build_id = get("/repo/#{repo_slug}/branch/#{default_branch}")['last_build']['id']
+  def self.retrieve_log_travis(job_id)
+    repo = Travis::Repository.find(repo_slug)
+    # default_branch = repo.default_branch.name # get("/repo/#{repo_slug}")['default_branch']['name']
+    last_build_id = repo.last_build_id # get("/repo/#{repo_slug}/branch/#{default_branch}")['last_build']['id']
     job_id = get("/build/#{last_build_id}/jobs")['jobs'][0]['id']
     log = get("/job/#{job_id}/log", headers: headers.merge('Accept' => 'text/plain'), format: :text)
     log
   end
+
+  def self.retrieve_log_amazon(job_id)
+    ''
+  end
+
+  def self.repository_active(slug)
+    Travis::Repository.find(slug).active
+  rescue Travis::Client::NotFound => _e
+    false
+  end
 end
 
+# queries the ghtorrent dataset through the google bigquery API
 class GHTorrentParser
-  def self.get_popular_languages()
+  def self.query(sql)
     bigquery = Google::Cloud::Bigquery.new# project: "nutrimon-61d83"
-    sql = File.read('popular-lang-repos.sql')
     data = bigquery.query sql
     data
   end
+
+  def self.repos_from_popular_languages
+    query File.read('popular-lang-repos.sql')
+  end
+
+  def self.popular_languages
+    query File.read('popular-languages.sql')
+  end
+
+  def self.popular_repos_for_language(language, from, to)
+    query File.read('popular-repos-for-language.sql')
+      .replace('?language?', language)
+      .replace('?rank-lower-bound?', from)
+      .replace('?rank-upper-bound?', to)
+  end
 end
 
-if $0 == __FILE__
-  Travis.access_token = 'wnjJqxnQHvEnxu_ZI5bAXA'
-  table = CSV.read('most_watched_popular_languages.csv', headers: true)
+if $PROGRAM_NAME == __FILE__
 
-  #repo_id = HTTParty.get('https://api.travis-ci.org/repo/FreeCodeCamp%2Ffreecodecamp',
-  #                       headers: headers)
-  #                  .response.to_hash
-  #puts repo_id#['default_branch']['name']
-  #puts LogCollector.get_latest_log('FreeCodeCamp%2Ffreecodecamp')
-  puts GHTorrentParser.get_popular_languages
-  return
+  active_repos = {}
+  languages = GHTorrentParser.popular_languages
+  languages.each do |lang|
+    start_index = 0
+    batch_size = 5
 
-  # identify repos that use Travis CI
-  found_repos = []
-  table.each do |row|
-    slug = "#{row['login']}/#{row['name']}"
-    begin
-      repo = Travis::Repository.find(slug)
-    rescue Travis::Client::NotFound => exception
-      # puts "Travis Repo not found for: #{slug}"
-    else
-      if repo.last_build_number == nil
-        # puts "Travis CI not activated for: #{slug}"
-      else
-        found_repos << repo
-        puts slug
-        puts "Last failing build: #{repo.last_build_number}"
-        puts "\n"
-      end
+  end
+
+  candidate_repos = GHTorrentParser.repos_from_popular_languages
+
+  candidate_repos.each do |repo|
+    slug = "#{repo[:login]}/#{repo[:name]}"
+    active = TravisRequester.repository_active(slug)
+    active.nil? && (puts slug)
+    if active
+      active_repos[repo[:language]] = [] if active_repos[repo[:language]].nil?
+      active_repos[repo[:language]] << slug if active_repos[repo[:language]].length < 3
     end
   end
 
-  # get logs
-  found_repos.each do |repo|
-    puts repo.slug
-    job = repo.last_build.jobs.first
-    puts job.id
-    puts "\n"
-    break
-  end
+  puts "language count: #{active_repos.keys.length}"
+  puts "count for travis enabled repos: #{active_repos.transform_values { |_, slugs| slugs.length }}"
 end

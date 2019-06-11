@@ -11,27 +11,18 @@ with popular_projects as (
   order by count(*) desc
 ),
 
-popular_languages as (
-  select t.language, count(*)
-  from popular_projects t
-  where t.language is not null
-  group by t.language
-  order by count(*) desc
-  limit 30
-),
-
 rank_watches_popular_languages as (
   select p.login, p.name, p.watch_count, p.language, 
     ROW_NUMBER() over (partition by p.language order by p.watch_count desc) as rank
-  from popular_projects p, popular_languages l
-  where p.language = l.language
+  from popular_projects p
+  where p.language = "?language?"
 ),
 
-nth_most_watched_per_popular_language as (
+tenth_most_watched_per_popular_language as (
   select r.*
   from rank_watches_popular_languages r
-  where r.rank < 6
+  where r.rank < ?rank-upper-bound? and r.rank > ?rank-lower-bound?
 )
 
 select *
-from nth_most_watched_per_popular_language
+from tenth_most_watched_per_popular_language

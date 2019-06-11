@@ -26,7 +26,7 @@ travis_fold:end:worker_info
 
 We can extract both by using separate synthesized programs:
 
-``` console
+``` bash
 $ mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f facebookgo@rocks-strata/166107245.log -p travis-worker-short
 ```
 

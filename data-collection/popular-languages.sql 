@@ -20,18 +20,5 @@ popular_languages as (
   limit 30
 ),
 
-rank_watches_popular_languages as (
-  select p.login, p.name, p.watch_count, p.language, 
-    ROW_NUMBER() over (partition by p.language order by p.watch_count desc) as rank
-  from popular_projects p, popular_languages l
-  where p.language = l.language
-),
-
-nth_most_watched_per_popular_language as (
-  select r.*
-  from rank_watches_popular_languages r
-  where r.rank < 6
-)
-
 select *
-from nth_most_watched_per_popular_language
+from popular_languages
