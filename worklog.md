@@ -1,12 +1,21 @@
 # Carolin Master Thesis Work Log
 
-## 5.5.19
+## 6.6.19 - 12.6.19
+
+- continuing on pbe extraction tool: configuration of examples through xml program files, normalizing line endings
+- adding log samples to repo
+- writing overview of extraction possibilities
+- finish data collection tools: automatically determine repos to analyze and download & save their buildlogs by type
+- describe datat collection
+- update all the readmes
+
+## 5.6.19
 
 - feedback and paper discussion with Moritz
 - update ghtorrent query for popular repos in various languages & more continuation on data collection
 - writing half of iteration 1 for introdcution & related work
 
-## 4.5.19
+## 4.6.19
 
 - add bigquery library to
 

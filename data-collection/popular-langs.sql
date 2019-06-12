@@ -17,7 +17,7 @@ popular_languages as (
   where t.language is not null
   group by t.language
   order by count(*) desc
-  limit 30
+  limit ?lang_count?
 )
 
 select *
