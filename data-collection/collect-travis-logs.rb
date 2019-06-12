@@ -24,21 +24,25 @@ class TravisRequester
           'Travis-API-Version' => '3',
           'Authorization' => "token #{Config.config['auth']['travis_token']}"
 
+  # download the content of a buildlog through the travis rest api v3
   def self.retrieve_log_travis(job_id)
     log = get("/job/#{job_id}/log", headers: headers.merge('Accept' => 'text/plain'), format: :text)
     log
   end
 
+  # download the content of a buildlog through the amazon aws servers
   def self.retrieve_log_amazon(job_id)
-    ''
+    'downloading logs from amazon is not yet implemented'
   end
 
+  # check whether a repository uses Travis CI
   def self.repository_active(slug)
     Travis::Repository.find(slug).active
   rescue Travis::Client::NotFound => _e
     false
   end
 
+  # for a repository, collect builds categorized by build state
   def self.select_builds(repo_slug)
     repo = Travis::Repository.find(repo_slug)
     categorized_builds = {}
@@ -89,6 +93,7 @@ end
 class LogCollector
   include Config
 
+  # get the most watched repos for a language which also use Travis CI
   def self.active_repos(lang)
     start_index = 0
     batch_size = Config.config['repo_selection']['batch_size']
@@ -108,6 +113,7 @@ class LogCollector
     active_lang_repos
   end
 
+  # collect popular repos for popular languages on github
   def self.repos_to_analyze
     result_file = File.open('repos-to-analyze.txt', 'w')
     active_repos = {}
@@ -131,6 +137,7 @@ class LogCollector
     active_repos
   end
 
+  # collect logs from popular repos on github
   def self.collect_logs
     repos_per_lang = LogCollector.repos_to_analyze
     repos_per_lang.each do |lang, repos|

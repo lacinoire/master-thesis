@@ -6,8 +6,9 @@
 - adding log samples to repo
 - writing overview of extraction possibilities
 - finish data collection tools: automatically determine repos to analyze and download & save their buildlogs by type
-- describe datat collection
+- describe data collection
 - update all the readmes
+- listen to master thesis defence about gamifying static analysis tools
 
 ## 5.6.19
 
