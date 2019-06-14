@@ -147,6 +147,8 @@ class LogCollector
         p builds_per_state
         builds_per_state.each do |state, builds|
           builds.each do |build|
+            next if build.jobs.empty?
+
             job_id = build.jobs[0].id
             log = TravisRequester.retrieve_log_travis(job_id)
             directory_path = "logs/#{lang}/#{repo_slug.gsub('/', '@')}/#{state}"
