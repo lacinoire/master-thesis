@@ -1,5 +1,16 @@
 # Carolin Master Thesis Work Log
 
+## 14.6.19
+
+- throw away writing from yesterday
+- color scheme for nice semantic notes in paper
+- redo introduction & related work bullet points
+
+## 13.6.19
+
+- read up on PROSE internal learning / synthesis algorithm to explain to Annibale
+- not that successful writing in the afternoon
+
 ## 6.6.19 - 12.6.19
 
 - continuing on pbe extraction tool: configuration of examples through xml program files, normalizing line endings
