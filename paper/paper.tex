@@ -84,7 +84,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Analyzing Buildlogs Using Programming by Example}
+\title{Analyzing Build Logs Using Programming by Example}
 
 \author{Carolin Brandt}
 
@@ -159,55 +159,39 @@
 \section{Introduction}
 \secfunc{why? what? research questions? purpose? hypothesis? wide $\rightarrow$ narrow}
 
-\bp{build break priority for developers \mention{bart paper}
-	
-decreasing the time until a fix therefore improves overall productivity
+\draft{Fixing a broken continuous integration build has a high priority for developers~\cite{vassallo2018un-break}, therefore decreasing the time until the green build state is restored improves the overall productivity of developers.
+During this assignment an engineer spends most of their time reading very long and verbose build logs, trying to recover the relevant information from between many uninteresting other lines.
 
-most time spend: reading very long and verbose buildlog
+One way to support them would be to extract the desired Information and present it in and present it in a structured way.
+Usually such functionality is realized by tools that employ handrcrafted regular expressions to find the desired text parts within the build log.
+However, creating these regular expressions is a tedious and mentally complicated work, especially when they have to be maintained some months in the future \textemdash \ reunderstanding old regular expressions is known to be a dreading task for developers \textemdash.
+Our goal is it to take this burden of programmers by enabling them to define extraction programs through simply giving examples of the desired extractions.
 
-recovering relevant information from between many uninteresting other lines
-
-support: extract desired information and present in a structured way
-
-usually: tools use handcrafted regular expressions
-
-but: tedious / mentally complicated work, especially when maintenance is needed some months in the future -> reunderstanding old regular expressions is known to be difficult / dreading task for developers
-
-we: take this burden of developers by enabling them to define extraction programs through simply giving examples of the desired extractions
-
-collect a diverse set of buildlogs to  develop a metamodel of the contained information
-
-implement prototype for pbe extractions in buildlogs using the microsoft PROSE library
-
-showed that our tool is capable of extracting various desired informations, shortens development time in comparison to manual regex construction and performs more accurate than other semi-supervised methods
-
+We implemented \todo{<toolname, ALBE?, Analyzing Logs By Example>}, a prototype for defining text extractions from build logs through examples using the Microsoft PROSE library~\cite{le2014flashextract:}.
+After collecting a diverse set of build logs from Travis CI we designed a meta-model of the contained information.
+Our evaluation of ALBE showed that it is able to define extractinos for various desired informations, that it shortens development time in comparison to manual regex cnosturction and ...
 }
 
 \section{Related Work}
 
 \subsection{Continuous Integration}
 
-\plan{more research into CI now, large scale analyses of buildlogs, open source from travis ci and industrial}
+\draft{
+The software engineering research community started to look into build logs as continuous integration becomes a vital part of a modern software engineering process. Reserachers have analyzed industrial and open source logs for failure reasons and their impact on development.
 
-\mention{google build analysis}
-\plan{google, java and c++, anlyzed frequency and reasons for failures, few error kinds responsible for most failures, dependency errors appear most, most fixed in two build iterations}
+Seo et al.~\cite{seo2014programmers} found that at google few error types such as dependency mismatches are the most prominent cause of build failures and most failures are resolved within two builds. Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in java to industrial ones. They determined that testing failures outweigh compilation errors and that open source bulids fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects. Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds. They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being pretested before sent to the CI server.
 
-\mention{java os vs ing}
-\plan{oss and ing for java projects, classfied failures, cluster analysis, similarities: few compilation \& many testing failures, differences: oss mainly unit testing failures, industrial mainly release preparation}
-
-\mention{travistorrent}
-\plan{java and ruby builds \& logs from travis ci, manually built parser to extract failure reasons, most builds fail because of tests, number of tests \& kind \& failure rates very dependent on programming language, low failure rates hint at pretested code on CI server}
-
-\plan{our work: support such research through building log file evaluation easier, enable them to cover more languages and build tool kinds}
+All these researchers described building parsers in order to evaluate the studied build logs. Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
+}
 
 \subsection{Tool}
 
-\mention{bart}
+\draft{
+Vassallo et al.~\cite{vassallo2018un-break} also made it their task to shortening the time it takes developers to understand builogs. They summarize relevant information in Java/maven buildlogs and augment them with links to related stack overflow posts. They observed that highlighting the locality and context of an issue is helpful to programmers. We strive to enable a similar summarization by text extraction while also covering a wider array of programming languages.
 
-\mention{icse paper}
-
-\plan{improving time developers take to understand buildlogs, vasallo by summarizing relevant information in java/maven buildlogs and augmenting with links to related stack overflow  posts, amar et al. (by removing lines that appear both in passing and failing buildlogs and therefore) reducing the lines needed to be inspected, information retrieval techniques to identify most important lines for investigation and categorize the build failure cause (-> automatic rerun because of environmental failure?)
+Amar et al.~\mention{cite icse paper} reduced the lines of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. Further they employ information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, instead of comparing whole our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
 }
+
 
 \subsection{Information Extraction and Retrieval}
 
