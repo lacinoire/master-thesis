@@ -195,21 +195,34 @@ Amar et al.~\mention{cite icse paper} reduced the lines of a log to be inspected
 
 \subsection{Information Extraction and Retrieval}
 
-\plan{Le et al. developed FlashExtract as part of the PROSE Framework, tool to synthesize programs based on a few given examples, extract substrings from semi-structured texts, users can extract multiple fields and structure them with hierarchy and sequence, uses \todo{inductive - explain or throw out} synthesis algorithm to synthesize intended program, eliminates the need for the user to understand structure of entire document or to be able to code
-	
-we are applying their library to the domain of buildlogs, using programming by example to take away the need to tediously develop and maintain the regular expressions, traditionally used in information extraction
+\plan{
+explain / define information retrieval \bp{matching text piece to similar (maybe labeled) ones in order to identify ... topic}
+
+apply to our use case: paragraph/passage retrieval \bp{for our use case this could be done by slicing the builog into lines similar as \mention{paper about passage retrieval} does it with ...}
+
+define information extraction \bp{pulling specific information out of text is called information extraction}
+
+short: difference to retrieval, fuzzyness
+
+\bp{in our work we decided to focus on the extraction of exact information from build logs}
 }
 
-\mention{PROSE fashextract}
 
-\mention{queriying semi structured data}
+\draft{
+Le et al.~\cite{le2014flashextract:} developed FlashExtract as part of the \emph{Microsoft PROgram Synthesis using Examples} (PROSE) framework. It is a tool which synthesizes text extraction programs from semi-structured text based on a few given examples. Users can extract multiple fields and structure them with hierarchy and sequence. FlashExtract eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
 
-\plan{characteristics of semi-structured data (structure irregular, implicit, partial, rapidly evolving) and explaining why this applies to buildlogs, extract information to build a structured layer above the unformed data for efficient data access (for developers here! -> impact on our work with buildlogs) \cite{abiteboul1997querying}}
+We are applying their functionality to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information extraction.
+}
 
-\mention{sth about IR / paragraph retrieval}
-\plan{practices from information retrieval, cutting into lines or paragraphs, calculating similarities through methods xy}
+\subsection{Semi-Structured Data}
 
-\plan{difference of us to IR (imprecise \& rough)}
+\draft{
+Software build logs are inherently semi-structured data. \todo{explain the different charactersitics and relate to buildlogs}
+Serge Abiteboul characterized semi-structured data as having an irregular, implicit, partial and rapidly evolving texture.
+}
+
+\plan{characteristics of semi-structured data (structure irregular, implicit, partial, rapidly evolving) and explaining why this applies to buildlogs, extract information to build a structured layer above the unformed data for efficient data access \cite{abiteboul1997querying}}
+
 
 \section{Method}
 \secfunc{how? when? material? narrow}
@@ -219,6 +232,30 @@ we are applying their library to the domain of buildlogs, using programming by e
 \todo{study design vs. study carry out}
 
 \subsection{Data collection}
+
+\draft{
+In order to build a tool which facilitates information extraction from build logs we first had \todo{which time form here? past or present?} to get an impression on what kinds of build logs occur in projects, what possibly extractable information they contain and how structured or unstructured they are.
+}
+
+\subsubsection{Design}
+\bp{
+realistic image (for open source software) we sample from popular GitHub repositories that also use Travis CI.
+
+\draft{Obtaining the newes logs from them would entail sampling mostly logs of succeeding builds as the distribution of build states on a Travis CI repository is highly skewed towards successfull builds~\cite{beller2017oops}. Therefore we stratify our collection of logs and select an equal amount of logs from each type of Travis CI build status.}
+}
+
+\subsubsection{Execution}
+\bp{
+built tool X \todo{data collection tool name, LogCollector?}
+
+queryed ghtorrent dataset from the first of april 2018 through google bigquery
+
+poked Travis CI for active status of project and collected sampled builds through Travis ruby library
+
+downloaded logs throuh Travis Rest API \todo{look up version}
+}
+
+
 \plan{describe process of collecting buildlog files, sampling}
 
 \bp{querying ghtorrent and travis api with (insert fancy name for data collection tool) for x buildlogs of each status of the top-watched repositories on github that also use travis ci}
@@ -226,7 +263,7 @@ we are applying their library to the domain of buildlogs, using programming by e
 \subsection{Meta-Model}
 \bp{through manual examination of y of the buildlogs we collected designed a metamodell  of the contained/extractable/useful/interesting information}
 
-\plan{figure with metamodel}
+\todo{figure with metamodel}
 
 \plan{explain (shortly? partly?) meta model classes}
 
