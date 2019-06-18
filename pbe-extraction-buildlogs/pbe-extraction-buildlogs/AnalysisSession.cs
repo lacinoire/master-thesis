@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -101,7 +102,13 @@ namespace pbeextractionbuildlogs
 		public override string Analyze(string inputPath)
 		{
 			var inputRegion = AnalysisUtil.RegionFromFile(inputPath);
+
+			Console.WriteLine("Starting to learn program");
+			Stopwatch learningStopwatch = Stopwatch.StartNew();
 			RegionProgram topRankedProgram = session.Learn();
+			learningStopwatch.Stop();
+			Console.WriteLine("Learning took " + learningStopwatch.Elapsed);
+
 			if (topRankedProgram == null)
 			{
 				Console.WriteLine("no program found");
@@ -110,7 +117,13 @@ namespace pbeextractionbuildlogs
 			Console.WriteLine("Learned Program:");
 			Console.WriteLine(topRankedProgram);
 			Console.WriteLine();
+
+			Console.WriteLine("Starting to apply program");
+			Stopwatch applyingStopwatch = Stopwatch.StartNew();
 			StringRegion output = topRankedProgram.Run(inputRegion);
+			applyingStopwatch.Stop();
+			Console.WriteLine("Applying took " + applyingStopwatch.Elapsed);
+
 			if (output == null)
 			{
 				return "no extraction found for this input";

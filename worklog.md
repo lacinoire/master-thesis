@@ -1,5 +1,23 @@
 # Carolin Master Thesis Work Log
 
+## 17.6.19
+
+- send paper to Moritz
+- talk to Annibale about Literature research
+- go over todo list and tools, collect plans on following implementation
+- clean up output of data collection
+
+## 16.6.19
+
+- correct write outs from yesterday
+- type plans from yesterday & extend
+- do literature research on paragraph stuff in IR
+
+## 15.6.19
+
+- write out introduction + most related work
+- plan data collection section and evaluation + tool description
+
 ## 14.6.19
 
 - throw away writing from yesterday

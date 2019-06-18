@@ -12,6 +12,15 @@ module Config
   def self.config
     YAML.load_file('config.yml')
   end
+
+  def self.identifier
+    "-#{config['repo_selection']['languages']}" \
+      "-#{config['repo_selection']['repos_per_language']}" \
+      "-#{config['repo_selection']['repos_to_try_per_language']}" \
+      "-#{config['log_selection']['total_log_count']}" \
+      "-#{config['log_selection']['log_count_per_state']}" \
+      "-#{config['log_selection']['try_count']}"
+  end
 end
 
 # retrieves Buildlogs using webrequests to the Travis API or the amazon servers
@@ -47,17 +56,23 @@ class TravisRequester
     repo = Travis::Repository.find(repo_slug)
     categorized_builds = {}
     build_count = 0
+    tried_count = 0
 
     repo.each_build do |build|
       if categorized_builds[build.state].nil?
         categorized_builds[build.state] = []
-        puts build.state
+        puts "Found new state #{build.state}"
       end
       if categorized_builds[build.state].length < Config.config['log_selection']['log_count_per_state']
         categorized_builds[build.state] << build
         build_count += 1
       end
       break if build_count >= Config.config['log_selection']['total_log_count']
+
+      tried_count += 1
+      break if tried_count >= Config.config['log_selection']['try_count']
+
+      puts "tried #{tried_count}" if (tried_count % 20).zero?
     end
 
     categorized_builds
@@ -115,12 +130,14 @@ class LogCollector
 
   # collect popular repos for popular languages on github
   def self.repos_to_analyze
-    result_file = File.open('repos-to-analyze.txt', 'w')
+    puts 'Collect repos to analyze'
+    puts ''
+    result_file = File.open("repos-to-analyze#{Config.identifier}.txt", 'w')
     active_repos = {}
     languages = GHTorrentParser.popular_languages(Config.config['repo_selection']['languages'])
     languages.each do |lang_result|
       lang = lang_result[:language]
-      puts "Current Language: #{lang}"
+      puts "Language: #{lang}"
       result_file.puts(lang)
 
       active_repos[lang] = active_repos(lang)
@@ -130,8 +147,6 @@ class LogCollector
       puts ''
     end
 
-    puts active_repos
-    puts "language count: #{active_repos.keys.length}"
     # puts "count for travis enabled repos: #{active_repos.transform_values { |_, slugs| slugs.length }}"
     result_file.close
     active_repos
@@ -140,23 +155,28 @@ class LogCollector
   # collect logs from popular repos on github
   def self.collect_logs
     repos_per_lang = LogCollector.repos_to_analyze
+    repo_count = repos_per_lang.map { |_, repos| repos.length }.reduce(:+)
+    repo_counter = 0
+    puts "Collecting logs for #{repo_count} repos"
+    puts ''
     repos_per_lang.each do |lang, repos|
-      repos.each do |repo_slug|
-        p repo_slug
+      repos.each_with_index do |repo_slug, index|
+        repo_counter += 1
+        puts "Repo #{repo_counter}/#{repo_count}: #{repo_slug}"
         builds_per_state = TravisRequester.select_builds(repo_slug)
-        p builds_per_state
         builds_per_state.each do |state, builds|
           builds.each do |build|
             next if build.jobs.empty?
 
             job_id = build.jobs[0].id
             log = TravisRequester.retrieve_log_travis(job_id)
-            directory_path = "logs/#{lang}/#{repo_slug.gsub('/', '@')}/#{state}"
+            directory_path = "logs#{Config.identifier}/#{lang}/#{repo_slug.gsub('/', '@')}/#{state}"
             FileUtils.mkdir_p directory_path
             File.write(directory_path + "/#{build.id}.log", log)
-            p directory_path + "/#{build.id}"
+            puts "Saved Log: #{directory_path}/#{build.id}.log"
           end
         end
+        puts ''
       end
     end
   end
