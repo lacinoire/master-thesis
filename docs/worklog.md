@@ -1,5 +1,29 @@
 # Carolin Master Thesis Work Log
 
+## 24.6.19
+
+
+
+## 23.6.19
+
+
+
+## 21.6.19
+
+
+
+## 20.6.19
+
+
+
+## 19.6.19
+
+
+
+## 18.6.19
+
+- Timing output of C#
+
 ## 17.6.19
 
 - send paper to Moritz

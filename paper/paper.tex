@@ -157,14 +157,30 @@
 \todo{ToDo - \textbackslash todo} \\
 
 \section{Introduction}
-\secfunc{why? what? research questions? purpose? hypothesis? wide $\rightarrow$ narrow}
+\secfunc{why? what? research questions? purpose? hypothesis? wide $\rightarrow$ narrow
+
+problem, done in literature, why not eough? our approach
+}
 
 \review{Fixing a broken continuous integration (CI) build has a high priority for developers~\cite{vassallo2018un-break}, therefore decreasing the time until the green build state is restored improves the overall productivity of developers.
-During this assignment an engineer spends most of their time reading very long and verbose build logs, trying to recover the relevant information from between many uninteresting other lines.
+
+\plan{why are logs so difficult: mention heterogenous, semi-structured (paper reference for that?), big data (refercene paper about log sizes), in distributed systems probably distributed (really also for buildlog?)
+
+to combat that useres write tools to <extract / rerieve superbegriff> information from buildlogs.
+
+one possibility IR: classfy specifict part of program as similar to others (list IR technique) to see whether it is correclated to a failure. but not as good: not a real summarization technique, more what is similar to the last few times it faied.
+
+way to extract fine grained information: regular expressions which have to be written manually
+
+
+MAYBE IN THE other paragraph. here only half fitting?
+}
+
+During this assignment an engineer spends most of their time reading very long and verbose build logs, trying to retrieve the relevant information from between many uninteresting other lines.
 
 One way to support them would be to extract the desired information and present it in a structured way.
 Usually such functionality is realized by tools that employ handcrafted regular expressions to find the desired text parts within the build log.
-However, creating these regular expressions is tedious and mentally complicated task, especially when they have to be maintained some months in the future \textemdash \ reunderstanding old regular expressions is known to be a dreading task for developers \textemdash.
+However, creating these regular expressions is tedious, mentally complicated and usually error-prone task. Especially when they have to be maintained for long \textemdash \ reunderstanding old regular expressions is known to be a dreading task for developers \textemdash.
 Our goal is it to take this burden of programmers by enabling them to define extraction programs through simply giving examples of the desired extractions.
 
 We implemented \todo{<toolname, ALBE?, Analyzing Logs By Example>}, a prototype for defining text extractions from build logs through examples.
@@ -189,7 +205,7 @@ Our evaluation of ALBE showed that it is able to define extractions for various 
 \review{
 The software engineering research community started to look into build logs as continuous integration becomes a vital part of a modern software engineering process. Researchers have analyzed industrial and open source logs for failure reasons and their impact on development.
 
-Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at google. In addition most failures are resolved within two builds. Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones. They determined that testing failures outweigh compilation errors. Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects. Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds. They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
+Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at Google. In addition most failures are resolved within two builds. Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones. They determined that testing failures outweigh compilation errors. Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects. Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds. They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
 
 All these researchers described building parsers in order to evaluate the studied build logs. Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
 }
@@ -205,9 +221,9 @@ Amar et al.~\cite{amar2019mining} reduced the lines of a log to be inspected by 
 
 \subsection{Information Extraction and Retrieval}
 
-\draft{Getting the general topic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by removing irrelevant terms and stop words, stemming and weighting the remaining words before comparing the similar of those weights against other text parts.~\cite{panichella2016parameterizing} For our use case this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
+\draft{Getting the general topic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other.~\cite{panichella2016parameterizing} For our use case this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
+Instead of recieving a paragraph which is similar to a givien query, our works focus more on obtaining specific pieces of texts through regular expressions.
 
-In our work we focus on a more precise form of information extraction where we try to obtain a specific detail from a build log instead of retrieving the general idea of a document part.}
 
 \review{
 Le et al.~\cite{le2014flashextract:} developed FlashExtract as part of the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework. It is a tool which synthesizes text extraction programs from semi-structured text based on a few given examples. Users can extract multiple fields and structure them with hierarchy and sequence. FlashExtract eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
