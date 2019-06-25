@@ -1,5 +1,7 @@
 # Possibilities and Limitations of Text Extraction with our Tool
 
+_Most links go inside of the private respository, please ask if you want access. 😃_
+
 _To try this yourself checkout the [build instructions](pbe-extraction-buildlogs/Readme.md)._
 
 This document presents examples of the information or substrings our tool can and cannot extract from buildlogs.

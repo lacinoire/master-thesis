@@ -1,28 +1,37 @@
 # Carolin Master Thesis Work Log
 
+## 25.6.19
+
+- update munich supervisors
+- read Taico's master thesis
+
 ## 24.6.19
 
-
+- summarizing results from buildlog analysis
+- selecting repositories for evaluation samples
+- setup github pages
 
 ## 23.6.19
 
-
+- keep on reading buildlogs
 
 ## 21.6.19
 
-
+- Meeting with Annibale: feedback on data collection & paper introduction
+- learning about Annibale's R tool for IR
 
 ## 20.6.19
 
-
+- readind broad collected buildlogs
 
 ## 19.6.19
 
-
+- Programming Languages group PhD defense
 
 ## 18.6.19
 
-- Timing output of C#
+- Timing output of C# tool
+- clean up remaining output of C# tool
 
 ## 17.6.19
 
