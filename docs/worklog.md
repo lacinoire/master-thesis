@@ -1,5 +1,37 @@
 # Carolin Master Thesis Work Log
 
+## 3.7.19
+
+- read Moritz' paper review
+- plan meeting with Annibale
+- test evaluation implementation on existing examplesets
+
+## 2.7.19
+
+- finish prose evaluation implementation
+- collect logs from repos to use for evaluation samples
+
+## 1.7.19
+
+- continue on evaluation implementation
+- meeting with Andy about PhD positions within TestShift
+- phd meeting review with Michi
+
+## 28.6.19
+
+- get Annibales tool for IR to run
+- collect fixes in pull request
+
+## 27.6.19
+
+- update data collection ruby tool for nicer single repo collection
+- prose tool: start on iterative learning for evaluation
+
+## 26.6.19
+
+- setup R to run Annibales tool
+- design second model of meta model from buildlog analysis results
+
 ## 25.6.19
 
 - update munich supervisors
