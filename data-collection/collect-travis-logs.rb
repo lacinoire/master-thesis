@@ -72,9 +72,10 @@ class TravisRequester
       tried_count += 1
       break if tried_count >= Config.config['log_selection']['try_count']
 
-      puts "tried #{tried_count}" if (tried_count % 20).zero?
+      puts "tried #{tried_count}" if (tried_count % 100).zero?
     end
 
+    puts "found #{build_count} logs"
     categorized_builds
   end
 end
@@ -163,26 +164,53 @@ class LogCollector
       repos.each_with_index do |repo_slug, index|
         repo_counter += 1
         puts "Repo #{repo_counter}/#{repo_count}: #{repo_slug}"
-        builds_per_state = TravisRequester.select_builds(repo_slug)
-        builds_per_state.each do |state, builds|
-          builds.each do |build|
-            next if build.jobs.empty?
-
-            job_id = build.jobs[0].id
-            log = TravisRequester.retrieve_log_travis(job_id)
-            directory_path = "logs#{Config.identifier}/#{lang}/#{repo_slug.gsub('/', '@')}/#{state}"
-            FileUtils.mkdir_p directory_path
-            File.write(directory_path + "/#{build.id}.log", log)
-            puts "Saved Log: #{directory_path}/#{build.id}.log"
-          end
-        end
+        collect_logs_for_repo(lang, repo_slug)
         puts ''
       end
     end
   end
+
+  # collect logs for the given repo
+  def self.collect_logs_for_repo(lang, repo_slug)
+    builds_per_state = TravisRequester.select_builds(repo_slug)
+    log_counter = 0
+    builds_per_state.each do |state, builds|
+      builds.each do |build|
+        next if build.jobs.empty?
+
+        job_id = identify_job_with_state(build, state)
+        log = TravisRequester.retrieve_log_travis(job_id)
+        save_logfile(log, lang, repo_slug, state, build)
+        log_counter += 1
+        puts "Downloaded #{log_counter} logs" if (log_counter % 50).zero?
+      end
+    end
+  end
+
+  # find a job that has the given state, return the job_id
+  def self.identify_job_with_state(build, state)
+    build.jobs.each do |job|
+      return job.id if job.state == state
+    end
+  end
+
+  # save logfile in logs-config_identifier/lang/repo_slug/state folder
+  def self.save_logfile(log, lang, repo_slug, state, build)
+    directory_path = "logs#{Config.identifier}/#{lang}/#{repo_slug.gsub('/', '@')}/#{state}"
+    FileUtils.mkdir_p directory_path
+    file_path = directory_path + "/#{build.id}.log"
+    File.write(file_path, log)
+    # puts "Saved Log: #{file_path}"
+  end
 end
 
 if $PROGRAM_NAME == __FILE__
-  # LogCollector.repos_to_analyze
-  LogCollector.collect_logs
+
+  if ARGV[0] == 'all'
+    LogCollector.collect_logs
+  elsif ARGV.length == 2
+    LogCollector.collect_logs_for_repo(ARGV[0], ARGV[1].gsub('@', '/'))
+  else
+    puts "please specify 'all' (query GHTorrent for the repos to select)\n or\n a language and a repo slug"
+  end
 end
