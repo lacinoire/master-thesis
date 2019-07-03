@@ -71,8 +71,8 @@ namespace pbeextractionbuildlogs
 		private static void RunOnTestInput(RegionAnalysisSession analysisSession)
 		{
 			var inputPath = RequestBuildlogFilePath();
-			var output = analysisSession.Analyze(inputPath);
-			if (output == null)
+			var output = analysisSession.Analyze(inputPath, new AnalysisResult<string>());
+			if (output.Output == null)
 			{
 				Console.WriteLine("\U0001F614 Sadly we found noting in this file using the current exampleset.");
 			}

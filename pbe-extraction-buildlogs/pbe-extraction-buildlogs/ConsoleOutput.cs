@@ -24,23 +24,9 @@ namespace pbeextractionbuildlogs
 			return output;
 		}
 
-		public static string PrintBenchmarkResult(BenchmarkResult benchmarkResult)
-		{
-			string output = PrintHeader(benchmarkResult, false, benchmarkResult.FurtherResults.Count != 0);
-			// TODO implement printing of benchmark results
-			return output;
-		}
-
-		private static string PrintHeader(GeneralResult result, bool isAnalysis, bool isFolder)
+		private static string PrintHeader<OutputType>(AnalysisResult<OutputType> result, bool isAnalysis, bool isFolder)
 		{
 			return "Result of " + (isAnalysis ? "analyzing" : "benchmarking") + " the " + (isFolder ? "folder" : "file") + " " + result.Path + " with the program " + result.ProgramName + ":\n";
-		}
-
-		public static string PrintEvaluationResult<OutputType>(AnalysisResult<OutputType> analysisResult, BenchmarkResult benchmarkResult)
-		{
-			string output = "Result of analyzing and benchmarking " + analysisResult.Path;
-			// TODO implement printing of evaluation results
-			return output;
 		}
 
 		private static string Indentation(int indentation)

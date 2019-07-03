@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace pbeextractionbuildlogs
 {
-	public class NamedProgram
-	{
-		/// <summary>
-		/// Filename to save the corresponding data under.
-		/// </summary>
-		public string SaveName { get; set; }
-	}
 
 	/// <summary>
-	/// Represents one learnt/learnable Program
+	/// Represents one learnt/learnable Type of Program, with all possible examples and inputs used for learning and evaluation
 	/// </summary>
-	public class AnalysisProgram<SessionType, OutputType> : NamedProgram where SessionType : AnalysisSession<OutputType>, new()
+	public class AnalysisProgram<SessionType, OutputType> where
+		SessionType : AnalysisSession<OutputType>, new()
 	{
+		public string SaveName { get; set; }
+
 		string saveFilePath => Config.PROGRAM_DATA_DIRECTORY + SaveName + ".xml";
 
 		SessionType analysisSession;
@@ -33,10 +30,11 @@ namespace pbeextractionbuildlogs
 		public LogKind LogKind { get; set; }
 
 		/// <summary>
-		/// TODO doc
+		/// The Information Item extracted by this program
 		/// </summary>
 		public MetaModelObject Target { get; set; }
-		// MAYBE: private AnalysisSession analysisSession;
+
+
 
 		public static AnalysisProgram<SessionType, OutputType> LoadAnalysisProgram(string saveName)
 		{
@@ -87,30 +85,86 @@ namespace pbeextractionbuildlogs
 			return this;
 		}
 
-		public OutputType ApplyToFile(string path)
+
+
+		public AnalysisResult<OutputType> ApplyToFile(string path, AnalysisResult<OutputType> result)
+		{
+			return ApplyToFileWithLearningData(path, LearningData, result);
+		}
+
+		private AnalysisResult<OutputType> ApplyToFileWithLearningData(string path, SessionData<ExampleData<OutputType>> learningData, AnalysisResult<OutputType> result)
 		{
 
 			// TODO not redo session & learning if examples did not change
 			analysisSession = new SessionType();
-			LearningData.InputPaths.ForEach(ip => analysisSession.AddInput(Config.SAMPLE_DIRECTORY + ip));
-			LearningData.Examples.ForEach(ex => analysisSession.AddExample(new ExampleData<OutputType>(Config.SAMPLE_DIRECTORY + ex.InputPath, ex.Output)));
-			// FIXME Fix that path prefix thing
-			return analysisSession.Analyze(path);
+
+			learningData.InputPaths.ForEach(ip => analysisSession.AddInput(Config.SAMPLE_DIRECTORY + ip));
+			learningData.Examples.ForEach(ex => analysisSession.AddExample(new ExampleData<OutputType>(Config.SAMPLE_DIRECTORY + ex.InputPath, ex.Output)));
+
+			Console.WriteLine(Describe(learningData));
+			return analysisSession.Analyze(path, result);
 		}
+
+		public EvaluationResult<OutputType> Evaluate(ExampleSelection exampleSelection,
+			EvaluationResult<OutputType> result)
+		{
+
+			if (exampleSelection is RandomSelection)
+			{
+				// randomize list of examples
+				LearningData.Examples.Shuffle();
+			}
+			else if (exampleSelection is ChronologicalSelection)
+			{
+				// input path of example cut off after last slash and remove .log then sort by that.
+				LearningData.Examples.Sort((ex1, ex2) => GetBuildIdFromPath(ex1.InputPath).CompareTo(GetBuildIdFromPath(ex2.InputPath)));
+			}
+			else if (exampleSelection is ManualSelection)
+			{
+				// take examples in list they are defined in file (so sequence they have in the LearningData already)
+			}
+
+			for (int exampleCount = 1; exampleCount <= exampleSelection.LearningStepCount; exampleCount++)
+			{
+				SessionData<ExampleData<OutputType>> currentLearningData = new SessionData<ExampleData<OutputType>>();
+				currentLearningData.Examples = LearningData.Examples.GetRange(0, Math.Min(exampleCount, LearningData.Examples.Count));
+				if (exampleSelection.IncludeAllInputs)
+				{
+					currentLearningData.InputPaths = LearningData.InputPaths;
+				}
+				List<ExampleData<OutputType>> testSamples = LearningData.Examples.GetRange(exampleCount, Math.Min(exampleSelection.TestCount, LearningData.Examples.Count - exampleCount));
+				List<AnalysisResult<OutputType>> testResults = new List<AnalysisResult<OutputType>>();
+				foreach (ExampleData<OutputType> testSample in testSamples)
+				{
+					var analysisResult = ApplyToFileWithLearningData(Config.SAMPLE_DIRECTORY + testSample.InputPath, currentLearningData, new AnalysisResult<OutputType>());
+					analysisResult.DesiredOutput = testSample.Output;
+					Console.WriteLine(ConsoleOutput.PrintAnalysisResult(analysisResult, 0));
+					testResults.Add(analysisResult);
+				}
+				result.Results.Add(currentLearningData, testResults);
+			}
+
+			return result;
+		}
+
+		private int GetBuildIdFromPath(string path)
+		{
+			return int.Parse(path.Split('/').Last().Split('.').First());
+		}
+
 
 		/// <summary>
 		/// Give a verbose description of the whole program, the data is is based on, current status.
 		/// </summary>
 		/// <returns></returns>
-		public string Describe()
+		public string Describe(SessionData<ExampleData<OutputType>> learningData)
 		{
 			string output = "Program " + SaveName + ", analyzing " + Target + " in buildlog kind " + LogKind + "\n";
-			output += "Program is " + (analysisSession == null ? "not " : "") + "learned\n";
 			output += "Examples are:\n";
-			LearningData.Examples.ForEach(ex => output += "  path: " + ex.InputPath + ", output: " + ex.Output + "\n");
+			learningData.Examples.ForEach(ex => output += "  path: " + ex.InputPath + ", output: " + ex.Output + "\n");
 			// TODO: fix output if OutputType is string[]
 			output += "Inputs are:\n";
-			LearningData.InputPaths.ForEach(ip => output += "  path: " + ip + "\n");
+			learningData.InputPaths.ForEach(ip => output += "  path: " + ip + "\n");
 
 			// TODO: humanreadable output of learned program if program is learned
 
@@ -121,11 +175,10 @@ namespace pbeextractionbuildlogs
 		/// Shortly summarize the whole program.
 		/// </summary>
 		/// <returns></returns>
-		public string Summarize()
+		public string Summarize(SessionData<ExampleData<OutputType>> learningData)
 		{
 			string output = "Program " + SaveName + ", analyzing " + Target + " in buildlog kind " + LogKind + ", ";
-			output += "Program is " + (analysisSession == null ? "not " : "") + "learned, ";
-			output += "Example count: " + LearningData.Examples.Count + ", Input count: " + LearningData.InputPaths.Count;
+			output += "Example count: " + learningData.Examples.Count + ", Input count: " + learningData.InputPaths.Count;
 			return output;
 		}
 
@@ -135,7 +188,8 @@ namespace pbeextractionbuildlogs
 		public void Save()
 		{
 			XmlSerializer serializer = new XmlSerializer(GetType());
-			Directory.CreateDirectory(Config.PROGRAM_DATA_DIRECTORY.Remove(Config.PROGRAM_DATA_DIRECTORY.Length - 1));
+			Directory.CreateDirectory(
+				Config.PROGRAM_DATA_DIRECTORY.Remove(Config.PROGRAM_DATA_DIRECTORY.Length - 1));
 			using (StreamWriter file = new StreamWriter(File.Create(saveFilePath)))
 			{
 				serializer.Serialize(file, this);
@@ -144,7 +198,6 @@ namespace pbeextractionbuildlogs
 
 		public AnalysisProgram<SessionType, OutputType> Load()
 		{
-			// TODO: auch andere sachen serializieren??
 			XmlSerializer serializer = new XmlSerializer(GetType());
 			using (StreamReader file = new StreamReader(saveFilePath))
 			{

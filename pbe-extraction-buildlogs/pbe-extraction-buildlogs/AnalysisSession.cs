@@ -13,29 +13,6 @@ using Microsoft.ProgramSynthesis.Wrangling.Session;
 
 namespace pbeextractionbuildlogs
 {
-	#region data-classes
-
-	public class ExampleData<OutputType>
-	{
-		public string InputPath;
-		public OutputType Output;
-
-		public ExampleData() { }
-
-		public ExampleData(string inputPath, OutputType output)
-		{
-			InputPath = inputPath;
-			Output = output;
-		}
-	}
-
-	public class SessionData<ExampleData>
-	{
-		public List<string> InputPaths = new List<string>();
-		public List<ExampleData> Examples = new List<ExampleData>();
-	}
-
-	#endregion data-classes
 
 	/// <summary>
 	///  Invariant: Files do not move or disappear.
@@ -58,12 +35,16 @@ namespace pbeextractionbuildlogs
 		}
 	}
 
+	/// <summary>
+	/// Wrapper around PROSE Session for text extraction program synthesis
+	/// </summary>
+	/// <typeparam name="OutputType"></typeparam>
 	public abstract class AnalysisSession<OutputType>
 	{
 		public abstract AnalysisSession<OutputType> AddInput(string inputPath);
 		public abstract AnalysisSession<OutputType> AddExample(ExampleData<OutputType> exampleData);
 		public abstract AnalysisSession<OutputType> AddCompletelyNegativeExample(string inputPath);
-		public abstract OutputType Analyze(string inputPath);
+		public abstract AnalysisResult<OutputType> Analyze(string inputPath, AnalysisResult<OutputType> result);
 		public abstract string CurrentProgram();
 	}
 
@@ -99,36 +80,54 @@ namespace pbeextractionbuildlogs
 			return this;
 		}
 
-		public override string Analyze(string inputPath)
+		/// <summary>
+		/// Analyze the file in <param name="inputPath"></param> using a program learned new from the currently present exampleset.
+		/// </summary>
+		/// <returns>The extraction result.</returns>
+		public override AnalysisResult<string> Analyze(string inputPath, AnalysisResult<string> result)
 		{
 			var inputRegion = AnalysisUtil.RegionFromFile(inputPath);
 
 			Console.WriteLine("Starting to learn program");
 			Stopwatch learningStopwatch = Stopwatch.StartNew();
+
 			RegionProgram topRankedProgram = session.Learn();
+
 			learningStopwatch.Stop();
 			Console.WriteLine("Learning took " + learningStopwatch.Elapsed);
+			result.LearningDuration = learningStopwatch.Elapsed;
 
 			if (topRankedProgram == null)
 			{
 				Console.WriteLine("no program found");
-				return "no program found";
+				result.Successful = false;
+				result.Output = "no program found";
+				return result;
 			}
+
 			Console.WriteLine("Learned Program:");
 			Console.WriteLine(topRankedProgram);
 			Console.WriteLine();
 
 			Console.WriteLine("Starting to apply program");
 			Stopwatch applyingStopwatch = Stopwatch.StartNew();
+
 			StringRegion output = topRankedProgram.Run(inputRegion);
+
 			applyingStopwatch.Stop();
 			Console.WriteLine("Applying took " + applyingStopwatch.Elapsed);
+			result.ApplicationDuration = applyingStopwatch.Elapsed;
 
 			if (output == null)
 			{
-				return "no extraction found for this input";
+				result.Successful = false;
+				result.Output = "no extraction found for this input";
+				return result;
 			}
-			return output?.Value;
+
+			result.Successful = true;
+			result.Output = output?.Value;
+			return result;
 		}
 
 		public override string CurrentProgram()
@@ -194,7 +193,7 @@ namespace pbeextractionbuildlogs
 			return this;
 		}
 
-		public override string[] Analyze(string inputPath)
+		public override AnalysisResult<string[]> Analyze(string inputPath, AnalysisResult<string[]> result)
 		{
 			var inputRegion = AnalysisUtil.RegionFromFile(inputPath);
 			SequenceProgram topRankedProgram = session.Learn();
@@ -204,7 +203,8 @@ namespace pbeextractionbuildlogs
 				return null;
 			}
 			List<StringRegion> output = topRankedProgram.Run(inputRegion).ToList();
-			return output.Select(o => o.Value).ToArray();
+			result.Output = output.Select(o => o.Value).ToArray();
+			return result;
 		}
 
 		public override string CurrentProgram()
