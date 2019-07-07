@@ -1,0 +1,91 @@
+---
+title: "Evaluation of Experiment Data"
+output: html_notebook
+---
+# Evaluating our experiment data
+
+## Preparing the data
+
+```{r}
+# Load the packages required to read XML files.
+library("XML")
+library("methods")
+library("graphics")
+
+setwd("/Users/Laci/Documents/Delft/master-thesis/pbe-extraction-buildlogs/results")
+
+# Convert the input xml file to a data frame.
+oldw <- getOption("warn")
+options(warn = -1)
+
+xml <- xmlTreeParse(file = "android-failure-with-dependencies_ManualSelection.xml")
+
+nanosecsToTime <- function(ticks=numeric){
+  sec <- ticks / 1e7
+  return(as.POSIXct(sec, origin="1970-01-01", tz="UTC"))
+}
+
+data <- data.frame(ExampleCount = numeric(), TestOutput = character(), DesiredTestOutput = character(), Accuracy = numeric(), Successful = logical(), LearningDuration = as.POSIXct(character()), ApplicationDuration = as.POSIXct(character()), stringsAsFactors=FALSE)
+#print(str(data))
+#str(data)
+#results <- xmlRoot(xml)#[['Results']]
+results <- xml[['doc']]$children$EvaluationResultOfString[['Results']]
+#print(results)
+for (i in seq_along(1:length(results))) {
+  item <- results[[i]]
+  exampleCount <- length(item[['key']][[1]][['Examples']])
+  test <- item[['value']][[1]][[1]]
+  testOutput <- xmlValue(test[['Output']][[1]])
+  desiredTestOutput <-  xmlValue(test[['DesiredOutput']][[1]])
+  accuracy <- 3 # TODO
+  successful <-  as.logical(xmlValue(test[['Successful']][[1]]))
+  learningDuration <-  nanosecsToTime(as.numeric(xmlValue(test[['LearningDuration']][[1]])))
+  #print(as.numeric(xmlValue(test[['ApplicationDuration']][[1]])))
+  applicationDuration <-  nanosecsToTime(as.numeric(xmlValue(test[['ApplicationDuration']][[1]])))
+  #rs <- getNodeSet(xml, '//Results/item')
+  #print(typeof(sapply(rs, function(x) x[['key']][[1]][['Examples']])[[1]]))#[[0]][['Examples']])
+  
+  data = rbind(data, data.frame(ExampleCount=exampleCount, TestOutput=testOutput, DesiredTestOutput=desiredTestOutput, Accuracy=accuracy, Successful=successful, LearningDuration=learningDuration, ApplicationDuration=applicationDuration, stringsAsFactors=FALSE))
+}
+#print(results_set)
+print(data)
+  options(warn = oldw)
+```
+
+
+## Calculating Accuracy
+```{r}
+library("stringdist")
+
+escapeStringAsNotRegex <- function(x=character()){
+  return(gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", x))
+}
+
+# print(data$TestOutput)
+# print('')
+# print(data$DesiredTestOutput)
+for (row in 1:nrow(data)) {
+  testOutput <- data[row, "TestOutput"]
+  desiredTestOutput <-data[row, "DesiredTestOutput"]
+  successful <- grepl(escapeStringAsNotRegex(testOutput), desiredTestOutput)
+  data[row, "Successful"] <- as.logical(successful)
+  # print(nchar(testOutput))
+  # print(nchar(desiredTestOutput))
+  # print(testOutput)
+  # print(desiredTestOutput)
+  accuracy <- nchar(testOutput)/nchar(desiredTestOutput)
+  accuracy2 <- stringsim(testOutput, desiredTestOutput)
+  print(accuracy)
+  print(accuracy2)
+  data[row, "Accuracy"] <- accuracy
+}
+print(data)
+```
+
+
+## Plotting the data
+```{r}
+plot_data <- str(data[c("ExampleCount", "Accuracy", "LearningDuration", "ApplicationDuration")])
+print(str(plot_data))
+plot(plot_data)
+```
