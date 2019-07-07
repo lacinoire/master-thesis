@@ -190,7 +190,7 @@ class LogCollector
   # find a job that has the given state, return the job_id
   def self.identify_job_with_state(build, state)
     build.jobs.each do |job|
-      return job.id if job.state == state
+      return job.id if job.state == state..
     end
   end
 

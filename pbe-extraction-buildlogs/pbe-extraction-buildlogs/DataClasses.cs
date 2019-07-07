@@ -11,8 +11,38 @@ namespace pbeextractionbuildlogs
 		public OutputType Output { get; set; }
 		public OutputType DesiredOutput { get; set; }
 		public bool Successful { get; set; }
+
+		[XmlIgnore]
 		public TimeSpan LearningDuration { get; set; }
+
+		[XmlElement("LearningDuration")]
+		public long LearningDurationSubstitute
+		{
+			get
+			{
+				return LearningDuration.Ticks;
+			}
+			set
+			{
+				LearningDuration = TimeSpan.FromTicks(value);
+			}
+		}
+
+		[XmlIgnore]
 		public TimeSpan ApplicationDuration { get; set; }
+
+		[XmlElement("ApplicationDuration")]
+		public long ApplicationDurationSubstitute
+		{
+			get
+			{
+				return ApplicationDuration.Ticks;
+			}
+			set
+			{
+				ApplicationDuration = TimeSpan.FromTicks(value);
+			}
+		}
 
 		/// <summary>
 		/// used for representing results of analyzed folders
