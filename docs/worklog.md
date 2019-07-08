@@ -1,9 +1,23 @@
 # Carolin Master Thesis Work Log
 
+## 8.7.19
+
+- moving on to `ggplot2` and finally having some nice graphs some hours later
+
+## 5.7.19
+
+- started looking into R for parsing + plotting my results, throwing a lot of square brackets around
+- collecting documents for phd Application
+
+## 4.7.19
+
+- extended the android-failure example collection
+- ran evaluation with manual & random example selection on android-failure
+
 ## 3.7.19
 
 - read Moritz' paper review
-- plan meeting with Annibale
+- plan meeting with Annibale and Moritz
 - test evaluation implementation on existing examplesets
 
 ## 2.7.19

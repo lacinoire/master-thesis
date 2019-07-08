@@ -66,15 +66,22 @@ namespace pbeextractionbuildlogs
 
 		private static void RunEvaluation(EvaluateOptions opts)
 		{
-			ExampleSelection exampleSelection = new ManualSelection();
-			if (opts.ExampleSelection == "random")
+			ExampleSelection exampleSelection;
+			switch (opts.ExampleSelection)
 			{
-				exampleSelection = new RandomSelection();
+				case "random":
+					exampleSelection = new RandomSelection();
+					break;
+				case "chronological":
+					exampleSelection = new ChronologicalSelection();
+					break;
+				case "manual":
+					exampleSelection = new ManualSelection();
+					break;
+				default:
+					throw new ArgumentException("Selection mode should be either 'random', 'chronological' or 'manual'");
 			}
-			else if (opts.ExampleSelection == "chronological")
-			{
-				exampleSelection = new ChronologicalSelection();
-			}
+
 			exampleSelection.IncludeAllInputs = opts.IncludeAllInputs;
 			exampleSelection.TestCount = opts.TestCount;
 			exampleSelection.LearningStepCount = opts.LearningStepCount;

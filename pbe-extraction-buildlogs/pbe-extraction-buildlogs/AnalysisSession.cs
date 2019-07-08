@@ -108,6 +108,7 @@ namespace pbeextractionbuildlogs
 			Console.WriteLine("Learned Program:");
 			Console.WriteLine(topRankedProgram);
 			Console.WriteLine();
+			result.LearnedProgram = topRankedProgram.ToString();
 
 			Console.WriteLine("Starting to apply program");
 			Stopwatch applyingStopwatch = Stopwatch.StartNew();
