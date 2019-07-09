@@ -36,12 +36,12 @@ mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f 
 
 ``` ocaml
 Starting to learn program
-Learning took 00:00:15.3738283
+Learning took 00:00:18.0688321
 Learned Program:
 let s = v in RegexRegion(s, "ε", "Alphanumeric◦Colon◦Alphanumeric", "ε", 1)
 
 Starting to apply program
-Applying took 00:00:00.0494173
+Applying took 00:00:00.0482345
 Result of analyzing the file samples/facebookgo@rocks-strata/166107245.log with the program travis-worker-short:
   Analysis succeded.
   Output was: worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
@@ -53,12 +53,12 @@ mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f 
 
 ``` ocaml
 Starting to learn program
-Learning took 00:02:19.9601596
+Learning took 00:02:15.3592203
 Learned Program:
 let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("ε", "Camel Case"), 1)) in StartToPosRegion(s, RegexPosition(s, RegexPair("WhiteSpace◦Alphanumeric", "Line Separator"), 1))
 
 Starting to apply program
-Applying took 00:00:00.0798091
+Applying took 00:00:00.0504247
 Result of analyzing the file samples/facebookgo@rocks-strata/190839612.log with the program travis-worker-long:
   Analysis succeded.
   Output was: Worker information[0m
@@ -78,7 +78,7 @@ mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f 
 
 ``` ocaml
 Starting to learn program
-Learning took 00:00:07.6880392
+Learning took 00:00:07.6217593
 no program found
 Result of analyzing the file samples/facebookgo@rocks-strata/166107245.log with the program travis-worker:
   Analysis succeded.
@@ -95,7 +95,7 @@ One example of extracting the reason for a build to fail is defined in the [`and
 
 This extracts the summarized reason for the builds from the project `connectbot@connectbot` to fail:
 
-[`connectbot@connectbot/5_3995f36cd5af8707a18a741f9018feb23f5ee710_38382864.log`](pbe-extraction-buildlogs/samples/connectbot@connectbot/5_3995f36cd5af8707a18a741f9018feb23f5ee710_38382864.log), line 3933 - 3935
+[`connectbot@connectbot/5.log`](pbe-extraction-buildlogs/samples/connectbot@connectbot/5.log), line 3933 - 3935
 
 ``` text
 * What went wrong:
@@ -106,20 +106,20 @@ Execution failed for task ':app:connectedAndroidTest'.
 You can test this extraction yourself:
 
 ``` bash
-mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f connectbot@connectbot/779_1ad4ab9a05665e01d00dbe37c5e8a7c7b4e5656b_87745143.log -p android-failure
+mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f connectbot@connectbot/779.log -p android-failure
 ```
 
 ⚠️ Learning this program takes quite some time (I do not yet understand why), therefore executing this extraction will take a while (about 5 minutes on my machine) ⚠️ 
 
 ``` ocaml
 Starting to learn program
-Learning took 00:05:20.7715952
+Learning took 00:05:18.4873238
 Learned Program:
 let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("ε", "\"Execution failed for task ':app:\""), 1)) in StartToPosRegion(s, RegexPosition(s, RegexPair("ε", "Line Separator◦Line Separator"), 1))
 
 Starting to apply program
-Applying took 00:00:00.2861573
-Result of analyzing the file samples/connectbot@connectbot/779_1ad4ab9a05665e01d00dbe37c5e8a7c7b4e5656b_87745143.log with the program android-failure:
+Applying took 00:00:00.2728715
+Result of analyzing the file samples/connectbot@connectbot/779.log with the program android-failure:
   Analysis succeded.
   Output was: Execution failed for task ':app:testDebugUnitTest'.
 > There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
@@ -133,7 +133,7 @@ let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("ε", "\"Execu
 
 This program fails on the following buildlog, which would also have to be included into the examples:
 
-[`connectbot@connectbot/311_d36f514d0ceaf115fb82bb8ee25f2c932de139ba_77633507.log`](pbe-extraction-buildlogs/samples/connectbot@connectbot/311_d36f514d0ceaf115fb82bb8ee25f2c932de139ba_77633507.log), line 4077 - 4079
+[`connectbot@connectbot/311.log`](pbe-extraction-buildlogs/samples/connectbot@connectbot/311.log), line 4077 - 4079
 
 ``` text
 * What went wrong:
@@ -148,20 +148,20 @@ let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("Colon◦Line 
 ````
 
 ``` bash
-mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f connectbot@connectbot/779_1ad4ab9a05665e01d00dbe37c5e8a7c7b4e5656b_87745143.log -p android-failure-with-dependencies
+mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f connectbot@connectbot/779.log -p android-failure-with-dependencies
 ```
 
 ⚠️ Learning this program takes quite some time (I do not yet understand why), therefore executing this extraction will take a while (about 5 minutes on my machine) ⚠️ 
 
 ``` ocaml
 Starting to learn program
-Learning took 00:09:20.5099580
+Learning took 00:22:50.4882860
 Learned Program:
 let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("Colon◦Line Separator", "ALL CAPS"), 1)) in StartToPosRegion(s, RegexPosition(s, RegexPair("ε", "Line Separator◦Line Separator"), 1))
 
 Starting to apply program
-Applying took 00:00:00.7702435
-Result of analyzing the file samples/connectbot@connectbot/779_1ad4ab9a05665e01d00dbe37c5e8a7c7b4e5656b_87745143.log with the program android-failure-with-dependencies:
+Applying took 00:00:00.4072661
+Result of analyzing the file samples/connectbot@connectbot/779.log with the program android-failure-with-dependencies:
   Analysis succeded.
   Output was: Execution failed for task ':app:testDebugUnitTest'.
 > There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
