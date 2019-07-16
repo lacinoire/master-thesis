@@ -28,7 +28,7 @@ namespace pbeextractionbuildlogs
 			{
 				return fileCache[path];
 			}
-			string text = File.ReadAllText(path).Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n\r", "\n").Replace(((char)0x1b).ToString(), "");
+			string text = File.ReadAllText(path).Replace("\r\n", "\n").Replace("\n\r", "\n").Replace("\r", "\n").Replace(((char)0x1b).ToString(), "");
 			StringRegion region = RegionSession.CreateStringRegion(text);
 			fileCache[path] = region;
 			return region;

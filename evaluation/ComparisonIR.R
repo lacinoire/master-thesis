@@ -11,53 +11,70 @@ library(stopwords)
 library(NMOF)
 library(xtable)
 
-main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
 
-## 1. load utility functions 
-source(paste(main_path, "/evaluation/utilities.R", sep=""))
+
 # source(paste(main_path, "/metaheuristics.R", sep=""))
 
-## parse the analysis programs xml files
-setwd(paste(main_path, "/pbe-extraction-buildlogs/ressources/analysis-programs", sep=""))
+# print(str(examples))
 
-path <- 'android-failure-with-dependencies.xml'
-xml <- xmlTreeParse(file = path)
+######## tdm for log file data #######
+output_path <-
+  paste(main_path, "/evaluation/split_samples", sep = "")
 
-examples <- data.frame(input_path = character(), output = character(), stringsAsFactors=FALSE)
-exampleset <- xml[['doc']]$children$AnalysisProgramOfRegionAnalysisSessionString[['LearningData']][['Examples']]
-sample_path <- paste(main_path, "/pbe-extraction-buildlogs/samples/", sep="")
-for (i in seq_along(1:length(exampleset))){
-  example <- exampleset[[i]]
-  examples <- rbind(examples, data.frame(input_path=paste(sample_path, xmlValue(example[['InputPath']][[1]]), sep=''), output=xmlValue(example[['Output']][[1]])))
-}
-print(str(examples))
-
-## 2. Set path to the dataset
-# Todo: possibly change this -> we need (line based?) splitting of the files from the xml inputs
-system <- "datasets/LANG"
-
-output_path <- paste(main_path, "/evaluation/split_samples", sep="");
-
-## 3. read the oracle
-# Todo: so construct which values we acutally have to learn from -> which lines are actually in the labeled desired results
-# duplicate_graph <- paste(system, "/bugrepo/duplicates.json", sep="");
-# duplicate_graph <- oracle2graph(duplicate_graph)
-# plot(duplicate_graph)
-
-## 4. Set the path to the output directory
-#file_output <- "results.csv"
+## 5. split the main file in separate paragraphs & files
+# 5.1 Split text in sub-files
 files <- examples$input_path
+split_files(files, output_path)
 
-## 5. split the main file (cataining all reports) in separate files (one for each report)
-## separate by (lines? paragraphs? configurable?) useful to do different real _files_ here???
-# 5.1 Create the folder where to save the (separated reports)
-dir.create(output_path, showWarnings = FALSE)
-# 5.2 Split reports in sub-files
-split_document(files, output_path)
+## 6. create the corpus with textmatrix for example log files
+tdm <- create_term_document_matrix(output_path)
 
-## 6. create the corpus with textmatrix
-tdm <- pre_processing(output_path)
+######## tdm for labeled data #######
+output_path_labeled_data <-
+  paste(main_path, "/evaluation/labeled_samples", sep = "")
+split_labeled_examples(examples, output_path_labeled_data)
+tdm_l <- create_term_document_matrix(output_path_labeled_data)
 
-# 7. Apply tf-idf weighting schema
-tdm2 <- weightSMART(tdm, "ntn")
-tdm$v <- as.integer(round(tdm2$v))
+# TODO: use filters function to filter out the lines labeled for extraction
+# the function filters documents in the corpus
+# idx <- meta(reuters, "id") =='237'&+   meta(reuters, "heading") =='INDONESIA SEEN AT CROSSROADS OVER ECONOMIC CHANGE'
+
+evaluate_tdm <- function(tdm)
+{
+  # 7. Apply tf-idf weighting schema
+  tdm2 <- weightSMART(tdm, "ntn")
+  tdm$v <- as.integer(round(tdm2$v))
+  #apply LDA to the term-by-document matrix
+  print(tdm)
+  ldm <- LDA(tdm, method="Gibbs", k = 3)  # k = num of topics
+  pldm <- posterior(ldm)
+  print(names(pldm))
+}
+
+
+# evaluate_tdm(tdm)
+# evaluate_tdm(tdm_l)
+
+library(text2vec)
+
+#print(str(examples))
+
+# print(str(train))
+# print(str(test))
+
+prep_fun = tolower
+tok_fun = word_tokenizer
+
+it_examples = itoken(examples$output, preprocessor = prep_fun, tokenizer = tok_fun, ids = examples$input_path)
+it_train = itoken(train$output, preprocessor = prep_fun, tokenizer = tok_fun, ids = train$input_path)
+it_test = itoken(test$output, preprocessor = prep_fun, tokenizer = tok_fun, ids = test$input_path)
+
+#### prepare vocabulary
+
+print(dtm_train)
+
+
+print(dtm_train_tfidf)
+
+dtrain_dtest_jac_sim = sim2(dtm_train, dtm_test, method = 'cosine', norm = 'l2')
+print(dtrain_dtest_jac_sim)

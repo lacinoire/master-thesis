@@ -13,15 +13,10 @@ library("methods")
 library("graphics")
 library("stringdist")
 
+main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
 
-escapeStringAsNotRegex <- function(x=character()){
-  return(gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", x))
-}
-  
-nanosecsToTime <- function(ticks=numeric){
-  sec <- ticks / 1e7
-  return(as.POSIXct(sec, origin="1970-01-01", tz="UTC"))
-}
+## load other modules
+source(paste(main_path, "/evaluation/utilities.R", sep = ""))
 
 # Convert the input xml file to a data frame.
 getDataFrameForResultsFile <- function(path){
@@ -85,7 +80,7 @@ getDataFrameForResultsFile <- function(path){
 library("ggplot2")
 
 #data <- getDataFrameForResultsFile("android-failure-with-dependencies_ManualSelection.xml")
-data <- getDataFrameForResultsFile("android-failure-with-dependencies_ManualSelection.xml")
+data <- getDataFrameForResultsFile("android-failure-with-dependencies_ChronologicalSelection.xml")
 
 plot_data <- data[c("ExampleCount", "Accuracy", "LearningDuration", "ApplicationDuration")]
 print(plot_data)
@@ -97,8 +92,9 @@ p <- ggplot(data = plot_data, aes(x = plot_data$ExampleCount, y = plot_data$Appl
        y="application duration", 
        x="example count", 
        title="Scatterplot", 
-       caption = "android-failure manual example selection") +
+       caption = "android-failure chronological example selection") +
   scale_y_datetime(breaks = seq(from = min(data$ApplicationDuration), to = max(data$ApplicationDuration), by = 0.04), date_labels = "%OS3 sec")
   # scale_x_datetime(date_labels = "%M min")
+ggsave("android-chronological.png", p) ## TODO make work
 plot(p)
 ```

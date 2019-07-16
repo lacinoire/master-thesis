@@ -159,10 +159,10 @@
 \section{Introduction}
 \secfunc{why? what? research questions? purpose? hypothesis? wide $\rightarrow$ narrow
 
-problem, done in literature, why not eough? our approach
+problem, done in literature, why not enough? our approach
 }
 
-\review{Fixing a broken continuous integration (CI) build has a high priority for developers~\cite{vassallo2018un-break}, therefore decreasing the time until the green build state is restored improves the overall productivity of developers.
+\review{Fixing a broken continuous integration (CI) build has a high priority for developers~\cite{vassallo2018un-break}, therefore decreasing the time until the success build state is restored improves the overall productivity of developers.
 
 \plan{why are logs so difficult: mention heterogeneous, semi-structured (paper reference for that?), big data (reference paper about log sizes), in distributed systems probably distributed (really also for build log?)
 
@@ -175,16 +175,19 @@ way to extract fine grained information: regular expressions which have to be wr
 \todo{maybe other paragraph. here only half fitting?}
 }
 
-During this assignment an engineer spends most of their time reading very long and verbose build logs, trying to retrieve the relevant information from between many uninteresting other lines.
+During this assignment an engineer spends a lot of their time \todo{or: find percentage to cite} reading very long and verbose build logs, trying to retrieve the relevant information from between many uninteresting other lines. \todo{add anecdotal evidence, watchdog paper?}
 
 A way to support them would be to extract the desired information and present it in a structured way.
 One approach to realize such functionality are tools that employ handcrafted regular expressions to find the desired text parts within the build log.
 However, creating these regular expressions is tedious, mentally complicated and usually error-prone task. Especially when they have to be maintained for long \textemdash \ reunderstanding old regular expressions is known to be a dreading task for developers.
-Our goal is it to take this burden of programmers by enabling them to define extraction programs through simply giving examples of the desired extractions.
+Our goal is to evaluate an alternative way of taking this burden of programmers.
+By simply giving examples of the desired extractions they should be able to define extraction programs.
 
-We implemented \todo{<toolname, ALBE?, Analyzing Logs By Example>}, a prototype for defining text extractions from build logs through examples.
-After collecting a diverse set of build logs from Travis CI we designed a meta-model of the contained information.
-Our evaluation of ALBE showed that it is able to define extractions for various desired informations, that it shortens development time in comparison to manual regular expression construction and ...
+We implement \todo{<toolname, ALBE?, Analyzing Logs By Example>}, a prototype for defining text extractions from build logs through examples.
+After collecting a diverse set of build logs from Travis CI we design a meta-model of the contained information.
+We evaluate ALBE on logs from selected GitHub repositories on the accuracy of extraction for a varying number and selection of in-output-examples.
+Furthermore we compare the tool to classical information retrieval and plain keyword search.
+Our evaluation of ALBE shows that it is able to define extractions for various desired informations, that it shortens development time in comparison to manual regular expression construction and ...
 }
 
 \todo{Research Questions!}
@@ -199,20 +202,22 @@ Our evaluation of ALBE showed that it is able to define extractions for various 
 
 \section{Related Work}
 
+\todo{More glue \& sentences that give an overview over the next paragraph}
+	
+\subsection{Bulidlogs Analysis Tools}
+
+\review{
+Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes developers to understand build logs. They summarized relevant information in Maven build logs and augmented them with links to related stack overflow posts. They observed that highlighting the locality and context of an issue is helpful to programmers. We strive to enable a similar summarization by text extraction while also covering a wider array of programming languages.
+
+Amar et al.~\cite{amar2019mining} reduced the lines of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
+}
+
 \subsection{Continuous Integration}
 
 \review{
 Various researchers have analyzed industrial and open source logs for failure reasons and their impact on development. Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at Google. In addition most failures are resolved within two builds. Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones. They determined that testing failures outweigh compilation errors. Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects. Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds. They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
 
 All these researchers described building parsers in order to evaluate the studied build logs. Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
-}
-
-\subsection{Tools}
-
-\review{
-Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes developers to understand build logs. They summarized relevant information in Maven build logs and augmented them with links to related stack overflow posts. They observed that highlighting the locality and context of an issue is helpful to programmers. We strive to enable a similar summarization by text extraction while also covering a wider array of programming languages.
-
-Amar et al.~\cite{amar2019mining} reduced the lines of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
 }
 
 

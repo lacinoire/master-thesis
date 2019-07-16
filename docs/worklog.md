@@ -1,8 +1,26 @@
 # Carolin Master Thesis Work Log
 
+## 10.7.19
+
+- IR comparison:
+  - splitting log files into lines
+  - writing lines into separate files
+- Writing PhD application for TestShift
+
+## 9.7.19
+
+- start on IR comparison implementation
+  - set up new project & fix broken rstudio installation
+  - parsing exampleset definition xml files
+  - reading log files
+
 ## 8.7.19
 
 - moving on to `ggplot2` and finally having some nice graphs some hours later
+- cleaned up existing examplesets:
+  - filenames now identify chronological ordering
+  - remove unused samples
+  - update documentation
 
 ## 5.7.19
 
