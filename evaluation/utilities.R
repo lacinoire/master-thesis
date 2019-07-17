@@ -2,6 +2,7 @@ library(stringr)
 library(stringi)
 library(wordcloud)
 library(NLP)
+library(XML)
 
 ## split the given text into
 ## lines
@@ -10,50 +11,69 @@ split_text <- function(text, file_name_base,  output_path) {
   split <- stri_split_lines(text, omit_empty = TRUE)
   setwd(output_path)
   filename <-
-    gsub('.', '', gsub('/', '', file_name_base, fixed = TRUE), fixed = TRUE)
+    gsub(".", "", gsub("/", "", file_name_base, fixed = TRUE), fixed = TRUE)
   for (i in seq_along(split[[1]])) {
-    writeLines(split[[1]][[i]], paste(filename, i, ".txt", sep = ''))
+    writeLines(split[[1]][[i]], paste(filename, i, ".txt", sep = ""))
   }
 }
 
+## obtain all lines that output spans in the given file
 get_lines_containing_output <-
-  function(file_name, base_path, output, only_output_lines = TRUE) {
+  function(file_name,
+           base_path,
+           output,
+           only_output_lines = TRUE) {
     lines <- read_build_log_from_file(file_name, base_path)
-
+    
     if (only_output_lines) {
-      lines_with_output_regex <- paste("\n[^\n]*", escapeStringAsNotRegex(output), "[^\n]*\n", sep = "")
-      output_postion <- str_locate(lines, regex(lines_with_output_regex))
-
-      lines <- substr(lines, output_postion[[1]], output_postion[[2]])
+      lines_with_output_regex <-
+        paste("\n[^\n]*",
+              escapeStringAsNotRegex(output),
+              "[^\n]*\n",
+              sep = "")
+      output_postion <-
+        str_locate(lines, regex(lines_with_output_regex))
+      
+      lines <-
+        substr(lines, output_postion[[1]], output_postion[[2]])
     }
-
+    
     split <- stri_split_lines(lines, omit_empty = TRUE)
     return(split)
   }
 
 ## gets all the lines for a sample with ids.
 ## returns all lines of the logfile if only_output_lines = FALSE
-get_ided_line_samples <- function(examples, only_output_lines = TRUE) {
-  train_lines <- data.frame(id = character(), lines = character(), stringsAsFactors = FALSE)
-
-  for (example_row in 1:nrow(examples)) {
-    i_p <- examples[example_row, "input_path"]
-    o <- examples[example_row, "output"]
-    output_lines <- get_lines_containing_output(i_p, sample_path, o, only_output_lines = only_output_lines)
+get_ided_line_samples <-
+  function(examples, only_output_lines = TRUE) {
+    train_lines <-
+      data.frame(id = character(),
+                 lines = character(),
+                 stringsAsFactors = FALSE)
     
-    lines_frame <- data.frame(lines = output_lines, stringsAsFactors = FALSE)
-    colnames(lines_frame)[1] <- "lines"
-    ids <- paste(collapse_input_path(i_p), rownames(lines_frame), sep = ":")
-    lines_frame <- cbind(id=ids, lines_frame, stringsAsFactors = FALSE)
-
-    train_lines <- rbind(train_lines, lines_frame)
+    for (example_row in 1:nrow(examples)) {
+      i_p <- examples[example_row, "input_path"]
+      o <- examples[example_row, "output"]
+      output_lines <-
+        get_lines_containing_output(i_p, sample_path, o, only_output_lines = only_output_lines)
+      
+      lines_frame <-
+        data.frame(lines = output_lines, stringsAsFactors = FALSE)
+      colnames(lines_frame)[1] <- "lines"
+      ids <-
+        paste(collapse_input_path(i_p), rownames(lines_frame), sep = ":")
+      lines_frame <-
+        cbind(id = ids, lines_frame, stringsAsFactors = FALSE)
+      
+      train_lines <- rbind(train_lines, lines_frame)
+    }
+    
+    return(train_lines)
   }
 
-  return(train_lines)
-}
-
+## shorten input path of sample for a readable identifier
 collapse_input_path <- function(path) {
-  return(gsub("^(.)[^@]*@(.)[^/]*/([^\\.]*)\\.log","\\1@\\2/\\3", path))
+  return(gsub("^(.)[^@]*@(.)[^/]*/([^\\.]*)\\.log", "\\1@\\2/\\3", path))
 }
 
 ## split the content of the given files using split_text
@@ -71,7 +91,7 @@ split_files <- function(files, output_path) {
 split_labeled_examples <- function(examples,  output_path) {
   dir.create(output_path, showWarnings = FALSE)
   for (row in 1:nrow(examples)) {
-    split_text(examples[row, 'output'], examples[row, 'input_path'], output_path)
+    split_text(examples[row, "output"], examples[row, "input_path"], output_path)
   }
 }
 
@@ -114,24 +134,49 @@ create_term_document_matrix <- function(output_path) {
   return(tdm)
 }
 
-
+## escape all things in a string that would be regex special things
 escapeStringAsNotRegex <- function(x = character()) {
   return(gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", x))
 }
 
+## convert nanosecond timestamps / C# ticks to R time
 nanosecsToTime <- function(ticks = numeric) {
   sec <- ticks / 1e7
   return(as.POSIXct(sec, origin = "1970-01-01", tz = "UTC"))
 }
 
+## convert second time interval to R time
+sys_timing_to_time <- function(start, end) {
+  return(as.POSIXct(as.numeric(end - start), origin = "1970-01-01", tz = "UTC"))
+}
+
+## get buildlog and normalize all the newline types + remove special characters
 read_build_log_from_file <- function(file_name, base_path) {
   setwd(base_path)
   file_content <- readChar(file_name, file.info(file_name)$size)
   file_content <-
-    gsub(rawToChar(as.raw(0x1b)), "", 
-    gsub("\r", "\n", 
-    gsub("\r\n", "\n",
-    gsub("\n\r", "\n", file_content)
-    )))
+    gsub(rawToChar(as.raw(0x1b)), "",
+         gsub("\r", "\n",
+              gsub(
+                "\r\n", "\n",
+                gsub("\n\r", "\n", file_content)
+              )))
   return(file_content)
+}
+
+## creates an empty data frame for evaluation results
+empty_results_data_frame <- function() {
+  return(
+    data.frame(
+      ExampleCount = numeric(),
+      LearnedProgram = character(),
+      TestOutput = character(),
+      DesiredTestOutput = character(),
+      Accuracy = numeric(),
+      Successful = logical(),
+      LearningDuration = as.POSIXct(character()),
+      ApplicationDuration = as.POSIXct(character()),
+      stringsAsFactors = FALSE
+    )
+  )
 }

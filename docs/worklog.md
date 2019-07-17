@@ -1,5 +1,26 @@
 # Carolin Master Thesis Work Log
 
+## 17.7.19
+
+- Implemented Evaluation infrastructure (like in C# tool already) around R extraction
+- collect results of R evaluation for same plotting as C# results
+
+## 16.7.19
+
+- Follow-up chat with Andy
+- Implemented simple similarity calculation + "extraction" logic with `text2vec` and for now cosine similarity
+
+## 15.7.19
+
+- Generating dtms and trying to figure out LDA stuff
+- Decision to first to simple similarity with a simpler tutorial than Annibales tool
+- Read docs of `text2vec` R text mining library
+
+## 11.7.19 - 14.7.19
+
+- writing and correcting PhD application
+- figuring out text mining in R
+
 ## 10.7.19
 
 - IR comparison:
