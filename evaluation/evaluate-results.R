@@ -66,53 +66,63 @@ calculate_accuracy <- function(data) {
     desiredTestOutput <- data[row, "DesiredTestOutput"]
     
     successful <-
-      grepl(escapeStringAsNotRegex(testOutput), desiredTestOutput)
+      grepl(testOutput, desiredTestOutput, fixed = TRUE)
     data[row, "Successful"] <- as.logical(successful)
     
     accuracy <- nchar(testOutput) / nchar(desiredTestOutput)
     accuracy2 <- stringsim(testOutput, desiredTestOutput)
     
-    data[row, "Accuracy"] <- accuracy
+    data[row, "Accuracy"] <- accuracy2
   }
   return(data)
 }
 
-plot_evaluation_result <- function(result) {
+plot_evaluation_result <- function(result, program_name, technique, selection) {
   result <- calculate_accuracy(result)
   plot_data <-
     result[c("ExampleCount",
              "Accuracy",
              "LearningDuration",
              "ApplicationDuration")]
-  print(head(plot_data))
+  # print(str(plot_data))
   
+  # learning_time_num <- as.numeric(plot_data$LearningDuration)
+  # labels <- pretty(plot_data$LearningDuration, n = nrow(plot_data))
   #plot(plot_data)
+  title <- paste(program_name, selection, "Example Selection using", technique, sep = " ")
   p <-
     ggplot(data = plot_data,
-           aes(
-             x = plot_data$ExampleCount,
-             y = plot_data$ApplicationDuration
-           )) +
-    geom_point(aes(col = plot_data$LearningDuration, size = plot_data$Accuracy)) +
+           aes(x = plot_data$ExampleCount,
+               y = plot_data$LearningDuration)) +
+    geom_point(aes(size = plot_data$Accuracy)) +
     labs(
-      subtitle = "",
-      y = "application duration",
-      x = "example count",
-      title = "Scatterplot",
-      caption = "android-failure manual example selection"
+      title = "Log Extraction Evaluation",
+      y = "Learning Duration",
+      x = "Example Count",
+      subtitle = title,
+      caption = " "
     ) +
     scale_y_datetime(breaks = seq(
-      from = min(data$ApplicationDuration),
-      to = max(data$ApplicationDuration),
-      by = 0.04
+      from = min(plot_data$LearningDuration),
+      to = max(plot_data$LearningDuration),
+      by = (max(plot_data$LearningDuration) - min(plot_data$LearningDuration)) / 5
     ),
-    date_labels = "%OS3 sec")
+    date_labels = "%M min %OS3 sec") +
+    scale_size(
+      name = "Accuracy",
+      labels = function(x) {return(x)}
+    )
+  # scale_color_gradient(
+  #   low = "black",
+  #   high = "cyan",
+  #   breaks = as.integer(labels),
+  #   labels = format(as.POSIXct(labels, origin = "1970-01-01", tz = "UTC"), "%OS3 sec")
+  # )
   # scale_x_datetime(date_labels = "%M min")
+  
+  quartz()
   plot(p)
+  message("-------- press return to close plot --------")
+  invisible(readLines("stdin", n = 1))
+  return(result)
 }
-
-# #data <- getDataFrameForResultsFile("android-failure-with-dependencies_ManualSelection.xml")
-# data <-
-#   getDataFrameForResultsFile("android-failure-with-dependencies_ManualSelection.xml")
-
-# plot_evaluation_result(data)

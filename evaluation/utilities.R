@@ -130,13 +130,14 @@ create_term_document_matrix <- function(output_path) {
   rowTotals <-
     apply(tdm , 1, sum) #Find the sum of words in each Document
   tdm.new   <-
-    tdm[rowTotals > 0,]           #remove all docs without words
+    tdm[rowTotals > 0, ]           #remove all docs without words
   return(tdm)
 }
 
 ## escape all things in a string that would be regex special things
 escapeStringAsNotRegex <- function(x = character()) {
-  return(gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", x))
+  return(paste("\\Q", x, "\\E", sep = ""))
+  #return(gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", x))
 }
 
 ## convert nanosecond timestamps / C# ticks to R time

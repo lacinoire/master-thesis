@@ -13,34 +13,10 @@ source(paste(main_path, "/evaluation/utilities.R", sep = ""))
 source(paste(main_path, "/evaluation/example-set.R", sep = ""))
 source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 
-main <- function() {
-  verb <- "evaluate"
-  # anlayze options
-  file <- "connectbot@connectbot/3.log"
-  # common options
-  program <- "android-failure"
-  # evluate options
-  selection <- "manual"
-  include_inputs <- FALSE
-  test_count <- 1
-  learning_step_count <- 3
-  if (verb == "analyze") {
-    run_analysis(program, file)
-  } else if (verb == "evaluate") {
-    run_evaluation(program,
-                   selection,
-                   include_inputs,
-                   test_count,
-                   learning_step_count)
-  } else {
-    # print(opt_help())
-  }
-}
 
 run_analysis <- function(program, file) {
   
 }
-
 
 run_evaluation <-
   function(program,
@@ -56,10 +32,10 @@ run_evaluation <-
     if (selection == "manual") {
       # do nothing with parsed examples
     } else if (selection == "random") {
-      examples <- examples[sample(nrow(examples)), ]
+      examples <- examples[sample(nrow(examples)),]
     } else if (selection == "chronological") {
       examples <-
-        examples[order(gsub(".*/(.*).log", "\\1", examples[, "input_path"])),]
+        examples[order(gsub(".*/(.*).log", "\\1", examples[, "input_path"])), ]
     } else {
       print("selection has to be either 'manual', 'random' or 'chrononlogical'")
     }
@@ -70,20 +46,22 @@ run_evaluation <-
     
     for (training_step in 1:learning_step_count) {
       ## select on which examples to train / test
-      train_examples <- examples[c(1:training_step),]
+      train_examples <- examples[c(1:training_step), ]
       test_examples <-
-        examples[c(training_step:training_step + test_count),]
+        examples[c(training_step:training_step + test_count), ]
       
-      step_results <- run_learning_step(train_examples, test_examples)
+      step_results <-
+        run_learning_step(train_examples, test_examples)
       
       step_results[1, "ExampleCount"] <- training_step
-      step_results[1, "DesiredTestOutput"] <- test_examples[1, "output"]
+      step_results[1, "DesiredTestOutput"] <-
+        test_examples[1, "output"]
       
       results <- rbind(results, step_results)
     }
     
     print(str(results))
-    plot_evaluation_result(results)
+    results <- plot_evaluation_result(results, program, selection)
     setwd(paste(main_path, "/evaluation", sep = ""))
     write.table(results, file = "results/ir.txt")
   }
@@ -191,6 +169,46 @@ run_learning_step <- function(train_examples, test_examples) {
   step_results[1, "TestOutput"] <-
     paste(extracted_lines["lines"], sep = "\n")
   return(step_results)
+}
+
+main <- function() {
+  verb <- opt_get_verb()
+  if (verb == "") {
+    verb <- "evaluate"
+    # anlayze options
+    file <- "connectbot@connectbot/3.log"
+    # common options
+    program <- "android-failure"
+    # evluate options
+    selection <- "manual"
+    include_inputs <- FALSE
+    test_count <- 1
+    learning_step_count <- 3
+    run_evaluation(program,
+                   selection,
+                   include_inputs,
+                   test_count,
+                   learning_step_count)
+  } else {
+    program <- opt_get("program")
+    if (verb == "evaluate") {
+      selection <- opt_get("selection")
+      include_inputs <- opt_get("include-inputs", n = 0)
+      test_count <- as.integer(opt_get("test-count"))
+      learning_step_count <-
+        as.integer(opt_get("learning-step-count"))
+      run_evaluation(program,
+                     selection,
+                     include_inputs,
+                     test_count,
+                     learning_step_count)
+    } else if (verb == "analyze") {
+      file <- opt_get("file")
+      run_analysis(program, file)
+    } else {
+      print(opt_help())
+    }
+  }
 }
 
 main()
