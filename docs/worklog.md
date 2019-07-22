@@ -1,5 +1,17 @@
 # Carolin Master Thesis Work Log
 
+## 19.7.19
+
+- Meeting with Annibale about IR parameters and review last meeting with Moritz
+- Collected Requirements for research prototype in findind a clean answer to the "test faliure extraction tool" questions
+- Started on unifying API for extraction tools
+- answering Moritz
+
+## 18.9.19
+
+- Cleaned up R implementation
+- Fixed plots
+
 ## 17.7.19
 
 - Implemented Evaluation infrastructure (like in C# tool already) around R extraction

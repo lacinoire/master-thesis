@@ -5,6 +5,12 @@
 - enable others to reproduce our experiments exaclty
 - inspire replication studies and future work through: useable datasets and clear usage documentation
 
+#### + have a curated _dataset_ of manually classified logs
+
+- labeled with extractions
+- push my meta-model
+- used for replication / inspired studies as well
+
 ## What do we have
 
 - given an example-set file (see an example below!) we can trigger a prose learning session trough the command line 
