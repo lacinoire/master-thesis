@@ -24,6 +24,9 @@ namespace pbeextractionbuildlogs
 		{
 			[Option('f', "file", HelpText = "Path of the file or folder to be analyzed")]
 			public string Path { get; set; }
+
+			[Option('v', "verbose", HelpText = "Output detailed information and intermediate results instead of just the extraction result")]
+			public bool Verbose { get; set; }
 		}
 
 		[Verb("evaluate", HelpText = "Evaluate the learning of a given exampleset.")]
@@ -61,7 +64,7 @@ namespace pbeextractionbuildlogs
 			Console.WriteLine(
 				ConsoleOutput.PrintAnalysisResult(
 					// FIXME distinguish between string and string[] here. Maybe with a simple mapping of prog names to output type
-					Analyze<string>(opts.ProgramName, Config.SAMPLE_DIRECTORY + opts.Path, true), 0));
+					Analyze<string>(opts.ProgramName, Config.SAMPLE_DIRECTORY + opts.Path, opts.Verbose, true), 0, opts.Verbose));
 		}
 
 		private static void RunEvaluation(EvaluateOptions opts)
@@ -96,14 +99,14 @@ namespace pbeextractionbuildlogs
 		/// <param name="path"></param>
 		/// <param name="mightBeFolder"></param>
 		/// <returns></returns>
-		public static AnalysisResult<OutputType> Analyze<OutputType>(string programName, string path, bool mightBeFolder)
+		public static AnalysisResult<OutputType> Analyze<OutputType>(string programName, string path, bool verbose, bool mightBeFolder)
 		{
 			// TODO: proposal: Method just like this which just gives a "learning/evaluation result" back, packed with the example selection technique and a sequence of analysis results spun together with some information on which samples were used
 			var result = new AnalysisResult<OutputType>();
 			var wasFolder = false;
 			if (mightBeFolder)
 			{
-				var tuple = IfPathIsFolderRunOnFolder(programName, path, Analyze<OutputType>);
+				var tuple = IfPathIsFolderRunOnFolder(programName, path, verbose, Analyze<OutputType>);
 				result.FurtherResults = tuple.Item1;
 				wasFolder = tuple.Item2;
 			}
@@ -115,13 +118,13 @@ namespace pbeextractionbuildlogs
 				if (typeof(OutputType) == typeof(string))
 				{
 					var program = AnalysisProgram<RegionAnalysisSession, string>.LoadAnalysisProgram(programName);
-					program.ApplyToFile(path, (AnalysisResult<string>)(object)result);
+					program.ApplyToFile(path, (AnalysisResult<string>)(object)result, verbose);
 				}
 
 				if (typeof(OutputType) == typeof(string[]))
 				{
 					var program = AnalysisProgram<SequenceAnalysisSession, string[]>.LoadAnalysisProgram(programName);
-					program.ApplyToFile(path, (AnalysisResult<string[]>)(object)result);
+					program.ApplyToFile(path, (AnalysisResult<string[]>)(object)result, verbose);
 				}
 
 				// TODO get desired output from somewhere
@@ -161,12 +164,12 @@ namespace pbeextractionbuildlogs
 		/// <param name="path"></param>
 		/// <param name="function"></param>
 		/// <returns></returns>
-		private static (List<AnalysisResult<OutputType>>, bool) IfPathIsFolderRunOnFolder<OutputType>(string programName, string path, Func<string, string, bool, AnalysisResult<OutputType>> function)
+		private static (List<AnalysisResult<OutputType>>, bool) IfPathIsFolderRunOnFolder<OutputType>(string programName, string path, bool verbose, Func<string, string, bool, bool, AnalysisResult<OutputType>> function)
 		{
 			FileAttributes attr = File.GetAttributes(path);
 			if (attr.HasFlag(FileAttributes.Directory))
 			{
-				return (Directory.EnumerateFiles(path).Select(p => function(programName, p, false)).ToList(), true);
+				return (Directory.EnumerateFiles(path).Select(p => function(programName, p, false, verbose)).ToList(), true);
 			}
 			return (new List<AnalysisResult<OutputType>>(), false);
 		}

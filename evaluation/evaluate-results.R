@@ -8,15 +8,15 @@ library(ggplot2)
 main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
 
 ## load other modules
-source(paste(main_path, "/evaluation/utilities.R", sep = ""))
+source(paste(main_path, "/r-extraction/utilities.R", sep = ""))
 
 
 # Convert the input xml file to a data frame.
-getDataFrameForResultsFile <- function(path) {
+getDataFrameForPBEResultsFile <- function(path) {
   oldw <- getOption("warn")
   options(warn = -1)
   
-  setwd("/Users/Laci/Documents/Delft/master-thesis/pbe-extraction-buildlogs/results")
+  setwd(paste(main_path, "/tool/results/pbe", sep = ""))
   xml <- xmlTreeParse(file = path)
   
   data <- empty_results_data_frame()

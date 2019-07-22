@@ -6,11 +6,11 @@ library(optigrab)
 
 main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
 sample_path <<-
-  paste(main_path, "/pbe-extraction-buildlogs/samples", sep = "")
+  paste(main_path, "/tool/samples", sep = "")
 
 ## load other modules
-source(paste(main_path, "/evaluation/utilities.R", sep = ""))
-source(paste(main_path, "/evaluation/example-set.R", sep = ""))
+source(paste(main_path, "/r-extactions/utilities.R", sep = ""))
+source(paste(main_path, "/r-extactions/example-set.R", sep = ""))
 source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 
 

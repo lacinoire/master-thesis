@@ -5,22 +5,25 @@ namespace pbeextractionbuildlogs
 {
 	public class ConsoleOutput
 	{
-		public static string PrintAnalysisResult<OutputType>(AnalysisResult<OutputType> analysisResult, int indentation)
+		public static string PrintAnalysisResult<OutputType>(AnalysisResult<OutputType> analysisResult, int indentation, bool verbose)
 		{
-			bool isFolder = analysisResult.FurtherResults.Count != 0;
-			string output = Indentation(indentation) + PrintHeader(analysisResult, true, isFolder);
-
-			if (isFolder)
+			string output = PrintOutput(analysisResult.Output);
+			if (verbose)
 			{
-				output += analysisResult.FurtherResults.Select(ar => PrintAnalysisResult((AnalysisResult<OutputType>)ar, indentation + 1)).Aggregate((i, j) => i + "\n" + j);
-			}
-			else
-			{
-				output += Indentation(indentation + 1) + "Analysis " + (analysisResult.Successful ? "succeded" : "failed") + ".\n";
-				output += Indentation(indentation + 1) + "Output was: " + PrintOutput(analysisResult.Output) + "\n";
-				output += Indentation(indentation + 1) + "Desired output was: " + PrintOutput(analysisResult.DesiredOutput) + "\n";
-			}
+				bool isFolder = analysisResult.FurtherResults.Count != 0;
+				output = Indentation(indentation) + PrintHeader(analysisResult, true, isFolder);
 
+				if (isFolder)
+				{
+					output += analysisResult.FurtherResults.Select(ar => PrintAnalysisResult((AnalysisResult<OutputType>)ar, indentation + 1, verbose)).Aggregate((i, j) => i + "\n" + j);
+				}
+				else
+				{
+					output += Indentation(indentation + 1) + "Analysis " + (analysisResult.Successful ? "succeded" : "failed") + ".\n";
+					output += Indentation(indentation + 1) + "Output was: " + PrintOutput(analysisResult.Output) + "\n";
+					output += Indentation(indentation + 1) + "Desired output was: " + PrintOutput(analysisResult.DesiredOutput) + "\n";
+				}
+			}
 			return output;
 		}
 

@@ -5,7 +5,7 @@ get_exampleset <- function(path) {
   setwd(
     paste(
       main_path,
-      "/pbe-extraction-buildlogs/ressources/analysis-programs",
+      "/tool/example-sets",
       sep = ""
     )
   )

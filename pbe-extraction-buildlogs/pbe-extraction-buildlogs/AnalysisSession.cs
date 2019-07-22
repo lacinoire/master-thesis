@@ -44,7 +44,7 @@ namespace pbeextractionbuildlogs
 		public abstract AnalysisSession<OutputType> AddInput(string inputPath);
 		public abstract AnalysisSession<OutputType> AddExample(ExampleData<OutputType> exampleData);
 		public abstract AnalysisSession<OutputType> AddCompletelyNegativeExample(string inputPath);
-		public abstract AnalysisResult<OutputType> Analyze(string inputPath, AnalysisResult<OutputType> result);
+		public abstract AnalysisResult<OutputType> Analyze(string inputPath, AnalysisResult<OutputType> result, bool verbose);
 		public abstract string CurrentProgram();
 	}
 
@@ -84,39 +84,41 @@ namespace pbeextractionbuildlogs
 		/// Analyze the file in <param name="inputPath"></param> using a program learned new from the currently present exampleset.
 		/// </summary>
 		/// <returns>The extraction result.</returns>
-		public override AnalysisResult<string> Analyze(string inputPath, AnalysisResult<string> result)
+		public override AnalysisResult<string> Analyze(string inputPath, AnalysisResult<string> result, bool verbose)
 		{
+			ConsolePrinter consolePrinter = new ConsolePrinter(verbose);
+
 			var inputRegion = AnalysisUtil.RegionFromFile(inputPath);
 
-			Console.WriteLine("Starting to learn program");
+			consolePrinter.WriteLine("Starting to learn program");
 			Stopwatch learningStopwatch = Stopwatch.StartNew();
 
 			RegionProgram topRankedProgram = session.Learn();
 
 			learningStopwatch.Stop();
-			Console.WriteLine("Learning took " + learningStopwatch.Elapsed);
+			consolePrinter.WriteLine("Learning took " + learningStopwatch.Elapsed);
 			result.LearningDuration = learningStopwatch.Elapsed;
 
 			if (topRankedProgram == null)
 			{
-				Console.WriteLine("no program found");
+				consolePrinter.WriteLine("no program found");
 				result.Successful = false;
 				result.Output = "no program found";
 				return result;
 			}
 
-			Console.WriteLine("Learned Program:");
-			Console.WriteLine(topRankedProgram);
-			Console.WriteLine();
+			consolePrinter.WriteLine("Learned Program:");
+			consolePrinter.WriteLine(topRankedProgram);
+			consolePrinter.WriteLine("");
 			result.LearnedProgram = topRankedProgram.ToString();
 
-			Console.WriteLine("Starting to apply program");
+			consolePrinter.WriteLine("Starting to apply program");
 			Stopwatch applyingStopwatch = Stopwatch.StartNew();
 
 			StringRegion output = topRankedProgram.Run(inputRegion);
 
 			applyingStopwatch.Stop();
-			Console.WriteLine("Applying took " + applyingStopwatch.Elapsed);
+			consolePrinter.WriteLine("Applying took " + applyingStopwatch.Elapsed);
 			result.ApplicationDuration = applyingStopwatch.Elapsed;
 
 			if (output == null)
@@ -145,7 +147,7 @@ namespace pbeextractionbuildlogs
 				Console.Out.WriteLine("Input[Confidence=" + sigInput.Confidence + "]: " + ((StringRegion[])sigInput.Input).Select(sr => sr.Value).Aggregate((i, j) => i + ", " + j));
 				//foreach (var x in session.LearnTopK(5))
 				//{
-				//	Console.Out.WriteLine(x.ReferenceKind.ToString() + " " + x.ProgramNode.PrintAST());
+				//	consolePrinter.Out.WriteLine(x.ReferenceKind.ToString() + " " + x.ProgramNode.PrintAST());
 				//}
 				foreach (object output in await session.ComputeTopKOutputsAsync(sigInput.Input, 5))
 				{
@@ -194,7 +196,7 @@ namespace pbeextractionbuildlogs
 			return this;
 		}
 
-		public override AnalysisResult<string[]> Analyze(string inputPath, AnalysisResult<string[]> result)
+		public override AnalysisResult<string[]> Analyze(string inputPath, AnalysisResult<string[]> result, bool verbose)
 		{
 			var inputRegion = AnalysisUtil.RegionFromFile(inputPath);
 			SequenceProgram topRankedProgram = session.Learn();
@@ -222,7 +224,7 @@ namespace pbeextractionbuildlogs
 				Console.Out.WriteLine("Input[Confidence=" + sigInput.Confidence + "]: " + ((StringRegion[])sigInput.Input).Select(sr => sr.Value).Aggregate((i, j) => i + ", " + j));
 				//foreach (var x in session.LearnTopK(5))
 				//{
-				//	Console.Out.WriteLine(x.ReferenceKind.ToString() + " " + x.ProgramNode.PrintAST());
+				//	consolePrinter.Out.WriteLine(x.ReferenceKind.ToString() + " " + x.ProgramNode.PrintAST());
 				//}
 				foreach (object output in await session.ComputeTopKOutputsAsync(sigInput.Input, 5))
 				{

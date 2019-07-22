@@ -24,6 +24,24 @@ namespace pbeextractionbuildlogs
 		}
 	}
 
+	public class ConsolePrinter
+	{
+		public bool Verbose { get; set; }
+
+		public ConsolePrinter(bool verbose)
+		{
+			Verbose = verbose;
+		}
+
+		public void WriteLine(object output)
+		{
+			if (Verbose)
+			{
+				Console.WriteLine(output);
+			}
+		}
+	}
+
 
 	[XmlRoot("dictionary")]
 	public class SerializableDictionary<TKey, TValue>

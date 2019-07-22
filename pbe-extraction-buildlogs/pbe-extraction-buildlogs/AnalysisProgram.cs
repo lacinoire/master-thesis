@@ -87,12 +87,12 @@ namespace pbeextractionbuildlogs
 
 
 
-		public AnalysisResult<OutputType> ApplyToFile(string path, AnalysisResult<OutputType> result)
+		public AnalysisResult<OutputType> ApplyToFile(string path, AnalysisResult<OutputType> result, bool verbose)
 		{
-			return ApplyToFileWithLearningData(path, LearningData, result);
+			return ApplyToFileWithLearningData(path, LearningData, result, verbose);
 		}
 
-		private AnalysisResult<OutputType> ApplyToFileWithLearningData(string path, SessionData<ExampleData<OutputType>> learningData, AnalysisResult<OutputType> result)
+		private AnalysisResult<OutputType> ApplyToFileWithLearningData(string path, SessionData<ExampleData<OutputType>> learningData, AnalysisResult<OutputType> result, bool verbose)
 		{
 
 			// TODO not redo session & learning if examples did not change
@@ -101,8 +101,11 @@ namespace pbeextractionbuildlogs
 			learningData.InputPaths.ForEach(ip => analysisSession.AddInput(Config.SAMPLE_DIRECTORY + ip));
 			learningData.Examples.ForEach(ex => analysisSession.AddExample(new ExampleData<OutputType>(Config.SAMPLE_DIRECTORY + ex.InputPath, ex.Output)));
 
-			Console.WriteLine(Describe(learningData));
-			return analysisSession.Analyze(path, result);
+			if (verbose)
+			{
+				Console.WriteLine(Describe(learningData));
+			}
+			return analysisSession.Analyze(path, result, verbose);
 		}
 
 		public EvaluationResult<OutputType> Evaluate(ExampleSelection exampleSelection,
@@ -136,9 +139,9 @@ namespace pbeextractionbuildlogs
 				List<AnalysisResult<OutputType>> testResults = new List<AnalysisResult<OutputType>>();
 				foreach (ExampleData<OutputType> testSample in testSamples)
 				{
-					var analysisResult = ApplyToFileWithLearningData(Config.SAMPLE_DIRECTORY + testSample.InputPath, currentLearningData, new AnalysisResult<OutputType>());
+					var analysisResult = ApplyToFileWithLearningData(Config.SAMPLE_DIRECTORY + testSample.InputPath, currentLearningData, new AnalysisResult<OutputType>(), true);
 					analysisResult.DesiredOutput = testSample.Output;
-					Console.WriteLine(ConsoleOutput.PrintAnalysisResult(analysisResult, 0));
+					Console.WriteLine(ConsoleOutput.PrintAnalysisResult(analysisResult, 0, true));
 					testResults.Add(analysisResult);
 				}
 				result.Results.Add(currentLearningData, testResults);
