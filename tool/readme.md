@@ -69,7 +69,8 @@ Caution! this will take about 20 minutes to run
 
 Output:
 ``` txt
-
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
 ```
 
 ### Travis Worker Short
