@@ -1,14 +1,15 @@
-# Load the packages required to read XML files.
-library(XML)
-library(methods)
-library(graphics)
-library(stringdist)
-library(ggplot2)
+suppressPackageStartupMessages({
+  library(XML)
+  library(methods)
+  library(graphics)
+  library(stringdist)
+  library(ggplot2)
+})
 
 main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
 
 ## load other modules
-source(paste(main_path, "/r-extraction/utilities.R", sep = ""))
+source(paste(main_path, "/r-extractions/utilities.R", sep = ""))
 
 
 # Convert the input xml file to a data frame.

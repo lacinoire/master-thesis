@@ -1,7 +1,7 @@
 ## loading the exampleset data
 
 ## parse the analysis programs xml files
-get_exampleset <- function(path) {
+get_exampleset <- function(program) {
   setwd(
     paste(
       main_path,
@@ -9,6 +9,7 @@ get_exampleset <- function(path) {
       sep = ""
     )
   )
+  path <- paste(program, ".xml", sep = "")
   
   xml <- xmlTreeParse(file = path)
   

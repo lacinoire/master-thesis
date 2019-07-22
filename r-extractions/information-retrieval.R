@@ -1,21 +1,28 @@
 #!/usr/bin/env Rscript
-
-library(dplyr)
-library(text2vec)
-library(optigrab)
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(text2vec)
+  library(optigrab)
+})
 
 main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
 sample_path <<-
   paste(main_path, "/tool/samples", sep = "")
 
 ## load other modules
-source(paste(main_path, "/r-extactions/utilities.R", sep = ""))
-source(paste(main_path, "/r-extactions/example-set.R", sep = ""))
+source(paste(main_path, "/r-extractions/utilities.R", sep = ""))
+source(paste(main_path, "/r-extractions/example-set.R", sep = ""))
 source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 
 
 run_analysis <- function(program, file) {
-  
+  examples <- get_exampleset(program)
+
+  test <- data.frame(input_path = file, output = "", stringsAsFactors = FALSE)
+
+  results <- run_learning_step(examples, test)
+
+  return(results[1, "TestOutput"])
 }
 
 run_evaluation <-
@@ -25,8 +32,7 @@ run_evaluation <-
            test_count,
            learning_step_count) {
     ## load example set
-    path <- paste(program, ".xml", sep = "")
-    examples <- get_exampleset(path)
+    examples <- get_exampleset(program)
     
     
     if (selection == "manual") {
@@ -60,7 +66,7 @@ run_evaluation <-
       results <- rbind(results, step_results)
     }
     
-    print(str(results))
+    #print(str(results))
     results <- plot_evaluation_result(results, program, selection)
     setwd(paste(main_path, "/evaluation", sep = ""))
     write.table(results, file = "results/ir.txt")
@@ -68,7 +74,6 @@ run_evaluation <-
 
 run_learning_step <- function(train_examples, test_examples) {
   step_results <- empty_results_data_frame()
-  
   
   # we collect all line which contain (parts)
   # of the output the extraction should yield
@@ -167,7 +172,7 @@ run_learning_step <- function(train_examples, test_examples) {
   step_results[1, "ApplicationDuration"] <-
     sys_timing_to_time(start_time_application, end_time_application)
   step_results[1, "TestOutput"] <-
-    paste(extracted_lines["lines"], sep = "\n")
+    join_extracted_lines(extracted_lines["lines"])
   return(step_results)
 }
 
@@ -191,6 +196,7 @@ main <- function() {
                    learning_step_count)
   } else {
     program <- opt_get("program")
+    verbose <- opt_get("verbose")
     if (verb == "evaluate") {
       selection <- opt_get("selection")
       include_inputs <- opt_get("include-inputs", n = 0)
@@ -204,7 +210,7 @@ main <- function() {
                      learning_step_count)
     } else if (verb == "analyze") {
       file <- opt_get("file")
-      run_analysis(program, file)
+      cat(run_analysis(program, file))
     } else {
       print(opt_help())
     }

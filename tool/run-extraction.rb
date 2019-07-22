@@ -56,6 +56,10 @@ class Optparser
         options.test_count = test_count
       end
 
+      opts.on("-v", "--verbose", "Print additional interesting output apart from only the extraction output") do
+        options.verbose = verbose
+      end
+
       opts.separator ""
       opts.separator "Common options:"
 
@@ -65,28 +69,72 @@ class Optparser
         puts opts
         exit
       end
+
     end
 
     opt_parser.parse!(args)
     options
   end # parse()
 
+  def self.print_pbe_options(opts)
+    opt_arr = [opts.action, '-p', opts.example_set]
+    if (opts.verbose)
+      opt_arr << '-v'
+    end
+    if (opts.action == :analyze)
+      opt_arr << '-f'
+      opt_arr << opts.file_path
+    elsif (opts.action == :evaluate)
+      opt_arr << '-s'
+      opt_arr << opts.selection
+      opt_arr << '-l'
+      opt_arr << opts.learning_step_count
+      opt_arr << '-t'
+      opt_arr << opts.test_count
+    end
+
+    return(opt_arr.join(' '))
+  end
+
+  def self.print_ir_options(opts)
+    opt_arr = [opts.action, '--program', opts.example_set]
+    if (opts.verbose)
+      opt_arr << '--verbose'
+    end
+    if (opts.action == :analyze)
+      opt_arr << '--file'
+      opt_arr << opts.file_path
+    elsif (opts.action == :evaluate)
+      opt_arr << '--selection'
+      opt_arr << opts.selection
+      opt_arr << '--learning-step-count'
+      opt_arr << opts.learning_step_count
+      opt_arr << '--test-count'
+      opt_arr << opts.test_count
+    end
+
+    return(opt_arr.join(' '))
+  end
+
 end # class Optparser
 
 if $PROGRAM_NAME == __FILE__
 
   options = Optparser.parse(ARGV)
-  puts options
-  puts ARGV
+  # puts options
+  # puts ARGV
 
   # TODO
   print(
     case options.technique
     when :pbe
-      %x(echo pbe)
+      # build pbe tool
+      %x(msbuild /v:m /p:Configuration=Debug)
+      puts %x(mono ../pbe-extraction-buildlogs/pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe #{Optparser.print_pbe_options(options)})
     when :ir
-      %x(echo ir)
+      puts %x(Rscript ../r-extractions/information-retrieval.R #{Optparser.print_ir_options(options)})
     else
+      puts Optparser.print_ir_options(options)
       %x(echo technique not yet supported)
     end
   )

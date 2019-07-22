@@ -31,8 +31,37 @@ Specific options:
     -s, --selection SELECTION        The example sequence selection technique to use for evaluation (chronological, random, manual (= like defined in file))
     -l, --learning-step-count COUNT  How many steps with increasing example set size to do during evaluation
     -c, --test-count COUNT           How many test files to evaluate the generated program in each learning step of the evaluation
+    -v, --verbose                    Print additional interesting output apart from only the extraction output
 
 Common options:
     -h, --help                       Show this message
+```
 
+## Working Examples
+
+### Travis Worker Short
+
+#### IR
+
+``` shell
+$ ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+```
+
+Output:
+``` txt
+Using worker: worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
+Target: x86_64-unknown-linux-gnu
+GOHOSTOS="linux"
+GOOS="linux"
+```
+
+#### Programming by Example
+
+``` shell
+$ ruby ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+```
+
+Output:
+``` txt
+worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 ```

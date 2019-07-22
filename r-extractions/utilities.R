@@ -1,8 +1,10 @@
-library(stringr)
-library(stringi)
-library(wordcloud)
-library(NLP)
-library(XML)
+suppressPackageStartupMessages({
+  library(stringr)
+  library(stringi)
+  library(wordcloud)
+  library(NLP)
+  library(XML)
+})
 
 ## split the given text into
 ## lines
@@ -180,4 +182,10 @@ empty_results_data_frame <- function() {
       stringsAsFactors = FALSE
     )
   )
+}
+
+## concatenates the extracted lines from line-based exractions
+join_extracted_lines <- function(lines) {
+  x <- paste(lines[["lines"]], sep = "", collapse = "\n")
+  return(x)
 }
