@@ -58,7 +58,7 @@ GOOS="linux"
 #### Programming by Example
 
 ``` shell
-$ ruby ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+$ ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
 ```
 
 Output:

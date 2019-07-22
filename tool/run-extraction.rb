@@ -129,7 +129,7 @@ if $PROGRAM_NAME == __FILE__
     case options.technique
     when :pbe
       # build pbe tool
-      %x(msbuild /v:m /p:Configuration=Debug)
+      %x(msbuild ../pbe-extraction-buildlogs /v:m /p:Configuration=Debug)
       puts %x(mono ../pbe-extraction-buildlogs/pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe #{Optparser.print_pbe_options(options)})
     when :ir
       puts %x(Rscript ../r-extractions/information-retrieval.R #{Optparser.print_ir_options(options)})
