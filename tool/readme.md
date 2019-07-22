@@ -39,9 +39,42 @@ Common options:
 
 ## Working Examples
 
+### Android Failure
+
+#### Information Retrieval
+
+``` shell
+> ruby run-extraction.rb -a analyze -t ir -e android-failure-with-dependencies -p connectbot@connectbot/779.log
+```
+
+Output:
+``` txt
+3.4 You agree that you will not take any actions that may cause or result in the fragmentation of Android, including but not limited to distributing, participating in the creation of, or promoting in any way a software development kit derived from the SDK.
+3.4 You agree that you will not take any actions that may cause or result in the fragmentation of Android, including but not limited to distributing, participating in the creation of, or promoting in any way a software development kit derived from the SDK.
+[0K$ android-update-sdk --components=extra-android-support
+Installing extra-android-support
+spawn android update sdk --no-ui --all --filter extra-android-support
+[0K$ android-update-sdk --components=extra-android-m2repository
+spawn android update sdk --no-ui --all --filter extra-android-m2repository
+Reading library jar [/usr/local/android-sdk-24.0.2/platforms/android-23/android.jar]
+Reading library jar [/usr/local/android-sdk-24.0.2/platforms/android-23/optional/org.apache.http.legacy.jar]
+Execution failed for task ':app:testDebugUnitTest'.
+```
+
+#### Programming by Example
+Caution! this will take about 20 minutes to run
+``` shell
+> ruby run-extraction.rb -a analyze -t pbe -e android-failure-with-dependencies -p connectbot@connectbot/779.log
+```
+
+Output:
+``` txt
+
+```
+
 ### Travis Worker Short
 
-#### IR
+#### Information Retrieval
 
 ``` shell
 > ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p facebookgo@rocks-strata/166107245.log

@@ -153,7 +153,8 @@ run_learning_step <- function(train_examples, test_examples) {
   # print(test_train_similarity[1:2, 1:2])
   
   similarity_sums <- apply(test_train_similarity, 1, sum)
-  filtered_similarity_sums <- similarity_sums[similarity_sums > 0.5]
+  sorted_similarity_sums <- sort(similarity_sums, decreasing = TRUE)
+  filtered_similarity_sums <- sorted_similarity_sums[1:min(10,length(sorted_similarity_sums))] 
   # print(head(similarity_sums))
   # print(str(filtered_similarity_sums))
   # print(head(filtered_similarity_sums))
