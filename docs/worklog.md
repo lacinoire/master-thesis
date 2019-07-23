@@ -1,5 +1,13 @@
 # Carolin Master Thesis Work Log
 
+## 22.7.19
+
+- made PBE and IR analysis quiet / only output result
+- integrated both analyses into unification tool, analyze runs now with both
+- updated readmes with running examples + output
+- looked into Azure DevOps test result extraction
+- answered Moritz
+
 ## 19.7.19
 
 - Meeting with Annibale about IR parameters and review last meeting with Moritz
