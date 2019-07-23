@@ -1,4 +1,7 @@
 #!/usr/bin/env Rscript
+
+# Extract information from build logs using information retrieval
+
 suppressPackageStartupMessages({
   library(dplyr)
   library(text2vec)
@@ -17,11 +20,9 @@ source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 
 run_analysis <- function(program, file) {
   examples <- get_exampleset(program)
-
   test <- data.frame(input_path = file, output = "", stringsAsFactors = FALSE)
 
   results <- run_learning_step(examples, test)
-
   return(results[1, "TestOutput"])
 }
 
@@ -30,10 +31,10 @@ run_evaluation <-
            selection,
            include_inputs,
            test_count,
-           learning_step_count) {
+           learning_step_count,
+           verbose) {
     ## load example set
     examples <- get_exampleset(program)
-    
     
     if (selection == "manual") {
       # do nothing with parsed examples
@@ -41,12 +42,14 @@ run_evaluation <-
       examples <- examples[sample(nrow(examples)),]
     } else if (selection == "chronological") {
       examples <-
-        examples[order(gsub(".*/(.*).log", "\\1", examples[, "input_path"])), ]
+        examples[order(as.integer(gsub(".*/(.*).log", "\\1", examples[, "input_path"]))), ]
     } else {
       print("selection has to be either 'manual', 'random' or 'chrononlogical'")
     }
     
-    print(examples)
+    if (verbose) {
+      print(examples)
+    }
     
     results <- empty_results_data_frame()
     
@@ -66,29 +69,29 @@ run_evaluation <-
       results <- rbind(results, step_results)
     }
     
-    #print(str(results))
     results <- plot_evaluation_result(results, program, selection)
-    setwd(paste(main_path, "/evaluation", sep = ""))
-    write.table(results, file = "results/ir.txt")
+
+    setwd(paste(main_path, "/tool/results/ir", sep = ""))
+    results_file_name <- paste0(evaluation_identification("ir", program, selection, test_count, learning_step_count), ".txt")
+    write.table(results, file = results_file_name)
   }
 
 run_learning_step <- function(train_examples, test_examples) {
-  step_results <- empty_results_data_frame()
+  
+  start_time_learning <- Sys.time()
   
   # we collect all line which contain (parts)
   # of the output the extraction should yield
   # (defined in the training examples)
-  start_time_learning <- Sys.time()
-  
   train_lines <- get_ided_line_samples(train_examples)
   test_lines <-
     get_ided_line_samples(test_examples, only_output_lines = FALSE)
-  
   total_lines <- rbind(train_lines, test_lines)
   
   prep_fun <- identity
   tok_fun <- word_tokenizer
   
+  # token iterators
   it_total <-
     itoken(
       total_lines$lines,
@@ -129,12 +132,14 @@ run_learning_step <- function(train_examples, test_examples) {
   ## tf-idf transformation
   tfidf = TfIdf$new()
   # fit model to train data and transform train data with fitted model
-  dtm_train_tfidf = fit_transform(dtm_train, tfidf)
   # tfidf modified by fit_transform() call!
+  dtm_train_tfidf = fit_transform(dtm_train, tfidf)
   
   end_time_learning <- Sys.time()
+  step_results <- empty_results_data_frame()
   step_results[1, "LearningDuration"] = sys_timing_to_time(start_time_learning, end_time_learning)
   
+
   start_time_application <- Sys.time()
   dtm_test <- create_dtm(it_test, vectorizer)
   # apply pre-trained tf-idf transformation to test data
@@ -147,75 +152,51 @@ run_learning_step <- function(train_examples, test_examples) {
          method = "cosine",
          norm = "l2")
   
-  #similarity_frame <- filter(as.data.frame(test_train_similarity), any_vars(. > 0))
-  
-  # print(dim(test_train_similarity))
-  # print(test_train_similarity[1:2, 1:2])
-  
+  # process the calculated similarities
   similarity_sums <- apply(test_train_similarity, 1, sum)
   sorted_similarity_sums <- sort(similarity_sums, decreasing = TRUE)
+
+  # select the lines to count as extracted
   filtered_similarity_sums <- sorted_similarity_sums[1:min(10,length(sorted_similarity_sums))] 
-  # print(head(similarity_sums))
-  # print(str(filtered_similarity_sums))
-  # print(head(filtered_similarity_sums))
-  # avg <- mean(filtered_similarity_sums)
-  # print(avg)
-  # print(filtered_similarity_sums)
-  # plot(filtered_similarity_sums)
-  
-  # print(names(filtered_similarity_sums))
   extracted_lines <-
     subset(test_lines, id %in% names(filtered_similarity_sums))
+  step_results[1, "TestOutput"] <-
+    join_extracted_lines(extracted_lines[["lines"]])
   
-  # print(extracted_lines)
-  # print(paste(extracted_lines["lines"], sep = "\n"))
   end_time_application <- Sys.time()
   step_results[1, "ApplicationDuration"] <-
     sys_timing_to_time(start_time_application, end_time_application)
-  step_results[1, "TestOutput"] <-
-    join_extracted_lines(extracted_lines["lines"])
+  
   return(step_results)
 }
 
-main <- function() {
+run_ir_extraction <- function() {
   verb <- opt_get_verb()
-  if (verb == "") {
-    verb <- "evaluate"
-    # anlayze options
-    file <- "connectbot@connectbot/3.log"
-    # common options
-    program <- "android-failure"
-    # evluate options
-    selection <- "manual"
-    include_inputs <- FALSE
-    test_count <- 1
-    learning_step_count <- 3
-    run_evaluation(program,
-                   selection,
-                   include_inputs,
-                   test_count,
-                   learning_step_count)
+  
+  if (verb != "evaluate" && verb != "analyze") {
+    ## default behaviour: evaluate
+    run_evaluation(program = "android-failure",
+                   selection = "manual",
+                   include_inputs = FALSE,
+                   test_count = 1,
+                   learning_step_count = 3,
+                   verbose = TRUE)
   } else {
     program <- opt_get("program")
-    verbose <- opt_get("verbose")
+    verbose <- opt_get("verbose", n = 0)
+
     if (verb == "evaluate") {
-      selection <- opt_get("selection")
-      include_inputs <- opt_get("include-inputs", n = 0)
-      test_count <- as.integer(opt_get("test-count"))
-      learning_step_count <-
-        as.integer(opt_get("learning-step-count"))
-      run_evaluation(program,
-                     selection,
-                     include_inputs,
-                     test_count,
-                     learning_step_count)
+      run_evaluation(program = program,
+                     selection = opt_get("selection"),
+                     include_inputs = opt_get("include-inputs", n = 0),
+                     test_count = as.integer(opt_get("test-count")),
+                     learning_step_count = as.integer(opt_get("learning-step-count")),
+                     verbose = verbose)
+
     } else if (verb == "analyze") {
-      file <- opt_get("file")
-      cat(run_analysis(program, file))
-    } else {
-      print(opt_help())
+      cat(run_analysis(program = program, file = opt_get("file")))
     }
   }
 }
 
-main()
+run_ir_extraction()

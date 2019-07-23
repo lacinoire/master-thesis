@@ -40,7 +40,7 @@ class Optparser
         options.example_set = example_set
       end
 
-      opts.on("-p", "--path PATH", "The path to the file to be analyzed") do |file_path|
+      opts.on("-p", "--path PATH", "The path to the file to be analyzed relative to the 'tool/samples' folder") do |file_path|
         options.file_path = file_path
       end
 

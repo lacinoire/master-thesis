@@ -5,10 +5,19 @@ Welcome to the thesis repo 😊
 ## Try it yourself!
 
 ``` shell
-> git clone git@github.com:lacinoire/master-thesis.git
-> cd master-thesis/tool
-> ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
-> ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+git clone git@github.com:lacinoire/master-thesis.git
+```
+
+``` shell
+cd master-thesis/tool
+```
+
+``` shell
+ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+```
+
+``` shell
+ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
 ```
 
 Find a more in-depth documentation of our extraction possibilities [here](tool/readme.md)!

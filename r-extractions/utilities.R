@@ -97,44 +97,6 @@ split_labeled_examples <- function(examples,  output_path) {
   }
 }
 
-## create a matrix for the documents at the location output_path
-create_term_document_matrix <- function(output_path) {
-  corpus <- VCorpus(DirSource(output_path, encoding = "UTF-8"))
-  # corpus <- tm_map(corpus, stripWhitespace) # remove white spaces
-  # corpus <- tm_map(corpus, removeNumbers)   # remove numbers
-  # corpus <- tm_map(corpus, removePunctuation) # remove punctuation
-  # corpus <- tm_map(corpus, content_transformer(tolower)) # transform everything to lower case
-  # # Apply stopword lists
-  # corpus <- tm_map(corpus, removeWords, stopwords("en"))
-  # corpus <- tm_map(corpus, removeWords, stopwords(language = "en", source = "smart"))
-  # corpus <- tm_map(corpus, removeWords, stopwords(language = "en", source = "snowball"))
-  # corpus <- tm_map(corpus, removeWords, stopwords(language = "en", source = "stopwords-iso"))
-  # corpus <- tm_map(corpus, removeWords, c("abstract", "assert","boolean","break","byte", "case","catch","char","continue","default","do","double","else","enum","extends","final","finally","float","for","if","implements","import","instanceof","int","interface","long","native","new","package","private","protected","public","return","short","static","strictfp","super","syncronized","this","throw","throws","transient","try","void","volatile","while","goto","const","java", "class", "import","github", "http", "html", "for", "while", "then", "private", "public", "protected", "try", "catch","instead","https","http","href","ibm","throw","throws","clone","javadoc","bug", "string","method","list","array","object"))
-  # # Applying stemming
-  # corpus <- tm_map(corpus, stemDocument, language = "english")
-  
-  # print(corpus)
-  # wordcloud(
-  #   corpus,
-  #   min.freq = 5,
-  #   random.order = FALSE,
-  #   colors = brewer.pal(8, "Dark2")
-  # )
-  # 7. Build the document-by-term matrix
-  tdm <-
-    DocumentTermMatrix(corpus,
-                       control = list(
-                         tokenize = Regexp_Tokenizer("\\s+"),
-                         wordLengths = c(1, Inf),
-                         bounds = list(global = c(2, Inf))
-                       ))
-  # https://stackoverflow.com/a/13961302/6456126
-  rowTotals <-
-    apply(tdm , 1, sum) #Find the sum of words in each Document
-  tdm.new   <-
-    tdm[rowTotals > 0, ]           #remove all docs without words
-  return(tdm)
-}
 
 ## escape all things in a string that would be regex special things
 escapeStringAsNotRegex <- function(x = character()) {
@@ -186,6 +148,16 @@ empty_results_data_frame <- function() {
 
 ## concatenates the extracted lines from line-based exractions
 join_extracted_lines <- function(lines) {
-  x <- paste(lines[["lines"]], sep = "", collapse = "\n")
+  x <- paste(lines, sep = "", collapse = "\n")
   return(x)
+}
+
+## build the string identifying an evaluation run
+evaluation_identification <-
+  function(technique,
+           program,
+           selection,
+           test_count,
+           learning_step_count) {
+  return(paste(program, technique, selection, test_count, learning_step_count, sep = "-"))
 }

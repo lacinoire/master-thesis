@@ -27,7 +27,7 @@ Specific options:
     -a, --action ACTION              Either run an extraction for a example set ('analyze') or run the whole evaluation of it ('evaluate')
     -t, --technique TECHNIQUE        The technique used for creating the extraction program (pbe, ir, keyword, random)
     -e, --example-set EXAMPLE_SET    The filename of the example set to use
-    -p, --path PATH                  The path to the file to be analyzed
+    -p, --path PATH                  The path to the file to be analyzed, relative to the 'tool/samples' folder
     -s, --selection SELECTION        The example sequence selection technique to use for evaluation (chronological, random, manual (= like defined in file))
     -l, --learning-step-count COUNT  How many steps with increasing example set size to do during evaluation
     -c, --test-count COUNT           How many test files to evaluate the generated program in each learning step of the evaluation
@@ -64,13 +64,13 @@ Execution failed for task ':app:testDebugUnitTest'.
 #### Programming by Example
 Caution! this will take about 20 minutes to run
 ``` shell
-> ruby run-extraction.rb -a analyze -t pbe -e android-failure-with-dependencies -p connectbot@connectbot/779.log
+ruby run-extraction.rb -a analyze -t pbe -e android-failure-with-dependencies -p connectbot@connectbot/779.log
 ```
 
 Output:
 ``` txt
 Execution failed for task ':app:testDebugUnitTest'.
-> There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
+There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
 ```
 
 ### Travis Worker Short
@@ -78,7 +78,7 @@ Execution failed for task ':app:testDebugUnitTest'.
 #### Information Retrieval
 
 ``` shell
-> ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
 ```
 
 Output:
@@ -92,7 +92,7 @@ GOOS="linux"
 #### Programming by Example
 
 ``` shell
-> ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
 ```
 
 Output:
