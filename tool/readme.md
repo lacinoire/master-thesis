@@ -1,3 +1,5 @@
+<script src="https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab.js"></script>
+
 # Our research prototype for you! To try all our analyses yourself :)
 
 This folder should contain all the necessary out & input for you to try out our build log information extraction tool.
@@ -47,7 +49,8 @@ Common options:
 ruby run-extraction.rb -a analyze -t ir -e android-failure-with-dependencies -p connectbot@connectbot/779.log
 ```
 
-Output:
+<details>
+  <summary>Output:</summary>
 
 ``` txt
 3.4 You agree that you will not take any actions that may cause or result in the fragmentation of Android, including but not limited to distributing, participating in the creation of, or promoting in any way a software development kit derived from the SDK.
@@ -62,6 +65,8 @@ Reading library jar [/usr/local/android-sdk-24.0.2/platforms/android-23/optional
 Execution failed for task ':app:testDebugUnitTest'.
 ```
 
+</details>
+
 #### Programming by Example
 
 Caution! this will take about 20 minutes to run
@@ -70,12 +75,15 @@ Caution! this will take about 20 minutes to run
 ruby run-extraction.rb -a analyze -t pbe -e android-failure-with-dependencies -p connectbot@connectbot/779.log
 ```
 
-Output:
+<details>
+  <summary>Output:</summary>
 
 ``` txt
 Execution failed for task ':app:testDebugUnitTest'.
 There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
 ```
+
+</details>
 
 #### Keyword
 
@@ -83,7 +91,8 @@ There were failing tests. See the report at: file:///home/travis/build/connectbo
 ruby run-extraction.rb -a analyze -t keyword -k failed -p connectbot@connectbot/779.log
 ```
 
-Output:
+<details>
+  <summary>Output:</summary>
 
 ``` txt
 invoke-rc.d: initscript dbus, action "force-reload" failed.
@@ -95,18 +104,23 @@ FAILURE: Build failed with an exception.
 Execution failed for task ':app:testDebugUnitTest'.
 ```
 
+</details>
+
 #### Regex
 
 ``` shell
 ruby run-extraction.rb -a analyze -t regex -r "(?<=wrong:\n).*?(?=\n\n)" -p connectbot@connectbot/779.log
 ```
 
-Output:
+<details>
+  <summary>Output:</summary>
 
 ``` txt
 Execution failed for task ':app:testDebugUnitTest'.
 > There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
 ```
+
+</details>
 
 #### Random
 
@@ -114,7 +128,8 @@ Execution failed for task ':app:testDebugUnitTest'.
 ruby run-extraction.rb -a analyze -t random -e android-failure-with-dependencies -p connectbot@connectbot/779.log
 ```
 
-Output:
+<details>
+  <summary>Output:</summary>
 
 ``` txt
 Get:125 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libgdk-pixbuf2.0-dev amd64 2.26.1-1ubuntu1.3 [51.3 kB]
@@ -122,6 +137,8 @@ Get:125 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libgdk-pixbuf2
 Receiving objects:  90% (2358/2619)   
   Unzipping Android Support Library, revision 23.1 (43%)
 ```
+
+</details>
 
 ### Travis Worker Short
 
@@ -131,7 +148,9 @@ Receiving objects:  90% (2358/2619)
 ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
 ```
 
-Output:
+<details>
+  <summary>Output:</summary>
+
 ``` txt
 Using worker: worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 Target: x86_64-unknown-linux-gnu
@@ -139,16 +158,22 @@ GOHOSTOS="linux"
 GOOS="linux"
 ```
 
+</details>
+
 #### Programming by Example
 
 ``` shell
 ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
 ```
 
-Output:
+<details> 
+  <summary>Output:</summary>
+
 ``` txt
 worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 ```
+
+</details>
 
 #### Keyword
 
@@ -156,12 +181,15 @@ worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 ruby run-extraction.rb -a analyze -t keyword -k worker -p facebookgo@rocks-strata/166107245.log
 ```
 
-Output:
+<details> 
+  <summary>Output:</summary>
 
 ``` txt
 Using worker: worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 [33;1mSee https://docs.travis-ci.com/user/workers/container-based-infrastructure/ for details.[0m
 ```
+
+</details>
 
 #### Regex
 
@@ -169,11 +197,14 @@ Using worker: worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 ruby run-extraction.rb -a analyze -t regex -r "(?<=worker: ).*?(?=\n)" -p facebookgo@rocks-strata/166107245.log
 ```
 
-Output:
+<details> 
+  <summary>Output:</summary>
 
 ``` txt
 worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 ```
+
+</details>
 
 #### Random
 
@@ -181,8 +212,11 @@ worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 ruby run-extraction.rb -a analyze -t random -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
 ```
 
-Output:
+<details>
+  <summary>Output:</summary>
 
 ``` txt
 [34m[1mPhantomJS version[0m
 ```
+
+</details>

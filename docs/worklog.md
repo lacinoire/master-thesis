@@ -1,4 +1,16 @@
+<script src="https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab.js"></script>
+
 # Carolin Master Thesis Work Log
+
+## 23.7.19
+
+- Implemented:
+  - keyword search
+  - random baseline
+  - manual regex extraction
+- added all to unification tool
+- expanded examples
+- collapsible sections in readmes
 
 ## 22.7.19
 
@@ -90,6 +102,9 @@
 - meeting with Andy about PhD positions within TestShift
 - phd meeting review with Michi
 
+<details>
+  <summary>June</summary>
+
 ## 28.6.19
 
 - get Annibales tool for IR to run
@@ -104,6 +119,7 @@
 
 - setup R to run Annibales tool
 - design second model of meta model from buildlog analysis results
+
 
 ## 25.6.19
 
@@ -192,6 +208,11 @@
 - reading paper about mining buildlogs
 - update to moritz and annibale on mattermost
 - morning paper about ci for ml models
+
+</details>
+
+<details>
+  <summary>May</summary>
 
 ## 31.5.19
 
@@ -306,6 +327,11 @@
 - Prepared meeting with Moritz
 - Discussed with Moritz about "final" study idea & mid-term ToDos
 - Import paper & thesis template
+
+</details>
+
+<details>
+  <summary>April</summary>
 
 ## 30.4.19
 
@@ -432,3 +458,5 @@
 - Created time plan
 - Put me on the website as a guest
 - Said hello to a lot of people
+
+</details>
