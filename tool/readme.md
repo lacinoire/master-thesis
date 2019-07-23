@@ -44,10 +44,11 @@ Common options:
 #### Information Retrieval
 
 ``` shell
-> ruby run-extraction.rb -a analyze -t ir -e android-failure-with-dependencies -p connectbot@connectbot/779.log
+ruby run-extraction.rb -a analyze -t ir -e android-failure-with-dependencies -p connectbot@connectbot/779.log
 ```
 
 Output:
+
 ``` txt
 3.4 You agree that you will not take any actions that may cause or result in the fragmentation of Android, including but not limited to distributing, participating in the creation of, or promoting in any way a software development kit derived from the SDK.
 3.4 You agree that you will not take any actions that may cause or result in the fragmentation of Android, including but not limited to distributing, participating in the creation of, or promoting in any way a software development kit derived from the SDK.
@@ -62,15 +63,64 @@ Execution failed for task ':app:testDebugUnitTest'.
 ```
 
 #### Programming by Example
+
 Caution! this will take about 20 minutes to run
+
 ``` shell
 ruby run-extraction.rb -a analyze -t pbe -e android-failure-with-dependencies -p connectbot@connectbot/779.log
 ```
 
 Output:
+
 ``` txt
 Execution failed for task ':app:testDebugUnitTest'.
 There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
+```
+
+#### Keyword
+
+``` shell
+ruby run-extraction.rb -a analyze -t keyword -k failed -p connectbot@connectbot/779.log
+```
+
+Output:
+
+``` txt
+invoke-rc.d: initscript dbus, action "force-reload" failed.
+invoke-rc.d: initscript udev, action "reload" failed.
+start: Job failed to start
+invoke-rc.d: initscript bluetooth, action "start" failed.
+26 tests completed, 1 failed
+FAILURE: Build failed with an exception.
+Execution failed for task ':app:testDebugUnitTest'.
+```
+
+#### Regex
+
+``` shell
+ruby run-extraction.rb -a analyze -t regex -r "(?<=wrong:\n).*?(?=\n\n)" -p connectbot@connectbot/779.log
+```
+
+Output:
+
+``` txt
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///home/travis/build/connectbot/connectbot/app/build/reports/tests/debug/index.html
+```
+
+#### Random
+
+``` shell
+ruby run-extraction.rb -a analyze -t random -e android-failure-with-dependencies -p connectbot@connectbot/779.log
+```
+
+Output:
+
+``` txt
+Get:125 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libgdk-pixbuf2.0-dev amd64 2.26.1-1ubuntu1.3 [51.3 kB]
+1.3 "Google" means Google Inc., a Delaware corporation with principal place of business at 1600 Amphitheatre Parkway, Mountain View, CA 94043, United States.
+Receiving objects:  90% (2358/2619)   
+  Unzipping Android Support Library, revision 23.1 (43%)
 ```
 
 ### Travis Worker Short
@@ -98,4 +148,41 @@ ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@ro
 Output:
 ``` txt
 worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
+```
+
+#### Keyword
+
+``` shell
+ruby run-extraction.rb -a analyze -t keyword -k worker -p facebookgo@rocks-strata/166107245.log
+```
+
+Output:
+
+``` txt
+Using worker: worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
+[33;1mSee https://docs.travis-ci.com/user/workers/container-based-infrastructure/ for details.[0m
+```
+
+#### Regex
+
+``` shell
+ruby run-extraction.rb -a analyze -t regex -r "(?<=worker: ).*?(?=\n)" -p facebookgo@rocks-strata/166107245.log
+```
+
+Output:
+
+``` txt
+worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
+```
+
+#### Random
+
+``` shell
+ruby run-extraction.rb -a analyze -t random -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+```
+
+Output:
+
+``` txt
+[34m[1mPhantomJS version[0m
 ```
