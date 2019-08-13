@@ -18,7 +18,7 @@ Then run the data collection with
 bundle exec ruby collect-travis-logs.rb all
 ```
 
-If you do not want to select popular repositories from GHTorrent, but rather collect only for one repository, provide the programming language (used as folder name to structure the saved repositories/logs) and the respository slug (replacing `/` with `@` to not interfere with paths):
+If you do not want to select popular repositories from GHTorrent, but rather collect only for one repository, provide the programming language (used as folder name to structure the saved repositories/logs) and the respository slug:
 
 ``` console
 bundle exec ruby collect-travis-logs.rb <language> <slug>

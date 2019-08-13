@@ -179,6 +179,9 @@ class LogCollector
         next if build.jobs.empty?
 
         job_id = identify_job_with_state(build, state)
+        if job_id.class.name == 'Array'
+          job_id = job_id[0].id
+        end
         log = TravisRequester.retrieve_log_travis(job_id)
         save_logfile(log, lang, repo_slug, state, build)
         log_counter += 1
@@ -190,7 +193,7 @@ class LogCollector
   # find a job that has the given state, return the job_id
   def self.identify_job_with_state(build, state)
     build.jobs.each do |job|
-      return job.id if job.state == state..
+      return job.id if job.state == state
     end
   end
 
