@@ -1,0 +1,2825 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 99efe0fe-2c23-4c7e-b276-2eadeefea219@14515.wjb-2
+version: v3.5.0 https://github.com/travis-ci/worker/tree/77dbc57c72d00592aeb754773b712da843c7e00d
+instance: 668db122-1c3b-4885-8d86-f44ab4a2e9cf travis-ci-macos10.12-xcode8.3-1507738863 (via amqp)
+startup: 1m1.595877922s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: csharp
+Build id: 375658615
+Job id: 375658617
+Runtime kernel version: 16.7.0
+travis-build version: cbe49ea23
+travis_fold:end:system_info[0K
+[32;1mNetwork availability confirmed.[0m
+
+Fix WWDRCA Certificate
+Unable to delete certificate matching "0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75"security: AppleWWDRCA.cer: already in /Library/Keychains/System.keychain
+$ rvm use
+[32mUsing /Users/travis/.rvm/gems/ruby-2.4.2[0m
+/Users/travis/.travis/job_stages: line 476: yarn: command not found
+
+[31;1mC# support for Travis-CI is community maintained.[0m
+[31;1mPlease open any issues at https://github.com/travis-ci/travis-ci/issues/new and cc @joshua-anderson @akoeplinger @nterry[0m
+travis_fold:start:mono-install[0K[33;1mInstalling Mono[0m
+travis_time:start:241337d0[0K$ wget --retry-connrefused --waitretry=1 -O /tmp/mdk.pkg http://download.mono-project.com/archive/4.4.2/macos-10-universal/MonoFramework-MDK-4.4.2.macos10.xamarin.universal.pkg
+--2018-05-06 21:56:16--  http://download.mono-project.com/archive/4.4.2/macos-10-universal/MonoFramework-MDK-4.4.2.macos10.xamarin.universal.pkg
+Resolving download.mono-project.com... 72.21.81.200, 2606:2800:11f:17a5:191a:18d5:537:22f9
+Connecting to download.mono-project.com|72.21.81.200|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 317394278 (303M) [application/octet-stream]
+Saving to: ‘/tmp/mdk.pkg’
+
+/tmp/mdk.pkg          0%[                    ]       0  --.-KB/s               /tmp/mdk.pkg          1%[                    ]   5.95M  29.7MB/s               /tmp/mdk.pkg          5%[>                   ]  16.47M  41.1MB/s               /tmp/mdk.pkg          8%[>                   ]  25.40M  42.3MB/s               /tmp/mdk.pkg         11%[=>                  ]  34.84M  43.5MB/s               /tmp/mdk.pkg         14%[=>                  ]  43.92M  43.8MB/s               /tmp/mdk.pkg         18%[==>                 ]  56.43M  46.9MB/s               /tmp/mdk.pkg         22%[===>                ]  69.01M  49.1MB/s               /tmp/mdk.pkg         26%[====>               ]  81.01M  48.9MB/s               /tmp/mdk.pkg         31%[=====>              ]  94.90M  51.1MB/s               /tmp/mdk.pkg         34%[=====>              ] 104.26M  50.7MB/s               /tmp/mdk.pkg         38%[======>             ] 117.01M  51.8MB/s               /tmp/mdk.pkg         41%[=======>            ] 126.51M  51.4MB/s               /tmp/mdk.pkg         45%[========>           ] 136.97M  51.5MB/s               /tmp/mdk.pkg         47%[========>           ] 145.22M  50.8MB/s               /tmp/mdk.pkg         51%[=========>          ] 156.99M  51.3MB/s    eta 3s     /tmp/mdk.pkg         52%[=========>          ] 160.34M  50.6MB/s    eta 3s     /tmp/mdk.pkg         56%[==========>         ] 171.11M  50.0MB/s    eta 3s     /tmp/mdk.pkg         60%[===========>        ] 184.36M  51.9MB/s    eta 3s     /tmp/mdk.pkg         65%[============>       ] 197.44M  53.4MB/s    eta 3s     /tmp/mdk.pkg         68%[============>       ] 208.00M  53.6MB/s    eta 2s     /tmp/mdk.pkg         73%[=============>      ] 222.00M  54.0MB/s    eta 2s     /tmp/mdk.pkg         75%[==============>     ] 228.52M  52.0MB/s    eta 2s     /tmp/mdk.pkg         79%[==============>     ] 240.00M  52.0MB/s    eta 2s     /tmp/mdk.pkg         83%[===============>    ] 254.14M  53.7MB/s    eta 2s     /tmp/mdk.pkg         87%[================>   ] 266.25M  53.5MB/s    eta 1s     /tmp/mdk.pkg         89%[================>   ] 270.12M  51.4MB/s    eta 1s     /tmp/mdk.pkg         92%[=================>  ] 279.62M  50.4MB/s    eta 1s     /tmp/mdk.pkg         95%[==================> ] 288.51M  50.3MB/s    eta 1s     /tmp/mdk.pkg         99%[==================> ] 302.58M  51.2MB/s    eta 1s     /tmp/mdk.pkg        100%[===================>] 302.69M  51.2MB/s    in 5.9s    
+
+2018-05-06 21:56:22 (51.4 MB/s) - ‘/tmp/mdk.pkg’ saved [317394278/317394278]
+
+
+travis_time:end:241337d0:start=1525643776945204000,finish=1525643782903979000,duration=5958775000[0Ktravis_time:start:1975564e[0Kinstaller: Package name is Mono Framework
+installer: Installing at base path /
+installer:PHASE:Preparing for installation…
+installer:PHASE:Preparing the disk…
+installer:PHASE:Preparing Mono Framework…
+installer:PHASE:Waiting for other installations to complete…
+installer:PHASE:Configuring the installation…
+installer:STATUS:
+installer:%3.972059
+installer:PHASE:Writing files…
+installer:%5.711552
+installer:PHASE:Writing files…
+installer:%7.305671
+installer:PHASE:Writing files…
+installer:%9.696849
+installer:PHASE:Writing files…
+installer:%11.290968
+installer:PHASE:Writing files…
+installer:%14.479206
+installer:PHASE:Writing files…
+installer:%16.870384
+installer:PHASE:Writing files…
+installer:%18.464503
+installer:PHASE:Writing files…
+installer:%20.058622
+installer:PHASE:Writing files…
+installer:%20.855682
+installer:PHASE:Writing files…
+installer:%21.652741
+installer:PHASE:Writing files…
+installer:%24.043919
+installer:PHASE:Writing files…
+installer:%25.638038
+installer:PHASE:Writing files…
+installer:%28.029217
+installer:PHASE:Writing files…
+installer:%30.420395
+installer:PHASE:Writing files…
+installer:%32.811573
+installer:PHASE:Writing files…
+installer:%35.202752
+installer:PHASE:Writing files…
+installer:%38.390990
+installer:PHASE:Writing files…
+installer:%41.579227
+installer:PHASE:Writing files…
+installer:%43.970406
+installer:PHASE:Writing files…
+installer:%46.361584
+installer:PHASE:Writing files…
+installer:%48.752763
+installer:PHASE:Writing files…
+installer:%50.346881
+installer:PHASE:Writing files…
+installer:%51.941000
+installer:PHASE:Writing files…
+installer:%53.535119
+installer:PHASE:Writing files…
+installer:%55.129238
+installer:PHASE:Writing files…
+installer:%56.723357
+installer:PHASE:Writing files…
+installer:%58.317476
+installer:PHASE:Writing files…
+installer:%59.911595
+installer:PHASE:Writing files…
+installer:%62.302773
+installer:PHASE:Writing files…
+installer:%63.896892
+installer:PHASE:Writing files…
+installer:%65.491011
+installer:PHASE:Writing files…
+installer:%67.085130
+installer:PHASE:Writing files…
+installer:%67.882189
+installer:PHASE:Writing files…
+installer:%69.476308
+installer:PHASE:Writing files…
+installer:%70.273368
+installer:PHASE:Writing files…
+installer:%71.070427
+installer:PHASE:Writing files…
+installer:PHASE:Writing files…
+installer:%71.867487
+installer:PHASE:Writing files…
+installer:%73.461606
+installer:PHASE:Writing files…
+installer:%74.258665
+installer:PHASE:Writing files…
+installer:%75.055725
+installer:PHASE:Writing files…
+installer:%75.852784
+installer:PHASE:Writing files…
+installer:%76.649844
+installer:PHASE:Writing files…
+installer:%93.192470
+installer:PHASE:Running package scripts…
+installer:%93.608407
+installer:PHASE:Running package scripts…
+installer:%93.786622
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:%93.848448
+installer:PHASE:Writing package receipts…
+installer:PHASE:Validating packages…
+installer:%97.750000
+installer:STATUS:Running installer actions…
+installer:STATUS:
+installer:PHASE:Finishing the Installation…
+installer:STATUS:
+installer:%100.000000
+installer:PHASE:The software was successfully installed.
+installer: The install was successful.
+
+travis_time:end:1975564e:start=1525643782914419000,finish=1525643901666257000,duration=118751838000[0Ktravis_fold:end:mono-install[0Ktravis_fold:start:dotnet-install[0K[33;1mInstalling .NET Core[0m
+$ export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+$ export DOTNET_CLI_TELEMETRY_OPTOUT=1
+travis_time:start:12e444b3[0K==> Downloading https://homebrew.bintray.com/bottles-portable-ruby/portable-ruby-2.3.3_2.leopard_64.bottle.tar.gz
+######################################                                    53.4%#####################################################                     74.2%######################################################################## 100.0%
+==> Pouring portable-ruby-2.3.3_2.leopard_64.bottle.tar.gz
+Updated 2 taps (caskroom/cask, homebrew/core).
+[34m==>[0m [1mNew Formulae[0m
+amber
+angle-grinder
+annie
+apache-arrow-glib
+apm-server
+arcade-learning-environment
+arm-linux-gnueabihf-binutils
+asciidoctor
+asciidoctorj
+ask-cli
+auditbeat
+augustus
+autopep8
+avimetaedit
+aws-es-proxy
+ballerina
+bamtools
+bareos-client
+bcal
+bcftools
+bedops
+bedtools
+bioawk
+blast
+boost-python3
+bwa
+caffe
+calicoctl
+cglm
+chamber
+chrome-export
+clblast
+click
+cling
+clingo
+composer
+console_bridge
+container-diff
+coreos-ct
+cp2k
+cquery
+csvkit
+darksky-weather
+dartsim
+dashing
+ddgr
+deark
+defaultbrowser
+deployer
+diamond
+dislocker
+dnsdist
+docker-ls
+docker-squash
+dps8m
+draco
+dynare
+e2tools
+elasticsearch@5.6
+elektra
+envconsul
+fastme
+fastqc
+fbi-servefiles
+fcl
+field3d
+flintrock
+fruit
+fselect
+futhark
+gcc@7
+genact
+genometools
+ghc@8.2
+gifski
+git-appraise
+git-sizer
+gitlab-gem
+glances
+glib-openssl
+glslviewer
+go-bindata
+go-jira
+go-statik
+go@1.9
+gocryptfs
+google-authenticator-libpam
+goto
+gox
+gpredict
+gr-osmosdr
+graph-tool
+grv
+gtksourceview@4
+gutenberg
+hapi-fhir-cli
+hcloud
+heartbeat
+hlint
+hmmer
+howdoi
+hss
+htslib
+icemon
+igv
+inspectrum
+iron-functions
+jabba
+jdupes
+joplin
+jrtplib
+jsonrpc-glib
+jthread
+just
+kaitai-struct-compiler
+kallisto
+kedge
+keystone
+kibana@5.6
+kontena
+krakend
+kube-ps1
+kubeless
+kumo
+lammps
+latexdiff
+lgogdownloader
+libbi
+libbitcoin-client
+libbitcoin-consensus
+libbitcoin-database
+libbitcoin-network
+libccd
+libdazzle
+libde265
+libdill
+libidn2
+libjwt
+libomp
+libplctag
+libsbol
+libserialport
+libtomcrypt
+libxo
+llvm@5
+lm4tools
+lmod
+lzfse
+mafft
+mariadb-connector-odbc
+massren
+maxwell
+mdcat
+meson-internal
+mill
+mint
+mkl-dnn
+mmseqs2
+monero
+mongodb@3.4
+mpir
+mrboom
+neal
+neomutt
+netdata
+node@8
+nopoll
+ocaml-findlib
+ocaml-num
+ocrmypdf
+octomap
+odpi
+opencascade
+openimageio
+orocos-kdl
+parallelstl
+patchelf
+petsc
+php-code-sniffer
+php-cs-fixer
+phplint
+phpunit
+picard-tools
+pinboard-notes-backup
+pipenv
+plank
+posh
+postgresql@9.6
+primer3
+prodigal
+pspg
+python@2
+qpid-proton
+qsoas
+qtkeychain
+quicktype
+rawtoaces
+raylib
+rbenv-chefdk
+restic
+restview
+rst-lint
+rsync-time-backup
+rtptools
+samtools
+sc-im
+sceptre
+scrcpy
+seqtk
+shelltestrunner
+shogun
+sickle
+simg2img
+singular
+siril
+skaffold
+skafos
+spades
+sratoolkit
+srt
+ssh-permit-a38
+stellar-core
+stm32flash
+stress-ng
+swift-protobuf
+telnetd
+template-glib
+terraform_landscape
+terraforming
+tj
+tmux-xpanes
+tnftp
+tnftpd
+tomcat@8
+tox
+traefik
+travis
+trezor-agent
+unp64
+unravel
+urdfdom
+urdfdom_headers
+util-linux
+vcftools
+vert
+vis
+visp
+webtorrent-cli
+woff2
+wp-cli
+xidel
+yamllint
+ydcv
+yq
+zig
+zip
+[34m==>[0m [1mUpdated Formulae[0m
+[1mautomake [32m✔[0m[0m
+[1mboost [32m✔[0m[0m
+[1mcarthage [32m✔[0m[0m
+[1mcgal [32m✔[0m[0m
+[1mcmake [32m✔[0m[0m
+[1mcoreutils [32m✔[0m[0m
+[1mfreexl [32m✔[0m[0m
+[1mgdal [32m✔[0m[0m
+[1mgdbm [32m✔[0m[0m
+[1mgit [32m✔[0m[0m
+[1mgmp [32m✔[0m[0m
+[1mgnupg [32m✔[0m[0m
+[1mgnutls [32m✔[0m[0m
+[1mgo [32m✔[0m[0m
+[1mgpg-agent [32m✔[0m[0m
+[1micu4c [32m✔[0m[0m
+[1mjpeg [32m✔[0m[0m
+[1mlibassuan [32m✔[0m[0m
+[1mlibgcrypt [32m✔[0m[0m
+[1mlibgeotiff [32m✔[0m[0m
+[1mlibgpg-error [32m✔[0m[0m
+[1mliblwgeom [32m✔[0m[0m
+[1mlibspatialite [32m✔[0m[0m
+[1mlibtasn1 [32m✔[0m[0m
+[1mlibtiff [32m✔[0m[0m
+[1mlibunistring [32m✔[0m[0m
+[1mlibusb [32m✔[0m[0m
+[1mlibxml2 [32m✔[0m[0m
+[1mlzlib [32m✔[0m[0m
+[1mmaven [32m✔[0m[0m
+[1mmercurial [32m✔[0m[0m
+[1mmpfr [32m✔[0m[0m
+[1mnettle [32m✔[0m[0m
+[1mnode [32m✔[0m[0m
+[1mopenssl [32m✔[0m[0m
+[1mopenssl@1.1 [32m✔[0m[0m
+[1mp11-kit [32m✔[0m[0m
+[1mpcre [32m✔[0m[0m
+[1mpinentry [32m✔[0m[0m
+[1mpostgis [32m✔[0m[0m
+[1mpostgresql [32m✔[0m[0m
+[1mproj [32m✔[0m[0m
+[1mpyenv [32m✔[0m[0m
+[1mpython [32m✔[0m[0m
+[1mreadline [32m✔[0m[0m
+[1msfcgal [32m✔[0m[0m
+[1msqlite [32m✔[0m[0m
+[1mswiftlint [32m✔[0m[0m
+[1mwget [32m✔[0m[0m
+[1mxctool [32m✔[0m[0m
+abcde
+abcm2ps
+abcmidi
+abnfgen
+abyss
+ace
+aces_container
+ack
+acme
+acmetool
+acpica
+activemq
+adplug
+advancecomp
+advancemame
+adwaita-icon-theme
+afl-fuzz
+afsctool
+agda
+agedu
+aircrack-ng
+akamai
+alexjs
+algernon
+allegro
+allure
+alot
+amazon-ecs-cli
+ammonite-repl
+amqp-cpp
+angband
+angular-cli
+anjuta
+ansible
+ansible-cmdb
+ansible-lint
+ansifilter
+ant
+antigen
+antlr
+antlr4-cpp-runtime
+apache-arrow
+apache-drill
+apache-geode
+apache-opennlp
+apache-spark
+apibuilder-cli
+apktool
+app-engine-java
+app-engine-python
+appscale-tools
+apr
+apr-util
+aptly
+aqbanking
+arangodb
+archivemount
+argon2
+argus-clients
+argyll-cms
+aria2
+armadillo
+armor
+arpack
+artifactory
+arx
+asciidoc
+asciinema
+asdf
+asio
+aspcud
+aspectj
+assh
+assimp
+astyle
+at-spi2-atk
+at-spi2-core
+atari800
+atdtool
+atk
+atkmm
+atlassian-cli
+ats2-postiats
+aubio
+audacious
+augeas
+aurora-cli
+autoconf-archive
+autogen
+autossh
+awf
+aws-elasticbeanstalk
+aws-sdk-cpp
+aws-shell
+awscli
+azure-cli
+b2-tools
+babeld
+babl
+backupninja
+bacula-fd
+bam
+bandcamp-dl
+baobab
+baresip
+bartycrouch
+basex
+bash
+bash-completion@2
+bash-git-prompt
+bash-preexec
+bash-snippets
+bazaar
+bazel
+bchunk
+bcpp
+bdw-gc
+bear
+beast
+bee
+bench
+bento4
+bettercap
+betty
+bfg
+bibtex2html
+bibtexconv
+bigloo
+binaryen
+bind
+bindfs
+binutils
+binwalk
+biogeme
+bit
+bitcoin
+bitrise
+blackbox
+blastem
+blink1
+blockhash
+bluepill
+blueutil
+bmake
+bochs
+bokken
+boost-bcp
+boost-build
+boost-mpi
+boost-python
+boost-python@1.59
+boost@1.55
+boost@1.57
+boost@1.59
+boost@1.60
+bork
+botan
+bower
+bowtie2
+braid
+brew-gem
+bro
+brotli
+bsponmpi
+btfs
+bubbros
+buildapp
+buildifier
+buku
+burp
+bwfmetaedit
+byobu
+byteman
+bzt
+c-ares
+c14-cli
+cabal-install
+caddy
+caf
+cairo
+cake
+calabash
+calc
+calcurse
+camlp4
+camlp5
+cargo-completion
+cask
+casperjs
+cassandra
+cassandra@2.2
+castxml
+cattle
+cayley
+cc65
+ccache
+ccm
+cdk
+ceres-solver
+certbot
+certigo
+cfengine
+cfitsio
+cfr-decompiler
+cfssl
+cgrep
+chakra
+chapel
+charm
+charm-tools
+cheat
+check
+check_postgres
+checkbashisms
+checkstyle
+chezscheme
+chibi-scheme
+chicken
+chisel
+chocolate-doom
+chromaprint
+chronograf
+chuck
+cimg
+citus
+cjdns
+ckan
+clac
+clamav
+clang-format
+clearlooks-phenix
+clhep
+cli53
+cliclick
+clinfo
+clipper
+cloc
+clojure
+clojurescript
+cloog
+closure-compiler
+clutter
+clutter-gst
+clutter-gtk
+cmark
+cmark-gfm
+cnats
+cockatrice
+cockroach
+cocoapods
+cocot
+codemod
+coffeescript
+cogl
+collectd
+collector-sidecar
+commandbox
+compcert
+conan
+conjure-up
+consul
+consul-backinator
+consul-template
+convmv
+convox
+cookiecutter
+coq
+corebird
+corsixth
+coturn
+couchdb
+couchdb-lucene
+cpanminus
+cppad
+cppcheck
+cppcms
+cpprestsdk
+cracklib
+credstash
+creduce
+cromwell
+crosstool-ng
+crowdin
+cryfs
+cryptol
+cryptopp
+crystal-icr
+crystal-lang
+csvtomd
+ctl
+ctop
+cucumber-cpp
+curl
+cvs2svn
+cython
+czmq
+daemonize
+dar
+darcs
+dash
+datamash
+datetime-fortran
+dateutils
+datomic
+davix
+davmail
+dbhash
+dbus
+dbus-glib
+dcd
+dcm2niix
+dcmtk
+dcos-cli
+ddrescue
+debianutils
+dehydrated
+deja-gnu
+dep
+dependency-check
+derby
+devd
+dfix
+dfmt
+dhall-json
+di
+dialog
+diff-pdf
+diff-so-fancy
+diffoscope
+diffuse
+digdag
+direnv
+discount
+distcc
+ditaa
+django-completion
+dlib
+dmd
+dmenu
+dmtx-utils
+dnscrypt-proxy
+dnscrypt-wrapper
+dnsmasq
+docfx
+docker
+docker-completion
+docker-compose
+docker-compose-completion
+docker-gen
+docker-machine
+docker-machine-completion
+docker-machine-nfs
+docker2aci
+dockviz
+doctl
+doitlive
+dovecot
+doxygen
+doxymacs
+dpkg
+dropbear
+druid
+dscanner
+dspdfviewer
+dssim
+dtc
+dub
+duc
+duck
+dungeon
+duo_unix
+duplicity
+duply
+duti
+dvm
+dwarfutils
+dwdiff
+dxpy
+dynamips
+e2fsprogs
+easy-tag
+easyrpg-player
+ebook-tools
+ecl
+editorconfig
+efl
+eiffelstudio
+ejabberd
+elasticsearch
+elasticsearch@2.4
+elixir
+elvish
+emacs-clang-complete-async
+embulk
+emscripten
+encfs
+enchant
+enigma
+entr
+ephemeralpg
+eralchemy
+erlang
+erlang@18
+erlang@19
+etcd
+etsh
+evince
+exempi
+exiftool
+exim
+exomizer
+expat
+expect
+exploitdb
+eye-d3
+f3
+faac
+faad2
+faas-cli
+fabio
+fades
+fail2ban
+fantom
+fastbit
+fb-client
+fceux
+fcitx-remote-for-osx
+fd
+fdclone
+fdk-aac
+fdroidserver
+feedgnuplot
+feh
+fetch-crl
+ffe
+ffmbc
+ffmpeg
+ffmpeg2theora
+ffmpeg@2.8
+ffmpegthumbnailer
+ffms2
+fftw
+fibjs
+fifechan
+fig2dev
+file-formula
+file-roller
+filebeat
+fio
+firebase-cli
+fish
+fits
+fizmo
+flake8
+flann
+flashrom
+flatbuffers
+flatcc
+flawfinder
+flow
+fltk
+fluent-bit
+fluid-synth
+flyway
+fmt
+fn
+fobis
+folly
+fon-flash-cli
+fontconfig
+fontforge
+fonttools
+forego
+format-udf
+fossil
+fox
+fpc
+fq
+freeciv
+freediameter
+freedink
+freeipmi
+freeling
+freeradius-server
+freeswitch
+freetds
+freetype
+frege
+fribidi
+frobtads
+frugal
+fswatch
+fuego
+fuse-emulator
+fuse-zip
+fuseki
+fwup
+fzf
+g3log
+gabedit
+galen
+game-music-emu
+gammaray
+gammu
+gandi.cli
+ganglia
+gauge
+gawk
+gbdfed
+gcab
+gcc
+gcc@4.9
+gcc@5
+gcc@6
+gcovr
+gdb
+gdcm
+gdk-pixbuf
+gdl
+gdmap
+gdnsd
+gearman
+geckodriver
+gecode
+gedit
+geeqie
+gegl
+generate-json-schema
+geocode-glib
+geoip
+geoipupdate
+geoserver
+gerbv
+get-flash-videos
+get_iplayer
+getdns
+getmail
+gexiv2
+gforth
+ghc
+ghex
+ghi
+ghostscript
+gibo
+giflossy
+gifsicle
+gimme
+ginac
+gist
+git-annex
+git-archive-all
+git-cinnabar
+git-cola
+git-crypt
+git-extras
+git-fixup
+git-fresh
+git-ftp
+git-imerge
+git-integration
+git-lfs
+git-quick-stats
+git-recent
+git-remote-hg
+git-review
+git-secret
+git-standup
+git-town
+gitbucket
+gitfs
+gitg
+github-keygen
+gitlab-runner
+gitless
+gitup
+gjs
+gjstest
+gkrellm
+glade
+glassfish
+glbinding
+glib
+glib-networking
+glibmm
+glide
+global
+globus-toolkit
+glog
+glpk
+glslang
+gmic
+gmime
+gmsh
+gmt
+gmt@4
+gnatsd
+gnome-autoar
+gnome-builder
+gnome-doc-utils
+gnome-recipes
+gnome-themes-standard
+gnu-cobol
+gnu-complexity
+gnu-sed
+gnu-smalltalk
+gnu-tar
+gnu-time
+gnu-units
+gnumeric
+gnupg@2.0
+gnuplot
+gnuplot@4
+gnuradio
+go@1.8
+goad
+gobby
+gobject-introspection
+gobuster
+gocr
+godep
+goenv
+gofabric8
+goffice
+gollum
+gom
+gomplate
+goocanvas
+goofys
+google-benchmark
+google-java-format
+googler
+goolabs
+goose
+gopass
+gosu
+gource
+govendor
+gpa
+gpatch
+gperftools
+gpgme
+gphoto2
+gpsbabel
+gqview
+gradle
+gradle-completion
+grafana
+grails
+grakn
+graphene
+graphicsmagick
+graphviz
+grc
+grib-api
+grip
+gromacs
+gron
+groonga
+groovy
+groovysdk
+groovyserv
+grpc
+grsync
+gsettings-desktop-schemas
+gsmartcontrol
+gsoap
+gspell
+gssdp
+gst-editing-services
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+gst-python
+gst-rtsp-server
+gst-validate
+gstreamer
+gstreamermm
+gtk+
+gtk+3
+gtk-chtheme
+gtk-doc
+gtk-engines
+gtk-gnutella
+gtk-mac-integration
+gtk-murrine-engine
+gtk-vnc
+gtkdatabox
+gtkextra
+gtkmm
+gtkmm3
+gtksourceview
+gtksourceview3
+gtksourceviewmm
+gtksourceviewmm3
+gtkspell3
+gucharmap
+guile
+guile@2.0
+gupnp
+gupnp-av
+gupnp-tools
+gwenhywfar
+gws
+gwt
+gwyddion
+gx
+gx-go
+gxml
+gzip
+h2
+h2o
+hackrf
+hadolint
+hadoop
+hamlib
+hana
+handbrake
+haproxy
+harfbuzz
+hashcat
+hashpump
+haskell-stack
+haste-client
+hatari
+haxe
+hayai
+hdf5
+hdf5@1.8
+headphones
+heimdal
+help2man
+henplus
+hercules
+heroku
+hexgui
+hfstospell
+hg-fast-export
+hg-flow
+hh
+highlight
+hive
+hivemind
+hledger
+homebank
+hopenpgp-tools
+hostess
+html-xml-utils
+htmlcleaner
+htmldoc
+htop
+httest
+http-parser
+http-server
+httpd
+httpie
+hubflow
+huexpress
+hugo
+hwloc
+hydra
+hyperscan
+hypre
+i2p
+ib
+ibex
+icarus-verilog
+ice
+icoutils
+ideviceinstaller
+idnits
+idris
+ilmbase
+imagemagick
+imagemagick@6
+imagesnap
+imake
+imapfilter
+imlib2
+immortal
+infer
+influxdb
+innotop
+inspircd
+instead
+internetarchive
+io
+iozone
+iperf3
+ipfs
+ipython
+ipython@5
+ircd-hybrid
+ironcli
+irssi
+isc-dhcp
+isl
+iso-codes
+ispc
+itstool
+ivykis
+jack
+jadx
+jags
+jansson
+javarepl
+jbake
+jbig2enc
+jboss-forge
+jena
+jenkins
+jenkins-job-builder
+jenkins-lts
+jetty
+jetty-runner
+jfrog-cli-go
+jhiccup
+jhipster
+jing-trang
+jmeter
+jmxtrans
+jnettop
+joe
+jpeg-turbo
+jpegoptim
+jq
+jruby
+json-fortran
+json-glib
+jsoncpp
+jsonnet
+jsvc
+juju
+juju-wait
+jump
+jupyter
+jvgrep
+jvm-mon
+kafka
+kanif
+kapacitor
+karn
+keepassc
+kerl
+keychain
+khal
+khard
+kibana
+kitchen-sync
+kite
+klavaro
+knot
+knot-resolver
+kobalt
+kompose
+konoha
+kops
+kotlin
+kpcli
+krb5
+kube-aws
+kubectx
+kubernetes-cli
+kubernetes-helm
+kvazaar
+kyoto-cabinet
+kyoto-tycoon
+kyua
+lablgtk
+lame
+landscaper
+languagetool
+lapack
+lasi
+lastpass-cli
+laszip
+latex2html
+latexila
+launch
+lbdb
+lcdf-typetools
+lcm
+ldc
+ldns
+lean
+lean-cli
+leaps
+ledger
+ledit
+legit
+leiningen
+lensfun
+leptonica
+less
+libass
+libatomic_ops
+libav
+libbitcoin
+libbitcoin-blockchain
+libbitcoin-explorer
+libbitcoin-node
+libbitcoin-server
+libbladerf
+libbluray
+libbpg
+libcanberra
+libcddb
+libcdio
+libcdr
+libcds
+libcello
+libchamplain
+libconfig
+libcouchbase
+libcue
+libdivecomputer
+libdvdcss
+libdvdnav
+libdvdread
+libebml
+libebur128
+libepoxy
+libetonyek
+libextractor
+libfabric
+libfaketime
+libfixbuf
+libfixposix
+libfreehand
+libfreenect
+libgaiagraphics
+libgdata
+libgee
+libgetdata
+libgig
+libgit2
+libgit2-glib
+libglade
+libglademm
+libgnomecanvas
+libgnomecanvasmm
+libgosu
+libgphoto2
+libgraphqlparser
+libgsf
+libgsm
+libgtop
+libgweather
+libhdhomerun
+libhttpseverywhere
+libical
+libidn
+libinfinity
+libjson-rpc-cpp
+liblas
+liblcf
+liblinear
+liblunar
+libmagic
+libmatio
+libmatroska
+libmaxminddb
+libmicrohttpd
+libmonome
+libmp3splt
+libmpc
+libmpdclient
+libmspub
+libmtp
+libmwaw
+libmxml
+libnice
+libnotify
+libofx
+libogg
+libopusenc
+libosinfo
+libosmium
+libp11
+libpagemaker
+libphonenumber
+libpq
+libpqxx
+libpst
+libqalculate
+libquvi
+librasterlite
+libraw
+librdkafka
+libre
+librealsense
+librem
+libressl
+librest
+librsvg
+librsync
+librtlsdr
+libsass
+libsecret
+libsigsegv
+libsodium
+libsoup
+libsoxr
+libspectre
+libspectrum
+libstfl
+libstrophe
+libswiften
+libtcod
+libtensorflow
+libtins
+libtorrent-rasterbar
+libtrace
+libtrng
+libu2f-host
+libu2f-server
+libucl
+libupnp
+libuv
+libvirt
+libvisio
+libvoikko
+libvorbis
+libvpx
+libwebsockets
+libwpg
+libwps
+libxc
+libxkbcommon
+libxlsxwriter
+libxslt
+libzdb
+libzip
+libzzip
+lighttpd
+link-grammar
+linkerd
+links
+liquibase
+liquid-dsp
+liquigraph
+little-cms
+little-cms2
+lldpd
+llnode
+llvm
+llvm@3.9
+llvm@4
+lmdb
+lnav
+loc
+log4cplus
+logentries
+logrotate
+logstalgia
+logstash
+logtalk
+lolcat
+lorem
+lsyncd
+lua
+lua@5.1
+luaver
+lumo
+lutok
+lwtools
+lxc
+lynis
+lysp
+lz4
+lzip
+mackup
+macosvpn
+macvim
+magic-wormhole
+mailutils
+mairix
+makensis
+makeself
+mame
+mapnik
+mapserver
+mariadb
+mariadb-connector-c
+mariadb@10.0
+mariadb@10.1
+mas
+masscan
+mat
+mawk
+maxima
+mbedtls
+mdds
+mdk
+mdp
+media-info
+mediaconch
+mednafen
+megacmd
+memcached
+menhir
+mesalib-glw
+meson
+mesos
+metabase
+metaproxy
+metricbeat
+mftrace
+mg
+mgba
+micro
+micropython
+midnight-commander
+mighttpd2
+mikutter
+miller
+mimic
+minbif
+mingw-w64
+minidlna
+minimal-racket
+minio
+minio-mc
+minisat
+minisign
+miniupnpc
+minizinc
+mitie
+mitmproxy
+mkclean
+mkdocs
+mksh
+mkvalidator
+mkvtoolnix
+mlt
+mlton
+mm-common
+moc
+mockserver
+moco
+modd
+modules
+molecule
+monetdb
+mongo-c-driver
+mongo-cxx-driver
+mongo-orchestration
+mongodb
+mongodb@3.0
+mongodb@3.2
+mongoose
+monit
+monitoring-plugins
+mono
+mono-libgdiplus
+moreutils
+mosh
+mosquitto
+mozjpeg
+mp3gain
+mpc
+mpd
+mpdas
+mpfi
+mpg123
+mpich
+mplayershell
+mps-youtube
+mpv
+mpw
+mr
+mruby
+msitools
+mu
+mujs
+multimarkdown
+mupdf
+mupdf-tools
+mutt
+mvnvm
+mycli
+mypy
+mysql
+mysql++
+mysql-connector-c++
+mysql-sandbox
+mysql@5.5
+mysql@5.6
+mytop
+nagios-plugins
+nailgun
+nano
+nanomsg
+nanomsgxx
+nanopb-generator
+nasm
+natalie
+nativefier
+nats-streaming-server
+ncdu
+ncmpc
+ncmpcpp
+nco
+ncrack
+ncurses
+ncview
+ndpi
+neko
+neo4j
+neofetch
+neovim
+nesc
+net-snmp
+netcdf
+nethack
+netpbm
+nexus
+nfdump
+nghttp2
+nginx
+ngrep
+nickle
+nicotine-plus
+nifi
+nikto
+nim
+nmap
+nmh
+nnn
+node-build
+node@4
+node@6
+nodebrew
+nodeenv
+nomad
+noti
+notmuch
+nq
+nrpe
+nsd
+nspr
+nsq
+nss
+ntl
+ntopng
+ntp
+nudoku
+nuget
+numpy
+nuttcp
+nuxeo
+nvc
+nvm
+nzbget
+ocaml
+ocamlbuild
+ocamlsdl
+octave
+ode
+offlineimap
+ohcount
+ola
+omniorb
+ompl
+onetime
+oniguruma
+onioncat
+onscripter
+ooniprobe
+opam
+open-babel
+open-mpi
+open-scene-graph
+openblas
+opencbm
+opencoarrays
+opencolorio
+opencv
+opencv@2
+opendetex
+openexr
+openfortivpn
+openjazz
+openldap
+openmotif
+openrct2
+openrtsp
+opensaml
+openshift-cli
+openslide
+openssh
+openttd
+openvdb
+openvpn
+ophcrack
+optipng
+opusfile
+orc
+orc-tools
+ortp
+osc
+oscats
+osm-gps-map
+osm2pgrouting
+osm2pgsql
+osmium-tool
+osquery
+osrm-backend
+ott
+overmind
+owfs
+p7zip
+pacapt
+packer
+packetbeat
+packetq
+packmol
+paket
+pam-u2f
+pam_yubico
+pandoc
+pandoc-citeproc
+pandoc-crossref
+pango
+pangomm
+paperkey
+paps
+par2
+parallel
+pari
+pass
+passenger
+passpie
+pastebinit
+payara
+pazpar2
+pbrt
+pc6001vx
+pcb
+pcb2gcode
+pcl
+pcre2
+pcsc-lite
+pdal
+pdf2htmlex
+pdf2svg
+pdfcrack
+pdfgrep
+pdfpc
+pdfsandwich
+pdftoedn
+pdftoipe
+pdns
+pdnsrec
+peco
+pegtl
+percona-server
+percona-server-mongodb
+percona-server@5.6
+percona-toolkit
+percona-xtrabackup
+perl
+perl@5.18
+pex
+pg_top
+pgbouncer
+pgcli
+pgformatter
+pgloader
+pgplot
+pgpool-ii
+pgroonga
+pgrouting
+phoronix-test-suite
+physfs
+pianobar
+pianod
+pick
+picocom
+pidgin
+pigz
+pike
+pilosa
+pioneer
+pioneers
+pipes-sh
+pius
+pjproject
+planck
+plantuml
+platformio
+pldebugger
+plplot
+plzip
+pmd
+pngquant
+poco
+pod2man
+points2grid
+polyml
+pony-stable
+ponyc
+ponysay
+poppler
+postgres-xc
+postgresql@9.4
+postgresql@9.5
+postgrest
+povray
+pow
+ppsspp
+pqiv
+pre-commit
+prefixsuffix
+prest
+presto
+primesieve
+prips
+proguard
+prometheus
+proof-general
+protobuf
+protobuf-c
+protobuf-swift
+protobuf@2.5
+psftools
+psqlodbc
+pstoedit
+ptex
+pugixml
+pulledpork
+pulseaudio
+pumba
+pure-ftpd
+purescript
+pushpin
+puzzles
+pwntools
+pxz
+py2cairo
+py3cairo
+pybind11
+pycodestyle
+pyexiv2
+pygobject
+pygobject3
+pygtk
+pygtkglext
+pygtksourceview
+pyinvoke
+pypy
+pypy3
+pyqt
+python-markdown
+pytouhou
+pyvim
+q
+qbs
+qca
+qcli
+qd
+qemu
+qjackctl
+qmmp
+qpdf
+qrupdate
+qscintilla2
+qt
+qtfaststart
+quantlib
+questdb
+quex
+r
+rabbitmq
+radamsa
+radare2
+rakudo-star
+rancher-cli
+rancid
+ranger
+ratfor
+rbenv-aliases
+rbenv-binstubs
+rbenv-bundle-exec
+rbenv-bundler
+rbenv-bundler-ruby-version
+rbenv-communal-gems
+rbenv-ctags
+rbenv-default-gems
+rbenv-gemset
+rbenv-use
+rbenv-vars
+rbenv-whatis
+rclone
+rdfind
+re2
+re2c
+rebar@3
+recon-ng
+recoverjpeg
+recutils
+redex
+redis
+redland
+redpen
+regex-opt
+remake
+remctl
+reminiscence
+reposurgeon
+resty
+rex
+rgbds
+rhash
+riemann
+ringojs
+ripgrep
+rkhunter
+rmlint
+robot-framework
+rocksdb
+rom-tools
+root
+roswell
+rpm
+rrdtool
+rsync
+rtags
+rtf2latex2e
+rtv
+ruby
+ruby-build
+ruby@1.8
+ruby@2.0
+ruby@2.2
+ruby@2.3
+rust
+rustup-init
+s-nail
+s-search
+s3-backer
+s3cmd
+s3fs
+s6
+sagittarius-scheme
+saldl
+saltstack
+sane-backends
+sassc
+saxon
+sbcl
+sbt
+sbt@0.13
+sbtenv
+scala
+scala@2.10
+scala@2.11
+scalaenv
+scalapack
+scalariform
+scalastyle
+scale2x
+scamper
+sccache
+schismtracker
+scipy
+scm-manager
+scons
+screen
+scummvm
+scummvm-tools
+scw
+sdb
+sdcc
+sdf
+sdl2
+sdl2_gfx
+sdl2_image
+sdl2_mixer
+sdl_gfx
+sdl_mixer
+sdlpop
+sec
+securefs
+selecta
+selenium-server-standalone
+serialosc
+serveit
+sfk
+shadowsocks-libev
+shairport-sync
+shellcheck
+shfmt
+shibboleth-sp
+shmcat
+shml
+shocco
+shpotify
+shunit2
+shyaml
+sile
+silk
+simgrid
+simple-obfs
+simple-tiles
+sip
+sispmctl
+sjk
+skinny
+slackcat
+sleuthkit
+slimerjs
+smali
+smartmontools
+smlnj
+snakemake
+snapcraft
+snappy
+snappystream
+snapraid
+sngrep
+snort
+socat
+softhsm
+solr
+solr@5.5
+sonar-scanner
+sonarqube
+sops
+sound-touch
+source-highlight
+source-to-image
+sourcekitten
+sourcery
+sox
+sparkey
+sparse
+spatialite-gui
+spatialite-tools
+spdlog
+speech-tools
+speedtest-cli
+sphinx
+sphinx-doc
+spigot
+spin
+sql-translator
+sqlcipher
+sqldiff
+sqlite-analyzer
+sqliteodbc
+sqlmap
+squashfs
+src
+ssdeep
+ssh-audit
+ssh-copy-id
+sshguard
+sshuttle
+sslh
+sslmate
+sslscan
+sslsplit
+sslyze
+sstp-client
+stanford-parser
+statik
+stdman
+stella
+stern
+stk
+stlink
+stockfish
+stoken
+stone-soup
+storm
+stormlib
+streamlink
+strongswan
+stubby
+stunnel
+submarine
+subnetcalc
+subversion
+subversion@1.8
+suil
+suite-sparse
+sundials
+superlu
+supersonic
+supervisor
+surfraw
+suricata
+svgcleaner
+svgo
+svtplay-dl
+swagger-codegen
+swfmill
+swi-prolog
+swift
+swiftformat
+swiftgen
+swimat
+sword
+sylpheed
+sync_gateway
+syncthing
+synfig
+sysbench
+sysdig
+systemc
+szip
+taisei
+taktuk
+talloc
+tarantool
+task-spooler
+tasksh
+tbb
+tcc
+tcl-tk
+tclap
+tectonic
+tee-clc
+telegraf
+telegram-cli
+teleport
+temporal_tables
+tenyr
+tepl
+termbox
+terminal-notifier
+terminator
+termius
+terraform
+terraform-docs
+terraform-provisioner-ansible
+terragrunt
+testssl
+texapp
+texinfo
+texmath
+tfenv
+tgui
+thefuck
+thrift
+thrift@0.9
+tidy-html5
+tig
+tika
+tile38
+timelimit
+timewarrior
+tin
+tinc
+tintin
+tinyxml2
+tippecanoe
+titlecase
+tldr
+tmux
+tmuxinator-completion
+tnef
+todo-txt
+todoman
+tokei
+tomcat
+tomcat-native
+tomee-webprofile
+tor
+tracebox
+trafficserver
+translate-shell
+translate-toolkit
+transmission
+treefrog
+ttf2eot
+ttfautohint
+tth
+ttyd
+ttyrec
+tundra
+tup
+twarc
+twine-pypi
+twoping
+twtxt
+txr
+txt2tags
+typescript
+u-boot-tools
+ucon64
+udpxy
+udunits
+uftp
+uhd
+unbound
+uncrustify
+unibilium
+unison
+unixodbc
+unoconv
+unpaper
+unrar
+unyaffs
+upscaledb
+urh
+uriparser
+urweb
+userspace-rcu
+utf8proc
+uwsgi
+v8
+vagrant-completion
+vala
+valabind
+vapoursynth
+varnish
+varnish@4
+vault
+vault-cli
+vcdimager
+vdirsyncer
+veclibfort
+verilator
+vert.x
+viewvc
+vifm
+vim
+vim@7.4
+vips
+vnstat
+vnu
+vowpal-wabbit
+vpcs
+vte
+vte3
+vtk
+vultr
+w-calc
+w3m
+wabt
+watch
+watson
+weboob
+webp
+webpack
+websocketd
+weechat
+wesnoth
+whatmp3
+when
+whohas
+whois
+widelands
+wiggle
+wildfly-as
+wine
+winetricks
+wiredtiger
+wireguard-tools
+wireshark
+wla-dx
+woboq_codebrowser
+wolfssl
+wpcli-completion
+wpscan
+writerperfect
+wrk
+wtf
+wwwoffle
+wxmac
+wxmaxima
+wxpython
+x264
+x265
+x3270
+xapian
+xboard
+xcenv
+xclip
+xdot
+xerces-c
+xmake
+xml-tooling-c
+xmoto
+xmount
+xmrig
+xonsh
+xpdf
+xrootd
+xsane
+xtensor
+xvid
+xxhash
+xz
+yadm
+yaf
+yaml-cpp
+yara
+yarn
+yash
+yaws
+yaz
+yaze-ag
+yelp-tools
+yeti
+ykman
+ykneomgr
+ykpers
+yle-dl
+yosys
+you-get
+youtube-dl
+yubico-piv-tool
+z3
+z80dasm
+zabbix
+zanata-client
+zbackup
+zbar
+zebra
+zenity
+zero-install
+zeromq
+zile
+zim
+zimg
+zint
+zmqpp
+znapzend
+znc
+zookeeper
+zorba
+zplug
+zpython
+zsh
+zsh-autosuggestions
+zsh-completions
+zsh-lovers
+zstd
+zurl
+[34m==>[0m [1mRenamed Formulae[0m
+arm -> nyx
+camlistore -> perkeep
+findbugs -> spotbugs
+geth -> ethereum
+newsbeuter -> newsboat
+php56 -> php@5.6
+php70 -> php@7.0
+php71 -> php@7.1
+php72 -> php
+ssreflect -> math-comp
+tachyon -> alluxio
+[34m==>[0m [1mDeleted Formulae[0m
+angolmois
+antlr@3
+apache-spark@1.5
+apache-spark@1.6
+autoconf@2.64
+automake@1.12
+azure-cli@1
+bazel@0.2
+clang-format@3.8
+clasp
+cloog@0.15
+cloudbees-sdk
+clozure-cl
+docker@1.11
+docker@1.71
+eigen@3.2
+gcc@4.6
+gcc@4.7
+gcc@4.8
+geogit
+glfw@2
+gmp@4
+go@1.5
+go@1.6
+go@1.7
+grails@2.5
+gringo
+gsl@1
+gst-plugins-bad@0.10
+gst-plugins-base@0.10
+gst-plugins-good@0.10
+gst-plugins-ugly@0.10
+gstreamer@0.10
+htop-osx
+i3
+i3status
+influxdb@0.8
+isl@0.11
+isl@0.12
+isl@0.14
+jboss-as
+jboss-as@5
+jetty@8
+jpeg@6
+juju@1.25
+kubernetes-cli@1.3
+ledger@2.6
+libical-glib
+libmpc@0.8
+libpng@1.2
+libpqxx@3
+libxml2@2.7
+litmus
+llvm@3.8
+logstash@2.4
+lua@5.3
+mal4s
+mg3a
+mimetic
+mongodb@2.6
+monotone
+moodbar
+mpfr@2
+mvptree
+nazghul
+open-mpi@1.6
+otto
+pcap_dnsproxy
+percona-server@5.5
+perl@5.14
+picolisp
+pond
+ponscripter-sekai
+ppl@0.11
+python3
+qt@5.7
+redis@2.6
+root@5
+ruby@1.9
+ruby@2.1
+selenium-server-standalone@2.45
+solr@5.4
+srtp@1.6
+stklos
+swig@2
+talk-filters
+tomcat@8.0
+ufoai
+unison@2.40
+voltdb
+zeromq@3.2
+zeromq@4.0
+zeromq@4.1
+
+travis_time:end:12e444b3:start=1525643901698552000,finish=1525643991138997000,duration=89440445000[0Ktravis_time:start:00ca4089[0K[31mError:[0m openssl 1.0.2l is already installed
+To upgrade to 1.0.2o, run `brew upgrade openssl`
+
+travis_time:end:00ca4089:start=1525643991150224000,finish=1525643993077254000,duration=1927030000[0Ktravis_time:start:0706d0c7[0K$ wget --retry-connrefused --waitretry=1 -O /tmp/dotnet.pkg https://dotnetcli.azureedge.net/dotnet/Sdk/1.1.4/dotnet-dev-osx-x64.1.1.4.pkg
+--2018-05-06 21:59:53--  https://dotnetcli.azureedge.net/dotnet/Sdk/1.1.4/dotnet-dev-osx-x64.1.1.4.pkg
+Resolving dotnetcli.azureedge.net... 72.21.81.200, 2606:2800:11f:17a5:191a:18d5:537:22f9
+Connecting to dotnetcli.azureedge.net|72.21.81.200|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 144818985 (138M) [application/octet-stream]
+Saving to: ‘/tmp/dotnet.pkg’
+
+/tmp/dotnet.pkg       0%[                    ]       0  --.-KB/s               /tmp/dotnet.pkg       5%[>                   ]   7.52M  36.9MB/s               /tmp/dotnet.pkg      15%[==>                 ]  21.01M  51.9MB/s               /tmp/dotnet.pkg      24%[===>                ]  34.00M  56.1MB/s               /tmp/dotnet.pkg      34%[=====>              ]  47.69M  59.1MB/s               /tmp/dotnet.pkg      43%[=======>            ]  60.71M  60.1MB/s               /tmp/dotnet.pkg      54%[=========>          ]  74.77M  61.7MB/s               /tmp/dotnet.pkg      61%[===========>        ]  84.44M  59.8MB/s               /tmp/dotnet.pkg      70%[=============>      ]  98.00M  60.5MB/s               /tmp/dotnet.pkg      81%[===============>    ] 112.00M  61.5MB/s               /tmp/dotnet.pkg      90%[=================>  ] 125.00M  61.9MB/s               /tmp/dotnet.pkg     100%[===================>] 138.11M  62.2MB/s    in 2.2s    
+
+2018-05-06 21:59:55 (62.2 MB/s) - ‘/tmp/dotnet.pkg’ saved [144818985/144818985]
+
+
+travis_time:end:0706d0c7:start=1525643993098529000,finish=1525643995437247000,duration=2338718000[0Ktravis_time:start:0086f1b4[0Kinstaller: Package name is .NET Core SDK 1.1.4 (x64)
+installer: Installing at base path /
+installer:PHASE:Preparing for installation…
+installer:PHASE:Preparing the disk…
+installer:PHASE:Preparing .NET Core SDK 1.1.4 (x64)…
+installer:PHASE:Waiting for other installations to complete…
+installer:PHASE:Configuring the installation…
+installer:STATUS:
+installer:%8.137886
+installer:PHASE:Writing files…
+installer:%12.565745
+installer:PHASE:Writing files…
+installer:%16.993604
+installer:PHASE:Writing files…
+installer:%21.421462
+installer:PHASE:Writing files…
+installer:%27.325274
+installer:PHASE:Writing files…
+installer:%28.801227
+installer:PHASE:Writing files…
+installer:%33.229086
+installer:PHASE:Writing files…
+installer:%37.656945
+installer:PHASE:Writing files…
+installer:%42.084804
+installer:PHASE:Writing files…
+installer:%46.512662
+installer:PHASE:Writing files…
+installer:%50.940521
+installer:PHASE:Writing files…
+installer:%67.935337
+installer:PHASE:Moving items into place…
+installer:PHASE:Validating packages…
+installer:%97.750000
+installer:STATUS:Running installer actions…
+installer:STATUS:
+installer:PHASE:Finishing the Installation…
+installer:STATUS:
+installer:%100.000000
+installer:PHASE:The software was successfully installed.
+installer: The install was successful.
+
+travis_time:end:0086f1b4:start=1525643995447678000,finish=1525644003572835000,duration=8125157000[0Ktravis_fold:end:dotnet-install[0Ktravis_fold:start:git.checkout[0Ktravis_time:start:12868296[0K$ git clone --depth=50 --branch=master https://github.com/NancyFx/Nancy.git NancyFx/Nancy
+Cloning into 'NancyFx/Nancy'...
+remote: Counting objects: 2439, done.[K
+remote: Compressing objects:   0% (1/1706)   [Kremote: Compressing objects:   1% (18/1706)   [Kremote: Compressing objects:   2% (35/1706)   [Kremote: Compressing objects:   3% (52/1706)   [Kremote: Compressing objects:   4% (69/1706)   [Kremote: Compressing objects:   5% (86/1706)   [Kremote: Compressing objects:   6% (103/1706)   [Kremote: Compressing objects:   7% (120/1706)   [Kremote: Compressing objects:   8% (137/1706)   [Kremote: Compressing objects:   9% (154/1706)   [Kremote: Compressing objects:  10% (171/1706)   [Kremote: Compressing objects:  11% (188/1706)   [Kremote: Compressing objects:  12% (205/1706)   [Kremote: Compressing objects:  13% (222/1706)   [Kremote: Compressing objects:  14% (239/1706)   [Kremote: Compressing objects:  15% (256/1706)   [Kremote: Compressing objects:  16% (273/1706)   [Kremote: Compressing objects:  17% (291/1706)   [Kremote: Compressing objects:  18% (308/1706)   [Kremote: Compressing objects:  19% (325/1706)   [Kremote: Compressing objects:  20% (342/1706)   [Kremote: Compressing objects:  21% (359/1706)   [Kremote: Compressing objects:  22% (376/1706)   [Kremote: Compressing objects:  23% (393/1706)   [Kremote: Compressing objects:  24% (410/1706)   [Kremote: Compressing objects:  25% (427/1706)   [Kremote: Compressing objects:  26% (444/1706)   [Kremote: Compressing objects:  27% (461/1706)   [Kremote: Compressing objects:  28% (478/1706)   [Kremote: Compressing objects:  29% (495/1706)   [Kremote: Compressing objects:  30% (512/1706)   [Kremote: Compressing objects:  31% (529/1706)   [Kremote: Compressing objects:  32% (546/1706)   [Kremote: Compressing objects:  33% (563/1706)   [Kremote: Compressing objects:  34% (581/1706)   [Kremote: Compressing objects:  35% (598/1706)   [Kremote: Compressing objects:  36% (615/1706)   [Kremote: Compressing objects:  37% (632/1706)   [Kremote: Compressing objects:  38% (649/1706)   [Kremote: Compressing objects:  39% (666/1706)   [Kremote: Compressing objects:  40% (683/1706)   [Kremote: Compressing objects:  41% (700/1706)   [Kremote: Compressing objects:  42% (717/1706)   [Kremote: Compressing objects:  43% (734/1706)   [Kremote: Compressing objects:  44% (751/1706)   [Kremote: Compressing objects:  45% (768/1706)   [Kremote: Compressing objects:  46% (785/1706)   [Kremote: Compressing objects:  47% (802/1706)   [Kremote: Compressing objects:  48% (819/1706)   [Kremote: Compressing objects:  49% (836/1706)   [Kremote: Compressing objects:  50% (853/1706)   [Kremote: Compressing objects:  51% (871/1706)   [Kremote: Compressing objects:  52% (888/1706)   [Kremote: Compressing objects:  53% (905/1706)   [Kremote: Compressing objects:  54% (922/1706)   [Kremote: Compressing objects:  55% (939/1706)   [Kremote: Compressing objects:  56% (956/1706)   [Kremote: Compressing objects:  57% (973/1706)   [Kremote: Compressing objects:  58% (990/1706)   [Kremote: Compressing objects:  59% (1007/1706)   [Kremote: Compressing objects:  60% (1024/1706)   [Kremote: Compressing objects:  61% (1041/1706)   [Kremote: Compressing objects:  62% (1058/1706)   [Kremote: Compressing objects:  63% (1075/1706)   [Kremote: Compressing objects:  64% (1092/1706)   [Kremote: Compressing objects:  65% (1109/1706)   [Kremote: Compressing objects:  66% (1126/1706)   [Kremote: Compressing objects:  67% (1144/1706)   [Kremote: Compressing objects:  68% (1161/1706)   [Kremote: Compressing objects:  69% (1178/1706)   [Kremote: Compressing objects:  70% (1195/1706)   [Kremote: Compressing objects:  71% (1212/1706)   [Kremote: Compressing objects:  72% (1229/1706)   [Kremote: Compressing objects:  73% (1246/1706)   [Kremote: Compressing objects:  74% (1263/1706)   [Kremote: Compressing objects:  75% (1280/1706)   [Kremote: Compressing objects:  76% (1297/1706)   [Kremote: Compressing objects:  77% (1314/1706)   [Kremote: Compressing objects:  78% (1331/1706)   [Kremote: Compressing objects:  79% (1348/1706)   [Kremote: Compressing objects:  80% (1365/1706)   [Kremote: Compressing objects:  81% (1382/1706)   [Kremote: Compressing objects:  82% (1399/1706)   [Kremote: Compressing objects:  83% (1416/1706)   [Kremote: Compressing objects:  84% (1434/1706)   [Kremote: Compressing objects:  85% (1451/1706)   [Kremote: Compressing objects:  86% (1468/1706)   [Kremote: Compressing objects:  87% (1485/1706)   [Kremote: Compressing objects:  88% (1502/1706)   [Kremote: Compressing objects:  89% (1519/1706)   [Kremote: Compressing objects:  90% (1536/1706)   [Kremote: Compressing objects:  91% (1553/1706)   [Kremote: Compressing objects:  92% (1570/1706)   [Kremote: Compressing objects:  93% (1587/1706)   [Kremote: Compressing objects:  94% (1604/1706)   [Kremote: Compressing objects:  95% (1621/1706)   [Kremote: Compressing objects:  96% (1638/1706)   [Kremote: Compressing objects:  97% (1655/1706)   [Kremote: Compressing objects:  98% (1672/1706)   [Kremote: Compressing objects:  99% (1689/1706)   [Kremote: Compressing objects: 100% (1706/1706)   [Kremote: Compressing objects: 100% (1706/1706), done.[K
+Receiving objects:   0% (1/2439)   Receiving objects:   1% (25/2439)   Receiving objects:   2% (49/2439)   Receiving objects:   3% (74/2439)   Receiving objects:   4% (98/2439)   Receiving objects:   5% (122/2439)   Receiving objects:   6% (147/2439)   Receiving objects:   7% (171/2439)   Receiving objects:   8% (196/2439)   Receiving objects:   9% (220/2439)   Receiving objects:  10% (244/2439)   Receiving objects:  11% (269/2439)   Receiving objects:  12% (293/2439)   Receiving objects:  13% (318/2439)   Receiving objects:  14% (342/2439)   Receiving objects:  15% (366/2439)   Receiving objects:  16% (391/2439)   Receiving objects:  17% (415/2439)   Receiving objects:  18% (440/2439)   Receiving objects:  19% (464/2439)   Receiving objects:  20% (488/2439)   Receiving objects:  21% (513/2439)   Receiving objects:  22% (537/2439)   Receiving objects:  23% (561/2439)   Receiving objects:  24% (586/2439)   Receiving objects:  25% (610/2439)   Receiving objects:  26% (635/2439)   Receiving objects:  27% (659/2439)   Receiving objects:  28% (683/2439)   Receiving objects:  29% (708/2439)   Receiving objects:  30% (732/2439)   Receiving objects:  31% (757/2439)   Receiving objects:  32% (781/2439)   Receiving objects:  33% (805/2439)   Receiving objects:  34% (830/2439)   Receiving objects:  35% (854/2439)   Receiving objects:  36% (879/2439)   Receiving objects:  37% (903/2439)   Receiving objects:  38% (927/2439)   Receiving objects:  39% (952/2439)   Receiving objects:  40% (976/2439)   Receiving objects:  41% (1000/2439)   Receiving objects:  42% (1025/2439)   Receiving objects:  43% (1049/2439)   Receiving objects:  44% (1074/2439)   Receiving objects:  45% (1098/2439)   Receiving objects:  46% (1122/2439)   Receiving objects:  47% (1147/2439)   Receiving objects:  48% (1171/2439)   Receiving objects:  49% (1196/2439)   Receiving objects:  50% (1220/2439)   Receiving objects:  51% (1244/2439)   Receiving objects:  52% (1269/2439)   Receiving objects:  53% (1293/2439)   Receiving objects:  54% (1318/2439)   Receiving objects:  55% (1342/2439)   Receiving objects:  56% (1366/2439)   Receiving objects:  57% (1391/2439)   Receiving objects:  58% (1415/2439)   Receiving objects:  59% (1440/2439)   Receiving objects:  60% (1464/2439)   Receiving objects:  61% (1488/2439)   Receiving objects:  62% (1513/2439)   Receiving objects:  63% (1537/2439)   Receiving objects:  64% (1561/2439)   Receiving objects:  65% (1586/2439)   Receiving objects:  66% (1610/2439)   Receiving objects:  67% (1635/2439)   Receiving objects:  68% (1659/2439)   Receiving objects:  69% (1683/2439)   Receiving objects:  70% (1708/2439)   Receiving objects:  71% (1732/2439)   Receiving objects:  72% (1757/2439)   Receiving objects:  73% (1781/2439)   Receiving objects:  74% (1805/2439)   Receiving objects:  75% (1830/2439)   Receiving objects:  76% (1854/2439)   Receiving objects:  77% (1879/2439)   Receiving objects:  78% (1903/2439)   Receiving objects:  79% (1927/2439)   Receiving objects:  80% (1952/2439)   Receiving objects:  81% (1976/2439)   Receiving objects:  82% (2000/2439)   Receiving objects:  83% (2025/2439)   Receiving objects:  84% (2049/2439)   Receiving objects:  85% (2074/2439)   remote: Total 2439 (delta 1102), reused 1294 (delta 663), pack-reused 0[K
+Receiving objects:  86% (2098/2439)   Receiving objects:  87% (2122/2439)   Receiving objects:  88% (2147/2439)   Receiving objects:  89% (2171/2439)   Receiving objects:  90% (2196/2439)   Receiving objects:  91% (2220/2439)   Receiving objects:  92% (2244/2439)   Receiving objects:  93% (2269/2439)   Receiving objects:  94% (2293/2439)   Receiving objects:  95% (2318/2439)   Receiving objects:  96% (2342/2439)   Receiving objects:  97% (2366/2439)   Receiving objects:  98% (2391/2439)   Receiving objects:  99% (2415/2439)   Receiving objects: 100% (2439/2439)   Receiving objects: 100% (2439/2439), 2.65 MiB | 16.55 MiB/s, done.
+Resolving deltas:   0% (0/1102)   Resolving deltas:   2% (26/1102)   Resolving deltas:   3% (34/1102)   Resolving deltas:   4% (49/1102)   Resolving deltas:   7% (87/1102)   Resolving deltas:   8% (93/1102)   Resolving deltas:   9% (101/1102)   Resolving deltas:  10% (115/1102)   Resolving deltas:  12% (143/1102)   Resolving deltas:  13% (144/1102)   Resolving deltas:  14% (155/1102)   Resolving deltas:  15% (168/1102)   Resolving deltas:  16% (182/1102)   Resolving deltas:  17% (193/1102)   Resolving deltas:  18% (200/1102)   Resolving deltas:  19% (210/1102)   Resolving deltas:  20% (222/1102)   Resolving deltas:  21% (233/1102)   Resolving deltas:  22% (248/1102)   Resolving deltas:  27% (298/1102)   Resolving deltas:  28% (312/1102)   Resolving deltas:  29% (330/1102)   Resolving deltas:  30% (331/1102)   Resolving deltas:  31% (345/1102)   Resolving deltas:  32% (355/1102)   Resolving deltas:  33% (365/1102)   Resolving deltas:  34% (376/1102)   Resolving deltas:  35% (389/1102)   Resolving deltas:  36% (399/1102)   Resolving deltas:  37% (408/1102)   Resolving deltas:  38% (421/1102)   Resolving deltas:  39% (431/1102)   Resolving deltas:  40% (441/1102)   Resolving deltas:  41% (457/1102)   Resolving deltas:  42% (463/1102)   Resolving deltas:  43% (475/1102)   Resolving deltas:  44% (486/1102)   Resolving deltas:  45% (497/1102)   Resolving deltas:  47% (521/1102)   Resolving deltas:  48% (529/1102)   Resolving deltas:  49% (540/1102)   Resolving deltas:  50% (551/1102)   Resolving deltas:  51% (564/1102)   Resolving deltas:  52% (576/1102)   Resolving deltas:  53% (585/1102)   Resolving deltas:  54% (597/1102)   Resolving deltas:  55% (607/1102)   Resolving deltas:  56% (618/1102)   Resolving deltas:  57% (631/1102)   Resolving deltas:  58% (642/1102)   Resolving deltas:  59% (651/1102)   Resolving deltas:  60% (662/1102)   Resolving deltas:  61% (674/1102)   Resolving deltas:  62% (692/1102)   Resolving deltas:  63% (696/1102)   Resolving deltas:  64% (706/1102)   Resolving deltas:  65% (721/1102)   Resolving deltas:  66% (728/1102)   Resolving deltas:  67% (742/1102)   Resolving deltas:  68% (751/1102)   Resolving deltas:  70% (777/1102)   Resolving deltas:  71% (788/1102)   Resolving deltas:  72% (800/1102)   Resolving deltas:  73% (805/1102)   Resolving deltas:  74% (817/1102)   Resolving deltas:  75% (828/1102)   Resolving deltas:  76% (846/1102)   Resolving deltas:  77% (849/1102)   Resolving deltas:  78% (860/1102)   Resolving deltas:  79% (877/1102)   Resolving deltas:  80% (882/1102)   Resolving deltas:  81% (893/1102)   Resolving deltas:  82% (904/1102)   Resolving deltas:  83% (915/1102)   Resolving deltas:  84% (928/1102)   Resolving deltas:  85% (937/1102)   Resolving deltas:  86% (948/1102)   Resolving deltas:  87% (959/1102)   Resolving deltas:  88% (971/1102)   Resolving deltas:  89% (981/1102)   Resolving deltas:  90% (992/1102)   Resolving deltas:  91% (1007/1102)   Resolving deltas:  92% (1018/1102)   Resolving deltas:  94% (1036/1102)   Resolving deltas:  96% (1066/1102)   Resolving deltas:  97% (1069/1102)   Resolving deltas:  98% (1086/1102)   Resolving deltas:  99% (1093/1102)   Resolving deltas: 100% (1102/1102)   Resolving deltas: 100% (1102/1102), done.
+
+travis_time:end:12868296:start=1525644003589075000,finish=1525644009219793000,duration=5630718000[0K$ cd NancyFx/Nancy
+$ git checkout -qf c2a5254a657aa72739d571918f6d5d33b7eb324f
+travis_fold:end:git.checkout[0Ktravis_time:start:02e5a662[0K$ mono --version
+Mono JIT compiler version 4.4.2 (mono-4.4.0-branch-c7sr1/f72fe45 Wed Jul 27 16:20:13 EDT 2016)
+Copyright (C) 2002-2014 Novell, Inc, Xamarin Inc and Contributors. www.mono-project.com
+	TLS:           normal
+	SIGSEGV:       altstack
+	Notification:  kqueue
+	Architecture:  x86
+	Disabled:      none
+	Misc:          softdebug 
+	LLVM:          yes(3.6.0svn-mono-master/a173357)
+	GC:            sgen
+
+travis_time:end:02e5a662:start=1525644009403101000,finish=1525644009482937000,duration=79836000[0Ktravis_time:start:344bfe12[0K$ xbuild /version
+XBuild Engine Version 14.0
+Mono, Version 4.4.2.0
+Copyright (C) 2005-2013 Various Mono authors
+
+travis_time:end:344bfe12:start=1525644009500906000,finish=1525644009720595000,duration=219689000[0K
+travis_time:start:0040d370[0K$ dotnet --info
+.NET Command Line Tools (1.1.4)
+
+Product Information:
+ Version:            1.1.4
+ Commit SHA-1 hash:  d2f3571419
+
+Runtime Environment:
+ OS Name:     Mac OS X
+ OS Version:  10.12
+ OS Platform: Darwin
+ RID:         osx.10.12-x64
+ Base Path:   /usr/local/share/dotnet/sdk/1.1.4
+
+travis_time:end:0040d370:start=1525644009738473000,finish=1525644010088668000,duration=350195000[0K
+travis_time:start:251deb8f[0K$ ./build.sh --verbosity=minimal
+Installing .NET CLI...
+[36mdotnet-install:(B[m Downloading https://dotnetcli.azureedge.net/dotnet/Sdk/1.1.4/dotnet-dev-osx-x64.1.1.4.tar.gz
+[36mdotnet-install:(B[m Extracting zip
+[36mdotnet-install:(B[m Binaries of dotnet can be found in /Users/travis/build/NancyFx/Nancy/.dotnet
+[36mdotnet-install:(B[m Installation finished successfully.
+.NET Command Line Tools (1.1.4)
+
+Product Information:
+ Version:            1.1.4
+ Commit SHA-1 hash:  d2f3571419
+
+Runtime Environment:
+ OS Name:     Mac OS X
+ OS Version:  10.12
+ OS Platform: Darwin
+ RID:         osx.10.12-x64
+ Base Path:   /Users/travis/build/NancyFx/Nancy/.dotnet/sdk/1.1.4
+An error occured while installing Cake.
+
+travis_time:end:251deb8f:start=1525644010100733000,finish=1525644048006081000,duration=37905348000[0K
+[31;1mThe command "./build.sh --verbosity=minimal" exited with 1.[0m
+
+Done. Your build exited with 1.
+/Users/travis/.travis/job_stages: line 166: shell_session_update: command not found

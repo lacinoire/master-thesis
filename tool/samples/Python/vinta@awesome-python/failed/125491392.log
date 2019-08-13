@@ -1,0 +1,889 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: travis-worker-gce-org-prod3-1:12d74935-1087-483e-be57-3f93d31812c1
+version: v2.3.0 https://github.com/travis-ci/worker/tree/9c1321414ebd21739efdff448627af90c34e6610
+instance: testing-gce-ddbcdf08-120c-4e89-a9e1-bdfad654d24b:travis-ci-ruby-precise-1450195856
+startup: 21.154317851s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: ruby
+Build group: stable
+Build dist: precise
+[34m[1mBuild image provisioning date and time[0m
+Tue Dec 15 16:36:18 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-63-generic
+[34m[1mCookbooks Version[0m
+fad6c97 https://github.com/travis-ci/travis-cookbooks/tree/fad6c97
+[34m[1mGit version[0m
+git version 1.8.5.6
+[34m[1mbash version[0m
+GNU bash, version 4.2.25(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2011 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ree-1.8.7-2012.02
+ruby-1.8.7-p374
+ruby-1.9.2-p330
+ruby-1.9.3-p551
+ruby-2.0.0-p647-clang
+ruby-2.1.2
+ruby-2.1.3
+ruby-2.1.4
+ruby-2.1.5
+ruby-2.2.0
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.2
+[34m[1mmysql --version[0m
+mysql  Ver 14.14 Distrib 5.5.46, for debian-linux-gnu (x86_64) using readline 6.2
+[34m[1mPre-installed PostgreSQL versions[0m
+9.1.19
+9.2.14
+9.3.10
+9.4.5
+[34m[1mRedis version[0m
+redis-server 3.0.5
+[34m[1mriak version[0m
+2.1.3
+[34m[1mMongoDB version[0m
+MongoDB 2.4.14
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mCassandra version[0m
+2.0.9
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 38.4.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_80, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "3.13.0-63-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+travis_fold:start:fix.CVE-2015-7547[0K$ export DEBIAN_FRONTEND=noninteractive
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libc-bin libc-dev-bin libc6-dev
+Suggested packages:
+  glibc-doc
+The following packages will be upgraded:
+  libc-bin libc-dev-bin libc6 libc6-dev
+4 upgraded, 0 newly installed, 0 to remove and 136 not upgraded.
+Need to get 8,844 kB of archives.
+After this operation, 1,024 B of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6-dev amd64 2.15-0ubuntu10.13 [2,943 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-dev-bin amd64 2.15-0ubuntu10.13 [84.7 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-bin amd64 2.15-0ubuntu10.13 [1,179 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6 amd64 2.15-0ubuntu10.13 [4,637 kB]
+Fetched 8,844 kB in 0s (14.7 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 124639 files and directories currently installed.)
+Preparing to replace libc6-dev 2.15-0ubuntu10.12 (using .../libc6-dev_2.15-0ubuntu10.13_amd64.deb) ...
+Unpacking replacement libc6-dev ...
+Preparing to replace libc-dev-bin 2.15-0ubuntu10.12 (using .../libc-dev-bin_2.15-0ubuntu10.13_amd64.deb) ...
+Unpacking replacement libc-dev-bin ...
+Preparing to replace libc-bin 2.15-0ubuntu10.12 (using .../libc-bin_2.15-0ubuntu10.13_amd64.deb) ...
+Unpacking replacement libc-bin ...
+Processing triggers for man-db ...
+Setting up libc-bin (2.15-0ubuntu10.13) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 124639 files and directories currently installed.)
+Preparing to replace libc6 2.15-0ubuntu10.12 (using .../libc6_2.15-0ubuntu10.13_amd64.deb) ...
+Unpacking replacement libc6 ...
+Setting up libc6 (2.15-0ubuntu10.13) ...
+Setting up libc-dev-bin (2.15-0ubuntu10.13) ...
+Setting up libc6-dev (2.15-0ubuntu10.13) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:fix.CVE-2015-7547[0Ktravis_fold:start:git.checkout[0Ktravis_time:start:17d0974d[0K$ git clone --depth=50 https://github.com/vinta/awesome-python.git vinta/awesome-python
+Cloning into 'vinta/awesome-python'...
+remote: Counting objects: 1268, done.[K
+remote: Compressing objects:   0% (1/756)   [Kremote: Compressing objects:   1% (8/756)   [Kremote: Compressing objects:   2% (16/756)   [Kremote: Compressing objects:   3% (23/756)   [Kremote: Compressing objects:   4% (31/756)   [Kremote: Compressing objects:   5% (38/756)   [Kremote: Compressing objects:   6% (46/756)   [Kremote: Compressing objects:   7% (53/756)   [Kremote: Compressing objects:   8% (61/756)   [Kremote: Compressing objects:   9% (69/756)   [Kremote: Compressing objects:  10% (76/756)   [Kremote: Compressing objects:  11% (84/756)   [Kremote: Compressing objects:  12% (91/756)   [Kremote: Compressing objects:  13% (99/756)   [Kremote: Compressing objects:  14% (106/756)   [Kremote: Compressing objects:  15% (114/756)   [Kremote: Compressing objects:  16% (121/756)   [Kremote: Compressing objects:  17% (129/756)   [Kremote: Compressing objects:  18% (137/756)   [Kremote: Compressing objects:  19% (144/756)   [Kremote: Compressing objects:  20% (152/756)   [Kremote: Compressing objects:  21% (159/756)   [Kremote: Compressing objects:  22% (167/756)   [Kremote: Compressing objects:  23% (174/756)   [Kremote: Compressing objects:  24% (182/756)   [Kremote: Compressing objects:  25% (189/756)   [Kremote: Compressing objects:  26% (197/756)   [Kremote: Compressing objects:  27% (205/756)   [Kremote: Compressing objects:  28% (212/756)   [Kremote: Compressing objects:  29% (220/756)   [Kremote: Compressing objects:  30% (227/756)   [Kremote: Compressing objects:  31% (235/756)   [Kremote: Compressing objects:  32% (242/756)   [Kremote: Compressing objects:  33% (250/756)   [Kremote: Compressing objects:  34% (258/756)   [Kremote: Compressing objects:  35% (265/756)   [Kremote: Compressing objects:  36% (273/756)   [Kremote: Compressing objects:  37% (280/756)   [Kremote: Compressing objects:  38% (288/756)   [Kremote: Compressing objects:  39% (295/756)   [Kremote: Compressing objects:  40% (303/756)   [Kremote: Compressing objects:  41% (310/756)   [Kremote: Compressing objects:  42% (318/756)   [Kremote: Compressing objects:  43% (326/756)   [Kremote: Compressing objects:  44% (333/756)   [Kremote: Compressing objects:  45% (341/756)   [Kremote: Compressing objects:  46% (348/756)   [Kremote: Compressing objects:  47% (356/756)   [Kremote: Compressing objects:  48% (363/756)   [Kremote: Compressing objects:  49% (371/756)   [Kremote: Compressing objects:  50% (378/756)   [Kremote: Compressing objects:  51% (386/756)   [Kremote: Compressing objects:  52% (394/756)   [Kremote: Compressing objects:  53% (401/756)   [Kremote: Compressing objects:  54% (409/756)   [Kremote: Compressing objects:  55% (416/756)   [Kremote: Compressing objects:  56% (424/756)   [Kremote: Compressing objects:  57% (431/756)   [Kremote: Compressing objects:  58% (439/756)   [Kremote: Compressing objects:  59% (447/756)   [Kremote: Compressing objects:  60% (454/756)   [Kremote: Compressing objects:  61% (462/756)   [Kremote: Compressing objects:  62% (469/756)   [Kremote: Compressing objects:  63% (477/756)   [Kremote: Compressing objects:  64% (484/756)   [Kremote: Compressing objects:  65% (492/756)   [Kremote: Compressing objects:  66% (499/756)   [Kremote: Compressing objects:  67% (507/756)   [Kremote: Compressing objects:  68% (515/756)   [Kremote: Compressing objects:  69% (522/756)   [Kremote: Compressing objects:  70% (530/756)   [Kremote: Compressing objects:  71% (537/756)   [Kremote: Compressing objects:  72% (545/756)   [Kremote: Compressing objects:  73% (552/756)   [Kremote: Compressing objects:  74% (560/756)   [Kremote: Compressing objects:  75% (567/756)   [Kremote: Compressing objects:  76% (575/756)   [Kremote: Compressing objects:  77% (583/756)   [Kremote: Compressing objects:  78% (590/756)   [Kremote: Compressing objects:  79% (598/756)   [Kremote: Compressing objects:  80% (605/756)   [Kremote: Compressing objects:  81% (613/756)   [Kremote: Compressing objects:  82% (620/756)   [Kremote: Compressing objects:  83% (628/756)   [Kremote: Compressing objects:  84% (636/756)   [Kremote: Compressing objects:  85% (643/756)   [Kremote: Compressing objects:  86% (651/756)   [Kremote: Compressing objects:  87% (658/756)   [Kremote: Compressing objects:  88% (666/756)   [Kremote: Compressing objects:  89% (673/756)   [Kremote: Compressing objects:  90% (681/756)   [Kremote: Compressing objects:  91% (688/756)   [Kremote: Compressing objects:  92% (696/756)   [Kremote: Compressing objects:  93% (704/756)   [Kremote: Compressing objects:  94% (711/756)   [Kremote: Compressing objects:  95% (719/756)   [Kremote: Compressing objects:  96% (726/756)   [Kremote: Compressing objects:  97% (734/756)   [Kremote: Compressing objects:  98% (741/756)   [Kremote: Compressing objects:  99% (749/756)   [Kremote: Compressing objects: 100% (756/756)   [Kremote: Compressing objects: 100% (756/756), done.[K
+Receiving objects:   0% (1/1268)   Receiving objects:   1% (13/1268)   Receiving objects:   2% (26/1268)   Receiving objects:   3% (39/1268)   Receiving objects:   4% (51/1268)   Receiving objects:   5% (64/1268)   Receiving objects:   6% (77/1268)   Receiving objects:   7% (89/1268)   Receiving objects:   8% (102/1268)   Receiving objects:   9% (115/1268)   Receiving objects:  10% (127/1268)   Receiving objects:  11% (140/1268)   Receiving objects:  12% (153/1268)   Receiving objects:  13% (165/1268)   Receiving objects:  14% (178/1268)   Receiving objects:  15% (191/1268)   Receiving objects:  16% (203/1268)   Receiving objects:  17% (216/1268)   Receiving objects:  18% (229/1268)   Receiving objects:  19% (241/1268)   Receiving objects:  20% (254/1268)   Receiving objects:  21% (267/1268)   Receiving objects:  22% (279/1268)   Receiving objects:  23% (292/1268)   Receiving objects:  24% (305/1268)   Receiving objects:  25% (317/1268)   Receiving objects:  26% (330/1268)   Receiving objects:  27% (343/1268)   Receiving objects:  28% (356/1268)   Receiving objects:  29% (368/1268)   Receiving objects:  30% (381/1268)   Receiving objects:  31% (394/1268)   Receiving objects:  32% (406/1268)   Receiving objects:  33% (419/1268)   Receiving objects:  34% (432/1268)   Receiving objects:  35% (444/1268)   Receiving objects:  36% (457/1268)   Receiving objects:  37% (470/1268)   Receiving objects:  38% (482/1268)   Receiving objects:  39% (495/1268)   Receiving objects:  40% (508/1268)   Receiving objects:  41% (520/1268)   Receiving objects:  42% (533/1268)   Receiving objects:  43% (546/1268)   Receiving objects:  44% (558/1268)   Receiving objects:  45% (571/1268)   Receiving objects:  46% (584/1268)   Receiving objects:  47% (596/1268)   Receiving objects:  48% (609/1268)   Receiving objects:  49% (622/1268)   Receiving objects:  50% (634/1268)   Receiving objects:  51% (647/1268)   Receiving objects:  52% (660/1268)   Receiving objects:  53% (673/1268)   Receiving objects:  54% (685/1268)   Receiving objects:  55% (698/1268)   Receiving objects:  56% (711/1268)   Receiving objects:  57% (723/1268)   Receiving objects:  58% (736/1268)   Receiving objects:  59% (749/1268)   Receiving objects:  60% (761/1268)   Receiving objects:  61% (774/1268)   Receiving objects:  62% (787/1268)   Receiving objects:  63% (799/1268)   Receiving objects:  64% (812/1268)   Receiving objects:  65% (825/1268)   Receiving objects:  66% (837/1268)   Receiving objects:  67% (850/1268)   Receiving objects:  68% (863/1268)   Receiving objects:  69% (875/1268)   Receiving objects:  70% (888/1268)   Receiving objects:  71% (901/1268)   Receiving objects:  72% (913/1268)   Receiving objects:  73% (926/1268)   Receiving objects:  74% (939/1268)   Receiving objects:  75% (951/1268)   Receiving objects:  76% (964/1268)   Receiving objects:  77% (977/1268)   Receiving objects:  78% (990/1268)   Receiving objects:  79% (1002/1268)   Receiving objects:  80% (1015/1268)   Receiving objects:  81% (1028/1268)   Receiving objects:  82% (1040/1268)   Receiving objects:  83% (1053/1268)   Receiving objects:  84% (1066/1268)   Receiving objects:  85% (1078/1268)   Receiving objects:  86% (1091/1268)   Receiving objects:  87% (1104/1268)   Receiving objects:  88% (1116/1268)   Receiving objects:  89% (1129/1268)   remote: Total 1268 (delta 643), reused 1128 (delta 507), pack-reused 0[K
+Receiving objects:  90% (1142/1268)   Receiving objects:  91% (1154/1268)   Receiving objects:  92% (1167/1268)   Receiving objects:  93% (1180/1268)   Receiving objects:  94% (1192/1268)   Receiving objects:  95% (1205/1268)   Receiving objects:  96% (1218/1268)   Receiving objects:  97% (1230/1268)   Receiving objects:  98% (1243/1268)   Receiving objects:  99% (1256/1268)   Receiving objects: 100% (1268/1268)   Receiving objects: 100% (1268/1268), 350.35 KiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/643)   Resolving deltas:   1% (12/643)   Resolving deltas:   2% (17/643)   Resolving deltas:  28% (184/643)   Resolving deltas:  30% (193/643)   Resolving deltas:  41% (268/643)   Resolving deltas: 100% (643/643)   Resolving deltas: 100% (643/643), done.
+Checking connectivity... done.
+
+travis_time:end:17d0974d:start=1461566030131334495,finish=1461566031222477733,duration=1091143238[0K$ cd vinta/awesome-python
+travis_time:start:05898280[0K$ git fetch origin +refs/pull/583/merge:
+remote: Counting objects: 9, done.[K
+remote: Compressing objects:  12% (1/8)   [Kremote: Compressing objects:  25% (2/8)   [Kremote: Compressing objects:  37% (3/8)   [Kremote: Compressing objects:  50% (4/8)   [Kremote: Compressing objects:  62% (5/8)   [Kremote: Compressing objects:  75% (6/8)   [Kremote: Compressing objects:  87% (7/8)   [Kremote: Compressing objects: 100% (8/8)   [Kremote: Compressing objects: 100% (8/8), done.[K
+remote: Total 9 (delta 5), reused 4 (delta 1), pack-reused 0[K
+Unpacking objects:  11% (1/9)   Unpacking objects:  22% (2/9)   Unpacking objects:  33% (3/9)   Unpacking objects:  44% (4/9)   Unpacking objects:  55% (5/9)   Unpacking objects:  66% (6/9)   Unpacking objects:  77% (7/9)   Unpacking objects:  88% (8/9)   Unpacking objects: 100% (9/9)   Unpacking objects: 100% (9/9), done.
+From https://github.com/vinta/awesome-python
+ * branch            refs/pull/583/merge -> FETCH_HEAD
+
+travis_time:end:05898280:start=1461566031227019672,finish=1461566031873153613,duration=646133941[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0Ktravis_fold:start:rvm[0Ktravis_time:start:22385a00[0K$ rvm use 2.2 --install --binary --fuzzy
+[32mUsing /home/travis/.rvm/gems/ruby-2.2.0[0m
+
+travis_time:end:22385a00:start=1461566031888113313,finish=1461566032410443807,duration=522330494[0Ktravis_fold:end:rvm[0K$ ruby --version
+ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-linux]
+$ rvm --version
+rvm 1.26.10 (1.26.10) by Wayne E. Seguin <wayneeseguin@gmail.com>, Michal Papis <mpapis@gmail.com> [https://rvm.io/]
+$ bundle --version
+Bundler version 1.8.4
+$ gem --version
+2.5.1
+travis_fold:start:before_script[0Ktravis_time:start:01c304dc[0K$ gem install awesome_bot
+Fetching: parallel-1.6.2.gemFetching: parallel-1.6.2.gem (100%)Fetching: parallel-1.6.2.gem (100%)
+Successfully installed parallel-1.6.2
+Fetching: multipart-post-2.0.0.gemFetching: multipart-post-2.0.0.gem (100%)Fetching: multipart-post-2.0.0.gem (100%)
+Successfully installed multipart-post-2.0.0
+Fetching: faraday-0.9.2.gemFetching: faraday-0.9.2.gem ( 44%)Fetching: faraday-0.9.2.gem ( 90%)Fetching: faraday-0.9.2.gem (100%)Fetching: faraday-0.9.2.gem (100%)
+Successfully installed faraday-0.9.2
+Fetching: awesome_bot-1.7.1.gemFetching: awesome_bot-1.7.1.gem ( 93%)Fetching: awesome_bot-1.7.1.gem (100%)Fetching: awesome_bot-1.7.1.gem (100%)
+Successfully installed awesome_bot-1.7.1
+4 gems installed
+
+travis_time:end:01c304dc:start=1461566032864213702,finish=1461566035158515439,duration=2294301737[0Ktravis_fold:end:before_script[0Ktravis_time:start:057a1580[0K$ awesome_bot README.md --allow-dupe --white-list pyparsing,graphviz.org
+> Checking links in README.md
+> Will allow duplicate links
+> White list links matching: pyparsing, graphviz.org
+Links to check: 701, 2 white listed, 696 unique
+  1. https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
+  2. https://github.com/sindresorhus/awesome
+  3. https://github.com/ziadoz/awesome-php
+  4. https://github.com/qw3rtman/p
+  5. https://github.com/yyuu/pyenv
+  6. https://docs.python.org/3/library/venv.html
+  7. https://pypi.python.org/pypi/virtualenv
+  8. https://pypi.python.org/pypi/virtualenvwrapper
+  9. https://pip.pypa.io/en/stable/
+  10. https://pypi.python.org/pypi
+  11. https://github.com/nvie/pip-tools
+  12. https://github.com/conda/conda/
+  13. http://clarete.li/curdling/
+  14. http://pythonwheels.com/
+  15. https://github.com/pypa/warehouse
+  16. https://warehouse.python.org/
+  17. https://bitbucket.org/pypa/bandersnatch
+  18. http://doc.devpi.net/latest/
+  19. https://github.com/mvantellingen/localshop
+  20. https://github.com/pyinstaller/pyinstaller
+  21. http://dh-virtualenv.readthedocs.org/en/latest/
+  22. http://nuitka.net/
+  23. http://pythonhosted.org/py2app/
+  24. http://www.py2exe.org/
+  25. http://pynsist.readthedocs.org/en/latest/
+  26. http://www.buildout.org/en/latest/
+  27. http://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html
+  28. https://github.com/platformio/platformio
+  29. https://github.com/pybuilder/pybuilder
+  30. http://www.scons.org/
+  31. https://jupyter.org
+  32. https://github.com/bpython/bpython
+  33. https://github.com/jonathanslenders/ptpython
+  34. https://github.com/jonathanslenders/python-prompt-toolkit
+  35. https://docs.python.org/2/library/imghdr.html
+  36. https://docs.python.org/2/library/mimetypes.html
+  37. https://github.com/jaraco/path.py
+  38. https://docs.python.org/2/library/os.path.html
+  39. https://pathlib.readthedocs.org/en/pep428/
+  40. https://github.com/ahupp/python-magic
+  41. https://github.com/mikeorr/Unipath
+  42. https://github.com/gorakhargosh/watchdog
+  43. https://github.com/crsmithdev/arrow
+  44. https://github.com/KoffeinFlummi/Chronyk
+  45. https://github.com/dateutil/dateutil
+  46. https://docs.python.org/2/library/datetime.html
+  47. https://github.com/myusuf3/delorean/
+  48. https://github.com/zachwill/moment
+  49. http://momentjs.com/
+  50. https://github.com/shinux/PyTime
+  51. https://launchpad.net/pytz
+  52. https://en.wikipedia.org/wiki/Tz_database
+  53. https://github.com/dirn/When.py
+  54. https://github.com/chardet/chardet
+  55. https://docs.python.org/2/library/difflib.html
+  56. https://github.com/LuminosoInsight/python-ftfy
+  57. https://github.com/seatgeek/fuzzywuzzy
+  58. https://github.com/ztane/python-Levenshtein/
+  59. https://github.com/vinta/pangu.py
+  60. https://github.com/pwaller/pyfiglet
+  61. https://github.com/stochastic-technologies/shortuuid
+  62. https://pypi.python.org/pypi/Unidecode
+  63. https://github.com/moskytw/uniout
+  64. https://github.com/lxneng/xpinyin
+  65. https://github.com/dimka665/awesome-slugify
+  66. https://github.com/un33k/python-slugify
+  67. https://github.com/mozilla/unicode-slugify
+  68. https://github.com/daviddrysdale/python-phonenumbers
+  69. http://www.dabeaz.com/ply/
+  70. http://pygments.org/
+  71. https://github.com/derek73/python-nameparser
+  72. https://github.com/selwin/python-user-agents
+  73. https://sqlparse.readthedocs.org/en/latest/
+  74. https://github.com/kennethreitz/tablib
+  75. https://github.com/brianray/mm
+  76. https://openpyxl.readthedocs.org/en/latest/
+  77. http://pyexcel.readthedocs.org/en/latest/
+  78. https://github.com/python-openxml/python-docx
+  79. http://relatorio.tryton.org/
+  80. https://github.com/dagwieers/unoconv
+  81. https://xlsxwriter.readthedocs.org/en/latest/
+  82. http://xlwings.org/
+  83. https://github.com/python-excel/xlwt
+  84. https://github.com/python-excel/xlrd
+  85. https://github.com/euske/pdfminer
+  86. https://github.com/mstamy2/PyPDF2
+  87. http://www.reportlab.com/opensource/
+  88. https://github.com/lepture/mistune
+  89. https://github.com/waylan/Python-Markdown
+  90. http://pyyaml.org/
+  91. https://github.com/wireservice/csvkit
+  92. https://github.com/mitsuhiko/unp
+  93. http://www.nltk.org/
+  94. http://www.clips.ua.ac.be/pattern
+  95. https://github.com/fxsjy/jieba
+  96. https://github.com/isnowfy/snownlp
+  97. https://spacy.io/
+  98. http://textblob.readthedocs.org/en/latest/
+  99. https://github.com/2shou/TextGrocery
+  100. https://github.com/saffsd/langid.py
+  101. http://www.sphinx-doc.org/en/latest/
+  102. https://github.com/yoloseem/awesome-sphinxdoc
+  103. http://www.mkdocs.org/
+  104. https://github.com/BurntSushi/pdoc
+  105. https://github.com/pycco-docs/pycco
+  106. https://www.red-dove.com/config-doc/
+  107. https://docs.python.org/2/library/logging.html
+  108. http://www.voidspace.org.uk/python/configobj.html
+  109. https://docs.python.org/2/library/configparser.html
+  110. http://profig.readthedocs.org/en/default/
+  111. https://github.com/henriquebastos/python-decouple
+  112. https://github.com/peterbrittain/asciimatics
+  113. http://builtoncement.com/
+  114. http://click.pocoo.org/dev/
+  115. http://docs.openstack.org/developer/cliff/
+  116. https://github.com/kennethreitz/clint
+  117. https://pypi.python.org/pypi/colorama
+  118. http://docopt.org/
+  119. https://github.com/chriskiehl/Gooey
+  120. https://github.com/aws/aws-cli
+  121. https://github.com/glamp/bashplotlib
+  122. https://github.com/brettcannon/caniusepython3
+  123. https://github.com/audreyr/cookiecutter
+  124. https://github.com/sloria/doitlive
+  125. https://github.com/gleitz/howdoi
+  126. https://github.com/jkbrzt/httpie
+  127. https://github.com/facebook/PathPicker
+  128. https://github.com/mooz/percol
+  129. https://github.com/donnemartin/saws
+  130. https://github.com/nvbn/thefuck
+  131. https://github.com/timofurrer/try
+  132. https://github.com/dbcli/mycli
+  133. https://github.com/dbcli/pgcli
+  134. https://github.com/s3tools/s3cmd
+  135. https://github.com/bloomreach/s4cmd
+  136. https://www.soimort.org/you-get/
+  137. http://rg3.github.io/youtube-dl/
+  138. http://pillow.readthedocs.org/en/latest/
+  139. http://www.pythonware.com/products/pil/
+  140. https://github.com/rossgoodwin/hmap
+  141. https://sourceforge.net/projects/imgseek/
+  142. https://github.com/hhatto/nude.py
+  143. https://pythonhosted.org/pyBarcode/
+  144. https://github.com/ajkumar25/pygram
+  145. https://github.com/lincolnloop/python-qrcode
+  146. https://github.com/fogleman/Quads
+  147. http://scikit-image.org/
+  148. https://github.com/thumbor/thumbor
+  149. https://github.com/dahlia/wand
+  150. http://www.imagemagick.org/script/magick-wand.php
+  151. https://github.com/jflesch/pyocr
+  152. https://github.com/madmaze/pytesseract
+  153. https://github.com/tesseract-ocr
+  154. https://github.com/danilobellini/audiolazy
+  155. https://github.com/beetbox/audioread
+  156. http://beets.io/
+  157. https://musicbrainz.org/
+  158. https://github.com/worldveil/dejavu
+  159. https://github.com/StreetVoice/django-elastic-transcoder
+  160. http://aws.amazon.com/elastictranscoder/
+  161. http://eyed3.nicfit.net/
+  162. http://nedbatchelder.com/code/modules/id3reader.py
+  163. https://github.com/globocom/m3u8
+  164. https://bitbucket.org/lazka/mutagen
+  165. https://github.com/jiaaro/pydub
+  166. https://github.com/echonest/pyechonest
+  167. http://developer.echonest.com/
+  168. http://scikits.appspot.com/talkbox
+  169. https://github.com/Parisson/TimeSide
+  170. https://github.com/devsnd/tinytag
+  171. http://bspaans.github.io/python-mingus/
+  172. http://zulko.github.io/moviepy/
+  173. https://github.com/aizvorski/scikit-video
+  174. https://docs.djangoproject.com/en/dev/ref/contrib/gis/
+  175. https://github.com/maxmind/geoip-api-python
+  176. https://github.com/frewsxcv/python-geojson
+  177. https://github.com/geopy/geopy
+  178. https://github.com/appliedsec/pygeoip
+  179. https://github.com/SmileyChris/django-countries
+  180. http://docs.python-requests.org/en/latest/
+  181. https://github.com/kennethreitz/grequests
+  182. https://github.com/jcgregorio/httplib2
+  183. https://github.com/twisted/treq
+  184. https://github.com/shazow/urllib3
+  185. https://pythonhosted.org/pickleDB/
+  186. https://www.pipelinedb.com/
+  187. https://github.com/msiemens/tinydb
+  188. http://www.zodb.org/en/latest/
+  189. http://shlomi-noach.github.io/awesome-mysql/
+  190. https://sourceforge.net/projects/mysql-python/
+  191. https://github.com/PyMySQL/mysqlclient-python
+  192. https://pythonhosted.org/oursql/
+  193. https://github.com/PyMySQL/PyMySQL
+  194. http://initd.org/psycopg/
+  195. https://github.com/gmr/queries
+  196. http://txpostgres.readthedocs.org/en/latest/
+  197. http://rogerbinns.github.io/apsw/
+  198. https://github.com/pudo/dataset
+  199. http://www.pymssql.org/en/latest/
+  200. https://github.com/datastax/python-driver
+  201. http://happybase.readthedocs.org/en/latest/
+  202. https://plyvel.readthedocs.org/en/latest/
+  203. http://py2neo.org/2.0/
+  204. https://github.com/pycassa/pycassa
+  205. https://docs.mongodb.org/ecosystem/drivers/python/
+  206. https://github.com/andymccurdy/redis-py
+  207. https://github.com/driftx/Telephus
+  208. https://github.com/deldotdr/txRedis
+  209. https://docs.djangoproject.com/en/dev/topics/db/models/
+  210. http://www.sqlalchemy.org/
+  211. https://github.com/dahlia/awesome-sqlalchemy
+  212. https://github.com/coleifer/peewee
+  213. https://ponyorm.com/
+  214. https://pypi.python.org/pypi/python-sql
+  215. https://github.com/django-nonrel/mongodb-engine
+  216. https://github.com/jlafon/PynamoDB
+  217. https://aws.amazon.com/dynamodb/
+  218. https://github.com/mathcamp/flywheel
+  219. http://mongoengine.org/
+  220. https://github.com/stephenmcd/hot-redis
+  221. https://github.com/kiddouk/redisco
+  222. https://github.com/Widdershin/butterdb
+  223. https://www.djangoproject.com/
+  224. https://github.com/rosarior/awesome-django
+  225. http://flask.pocoo.org/
+  226. https://github.com/humiaozuzu/awesome-flask
+  227. http://www.pylonsproject.org/
+  228. https://github.com/uralbash/awesome-pyramid
+  229. http://bottlepy.org/docs/dev/index.html
+  230. http://www.cherrypy.org/
+  231. http://www.turbogears.org/
+  232. http://webpy.org/
+  233. http://www.web2py.com
+  234. http://www.tornadoweb.org/en/latest/
+  235. https://github.com/neuman/python-carteblanche/
+  236. https://github.com/django-guardian/django-guardian
+  237. https://github.com/dfunckt/django-rules
+  238. http://www.django-cms.org/en/
+  239. http://djedi-cms.org/
+  240. http://www.feincms.org/
+  241. http://kotti.pylonsproject.org/
+  242. http://mezzanine.jupo.org/
+  243. http://opps.github.io/opps/
+  244. https://plone.org/
+  245. http://quokkaproject.org/
+  246. https://wagtail.io/
+  247. https://wid.gy/
+  248. http://oscarcommerce.com/
+  249. https://github.com/awesto/django-shop
+  250. https://github.com/stephenmcd/cartridge
+  251. https://www.shoop.io/en/
+  252. https://github.com/lxneng/alipay
+  253. https://github.com/agiliq/merchant
+  254. https://github.com/carlospalol/money
+  255. https://github.com/Alir3z4/python-currencies
+  256. http://www.django-rest-framework.org/
+  257. http://tastypieapi.org/
+  258. https://github.com/5monkeys/django-formapi
+  259. http://www.flaskapi.org/
+  260. http://flask-restful.readthedocs.org/en/latest/
+  261. https://flask-restless.readthedocs.org/en/latest/
+  262. https://github.com/marselester/flask-api-utils
+  263. https://github.com/nicolaiarocci/eve
+  264. https://cornice.readthedocs.org/en/latest/
+  265. http://falconframework.org/
+  266. https://github.com/timothycrosley/hug
+  267. https://github.com/jeffknupp/sandman
+  268. http://restless.readthedocs.org/en/latest/
+  269. https://github.com/vertical-knowledge/ripozo
+  270. http://marshmallow.readthedocs.org/en/latest/
+  271. http://peterhudec.github.io/authomatic/
+  272. https://github.com/pennersr/django-allauth
+  273. https://github.com/evonove/django-oauth-toolkit
+  274. https://github.com/caffeinehit/django-oauth2-provider
+  275. https://github.com/lepture/flask-oauthlib
+  276. https://github.com/idan/oauthlib
+  277. https://github.com/joestump/python-oauth2
+  278. https://github.com/omab/python-social-auth
+  279. https://github.com/litl/rauth
+  280. https://github.com/demianbrecht/sanction
+  281. https://github.com/demonware/jose
+  282. https://github.com/jpadilla/pyjwt
+  283. https://github.com/brianloveswords/python-jws
+  284. https://github.com/davedoesdev/python-jwt
+  285. https://github.com/pallets/jinja
+  286. https://chameleon.readthedocs.org/en/latest/
+  287. https://genshi.edgewall.org/
+  288. http://www.makotemplates.org/
+  289. http://www.celeryproject.org/
+  290. https://github.com/coleifer/huey
+  291. https://github.com/pricingassistant/mrq
+  292. http://python-rq.org/
+  293. https://github.com/rdegges/simpleq
+  294. https://github.com/django-haystack/django-haystack
+  295. https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
+  296. https://www.elastic.co/products/elasticsearch
+  297. https://github.com/elastic/elasticsearch-dsl-py
+  298. https://github.com/catholabs/esengine
+  299. https://github.com/edsu/solrpy
+  300. http://lucene.apache.org/solr/
+  301. http://whoosh.readthedocs.org/en/latest/
+  302. https://github.com/justquick/django-activity-stream
+  303. https://github.com/tschellenbach/Stream-Framework
+  304. https://github.com/django-compressor/django-compressor
+  305. http://django-storages.readthedocs.org/en/latest/
+  306. http://www.fanstatic.org/en/latest/
+  307. http://fileconveyor.org/
+  308. http://flask-assets.readthedocs.org/en/latest/
+  309. https://github.com/jaysonsantos/jinja-assets-compressor
+  310. http://webassets.readthedocs.org/en/latest/
+  311. http://beaker.readthedocs.org/en/latest/
+  312. https://github.com/django-cache-machine/django-cache-machine
+  313. https://github.com/Suor/django-cacheops
+  314. https://github.com/5monkeys/django-viewlet
+  315. http://dogpilecache.readthedocs.org/en/latest/
+  316. https://pypi.python.org/pypi/HermesCache
+  317. https://github.com/jmoiron/johnny-cache
+  318. https://github.com/lericson/pylibmc
+  319. http://libmemcached.org/libMemcached.html
+  320. http://www.grantjenks.com/docs/diskcache/
+  321. https://github.com/StreetVoice/django-celery-ses
+  322. http://tomekwojcik.github.io/envelopes/
+  323. https://github.com/mailgun/flanker
+  324. https://github.com/martinrusev/imbox
+  325. https://github.com/kennethreitz/inbox.py
+  326. https://github.com/nylas/sync-engine
+  327. https://github.com/zedshaw/lamson
+  328. https://github.com/WoLpH/mailjet
+  329. https://github.com/marrow/mailer
+  330. https://github.com/tonioo/modoboa
+  331. http://www.magiksys.net/pyzmail/
+  332. https://github.com/mailgun/talon
+  333. http://babel.pocoo.org/en/latest/
+  334. https://korean.readthedocs.org/en/latest/
+  335. https://en.wikipedia.org/wiki/Korean_language
+  336. https://github.com/gruns/furl
+  337. https://github.com/codeinthehole/purl
+  338. https://github.com/ellisonleao/pyshorteners
+  339. https://github.com/Alir3z4/python-short_url
+  340. https://github.com/sloria/webargs
+  341. https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+  342. http://bleach.readthedocs.org/en/latest/
+  343. https://pypi.python.org/pypi/cssutils/
+  344. https://github.com/html5lib/html5lib-python
+  345. http://lxml.de/
+  346. https://github.com/pallets/markupsafe
+  347. https://github.com/gawel/pyquery
+  348. https://github.com/stchris/untangle
+  349. https://github.com/xhtml2pdf/xhtml2pdf
+  350. https://github.com/martinblech/xmltodict
+  351. http://scrapy.org/
+  352. https://github.com/chineking/cola
+  353. https://github.com/matiasb/demiurge
+  354. http://pythonhosted.org/feedparser/
+  355. http://grablib.org/
+  356. https://github.com/hickford/MechanicalSoup
+  357. https://github.com/scrapinghub/portia
+  358. https://github.com/binux/pyspider
+  359. https://github.com/jmcarp/robobrowser
+  360. https://github.com/estin/pomp
+  361. https://github.com/vinta/Haul
+  362. https://github.com/Alir3z4/html2text
+  363. https://github.com/michaelhelmick/lassie
+  364. https://github.com/coleifer/micawber
+  365. https://github.com/codelucas/newspaper
+  366. https://github.com/erikriver/opengraph
+  367. https://github.com/grangier/python-goose
+  368. https://github.com/buriy/python-readability
+  369. https://github.com/Alir3z4/python-sanitize
+  370. https://github.com/miso-belica/sumy
+  371. https://github.com/deanmalmgren/textract
+  372. http://deform.readthedocs.org/en/latest/
+  373. https://github.com/dyve/django-bootstrap3
+  374. http://django-crispy-forms.readthedocs.org/en/latest/
+  375. https://github.com/WiserTogether/django-remote-forms
+  376. http://wtforms.readthedocs.org/en/latest/
+  377. http://wtforms-json.readthedocs.org/en/latest/
+  378. https://github.com/schematics/schematics
+  379. https://github.com/keleshev/schema
+  380. https://github.com/Julian/jsonschema
+  381. http://json-schema.org/
+  382. https://github.com/nicolaiarocci/cerberus/
+  383. http://docs.pylonsproject.org/projects/colander/en/latest/
+  384. https://github.com/alecthomas/voluptuous
+  385. https://github.com/podio/valideer
+  386. https://github.com/mbi/django-simple-captcha
+  387. https://github.com/moqada/django-simple-spam-blocker
+  388. https://github.com/alex/django-taggit
+  389. https://github.com/Eugeny/ajenti
+  390. http://djangosuit.com/
+  391. https://github.com/sshwsfc/xadmin
+  392. https://github.com/flask-admin/flask-admin
+  393. https://github.com/mher/flower
+  394. http://grappelliproject.com
+  395. https://github.com/wooey/wooey
+  396. http://blog.getpelican.com/
+  397. https://github.com/koenbok/Cactus/
+  398. http://hyde.github.io/
+  399. https://www.getnikola.com/
+  400. http://tinkerer.me/
+  401. https://www.getlektor.com/
+  402. https://github.com/kennethreitz/envoy
+  403. https://docs.python.org/2/library/subprocess.html
+  404. http://sarge.readthedocs.org/en/latest/
+  405. https://github.com/amoffat/sh
+  406. https://docs.python.org/2/library/multiprocessing.html
+  407. https://docs.python.org/2/library/threading.html
+  408. http://eventlet.net/
+  409. http://www.gevent.org/
+  410. https://github.com/python-greenlet/greenlet
+  411. https://github.com/madisonmay/Tomorrow
+  412. https://docs.python.org/3/library/asyncio.html
+  413. https://twistedmatrix.com/trac/
+  414. https://github.com/quantmind/pulsar
+  415. https://github.com/dieseldev/diesel
+  416. http://zeromq.github.io/pyzmq/
+  417. https://github.com/smira/txZMQ
+  418. https://github.com/crossbario/autobahn-python
+  419. https://github.com/crossbario/crossbar/
+  420. https://github.com/stephenmcd/django-socketio
+  421. https://github.com/Lawouach/WebSocket-for-Python
+  422. https://pypi.python.org/pypi/gunicorn
+  423. https://uwsgi-docs.readthedocs.org/en/latest/
+  424. https://pypi.python.org/pypi/bjoern
+  425. http://www.fapws.org/
+  426. https://pypi.python.org/pypi/meinheld
+  427. https://github.com/hivesolutions/netius
+  428. http://pythonpaste.org/
+  429. https://pypi.python.org/pypi/rocket
+  430. https://waitress.readthedocs.org/en/latest/
+  431. http://werkzeug.pocoo.org/
+  432. https://github.com/joshmarshall/jsonrpclib/
+  433. https://docs.python.org/2/library/simplexmlrpcserver.html
+  434. https://github.com/0rpc/zerorpc-python
+  435. http://zeromq.org/
+  436. http://msgpack.org/
+  437. https://cryptography.io/en/latest/
+  438. https://github.com/davidaurelio/hashids-python
+  439. http://hashids.org
+  440. http://www.paramiko.org/
+  441. https://pythonhosted.org/passlib/
+  442. https://www.dlitz.net/software/pycrypto/
+  443. https://github.com/pyca/pynacl
+  444. https://docs.python.org/2/library/curses.html#module-curses
+  445. http://www.gnu.org/software/ncurses/
+  446. https://github.com/nucleic/enaml
+  447. https://kivy.org/
+  448. https://bitbucket.org/pyglet/pyglet/wiki/Home
+  449. https://riverbankcomputing.com/software/pyqt/intro
+  450. http://www.qt.io/
+  451. https://wiki.qt.io/PySide
+  452. https://wiki.python.org/moin/TkInter
+  453. https://github.com/pybee/toga
+  454. http://urwid.org/
+  455. http://wxpython.org/
+  456. https://wiki.gnome.org/Projects/PyGObject
+  457. https://github.com/zoofIO/flexx
+  458. http://cocos2d.org/
+  459. https://www.panda3d.org/
+  460. http://www.pygame.org/news.html
+  461. http://www.ogre3d.org/tikiwiki/PyOgre
+  462. http://pyopengl.sourceforge.net/
+  463. http://pysdl2.readthedocs.org/en/latest/
+  464. https://www.renpy.org/
+  465. http://pythonhosted.org/Logbook/
+  466. https://eliot.readthedocs.org/en/latest/
+  467. http://raven.readthedocs.org/en/latest/
+  468. https://pypi.python.org/pypi/sentry
+  469. https://docs.python.org/2/library/unittest.html
+  470. https://nose.readthedocs.org/en/latest/
+  471. http://pytest.org/latest/
+  472. https://github.com/HypothesisWorks/hypothesis-python
+  473. http://nestorsalceda.github.io/mamba/
+  474. https://github.com/robotframework/robotframework
+  475. https://tox.readthedocs.org/en/latest/
+  476. https://github.com/CleanCut/green
+  477. https://pypi.python.org/pypi/selenium
+  478. http://www.seleniumhq.org/
+  479. https://github.com/locustio/locust
+  480. https://github.com/seatgeek/sixpack
+  481. https://splinter.readthedocs.org/en/latest/
+  482. https://github.com/asweigart/pyautogui
+  483. https://docs.python.org/3/library/unittest.mock.html
+  484. https://pypi.python.org/pypi/doublex
+  485. https://github.com/spulec/freezegun
+  486. https://github.com/patrys/httmock
+  487. http://falcao.it/HTTPretty/
+  488. https://github.com/getsentry/responses
+  489. https://github.com/kevin1024/vcrpy
+  490. https://github.com/rbarrois/factory_boy
+  491. https://github.com/klen/mixer
+  492. https://github.com/vandersonmota/model_mommy
+  493. https://pypi.python.org/pypi/coverage
+  494. http://www.joke2k.net/faker/
+  495. https://github.com/emirozer/fake2db
+  496. https://pypi.python.org/pypi/radar
+  497. https://github.com/ajalt/fuckitpy
+  498. https://github.com/scottrogowski/code2flow
+  499. https://github.com/gak/pycallgraph
+  500. https://github.com/yinwang0/pysonar2
+  501. http://coala-analyzer.org/
+  502. https://pypi.python.org/pypi/flake8
+  503. https://www.pylint.org/
+  504. https://pylama.readthedocs.org/en/latest/
+  505. https://pypi.python.org/pypi/ipdb
+  506. https://docs.python.org/2/library/pdb.html
+  507. https://pypi.python.org/pypi/pudb
+  508. https://github.com/google/pyringe
+  509. https://github.com/Kozea/wdb
+  510. http://winpdb.org/
+  511. https://github.com/django-debug-toolbar/django-debug-toolbar
+  512. https://github.com/dcramer/django-devserver
+  513. https://github.com/mgood/flask-debugtoolbar
+  514. https://github.com/rkern/line_profiler
+  515. https://github.com/fabianp/memory_profiler
+  516. https://github.com/what-studio/profiling
+  517. https://github.com/eliben/pyelftools
+  518. https://github.com/WoLpH/python-statsd
+  519. https://github.com/etsy/statsd/
+  520. http://www.astropy.org/
+  521. https://github.com/chapmanb/bcbio-nextgen
+  522. https://github.com/chapmanb/bcbb
+  523. http://biopython.org/wiki/Main_Page
+  524. http://blaze.readthedocs.org/en/latest/index.html
+  525. http://cclib.github.io/
+  526. https://networkx.github.io/
+  527. http://neupy.com/pages/home.html
+  528. http://nipy.org
+  529. http://numba.pydata.org/
+  530. http://www.numpy.org/
+  531. http://openbabel.org/wiki/Main_Page
+  532. https://github.com/mining/mining
+  533. http://orange.biolab.si/
+  534. http://pandas.pydata.org/
+  535. http://www.pydy.org/
+  536. https://github.com/pymc-devs/pymc3
+  537. http://www.rdkit.org/
+  538. http://www.scipy.org/
+  539. https://github.com/statsmodels/statsmodels
+  540. https://github.com/sympy/sympy
+  541. https://github.com/quantopian/zipline
+  542. https://github.com/sorrycc/awesome-javascript#data-visualization
+  543. http://matplotlib.org/
+  544. https://github.com/bokeh/bokeh
+  545. https://github.com/yhat/ggplot
+  546. https://plot.ly/python/
+  547. http://www.pygal.org/en/latest/
+  548. https://pypi.python.org/pypi/pygraphviz
+  549. http://www.pyqtgraph.org/
+  550. http://jiffyclub.github.io/snakeviz/
+  551. https://github.com/wrobstory/vincent
+  552. http://vispy.org/
+  553. http://opencv.org/
+  554. http://simplecv.org/
+  555. https://github.com/josephmisiti/awesome-machine-learning#python
+  556. https://github.com/muricoca/crab
+  557. https://github.com/piskvorky/gensim
+  558. https://github.com/hannes-brt/hebel
+  559. https://github.com/numenta/nupic
+  560. https://github.com/clips/pattern
+  561. https://github.com/pybrain/pybrain
+  562. https://github.com/lisa-lab/pylearn2
+  563. https://github.com/Theano/Theano
+  564. https://github.com/ocelma/python-recsys
+  565. http://scikit-learn.org/
+  566. https://github.com/andersbll/deeppy
+  567. https://github.com/josephreisinger/vowpal_porpoise
+  568. https://github.com/JohnLangford/vowpal_wabbit/
+  569. https://github.com/tensorflow/skflow
+  570. https://github.com/tensorflow/tensorflow
+  571. https://github.com/douban/dpark
+  572. https://github.com/klbostee/dumbo
+  573. https://github.com/spotify/luigi
+  574. https://github.com/Yelp/mrjob
+  575. http://spark.apache.org/docs/latest/programming-guide.html
+  576. https://github.com/Parsely/streamparse
+  577. http://storm.apache.org/
+  578. https://github.com/pytoolz/cytoolz/
+  579. https://github.com/kachayev/fn.py
+  580. https://github.com/Suor/funcy
+  581. https://github.com/pytoolz/toolz
+  582. https://github.com/realpython/list-of-python-api-wrappers
+  583. https://libcloud.apache.org/
+  584. https://github.com/boto/boto
+  585. https://github.com/sunlightlabs/django-wordpress/
+  586. https://github.com/mobolic/facebook-sdk
+  587. https://github.com/jgorset/facepy
+  588. https://github.com/charlierguo/gmail
+  589. https://github.com/google/google-api-python-client
+  590. https://github.com/burnash/gspread
+  591. https://github.com/ryanmcgrath/twython
+  592. https://github.com/ansible/ansible
+  593. https://github.com/saltstack/salt
+  594. http://www.openstack.org/
+  595. https://docs.docker.com/compose/
+  596. https://www.docker.com/
+  597. http://cloudinit.readthedocs.org/en/latest/
+  598. https://github.com/sebastien/cuisine
+  599. http://www.fabfile.org/
+  600. https://github.com/ronnix/fabtools
+  601. https://github.com/nickstenning/honcho
+  602. https://github.com/ddollar/foreman
+  603. https://github.com/pexpect/pexpect
+  604. https://github.com/giampaolo/psutil
+  605. https://github.com/Supervisor/supervisor
+  606. http://apscheduler.readthedocs.org/en/latest/
+  607. https://github.com/thauber/django-schedule
+  608. http://pydoit.org/
+  609. https://github.com/gunnery/gunnery
+  610. http://pythonhosted.org/joblib/index.html
+  611. https://github.com/fengsp/plan
+  612. https://github.com/dbader/schedule
+  613. https://github.com/knipknap/SpiffWorkflow
+  614. http://docs.openstack.org/developer/taskflow/
+  615. https://pypi.python.org/pypi/cffi
+  616. https://docs.python.org/2/library/ctypes.html
+  617. https://mathema.tician.de/software/pycuda/
+  618. http://www.swig.org/Doc1.3/Python.html
+  619. http://cython.org/
+  620. https://github.com/Maratyszcza/PeachPy
+  621. http://pypy.org/
+  622. https://github.com/dropbox/pyston
+  623. https://bitbucket.org/stackless-dev/stackless/overview
+  624. http://python-xy.github.io/
+  625. http://www.lfd.uci.edu/~gohlke/pythonlibs/
+  626. https://github.com/pythonnet/pythonnet
+  627. https://sourceforge.net/projects/pywin32/
+  628. https://winpython.github.io/
+  629. http://mininet.org/
+  630. https://github.com/noxrepo/pox
+  631. http://frenetic-lang.org/pyretic/
+  632. https://github.com/sdn-ixp/internet2award
+  633. http://inotool.org/
+  634. https://www.arduino.cc/
+  635. http://pyrorobotics.com/
+  636. https://github.com/SavinaRoja/PyUserInput
+  637. https://github.com/secdev/scapy
+  638. https://wifi.readthedocs.org/en/latest/
+  639. http://www.pingo.io/
+  640. http://python-future.org/index.html
+  641. https://github.com/mitsuhiko/python-modernize
+  642. https://pypi.python.org/pypi/six
+  643. https://github.com/jek/blinker
+  644. https://github.com/pallets/itsdangerous
+  645. https://github.com/mitsuhiko/pluginbase
+  646. https://github.com/PacketPerception/pychievements
+  647. http://www.tryton.org/
+  648. https://github.com/nryoung/algorithms
+  649. https://github.com/faif/python-patterns
+  650. http://www.grantjenks.com/docs/sortedcontainers/
+  651. https://github.com/jorgenschaefer/elpy
+  652. https://github.com/srusskih/SublimeJEDI
+  653. https://github.com/DamnWidget/anaconda
+  654. https://github.com/Valloric/YouCompleteMe
+  655. https://github.com/davidhalter/jedi
+  656. https://github.com/davidhalter/jedi-vim
+  657. https://github.com/klen/python-mode
+  658. https://github.com/Microsoft/PTVS
+  659. https://www.jetbrains.com/pycharm/
+  660. http://www.liclipse.com/
+  661. https://github.com/spyder-ide/spyder
+  662. https://github.com/ciandcd/awesome-ciandcd#online-build-system
+  663. https://travis-ci.org
+  664. https://travis-ci.com
+  665. https://circleci.com/
+  666. https://vexor.io
+  667. http://wercker.com/
+  668. https://www.codacy.com/
+  669. https://www.quantifiedcode.com/
+  670. https://www.reddit.com/r/python
+  671. https://www.coolgithubprojects.com/
+  672. https://www.djangopackages.com/
+  673. https://www.fullstackpython.com/
+  674. http://python3wos.appspot.com/
+  675. http://pythonhackers.com/open-source/
+  676. https://python.zeef.com/alan.richmond
+  677. https://github.com/trending?l=python
+  678. http://pypi-ranking.info/alltime
+  679. http://importpython.com/newsletter/
+  680. http://pycoders.com/
+  681. http://www.pythonweekly.com/
+  682. https://twitter.com/codetengu
+  683. https://twitter.com/getpy
+  684. https://twitter.com/importpython
+  685. https://twitter.com/planetpython
+  686. https://twitter.com/pycoders
+  687. https://twitter.com/pypi
+  688. https://twitter.com/pythontrending
+  689. https://twitter.com/PythonWeekly
+  690. https://github.com/kirang89/pycrumbs/blob/master/pycrumbs.md
+  691. https://github.com/checkcheckzz/python-github-projects
+  692. https://github.com/rasbt/python_reference
+  693. https://github.com/svaksha/pythonidae
+  694. https://github.com/jnv/lists
+  695. https://github.com/vinta/awesome-python/blob/master/CONTRIBUTING.md
+  696. https://github.com/vinta/awesome-python/pulls
+Checking URLs: ✓✓✓✓✓✓✓✓✓→✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓→✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
+Checking white listed URLs: →✓
+
+> White listed:
+  1. 302 http://pyparsing.wikispaces.com/ → https://session.wikispaces.com/1/auth/auth?authToken=04bbb7bcc97d67c18801e60f3b35707d2
+  2. 200 http://www.graphviz.org/
+
+Issues :-(
+> Links 
+  1. 301 https://warehouse.python.org/ → https://pypi.io/
+  2. 301 http://www.joke2k.net/faker/ → http://joke2k.net/faker/
+
+travis_time:end:057a1580:start=1461566035163360371,finish=1461566074682430332,duration=39519069961[0K
+[31;1mThe command "awesome_bot README.md --allow-dupe --white-list pyparsing,graphviz.org" exited with 1.[0m
+
+Done. Your build exited with 1.

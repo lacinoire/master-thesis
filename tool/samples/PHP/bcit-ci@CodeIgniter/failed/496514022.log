@@ -1,0 +1,803 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 9f7bfa2e-a3cf-4756-8fa2-5e47150ccbe6@1.production-2-worker-org-gce-vf1k
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: travis-job-a7815449-8fa5-4d86-9db4-0acb496f93ac precise-php-stable-alternative (via amqp)
+startup: 9.420852754s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: php
+Build group: stable
+Build dist: precise
+Build id: 496514022
+Job id: 496514023
+Runtime kernel version: 3.13.0-115-generic
+travis-build version: 275ce64b5
+[34m[1mBuild image provisioning date and time[0m
+Tue Apr 11 21:48:56 UTC 2017
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-115-generic
+[34m[1mCookbooks Version[0m
+cc4eb5e https://github.com/travis-ci/travis-cookbooks/tree/cc4eb5e
+[34m[1mGit version[0m
+git version 1.8.5.6
+[34m[1mbash version[0m
+GNU bash, version 4.2.25(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2011 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.2.6
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.7.4
+[34m[1mmysql --version[0m
+mysql  Ver 14.14 Distrib 5.5.54, for debian-linux-gnu (x86_64) using readline 6.2
+[34m[1mPre-installed PostgreSQL versions[0m
+9.1.24
+9.2.20
+9.3.16
+9.4.11
+9.5.6
+[34m[1mRedis version[0m
+redis-server 3.0.7
+[34m[1mriak version[0m
+2.0.2
+[34m[1mmemcached version[0m
+1.4.13
+[34m[1mMongoDB version[0m
+MongoDB 2.4.14
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 38.4.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_80, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "3.13.0-115-generic", arch: "amd64", family: "unix"
+[34m[1mphpenv versions[0m
+* system (set by /home/travis/.phpenv/version)
+  5.3.29
+  5.3.3
+  5.4
+  5.4.45
+  5.5.29
+  5.5.9
+  5.6.13
+travis_fold:end:system_info[0K
+
+travis_fold:start:git.checkout[0Ktravis_time:start:03eaffcc[0K$ git clone --depth=50 https://github.com/bcit-ci/CodeIgniter.git bcit-ci/CodeIgniter
+Cloning into 'bcit-ci/CodeIgniter'...
+remote: Enumerating objects: 4740, done.[K
+remote: Counting objects:   0% (1/4740)   [Kremote: Counting objects:   1% (48/4740)   [Kremote: Counting objects:   2% (95/4740)   [Kremote: Counting objects:   3% (143/4740)   [Kremote: Counting objects:   4% (190/4740)   [Kremote: Counting objects:   5% (237/4740)   [Kremote: Counting objects:   6% (285/4740)   [Kremote: Counting objects:   7% (332/4740)   [Kremote: Counting objects:   8% (380/4740)   [Kremote: Counting objects:   9% (427/4740)   [Kremote: Counting objects:  10% (474/4740)   [Kremote: Counting objects:  11% (522/4740)   [Kremote: Counting objects:  12% (569/4740)   [Kremote: Counting objects:  13% (617/4740)   [Kremote: Counting objects:  14% (664/4740)   [Kremote: Counting objects:  15% (711/4740)   [Kremote: Counting objects:  16% (759/4740)   [Kremote: Counting objects:  17% (806/4740)   [Kremote: Counting objects:  18% (854/4740)   [Kremote: Counting objects:  19% (901/4740)   [Kremote: Counting objects:  20% (948/4740)   [Kremote: Counting objects:  21% (996/4740)   [Kremote: Counting objects:  22% (1043/4740)   [Kremote: Counting objects:  23% (1091/4740)   [Kremote: Counting objects:  24% (1138/4740)   [Kremote: Counting objects:  25% (1185/4740)   [Kremote: Counting objects:  26% (1233/4740)   [Kremote: Counting objects:  27% (1280/4740)   [Kremote: Counting objects:  28% (1328/4740)   [Kremote: Counting objects:  29% (1375/4740)   [Kremote: Counting objects:  30% (1422/4740)   [Kremote: Counting objects:  31% (1470/4740)   [Kremote: Counting objects:  32% (1517/4740)   [Kremote: Counting objects:  33% (1565/4740)   [Kremote: Counting objects:  34% (1612/4740)   [Kremote: Counting objects:  35% (1659/4740)   [Kremote: Counting objects:  36% (1707/4740)   [Kremote: Counting objects:  37% (1754/4740)   [Kremote: Counting objects:  38% (1802/4740)   [Kremote: Counting objects:  39% (1849/4740)   [Kremote: Counting objects:  40% (1896/4740)   [Kremote: Counting objects:  41% (1944/4740)   [Kremote: Counting objects:  42% (1991/4740)   [Kremote: Counting objects:  43% (2039/4740)   [Kremote: Counting objects:  44% (2086/4740)   [Kremote: Counting objects:  45% (2133/4740)   [Kremote: Counting objects:  46% (2181/4740)   [Kremote: Counting objects:  47% (2228/4740)   [Kremote: Counting objects:  48% (2276/4740)   [Kremote: Counting objects:  49% (2323/4740)   [Kremote: Counting objects:  50% (2370/4740)   [Kremote: Counting objects:  51% (2418/4740)   [Kremote: Counting objects:  52% (2465/4740)   [Kremote: Counting objects:  53% (2513/4740)   [Kremote: Counting objects:  54% (2560/4740)   [Kremote: Counting objects:  55% (2607/4740)   [Kremote: Counting objects:  56% (2655/4740)   [Kremote: Counting objects:  57% (2702/4740)   [Kremote: Counting objects:  58% (2750/4740)   [Kremote: Counting objects:  59% (2797/4740)   [Kremote: Counting objects:  60% (2844/4740)   [Kremote: Counting objects:  61% (2892/4740)   [Kremote: Counting objects:  62% (2939/4740)   [Kremote: Counting objects:  63% (2987/4740)   [Kremote: Counting objects:  64% (3034/4740)   [Kremote: Counting objects:  65% (3081/4740)   [Kremote: Counting objects:  66% (3129/4740)   [Kremote: Counting objects:  67% (3176/4740)   [Kremote: Counting objects:  68% (3224/4740)   [Kremote: Counting objects:  69% (3271/4740)   [Kremote: Counting objects:  70% (3318/4740)   [Kremote: Counting objects:  71% (3366/4740)   [Kremote: Counting objects:  72% (3413/4740)   [Kremote: Counting objects:  73% (3461/4740)   [Kremote: Counting objects:  74% (3508/4740)   [Kremote: Counting objects:  75% (3555/4740)   [Kremote: Counting objects:  76% (3603/4740)   [Kremote: Counting objects:  77% (3650/4740)   [Kremote: Counting objects:  78% (3698/4740)   [Kremote: Counting objects:  79% (3745/4740)   [Kremote: Counting objects:  80% (3792/4740)   [Kremote: Counting objects:  81% (3840/4740)   [Kremote: Counting objects:  82% (3887/4740)   [Kremote: Counting objects:  83% (3935/4740)   [Kremote: Counting objects:  84% (3982/4740)   [Kremote: Counting objects:  85% (4029/4740)   [Kremote: Counting objects:  86% (4077/4740)   [Kremote: Counting objects:  87% (4124/4740)   [Kremote: Counting objects:  88% (4172/4740)   [Kremote: Counting objects:  89% (4219/4740)   [Kremote: Counting objects:  90% (4266/4740)   [Kremote: Counting objects:  91% (4314/4740)   [Kremote: Counting objects:  92% (4361/4740)   [Kremote: Counting objects:  93% (4409/4740)   [Kremote: Counting objects:  94% (4456/4740)   [Kremote: Counting objects:  95% (4503/4740)   [Kremote: Counting objects:  96% (4551/4740)   [Kremote: Counting objects:  97% (4598/4740)   [Kremote: Counting objects:  98% (4646/4740)   [Kremote: Counting objects:  99% (4693/4740)   [Kremote: Counting objects: 100% (4740/4740)   [Kremote: Counting objects: 100% (4740/4740), done.[K
+remote: Compressing objects:   0% (1/2145)   [Kremote: Compressing objects:   1% (22/2145)   [Kremote: Compressing objects:   2% (43/2145)   [Kremote: Compressing objects:   3% (65/2145)   [Kremote: Compressing objects:   4% (86/2145)   [Kremote: Compressing objects:   5% (108/2145)   [Kremote: Compressing objects:   6% (129/2145)   [Kremote: Compressing objects:   7% (151/2145)   [Kremote: Compressing objects:   8% (172/2145)   [Kremote: Compressing objects:   9% (194/2145)   [Kremote: Compressing objects:  10% (215/2145)   [Kremote: Compressing objects:  11% (236/2145)   [Kremote: Compressing objects:  12% (258/2145)   [Kremote: Compressing objects:  13% (279/2145)   [Kremote: Compressing objects:  14% (301/2145)   [Kremote: Compressing objects:  15% (322/2145)   [Kremote: Compressing objects:  16% (344/2145)   [Kremote: Compressing objects:  17% (365/2145)   [Kremote: Compressing objects:  18% (387/2145)   [Kremote: Compressing objects:  19% (408/2145)   [Kremote: Compressing objects:  20% (429/2145)   [Kremote: Compressing objects:  21% (451/2145)   [Kremote: Compressing objects:  22% (472/2145)   [Kremote: Compressing objects:  23% (494/2145)   [Kremote: Compressing objects:  24% (515/2145)   [Kremote: Compressing objects:  25% (537/2145)   [Kremote: Compressing objects:  26% (558/2145)   [Kremote: Compressing objects:  27% (580/2145)   [Kremote: Compressing objects:  28% (601/2145)   [Kremote: Compressing objects:  29% (623/2145)   [Kremote: Compressing objects:  30% (644/2145)   [Kremote: Compressing objects:  31% (665/2145)   [Kremote: Compressing objects:  32% (687/2145)   [Kremote: Compressing objects:  33% (708/2145)   [Kremote: Compressing objects:  34% (730/2145)   [Kremote: Compressing objects:  35% (751/2145)   [Kremote: Compressing objects:  36% (773/2145)   [Kremote: Compressing objects:  37% (794/2145)   [Kremote: Compressing objects:  38% (816/2145)   [Kremote: Compressing objects:  39% (837/2145)   [Kremote: Compressing objects:  40% (858/2145)   [Kremote: Compressing objects:  41% (880/2145)   [Kremote: Compressing objects:  42% (901/2145)   [Kremote: Compressing objects:  43% (923/2145)   [Kremote: Compressing objects:  44% (944/2145)   [Kremote: Compressing objects:  45% (966/2145)   [Kremote: Compressing objects:  46% (987/2145)   [Kremote: Compressing objects:  47% (1009/2145)   [Kremote: Compressing objects:  48% (1030/2145)   [Kremote: Compressing objects:  49% (1052/2145)   [Kremote: Compressing objects:  50% (1073/2145)   [Kremote: Compressing objects:  51% (1094/2145)   [Kremote: Compressing objects:  52% (1116/2145)   [Kremote: Compressing objects:  53% (1137/2145)   [Kremote: Compressing objects:  54% (1159/2145)   [Kremote: Compressing objects:  55% (1180/2145)   [Kremote: Compressing objects:  56% (1202/2145)   [Kremote: Compressing objects:  57% (1223/2145)   [Kremote: Compressing objects:  58% (1245/2145)   [Kremote: Compressing objects:  59% (1266/2145)   [Kremote: Compressing objects:  60% (1287/2145)   [Kremote: Compressing objects:  61% (1309/2145)   [Kremote: Compressing objects:  62% (1330/2145)   [Kremote: Compressing objects:  63% (1352/2145)   [Kremote: Compressing objects:  64% (1373/2145)   [Kremote: Compressing objects:  65% (1395/2145)   [Kremote: Compressing objects:  66% (1416/2145)   [Kremote: Compressing objects:  67% (1438/2145)   [Kremote: Compressing objects:  68% (1459/2145)   [Kremote: Compressing objects:  69% (1481/2145)   [Kremote: Compressing objects:  70% (1502/2145)   [Kremote: Compressing objects:  71% (1523/2145)   [Kremote: Compressing objects:  72% (1545/2145)   [Kremote: Compressing objects:  73% (1566/2145)   [Kremote: Compressing objects:  74% (1588/2145)   [Kremote: Compressing objects:  75% (1609/2145)   [Kremote: Compressing objects:  76% (1631/2145)   [Kremote: Compressing objects:  77% (1652/2145)   [Kremote: Compressing objects:  78% (1674/2145)   [Kremote: Compressing objects:  79% (1695/2145)   [Kremote: Compressing objects:  80% (1716/2145)   [Kremote: Compressing objects:  81% (1738/2145)   [Kremote: Compressing objects:  82% (1759/2145)   [Kremote: Compressing objects:  83% (1781/2145)   [Kremote: Compressing objects:  84% (1802/2145)   [Kremote: Compressing objects:  85% (1824/2145)   [Kremote: Compressing objects:  86% (1845/2145)   [Kremote: Compressing objects:  87% (1867/2145)   [Kremote: Compressing objects:  88% (1888/2145)   [Kremote: Compressing objects:  89% (1910/2145)   [Kremote: Compressing objects:  90% (1931/2145)   [Kremote: Compressing objects:  91% (1952/2145)   [Kremote: Compressing objects:  92% (1974/2145)   [Kremote: Compressing objects:  93% (1995/2145)   [Kremote: Compressing objects:  94% (2017/2145)   [Kremote: Compressing objects:  95% (2038/2145)   [Kremote: Compressing objects:  96% (2060/2145)   [Kremote: Compressing objects:  97% (2081/2145)   [Kremote: Compressing objects:  98% (2103/2145)   [Kremote: Compressing objects:  99% (2124/2145)   [Kremote: Compressing objects: 100% (2145/2145)   [Kremote: Compressing objects: 100% (2145/2145), done.[K
+Receiving objects:   0% (1/4740)   Receiving objects:   1% (48/4740)   Receiving objects:   2% (95/4740)   Receiving objects:   3% (143/4740)   Receiving objects:   4% (190/4740)   Receiving objects:   5% (237/4740)   Receiving objects:   6% (285/4740)   Receiving objects:   7% (332/4740)   Receiving objects:   8% (380/4740)   Receiving objects:   9% (427/4740)   Receiving objects:  10% (474/4740)   Receiving objects:  11% (522/4740)   Receiving objects:  12% (569/4740)   Receiving objects:  13% (617/4740)   Receiving objects:  14% (664/4740)   Receiving objects:  15% (711/4740)   Receiving objects:  16% (759/4740)   Receiving objects:  17% (806/4740)   Receiving objects:  18% (854/4740)   Receiving objects:  19% (901/4740)   Receiving objects:  20% (948/4740)   Receiving objects:  21% (996/4740)   Receiving objects:  22% (1043/4740)   Receiving objects:  23% (1091/4740)   Receiving objects:  24% (1138/4740)   Receiving objects:  25% (1185/4740)   Receiving objects:  26% (1233/4740)   Receiving objects:  27% (1280/4740)   Receiving objects:  28% (1328/4740)   Receiving objects:  29% (1375/4740)   Receiving objects:  30% (1422/4740)   Receiving objects:  31% (1470/4740)   Receiving objects:  32% (1517/4740)   Receiving objects:  33% (1565/4740)   Receiving objects:  34% (1612/4740)   Receiving objects:  35% (1659/4740)   Receiving objects:  36% (1707/4740)   Receiving objects:  37% (1754/4740)   Receiving objects:  38% (1802/4740)   Receiving objects:  39% (1849/4740)   Receiving objects:  40% (1896/4740)   Receiving objects:  41% (1944/4740)   Receiving objects:  42% (1991/4740)   Receiving objects:  43% (2039/4740)   Receiving objects:  44% (2086/4740)   Receiving objects:  45% (2133/4740)   Receiving objects:  46% (2181/4740)   Receiving objects:  47% (2228/4740)   Receiving objects:  48% (2276/4740)   Receiving objects:  49% (2323/4740)   Receiving objects:  50% (2370/4740)   Receiving objects:  51% (2418/4740)   Receiving objects:  52% (2465/4740)   Receiving objects:  53% (2513/4740)   Receiving objects:  54% (2560/4740)   Receiving objects:  55% (2607/4740)   Receiving objects:  56% (2655/4740)   Receiving objects:  57% (2702/4740)   Receiving objects:  58% (2750/4740)   Receiving objects:  59% (2797/4740)   Receiving objects:  60% (2844/4740)   Receiving objects:  61% (2892/4740)   Receiving objects:  62% (2939/4740)   Receiving objects:  63% (2987/4740)   Receiving objects:  64% (3034/4740)   Receiving objects:  65% (3081/4740)   Receiving objects:  66% (3129/4740)   Receiving objects:  67% (3176/4740)   Receiving objects:  68% (3224/4740)   Receiving objects:  69% (3271/4740)   Receiving objects:  70% (3318/4740)   Receiving objects:  71% (3366/4740)   Receiving objects:  72% (3413/4740)   Receiving objects:  73% (3461/4740)   Receiving objects:  74% (3508/4740)   Receiving objects:  75% (3555/4740)   Receiving objects:  76% (3603/4740)   Receiving objects:  77% (3650/4740)   Receiving objects:  78% (3698/4740)   Receiving objects:  79% (3745/4740)   Receiving objects:  80% (3792/4740)   Receiving objects:  81% (3840/4740)   Receiving objects:  82% (3887/4740)   Receiving objects:  83% (3935/4740)   Receiving objects:  84% (3982/4740)   Receiving objects:  85% (4029/4740)   Receiving objects:  86% (4077/4740)   Receiving objects:  87% (4124/4740)   Receiving objects:  88% (4172/4740)   Receiving objects:  89% (4219/4740)   Receiving objects:  90% (4266/4740)   Receiving objects:  91% (4314/4740)   Receiving objects:  92% (4361/4740)   Receiving objects:  93% (4409/4740)   Receiving objects:  94% (4456/4740)   Receiving objects:  95% (4503/4740)   Receiving objects:  96% (4551/4740)   Receiving objects:  97% (4598/4740)   remote: Total 4740 (delta 3527), reused 3446 (delta 2582), pack-reused 0[K
+Receiving objects:  98% (4646/4740)   Receiving objects:  99% (4693/4740)   Receiving objects: 100% (4740/4740)   Receiving objects: 100% (4740/4740), 2.15 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/3527)   Resolving deltas:   2% (71/3527)   Resolving deltas:   3% (106/3527)   Resolving deltas:   4% (143/3527)   Resolving deltas:   5% (203/3527)   Resolving deltas:   6% (216/3527)   Resolving deltas:   7% (255/3527)   Resolving deltas:   8% (287/3527)   Resolving deltas:   9% (320/3527)   Resolving deltas:  10% (378/3527)   Resolving deltas:  11% (403/3527)   Resolving deltas:  12% (426/3527)   Resolving deltas:  13% (479/3527)   Resolving deltas:  14% (500/3527)   Resolving deltas:  16% (582/3527)   Resolving deltas:  18% (663/3527)   Resolving deltas:  21% (769/3527)   Resolving deltas:  22% (778/3527)   Resolving deltas:  23% (816/3527)   Resolving deltas:  24% (881/3527)   Resolving deltas:  25% (917/3527)   Resolving deltas:  28% (995/3527)   Resolving deltas:  29% (1046/3527)   Resolving deltas:  30% (1081/3527)   Resolving deltas:  31% (1099/3527)   Resolving deltas:  32% (1138/3527)   Resolving deltas:  33% (1168/3527)   Resolving deltas:  34% (1202/3527)   Resolving deltas:  35% (1235/3527)   Resolving deltas:  36% (1272/3527)   Resolving deltas:  37% (1318/3527)   Resolving deltas:  38% (1344/3527)   Resolving deltas:  39% (1386/3527)   Resolving deltas:  40% (1427/3527)   Resolving deltas:  41% (1459/3527)   Resolving deltas:  42% (1493/3527)   Resolving deltas:  43% (1522/3527)   Resolving deltas:  44% (1552/3527)   Resolving deltas:  45% (1590/3527)   Resolving deltas:  46% (1623/3527)   Resolving deltas:  47% (1658/3527)   Resolving deltas:  48% (1693/3527)   Resolving deltas:  49% (1731/3527)   Resolving deltas:  50% (1768/3527)   Resolving deltas:  51% (1809/3527)   Resolving deltas:  52% (1836/3527)   Resolving deltas:  53% (1870/3527)   Resolving deltas:  54% (1910/3527)   Resolving deltas:  55% (1945/3527)   Resolving deltas:  56% (1990/3527)   Resolving deltas:  57% (2012/3527)   Resolving deltas:  58% (2055/3527)   Resolving deltas:  59% (2085/3527)   Resolving deltas:  60% (2119/3527)   Resolving deltas:  61% (2153/3527)   Resolving deltas:  62% (2188/3527)   Resolving deltas:  63% (2233/3527)   Resolving deltas:  64% (2262/3527)   Resolving deltas:  66% (2346/3527)   Resolving deltas:  67% (2373/3527)   Resolving deltas:  70% (2476/3527)   Resolving deltas:  71% (2512/3527)   Resolving deltas:  72% (2547/3527)   Resolving deltas:  73% (2575/3527)   Resolving deltas:  74% (2611/3527)   Resolving deltas:  76% (2706/3527)   Resolving deltas:  77% (2729/3527)   Resolving deltas:  78% (2757/3527)   Resolving deltas:  79% (2798/3527)   Resolving deltas:  80% (2823/3527)   Resolving deltas:  81% (2863/3527)   Resolving deltas:  82% (2912/3527)   Resolving deltas:  83% (2930/3527)   Resolving deltas:  84% (2963/3527)   Resolving deltas:  85% (3031/3527)   Resolving deltas:  86% (3042/3527)   Resolving deltas:  87% (3085/3527)   Resolving deltas:  88% (3112/3527)   Resolving deltas:  89% (3154/3527)   Resolving deltas:  90% (3175/3527)   Resolving deltas:  91% (3215/3527)   Resolving deltas:  92% (3248/3527)   Resolving deltas:  93% (3282/3527)   Resolving deltas:  94% (3316/3527)   Resolving deltas:  95% (3369/3527)   Resolving deltas:  96% (3390/3527)   Resolving deltas:  97% (3427/3527)   Resolving deltas: 100% (3527/3527)   Resolving deltas: 100% (3527/3527), done.
+Checking connectivity... done.
+travis_time:end:03eaffcc:start=1550757349901259181,finish=1550757351612729163,duration=1711469982[0K$ cd bcit-ci/CodeIgniter
+travis_time:start:2791ae7b[0K$ git fetch origin +refs/pull/5699/merge:
+remote: Enumerating objects: 18, done.[K
+remote: Counting objects:   5% (1/18)   [Kremote: Counting objects:  11% (2/18)   [Kremote: Counting objects:  16% (3/18)   [Kremote: Counting objects:  22% (4/18)   [Kremote: Counting objects:  27% (5/18)   [Kremote: Counting objects:  33% (6/18)   [Kremote: Counting objects:  38% (7/18)   [Kremote: Counting objects:  44% (8/18)   [Kremote: Counting objects:  50% (9/18)   [Kremote: Counting objects:  55% (10/18)   [Kremote: Counting objects:  61% (11/18)   [Kremote: Counting objects:  66% (12/18)   [Kremote: Counting objects:  72% (13/18)   [Kremote: Counting objects:  77% (14/18)   [Kremote: Counting objects:  83% (15/18)   [Kremote: Counting objects:  88% (16/18)   [Kremote: Counting objects:  94% (17/18)   [Kremote: Counting objects: 100% (18/18)   [Kremote: Counting objects: 100% (18/18), done.[K
+remote: Compressing objects:  50% (1/2)   [Kremote: Compressing objects: 100% (2/2)   [Kremote: Compressing objects: 100% (2/2), done.[K
+remote: Total 10 (delta 8), reused 9 (delta 8), pack-reused 0[K
+Unpacking objects:  10% (1/10)   Unpacking objects:  20% (2/10)   Unpacking objects:  30% (3/10)   Unpacking objects:  40% (4/10)   Unpacking objects:  50% (5/10)   Unpacking objects:  60% (6/10)   Unpacking objects:  70% (7/10)   Unpacking objects:  80% (8/10)   Unpacking objects:  90% (9/10)   Unpacking objects: 100% (10/10)   Unpacking objects: 100% (10/10), done.
+From https://github.com/bcit-ci/CodeIgniter
+ * branch            refs/pull/5699/merge -> FETCH_HEAD
+travis_time:end:2791ae7b:start=1550757351616069524,finish=1550757352431954030,duration=815884506[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+
+[33;1mSetting environment variables from .travis.yml[0m
+$ export DB=mysql
+
+travis_time:start:20e77fa5[0K$ phpenv global 5.4 2>/dev/null
+travis_time:end:20e77fa5:start=1550757352473114300,finish=1550757352494328707,duration=21214407[0Ktravis_fold:start:pearrc[0K[33;1mWriting /home/travis/.pearrc[0m
+travis_time:start:0001d698[0Ktravis_time:end:0001d698:start=1550757352497672078,finish=1550757352752283097,duration=254611019[0Ktravis_time:start:3e0a5cfa[0K$ pear config-show
+[1mConfiguration (channel pear.php.net):[m
+=====================================
+Auto-discover new Channels     auto_discover    1
+Default Channel                default_channel  pear.php.net
+HTTP Proxy Server Address      http_proxy       <not set>
+PEAR server [DEPRECATED]       master_server    pear.php.net
+Default Channel Mirror         preferred_mirror pear.php.net
+Remote Configuration File      remote_config    <not set>
+PEAR executables directory     bin_dir          /home/travis/.phpenv/versions/5.4/bin
+PEAR documentation directory   doc_dir          /home/travis/.phpenv/versions/5.4/docs
+PHP extension directory        ext_dir          /home/travis/.phpenv/versions/5.4.45/lib/php/extensions/no-debug-zts-20100525
+PEAR directory                 php_dir          /home/travis/.phpenv/versions/5.4/share/pear
+PEAR Installer cache directory cache_dir        /tmp/pear/cache
+PEAR configuration file        cfg_dir          /home/travis/.phpenv/versions/5.4/cfg
+directory
+PEAR data directory            data_dir         /home/travis/.phpenv/versions/5.4/data
+PEAR Installer download        download_dir     /tmp/pear/install
+directory
+Systems manpage files          man_dir          /home/travis/.phpenv/versions/5.4/man
+directory
+PEAR metadata directory        metadata_dir     <not set>
+PHP CLI/CGI binary             php_bin          /home/travis/.phpenv/versions/5.4.45/bin/php
+php.ini location               php_ini          /home/travis/.phpenv/versions/5.4.45/etc/php.ini
+--program-prefix passed to     php_prefix       <not set>
+PHP's ./configure
+--program-suffix passed to     php_suffix       <not set>
+PHP's ./configure
+PEAR Installer temp directory  temp_dir         /tmp/pear/install
+PEAR test directory            test_dir         /home/travis/.phpenv/versions/5.4/tests
+PEAR www files directory       www_dir          /home/travis/.phpenv/versions/5.4/www
+Cache TimeToLive               cache_ttl        3600
+Preferred Package State        preferred_state  stable
+Unix file mask                 umask            2
+Debug Log Level                verbose          1
+PEAR password (for             password         <not set>
+maintainers)
+Signature Handling Program     sig_bin          /usr/bin/gpg
+Signature Key Directory        sig_keydir       /home/travis/.phpenv/versions/5.4.45/etc/pearkeys
+Signature Key Id               sig_keyid        <not set>
+Package Signature Type         sig_type         gpg
+PEAR username (for             username         <not set>
+maintainers)
+User Configuration File        Filename         /home/travis/.pearrc
+System Configuration File      Filename         /home/travis/.phpenv/versions/5.4.45/etc/pear.conf
+travis_time:end:3e0a5cfa:start=1550757352755394754,finish=1550757352922667338,duration=167272584[0Ktravis_fold:end:pearrc[0Ktravis_time:start:06326460[0K$ phpenv global 5.4
+travis_time:end:06326460:start=1550757352926038150,finish=1550757352942557921,duration=16519771[0KWarning: This development build of composer is over 60 days old. It is recommended to update it by running "/home/travis/.phpenv/versions/5.4/bin/composer self-update" to get the latest version.
+travis_time:start:027192bf[0K$ composer self-update
+Updating to version [32m1.8.4[39m (stable channel).
+   Downloading ([33mconnecting...[39m)Downloading ([33m100%[39m)         
+Use [32mcomposer self-update --rollback[39m to return to version 2c03dab4c38caa498e87fe3300360497ce1bb381
+travis_time:end:027192bf:start=1550757353203851204,finish=1550757354388096983,duration=1184245779[0K$ php --version
+PHP 5.4.45 (cli) (built: Mar 10 2017 20:52:21) 
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.4.0, Copyright (c) 1998-2014 Zend Technologies
+    with Xdebug v2.4.1, Copyright (c) 2002-2016, by Derick Rethans
+$ composer --version
+[30;43mDeprecation warning: require-dev.mikey179/vfsStream is invalid, it should not contain uppercase characters. Please use mikey179/vfsstream instead. Make sure you fix this as Composer 2.0 will error.[39;49m
+[32mComposer[39m version [33m1.8.4[39m 2019-02-11 10:52:10
+[0m
+travis_fold:start:before_script.1[0Ktravis_time:start:072f28ce[0K$ sh -c "composer install --dev --no-progress"
+[30;43mDeprecation warning: require-dev.mikey179/vfsStream is invalid, it should not contain uppercase characters. Please use mikey179/vfsstream instead. Make sure you fix this as Composer 2.0 will error.[39;49m
+[30;43mYou are using the deprecated option "dev". Dev packages are installed by default now.[39;49m
+[32mLoading composer repositories with package information[39m
+[32mUpdating dependencies (including require-dev)[39m
+[32mPackage operations: 20 installs, 0 updates, 0 removals[39m
+  - Installing [32mmikey179/vfsstream[39m ([33mv1.1.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msymfony/polyfill-ctype[39m ([33mv1.10.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msymfony/yaml[39m ([33mv2.8.49[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/version[39m ([33m1.0.6[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/global-state[39m ([33m1.1.1[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/recursion-context[39m ([33m1.0.5[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/exporter[39m ([33m1.2.2[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/environment[39m ([33m1.3.8[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/diff[39m ([33m1.4.3[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/comparator[39m ([33m1.2.4[39m): Downloading ([33m100%[39m)
+  - Installing [32mdoctrine/instantiator[39m ([33m1.0.5[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-text-template[39m ([33m1.2.1[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/phpunit-mock-objects[39m ([33m2.3.8[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-timer[39m ([33m1.0.9[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-file-iterator[39m ([33m1.4.5[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-token-stream[39m ([33m1.4.12[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-code-coverage[39m ([33m2.2.4[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpdocumentor/reflection-docblock[39m ([33m2.0.5[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpspec/prophecy[39m ([33m1.8.0[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/phpunit[39m ([33m4.8.36[39m): Downloading ([33m100%[39m)
+sebastian/global-state suggests installing ext-uopz (*)
+phpdocumentor/reflection-docblock suggests installing dflydev/markdown (~1.0)
+phpdocumentor/reflection-docblock suggests installing erusev/parsedown (~1.0)
+phpunit/phpunit suggests installing phpunit/php-invoker (~1.1)
+[30;43mPackage phpunit/phpunit-mock-objects is abandoned, you should avoid using it. No replacement was suggested.[39;49m
+[32mWriting lock file[39m
+[32mGenerating autoload files[39m
+travis_time:end:072f28ce:start=1550757354626701312,finish=1550757381139853099,duration=26513151787[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:0a55ae58[0K$ sh -c "if [ '$DB' = 'pgsql' ] || [ '$DB' = 'pdo/pgsql' ]; then psql -c 'DROP DATABASE IF EXISTS ci_test;' -U postgres; fi"
+travis_time:end:0a55ae58:start=1550757381144038814,finish=1550757381147708232,duration=3669418[0Ktravis_fold:end:before_script.2[0Ktravis_fold:start:before_script.3[0Ktravis_time:start:03344e3e[0K$ sh -c "if [ '$DB' = 'pgsql' ] || [ '$DB' = 'pdo/pgsql' ]; then psql -c 'create database ci_test;' -U postgres; fi"
+travis_time:end:03344e3e:start=1550757381151826576,finish=1550757381155590796,duration=3764220[0Ktravis_fold:end:before_script.3[0Ktravis_fold:start:before_script.4[0Ktravis_time:start:13d83dfa[0K$ sh -c "if [ '$DB' = 'mysql' ] || [ '$DB' = 'mysqli' ] || [ '$DB' = 'pdo/mysql' ]; then mysql -e 'create database IF NOT EXISTS ci_test;'; fi"
+travis_time:end:13d83dfa:start=1550757381159275935,finish=1550757381167361700,duration=8085765[0Ktravis_fold:end:before_script.4[0Ktravis_time:start:0c34945e[0K$ php -d zend.enable_gc=0 -d date.timezone=UTC -d mbstring.func_overload=7 -d mbstring.internal_encoding=UTF-8 vendor/bin/phpunit --coverage-text --configuration tests/travis/$DB.phpunit.xml
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................[36;1mS[0m[36;1mS[0m[36;1mS[0m............................  63 / 404 ( 15%)
+............................................[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m........[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m 126 / 404 ( 31%)
+[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m...[36;1mS[0m[36;1mS[0m.[36;1mS[0m....... 189 / 404 ( 46%)
+.......[36;1mS[0m....................................................... 252 / 404 ( 62%)
+........................................[36;1mS[0m...................... 315 / 404 ( 77%)
+..........................................................[36;1mS[0m.... 378 / 404 ( 93%)
+........................
+
+Time: 36.29 seconds, Memory: 94.50MB
+
+There were 56 errors:
+
+1) DB_test::test_db_valid
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/DB_test.php:37
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+2) Count_test::test_count_all
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/count_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+3) Count_test::test_count_all_results
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/count_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+4) Count_test::test_count_all_results_limit
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/count_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+5) Delete_test::test_delete
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/delete_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+6) Delete_test::test_delete_several_tables
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/delete_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+7) Distinct_test::test_distinct
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/distinct_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+8) Empty_test::test_empty_table
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/empty_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+9) Escape_test::test_escape_like_percent_sign
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/escape_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+10) Escape_test::test_escape_like_backslash_sign
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/escape_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+11) From_test::test_from_simple
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/from_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+12) From_test::test_from_with_where
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/from_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+13) Get_test::test_get_simple
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/get_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+14) Get_test::test_get_where
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/get_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+15) Group_test::test_group_by
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/group_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+16) Group_test::test_having_by
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/group_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+17) Group_test::test_having_in
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/group_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+18) Group_test::test_or_having_in
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/group_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+19) Group_test::test_having_not_in
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/group_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+20) Group_test::test_or_having_not_in
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/group_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+21) Insert_test::test_insert
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/insert_test.php:13
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+22) Insert_test::test_insert_batch
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/insert_test.php:13
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+23) Join_test::test_join_simple
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/join_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+24) Join_test::test_join_escape_is_null
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/join_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+25) Join_test::test_join_escape_multiple_conditions
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/join_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+26) Join_test::test_join_escape_multiple_conditions_with_parentheses
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/join_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+27) Like_test::test_like
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+28) Like_test::test_or_like
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+29) Like_test::test_not_like
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+30) Like_test::test_or_not_like
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+31) Like_test::test_like_spaces_and_tabs
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+32) Like_test::test_like_set_side with data set #0 ('Developer', 'none', 'Developer')
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+33) Like_test::test_like_set_side with data set #1 ('tician', 'before', 'Politician')
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+34) Like_test::test_like_set_side with data set #2 ('Accou', 'after', 'Accountant')
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+35) Like_test::test_like_set_side with data set #3 ('usicia', 'both', 'Musician')
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/like_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+36) Limit_test::test_limit
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/limit_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+37) Limit_test::test_limit_and_offset
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/limit_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+38) Order_test::test_order_ascending
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/order_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+39) Order_test::test_order_descending
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/order_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+40) Select_test::test_select_only_one_collumn
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/select_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+41) Select_test::test_select_min
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/select_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+42) Select_test::test_select_max
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/select_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+43) Select_test::test_select_avg
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/select_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+44) Select_test::test_select_sum
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/select_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+45) Truncate_test::test_truncate
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/truncate_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+46) Truncate_test::test_truncate_with_from
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/truncate_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+47) Update_test::test_update
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/update_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+48) Update_test::test_update_with_set
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/update_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+49) Where_test::test_where_simple_key_value
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/where_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+50) Where_test::test_where_custom_key_value
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/where_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+51) Where_test::test_where_associative_array
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/where_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+52) Where_test::test_where_custom_string
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/where_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+53) Where_test::test_where_or
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/where_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+54) Where_test::test_where_in
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/where_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+55) Where_test::test_where_not_in
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/where_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+56) Where_test::test_issue4093
+RuntimeException: Undefined property: CI_DB_mysql_driver::$_is_unbuffered
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/db.php:136
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/database/schema/skeleton.php:36
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/database/query_builder/where_test.php:12
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:45
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+[37;41mFAILURES![0m
+[37;41mTests: 400[0m[37;41m, Assertions: 1223[0m[37;41m, Errors: 56[0m[37;41m, Skipped: 13[0m[37;41m.[0m
+
+
+[1;37;40mCode Coverage Report:        [0m
+[1;37;40m  2019-02-21 13:56:21        [0m
+[1;37;40m                             [0m
+[1;37;40m Summary:                    [0m
+[37;41m  Classes: 14.81% (4/27)     [0m
+[37;41m  Methods: 38.57% (194/503)  [0m
+[30;43m  Lines:   53.31% (4427/8305)[0m
+
+@CI.DB::CI_DB_result
+  [37;41mMethods:   4.35% ( 1/23)[0m   [37;41mLines:   1.82% (  3/165)[0m
+@CodeIgniter.Drivers::CI_DB_driver
+  [37;41mMethods:   3.57% ( 2/56)[0m   [37;41mLines:   2.46% ( 13/528)[0m
+@CodeIgniter.Drivers::CI_DB_mysql_driver
+  [37;41mMethods:   0.00% ( 0/19)[0m   [37;41mLines:  28.44% ( 31/109)[0m
+@CodeIgniter.Libraries::CI_Benchmark
+  [30;42mMethods: 100.00% ( 3/ 3)[0m   [30;42mLines: 100.00% ( 14/ 14)[0m
+@CodeIgniter.Libraries::CI_Calendar
+  [30;43mMethods:  55.56% ( 5/ 9)[0m   [30;43mLines:  75.00% (147/196)[0m
+@CodeIgniter.Libraries::CI_Config
+  [37;41mMethods:  50.00% ( 4/ 8)[0m   [30;43mLines:  86.09% ( 99/115)[0m
+@CodeIgniter.Libraries::CI_Driver
+  [37;41mMethods:  50.00% ( 2/ 4)[0m   [30;42mLines:  94.12% ( 32/ 34)[0m
+@CodeIgniter.Libraries::CI_Driver_Library
+  [37;41mMethods:   0.00% ( 0/ 2)[0m   [30;42mLines:  90.62% ( 58/ 64)[0m
+@CodeIgniter.Libraries::CI_Encrypt
+  [37;41mMethods:  50.00% (10/20)[0m   [30;43mLines:  64.29% ( 72/112)[0m
+@CodeIgniter.Libraries::CI_Encryption
+  [37;41mMethods:  42.11% ( 8/19)[0m   [30;43mLines:  85.96% (306/356)[0m
+@CodeIgniter.Libraries::CI_Form_validation
+  [30;43mMethods:  77.36% (41/53)[0m   [30;43mLines:  84.48% (392/464)[0m
+@CodeIgniter.Libraries::CI_Input
+  [30;43mMethods:  66.67% (12/18)[0m   [30;43mLines:  61.72% (129/209)[0m
+@CodeIgniter.Libraries::CI_Lang
+  [30;43mMethods:  66.67% ( 2/ 3)[0m   [30;43mLines:  83.82% ( 57/ 68)[0m
+@CodeIgniter.Libraries::CI_Loader
+  [30;43mMethods:  58.62% (17/29)[0m   [30;43mLines:  75.09% (401/534)[0m
+@CodeIgniter.Libraries::CI_Log
+  [37;41mMethods:  20.00% ( 1/ 5)[0m   [37;41mLines:  32.10% ( 26/ 81)[0m
+@CodeIgniter.Libraries::CI_Model
+  [30;42mMethods: 100.00% ( 1/ 1)[0m   [30;42mLines: 100.00% (  1/  1)[0m
+@CodeIgniter.Libraries::CI_Output
+  [37;41mMethods:  21.05% ( 4/19)[0m   [37;41mLines:  14.49% ( 41/283)[0m
+@CodeIgniter.Libraries::CI_Parser
+  [30;43mMethods:  57.14% ( 4/ 7)[0m   [30;43mLines:  80.00% ( 44/ 55)[0m
+@CodeIgniter.Libraries::CI_Security
+  [30;43mMethods:  61.90% (13/21)[0m   [30;43mLines:  84.15% (239/284)[0m
+@CodeIgniter.Libraries::CI_Table
+  [30;43mMethods:  85.71% (12/14)[0m   [30;42mLines:  90.00% (153/170)[0m
+@CodeIgniter.Libraries::CI_Typography
+  [30;42mMethods: 100.00% ( 5/ 5)[0m   [30;42mLines: 100.00% (127/127)[0m
+@CodeIgniter.Libraries::CI_URI
+  [30;43mMethods:  54.55% (12/22)[0m   [37;41mLines:  33.70% ( 62/184)[0m
+@CodeIgniter.Libraries::CI_Upload
+  [30;43mMethods:  53.57% (15/28)[0m   [37;41mLines:  47.70% (207/434)[0m
+@CodeIgniter.Libraries::CI_User_agent
+  [30;43mMethods:  72.00% (18/25)[0m   [30;43mLines:  89.01% (162/182)[0m
+@CodeIgniter.Libraries::CI_Utf8
+  [37;41mMethods:  40.00% ( 2/ 5)[0m   [30;43mLines:  77.42% ( 24/ 31)[0m
+travis_time:end:0c34945e:start=1550757381171101476,finish=1550757419993281847,duration=38822180371[0K[31;1mThe command "php -d zend.enable_gc=0 -d date.timezone=UTC -d mbstring.func_overload=7 -d mbstring.internal_encoding=UTF-8 vendor/bin/phpunit --coverage-text --configuration tests/travis/$DB.phpunit.xml" exited with 2.[0m
+
+
+
+Done. Your build exited with 1.

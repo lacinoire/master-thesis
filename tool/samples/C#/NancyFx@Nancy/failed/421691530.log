@@ -1,0 +1,1518 @@
+travis_fold:start:step_start_instance[0K[33;1mStarting instance[0m
+✓ selected image "travis-ci-macos-10.13-xcode9.4.1-1529955246"
+✓ started instance
+• sleeping 3s before checking instance start
+• polling for instance start completion....................
+• waiting for ssh connectivity...
+✓ instance is ready (1m1.599s)
+travis_fold:end:step_start_instance[0Ktravis_fold:start:step_upload_script[0K[33;1mUploading script[0m
+• waiting for ssh connectivity...
+✓ ssh connectivity established (119ms)
+✓ uploaded script
+✓ uploaded wrapper.sh script
+travis_fold:end:step_upload_script[0Ktravis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: fb7beeb4-c3e8-46fd-81bd-e583afdad4f7@12697.wjb-2
+version: v4.0.0 https://github.com/travis-ci/worker/tree/e5cb567e10c0eefe380e81c9a2229ac8fb6a16ce
+instance: eba5b1c1-b5c8-4344-830d-05da9031e23b travis-ci-macos-10.13-xcode9.4.1-1529955246 (via amqp)
+startup: 1m1.599926924s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: csharp
+Build id: 421691530
+Job id: 421691533
+Runtime kernel version: 17.4.0
+travis-build version: caa98e868
+[34m[1mBuild image provisioning date and time[0m
+Mon Jun 25 21:55:14 GMT 2018
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.13.3
+BuildVersion:	17D102
+[34m[1mGit version[0m
+git version 2.18.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.3
+[34m[1mPre-installed Node.js versions[0m
+v4.9.1
+v5.12.0
+v6.14.3
+v8.11.3
+[34m[1mmvn -version[0m
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T18:33:14Z)
+Maven home: /usr/local/Cellar/maven/3.5.4/libexec
+Java version: 10.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+[32;1mNetwork availability confirmed.[0m
+
+Fix WWDRCA Certificate
+Unable to delete certificate matching "0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75"security: AppleWWDRCA.cer: already in /Library/Keychains/System.keychain
+$ rvm use
+[32mUsing /Users/travis/.rvm/gems/ruby-2.4.3[0m
+
+[31;1mC# support for Travis-CI is community maintained.[0m
+[31;1mPlease open any issues at https://github.com/travis-ci/travis-ci/issues/new and cc @joshua-anderson @akoeplinger @nterry[0m
+travis_fold:start:mono-install[0K[33;1mInstalling Mono[0m
+travis_time:start:0abf13b4[0K$ wget --retry-connrefused --waitretry=1 -O /tmp/mdk.pkg http://download.mono-project.com/archive/4.4.2/macos-10-universal/MonoFramework-MDK-4.4.2.macos10.xamarin.universal.pkg
+--2018-08-28 18:08:27--  http://download.mono-project.com/archive/4.4.2/macos-10-universal/MonoFramework-MDK-4.4.2.macos10.xamarin.universal.pkg
+Resolving download.mono-project.com (download.mono-project.com)... 72.21.81.200
+Connecting to download.mono-project.com (download.mono-project.com)|72.21.81.200|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 317394278 (303M) [application/octet-stream]
+Saving to: ‘/tmp/mdk.pkg’
+
+/tmp/mdk.pkg          0%[                    ]       0  --.-KB/s               /tmp/mdk.pkg          8%[>                   ]  24.47M   122MB/s               /tmp/mdk.pkg         17%[==>                 ]  53.11M   133MB/s               /tmp/mdk.pkg         19%[==>                 ]  59.13M  93.3MB/s               /tmp/mdk.pkg         29%[====>               ]  88.59M   106MB/s               /tmp/mdk.pkg         38%[======>             ] 117.12M   113MB/s               /tmp/mdk.pkg         47%[========>           ] 144.63M   117MB/s               /tmp/mdk.pkg         57%[==========>         ] 174.12M   121MB/s               /tmp/mdk.pkg         67%[============>       ] 204.12M   124MB/s               /tmp/mdk.pkg         76%[==============>     ] 232.81M   127MB/s               /tmp/mdk.pkg         85%[================>   ] 257.90M   126MB/s               /tmp/mdk.pkg         93%[=================>  ] 283.81M   127MB/s               /tmp/mdk.pkg        100%[===================>] 302.69M   126MB/s    in 2.4s    
+
+2018-08-28 18:08:29 (126 MB/s) - ‘/tmp/mdk.pkg’ saved [317394278/317394278]
+
+
+travis_time:end:0abf13b4:start=1535479707254489000,finish=1535479709785717000,duration=2531228000[0Ktravis_time:start:1b70ac82[0Kinstaller: Package name is Mono Framework
+installer: Installing at base path /
+installer:PHASE:Preparing for installation…
+installer:PHASE:Preparing the disk…
+installer:PHASE:Preparing Mono Framework…
+installer:PHASE:Waiting for other installations to complete…
+installer:PHASE:Configuring the installation…
+installer:STATUS:
+installer:%3.965398
+installer:PHASE:Writing files…
+installer:%4.899955
+installer:PHASE:Writing files…
+installer:%6.480751
+installer:PHASE:Writing files…
+installer:%8.061547
+installer:PHASE:Writing files…
+installer:%11.223140
+installer:PHASE:Writing files…
+installer:%12.803936
+installer:PHASE:Writing files…
+installer:%15.175131
+installer:PHASE:Writing files…
+installer:%16.755927
+installer:PHASE:Writing files…
+installer:%18.336723
+installer:PHASE:Writing files…
+installer:%19.917519
+installer:PHASE:Writing files…
+installer:%20.707918
+installer:PHASE:Writing files…
+installer:PHASE:Writing files…
+installer:%21.498316
+installer:PHASE:Writing files…
+installer:%23.079112
+installer:PHASE:Writing files…
+installer:%24.659908
+installer:PHASE:Writing files…
+installer:%27.031103
+installer:PHASE:Writing files…
+installer:%29.402297
+installer:PHASE:Writing files…
+installer:%31.773491
+installer:PHASE:Writing files…
+installer:%34.144686
+installer:PHASE:Writing files…
+installer:%36.515880
+installer:PHASE:Writing files…
+installer:%37.306278
+installer:PHASE:Writing files…
+installer:%39.677473
+installer:PHASE:Writing files…
+installer:%41.258269
+installer:PHASE:Writing files…
+installer:%43.629464
+installer:PHASE:Writing files…
+installer:%46.000658
+installer:PHASE:Writing files…
+installer:%47.581454
+installer:PHASE:Writing files…
+installer:%49.952649
+installer:PHASE:Writing files…
+installer:%50.743047
+installer:PHASE:Writing files…
+installer:%53.114241
+installer:PHASE:Writing files…
+installer:%55.485436
+installer:PHASE:Writing files…
+installer:%57.066232
+installer:PHASE:Writing files…
+installer:%58.647028
+installer:PHASE:Writing files…
+installer:%61.018223
+installer:PHASE:Writing files…
+installer:%63.389417
+installer:PHASE:Writing files…
+installer:%64.970213
+installer:PHASE:Writing files…
+installer:%66.551010
+installer:PHASE:Writing files…
+installer:%68.131806
+installer:PHASE:Writing files…
+installer:%68.922204
+installer:PHASE:Writing files…
+installer:%69.712602
+installer:PHASE:Writing files…
+installer:%70.503000
+installer:PHASE:Writing files…
+installer:PHASE:Writing files…
+installer:PHASE:Writing files…
+installer:%72.874195
+installer:PHASE:Writing files…
+installer:%73.664593
+installer:PHASE:Writing files…
+installer:%74.454991
+installer:PHASE:Writing files…
+installer:%75.245389
+installer:PHASE:Writing files…
+installer:%76.035787
+installer:PHASE:Writing files…
+installer:%93.262497
+installer:PHASE:Running package scripts…
+installer:%93.611341
+installer:PHASE:Running package scripts…
+installer:%93.819745
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:%93.855096
+installer:PHASE:Writing package receipts…
+installer:PHASE:Validating packages…
+installer:%97.750000
+installer:STATUS:Running installer actions…
+installer:STATUS:
+installer:PHASE:Finishing the Installation…
+installer:STATUS:
+installer:%100.000000
+installer:PHASE:The software was successfully installed.
+installer: The install was successful.
+
+travis_time:end:1b70ac82:start=1535479709801080000,finish=1535479854999509000,duration=145198429000[0Ktravis_fold:end:mono-install[0Ktravis_fold:start:dotnet-install[0K[33;1mInstalling .NET Core[0m
+$ export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+$ export DOTNET_CLI_TELEMETRY_OPTOUT=1
+travis_time:start:005a6ef0[0K$ wget --retry-connrefused --waitretry=1 -O /tmp/dotnet.pkg https://dotnetcli.azureedge.net/dotnet/Sdk/2.1.4/dotnet-sdk-2.1.4-osx-x64.pkg
+--2018-08-28 18:10:55--  https://dotnetcli.azureedge.net/dotnet/Sdk/2.1.4/dotnet-sdk-2.1.4-osx-x64.pkg
+Resolving dotnetcli.azureedge.net (dotnetcli.azureedge.net)... 72.21.81.200
+Connecting to dotnetcli.azureedge.net (dotnetcli.azureedge.net)|72.21.81.200|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 158780871 (151M) [application/octet-stream]
+Saving to: ‘/tmp/dotnet.pkg’
+
+/tmp/dotnet.pkg       0%[                    ]       0  --.-KB/s               /tmp/dotnet.pkg      11%[=>                  ]  17.37M  86.9MB/s               /tmp/dotnet.pkg      23%[===>                ]  36.01M  88.9MB/s               /tmp/dotnet.pkg      34%[=====>              ]  52.52M  83.2MB/s               /tmp/dotnet.pkg      46%[========>           ]  70.84M  85.2MB/s               /tmp/dotnet.pkg      58%[==========>         ]  89.01M  86.2MB/s               /tmp/dotnet.pkg      70%[=============>      ] 107.02M  86.9MB/s               /tmp/dotnet.pkg      82%[===============>    ] 124.48M  86.9MB/s               /tmp/dotnet.pkg      94%[=================>  ] 142.98M  87.6MB/s               /tmp/dotnet.pkg     100%[===================>] 151.42M  87.6MB/s    in 1.7s    
+
+2018-08-28 18:10:56 (87.6 MB/s) - ‘/tmp/dotnet.pkg’ saved [158780871/158780871]
+
+
+travis_time:end:005a6ef0:start=1535479855073781000,finish=1535479856868973000,duration=1795192000[0Ktravis_time:start:25679d85[0Kinstaller: Package name is Microsoft .NET Core SDK - 2.1.4 (x64)
+installer: Installing at base path /
+installer:PHASE:Preparing for installation…
+installer:PHASE:Preparing the disk…
+installer:PHASE:Preparing Microsoft .NET Core SDK - 2.1.4 (x64)…
+installer:PHASE:Waiting for other installations to complete…
+installer:PHASE:Configuring the installation…
+installer:STATUS:
+installer:%7.230816
+installer:PHASE:Writing files…
+installer:%11.705742
+installer:PHASE:Writing files…
+installer:%14.689026
+installer:PHASE:Writing files…
+installer:%16.180668
+installer:PHASE:Writing files…
+installer:%20.655595
+installer:PHASE:Writing files…
+installer:%22.147237
+installer:PHASE:Writing files…
+installer:%26.622163
+installer:PHASE:Writing files…
+installer:%31.097090
+installer:PHASE:Writing files…
+installer:%35.572016
+installer:PHASE:Writing files…
+installer:%38.555300
+installer:PHASE:Writing files…
+installer:%41.538585
+installer:PHASE:Writing files…
+installer:%44.521869
+installer:PHASE:Writing files…
+installer:%46.013511
+installer:PHASE:Writing files…
+installer:%48.996795
+installer:PHASE:Writing files…
+installer:%53.471722
+installer:PHASE:Writing files…
+installer:%56.455006
+installer:PHASE:Writing files…
+installer:%86.803211
+installer:PHASE:Running package scripts…
+installer:%87.528885
+installer:PHASE:Running package scripts…
+installer:%88.299816
+installer:PHASE:Running package scripts…
+installer:%89.033856
+installer:PHASE:Running package scripts…
+installer:%89.734764
+installer:PHASE:Running package scripts…
+installer:%90.536304
+installer:PHASE:Running package scripts…
+installer:%91.277732
+installer:PHASE:Running package scripts…
+installer:%91.959108
+installer:PHASE:Running package scripts…
+installer:%92.254417
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Running package scripts…
+installer:PHASE:Validating packages…
+installer:%97.750000
+installer:STATUS:Running installer actions…
+installer:STATUS:
+installer:PHASE:Finishing the Installation…
+installer:STATUS:
+installer:%100.000000
+installer:PHASE:The software was successfully installed.
+installer: The install was successful.
+
+travis_time:end:25679d85:start=1535479856883703000,finish=1535479901735340000,duration=44851637000[0Ktravis_fold:end:dotnet-install[0K
+travis_fold:start:git.checkout[0Ktravis_time:start:01d97136[0K$ git clone --depth=50 https://github.com/NancyFx/Nancy.git NancyFx/Nancy
+Cloning into 'NancyFx/Nancy'...
+remote: Counting objects: 2387, done.[K
+remote: Compressing objects:   0% (1/1689)   [Kremote: Compressing objects:   1% (17/1689)   [Kremote: Compressing objects:   2% (34/1689)   [Kremote: Compressing objects:   3% (51/1689)   [Kremote: Compressing objects:   4% (68/1689)   [Kremote: Compressing objects:   5% (85/1689)   [Kremote: Compressing objects:   6% (102/1689)   [Kremote: Compressing objects:   7% (119/1689)   [Kremote: Compressing objects:   8% (136/1689)   [Kremote: Compressing objects:   9% (153/1689)   [Kremote: Compressing objects:  10% (169/1689)   [Kremote: Compressing objects:  11% (186/1689)   [Kremote: Compressing objects:  12% (203/1689)   [Kremote: Compressing objects:  13% (220/1689)   [Kremote: Compressing objects:  14% (237/1689)   [Kremote: Compressing objects:  15% (254/1689)   [Kremote: Compressing objects:  16% (271/1689)   [Kremote: Compressing objects:  17% (288/1689)   [Kremote: Compressing objects:  18% (305/1689)   [Kremote: Compressing objects:  19% (321/1689)   [Kremote: Compressing objects:  20% (338/1689)   [Kremote: Compressing objects:  21% (355/1689)   [Kremote: Compressing objects:  22% (372/1689)   [Kremote: Compressing objects:  23% (389/1689)   [Kremote: Compressing objects:  24% (406/1689)   [Kremote: Compressing objects:  25% (423/1689)   [Kremote: Compressing objects:  26% (440/1689)   [Kremote: Compressing objects:  27% (457/1689)   [Kremote: Compressing objects:  28% (473/1689)   [Kremote: Compressing objects:  29% (490/1689)   [Kremote: Compressing objects:  30% (507/1689)   [Kremote: Compressing objects:  31% (524/1689)   [Kremote: Compressing objects:  32% (541/1689)   [Kremote: Compressing objects:  33% (558/1689)   [Kremote: Compressing objects:  34% (575/1689)   [Kremote: Compressing objects:  35% (592/1689)   [Kremote: Compressing objects:  36% (609/1689)   [Kremote: Compressing objects:  37% (625/1689)   [Kremote: Compressing objects:  38% (642/1689)   [Kremote: Compressing objects:  39% (659/1689)   [Kremote: Compressing objects:  40% (676/1689)   [Kremote: Compressing objects:  41% (693/1689)   [Kremote: Compressing objects:  42% (710/1689)   [Kremote: Compressing objects:  43% (727/1689)   [Kremote: Compressing objects:  44% (744/1689)   [Kremote: Compressing objects:  45% (761/1689)   [Kremote: Compressing objects:  46% (777/1689)   [Kremote: Compressing objects:  47% (794/1689)   [Kremote: Compressing objects:  48% (811/1689)   [Kremote: Compressing objects:  49% (828/1689)   [Kremote: Compressing objects:  50% (845/1689)   [Kremote: Compressing objects:  51% (862/1689)   [Kremote: Compressing objects:  52% (879/1689)   [Kremote: Compressing objects:  53% (896/1689)   [Kremote: Compressing objects:  54% (913/1689)   [Kremote: Compressing objects:  55% (929/1689)   [Kremote: Compressing objects:  56% (946/1689)   [Kremote: Compressing objects:  57% (963/1689)   [Kremote: Compressing objects:  58% (980/1689)   [Kremote: Compressing objects:  59% (997/1689)   [Kremote: Compressing objects:  60% (1014/1689)   [Kremote: Compressing objects:  61% (1031/1689)   [Kremote: Compressing objects:  62% (1048/1689)   [Kremote: Compressing objects:  63% (1065/1689)   [Kremote: Compressing objects:  64% (1081/1689)   [Kremote: Compressing objects:  65% (1098/1689)   [Kremote: Compressing objects:  66% (1115/1689)   [Kremote: Compressing objects:  67% (1132/1689)   [Kremote: Compressing objects:  68% (1149/1689)   [Kremote: Compressing objects:  69% (1166/1689)   [Kremote: Compressing objects:  70% (1183/1689)   [Kremote: Compressing objects:  71% (1200/1689)   [Kremote: Compressing objects:  72% (1217/1689)   [Kremote: Compressing objects:  73% (1233/1689)   [Kremote: Compressing objects:  74% (1250/1689)   [Kremote: Compressing objects:  75% (1267/1689)   [Kremote: Compressing objects:  76% (1284/1689)   [Kremote: Compressing objects:  77% (1301/1689)   [Kremote: Compressing objects:  78% (1318/1689)   [Kremote: Compressing objects:  79% (1335/1689)   [Kremote: Compressing objects:  80% (1352/1689)   [Kremote: Compressing objects:  81% (1369/1689)   [Kremote: Compressing objects:  82% (1385/1689)   [Kremote: Compressing objects:  83% (1402/1689)   [Kremote: Compressing objects:  84% (1419/1689)   [Kremote: Compressing objects:  85% (1436/1689)   [Kremote: Compressing objects:  86% (1453/1689)   [Kremote: Compressing objects:  87% (1470/1689)   [Kremote: Compressing objects:  88% (1487/1689)   [Kremote: Compressing objects:  89% (1504/1689)   [Kremote: Compressing objects:  90% (1521/1689)   [Kremote: Compressing objects:  91% (1537/1689)   [Kremote: Compressing objects:  92% (1554/1689)   [Kremote: Compressing objects:  93% (1571/1689)   [Kremote: Compressing objects:  94% (1588/1689)   [Kremote: Compressing objects:  95% (1605/1689)   [Kremote: Compressing objects:  96% (1622/1689)   [Kremote: Compressing objects:  97% (1639/1689)   [Kremote: Compressing objects:  98% (1656/1689)   [Kremote: Compressing objects:  99% (1673/1689)   [Kremote: Compressing objects: 100% (1689/1689)   [Kremote: Compressing objects: 100% (1689/1689), done.[K
+Receiving objects:   0% (1/2387)   Receiving objects:   1% (24/2387)   Receiving objects:   2% (48/2387)   Receiving objects:   3% (72/2387)   Receiving objects:   4% (96/2387)   Receiving objects:   5% (120/2387)   Receiving objects:   6% (144/2387)   Receiving objects:   7% (168/2387)   Receiving objects:   8% (191/2387)   Receiving objects:   9% (215/2387)   Receiving objects:  10% (239/2387)   Receiving objects:  11% (263/2387)   Receiving objects:  12% (287/2387)   Receiving objects:  13% (311/2387)   Receiving objects:  14% (335/2387)   Receiving objects:  15% (359/2387)   Receiving objects:  16% (382/2387)   Receiving objects:  17% (406/2387)   Receiving objects:  18% (430/2387)   Receiving objects:  19% (454/2387)   Receiving objects:  20% (478/2387)   Receiving objects:  21% (502/2387)   Receiving objects:  22% (526/2387)   Receiving objects:  23% (550/2387)   Receiving objects:  24% (573/2387)   Receiving objects:  25% (597/2387)   Receiving objects:  26% (621/2387)   Receiving objects:  27% (645/2387)   Receiving objects:  28% (669/2387)   Receiving objects:  29% (693/2387)   Receiving objects:  30% (717/2387)   Receiving objects:  31% (740/2387)   Receiving objects:  32% (764/2387)   Receiving objects:  33% (788/2387)   Receiving objects:  34% (812/2387)   Receiving objects:  35% (836/2387)   Receiving objects:  36% (860/2387)   Receiving objects:  37% (884/2387)   Receiving objects:  38% (908/2387)   Receiving objects:  39% (931/2387)   Receiving objects:  40% (955/2387)   Receiving objects:  41% (979/2387)   Receiving objects:  42% (1003/2387)   Receiving objects:  43% (1027/2387)   Receiving objects:  44% (1051/2387)   Receiving objects:  45% (1075/2387)   Receiving objects:  46% (1099/2387)   Receiving objects:  47% (1122/2387)   Receiving objects:  48% (1146/2387)   Receiving objects:  49% (1170/2387)   Receiving objects:  50% (1194/2387)   Receiving objects:  51% (1218/2387)   Receiving objects:  52% (1242/2387)   Receiving objects:  53% (1266/2387)   Receiving objects:  54% (1289/2387)   Receiving objects:  55% (1313/2387)   Receiving objects:  56% (1337/2387)   Receiving objects:  57% (1361/2387)   Receiving objects:  58% (1385/2387)   Receiving objects:  59% (1409/2387)   Receiving objects:  60% (1433/2387)   Receiving objects:  61% (1457/2387)   Receiving objects:  62% (1480/2387)   Receiving objects:  63% (1504/2387)   Receiving objects:  64% (1528/2387)   Receiving objects:  65% (1552/2387)   Receiving objects:  66% (1576/2387)   Receiving objects:  67% (1600/2387)   Receiving objects:  68% (1624/2387)   Receiving objects:  69% (1648/2387)   Receiving objects:  70% (1671/2387)   Receiving objects:  71% (1695/2387)   Receiving objects:  72% (1719/2387)   Receiving objects:  73% (1743/2387)   Receiving objects:  74% (1767/2387)   Receiving objects:  75% (1791/2387)   Receiving objects:  76% (1815/2387)   Receiving objects:  77% (1838/2387)   Receiving objects:  78% (1862/2387)   Receiving objects:  79% (1886/2387)   Receiving objects:  80% (1910/2387)   Receiving objects:  81% (1934/2387)   Receiving objects:  82% (1958/2387)   Receiving objects:  83% (1982/2387)   Receiving objects:  84% (2006/2387)   Receiving objects:  85% (2029/2387)   Receiving objects:  86% (2053/2387)   Receiving objects:  87% (2077/2387)   Receiving objects:  88% (2101/2387)   Receiving objects:  89% (2125/2387)   Receiving objects:  90% (2149/2387)   Receiving objects:  91% (2173/2387)   Receiving objects:  92% (2197/2387)   Receiving objects:  93% (2220/2387)   Receiving objects:  94% (2244/2387)   remote: Total 2387 (delta 1049), reused 1254 (delta 626), pack-reused 0[K
+Receiving objects:  95% (2268/2387)   Receiving objects:  96% (2292/2387)   Receiving objects:  97% (2316/2387)   Receiving objects:  98% (2340/2387)   Receiving objects:  99% (2364/2387)   Receiving objects: 100% (2387/2387)   Receiving objects: 100% (2387/2387), 2.65 MiB | 11.85 MiB/s, done.
+Resolving deltas:   0% (0/1049)   Resolving deltas:   1% (11/1049)   Resolving deltas:   2% (22/1049)   Resolving deltas:   3% (34/1049)   Resolving deltas:   4% (45/1049)   Resolving deltas:   8% (92/1049)   Resolving deltas:   9% (99/1049)   Resolving deltas:  10% (108/1049)   Resolving deltas:  11% (117/1049)   Resolving deltas:  12% (130/1049)   Resolving deltas:  13% (137/1049)   Resolving deltas:  14% (147/1049)   Resolving deltas:  15% (160/1049)   Resolving deltas:  16% (169/1049)   Resolving deltas:  17% (181/1049)   Resolving deltas:  18% (191/1049)   Resolving deltas:  19% (200/1049)   Resolving deltas:  20% (210/1049)   Resolving deltas:  21% (223/1049)   Resolving deltas:  22% (231/1049)   Resolving deltas:  23% (242/1049)   Resolving deltas:  24% (252/1049)   Resolving deltas:  25% (263/1049)   Resolving deltas:  27% (287/1049)   Resolving deltas:  28% (296/1049)   Resolving deltas:  29% (306/1049)   Resolving deltas:  30% (315/1049)   Resolving deltas:  31% (326/1049)   Resolving deltas:  32% (337/1049)   Resolving deltas:  33% (349/1049)   Resolving deltas:  34% (364/1049)   Resolving deltas:  35% (368/1049)   Resolving deltas:  36% (378/1049)   Resolving deltas:  37% (389/1049)   Resolving deltas:  38% (408/1049)   Resolving deltas:  39% (415/1049)   Resolving deltas:  40% (420/1049)   Resolving deltas:  41% (432/1049)   Resolving deltas:  42% (441/1049)   Resolving deltas:  43% (452/1049)   Resolving deltas:  44% (462/1049)   Resolving deltas:  45% (473/1049)   Resolving deltas:  46% (483/1049)   Resolving deltas:  47% (494/1049)   Resolving deltas:  48% (504/1049)   Resolving deltas:  49% (516/1049)   Resolving deltas:  50% (526/1049)   Resolving deltas:  51% (545/1049)   Resolving deltas:  52% (549/1049)   Resolving deltas:  53% (556/1049)   Resolving deltas:  54% (571/1049)   Resolving deltas:  55% (577/1049)   Resolving deltas:  56% (588/1049)   Resolving deltas:  57% (599/1049)   Resolving deltas:  58% (613/1049)   Resolving deltas:  59% (621/1049)   Resolving deltas:  60% (633/1049)   Resolving deltas:  61% (640/1049)   Resolving deltas:  62% (651/1049)   Resolving deltas:  65% (682/1049)   Resolving deltas:  66% (693/1049)   Resolving deltas:  67% (704/1049)   Resolving deltas:  68% (715/1049)   Resolving deltas:  69% (724/1049)   Resolving deltas:  70% (735/1049)   Resolving deltas:  71% (745/1049)   Resolving deltas:  72% (756/1049)   Resolving deltas:  73% (770/1049)   Resolving deltas:  74% (779/1049)   Resolving deltas:  75% (787/1049)   Resolving deltas:  76% (798/1049)   Resolving deltas:  77% (809/1049)   Resolving deltas:  78% (819/1049)   Resolving deltas:  79% (832/1049)   Resolving deltas:  80% (840/1049)   Resolving deltas:  81% (853/1049)   Resolving deltas:  82% (861/1049)   Resolving deltas:  83% (873/1049)   Resolving deltas:  84% (884/1049)   Resolving deltas:  86% (910/1049)   Resolving deltas:  87% (914/1049)   Resolving deltas:  89% (937/1049)   Resolving deltas:  90% (945/1049)   Resolving deltas:  91% (957/1049)   Resolving deltas:  94% (995/1049)   Resolving deltas:  95% (997/1049)   Resolving deltas:  99% (1039/1049)   Resolving deltas: 100% (1049/1049)   Resolving deltas: 100% (1049/1049), done.
+
+travis_time:end:01d97136:start=1535479901761863000,finish=1535479903428357000,duration=1666494000[0K$ cd NancyFx/Nancy
+travis_time:start:1a33e8d4[0K$ git fetch origin +refs/pull/2926/merge:
+remote: Counting objects: 6, done.[K
+remote: Compressing objects:  50% (1/2)   [Kremote: Compressing objects: 100% (2/2)   [Kremote: Compressing objects: 100% (2/2), done.[K
+remote: Total 6 (delta 5), reused 4 (delta 4), pack-reused 0[K
+Unpacking objects:  16% (1/6)   Unpacking objects:  33% (2/6)   Unpacking objects:  50% (3/6)   Unpacking objects:  66% (4/6)   Unpacking objects:  83% (5/6)   Unpacking objects: 100% (6/6)   Unpacking objects: 100% (6/6), done.
+From https://github.com/NancyFx/Nancy
+ * branch            refs/pull/2926/merge -> FETCH_HEAD
+
+travis_time:end:1a33e8d4:start=1535479903504515000,finish=1535479903875359000,duration=370844000[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0Ktravis_time:start:106372c4[0K$ mono --version
+Mono JIT compiler version 4.4.2 (mono-4.4.0-branch-c7sr1/f72fe45 Wed Jul 27 16:20:13 EDT 2016)
+Copyright (C) 2002-2014 Novell, Inc, Xamarin Inc and Contributors. www.mono-project.com
+	TLS:           normal
+	SIGSEGV:       altstack
+	Notification:  kqueue
+	Architecture:  x86
+	Disabled:      none
+	Misc:          softdebug 
+	LLVM:          yes(3.6.0svn-mono-master/a173357)
+	GC:            sgen
+
+travis_time:end:106372c4:start=1535479904039467000,finish=1535479904566841000,duration=527374000[0Ktravis_time:start:1d64fdb0[0K$ xbuild /version
+XBuild Engine Version 14.0
+Mono, Version 4.4.2.0
+Copyright (C) 2005-2013 Various Mono authors
+
+travis_time:end:1d64fdb0:start=1535479904582620000,finish=1535479904952875000,duration=370255000[0K
+travis_time:start:2e0dcee8[0K$ dotnet --info
+.NET Command Line Tools (2.1.4)
+
+Product Information:
+ Version:            2.1.4
+ Commit SHA-1 hash:  5e8add2190
+
+Runtime Environment:
+ OS Name:     Mac OS X
+ OS Version:  10.13
+ OS Platform: Darwin
+ RID:         osx.10.12-x64
+ Base Path:   /usr/local/share/dotnet/sdk/2.1.4/
+
+Microsoft .NET Core Shared Framework Host
+
+  Version  : 2.0.5
+  Build    : 17373eb129b3b05aa18ece963f8795d65ef8ea54
+
+
+travis_time:end:2e0dcee8:start=1535479904969207000,finish=1535479905292026000,duration=322819000[0K
+travis_time:start:1208e570[0K$ ./build.sh --verbosity=minimal
+Installing .NET CLI...
+[36mdotnet-install:(B[m Downloading link: https://dotnetcli.azureedge.net/dotnet/Sdk/2.1.4/dotnet-sdk-2.1.4-osx-x64.tar.gz
+[36mdotnet-install:(B[m Extracting zip from https://dotnetcli.azureedge.net/dotnet/Sdk/2.1.4/dotnet-sdk-2.1.4-osx-x64.tar.gz
+[36mdotnet-install:(B[m Binaries of dotnet can be found in /Users/travis/build/NancyFx/Nancy/.dotnet
+[36mdotnet-install:(B[m Installation finished successfully.
+.NET Command Line Tools (2.1.4)
+
+Product Information:
+ Version:            2.1.4
+ Commit SHA-1 hash:  5e8add2190
+
+Runtime Environment:
+ OS Name:     Mac OS X
+ OS Version:  10.13
+ OS Platform: Darwin
+ RID:         osx.10.12-x64
+ Base Path:   /Users/travis/build/NancyFx/Nancy/.dotnet/sdk/2.1.4/
+
+Microsoft .NET Core Shared Framework Host
+
+  Version  : 2.0.5
+  Build    : 17373eb129b3b05aa18ece963f8795d65ef8ea54
+
+[?1h=[6n[H[2J[?1h=[?1h=[?1h=  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Basic/Nancy.Authentication.Basic.csproj...
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/samples/Nancy.Demo.Hosting.Kestrel/Nancy.Demo.Hosting.Kestrel.csproj...
+  Installing runtime.native.System 4.0.0.
+  Installing System.Runtime.Handles 4.0.1.
+  Installing System.Diagnostics.Tools 4.0.1.
+  Installing System.Threading.Tasks.Extensions 4.0.0.
+  Installing System.IO.FileSystem.Primitives 4.0.1.
+  Installing System.Reflection.Emit.Lightweight 4.0.1.
+  Installing System.AppContext 4.1.0.
+  Installing System.Runtime.InteropServices.RuntimeInformation 4.0.0.
+  Installing System.Runtime.InteropServices 4.1.0.
+  Installing System.IO.FileSystem 4.0.1.
+  Installing System.Xml.XDocument 4.0.11.
+  Installing System.Xml.ReaderWriter 4.0.11.
+  Installing Microsoft.CSharp 4.0.1.
+  Installing System.Text.RegularExpressions 4.1.0.
+  Installing System.Text.Encoding.Extensions 4.0.11.
+  Installing System.Threading.Tasks 4.0.11.
+  Installing System.Text.Encoding 4.0.11.
+  Installing System.Linq.Expressions 4.1.0.
+  Installing System.ObjectModel 4.0.12.
+  Installing System.Reflection.Emit.ILGeneration 4.0.1.
+  Installing System.Reflection.Emit 4.0.1.
+  Installing System.Reflection.Primitives 4.0.1.
+  Installing System.Threading 4.0.11.
+  Installing AsyncUsageAnalyzers 1.0.0-alpha003.
+  Installing System.IO 4.1.0.
+  Installing System.Runtime.Serialization.Primitives 4.1.1.
+  Installing System.Reflection.Extensions 4.0.1.
+  Installing NETStandard.Library 2.0.1.
+  Installing Microsoft.NETCore.Platforms 1.1.0.
+  Installing System.Security.Claims 4.3.0.
+  Installing System.ComponentModel.TypeConverter 4.3.0.
+  Installing System.Globalization 4.0.11.
+  Installing Microsoft.Extensions.PlatformAbstractions 1.1.0.
+  Installing System.Collections.Specialized 4.3.0.
+  Installing System.Xml.XmlSerializer 4.3.0.
+  Installing System.Net.NameResolution 4.3.0.
+  Installing Microsoft.Extensions.DependencyModel 2.0.4.
+  Installing System.Security.Principal 4.3.0.
+  Installing System.Collections 4.3.0.
+  Installing System.Globalization 4.3.0.
+  Installing System.Runtime.Extensions 4.3.0.
+  Installing System.Resources.ResourceManager 4.3.0.
+  Installing System.Runtime 4.3.0.
+  Installing System.IO 4.3.0.
+  Installing System.ComponentModel.Primitives 4.3.0.
+  Installing System.ComponentModel 4.3.0.
+  Installing System.Reflection.TypeExtensions 4.3.0.
+  Installing System.Reflection.Extensions 4.3.0.
+  Installing System.Reflection.Primitives 4.3.0.
+  Installing System.Reflection 4.1.0.
+  Installing System.Threading 4.3.0.
+  Installing System.Linq 4.3.0.
+  Installing System.Globalization.Extensions 4.3.0.
+  Installing System.Reflection.Emit 4.3.0.
+  Installing System.Collections.NonGeneric 4.3.0.
+  Installing System.Reflection.Emit.ILGeneration 4.3.0.
+  Installing System.Text.RegularExpressions 4.3.0.
+  Installing System.Xml.XmlDocument 4.3.0.
+  Installing System.Xml.ReaderWriter 4.3.0.
+  Installing System.Net.Primitives 4.3.0.
+  Installing System.Threading.Tasks 4.3.0.
+  Installing System.Runtime.Handles 4.3.0.
+  Installing runtime.native.System 4.3.0.
+  Installing System.Diagnostics.Tracing 4.3.0.
+  Installing System.Runtime.InteropServices 4.3.0.
+  Installing System.Security.Principal.Windows 4.3.0.
+  Installing System.Diagnostics.Debug 4.0.11.
+  Installing System.Linq 4.1.0.
+  Installing System.Dynamic.Runtime 4.0.11.
+  Installing Newtonsoft.Json 9.0.1.
+  Installing Microsoft.DotNet.PlatformAbstractions 2.0.4.
+  Installing Microsoft.NETCore.Targets 1.1.0.
+  Installing System.Text.Encoding 4.3.0.
+  Installing System.Diagnostics.Debug 4.3.0.
+  Installing System.IO.FileSystem 4.3.0.
+  Installing System.Threading.Tasks.Extensions 4.3.0.
+  Installing System.IO.FileSystem.Primitives 4.3.0.
+  Installing System.Text.Encoding.Extensions 4.3.0.
+  Installing Microsoft.Win32.Primitives 4.3.0.
+  Installing Microsoft.NETCore.Targets 1.0.1.
+  Installing Microsoft.NETCore.Platforms 1.0.1.
+  Installing System.Runtime 4.1.0.
+  Installing System.Collections 4.0.11.
+  Installing System.Runtime.Extensions 4.1.0.
+  Installing System.Resources.ResourceManager 4.0.1.
+  Installing System.Reflection.TypeExtensions 4.1.0.
+  Installing System.Reflection 4.3.0.
+  Installing System.Text.Encoding 4.0.11-rc2-24027.
+  Installing System.Security.Cryptography.Encoding 4.0.0.
+  Installing System.Security.Cryptography.Primitives 4.0.0.
+  Installing System.Security.Cryptography.Algorithms 4.2.0.
+  Installing System.Globalization.Calendars 4.0.1.
+  Installing Microsoft.Extensions.Configuration.Binder 1.0.2.
+  Installing System.Runtime.Numerics 4.0.1.
+  Installing System.Security.Cryptography.Cng 4.2.0.
+  Installing System.Security.Cryptography.OpenSsl 4.0.0.
+  Installing Microsoft.AspNetCore.Server.Kestrel 1.0.3.
+  Installing Microsoft.Extensions.Configuration.Json 1.0.2.
+  Installing System.Security.Cryptography.Csp 4.0.0.
+  Installing runtime.native.System.Security.Cryptography 4.0.0.
+  Installing runtime.native.System.Net.Http 4.0.1.
+  Installing System.ObjectModel 4.0.12-rc2-24027.
+  Installing Microsoft.NETCore.App 2.0.0.
+  Installing System.Reflection.Emit 4.0.1-rc2-24027.
+  Installing System.Reflection.TypeExtensions 4.1.0-rc2-24027.
+  Installing System.Reflection.Emit.Lightweight 4.0.1-rc2-24027.
+  Installing System.Reflection.Emit.ILGeneration 4.0.1-rc2-24027.
+  Installing Microsoft.AspNetCore.Owin 1.0.2.
+  Installing Microsoft.AspNetCore.Hosting 1.0.2.
+  Installing System.IO 4.1.0-rc2-24027.
+  Installing System.ComponentModel.TypeConverter 4.1.0.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Basic/obj/Nancy.Authentication.Basic.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Basic/obj/Nancy.Authentication.Basic.csproj.nuget.g.targets.
+  Restore completed in 12.25 sec for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Basic/Nancy.Authentication.Basic.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj...
+  Installing Microsoft.Extensions.Configuration 1.0.2.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/obj/Nancy.Authentication.Forms.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/obj/Nancy.Authentication.Forms.csproj.nuget.g.targets.
+  Restore completed in 124.93 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Stateless/Nancy.Authentication.Stateless.csproj...
+  Installing Libuv 1.9.0.
+  Installing System.Buffers 4.0.0.
+  Installing System.Threading.Thread 4.0.0.
+  Installing System.Threading.ThreadPool 4.0.10.
+  Installing System.Threading.Timer 4.0.1.
+  Installing System.Net.Primitives 4.0.11.
+  Installing System.Reflection.Primitives 4.0.1-rc2-24027.
+  Installing System.Numerics.Vectors 4.1.1.
+  Installing Microsoft.Extensions.Logging.Abstractions 1.0.2.
+  Installing Microsoft.Extensions.Configuration.FileExtensions 1.0.2.
+  Installing Microsoft.NETCore.Platforms 2.0.0.
+  Installing NETStandard.Library 2.0.0.
+  Installing Microsoft.NETCore.DotNetHostPolicy 2.0.0.
+  Installing Microsoft.AspNetCore.Http 1.0.2.
+  Installing Microsoft.Extensions.Configuration.EnvironmentVariables 1.0.2.
+  Installing System.Diagnostics.StackTrace 4.0.1.
+  Installing System.Console 4.0.0.
+  Installing System.Reflection.Metadata 1.3.0.
+  Installing System.Diagnostics.DiagnosticSource 4.0.0.
+  Installing Microsoft.Extensions.PlatformAbstractions 1.0.0.
+  Installing Microsoft.Extensions.FileProviders.Physical 1.0.1.
+  Installing Microsoft.Extensions.Options 1.0.2.
+  Installing Microsoft.Extensions.Logging 1.0.2.
+  Installing Microsoft.Extensions.DependencyInjection 1.0.2.
+  Installing Microsoft.AspNetCore.Hosting.Server.Abstractions 1.0.2.
+  Installing Microsoft.AspNetCore.Http.Extensions 1.0.2.
+  Installing Microsoft.AspNetCore.Hosting.Abstractions 1.0.2.
+  Installing FluentValidation 6.3.4-alpha.
+  Installing System.ComponentModel 4.0.1.
+  Installing System.ComponentModel.Primitives 4.1.0.
+  Installing System.Collections.NonGeneric 4.0.1.
+  Installing System.Collections.Specialized 4.0.1.
+  Installing Microsoft.Extensions.Configuration.Abstractions 1.0.2.
+  Installing System.Diagnostics.Tracing 4.1.0.
+  Installing System.Collections.Concurrent 4.0.12.
+  Installing Microsoft.NETCore.DotNetHostResolver 2.0.0.
+  Installing Microsoft.Extensions.ObjectPool 1.0.1.
+  Installing Microsoft.AspNetCore.WebUtilities 1.0.2.
+  Installing Microsoft.Net.Http.Headers 1.0.2.
+  Installing Microsoft.AspNetCore.Http.Abstractions 1.0.2.
+  Installing System.Collections.Immutable 1.2.0.
+  Installing Microsoft.Extensions.FileProviders.Abstractions 1.0.1.
+  Installing System.IO.FileSystem.Watcher 4.0.0.
+  Installing Microsoft.Extensions.FileSystemGlobbing 1.0.1.
+  Installing Microsoft.Extensions.DependencyInjection.Abstractions 1.0.2.
+  Installing Microsoft.Extensions.Primitives 1.0.1.
+  Installing System.Linq.Expressions 4.1.1.
+  Installing Microsoft.AspNetCore.Http.Features 1.0.2.
+  Installing System.Reflection.Extensions 4.0.1-rc2-24027.
+  Installing System.Diagnostics.Debug 4.0.11-rc2-24027.
+  Installing System.Resources.ResourceManager 4.0.1-rc2-24027.
+  Installing System.Globalization 4.0.11-rc2-24027.
+  Installing System.Linq 4.1.0-rc2-24027.
+  Installing System.Collections 4.0.11-rc2-24027.
+  Installing System.Text.RegularExpressions 4.0.12-rc2-24027.
+  Installing System.Threading 4.0.11-rc2-24027.
+  Installing System.Diagnostics.Tools 4.0.1-rc2-24027.
+  Installing System.Threading.Tasks 4.0.11-rc2-24027.
+  Installing System.Runtime.Extensions 4.1.0-rc2-24027.
+  Installing System.Security.Claims 4.0.1.
+  Installing System.Net.WebSockets 4.0.0.
+  Installing System.Security.Principal 4.0.1.
+  Installing System.Reflection 4.1.0-rc2-24027.
+  Installing System.Linq.Expressions 4.0.11-rc2-24027.
+  Installing System.Runtime 4.1.0-rc2-24027.
+  Installing System.Globalization.Extensions 4.0.1.
+  Installing Microsoft.Win32.Primitives 4.0.1.
+  Installing System.Threading.Overlapped 4.0.1.
+  Installing Microsoft.NETCore.DotNetAppHost 2.0.0.
+  Installing System.Diagnostics.Contracts 4.0.1.
+  Installing System.Text.Encodings.Web 4.0.0.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Stateless/obj/Nancy.Authentication.Stateless.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Stateless/obj/Nancy.Authentication.Stateless.csproj.nuget.g.targets.
+  Restore completed in 3.02 sec for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Stateless/Nancy.Authentication.Stateless.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Embedded/Nancy.Embedded.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Embedded/obj/Nancy.Embedded.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Embedded/obj/Nancy.Embedded.csproj.nuget.g.targets.
+  Restore completed in 85.94 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Embedded/Nancy.Embedded.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Encryption.MachineKey/Nancy.Encryption.MachineKey.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Encryption.MachineKey/obj/Nancy.Encryption.MachineKey.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Encryption.MachineKey/obj/Nancy.Encryption.MachineKey.csproj.nuget.g.targets.
+  Restore completed in 2.34 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Encryption.MachineKey/Nancy.Encryption.MachineKey.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Hosting.Aspnet/Nancy.Hosting.Aspnet.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Hosting.Aspnet/obj/Nancy.Hosting.Aspnet.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Hosting.Aspnet/obj/Nancy.Hosting.Aspnet.csproj.nuget.g.targets.
+  Restore completed in 2.88 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Hosting.Aspnet/Nancy.Hosting.Aspnet.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Hosting.Self/Nancy.Hosting.Self.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Hosting.Self/obj/Nancy.Hosting.Self.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Hosting.Self/obj/Nancy.Hosting.Self.csproj.nuget.g.targets.
+  Restore completed in 2.1 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Hosting.Self/Nancy.Hosting.Self.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Metadata.Modules/Nancy.Metadata.Modules.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Metadata.Modules/obj/Nancy.Metadata.Modules.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Metadata.Modules/obj/Nancy.Metadata.Modules.csproj.nuget.g.targets.
+  Restore completed in 87.96 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Metadata.Modules/Nancy.Metadata.Modules.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Owin/Nancy.Owin.csproj...
+  Installing System.Security.Cryptography.X509Certificates 4.1.0.
+  Installing Owin 1.0.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Owin/obj/Nancy.Owin.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Owin/obj/Nancy.Owin.csproj.nuget.g.targets.
+  Restore completed in 412.36 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Owin/Nancy.Owin.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/samples/Nancy.Demo.Hosting.Kestrel/obj/Nancy.Demo.Hosting.Kestrel.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/samples/Nancy.Demo.Hosting.Kestrel/obj/Nancy.Demo.Hosting.Kestrel.csproj.nuget.g.targets.
+  Restore completed in 16.38 sec for /Users/travis/build/NancyFx/Nancy/samples/Nancy.Demo.Hosting.Kestrel/Nancy.Demo.Hosting.Kestrel.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.DataAnnotations/Nancy.Validation.DataAnnotations.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.DataAnnotations/obj/Nancy.Validation.DataAnnotations.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.DataAnnotations/obj/Nancy.Validation.DataAnnotations.csproj.nuget.g.targets.
+  Restore completed in 5.38 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.DataAnnotations/Nancy.Validation.DataAnnotations.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.FluentValidation/Nancy.Validation.FluentValidation.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.FluentValidation/obj/Nancy.Validation.FluentValidation.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.FluentValidation/obj/Nancy.Validation.FluentValidation.csproj.nuget.g.targets.
+  Restore completed in 107.2 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.FluentValidation/Nancy.Validation.FluentValidation.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.DotLiquid/Nancy.ViewEngines.DotLiquid.csproj...
+  Installing DotLiquid 2.0.64.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.DotLiquid/obj/Nancy.ViewEngines.DotLiquid.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.DotLiquid/obj/Nancy.ViewEngines.DotLiquid.csproj.nuget.g.targets.
+  Restore completed in 403.22 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.DotLiquid/Nancy.ViewEngines.DotLiquid.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Markdown/Nancy.ViewEngines.Markdown.csproj...
+  Installing System.Net.WebHeaderCollection 4.0.1.
+  Installing System.Net.Http 4.1.0.
+  Installing System.Net.Requests 4.0.11.
+  Installing AngleSharp 0.9.8.1.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/obj/Nancy.Testing.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/obj/Nancy.Testing.csproj.nuget.g.targets.
+  Restore completed in 1.53 sec for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Nustache/Nancy.ViewEngines.Nustache.csproj...
+  Installing Markdown 2.2.0.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Markdown/obj/Nancy.ViewEngines.Markdown.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Markdown/obj/Nancy.ViewEngines.Markdown.csproj.nuget.g.targets.
+  Restore completed in 842.04 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Markdown/Nancy.ViewEngines.Markdown.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor.BuildProviders/Nancy.ViewEngines.Razor.BuildProviders.csproj...
+  Installing Nustache 1.13.8.22.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Nustache/obj/Nancy.ViewEngines.Nustache.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Nustache/obj/Nancy.ViewEngines.Nustache.csproj.nuget.g.targets.
+  Restore completed in 239.32 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Nustache/Nancy.ViewEngines.Nustache.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor/Nancy.ViewEngines.Razor.csproj...
+  Installing System.Reflection.Metadata 1.2.0.
+  Installing Microsoft.CodeAnalysis.Analyzers 1.1.0.
+  Installing Microsoft.CodeAnalysis.Common 1.3.2.
+  Installing Microsoft.Net.Compilers 1.3.2.
+  Installing Microsoft.CodeAnalysis.CSharp 1.3.2.
+  Installing Microsoft.CodeDom.Providers.DotNetCompilerPlatform 1.0.3.
+  Installing Microsoft.AspNet.Razor 2.0.30506.0.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor.BuildProviders/obj/Nancy.ViewEngines.Razor.BuildProviders.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor.BuildProviders/obj/Nancy.ViewEngines.Razor.BuildProviders.csproj.nuget.g.targets.
+  Restore completed in 1.51 sec for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor.BuildProviders/Nancy.ViewEngines.Razor.BuildProviders.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Spark/Nancy.ViewEngines.Spark.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor/obj/Nancy.ViewEngines.Razor.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor/obj/Nancy.ViewEngines.Razor.csproj.nuget.g.targets.
+  Restore completed in 1.4 sec for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor/Nancy.ViewEngines.Razor.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy/obj/Nancy.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy/obj/Nancy.csproj.nuget.g.targets.
+  Restore completed in 88.58 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/Nancy.Authentication.Basic.Tests.csproj...
+  Installing Spark 1.7.0.0.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Spark/obj/Nancy.ViewEngines.Spark.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Spark/obj/Nancy.ViewEngines.Spark.csproj.nuget.g.targets.
+  Restore completed in 254.08 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Spark/Nancy.ViewEngines.Spark.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/Nancy.Authentication.Forms.Tests.csproj...
+  Installing System.Xml.XmlSerializer 4.0.11.
+  Installing runtime.native.System.IO.Compression 4.1.0.
+  Installing System.Private.DataContractSerialization 4.1.1.
+  Installing System.IO.Compression 4.1.0.
+  Installing System.Net.Sockets 4.1.0.
+  Installing System.IO.Compression.ZipFile 4.0.1.
+  Installing FakeItEasy.Analyzer.CSharp 4.6.0.
+  Installing FakeItEasy 4.6.0.
+  Installing Microsoft.NET.Test.Sdk 15.5.0.
+  Installing xunit.runner.visualstudio 2.4.0-beta.1.build3958.
+  Installing xunit 2.4.0-beta.1.build3958.
+  Installing Microsoft.CodeCoverage 1.0.3.
+  Installing Microsoft.Win32.Registry 4.0.0.
+  Installing System.Xml.XPath 4.0.1.
+  Installing System.Xml.XmlDocument 4.0.1.
+  Installing runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple 4.3.0.
+  Installing Microsoft.TestPlatform.TestHost 15.5.0.
+  Installing runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing xunit.assert 2.4.0-beta.1.build3958.
+  Installing runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing xunit.core 2.4.0-beta.1.build3958.
+  Installing xunit.analyzers 0.8.0.
+  Installing xunit.extensibility.execution 2.4.0-beta.1.build3958.
+  Installing runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing xunit.extensibility.core 2.4.0-beta.1.build3958.
+  Installing xunit.abstractions 2.0.1.
+  Installing Microsoft.NETCore.App 2.0.5.
+  Installing Microsoft.NETCore.Platforms 2.0.1.
+  Installing Microsoft.NETCore.DotNetHostPolicy 2.0.5.
+  Installing System.Collections.Concurrent 4.3.0.
+  Installing System.Runtime.Loader 4.0.0.
+  Installing Microsoft.Extensions.DependencyModel 1.0.0.
+  Installing Castle.Core 4.2.1.
+  Installing NETStandard.Library 1.6.1.
+  Installing System.Runtime.Serialization.Json 4.0.2.
+  Installing Microsoft.NETCore.DotNetHostResolver 2.0.5.
+  Installing Microsoft.DotNet.InternalAbstractions 1.0.0.
+  Installing NETStandard.Library 1.6.0.
+  Installing System.Diagnostics.TraceSource 4.3.0.
+  Installing System.Dynamic.Runtime 4.3.0.
+  Installing System.AppContext 4.3.0.
+  Installing System.Console 4.3.0.
+  Installing System.Diagnostics.Tools 4.3.0.
+  Installing System.Diagnostics.Process 4.1.0.
+  Installing System.Xml.XPath.XmlDocument 4.0.1.
+  Installing System.ComponentModel.EventBasedAsync 4.0.11.
+  Installing System.Runtime.InteropServices.RuntimeInformation 4.3.0.
+  Installing System.Security.Cryptography.Primitives 4.3.0.
+  Installing System.Runtime.Numerics 4.3.0.
+  Installing System.ObjectModel 4.3.0.
+  Installing System.Globalization.Calendars 4.3.0.
+  Installing System.Threading.Timer 4.3.0.
+  Installing System.Net.Sockets 4.3.0.
+  Installing System.Xml.XDocument 4.3.0.
+  Installing System.IO.Compression.ZipFile 4.3.0.
+  Installing System.Security.Cryptography.Encoding 4.3.0.
+  Installing System.Security.Cryptography.Algorithms 4.3.0.
+  Installing System.Linq.Expressions 4.3.0.
+  Installing System.Security.Cryptography.X509Certificates 4.3.0.
+  Installing System.Net.Http 4.3.0.
+  Installing Microsoft.Extensions.DependencyModel 1.0.3.
+  Installing System.Diagnostics.TextWriterTraceListener 4.0.0.
+  Installing Microsoft.TestPlatform.ObjectModel 15.5.0.
+  Installing System.IO.Compression 4.3.0.
+  Installing System.Diagnostics.TraceSource 4.0.0.
+  Installing Microsoft.DotNet.PlatformAbstractions 1.0.3.
+  Installing System.Diagnostics.DiagnosticSource 4.3.0.
+  Installing System.Security.Cryptography.Cng 4.3.0.
+  Installing Microsoft.NETCore.DotNetAppHost 2.0.5.
+  Installing System.Buffers 4.3.0.
+  Installing runtime.native.System.IO.Compression 4.3.0.
+  Installing System.Reflection.Emit.Lightweight 4.3.0.
+  Installing runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing runtime.native.System.Security.Cryptography.Apple 4.3.0.
+  Installing runtime.native.System.Net.Http 4.3.0.
+  Installing System.Security.Cryptography.OpenSsl 4.3.0.
+  Installing System.Security.Cryptography.Csp 4.3.0.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/obj/Nancy.Authentication.Forms.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/obj/Nancy.Authentication.Forms.Tests.csproj.nuget.g.targets.
+  Restore completed in 6.39 sec for /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/Nancy.Authentication.Forms.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/Nancy.Embedded.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/obj/Nancy.Authentication.Basic.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/obj/Nancy.Authentication.Basic.Tests.csproj.nuget.g.targets.
+  Restore completed in 6.56 sec for /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/Nancy.Authentication.Basic.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Encryption.MachineKey.Tests/Nancy.Encryption.MachineKey.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Encryption.MachineKey.Tests/obj/Nancy.Encryption.MachineKey.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Encryption.MachineKey.Tests/obj/Nancy.Encryption.MachineKey.Tests.csproj.nuget.g.targets.
+  Restore completed in 17.1 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Encryption.MachineKey.Tests/Nancy.Encryption.MachineKey.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Hosting.Aspnet.Tests/Nancy.Hosting.Aspnet.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Hosting.Aspnet.Tests/obj/Nancy.Hosting.Aspnet.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Hosting.Aspnet.Tests/obj/Nancy.Hosting.Aspnet.Tests.csproj.nuget.g.targets.
+  Restore completed in 16.38 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Hosting.Aspnet.Tests/Nancy.Hosting.Aspnet.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Hosting.Self.Tests/Nancy.Hosting.Self.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Hosting.Self.Tests/obj/Nancy.Hosting.Self.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Hosting.Self.Tests/obj/Nancy.Hosting.Self.Tests.csproj.nuget.g.targets.
+  Restore completed in 20.23 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Hosting.Self.Tests/Nancy.Hosting.Self.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/Nancy.Metadata.Modules.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/obj/Nancy.Embedded.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/obj/Nancy.Embedded.Tests.csproj.nuget.g.targets.
+  Restore completed in 307.64 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/Nancy.Embedded.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Owin.Tests/Nancy.Owin.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/obj/Nancy.Metadata.Modules.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/obj/Nancy.Metadata.Modules.Tests.csproj.nuget.g.targets.
+  Restore completed in 297.63 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/Nancy.Metadata.Modules.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/Nancy.Testing.Tests.csproj...
+  Installing OwinHttpMessageHandler 1.3.5.
+  Installing Microsoft.Owin 3.0.1.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Owin.Tests/obj/Nancy.Owin.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Owin.Tests/obj/Nancy.Owin.Tests.csproj.nuget.g.targets.
+  Restore completed in 271.56 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Owin.Tests/Nancy.Owin.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/obj/Nancy.Testing.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/obj/Nancy.Testing.Tests.csproj.nuget.g.targets.
+  Restore completed in 205.45 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/Nancy.Testing.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/obj/Nancy.Tests.Functional.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/obj/Nancy.Tests.Functional.csproj.nuget.g.targets.
+  Installing System.Xml.XPath.XDocument 4.0.1.
+  Installing System.Threading.Tasks.Parallel 4.0.1.
+  Installing System.Text.Encoding.CodePages 4.0.1.
+  Installing System.Diagnostics.FileVersionInfo 4.0.0.
+  Installing System.Data.Common 4.3.0.
+  Restore completed in 297.42 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.DataAnnotations.Tests/Nancy.Validation.DataAnnotations.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.DataAnnotations.Tests/obj/Nancy.Validation.DataAnnotations.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.DataAnnotations.Tests/obj/Nancy.Validation.DataAnnotations.Tests.csproj.nuget.g.targets.
+  Restore completed in 55.68 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.DataAnnotations.Tests/Nancy.Validation.DataAnnotations.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/Nancy.Validation.FluentValidation.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/obj/Nancy.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/obj/Nancy.Tests.csproj.nuget.g.targets.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/obj/Nancy.Validation.FluentValidation.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/obj/Nancy.Validation.FluentValidation.Tests.csproj.nuget.g.targets.
+  Restore completed in 643.79 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.DotLiquid.Tests/Nancy.ViewEngines.DotLiquid.Tests.csproj...
+  Restore completed in 221.56 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/Nancy.Validation.FluentValidation.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Markdown.Tests/Nancy.ViewEngines.Markdown.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.DotLiquid.Tests/obj/Nancy.ViewEngines.DotLiquid.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.DotLiquid.Tests/obj/Nancy.ViewEngines.DotLiquid.Tests.csproj.nuget.g.targets.
+  Restore completed in 14.51 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.DotLiquid.Tests/Nancy.ViewEngines.DotLiquid.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests.Models/Nancy.ViewEngines.Razor.Tests.Models.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests.Models/obj/Nancy.ViewEngines.Razor.Tests.Models.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests.Models/obj/Nancy.ViewEngines.Razor.Tests.Models.csproj.nuget.g.targets.
+  Restore completed in 25.41 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests.Models/Nancy.ViewEngines.Razor.Tests.Models.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests/Nancy.ViewEngines.Razor.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests/obj/Nancy.ViewEngines.Razor.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests/obj/Nancy.ViewEngines.Razor.Tests.csproj.nuget.g.targets.
+  Restore completed in 18.8 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests/Nancy.ViewEngines.Razor.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Spark.Tests/Nancy.ViewEngines.Spark.Tests.csproj...
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Spark.Tests/obj/Nancy.ViewEngines.Spark.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Spark.Tests/obj/Nancy.ViewEngines.Spark.Tests.csproj.nuget.g.targets.
+  Restore completed in 17.63 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Spark.Tests/Nancy.ViewEngines.Spark.Tests.csproj.
+  Restoring packages for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests.Models/Nancy.ViewEngines.Razor.Tests.Models.csproj...
+  Installing MarkdownSharp 1.13.0.0.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Markdown.Tests/obj/Nancy.ViewEngines.Markdown.Tests.csproj.nuget.g.props.
+  Generating MSBuild file /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Markdown.Tests/obj/Nancy.ViewEngines.Markdown.Tests.csproj.nuget.g.targets.
+  Restore completed in 255.68 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Markdown.Tests/Nancy.ViewEngines.Markdown.Tests.csproj.
+  Installing Microsoft.NETCore.DotNetHost 1.0.1.
+  Installing System.Security.Principal.Windows 4.0.0.
+  Installing runtime.native.System.Net.Security 4.0.1.
+  Installing Microsoft.NETCore.Jit 1.0.2.
+  Installing Microsoft.NETCore.Windows.ApiSets 1.0.1.
+  Installing dotnet-xunit 2.4.0-beta.1.build3958.
+  Installing Microsoft.CodeAnalysis.Common 1.3.0.
+  Installing Microsoft.NETCore.DotNetHostResolver 1.0.1.
+  Installing Microsoft.NETCore.App 1.0.0.
+  Installing System.Net.NameResolution 4.0.0.
+  Installing System.Net.Security 4.0.0.
+  Installing Microsoft.NETCore.Runtime.CoreCLR 1.0.2.
+  Installing Microsoft.CodeAnalysis.VisualBasic 1.3.0.
+  Installing Microsoft.CodeAnalysis.CSharp 1.3.0.
+  Installing System.Threading.Tasks.Dataflow 4.6.0.
+  Installing System.Linq.Parallel 4.0.1.
+  Installing System.Linq.Queryable 4.0.1.
+  Installing System.Resources.Reader 4.0.0.
+  Installing System.ComponentModel.Annotations 4.1.0.
+  Installing System.IO.MemoryMappedFiles 4.0.0.
+  Installing Microsoft.NETCore.DotNetHostPolicy 1.0.1.
+  Installing Microsoft.VisualBasic 10.0.1.
+  Installing System.IO.UnmanagedMemoryStream 4.0.1.
+  Installing System.Reflection.DispatchProxy 4.0.1.
+  Restore completed in 6.8 sec for /Users/travis/build/NancyFx/Nancy/test/Nancy.ViewEngines.Razor.Tests.Models/Nancy.ViewEngines.Razor.Tests.Models.csproj.
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 33.26 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:07.58
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 33.47 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Basic/Nancy.Authentication.Basic.csproj.
+  Restore completed in 6.99 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+[?1h=  Nancy.Authentication.Basic -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Basic/bin/Release/netstandard2.0/Nancy.Authentication.Basic.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:04.63
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 33.69 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 6.53 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+[?1h=  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:04.43
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 38.84 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Stateless/Nancy.Authentication.Stateless.csproj.
+  Restore completed in 7.01 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+[?1h=  Nancy.Authentication.Stateless -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Stateless/bin/Release/netstandard2.0/Nancy.Authentication.Stateless.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:04.65
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 42.27 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Embedded/Nancy.Embedded.csproj.
+  Restore completed in 6.66 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+[?1h=  Nancy.Embedded -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Embedded/bin/Release/netstandard2.0/Nancy.Embedded.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:04.51
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 32.46 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Metadata.Modules/Nancy.Metadata.Modules.csproj.
+  Restore completed in 6.79 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+[?1h=  Nancy.Metadata.Modules -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Metadata.Modules/bin/Release/netstandard2.0/Nancy.Metadata.Modules.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:04.59
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 38.27 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+  Restore completed in 31.99 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 7.97 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+[?1h=  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:08.70
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 35.11 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.FluentValidation/Nancy.Validation.FluentValidation.csproj.
+  Restore completed in 35.11 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+[?1h=  Nancy.Validation.FluentValidation -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.FluentValidation/bin/Release/netstandard2.0/Nancy.Validation.FluentValidation.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:04.79
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 39.07 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 40.08 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Markdown/Nancy.ViewEngines.Markdown.csproj.
+[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+[?1h=  Nancy.ViewEngines.Markdown -> /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Markdown/bin/Release/netstandard2.0/Nancy.ViewEngines.Markdown.dll
+[39;49m[32m
+Build succeeded.
+[39;49m    0 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:04.66
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 44.28 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Basic/Nancy.Authentication.Basic.csproj.
+  Restore completed in 10.14 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+  Restore completed in 6.51 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 13.06 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/Nancy.Authentication.Basic.Tests.csproj.
+  Restore completed in 37.06 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/Nancy.Authentication.Basic.Tests.csproj.
+  Restore completed in 8.24 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Authentication.Basic -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Basic/bin/Release/netstandard2.0/Nancy.Authentication.Basic.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/Nancy.Authentication.Basic.Tests.csproj]
+[39;49m[?1h=  Nancy.Authentication.Basic.Tests -> /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/bin/Release/netcoreapp2.0/Nancy.Authentication.Basic.Tests.dll
+[39;49m[32m
+Build succeeded.
+[39;49m
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Basic.Tests/Nancy.Authentication.Basic.Tests.csproj]
+[39;49m[39;49m[33m    1 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:11.10
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 34.06 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 6.92 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 24.37 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/Nancy.Authentication.Forms.Tests.csproj.
+  Restore completed in 42.75 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/Nancy.Authentication.Forms.Tests.csproj.
+  Restore completed in 18.71 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/Nancy.Authentication.Forms.Tests.csproj]
+[39;49m[?1h=  Nancy.Authentication.Forms.Tests -> /Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/bin/Release/netcoreapp2.0/Nancy.Authentication.Forms.Tests.dll
+[39;49m[32m
+Build succeeded.
+[39;49m
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Authentication.Forms.Tests/Nancy.Authentication.Forms.Tests.csproj]
+[39;49m[39;49m[33m    1 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:10.88
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 34.31 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 41.82 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Embedded/Nancy.Embedded.csproj.
+  Restore completed in 17.5 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+  Restore completed in 7.09 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 18.38 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/Nancy.Embedded.Tests.csproj.
+  Restore completed in 51.14 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/Nancy.Embedded.Tests.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Embedded -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Embedded/bin/Release/netstandard2.0/Nancy.Embedded.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/Nancy.Embedded.Tests.csproj]
+[39;49m[?1h=  Nancy.Embedded.Tests -> /Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/bin/Release/netcoreapp2.0/Nancy.Embedded.Tests.dll
+[39;49m[32m
+Build succeeded.
+[39;49m
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Embedded.Tests/Nancy.Embedded.Tests.csproj]
+[39;49m[39;49m[33m    1 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:10.78
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 40.66 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 10.28 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+  Restore completed in 8.35 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 15.97 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/Nancy.Metadata.Modules.Tests.csproj.
+  Restore completed in 54.27 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/Nancy.Metadata.Modules.Tests.csproj.
+  Restore completed in 8.81 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Metadata.Modules/Nancy.Metadata.Modules.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Metadata.Modules -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Metadata.Modules/bin/Release/netstandard2.0/Nancy.Metadata.Modules.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/Nancy.Metadata.Modules.Tests.csproj]
+[39;49m[?1h=  Nancy.Metadata.Modules.Tests -> /Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/bin/Release/netcoreapp2.0/Nancy.Metadata.Modules.Tests.dll
+[39;49m[32m
+Build succeeded.
+[39;49m
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Metadata.Modules.Tests/Nancy.Metadata.Modules.Tests.csproj]
+[39;49m[39;49m[33m    1 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:10.13
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 33.1 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 8.69 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 16.87 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/Nancy.Testing.Tests.csproj.
+  Restore completed in 31.46 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/Nancy.Testing.Tests.csproj.
+  Restore completed in 17.33 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/Nancy.Testing.Tests.csproj]
+[39;49m[?1h=  Nancy.Testing.Tests -> /Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/bin/Release/netcoreapp2.0/Nancy.Testing.Tests.dll
+[39;49m[32m
+Build succeeded.
+[39;49m
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/Nancy.Testing.Tests.csproj]
+[39;49m[39;49m[33m    1 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:11.87
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 34.72 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 8.41 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 16.35 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj.
+  Restore completed in 34.53 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj.
+  Restore completed in 32.71 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[33mHelpers/ExceptionExtensionsFixture.cs(42,17): warning xUnit2017: Do not use Contains() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mUnit/AfterPipelineFixture.cs(30,13): warning xUnit2013: Do not use Assert.Equal() to check for collection size. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mUnit/AfterPipelineFixture.cs(78,13): warning xUnit2013: Do not use Assert.Equal() to check for collection size. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mUnit/BeforePipelineFixture.cs(155,13): warning xUnit2013: Do not use Assert.Equal() to check for collection size. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mUnit/DynamicDictionaryFixture.cs(1136,13): warning xUnit2007: Do not use typeof(System.Collections.Generic.Dictionary<string, object>) expression to check the type. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mUnit/DynamicDictionaryFixture.cs(1146,13): warning xUnit2007: Do not use typeof(long) expression to check the type. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mUnit/DynamicDictionaryFixture.cs(1147,13): warning xUnit2007: Do not use typeof(string) expression to check the type. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mUnit/NamedPipelineBaseFixture.cs(235,13): warning xUnit2013: Do not use Assert.Equal() to check for collection size. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33mUnit/ModelBinding/DefaultConverters/FallbackConverterFixture.cs(64,63): warning xUnit1026: Theory method 'Should_convert_on_to_true_for_bool' on test class 'FallbackConverterFixture' does not use parameter 'value'. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[?1h=  Nancy.Tests -> /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/bin/Release/netcoreapp2.0/Nancy.Tests.dll
+[39;49m[32m
+Build succeeded.
+[39;49m
+[39;49m[33mHelpers/ExceptionExtensionsFixture.cs(42,17): warning xUnit2017: Do not use Contains() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+Unit/AfterPipelineFixture.cs(30,13): warning xUnit2013: Do not use Assert.Equal() to check for collection size. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+Unit/AfterPipelineFixture.cs(78,13): warning xUnit2013: Do not use Assert.Equal() to check for collection size. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+Unit/BeforePipelineFixture.cs(155,13): warning xUnit2013: Do not use Assert.Equal() to check for collection size. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+Unit/DynamicDictionaryFixture.cs(1136,13): warning xUnit2007: Do not use typeof(System.Collections.Generic.Dictionary<string, object>) expression to check the type. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+Unit/DynamicDictionaryFixture.cs(1146,13): warning xUnit2007: Do not use typeof(long) expression to check the type. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+Unit/DynamicDictionaryFixture.cs(1147,13): warning xUnit2007: Do not use typeof(string) expression to check the type. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+Unit/NamedPipelineBaseFixture.cs(235,13): warning xUnit2013: Do not use Assert.Equal() to check for collection size. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+Unit/ModelBinding/DefaultConverters/FallbackConverterFixture.cs(64,63): warning xUnit1026: Theory method 'Should_convert_on_to_true_for_bool' on test class 'FallbackConverterFixture' does not use parameter 'value'. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/Nancy.Tests.csproj]
+[39;49m[39;49m[33m    10 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:22.71
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 39.42 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 2.55 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.ViewEngines.Razor/Nancy.ViewEngines.Razor.csproj.
+  Restore completed in 7.1 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 30.35 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj.
+  Restore completed in 43.87 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj.
+  Restore completed in 10.29 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj]
+[39;49m[39;49m[33mTests/ContentNegotiationFixture.cs(439,13): warning xUnit2009: Do not use Assert.True() to check for substrings. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj]
+[39;49m[39;49m[33mTests/ContentNegotiationFixture.cs(663,13): warning xUnit2009: Do not use Assert.True() to check for substrings. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj]
+[39;49m[?1h=  Nancy.Tests.Functional -> /Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/bin/Release/netcoreapp2.0/Nancy.Tests.Functional.dll
+[39;49m[32m
+Build succeeded.
+[39;49m
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj]
+Tests/ContentNegotiationFixture.cs(439,13): warning xUnit2009: Do not use Assert.True() to check for substrings. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj]
+Tests/ContentNegotiationFixture.cs(663,13): warning xUnit2009: Do not use Assert.True() to check for substrings. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests.Functional/Nancy.Tests.Functional.csproj]
+[39;49m[39;49m[33m    3 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:10.83
+[?1h=Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[?1h=[?1h=  Restore completed in 34.11 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/Nancy.Authentication.Forms.csproj.
+  Restore completed in 7.45 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.FluentValidation/Nancy.Validation.FluentValidation.csproj.
+  Restore completed in 14.53 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy/Nancy.csproj.
+  Restore completed in 14.94 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/Nancy.Validation.FluentValidation.Tests.csproj.
+  Restore completed in 45.43 ms for /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/Nancy.Validation.FluentValidation.Tests.csproj.
+  Restore completed in 21.54 ms for /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/Nancy.Testing.csproj.
+[?1h=[?1h=[?1h=[?1h=[?1h=[?1h=  Nancy -> /Users/travis/build/NancyFx/Nancy/src/Nancy/bin/Release/netstandard2.0/Nancy.dll
+  Nancy.Validation.FluentValidation -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Validation.FluentValidation/bin/Release/netstandard2.0/Nancy.Validation.FluentValidation.dll
+  Nancy.Authentication.Forms -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Authentication.Forms/bin/Release/netstandard2.0/Nancy.Authentication.Forms.dll
+  Nancy.Testing -> /Users/travis/build/NancyFx/Nancy/src/Nancy.Testing/bin/Release/netstandard2.0/Nancy.Testing.dll
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/Nancy.Validation.FluentValidation.Tests.csproj]
+[39;49m[?1h=  Nancy.Validation.FluentValidation.Tests -> /Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/bin/Release/netcoreapp2.0/Nancy.Validation.FluentValidation.Tests.dll
+[39;49m[32m
+Build succeeded.
+[39;49m
+[39;49m[33m/Users/travis/build/NancyFx/Nancy/test/Nancy.Tests/ShouldExtensions.cs(89,13): warning xUnit2012: Do not use Enumerable.Any() to check if a value exists in a collection. [/Users/travis/build/NancyFx/Nancy/test/Nancy.Validation.FluentValidation.Tests/Nancy.Validation.FluentValidation.Tests.csproj]
+[39;49m[39;49m[33m    1 Warning(s)
+[39;49m    0 Error(s)
+[39;49m
+Time Elapsed 00:00:11.01
+[?1h=[37;1mDetecting target frameworks in Nancy.Authentication.Basic.Tests.csproj...
+[m[?1h=[?1h=[?1h=[37;1mLocating binaries for framework netcoreapp2.0...
+[m[?1h=[?1h=[?1h=[37;1mRunning .NET Core 2.0.5 tests for framework netcoreapp2.0...
+[m[?1h=xUnit.net Console Runner v2.4.0-beta.1.build3958 (64-bit .NET Core 4.6.0.0)
+[37m  Discovering: Nancy.Authentication.Basic.Tests
+[m[37m  Discovered:  Nancy.Authentication.Basic.Tests
+[m[37m  Starting:    Nancy.Authentication.Basic.Tests
+[m[37m  Finished:    Nancy.Authentication.Basic.Tests
+[m[37m=== TEST EXECUTION SUMMARY ===
+[m[37m   Nancy.Authentication.Basic.Tests  Total: 21, Errors: 0, Failed: 0, Skipped: 0, Time: 1.298s
+[m[m[?1h=[?1h=[37;1mDetecting target frameworks in Nancy.Authentication.Forms.Tests.csproj...
+[m[?1h=[?1h=[?1h=[37;1mLocating binaries for framework netcoreapp2.0...
+[m[?1h=[?1h=[?1h=[37;1mRunning .NET Core 2.0.5 tests for framework netcoreapp2.0...
+[m[?1h=xUnit.net Console Runner v2.4.0-beta.1.build3958 (64-bit .NET Core 4.6.0.0)
+[37m  Discovering: Nancy.Authentication.Forms.Tests
+[m[37m  Discovered:  Nancy.Authentication.Forms.Tests
+[m[37m  Starting:    Nancy.Authentication.Forms.Tests
+[m[37m  Finished:    Nancy.Authentication.Forms.Tests
+[m[37m=== TEST EXECUTION SUMMARY ===
+[m[37m   Nancy.Authentication.Forms.Tests  Total: 53, Errors: 0, Failed: 0, Skipped: 0, Time: 2.046s
+[m[m[?1h=[?1h=[37;1mDetecting target frameworks in Nancy.Embedded.Tests.csproj...
+[m[?1h=[?1h=[?1h=[37;1mLocating binaries for framework netcoreapp2.0...
+[m[?1h=[?1h=[?1h=[37;1mRunning .NET Core 2.0.5 tests for framework netcoreapp2.0...
+[m[?1h=xUnit.net Console Runner v2.4.0-beta.1.build3958 (64-bit .NET Core 4.6.0.0)
+[37m  Discovering: Nancy.Embedded.Tests
+[m[37m  Discovered:  Nancy.Embedded.Tests
+[m[37m  Starting:    Nancy.Embedded.Tests
+[m[37m  Finished:    Nancy.Embedded.Tests
+[m[37m=== TEST EXECUTION SUMMARY ===
+[m[37m   Nancy.Embedded.Tests  Total: 5, Errors: 0, Failed: 0, Skipped: 0, Time: 0.376s
+[m[m[?1h=[?1h=[37;1mDetecting target frameworks in Nancy.Metadata.Modules.Tests.csproj...
+[m[?1h=[?1h=[?1h=[37;1mLocating binaries for framework netcoreapp2.0...
+[m[?1h=[?1h=[?1h=[37;1mRunning .NET Core 2.0.5 tests for framework netcoreapp2.0...
+[m[?1h=xUnit.net Console Runner v2.4.0-beta.1.build3958 (64-bit .NET Core 4.6.0.0)
+[37m  Discovering: Nancy.Metadata.Modules.Tests
+[m[37m  Discovered:  Nancy.Metadata.Modules.Tests
+[m[37m  Starting:    Nancy.Metadata.Modules.Tests
+[m[37m  Finished:    Nancy.Metadata.Modules.Tests
+[m[37m=== TEST EXECUTION SUMMARY ===
+[m[37m   Nancy.Metadata.Modules.Tests  Total: 10, Errors: 0, Failed: 0, Skipped: 0, Time: 0.929s
+[m[m[?1h=[?1h=[37;1mDetecting target frameworks in Nancy.Testing.Tests.csproj...
+[m[?1h=[?1h=[?1h=[37;1mLocating binaries for framework netcoreapp2.0...
+[m[?1h=[?1h=[?1h=[37;1mRunning .NET Core 2.0.5 tests for framework netcoreapp2.0...
+[m[?1h=xUnit.net Console Runner v2.4.0-beta.1.build3958 (64-bit .NET Core 4.6.0.0)
+[37m  Discovering: Nancy.Testing.Tests
+[m[37m  Discovered:  Nancy.Testing.Tests
+[m[37m  Starting:    Nancy.Testing.Tests
+[m[31;1m    Nancy.Testing.Tests.BrowserFixture.Should_return_JSON_serialized_form [FAIL]
+[m[37m      Assert.Equal() Failure
+[m[37m      Expected: 1
+[m[37m      Actual:   0
+[m[30;1m      Stack Trace:
+[m[37m        /Users/travis/build/NancyFx/Nancy/test/Nancy.Testing.Tests/BrowserFixture.cs(445,0): at Nancy.Testing.Tests.BrowserFixture.<Should_return_JSON_serialized_form>d__24.MoveNext()
+[m[37m        --- End of stack trace from previous location where exception was thrown ---
+[m[37m           at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+[m[37m           at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+[m[37m        --- End of stack trace from previous location where exception was thrown ---
+[m[37m           at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+[m[37m           at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+[m[37m        --- End of stack trace from previous location where exception was thrown ---
+[m[37m           at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+[m[37m           at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+[m[37m  Finished:    Nancy.Testing.Tests
+[m[37m=== TEST EXECUTION SUMMARY ===
+[m[37m   Nancy.Testing.Tests  Total: 151, Errors: 0, Failed: 1, Skipped: 0, Time: 4.776s
+[m[m[?1h=[41m[37mAn error occurred when executing task '[41m[37mTest[41m[37m'.[39;49m
+[41m[37mError: [41m[37mOne or more errors occurred.[39;49m
+[41m[37m	[41m[37mOne or more tests failed during execution of: Nancy.Testing.Tests.csproj[39;49m
+[?1l>[39;49m
+travis_time:end:1208e570:start=1535479905313470000,finish=1535480233000148000,duration=327686678000[0K
+[31;1mThe command "./build.sh --verbosity=minimal" exited with 1.[0m
+
+Done. Your build exited with 1.

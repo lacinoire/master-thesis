@@ -1,0 +1,1125 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 0f7f8335-c0c9-40ee-a3f0-87deb1ba1aa7@1.worker-org-7f6cdc984-9n2h8.macstadium-prod-1
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: 4c17ce4c-1e43-4c14-82b6-924aa47fa606 travis-ci-macos-10.13-xcode9.4.1-1529955246 (via amqp)
+startup: 56.606550428s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: go
+Build id: 566352197
+Job id: 566352207
+Runtime kernel version: 17.4.0
+travis-build version: 65949ed1e
+[34m[1mBuild image provisioning date and time[0m
+Mon Jun 25 21:55:14 GMT 2018
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.13.3
+BuildVersion:	17D102
+[34m[1mGit version[0m
+git version 2.18.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.3
+[34m[1mPre-installed Node.js versions[0m
+v4.9.1
+v5.12.0
+v6.14.3
+v8.11.3
+[34m[1mmvn -version[0m
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T18:33:14Z)
+Maven home: /usr/local/Cellar/maven/3.5.4/libexec
+Java version: 10.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+Uninstalled oclint to prevent interference with other packages.
+If you need oclint, you must explicitly install it.
+
+Updating gimme
+
+travis_fold:start:git.checkout[0Ktravis_time:start:131bbdc8[0K$ git clone --depth=50 --branch=master https://github.com/ethereum/go-ethereum.git ethereum/go-ethereum
+Cloning into 'ethereum/go-ethereum'...
+travis_time:end:131bbdc8:start=1564646733761779000,finish=1564646737561621000,duration=3799842000[0K$ cd ethereum/go-ethereum
+$ git checkout -qf e46a01d56c190badd6b71a4fba6c886fcee1059b
+travis_fold:end:git.checkout[0K
+$ travis_export_go 1.12.x github.com/ethereum/go-ethereum
+
+[33;1mSetting environment variables from repository settings[0m
+$ export IOS_SIGNING_KEY=[secure]
+$ export LINUX_SIGNING_KEY=[secure]
+$ export OSX_SIGNING_KEY=[secure]
+$ export ANDROID_SIGNING_KEY=[secure]
+$ export AZURE_BLOBSTORE_TOKEN=[secure]
+$ export ANDROID_SONATYPE_USERNAME=[secure]
+$ export ANDROID_SONATYPE_PASSWORD=[secure]
+$ export COCOAPODS_TRUNK_TOKEN=[secure]
+$ export PPA_SIGNING_KEY=[secure]
+$ export PPA_SSH_KEY=[secure]
+
+travis_time:start:11f279a0[0K$ travis_setup_go
+go version go1.12.7 darwin/amd64
+$ export GOPATH="/Users/travis/gopath"
+$ export PATH="/Users/travis/gopath/bin:/Users/travis/.gimme/versions/go1.12.7.darwin.amd64/bin:/Users/travis/bin:/Users/travis/.rvm/gems/ruby-2.4.3/bin:/Users/travis/.rvm/gems/ruby-2.4.3@global/bin:/Users/travis/.rvm/rubies/ruby-2.4.3/bin:/Users/travis/.rvm/bin:/Users/travis/bin:/Users/travis/.local/bin:/Users/travis/.nvm/versions/node/v6.14.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+$ export GO111MODULE="auto"
+travis_time:end:11f279a0:start=1564646738418390000,finish=1564646754710802000,duration=16292412000[0K$ gimme version
+v1.5.3
+$ go version
+go version go1.12.7 darwin/amd64
+travis_fold:start:go.env[0K$ go env
+GOARCH="amd64"
+GOBIN=""
+GOCACHE="/Users/travis/Library/Caches/go-build"
+GOEXE=""
+GOFLAGS=""
+GOHOSTARCH="amd64"
+GOHOSTOS="darwin"
+GOOS="darwin"
+GOPATH="/Users/travis/gopath"
+GOPROXY=""
+GORACE=""
+GOROOT="/Users/travis/.gimme/versions/go1.12.7.darwin.amd64"
+GOTMPDIR=""
+GOTOOLDIR="/Users/travis/.gimme/versions/go1.12.7.darwin.amd64/pkg/tool/darwin_amd64"
+GCCGO="gccgo"
+CC="clang"
+CXX="clang++"
+CGO_ENABLED="1"
+GOMOD=""
+CGO_CFLAGS="-g -O2"
+CGO_CPPFLAGS=""
+CGO_CXXFLAGS="-g -O2"
+CGO_FFLAGS="-g -O2"
+CGO_LDFLAGS="-g -O2"
+PKG_CONFIG="pkg-config"
+GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/go-build378743937=/tmp/go-build -gno-record-gcc-switches -fno-common"
+travis_fold:end:go.env[0Ktravis_fold:start:install[0Ktravis_time:start:092723ac[0K$ travis_install_go_dependencies 1.12.x -v
+Makefile detected
+travis_time:end:092723ac:start=1564646755009119000,finish=1564646755019096000,duration=9977000[0Ktravis_fold:end:install[0Ktravis_time:start:00862dab[0K$ go run build/ci.go install
+>>> /Users/travis/.gimme/versions/go1.12.7.darwin.amd64/bin/go install -ldflags -X main.gitCommit=e46a01d56c190badd6b71a4fba6c886fcee1059b -X main.gitDate=20190801 -s -v github.com/ethereum/go-ethereum github.com/ethereum/go-ethereum/accounts github.com/ethereum/go-ethereum/accounts/abi github.com/ethereum/go-ethereum/accounts/abi/bind github.com/ethereum/go-ethereum/accounts/abi/bind/backends github.com/ethereum/go-ethereum/accounts/external github.com/ethereum/go-ethereum/accounts/keystore github.com/ethereum/go-ethereum/accounts/scwallet github.com/ethereum/go-ethereum/accounts/usbwallet github.com/ethereum/go-ethereum/accounts/usbwallet/trezor github.com/ethereum/go-ethereum/cmd/abigen github.com/ethereum/go-ethereum/cmd/bootnode github.com/ethereum/go-ethereum/cmd/checkpoint-admin github.com/ethereum/go-ethereum/cmd/clef github.com/ethereum/go-ethereum/cmd/devp2p github.com/ethereum/go-ethereum/cmd/ethkey github.com/ethereum/go-ethereum/cmd/evm github.com/ethereum/go-ethereum/cmd/evm/internal/compiler github.com/ethereum/go-ethereum/cmd/faucet github.com/ethereum/go-ethereum/cmd/geth github.com/ethereum/go-ethereum/cmd/p2psim github.com/ethereum/go-ethereum/cmd/puppeth github.com/ethereum/go-ethereum/cmd/rlpdump github.com/ethereum/go-ethereum/cmd/utils github.com/ethereum/go-ethereum/cmd/wnode github.com/ethereum/go-ethereum/common github.com/ethereum/go-ethereum/common/bitutil github.com/ethereum/go-ethereum/common/compiler github.com/ethereum/go-ethereum/common/fdlimit github.com/ethereum/go-ethereum/common/hexutil github.com/ethereum/go-ethereum/common/math github.com/ethereum/go-ethereum/common/mclock github.com/ethereum/go-ethereum/common/prque github.com/ethereum/go-ethereum/consensus github.com/ethereum/go-ethereum/consensus/clique github.com/ethereum/go-ethereum/consensus/ethash github.com/ethereum/go-ethereum/consensus/misc github.com/ethereum/go-ethereum/console github.com/ethereum/go-ethereum/contracts/checkpointoracle github.com/ethereum/go-ethereum/contracts/checkpointoracle/contract github.com/ethereum/go-ethereum/core github.com/ethereum/go-ethereum/core/asm github.com/ethereum/go-ethereum/core/bloombits github.com/ethereum/go-ethereum/core/forkid github.com/ethereum/go-ethereum/core/rawdb github.com/ethereum/go-ethereum/core/state github.com/ethereum/go-ethereum/core/types github.com/ethereum/go-ethereum/core/vm github.com/ethereum/go-ethereum/core/vm/runtime github.com/ethereum/go-ethereum/crypto github.com/ethereum/go-ethereum/crypto/bn256 github.com/ethereum/go-ethereum/crypto/bn256/cloudflare github.com/ethereum/go-ethereum/crypto/bn256/google github.com/ethereum/go-ethereum/crypto/ecies github.com/ethereum/go-ethereum/crypto/secp256k1 github.com/ethereum/go-ethereum/dashboard github.com/ethereum/go-ethereum/eth github.com/ethereum/go-ethereum/eth/downloader github.com/ethereum/go-ethereum/eth/fetcher github.com/ethereum/go-ethereum/eth/filters github.com/ethereum/go-ethereum/eth/gasprice github.com/ethereum/go-ethereum/eth/tracers github.com/ethereum/go-ethereum/eth/tracers/internal/tracers github.com/ethereum/go-ethereum/ethclient github.com/ethereum/go-ethereum/ethdb github.com/ethereum/go-ethereum/ethdb/leveldb github.com/ethereum/go-ethereum/ethdb/memorydb github.com/ethereum/go-ethereum/ethstats github.com/ethereum/go-ethereum/event github.com/ethereum/go-ethereum/graphql github.com/ethereum/go-ethereum/internal/build github.com/ethereum/go-ethereum/internal/cmdtest github.com/ethereum/go-ethereum/internal/debug github.com/ethereum/go-ethereum/internal/ethapi github.com/ethereum/go-ethereum/internal/guide github.com/ethereum/go-ethereum/internal/jsre github.com/ethereum/go-ethereum/internal/jsre/deps github.com/ethereum/go-ethereum/internal/testlog github.com/ethereum/go-ethereum/internal/web3ext github.com/ethereum/go-ethereum/les github.com/ethereum/go-ethereum/les/flowcontrol github.com/ethereum/go-ethereum/light github.com/ethereum/go-ethereum/log github.com/ethereum/go-ethereum/metrics github.com/ethereum/go-ethereum/metrics/exp github.com/ethereum/go-ethereum/metrics/influxdb github.com/ethereum/go-ethereum/metrics/librato github.com/ethereum/go-ethereum/metrics/prometheus github.com/ethereum/go-ethereum/miner github.com/ethereum/go-ethereum/mobile github.com/ethereum/go-ethereum/node github.com/ethereum/go-ethereum/p2p github.com/ethereum/go-ethereum/p2p/discover github.com/ethereum/go-ethereum/p2p/discv5 github.com/ethereum/go-ethereum/p2p/enode github.com/ethereum/go-ethereum/p2p/enr github.com/ethereum/go-ethereum/p2p/nat github.com/ethereum/go-ethereum/p2p/netutil github.com/ethereum/go-ethereum/p2p/simulations github.com/ethereum/go-ethereum/p2p/simulations/adapters github.com/ethereum/go-ethereum/p2p/simulations/examples github.com/ethereum/go-ethereum/p2p/simulations/pipes github.com/ethereum/go-ethereum/p2p/testing github.com/ethereum/go-ethereum/params github.com/ethereum/go-ethereum/rlp github.com/ethereum/go-ethereum/rpc github.com/ethereum/go-ethereum/signer/core github.com/ethereum/go-ethereum/signer/fourbyte github.com/ethereum/go-ethereum/signer/rules github.com/ethereum/go-ethereum/signer/rules/deps github.com/ethereum/go-ethereum/signer/storage github.com/ethereum/go-ethereum/tests github.com/ethereum/go-ethereum/trie github.com/ethereum/go-ethereum/whisper/mailserver github.com/ethereum/go-ethereum/whisper/shhclient github.com/ethereum/go-ethereum/whisper/whisperv6 
+github.com/ethereum/go-ethereum/vendor/github.com/steakknife/hamming
+github.com/ethereum/go-ethereum/vendor/github.com/allegro/bigcache/queue
+github.com/ethereum/go-ethereum/common/prque
+github.com/ethereum/go-ethereum/vendor/github.com/allegro/bigcache
+github.com/ethereum/go-ethereum/ethdb
+github.com/ethereum/go-ethereum/vendor/github.com/go-stack/stack
+github.com/ethereum/go-ethereum/log
+github.com/ethereum/go-ethereum/vendor/golang.org/x/sys/unix
+github.com/ethereum/go-ethereum/vendor/github.com/steakknife/bloomfilter
+github.com/ethereum/go-ethereum/vendor/github.com/aristanetworks/goarista/monotime
+github.com/ethereum/go-ethereum/common/mclock
+github.com/ethereum/go-ethereum/event
+github.com/ethereum/go-ethereum/accounts/abi
+github.com/ethereum/go-ethereum/vendor/github.com/elastic/gosigar
+github.com/ethereum/go-ethereum/vendor/github.com/davecgh/go-spew/spew
+github.com/ethereum/go-ethereum/vendor/github.com/deckarep/golang-set
+github.com/ethereum/go-ethereum/vendor/github.com/pborman/uuid
+github.com/ethereum/go-ethereum/vendor/github.com/rjeczalik/notify
+github.com/ethereum/go-ethereum/metrics
+github.com/ethereum/go-ethereum/trie
+github.com/ethereum/go-ethereum/core/types
+github.com/ethereum/go-ethereum
+github.com/ethereum/go-ethereum/accounts
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/pbkdf2
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/scrypt
+github.com/ethereum/go-ethereum/vendor/github.com/gballet/go-libpcsclite
+github.com/ethereum/go-ethereum/vendor/github.com/status-im/keycard-go/derivationpath
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/curve25519
+github.com/ethereum/go-ethereum/vendor/github.com/wsddn/go-ecdh
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/transform
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/unicode/norm
+github.com/ethereum/go-ethereum/accounts/scwallet
+github.com/ethereum/go-ethereum/vendor/github.com/hashicorp/golang-lru/simplelru
+github.com/ethereum/go-ethereum/vendor/github.com/hashicorp/golang-lru
+github.com/ethereum/go-ethereum/core/state
+github.com/ethereum/go-ethereum/p2p/netutil
+github.com/ethereum/go-ethereum/vendor/github.com/gorilla/websocket
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/context
+github.com/ethereum/go-ethereum/vendor/github.com/rs/xhandler
+github.com/ethereum/go-ethereum/vendor/github.com/rs/cors
+github.com/ethereum/go-ethereum/rpc
+github.com/ethereum/go-ethereum/consensus
+github.com/ethereum/go-ethereum/consensus/misc
+github.com/ethereum/go-ethereum/consensus/clique
+github.com/ethereum/go-ethereum/vendor/github.com/edsrzf/mmap-go
+github.com/ethereum/go-ethereum/common/bitutil
+github.com/ethereum/go-ethereum/consensus/ethash
+github.com/ethereum/go-ethereum/accounts/keystore
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/util
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/cache
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/comparer
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/storage
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/filter
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/opt
+github.com/ethereum/go-ethereum/vendor/github.com/golang/snappy
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/errors
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/iterator
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/journal
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/memdb
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/table
+github.com/ethereum/go-ethereum/ethdb/memorydb
+github.com/ethereum/go-ethereum/vendor/github.com/mattn/go-runewidth
+github.com/ethereum/go-ethereum/vendor/github.com/olekukonko/tablewriter
+github.com/ethereum/go-ethereum/vendor/github.com/pkg/errors
+github.com/ethereum/go-ethereum/vendor/github.com/prometheus/tsdb/fileutil
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb
+github.com/ethereum/go-ethereum/vendor/golang.org/x/sys/cpu
+github.com/ethereum/go-ethereum/crypto/bn256/cloudflare
+github.com/ethereum/go-ethereum/crypto/bn256
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/ripemd160
+github.com/ethereum/go-ethereum/core/vm
+github.com/ethereum/go-ethereum/core/bloombits
+github.com/ethereum/go-ethereum/crypto/ecies
+github.com/ethereum/go-ethereum/ethdb/leveldb
+github.com/ethereum/go-ethereum/p2p/enr
+github.com/ethereum/go-ethereum/core/rawdb
+github.com/ethereum/go-ethereum/p2p/enode
+github.com/ethereum/go-ethereum/p2p/discover
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/httpu
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/scpd
+github.com/ethereum/go-ethereum/core
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/soap
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/ssdp
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/html/atom
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/html
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/internal/identifier
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/internal
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/charmap
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/japanese
+github.com/ethereum/go-ethereum/eth/downloader
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/korean
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/simplifiedchinese
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/traditionalchinese
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/internal/utf8internal
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/runes
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/unicode
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/internal/tag
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/internal/language
+github.com/ethereum/go-ethereum/vendor/github.com/jackpal/go-nat-pmp
+github.com/ethereum/go-ethereum/vendor/github.com/tyler-smith/go-bip39/wordlists
+github.com/ethereum/go-ethereum/vendor/github.com/tyler-smith/go-bip39
+github.com/ethereum/go-ethereum/vendor/github.com/golang/protobuf/proto
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/internal/language/compact
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/language
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/htmlindex
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/html/charset
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/dcps/internetgateway1
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/dcps/internetgateway2
+github.com/ethereum/go-ethereum/p2p/nat
+github.com/ethereum/go-ethereum/p2p/discv5
+github.com/ethereum/go-ethereum/p2p
+github.com/ethereum/go-ethereum/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor
+github.com/ethereum/go-ethereum/accounts/usbwallet/trezor
+github.com/ethereum/go-ethereum/internal/ethapi
+github.com/ethereum/go-ethereum/vendor/github.com/[secure]/usb
+github.com/ethereum/go-ethereum/signer/storage
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/ssh/terminal
+github.com/ethereum/go-ethereum/eth/filters
+github.com/ethereum/go-ethereum/common/fdlimit
+github.com/ethereum/go-ethereum/vendor/github.com/howeyc/fsnotify
+github.com/ethereum/go-ethereum/vendor/github.com/oschwald/maxminddb-golang
+github.com/ethereum/go-ethereum/vendor/github.com/apilayer/freegeoip
+github.com/ethereum/go-ethereum/vendor/github.com/mohae/deepcopy
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/websocket
+github.com/ethereum/go-ethereum/dashboard
+github.com/ethereum/go-ethereum/core/forkid
+github.com/ethereum/go-ethereum/eth/fetcher
+github.com/ethereum/go-ethereum/eth/gasprice
+github.com/ethereum/go-ethereum/eth/tracers/internal/tracers
+github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+github.com/ethereum/go-ethereum/accounts/usbwallet
+github.com/ethereum/go-ethereum/signer/core
+github.com/ethereum/go-ethereum/accounts/external
+github.com/ethereum/go-ethereum/accounts/abi/bind
+github.com/ethereum/go-ethereum/accounts/abi/bind/backends
+github.com/ethereum/go-ethereum/miner
+github.com/ethereum/go-ethereum/metrics/prometheus
+github.com/ethereum/go-ethereum/metrics/exp
+github.com/ethereum/go-ethereum/vendor/github.com/fjl/memsize
+github.com/ethereum/go-ethereum/vendor/github.com/fjl/memsize/memsizeui
+github.com/ethereum/go-ethereum/vendor/github.com/mattn/go-isatty
+github.com/ethereum/go-ethereum/vendor/github.com/mattn/go-colorable
+github.com/ethereum/go-ethereum/vendor/gopkg.in/urfave/cli.v1
+github.com/ethereum/go-ethereum/internal/debug
+github.com/ethereum/go-ethereum/node
+github.com/ethereum/go-ethereum/contracts/checkpointoracle/contract
+github.com/ethereum/go-ethereum/contracts/checkpointoracle
+github.com/ethereum/go-ethereum/les/flowcontrol
+github.com/ethereum/go-ethereum/light
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/errors
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/internal/common
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/internal/schema
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/internal/exec/packer
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/introspection
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/internal/exec/resolvable
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/internal/query
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/internal/exec/selected
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/log
+github.com/ethereum/go-ethereum/vendor/github.com/opentracing/opentracing-go/log
+github.com/ethereum/go-ethereum/vendor/github.com/opentracing/opentracing-go
+github.com/ethereum/go-ethereum/vendor/github.com/opentracing/opentracing-go/ext
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/trace
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/internal/exec
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/internal/validation
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go
+github.com/ethereum/go-ethereum/vendor/github.com/graph-gophers/graphql-go/relay
+github.com/ethereum/go-ethereum/graphql
+github.com/ethereum/go-ethereum/vendor/github.com/influxdata/influxdb/pkg/escape
+github.com/ethereum/go-ethereum/vendor/github.com/influxdata/influxdb/models
+github.com/ethereum/go-ethereum/vendor/github.com/influxdata/influxdb/client
+github.com/ethereum/go-ethereum/metrics/influxdb
+github.com/ethereum/go-ethereum/vendor/golang.org/x/sync/syncmap
+github.com/ethereum/go-ethereum/whisper/whisperv6
+github.com/ethereum/go-ethereum/common/compiler
+github.com/ethereum/go-ethereum/ethclient
+github.com/ethereum/go-ethereum/internal/jsre/deps
+github.com/ethereum/go-ethereum/vendor/github.com/fatih/color
+github.com/ethereum/go-ethereum/vendor/gopkg.in/sourcemap.v1/base64vlq
+github.com/ethereum/go-ethereum/vendor/gopkg.in/sourcemap.v1
+github.com/ethereum/go-ethereum/vendor/github.com/robertkrimen/otto/file
+github.com/ethereum/go-ethereum/vendor/github.com/robertkrimen/otto/token
+github.com/ethereum/go-ethereum/vendor/github.com/robertkrimen/otto/ast
+github.com/ethereum/go-ethereum/vendor/github.com/robertkrimen/otto/dbg
+github.com/ethereum/go-ethereum/vendor/github.com/robertkrimen/otto/parser
+github.com/ethereum/go-ethereum/vendor/github.com/robertkrimen/otto/registry
+github.com/ethereum/go-ethereum/vendor/github.com/robertkrimen/otto
+github.com/ethereum/go-ethereum/internal/jsre
+github.com/ethereum/go-ethereum/internal/web3ext
+github.com/ethereum/go-ethereum/vendor/github.com/peterh/liner
+github.com/ethereum/go-ethereum/console
+github.com/ethereum/go-ethereum/signer/fourbyte
+github.com/ethereum/go-ethereum/signer/rules/deps
+github.com/ethereum/go-ethereum/signer/rules
+github.com/ethereum/go-ethereum/cmd/devp2p
+github.com/ethereum/go-ethereum/core/asm
+github.com/ethereum/go-ethereum/cmd/evm/internal/compiler
+github.com/ethereum/go-ethereum/core/vm/runtime
+github.com/ethereum/go-ethereum/tests
+github.com/ethereum/go-ethereum/vendor/github.com/naoina/go-stringutil
+github.com/ethereum/go-ethereum/vendor/github.com/naoina/toml/ast
+github.com/ethereum/go-ethereum/vendor/github.com/naoina/toml
+github.com/ethereum/go-ethereum/vendor/github.com/docker/docker/pkg/reexec
+github.com/ethereum/go-ethereum/p2p/simulations/pipes
+github.com/ethereum/go-ethereum/p2p/simulations/adapters
+github.com/ethereum/go-ethereum/vendor/github.com/julienschmidt/httprouter
+github.com/ethereum/go-ethereum/p2p/simulations
+github.com/ethereum/go-ethereum/cmd/p2psim
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/ed25519/internal/edwards25519
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/ed25519
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/internal/subtle
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/internal/chacha20
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/poly1305
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/ssh
+github.com/ethereum/go-ethereum/cmd/puppeth
+github.com/ethereum/go-ethereum/cmd/rlpdump
+github.com/ethereum/go-ethereum/whisper/mailserver
+github.com/ethereum/go-ethereum/crypto/bn256/google
+github.com/ethereum/go-ethereum/internal/cmdtest
+github.com/ethereum/go-ethereum/internal/guide
+github.com/ethereum/go-ethereum/internal/testlog
+github.com/ethereum/go-ethereum/metrics/librato
+github.com/ethereum/go-ethereum/whisper/shhclient
+github.com/ethereum/go-ethereum/p2p/simulations/examples
+github.com/ethereum/go-ethereum/p2p/testing
+github.com/ethereum/go-ethereum/eth/tracers
+github.com/ethereum/go-ethereum/eth
+github.com/ethereum/go-ethereum/les
+github.com/ethereum/go-ethereum/ethstats
+github.com/ethereum/go-ethereum/cmd/faucet
+github.com/ethereum/go-ethereum/cmd/utils
+github.com/ethereum/go-ethereum/cmd/abigen
+github.com/ethereum/go-ethereum/cmd/bootnode
+github.com/ethereum/go-ethereum/cmd/checkpoint-admin
+github.com/ethereum/go-ethereum/cmd/clef
+github.com/ethereum/go-ethereum/cmd/ethkey
+github.com/ethereum/go-ethereum/cmd/evm
+github.com/ethereum/go-ethereum/cmd/geth
+github.com/ethereum/go-ethereum/cmd/wnode
+github.com/ethereum/go-ethereum/mobile
+travis_time:end:00862dab:start=1564646755029993000,finish=1564646862010636000,duration=106980643000[0K[32;1mThe command "go run build/ci.go install" exited with 0.[0m
+
+travis_time:start:1413cb03[0K$ go run build/ci.go archive -type tar -signer OSX_SIGNING_KEY -upload gethstore/builds
+geth-darwin-amd64-1.9.2-unstable-e46a01d5.tar.gz
+   + COPYING
+   + geth
+geth-alltools-darwin-amd64-1.9.2-unstable-e46a01d5.tar.gz
+   + COPYING
+   + abigen
+   + bootnode
+   + evm
+   + geth
+   + puppeth
+   + rlpdump
+   + wnode
+   + clef
+travis_time:end:1413cb03:start=1564646862021755000,finish=1564646890887047000,duration=28865292000[0K[32;1mThe command "go run build/ci.go archive -type tar -signer OSX_SIGNING_KEY -upload gethstore/builds" exited with 0.[0m
+
+travis_time:start:0ba00840[0K$ gem uninstall cocoapods -a -x
+Removing pod
+Removing sandbox-pod
+Successfully uninstalled cocoapods-1.5.3
+travis_time:end:0ba00840:start=1564646890898342000,finish=1564646891571161000,duration=672819000[0K[32;1mThe command "gem uninstall cocoapods -a -x" exited with 0.[0m
+
+travis_time:start:15803571[0K$ gem install cocoapods
+Successfully installed cocoapods-core-1.7.5
+Successfully installed cocoapods-deintegrate-1.0.4
+Successfully installed cocoapods-downloader-1.2.2
+Successfully installed cocoapods-trunk-1.3.1
+Successfully installed molinillo-0.6.6
+Successfully installed atomos-0.1.3
+Successfully installed nanaimo-0.2.6
+Successfully installed xcodeproj-1.11.0
+Successfully installed fourflusher-2.3.1
+Successfully installed ruby-macho-1.4.0
+Successfully installed cocoapods-1.7.5
+11 gems installed
+travis_time:end:15803571:start=1564646891583156000,finish=1564646894598250000,duration=3015094000[0K[32;1mThe command "gem install cocoapods" exited with 0.[0m
+
+travis_time:start:25222b54[0K$ mv ~/.cocoapods/repos/master ~/.cocoapods/repos/master.bak
+travis_time:end:25222b54:start=1564646894612762000,finish=1564646894626812000,duration=14050000[0K[32;1mThe command "mv ~/.cocoapods/repos/master ~/.cocoapods/repos/master.bak" exited with 0.[0m
+
+travis_time:start:304410dc[0K$ sed -i '.bak' 's/repo.join/!repo.join/g' $(dirname `gem which cocoapods`)/cocoapods/sources_manager.rb
+travis_time:end:304410dc:start=1564646894639336000,finish=1564646895045662000,duration=406326000[0K[32;1mThe command "sed -i '.bak' 's/repo.join/!repo.join/g' $(dirname `gem which cocoapods`)/cocoapods/sources_manager.rb" exited with 0.[0m
+
+travis_time:start:003cf226[0K$ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git clone --depth=1 https://github.com/CocoaPods/Specs.git ~/.cocoapods/repos/master && pod setup --verbose; fi
+Cloning into '/Users/travis/.cocoapods/repos/master'...
+Checking out files:   1% (3531/347732)   Checking out files:   1% (5575/347732)   Checking out files:   2% (6955/347732)   Checking out files:   2% (7870/347732)   Checking out files:   2% (8983/347732)   Checking out files:   3% (10432/347732)   Checking out files:   3% (10787/347732)   Checking out files:   3% (13207/347732)   Checking out files:   4% (13910/347732)   Checking out files:   4% (16077/347732)   Checking out files:   5% (17387/347732)   Checking out files:   5% (18825/347732)   Checking out files:   6% (20864/347732)   Checking out files:   6% (21418/347732)   Checking out files:   6% (23863/347732)   Checking out files:   7% (24342/347732)   Checking out files:   7% (25937/347732)   Checking out files:   8% (27819/347732)   Checking out files:   8% (28783/347732)   Checking out files:   9% (31296/347732)   Checking out files:   9% (31495/347732)   Checking out files:   9% (34369/347732)   Checking out files:  10% (34774/347732)   Checking out files:  10% (37203/347732)   Checking out files:  11% (38251/347732)   Checking out files:  11% (40029/347732)   Checking out files:  12% (41728/347732)   Checking out files:  12% (42967/347732)   Checking out files:  13% (45206/347732)   Checking out files:  13% (45803/347732)   Checking out files:  13% (48515/347732)   Checking out files:  14% (48683/347732)   Checking out files:  14% (51514/347732)   Checking out files:  15% (52160/347732)   Checking out files:  15% (54574/347732)   Checking out files:  16% (55638/347732)   Checking out files:  16% (57594/347732)   Checking out files:  17% (59115/347732)   Checking out files:  17% (60758/347732)   Checking out files:  18% (62592/347732)   Checking out files:  18% (63778/347732)   Checking out files:  19% (66070/347732)   Checking out files:  19% (66765/347732)   Checking out files:  20% (69547/347732)   Checking out files:  20% (69618/347732)   Checking out files:  20% (72657/347732)   Checking out files:  21% (73024/347732)   Checking out files:  21% (75770/347732)   Checking out files:  22% (76502/347732)   Checking out files:  22% (78798/347732)   Checking out files:  23% (79979/347732)   Checking out files:  23% (81583/347732)   Checking out files:  24% (83456/347732)   Checking out files:  24% (84462/347732)   Checking out files:  25% (86933/347732)   Checking out files:  25% (87560/347732)   Checking out files:  26% (90411/347732)   Checking out files:  26% (90520/347732)   Checking out files:  26% (93535/347732)   Checking out files:  27% (93888/347732)   Checking out files:  27% (96544/347732)   Checking out files:  28% (97365/347732)   Checking out files:  28% (99303/347732)   Checking out files:  29% (100843/347732)   Checking out files:  29% (102360/347732)   Checking out files:  30% (104320/347732)   Checking out files:  30% (105113/347732)   Checking out files:  31% (107797/347732)   Checking out files:  31% (107977/347732)   Checking out files:  31% (110845/347732)   Checking out files:  32% (111275/347732)   Checking out files:  32% (113662/347732)   Checking out files:  33% (114752/347732)   Checking out files:  33% (116519/347732)   Checking out files:  34% (118229/347732)   Checking out files:  34% (119447/347732)   Checking out files:  35% (121707/347732)   Checking out files:  35% (122372/347732)   Checking out files:  36% (125184/347732)   Checking out files:  36% (125270/347732)   Checking out files:  36% (127975/347732)   Checking out files:  37% (128661/347732)   Checking out files:  37% (130655/347732)   Checking out files:  38% (132139/347732)   Checking out files:  38% (133413/347732)   Checking out files:  39% (135616/347732)   Checking out files:  39% (136313/347732)   Checking out files:  40% (139093/347732)   Checking out files:  40% (139279/347732)   Checking out files:  40% (142256/347732)   Checking out files:  41% (142571/347732)   Checking out files:  41% (145114/347732)   Checking out files:  42% (146048/347732)   Checking out files:  42% (148127/347732)   Checking out files:  43% (149525/347732)   Checking out files:  43% (150988/347732)   Checking out files:  44% (153003/347732)   Checking out files:  44% (153924/347732)   Checking out files:  45% (156480/347732)   Checking out files:  45% (156779/347732)   Checking out files:  45% (159766/347732)   Checking out files:  46% (159957/347732)   Checking out files:  46% (162762/347732)   Checking out files:  47% (163435/347732)   Checking out files:  47% (165678/347732)   Checking out files:  48% (166912/347732)   Checking out files:  48% (168516/347732)   Checking out files:  49% (170389/347732)   Checking out files:  49% (171291/347732)   Checking out files:  50% (173866/347732)   Checking out files:  50% (174106/347732)   Checking out files:  50% (174417/347732)   Checking out files:  50% (175622/347732)   Checking out files:  51% (177344/347732)   Checking out files:  51% (178612/347732)   Checking out files:  52% (180821/347732)   Checking out files:  52% (181573/347732)   Checking out files:  53% (184298/347732)   Checking out files:  53% (184409/347732)   Checking out files:  53% (187216/347732)   Checking out files:  54% (187776/347732)   Checking out files:  54% (190056/347732)   Checking out files:  55% (191253/347732)   Checking out files:  55% (192957/347732)   Checking out files:  56% (194730/347732)   Checking out files:  56% (195774/347732)   Checking out files:  57% (198208/347732)   Checking out files:  57% (198692/347732)   Checking out files:  57% (201611/347732)   Checking out files:  58% (201685/347732)   Checking out files:  58% (204278/347732)   Checking out files:  59% (205162/347732)   Checking out files:  59% (207155/347732)   Checking out files:  60% (208640/347732)   Checking out files:  60% (210171/347732)   Checking out files:  61% (212117/347732)   Checking out files:  61% (212990/347732)   Checking out files:  62% (215594/347732)   Checking out files:  62% (215941/347732)   Checking out files:  62% (218934/347732)   Checking out files:  63% (219072/347732)   Checking out files:  63% (221692/347732)   Checking out files:  64% (222549/347732)   Checking out files:  64% (224684/347732)   Checking out files:  65% (226026/347732)   Checking out files:  65% (227545/347732)   Checking out files:  66% (229504/347732)   Checking out files:  66% (230555/347732)   Checking out files:  67% (232981/347732)   Checking out files:  67% (233599/347732)   Checking out files:  68% (236458/347732)   Checking out files:  68% (236556/347732)   Checking out files:  68% (239670/347732)   Checking out files:  69% (239936/347732)   Checking out files:  69% (242372/347732)   Checking out files:  70% (243413/347732)   Checking out files:  70% (245378/347732)   Checking out files:  71% (246890/347732)   Checking out files:  71% (248197/347732)   Checking out files:  72% (250368/347732)   Checking out files:  72% (251026/347732)   Checking out files:  73% (253845/347732)   Checking out files:  73% (254105/347732)   Checking out files:  73% (257036/347732)   Checking out files:  74% (257322/347732)   Checking out files:  74% (260046/347732)   Checking out files:  75% (260799/347732)   Checking out files:  75% (263041/347732)   Checking out files:  76% (264277/347732)   Checking out files:  76% (265901/347732)   Checking out files:  77% (267754/347732)   Checking out files:  77% (268914/347732)   Checking out files:  78% (271231/347732)   Checking out files:  78% (271667/347732)   Checking out files:  79% (274709/347732)   Checking out files:  79% (274819/347732)   Checking out files:  79% (277796/347732)   Checking out files:  80% (278186/347732)   Checking out files:  80% (280801/347732)   Checking out files:  81% (281663/347732)   Checking out files:  81% (283771/347732)   Checking out files:  82% (285141/347732)   Checking out files:  82% (286970/347732)   Checking out files:  83% (288618/347732)   Checking out files:  83% (289847/347732)   Checking out files:  84% (292095/347732)   Checking out files:  84% (293005/347732)   Checking out files:  85% (295573/347732)   Checking out files:  85% (295903/347732)   Checking out files:  86% (299050/347732)   Checking out files:  86% (299057/347732)   Checking out files:  86% (302235/347732)   Checking out files:  87% (302527/347732)   Checking out files:  87% (305147/347732)   Checking out files:  88% (306005/347732)   Checking out files:  88% (307820/347732)   Checking out files:  89% (309482/347732)   Checking out files:  89% (310656/347732)   Checking out files:  90% (312959/347732)   Checking out files:  90% (313512/347732)   Checking out files:  91% (316437/347732)   Checking out files:  91% (316482/347732)   Checking out files:  91% (319424/347732)   Checking out files:  92% (319914/347732)   Checking out files:  92% (322208/347732)   Checking out files:  93% (323391/347732)   Checking out files:  93% (325179/347732)   Checking out files:  94% (326869/347732)   Checking out files:  94% (328169/347732)   Checking out files:  95% (330346/347732)   Checking out files:  95% (331192/347732)   Checking out files:  96% (333823/347732)   Checking out files:  96% (334119/347732)   Checking out files:  96% (337172/347732)   Checking out files:  97% (337301/347732)   Checking out files:  97% (339917/347732)   Checking out files:  98% (340778/347732)   Checking out files:  98% (342972/347732)   Checking out files:  99% (344255/347732)   Checking out files:  99% (346084/347732)   Checking out files: 100% (347732/347732)   Checking out files: 100% (347732/347732), done.
+
+Setting up CocoaPods master repo
+  $ /usr/local/bin/git remote set-url origin https://github.com/CocoaPods/Specs.git
+  $ /usr/local/bin/git checkout master
+  Already on 'master'
+  Your branch is up to date with 'origin/master'.
+
+Updating spec repo `master`
+  $ /usr/local/bin/git -C /Users/travis/.cocoapods/repos/master fetch origin --progress
+  remote: Enumerating objects: 1             remote: Enumerating objects: 15, done.        
+  remote: Counting objects:   6% (1/15)             remote: Counting objects:  13% (2/15)             remote: Counting objects:  20% (3/15)             remote: Counting objects:  26% (4/15)             remote: Counting objects:  33% (5/15)             remote: Counting objects:  40% (6/15)             remote: Counting objects:  46% (7/15)             remote: Counting objects:  53% (8/15)             remote: Counting objects:  60% (9/15)             remote: Counting objects:  66% (10/15)             remote: Counting objects:  73% (11/15)             remote: Counting objects:  80% (12/15)             remote: Counting objects:  86% (13/15)             remote: Counting objects:  93% (14/15)             remote: Counting objects: 100% (15/15)             remote: Counting objects: 100% (15/15), done.        
+  remote: Compressing objects:  11% (1/9)             remote: Compressing objects:  22% (2/9)             remote: Compressing objects:  33% (3/9)             remote: Compressing objects:  44% (4/9)             remote: Compressing objects:  55% (5/9)             remote: Compressing objects:  66% (6/9)             remote: Compressing objects:  77% (7/9)             remote: Compressing objects:  88% (8/9)             remote: Compressing objects: 100% (9/9)             remote: Compressing objects: 100% (9/9), done.        
+  remote: Total 9 (delta 6), reused 0 (delta 0), pack-reused 0        
+  From https://github.com/CocoaPods/Specs
+     07c7dadb67..e2f49ba27e  master     -> origin/master
+  $ /usr/local/bin/git -C /Users/travis/.cocoapods/repos/master rev-parse --abbrev-ref HEAD
+  master
+  $ /usr/local/bin/git -C /Users/travis/.cocoapods/repos/master reset --hard origin/master
+  HEAD is now at e2f49ba27e [Add] Virtusize 1.2.0
+Setup completed
+travis_time:end:003cf226:start=1564646895057625000,finish=1564647099177979000,duration=204120354000[0K[32;1mThe command "if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git clone --depth=1 https://github.com/CocoaPods/Specs.git ~/.cocoapods/repos/master && pod setup --verbose; fi" exited with 0.[0m
+
+travis_time:start:04e2942e[0K$ xctool -version
+0.3.4
+travis_time:end:04e2942e:start=1564647099189683000,finish=1564647099839683000,duration=650000000[0K[32;1mThe command "xctool -version" exited with 0.[0m
+
+travis_time:start:0d0399a0[0K$ xcrun simctl list
+== Device Types ==
+iPhone 4s (com.apple.CoreSimulator.SimDeviceType.iPhone-4s)
+iPhone 5 (com.apple.CoreSimulator.SimDeviceType.iPhone-5)
+iPhone 5s (com.apple.CoreSimulator.SimDeviceType.iPhone-5s)
+iPhone 6 (com.apple.CoreSimulator.SimDeviceType.iPhone-6)
+iPhone 6 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-6-Plus)
+iPhone 6s (com.apple.CoreSimulator.SimDeviceType.iPhone-6s)
+iPhone 6s Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-6s-Plus)
+iPhone 7 (com.apple.CoreSimulator.SimDeviceType.iPhone-7)
+iPhone 7 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-7-Plus)
+iPhone 8 (com.apple.CoreSimulator.SimDeviceType.iPhone-8)
+iPhone 8 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-8-Plus)
+iPhone SE (com.apple.CoreSimulator.SimDeviceType.iPhone-SE)
+iPhone X (com.apple.CoreSimulator.SimDeviceType.iPhone-X)
+iPad 2 (com.apple.CoreSimulator.SimDeviceType.iPad-2)
+iPad Retina (com.apple.CoreSimulator.SimDeviceType.iPad-Retina)
+iPad Air (com.apple.CoreSimulator.SimDeviceType.iPad-Air)
+iPad Air 2 (com.apple.CoreSimulator.SimDeviceType.iPad-Air-2)
+iPad (5th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--5th-generation-)
+iPad Pro (9.7-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--9-7-inch-)
+iPad Pro (12.9-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro)
+iPad Pro (12.9-inch) (2nd generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-)
+iPad Pro (10.5-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--10-5-inch-)
+iPad (6th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--6th-generation-)
+Apple TV (com.apple.CoreSimulator.SimDeviceType.Apple-TV-1080p)
+Apple TV 4K (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-4K)
+Apple TV 4K (at 1080p) (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-1080p)
+Apple Watch - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-38mm)
+Apple Watch - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-42mm)
+Apple Watch Series 2 - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-38mm)
+Apple Watch Series 2 - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-42mm)
+Apple Watch Series 3 - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-38mm)
+Apple Watch Series 3 - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-42mm)
+== Runtimes ==
+iOS 8.1 (8.1 - 12B411) - com.apple.CoreSimulator.SimRuntime.iOS-8-1
+iOS 8.2 (8.2 - 12D508) - com.apple.CoreSimulator.SimRuntime.iOS-8-2
+iOS 8.3 (8.3 - 12F70) - com.apple.CoreSimulator.SimRuntime.iOS-8-3
+iOS 8.4 (8.4 - 12H141) - com.apple.CoreSimulator.SimRuntime.iOS-8-4
+iOS 9.0 (9.0 - 13A344) - com.apple.CoreSimulator.SimRuntime.iOS-9-0
+iOS 9.1 (9.1 - 13B143) - com.apple.CoreSimulator.SimRuntime.iOS-9-1
+iOS 9.2 (9.2 - 13C75) - com.apple.CoreSimulator.SimRuntime.iOS-9-2
+iOS 9.3 (9.3 - 13E233) - com.apple.CoreSimulator.SimRuntime.iOS-9-3
+iOS 10.0 (10.0 - 14A345) - com.apple.CoreSimulator.SimRuntime.iOS-10-0
+iOS 10.1 (10.1 - 14B72) - com.apple.CoreSimulator.SimRuntime.iOS-10-1
+iOS 10.2 (10.2 - 14C89) - com.apple.CoreSimulator.SimRuntime.iOS-10-2
+iOS 10.3 (10.3.1 - 14E8301) - com.apple.CoreSimulator.SimRuntime.iOS-10-3
+iOS 11.0 (11.0.1 - 15A8401) - com.apple.CoreSimulator.SimRuntime.iOS-11-0
+iOS 11.1 (11.1 - 15B87) - com.apple.CoreSimulator.SimRuntime.iOS-11-1
+iOS 11.2 (11.2 - 15C107) - com.apple.CoreSimulator.SimRuntime.iOS-11-2
+iOS 11.3 (11.3 - 15E217) - com.apple.CoreSimulator.SimRuntime.iOS-11-3
+iOS 11.4 (11.4 - 15F79) - com.apple.CoreSimulator.SimRuntime.iOS-11-4
+tvOS 9.0 (9.0 - 13T395) - com.apple.CoreSimulator.SimRuntime.tvOS-9-0
+tvOS 9.1 (9.1 - 13U85) - com.apple.CoreSimulator.SimRuntime.tvOS-9-1
+tvOS 9.2 (9.2 - 13Y234) - com.apple.CoreSimulator.SimRuntime.tvOS-9-2
+tvOS 10.0 (10.0 - 14T328) - com.apple.CoreSimulator.SimRuntime.tvOS-10-0
+tvOS 10.1 (10.1 - 14U591) - com.apple.CoreSimulator.SimRuntime.tvOS-10-1
+tvOS 10.2 (10.2 - 14W260) - com.apple.CoreSimulator.SimRuntime.tvOS-10-2
+tvOS 11.0 (11.0 - 15J380) - com.apple.CoreSimulator.SimRuntime.tvOS-11-0
+tvOS 11.1 (11.1 - 15J580) - com.apple.CoreSimulator.SimRuntime.tvOS-11-1
+tvOS 11.2 (11.2 - 15K104) - com.apple.CoreSimulator.SimRuntime.tvOS-11-2
+tvOS 11.3 (11.3 - 15L211) - com.apple.CoreSimulator.SimRuntime.tvOS-11-3
+tvOS 11.4 (11.4 - 15L576) - com.apple.CoreSimulator.SimRuntime.tvOS-11-4
+watchOS 2.0 (2.0 - 13S343) - com.apple.CoreSimulator.SimRuntime.watchOS-2-0
+watchOS 2.1 (2.1 - 13S661) - com.apple.CoreSimulator.SimRuntime.watchOS-2-1
+watchOS 2.2 (2.2 - 13V144) - com.apple.CoreSimulator.SimRuntime.watchOS-2-2
+watchOS 3.1 (3.1 - 14S471a) - com.apple.CoreSimulator.SimRuntime.watchOS-3-1
+watchOS 3.2 (3.2 - 14V243) - com.apple.CoreSimulator.SimRuntime.watchOS-3-2
+watchOS 4.0 (4.0 - 15R372) - com.apple.CoreSimulator.SimRuntime.watchOS-4-0
+watchOS 4.1 (4.1 - 15R844) - com.apple.CoreSimulator.SimRuntime.watchOS-4-1
+watchOS 4.2 (4.2 - 15S100) - com.apple.CoreSimulator.SimRuntime.watchOS-4-2
+watchOS 4.3 (4.3 - 15T212) - com.apple.CoreSimulator.SimRuntime.watchOS-4-3
+== Devices ==
+-- iOS 8.1 --
+    iPhone 4s (2B0671BD-7CAD-47F8-9160-F14DB20F1262) (Shutdown)
+    iPhone 5 (86EDFC00-BAEB-4EFC-8F12-5AFBC0473770) (Shutdown)
+    iPhone 5s (457B6F86-26C1-4375-930F-9E04FE4AA9A4) (Shutdown)
+    iPhone 6 (EDAA4F34-F795-44A5-9504-F90B28390E24) (Shutdown)
+    iPhone 6 Plus (C3E159D1-92EA-4D65-9A6C-CA93EDCCAE3B) (Shutdown)
+    iPad 2 (2CD5957A-6D0C-45E1-8AA3-CD4F9AB8C10B) (Shutdown)
+    iPad Retina (5450E3F8-4996-4782-9775-FD9CB371A062) (Shutdown)
+    iPad Air (4150FFDE-4344-4809-BEEE-78D237BA7353) (Shutdown)
+-- iOS 8.2 --
+    iPhone 4s (4DADE89C-EB1D-4D52-A250-D03B115C22B1) (Shutdown)
+    iPhone 5 (09E059C6-DC11-4CCA-9C54-F7E791BF49BC) (Shutdown)
+    iPhone 5s (75F48A28-BA25-4582-B21B-7B4F4A718F48) (Shutdown)
+    iPhone 6 (62703339-2564-480A-9000-3D3B4D9D4F35) (Shutdown)
+    iPhone 6 Plus (D1722CA4-7AD9-48CD-8FC5-0CB143ED644B) (Shutdown)
+    iPad 2 (51E966A7-98BB-4AB9-B5C4-B40E5FC7FFED) (Shutdown)
+    iPad Retina (BEBED407-8863-44EA-8000-EB39B51BBCD1) (Shutdown)
+    iPad Air (686D0A3F-BD2D-4630-8DB6-C6B9ACECE5D2) (Shutdown)
+-- iOS 8.3 --
+    iPhone 4s (3CDF0605-D4AF-4242-AFA1-FF2C157A9C70) (Shutdown)
+    iPhone 5 (19AF02F6-DB79-49B3-A8C6-A1C336BCE3F1) (Shutdown)
+    iPhone 5s (86EA2F80-F818-4C19-A468-21DB5C0C8E66) (Shutdown)
+    iPhone 6 (991AE0D6-B245-429C-B99E-8293C552515C) (Shutdown)
+    iPhone 6 Plus (64AFC437-4EEC-48F8-9D57-28D81ED68408) (Shutdown)
+    iPad 2 (2AA4BDFD-F5C2-46DF-9F5F-DB514B6ED56F) (Shutdown)
+    iPad Retina (09A49FD7-7BF3-47D8-AFF2-54B3AA232BA2) (Shutdown)
+    iPad Air (C7CC9A95-F717-43BE-BC49-E96480CCB8FD) (Shutdown)
+-- iOS 8.4 --
+    iPhone 4s (6BCD79BC-D0CB-43AF-9870-F0B68A8556E7) (Shutdown)
+    iPhone 5 (E6A3B0AF-AB73-40F8-9BC8-0B40790DEE39) (Shutdown)
+    iPhone 5s (B43FBA4E-1FD2-44B1-AA63-E3A7278F7105) (Shutdown)
+    iPhone 6 (3FF68940-AAB8-43BA-97EF-9CF1E73E38B0) (Shutdown)
+    iPhone 6 Plus (51CE983B-4088-4476-A55D-EC102C4EC518) (Shutdown)
+    iPad 2 (608382E4-F0D6-4320-BFEA-B8C40744AD0A) (Shutdown)
+    iPad Retina (656BEC2A-1437-491A-B76A-B815B11AA3F6) (Shutdown)
+    iPad Air (56F1E42E-634C-4271-B1F8-929C5FA09F17) (Shutdown)
+-- iOS 9.0 --
+    iPhone 4s (14C73E2C-9E93-4D65-B014-C4BED07043C9) (Shutdown)
+    iPhone 5 (779B1757-2F85-49DB-8692-1CB7F525A0A8) (Shutdown)
+    iPhone 5s (D73669A5-7AA1-40C6-B97F-7AFAC3032A02) (Shutdown)
+    iPhone 6 (D2F6C51F-A7E5-4D35-AB11-7E39524C6AC1) (Shutdown)
+    iPhone 6 Plus (E52E4E23-652B-42AE-8B0E-8FDCF383E27B) (Shutdown)
+    iPhone 6s (B6C52922-3BDD-409C-AA41-7B561D7E69A4) (Shutdown)
+    iPhone 6s Plus (BA1AC073-887F-46DF-A508-6D988AB6BD4F) (Shutdown)
+    iPad 2 (E27A635C-52D2-4603-8B58-9859FBB02C94) (Shutdown)
+    iPad Retina (53D1C769-9C51-41D1-9C96-E797921860F7) (Shutdown)
+    iPad Air (A3F3D781-ACC6-478C-9B2D-7FF7E46BC386) (Shutdown)
+    iPad Air 2 (23091268-7391-496F-B159-E3270DB4DCC2) (Shutdown)
+-- iOS 9.1 --
+    iPhone 4s (A89FE6CE-C5EA-49C6-A138-B926DF6A9C25) (Shutdown)
+    iPhone 5 (010AFBC3-5339-4257-824C-83AA3863405C) (Shutdown)
+    iPhone 5s (6034A261-6971-4C54-A0E9-FDE1B3C08487) (Shutdown)
+    iPhone 6 (B1458D77-7232-44DA-BBEF-CEFA40647FDA) (Shutdown)
+    iPhone 6 Plus (995B7565-9DE5-431E-AE20-279888580BD6) (Shutdown)
+    iPhone 6s (7671DCA7-2C17-4F70-931D-6F0E03B21F3F) (Shutdown)
+    iPhone 6s Plus (FB3B06E0-8DFA-4E9D-A149-88A42EFBCE3A) (Shutdown)
+    iPad 2 (8EA602F3-BFE7-41D1-856C-080F634794EE) (Shutdown)
+    iPad Retina (7FBEF989-EAF1-4760-8F3F-3F8F516121CC) (Shutdown)
+    iPad Air (BA89853E-45CC-464B-A12E-1C16656D4ADF) (Shutdown)
+    iPad Air 2 (6194B82C-EEF3-4376-A87A-7E06C95AC506) (Shutdown)
+    iPad Pro (86F4D8B9-0F17-437B-A9AA-FFD0AB7688A2) (Shutdown)
+-- iOS 9.2 --
+    iPhone 4s (91EC8B43-47E2-4B42-AE82-F4AD5D28CB5A) (Shutdown)
+    iPhone 5 (8E0692AE-4F39-4167-A822-792ED58A63F2) (Shutdown)
+    iPhone 5s (FAE64C7A-EAAE-46E8-9574-D60E0664972B) (Shutdown)
+    iPhone 6 (5221D898-F188-4F84-9F38-75619511579A) (Shutdown)
+    iPhone 6 Plus (00893EF6-97F2-4E05-A755-05674C0CC026) (Shutdown)
+    iPhone 6s (1B93209F-4908-4D22-AD55-060F40A49521) (Shutdown)
+    iPhone 6s Plus (B3A312F1-332D-4C65-A29F-C1ED9ED9BF8D) (Shutdown)
+    iPad 2 (3A2B73DD-D059-4A60-9968-33F6FFC5029B) (Shutdown)
+    iPad Retina (639A30CD-F361-463E-A171-DFBA8E7298EC) (Shutdown)
+    iPad Air (ACEC701E-9AAF-448F-9B03-0011014446FF) (Shutdown)
+    iPad Air 2 (71673F89-CF2E-4B6E-A505-ABAC18B3F69D) (Shutdown)
+    iPad Pro (248EFA4E-4723-4C2D-98B1-527E7585437C) (Shutdown)
+-- iOS 9.3 --
+    iPhone 4s (D22DA37A-5F16-4193-AB57-4DF2E9372378) (Shutdown)
+    iPhone 5 (45787325-D869-4769-ACB9-C6309BCF883B) (Shutdown)
+    iPhone 5s (58FC13DC-26A0-4A50-BDE0-E5F1558DB73C) (Shutdown)
+    iPhone 6 (8A462E89-DC29-4C3E-9E67-65D5589D409E) (Shutdown)
+    iPhone 6 Plus (0A702B8B-B2A1-4A9D-BA55-A5822DA972B8) (Shutdown)
+    iPhone 6s (866BCD97-88C4-49D9-BB38-E50197D7EC01) (Shutdown)
+    iPhone 6s Plus (3FB5F0BB-7C22-44EB-BF47-95A298256F6E) (Shutdown)
+    iPad 2 (1E85B325-92C1-4E0E-82E5-F6D4C08BB6EB) (Shutdown)
+    iPad Retina (2AF8A63E-D272-4F9B-ABC9-0775BE6045D6) (Shutdown)
+    iPad Air (10656696-3ACC-4418-9928-B49D1DABB801) (Shutdown)
+    iPad Air 2 (E319AB99-F82E-4F5F-9EE8-14CF4D2ED9E5) (Shutdown)
+    iPad Pro (F05DB4F0-30C0-4BBB-B90C-7E9C7DB632B2) (Shutdown)
+-- iOS 10.0 --
+    iPhone 5 (BF94643A-4024-4FE2-B71F-3869071B6166) (Shutdown)
+    iPhone 5s (CCCEB864-D49E-427D-ABCC-4C7E01DD4D85) (Shutdown)
+    iPhone 6 (872D1DAE-7744-4912-8FF4-818FAF514FA8) (Shutdown)
+    iPhone 6 Plus (73F619BF-3F23-4F70-BC2B-BE6F2767DE69) (Shutdown)
+    iPhone 6s (6E4A14AA-F6D0-4DA9-BBA1-C354DBEB4DE7) (Shutdown)
+    iPhone 6s Plus (6B8A2096-C5A7-447A-B0D4-BAB352DD922E) (Shutdown)
+    iPhone SE (D7BCCF4C-F0DA-45C8-AE67-06497B10D1CF) (Shutdown)
+    iPad Air (9C74559B-3B60-4BE2-B1E1-97925D455961) (Shutdown)
+    iPad Air 2 (D88F9898-D11E-417B-9802-D89CCEAF3C2F) (Shutdown)
+    iPad Pro (9.7 inch) (7D34DFC4-124A-4D0F-A057-669581B756B7) (Shutdown)
+    iPad Pro (12.9 inch) (150C9556-CA98-47F6-88C0-5CCF8EA67A2D) (Shutdown)
+-- iOS 10.1 --
+    iPhone 5 (AF7167AF-7465-435B-B5D3-E411E1C3CFD0) (Shutdown)
+    iPhone 5s (E62C5DCF-8B23-406E-86F0-BDAE65734FF2) (Shutdown)
+    iPhone 6 (9FF0EC38-320A-4EAC-BAA1-789C3FF26067) (Shutdown)
+    iPhone 6 Plus (2573CAC3-0BA6-475C-BA22-70EC7ACA77E9) (Shutdown)
+    iPhone 6s (78117574-E9E9-4166-BC22-01F2934522E2) (Shutdown)
+    iPhone 6s Plus (25FB316B-392B-4E24-A008-895B8679B516) (Shutdown)
+    iPhone 7 (C2296C10-3B11-4A23-9DC8-F232AA402A9B) (Shutdown)
+    iPhone 7 Plus (DB93129F-18C4-48E6-A5D0-32031391835C) (Shutdown)
+    iPhone SE (0DDA4427-0558-4A13-A860-0A9CA9D10994) (Shutdown)
+    iPad Air (A94A9CA0-B9CC-421E-AA4F-FA6C3D02E2EB) (Shutdown)
+    iPad Air 2 (A37BDB3E-1072-4F4D-AD24-B9D0FE6CBC42) (Shutdown)
+    iPad Pro (9.7 inch) (B99D7005-CA3C-4A18-B6CE-59526EBC6445) (Shutdown)
+    iPad Pro (12.9 inch) (B53A29DC-4861-465F-80D2-F95B18B68E28) (Shutdown)
+-- iOS 10.2 --
+    iPhone 5 (E7CA5C45-64CD-4901-BFD8-D5A83207410A) (Shutdown)
+    iPhone 5s (CF936ABC-A791-4C3B-A42D-1162B35C0A11) (Shutdown)
+    iPhone 6 (967D56E6-2A3E-47A2-BFAD-F016530DA3F5) (Shutdown)
+    iPhone 6 Plus (84DD62A4-9D62-47E8-89F4-274890231838) (Shutdown)
+    iPhone 6s (BFF57F62-8EC9-4151-8C16-CAE7D58718C3) (Shutdown)
+    iPhone 6s Plus (791D6919-053B-47B3-B376-F89D9FD33D44) (Shutdown)
+    iPhone 7 (F23BF19F-9C35-48C9-A2AF-D120B72E8CAA) (Shutdown)
+    iPhone 7 Plus (14DFD8E2-A7F0-4162-B916-4B2F05E3BCE1) (Shutdown)
+    iPhone SE (9A4D2707-090A-462E-AF38-916D4D9C2CE5) (Shutdown)
+    iPad Air (87C9678D-89F5-4F84-A736-5D21DA43A1F1) (Shutdown)
+    iPad Air 2 (25BC5E05-BAEF-4971-8416-85ADDAEB0BEC) (Shutdown)
+    iPad Pro (9.7 inch) (2FC5189A-52CB-4C1D-AB60-B64115D09EF6) (Shutdown)
+    iPad Pro (12.9 inch) (FAA75C47-D16B-44A3-A810-4ACE2C0751C6) (Shutdown)
+-- iOS 10.3 --
+    iPhone 5 (835159AB-C5A9-40CE-8DDA-0C7BF85D1F92) (Shutdown)
+    iPhone 5s (FB172944-43CD-4AC6-9514-CF694CD4A3E8) (Shutdown)
+    iPhone 6 (7979A6FF-BEC9-4620-A620-A42026875B34) (Shutdown)
+    iPhone 6 Plus (D3F65B95-5818-434C-878B-0BB6BFA5790E) (Shutdown)
+    iPhone 6s (716D2E9F-936A-49D7-AAB8-F75C85B963B2) (Shutdown)
+    iPhone 6s Plus (D93B3184-C9CA-4FC5-B557-EC0D7A879B17) (Shutdown)
+    iPhone 7 (4613405A-5789-40C7-BAFD-1F75276DF01B) (Shutdown)
+    iPhone 7 Plus (96A7AA09-E958-432D-BF8C-CFDD974D925E) (Shutdown)
+    iPhone SE (4BE5E4FF-A2D5-4899-B2E0-8BB3A2CD0B8B) (Shutdown)
+    iPad Air (12F0E506-A78B-4D94-9821-74370A9DCE11) (Shutdown)
+    iPad Air 2 (17419E8A-4CBF-4396-8543-5B630761CFC8) (Shutdown)
+    iPad (5th generation) (6839934C-005F-4EF5-B6A8-245B69DE3867) (Shutdown)
+    iPad Pro (9.7 inch) (3C64B4B9-74CD-42E0-86AD-A90686DCD5E8) (Shutdown)
+    iPad Pro (12.9 inch) (B9E5C3B4-3566-436C-8D63-F383E2FBC03C) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (BC8AD80A-D8B2-4267-8B77-6354FD8E8E4C) (Shutdown)
+    iPad Pro (10.5-inch) (CA8D3A1C-01F3-42A6-B75F-150B834B1C8E) (Shutdown)
+-- iOS 11.0 --
+    iPhone 5s (CA37075E-1A35-4004-9BA1-1699014D5539) (Shutdown)
+    iPhone 6 (A7E081FF-DF01-4B38-AF33-238B78D60EB0) (Shutdown)
+    iPhone 6 Plus (595F4914-8EBF-42E4-AB0A-646828186683) (Shutdown)
+    iPhone 6s (755DFFC3-9C59-42F8-96E5-A06811E3AF34) (Shutdown)
+    iPhone 6s Plus (89B103B2-8A1D-4346-AA7A-BA486199D9D8) (Shutdown)
+    iPhone 7 (E30BFFDC-BF8D-452A-B84A-EFD47A24E666) (Shutdown)
+    iPhone 7 Plus (DC4BFCF6-9A7A-4C3F-AD22-1D79D8187205) (Shutdown)
+    iPhone 8 (6C280E8A-F201-4C8A-A9DD-FF6AAF1C3929) (Shutdown)
+    iPhone 8 Plus (6F00BFFA-A910-41E8-AD57-3F5FF7CE087F) (Shutdown)
+    iPhone SE (1ED0C422-5515-4DCF-A489-0619E41988E0) (Shutdown)
+    iPhone X (6A06193C-A7B7-4B1C-B0F5-BB64EA407C45) (Shutdown)
+    iPad Air (E89E3DBD-B726-4CA4-B721-BD88E5075C89) (Shutdown)
+    iPad Air 2 (D6BADE58-764A-42FA-B843-EF7ED4A0BE74) (Shutdown)
+    iPad (5th generation) (67F5C85B-FCC6-4BC8-BDFE-88A504FD044A) (Shutdown)
+    iPad Pro (9.7-inch) (1C320FE5-104A-4063-81AD-90E0015E8558) (Shutdown)
+    iPad Pro (12.9-inch) (75098CA6-4479-4C61-A446-3B3EB079CC8E) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (548F3C3A-3494-4ADA-97B8-C4F0569FB887) (Shutdown)
+    iPad Pro (10.5-inch) (0E672864-12DC-415E-B832-419F06478FD1) (Shutdown)
+-- iOS 11.1 --
+    iPhone 5s (C096E2F3-AD67-4B02-95FE-D281FB5901E1) (Shutdown)
+    iPhone 6 (181C36C6-EAFA-4D64-8DF9-293F7EADB2D7) (Shutdown)
+    iPhone 6 Plus (64BFAE14-FFFF-4CB7-9253-9E7B27529B35) (Shutdown)
+    iPhone 6s (628367C6-AF04-42C8-9900-A81178F2F352) (Shutdown)
+    iPhone 6s Plus (F416D582-D6A0-4611-BB69-153F90CE423C) (Shutdown)
+    iPhone 7 (9AC74482-9863-41FD-BE3D-38E6623EFDFB) (Shutdown)
+    iPhone 7 Plus (17475554-73D2-489F-94ED-63433C6944C0) (Shutdown)
+    iPhone 8 (F326BFEC-6113-48CD-819A-EC3E93B26ECD) (Shutdown)
+    iPhone 8 Plus (74B5438D-E7CF-4255-BDA0-A963BA08937A) (Shutdown)
+    iPhone SE (2ED9CDD0-5382-4A5A-AC84-EF3598D4E62F) (Shutdown)
+    iPhone X (D52832BA-57AD-491D-8A57-8608B494E64D) (Shutdown)
+    iPad Air (AE6E7168-0446-4C87-BBCE-7AD4AE734BF1) (Shutdown)
+    iPad Air 2 (655CE97A-4280-4B01-ACE6-D1C712DD3516) (Shutdown)
+    iPad (5th generation) (92EB3616-8FB1-4D0A-B7F2-C7B036477411) (Shutdown)
+    iPad Pro (9.7-inch) (3187EBB9-0DF5-45CC-87B9-4082E3FE310C) (Shutdown)
+    iPad Pro (12.9-inch) (9391F6A0-FF13-483F-ABF9-A04BDC0B764F) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (217EC1BD-DF10-453F-995A-F87FDDCCE5E8) (Shutdown)
+    iPad Pro (10.5-inch) (107D1E89-E697-47FA-A3F5-2FF9562408D6) (Shutdown)
+-- iOS 11.2 --
+    iPhone 5s (B9CE6312-8608-44EA-9E64-B56A757C9B8A) (Shutdown)
+    iPhone 6 (3A858194-BA14-4EE4-8F9B-906481B03C47) (Shutdown)
+    iPhone 6 Plus (88D5193B-4F6D-472B-B2D4-3A6DCCB887DC) (Shutdown)
+    iPhone 6s (43D36EA0-64EC-43D4-8855-5D45463E6BF9) (Shutdown)
+    iPhone 6s Plus (1DBCAF8C-1B02-4B8E-B1D5-9B5679DD8366) (Shutdown)
+    iPhone 7 (923DC3DE-D21D-4559-9421-AEE939F2624B) (Shutdown)
+    iPhone 7 Plus (F3CBA6E7-35CA-4439-84DB-F45E82B5FABD) (Shutdown)
+    iPhone 8 (83BC51BB-5B95-4B2D-8236-A61C971B1782) (Shutdown)
+    iPhone 8 Plus (9DE97618-778A-49CE-B7A6-AF2C986DDBF7) (Shutdown)
+    iPhone SE (F15240F3-7815-45A7-BE14-A9E0BA8A5AC1) (Shutdown)
+    iPhone X (9ADA386D-B982-49F5-A73D-8AD0B6615893) (Shutdown)
+    iPad Air (F916600C-A450-432F-A38C-F4E796E8249D) (Shutdown)
+    iPad Air 2 (72440411-B297-42B9-B7EF-F6ACA6886892) (Shutdown)
+    iPad (5th generation) (2264889A-2A5B-48CE-B727-8DCDE999E945) (Shutdown)
+    iPad Pro (9.7-inch) (BE28FA47-F3A9-41C5-A2E0-BFAF81B86DAF) (Shutdown)
+    iPad Pro (12.9-inch) (CF6FDD42-2E85-4611-A652-01EDB8E00ED1) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (5360F1C7-5CB3-400C-BE04-BBABFE336007) (Shutdown)
+    iPad Pro (10.5-inch) (662F3325-64D6-433D-9A8C-FEDDFB8A8972) (Shutdown)
+-- iOS 11.3 --
+    iPhone 5s (7EC35771-F846-444D-9B50-C5DC7A961A9A) (Shutdown)
+    iPhone 6 (FB845F0D-B8FA-4BEF-93DF-F404ED056584) (Shutdown)
+    iPhone 6 Plus (A3A23119-876A-4C6A-9528-90E3480C527A) (Shutdown)
+    iPhone 6s (1E94ACEE-70F6-476D-BC1A-936F2A5B9F56) (Shutdown)
+    iPhone 6s Plus (FD1F8AC7-449A-48A4-84AF-02669B8CD10A) (Shutdown)
+    iPhone 7 (9FEEED2B-0CF6-4D04-AF53-9B26634C2964) (Shutdown)
+    iPhone 7 Plus (21CA6087-CA2E-46CF-9EE3-F71A53D108ED) (Shutdown)
+    iPhone 8 (F9310BC9-DA96-47E4-BCD7-33FAF9C3D50D) (Shutdown)
+    iPhone 8 Plus (B10354A2-F470-4F98-A914-1A09F0AA2980) (Shutdown)
+    iPhone SE (6705666C-53A0-475E-A208-C33BBD6D7FD5) (Shutdown)
+    iPhone X (D18EED3E-1D5F-4CB8-A88F-79DE3893EBDB) (Shutdown)
+    iPad Air (0F08A38C-A927-4B9A-BFBF-57B4759049B2) (Shutdown)
+    iPad Air 2 (B0900495-3EE4-4B1E-BF31-701AF4419581) (Shutdown)
+    iPad (5th generation) (AD35E924-3768-42A3-AE68-B94157DE1625) (Shutdown)
+    iPad Pro (9.7-inch) (75C9CA83-2FAC-4F04-9C80-B5502AA57062) (Shutdown)
+    iPad Pro (12.9-inch) (22C79D33-DB4D-4B67-8D02-87F5A07BF086) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (EA8EEE71-9636-4E44-B482-BF1E8BD2A283) (Shutdown)
+    iPad Pro (10.5-inch) (838DD1E7-E403-4930-868D-4E557F323511) (Shutdown)
+-- iOS 11.4 --
+    iPhone 5s (0702AFE5-C0FA-493E-8A5B-3860A9BCEDB4) (Shutdown)
+    iPhone 6 (9F1CE63E-694B-44E0-8B0A-10E101A388F9) (Shutdown)
+    iPhone 6 Plus (A2A415B5-50B5-49AD-9E2D-166F679C25AE) (Shutdown)
+    iPhone 6s (91E9B76A-3407-4CD1-B83A-4D9A2F8B5A10) (Shutdown)
+    iPhone 6s Plus (56C11870-7103-4A42-8ECF-0C2A3225A5F6) (Shutdown)
+    iPhone 7 (1A201D82-0514-4CEB-A9FC-EAAFD5E6B89D) (Shutdown)
+    iPhone 7 Plus (8C2DF4AF-AD0A-4960-B04C-CA59E30AFD54) (Shutdown)
+    iPhone 8 (FB0908FB-89D5-46C0-9231-10C1B336FF04) (Shutdown)
+    iPhone 8 Plus (58CAE2C0-E539-40AC-8288-42669BD85BE8) (Shutdown)
+    iPhone SE (7FC0BCB1-EAB7-4804-9A20-7B490D5C88DA) (Shutdown)
+    iPhone X (C0BD112C-A78A-491A-A827-DB464992E80E) (Shutdown)
+    iPad Air (CBD474FA-FC28-403A-9523-AD3D37C5EE2D) (Shutdown)
+    iPad Air 2 (DCB031C4-7856-4AFA-9662-056322A93B5D) (Shutdown)
+    iPad (5th generation) (DF8272DD-48AB-48E7-8EF5-929BAF18A219) (Shutdown)
+    iPad Pro (9.7-inch) (2F0A090B-647C-4C56-93FF-E761ED75EC1F) (Shutdown)
+    iPad Pro (12.9-inch) (A1DC71AF-156D-4CCE-A018-3F763C524548) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (7457C8F4-DAFC-40C2-A6B5-17E918E09313) (Shutdown)
+    iPad Pro (10.5-inch) (6CCEB16B-D67C-4DF8-9059-DCC418184D7C) (Shutdown)
+-- tvOS 9.0 --
+    Apple TV 1080p (6C8A0E93-F8D9-460A-8EA0-B56079D5657F) (Shutdown)
+-- tvOS 9.1 --
+    Apple TV 1080p (6E23A581-CDE1-423F-800F-C944D1249564) (Shutdown)
+-- tvOS 9.2 --
+    Apple TV 1080p (2A99DB46-869A-4D34-BB8C-65EEC84EB1AE) (Shutdown)
+-- tvOS 10.0 --
+    Apple TV 1080p (50A72879-D9C3-418A-8218-DEA6D97BA777) (Shutdown)
+-- tvOS 10.1 --
+    Apple TV 1080p (3E7D6147-2F8A-4817-B59C-478E41287BE3) (Shutdown)
+-- tvOS 10.2 --
+    Apple TV 1080p (56359155-D407-4D32-90CB-497C160BB71C) (Shutdown)
+-- tvOS 11.0 --
+    Apple TV (09768897-1A89-4557-A18A-5D3373174A5C) (Shutdown)
+    Apple TV 4K (1E60D206-E7DA-4684-B82E-355C5C8F6352) (Shutdown)
+    Apple TV 4K (at 1080p) (A9CC27D8-7013-4E5F-9F7E-B2954632BA08) (Shutdown)
+-- tvOS 11.1 --
+    Apple TV (1E846B56-645E-4861-8B37-C47780CFEA4E) (Shutdown)
+    Apple TV 4K (C70B68DB-4B98-47A4-AD7A-377CFFEE1A32) (Shutdown)
+    Apple TV 4K (at 1080p) (3BF9C274-36E6-4A05-845F-04E609F6C3B4) (Shutdown)
+-- tvOS 11.2 --
+    Apple TV (BC5A24BB-FCF3-47FB-A688-E9EA56C1079D) (Shutdown)
+    Apple TV 4K (3D04D9A7-390B-4DC7-A595-7D448AB27637) (Shutdown)
+    Apple TV 4K (at 1080p) (8E0635C8-250E-4B9C-87E1-0694D30ED9CA) (Shutdown)
+-- tvOS 11.3 --
+    Apple TV (65710B2D-7191-44BF-81EB-54F12594FAC5) (Shutdown)
+    Apple TV 4K (10F4C4DE-C831-4725-835F-8479648046B6) (Shutdown)
+    Apple TV 4K (at 1080p) (054A3841-A39E-4C1B-9672-24CF72F6E04E) (Shutdown)
+-- tvOS 11.4 --
+    Apple TV (6592A7F6-6CE0-495A-ABFE-156C158E5565) (Shutdown)
+    Apple TV 4K (EA00D3B6-330D-4F68-8580-915B3CC53C76) (Shutdown)
+    Apple TV 4K (at 1080p) (3CBF7475-0544-4DEB-A659-061BC3ADF08C) (Shutdown)
+-- watchOS 2.0 --
+    Apple Watch - 38mm (531F30EC-B704-4720-9566-B8BF3995473C) (Shutdown)
+    Apple Watch - 42mm (1628BFDF-675F-4ACD-A18A-13736E121AE6) (Shutdown)
+-- watchOS 2.1 --
+    Apple Watch - 38mm (E6FA1053-726D-4A54-991E-0A2086B75D37) (Shutdown)
+    Apple Watch - 42mm (0BF35CA0-5060-4FD6-8036-208E14CB7578) (Shutdown)
+-- watchOS 2.2 --
+    Apple Watch - 38mm (96820A44-1F43-4475-A27B-F5B26E48CE62) (Shutdown)
+    Apple Watch - 42mm (1847FBC9-3610-4149-BA36-A5B4F923BDA3) (Shutdown)
+-- watchOS 3.1 --
+    Apple Watch - 38mm (78E08BF7-C2A3-479A-9880-4CBD56431101) (Shutdown)
+    Apple Watch - 42mm (4A60FDF1-C46A-4600-BCF4-42F659AFFB3C) (Shutdown)
+    Apple Watch Series 2 - 38mm (0E06B956-9E21-4CFE-A11D-0730876AB74C) (Shutdown)
+    Apple Watch Series 2 - 42mm (362B36EC-9185-42A2-A11A-289124D6CFE1) (Shutdown)
+-- watchOS 3.2 --
+    Apple Watch - 38mm (69DD03AD-62E3-4232-9DDF-ECCE9363C548) (Shutdown)
+    Apple Watch - 42mm (7E387DA9-4652-4F00-AF89-03850A669B5C) (Shutdown)
+    Apple Watch Series 2 - 38mm (04D6D7ED-3807-4418-B130-F4325EB98AD2) (Shutdown)
+    Apple Watch Series 2 - 42mm (0722B6CA-F882-4420-A3C8-0F1E473BD068) (Shutdown)
+-- watchOS 4.0 --
+    Apple Watch - 38mm (1854FBF9-BCD3-45C6-AC67-8837664CCA66) (Shutdown)
+    Apple Watch - 42mm (ABDCC81A-FE87-4C4C-AF16-13979651FB60) (Shutdown)
+    Apple Watch Series 2 - 38mm (5DA14630-821D-4553-BCF5-93426D9C8418) (Shutdown)
+    Apple Watch Series 2 - 42mm (F3166DF6-0F2A-4BA8-94FB-FED723B0225C) (Shutdown)
+    Apple Watch Series 3 - 38mm (C77DBF28-C6C3-4163-8307-F780CCCF309E) (Shutdown)
+    Apple Watch Series 3 - 42mm (CF52CC43-11C3-408C-85B1-1D1B843BC557) (Shutdown)
+-- watchOS 4.1 --
+    Apple Watch - 38mm (D81339B6-1A30-4CB1-9095-1460ADFA6B11) (Shutdown)
+    Apple Watch - 42mm (E2EE1F5E-1B1E-4CCC-BA49-B4F799F4FF24) (Shutdown)
+    Apple Watch Series 2 - 38mm (48CF5CE7-3190-4985-9B3A-213349F1ACCE) (Shutdown)
+    Apple Watch Series 2 - 42mm (942287DE-1BAE-47B0-8810-7AD017088D05) (Shutdown)
+    Apple Watch Series 3 - 38mm (B00E56B6-A5AD-44A4-ADC3-0BA95E4CFB5C) (Shutdown)
+    Apple Watch Series 3 - 42mm (972C9466-FA7A-47BB-BA96-421A77F52657) (Shutdown)
+-- watchOS 4.2 --
+    Apple Watch - 38mm (5BBC6E75-7E96-40DB-9B71-8FDEE10F8075) (Shutdown)
+    Apple Watch - 42mm (E0A9C184-F6C2-4C98-9A73-C9517ADDC9C3) (Shutdown)
+    Apple Watch Series 2 - 38mm (52231B97-46D9-4279-86CC-B55CB558D71A) (Shutdown)
+    Apple Watch Series 2 - 42mm (B785E0D3-53C8-4089-8307-AB2D869A547C) (Shutdown)
+    Apple Watch Series 3 - 38mm (D93908A8-2E22-4527-912E-4EE1DD8E35F3) (Shutdown)
+    Apple Watch Series 3 - 42mm (D39BE00B-296A-41B7-8F57-C690E3BA0329) (Shutdown)
+-- watchOS 4.3 --
+    Apple Watch - 38mm (6A30F901-C516-4A7D-9C06-8C762F640F20) (Shutdown)
+    Apple Watch - 42mm (38CDCD7F-29F2-4513-BA46-7AE23FD5A309) (Shutdown)
+    Apple Watch Series 2 - 38mm (70D78D48-8ADD-4DC7-BFBD-23B9526B960F) (Shutdown)
+    Apple Watch Series 2 - 42mm (82C3FE7E-3BE0-40B5-927B-C37FD3C7F0AE) (Shutdown)
+    Apple Watch Series 3 - 38mm (0E174E72-D036-40FC-A254-899A29773085) (Shutdown)
+    Apple Watch Series 3 - 42mm (3A4B13EE-E668-4EEA-8383-7E84FFC11FD2) (Shutdown)
+== Device Pairs ==
+70035676-89D1-4F52-A30F-F2EEBBE35BA0 (active, disconnected)
+    Watch: Apple Watch Series 2 - 38mm (70D78D48-8ADD-4DC7-BFBD-23B9526B960F) (Shutdown)
+    Phone: iPhone 7 (1A201D82-0514-4CEB-A9FC-EAAFD5E6B89D) (Shutdown)
+92D58324-2E09-4DFD-AA66-A2D3C8347DC4 (active, disconnected)
+    Watch: Apple Watch Series 2 - 42mm (82C3FE7E-3BE0-40B5-927B-C37FD3C7F0AE) (Shutdown)
+    Phone: iPhone 7 Plus (8C2DF4AF-AD0A-4960-B04C-CA59E30AFD54) (Shutdown)
+673E9665-DCF1-4B42-986A-CF4429AA66D7 (active, disconnected)
+    Watch: Apple Watch Series 3 - 38mm (0E174E72-D036-40FC-A254-899A29773085) (Shutdown)
+    Phone: iPhone 8 (FB0908FB-89D5-46C0-9231-10C1B336FF04) (Shutdown)
+32A10EB6-D4E7-4A5B-A9A8-093BFBE7E3FE (active, disconnected)
+    Watch: Apple Watch Series 3 - 42mm (3A4B13EE-E668-4EEA-8383-7E84FFC11FD2) (Shutdown)
+    Phone: iPhone 8 Plus (58CAE2C0-E539-40AC-8288-42669BD85BE8) (Shutdown)
+travis_time:end:0d0399a0:start=1564647099850539000,finish=1564647104287255000,duration=4436716000[0K[32;1mThe command "xcrun simctl list" exited with 0.[0m
+
+travis_time:start:20dd6c70[0K$ export CGO_CFLAGS_ALLOW='-fmodules|-fblocks|-fobjc-arc'
+travis_time:end:20dd6c70:start=1564647104305672000,finish=1564647104321899000,duration=16227000[0K[32;1mThe command "export CGO_CFLAGS_ALLOW='-fmodules|-fblocks|-fobjc-arc'" exited with 0.[0m
+
+travis_time:start:05659904[0K$ go run build/ci.go xcode -signer IOS_SIGNING_KEY -deploy trunk -upload gethstore/builds
+>>> /Users/travis/.gimme/versions/go1.12.7.darwin.amd64/bin/go get golang.org/x/mobile/cmd/gomobile golang.org/x/mobile/cmd/gobind
+>>> /Users/travis/gopath/src/github.com/ethereum/go-ethereum/build/bin/gomobile init
+>>> /Users/travis/gopath/src/github.com/ethereum/go-ethereum/build/bin/gomobile bind -ldflags -s -w --target ios --tags ios -v github.com/ethereum/go-ethereum/mobile
+math/bits
+errors
+internal/cpu
+internal/bytealg
+math
+runtime/internal/atomic
+runtime/internal/sys
+runtime/internal/math
+runtime
+unicode/utf8
+strconv
+internal/race
+sync/atomic
+unicode
+internal/testlog
+encoding
+unicode/utf16
+crypto/internal/subtle
+crypto/subtle
+runtime/cgo
+internal/nettrace
+internal/x/net/dns/dnsmessage
+github.com/ethereum/go-ethereum/vendor/github.com/steakknife/hamming
+container/list
+github.com/ethereum/go-ethereum/vendor/github.com/hashicorp/golang-lru/simplelru
+crypto/rc4
+internal/x/crypto/cryptobyte/asn1
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/html/atom
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/internal/identifier
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/internal/utf8internal
+container/ring
+golang.org/x/mobile/bind/java
+github.com/ethereum/go-ethereum/common/bitutil
+sync
+io
+reflect
+syscall
+time
+internal/poll
+sort
+internal/syscall/unix
+internal/fmtsort
+os
+strings
+bytes
+fmt
+encoding/binary
+encoding/base64
+math/rand
+context
+encoding/hex
+encoding/json
+database/sql/driver
+math/big
+hash
+crypto
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/sha3
+path/filepath
+io/ioutil
+regexp/syntax
+github.com/ethereum/go-ethereum/common/hexutil
+runtime/debug
+container/heap
+crypto/cipher
+regexp
+crypto/aes
+crypto/elliptic
+github.com/ethereum/go-ethereum/common
+crypto/internal/randutil
+crypto/sha512
+encoding/asn1
+bufio
+crypto/rand
+github.com/ethereum/go-ethereum/common/math
+github.com/ethereum/go-ethereum/crypto/secp256k1
+crypto/ecdsa
+github.com/ethereum/go-ethereum/rlp
+log
+github.com/ethereum/go-ethereum/vendor/github.com/allegro/bigcache/queue
+github.com/ethereum/go-ethereum/vendor/github.com/allegro/bigcache
+github.com/ethereum/go-ethereum/common/prque
+github.com/ethereum/go-ethereum/ethdb
+github.com/ethereum/go-ethereum/vendor/github.com/go-stack/stack
+internal/singleflight
+internal/x/net/route
+net
+github.com/ethereum/go-ethereum/crypto
+github.com/ethereum/go-ethereum/params
+github.com/ethereum/go-ethereum/vendor/golang.org/x/sys/unix
+os/user
+log/syslog
+github.com/ethereum/go-ethereum/log
+compress/flate
+hash/crc32
+compress/gzip
+text/tabwriter
+runtime/pprof
+crypto/hmac
+encoding/gob
+github.com/ethereum/go-ethereum/vendor/github.com/steakknife/bloomfilter
+github.com/ethereum/go-ethereum/vendor/github.com/elastic/gosigar
+github.com/ethereum/go-ethereum/vendor/github.com/aristanetworks/goarista/monotime
+github.com/ethereum/go-ethereum/common/mclock
+# github.com/ethereum/go-ethereum/vendor/github.com/elastic/gosigar
+../vendor/github.com/elastic/gosigar/sigar_darwin.go:12:10: fatal error: 'libproc.h' file not found
+#include <libproc.h>
+         ^~~~~~~~~~~
+1 error generated.
+github.com/ethereum/go-ethereum/accounts/abi
+github.com/ethereum/go-ethereum/event
+github.com/ethereum/go-ethereum/vendor/github.com/davecgh/go-spew/spew
+crypto/sha256
+github.com/ethereum/go-ethereum/vendor/github.com/deckarep/golang-set
+crypto/md5
+crypto/sha1
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/pbkdf2
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/scrypt
+github.com/ethereum/go-ethereum/vendor/github.com/pborman/uuid
+github.com/ethereum/go-ethereum/vendor/github.com/gballet/go-libpcsclite
+github.com/ethereum/go-ethereum/vendor/github.com/status-im/keycard-go/derivationpath
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/curve25519
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/transform
+github.com/ethereum/go-ethereum/vendor/github.com/wsddn/go-ecdh
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/unicode/norm
+github.com/ethereum/go-ethereum/vendor/github.com/hashicorp/golang-lru
+github.com/ethereum/go-ethereum/p2p/netutil
+crypto/des
+crypto/rsa
+crypto/dsa
+crypto/x509/pkix
+encoding/pem
+internal/x/crypto/cryptobyte
+net/url
+os/exec
+internal/x/crypto/internal/chacha20
+internal/x/crypto/poly1305
+internal/x/crypto/chacha20poly1305
+internal/x/crypto/curve25519
+crypto/x509
+internal/x/crypto/hkdf
+internal/x/text/transform
+internal/x/text/unicode/bidi
+internal/x/text/secure/bidirule
+internal/x/text/unicode/norm
+crypto/tls
+internal/x/net/idna
+net/textproto
+internal/x/net/http/httpguts
+internal/x/net/http/httpproxy
+internal/x/net/http2/hpack
+mime
+mime/quotedprintable
+mime/multipart
+net/http/internal
+path
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/context
+github.com/ethereum/go-ethereum/vendor/github.com/edsrzf/mmap-go
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/util
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/cache
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/comparer
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/storage
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/errors
+net/http/httptrace
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/filter
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/iterator
+net/http
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/journal
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/memdb
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/opt
+github.com/ethereum/go-ethereum/vendor/github.com/golang/snappy
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb/table
+github.com/ethereum/go-ethereum/vendor/github.com/syndtr/goleveldb/leveldb
+github.com/ethereum/go-ethereum/ethdb/memorydb
+encoding/csv
+github.com/ethereum/go-ethereum/vendor/github.com/mattn/go-runewidth
+github.com/ethereum/go-ethereum/vendor/github.com/olekukonko/tablewriter
+github.com/ethereum/go-ethereum/vendor/github.com/pkg/errors
+github.com/ethereum/go-ethereum/vendor/github.com/prometheus/tsdb/fileutil
+github.com/ethereum/go-ethereum/crypto/bn256/google
+github.com/ethereum/go-ethereum/crypto/bn256
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/ripemd160
+github.com/ethereum/go-ethereum/crypto/ecies
+github.com/ethereum/go-ethereum/p2p/enr
+github.com/ethereum/go-ethereum/p2p/enode
+github.com/ethereum/go-ethereum/p2p/discover
+github.com/ethereum/go-ethereum/vendor/github.com/gorilla/websocket
+github.com/ethereum/go-ethereum/vendor/github.com/rs/xhandler
+github.com/ethereum/go-ethereum/vendor/github.com/rs/cors
+encoding/xml
+github.com/ethereum/go-ethereum/rpc
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/httpu
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/scpd
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/soap
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/ssdp
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/html
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/internal
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/charmap
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/japanese
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/korean
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/simplifiedchinese
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/traditionalchinese
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/runes
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/unicode
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/internal/tag
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/internal/language
+github.com/ethereum/go-ethereum/vendor/github.com/jackpal/go-nat-pmp
+github.com/ethereum/go-ethereum/vendor/github.com/tyler-smith/go-bip39/wordlists
+github.com/ethereum/go-ethereum/vendor/github.com/tyler-smith/go-bip39
+github.com/ethereum/go-ethereum/vendor/github.com/golang/protobuf/proto
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/internal/language/compact
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/language
+github.com/ethereum/go-ethereum/vendor/golang.org/x/text/encoding/htmlindex
+github.com/ethereum/go-ethereum/vendor/golang.org/x/net/html/charset
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/dcps/internetgateway1
+github.com/ethereum/go-ethereum/vendor/github.com/huin/goupnp/dcps/internetgateway2
+github.com/ethereum/go-ethereum/p2p/nat
+github.com/ethereum/go-ethereum/vendor/github.com/[secure]/usb
+github.com/ethereum/go-ethereum/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor
+github.com/ethereum/go-ethereum/signer/storage
+github.com/ethereum/go-ethereum/vendor/golang.org/x/crypto/ssh/terminal
+github.com/ethereum/go-ethereum/accounts/usbwallet/trezor
+go/token
+go/scanner
+go/ast
+text/template/parse
+go/parser
+go/printer
+text/template
+go/format
+github.com/ethereum/go-ethereum/eth/tracers/internal/tracers
+github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+expvar
+github.com/ethereum/go-ethereum/vendor/github.com/fjl/memsize
+html
+html/template
+github.com/ethereum/go-ethereum/vendor/github.com/fjl/memsize/memsizeui
+github.com/ethereum/go-ethereum/vendor/github.com/mattn/go-isatty
+github.com/ethereum/go-ethereum/vendor/github.com/mattn/go-colorable
+flag
+github.com/ethereum/go-ethereum/vendor/gopkg.in/urfave/cli.v1
+runtime/trace
+net/http/pprof
+github.com/ethereum/go-ethereum/les/flowcontrol
+github.com/ethereum/go-ethereum/vendor/golang.org/x/sync/syncmap
+golang.org/x/mobile/internal/mobileinit
+golang.org/x/mobile/bind/seq
+os/signal
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+# github.com/ethereum/go-ethereum/vendor/gopkg.in/olebedev/go-duktape.v3
+clang: warning: optimization flag '-fomit-frame-pointer' is not supported for target 'armv7' [-Wignored-optimization-argument]
+/Users/travis/gopath/src/github.com/ethereum/go-ethereum/build/bin/gomobile: darwin-arm: go build -tags ios ios -v -ldflags -s -w -buildmode=c-archive -o /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/gomobile-work-908493561/geth-arm.a gobind failed: exit status 2
+
+util.go:45: exit status 1
+exit status 1
+travis_time:end:05659904:start=1564647104339081000,finish=1564647183344057000,duration=79004976000[0K[31;1mThe command "go run build/ci.go xcode -signer IOS_SIGNING_KEY -deploy trunk -upload gethstore/builds" exited with 1.[0m
+
+
+
+Done. Your build exited with 1.

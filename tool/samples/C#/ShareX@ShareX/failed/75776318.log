@@ -1,0 +1,1051 @@
+Using worker: worker-linux-docker-9e4fd477.prod.travis-ci.org:travis-linux-2
+
+travis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: csharp
+[34m[1mBuild image provisioning date and time[0m
+Thu Feb  5 15:09:33 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-29-generic
+[34m[1mCookbooks Version[0m
+a68419e https://github.com/travis-ci/travis-cookbooks/tree/a68419e
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-1.9.3-p551
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.1
+[34m[1mRedis version[0m
+redis-server 2.8.19
+[34m[1mriak version[0m
+2.0.2
+[34m[1mMongoDB version[0m
+MongoDB 2.4.12
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mRabbitMQ Version[0m
+3.4.3
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 31.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "3.13.0-29-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+
+[31;1mC# support for Travis-CI is community maintained.[0m
+[31;1mPlease open any issues at https://github.com/travis-ci/travis-ci/issues/new and cc @joshua-anderson @akoeplinger @nterry[0m
+travis_fold:start:mono-install[0K[33;1mInstalling Mono[0m
+Executing: gpg --ignore-time-conflict --no-options --no-default-keyring --secret-keyring /tmp/tmp.UntveVaDGX --trustdb-name /etc/apt/trustdb.gpg --keyring /etc/apt/trusted.gpg --primary-keyring /etc/apt/trusted.gpg --keyring /etc/apt/trusted.gpg.d//apt.postgresql.org.gpg --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+gpg: requesting key D3D831EF from hkp server keyserver.ubuntu.com
+gpg: key D3D831EF: public key "Xamarin Public Jenkins (auto-signing) <releng@xamarin.com>" imported
+gpg: no ultimately trusted keys found
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+travis_time:start:0984b771[0KW: Size of file /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_precise-backports_main_source_Sources.gz is not what the server reported 5479 5482
+W: Size of file /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_precise-backports_multiverse_source_Sources.gz is not what the server reported 5886 5888
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_rwky_redis_ubuntu_dists_precise_main_binary-amd64_Packages.gz is not what the server reported 610 612
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-amd64_Packages.gz is not what the server reported 36669 36677
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-i386_Packages.gz is not what the server reported 36729 36733
+travis_time:end:0984b771:start=1439684084364591984,finish=1439684089612383400,duration=5247791416[0Ktravis_time:start:0e6d1e8a[0KExtracting templates from packages: 14%Extracting templates from packages: 29%Extracting templates from packages: 43%Extracting templates from packages: 58%Extracting templates from packages: 73%Extracting templates from packages: 87%Extracting templates from packages: 100%
+Preconfiguring packages ...
+Selecting previously unselected package libart-2.0-2.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71420 files and directories currently installed.)
+Unpacking libart-2.0-2 (from .../libart-2.0-2_2.3.21-1ubuntu0.1_amd64.deb) ...
+Selecting previously unselected package libglade2-0.
+Unpacking libglade2-0 (from .../libglade2-0_1%3a2.6.4-1ubuntu1.1_amd64.deb) ...
+Selecting previously unselected package libgail18.
+Unpacking libgail18 (from .../libgail18_2.24.10-0ubuntu6.1_amd64.deb) ...
+Selecting previously unselected package libgnomecanvas2-common.
+Unpacking libgnomecanvas2-common (from .../libgnomecanvas2-common_2.30.3-1ubuntu1.1_all.deb) ...
+Selecting previously unselected package libgnomecanvas2-0.
+Unpacking libgnomecanvas2-0 (from .../libgnomecanvas2-0_2.30.3-1ubuntu1.1_amd64.deb) ...
+Selecting previously unselected package libbonoboui2-common.
+Unpacking libbonoboui2-common (from .../libbonoboui2-common_2.24.5-0ubuntu1.1_all.deb) ...
+Selecting previously unselected package libbonoboui2-0.
+Unpacking libbonoboui2-0 (from .../libbonoboui2-0_2.24.5-0ubuntu1.1_amd64.deb) ...
+Selecting previously unselected package libgnomeui-common.
+Unpacking libgnomeui-common (from .../libgnomeui-common_2.24.5-2ubuntu2_all.deb) ...
+Selecting previously unselected package libgnomeui-0.
+Unpacking libgnomeui-0 (from .../libgnomeui-0_2.24.5-2ubuntu2_amd64.deb) ...
+Selecting previously unselected package libhunspell-1.3-0.
+Unpacking libhunspell-1.3-0 (from .../libhunspell-1.3-0_1.3.2-4_amd64.deb) ...
+Selecting previously unselected package libproxy1.
+Unpacking libproxy1 (from .../libproxy1_0.4.7-0ubuntu4.1_amd64.deb) ...
+Selecting previously unselected package glib-networking-common.
+Unpacking glib-networking-common (from .../glib-networking-common_2.32.1-1ubuntu2_all.deb) ...
+Selecting previously unselected package glib-networking-services.
+Unpacking glib-networking-services (from .../glib-networking-services_2.32.1-1ubuntu2_amd64.deb) ...
+Selecting previously unselected package gsettings-desktop-schemas.
+Unpacking gsettings-desktop-schemas (from .../gsettings-desktop-schemas_3.4.1-0ubuntu1_all.deb) ...
+Selecting previously unselected package glib-networking.
+Unpacking glib-networking (from .../glib-networking_2.32.1-1ubuntu2_amd64.deb) ...
+Selecting previously unselected package libsoup2.4-1.
+Unpacking libsoup2.4-1 (from .../libsoup2.4-1_2.38.1-1_amd64.deb) ...
+Selecting previously unselected package libtext-iconv-perl.
+Unpacking libtext-iconv-perl (from .../libtext-iconv-perl_1.7-5_amd64.deb) ...
+Selecting previously unselected package libaspell15.
+Unpacking libaspell15 (from .../libaspell15_0.60.7~20110707-1_amd64.deb) ...
+Selecting previously unselected package dictionaries-common.
+Unpacking dictionaries-common (from .../dictionaries-common_1.12.1ubuntu2_all.deb) ...
+Adding 'diversion of /usr/share/dict/words to /usr/share/dict/words.pre-dictionaries-common by dictionaries-common'
+Selecting previously unselected package aspell.
+Unpacking aspell (from .../aspell_0.60.7~20110707-1_amd64.deb) ...
+Selecting previously unselected package aspell-en.
+Unpacking aspell-en (from .../aspell-en_6.0-0-6ubuntu2_all.deb) ...
+Selecting previously unselected package binfmt-support.
+Unpacking binfmt-support (from .../binfmt-support_2.0.8_amd64.deb) ...
+Selecting previously unselected package libmono-corlib4.5-cil.
+Unpacking libmono-corlib4.5-cil (from .../libmono-corlib4.5-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-xml4.0-cil.
+Unpacking libmono-system-xml4.0-cil (from .../libmono-system-xml4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-security4.0-cil.
+Unpacking libmono-system-security4.0-cil (from .../libmono-system-security4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-configuration4.0-cil.
+Unpacking libmono-system-configuration4.0-cil (from .../libmono-system-configuration4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system4.0-cil.
+Unpacking libmono-system4.0-cil (from .../libmono-system4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-security4.0-cil.
+Unpacking libmono-security4.0-cil (from .../libmono-security4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package mono-4.0-gac.
+Unpacking mono-4.0-gac (from .../mono-4.0-gac_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package mono-gac.
+Unpacking mono-gac (from .../mono-gac_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package mono-runtime-common.
+Unpacking mono-runtime-common (from .../mono-runtime-common_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package mono-runtime-sgen.
+Unpacking mono-runtime-sgen (from .../mono-runtime-sgen_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package mono-runtime.
+Unpacking mono-runtime (from .../mono-runtime_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package ca-certificates-mono.
+Unpacking ca-certificates-mono (from .../ca-certificates-mono_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package cli-common.
+Unpacking cli-common (from .../cli-common_0.9~xamarin1_all.deb) ...
+Selecting previously unselected package hunspell-en-us.
+Unpacking hunspell-en-us (from .../hunspell-en-us_20070829-4ubuntu3_all.deb) ...
+Selecting previously unselected package libenchant1c2a.
+Unpacking libenchant1c2a (from .../libenchant1c2a_1.6.0-7_amd64.deb) ...
+Selecting previously unselected package enchant.
+Unpacking enchant (from .../enchant_1.6.0-7_amd64.deb) ...
+Selecting previously unselected package libmono-posix4.0-cil.
+Unpacking libmono-posix4.0-cil (from .../libmono-posix4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-core4.0-cil.
+Unpacking libmono-system-core4.0-cil (from .../libmono-system-core4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-numerics4.0-cil.
+Unpacking libmono-system-numerics4.0-cil (from .../libmono-system-numerics4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libfsharp-core4.3-cil.
+Unpacking libfsharp-core4.3-cil (from .../libfsharp-core4.3-cil_4.0.0.3-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-build-framework4.0-cil.
+Unpacking libmono-microsoft-build-framework4.0-cil (from .../libmono-microsoft-build-framework4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-build-utilities-v4.0-4.0-cil.
+Unpacking libmono-microsoft-build-utilities-v4.0-4.0-cil (from .../libmono-microsoft-build-utilities-v4.0-4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-build-engine4.0-cil.
+Unpacking libmono-microsoft-build-engine4.0-cil (from .../libmono-microsoft-build-engine4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-xbuild-tasks4.0-cil.
+Unpacking libmono-xbuild-tasks4.0-cil (from .../libmono-xbuild-tasks4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-build-tasks-v4.0-4.0-cil.
+Unpacking libmono-microsoft-build-tasks-v4.0-4.0-cil (from .../libmono-microsoft-build-tasks-v4.0-4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-runtime-serialization-formatters-soap4.0-cil.
+Unpacking libmono-system-runtime-serialization-formatters-soap4.0-cil (from .../libmono-system-runtime-serialization-formatters-soap4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-data-tds4.0-cil.
+Unpacking libmono-data-tds4.0-cil (from .../libmono-data-tds4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-transactions4.0-cil.
+Unpacking libmono-system-transactions4.0-cil (from .../libmono-system-transactions4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-enterpriseservices4.0-cil.
+Unpacking libmono-system-enterpriseservices4.0-cil (from .../libmono-system-enterpriseservices4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-data4.0-cil.
+Unpacking libmono-system-data4.0-cil (from .../libmono-system-data4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-sqlite4.0-cil.
+Unpacking libmono-sqlite4.0-cil (from .../libmono-sqlite4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-componentmodel-dataannotations4.0-cil.
+Unpacking libmono-system-componentmodel-dataannotations4.0-cil (from .../libmono-system-componentmodel-dataannotations4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libgdiplus.
+Unpacking libgdiplus (from .../libgdiplus_3.12-0xamarin1+compat1_amd64.deb) ...
+Selecting previously unselected package libmono-system-drawing4.0-cil.
+Unpacking libmono-system-drawing4.0-cil (from .../libmono-system-drawing4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-applicationservices4.0-cil.
+Unpacking libmono-system-web-applicationservices4.0-cil (from .../libmono-system-web-applicationservices4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-services4.0-cil.
+Unpacking libmono-system-web-services4.0-cil (from .../libmono-system-web-services4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web4.0-cil.
+Unpacking libmono-system-web4.0-cil (from .../libmono-system-web4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-runtime4.0-cil.
+Unpacking libmono-system-runtime4.0-cil (from .../libmono-system-runtime4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-accessibility4.0-cil.
+Unpacking libmono-accessibility4.0-cil (from .../libmono-accessibility4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-webbrowser4.0-cil.
+Unpacking libmono-webbrowser4.0-cil (from .../libmono-webbrowser4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-i18n4.0-cil.
+Unpacking libmono-i18n4.0-cil (from .../libmono-i18n4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-i18n-west4.0-cil.
+Unpacking libmono-i18n-west4.0-cil (from .../libmono-i18n-west4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-windows-forms4.0-cil.
+Unpacking libmono-system-windows-forms4.0-cil (from .../libmono-system-windows-forms4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package mono-xbuild.
+Unpacking mono-xbuild (from .../mono-xbuild_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-compilerservices-symbolwriter4.0-cil.
+Unpacking libmono-compilerservices-symbolwriter4.0-cil (from .../libmono-compilerservices-symbolwriter4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package gamin.
+Unpacking gamin (from .../gamin_0.1.10-4ubuntu0.1_amd64.deb) ...
+Selecting previously unselected package libgamin0.
+Unpacking libgamin0 (from .../libgamin0_0.1.10-4ubuntu0.1_amd64.deb) ...
+Selecting previously unselected package libmono-cecil-private-cil.
+Unpacking libmono-cecil-private-cil (from .../libmono-cecil-private-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-codecontracts4.0-cil.
+Unpacking libmono-codecontracts4.0-cil (from .../libmono-codecontracts4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-csharp4.0c-cil.
+Unpacking libmono-csharp4.0c-cil (from .../libmono-csharp4.0c-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-ldap4.0-cil.
+Unpacking libmono-ldap4.0-cil (from .../libmono-ldap4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-messaging4.0-cil.
+Unpacking libmono-messaging4.0-cil (from .../libmono-messaging4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-peapi4.0a-cil.
+Unpacking libmono-peapi4.0a-cil (from .../libmono-peapi4.0a-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-rabbitmq4.0-cil.
+Unpacking libmono-rabbitmq4.0-cil (from .../libmono-rabbitmq4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-relaxng4.0-cil.
+Unpacking libmono-relaxng4.0-cil (from .../libmono-relaxng4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-sharpzip4.84-cil.
+Unpacking libmono-sharpzip4.84-cil (from .../libmono-sharpzip4.84-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-componentmodel-composition4.0-cil.
+Unpacking libmono-system-componentmodel-composition4.0-cil (from .../libmono-system-componentmodel-composition4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-configuration-install4.0-cil.
+Unpacking libmono-system-configuration-install4.0-cil (from .../libmono-system-configuration-install4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-runtime-serialization4.0-cil.
+Unpacking libmono-system-runtime-serialization4.0-cil (from .../libmono-system-runtime-serialization4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-data-linq4.0-cil.
+Unpacking libmono-system-data-linq4.0-cil (from .../libmono-system-data-linq4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-xml-linq4.0-cil.
+Unpacking libmono-system-xml-linq4.0-cil (from .../libmono-system-xml-linq4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-data-services-client4.0-cil.
+Unpacking libmono-system-data-services-client4.0-cil (from .../libmono-system-data-services-client4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-design4.0-cil.
+Unpacking libmono-system-design4.0-cil (from .../libmono-system-design4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-identitymodel4.0-cil.
+Unpacking libmono-system-identitymodel4.0-cil (from .../libmono-system-identitymodel4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-identitymodel-selectors4.0-cil.
+Unpacking libmono-system-identitymodel-selectors4.0-cil (from .../libmono-system-identitymodel-selectors4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-messaging4.0-cil.
+Unpacking libmono-system-messaging4.0-cil (from .../libmono-system-messaging4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-servicemodel4.0a-cil.
+Unpacking libmono-system-servicemodel4.0a-cil (from .../libmono-system-servicemodel4.0a-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-servicemodel-activation4.0-cil.
+Unpacking libmono-system-servicemodel-activation4.0-cil (from .../libmono-system-servicemodel-activation4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-extensions4.0-cil.
+Unpacking libmono-system-web-extensions4.0-cil (from .../libmono-system-web-extensions4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-servicemodel-web4.0-cil.
+Unpacking libmono-system-servicemodel-web4.0-cil (from .../libmono-system-servicemodel-web4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-xaml4.0-cil.
+Unpacking libmono-system-xaml4.0-cil (from .../libmono-system-xaml4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-csharp4.0-cil.
+Unpacking libmono-microsoft-csharp4.0-cil (from .../libmono-microsoft-csharp4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package mono-mcs.
+Unpacking mono-mcs (from .../mono-mcs_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-c5-1.1-cil.
+Unpacking libmono-c5-1.1-cil (from .../libmono-c5-1.1-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-cairo4.0-cil.
+Unpacking libmono-cairo4.0-cil (from .../libmono-cairo4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-cscompmgd0.0-cil.
+Unpacking libmono-cscompmgd0.0-cil (from .../libmono-cscompmgd0.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-custommarshalers4.0-cil.
+Unpacking libmono-custommarshalers4.0-cil (from .../libmono-custommarshalers4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-db2-1.0-cil.
+Unpacking libmono-db2-1.0-cil (from .../libmono-db2-1.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-debugger-soft4.0a-cil.
+Unpacking libmono-debugger-soft4.0a-cil (from .../libmono-debugger-soft4.0a-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-http4.0-cil.
+Unpacking libmono-http4.0-cil (from .../libmono-http4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-i18n-cjk4.0-cil.
+Unpacking libmono-i18n-cjk4.0-cil (from .../libmono-i18n-cjk4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-i18n-mideast4.0-cil.
+Unpacking libmono-i18n-mideast4.0-cil (from .../libmono-i18n-mideast4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-i18n-other4.0-cil.
+Unpacking libmono-i18n-other4.0-cil (from .../libmono-i18n-other4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-i18n-rare4.0-cil.
+Unpacking libmono-i18n-rare4.0-cil (from .../libmono-i18n-rare4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-i18n4.0-all.
+Unpacking libmono-i18n4.0-all (from .../libmono-i18n4.0-all_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-management4.0-cil.
+Unpacking libmono-management4.0-cil (from .../libmono-management4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-messaging-rabbitmq4.0-cil.
+Unpacking libmono-messaging-rabbitmq4.0-cil (from .../libmono-messaging-rabbitmq4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-build4.0-cil.
+Unpacking libmono-microsoft-build4.0-cil (from .../libmono-microsoft-build4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-visualc10.0-cil.
+Unpacking libmono-microsoft-visualc10.0-cil (from .../libmono-microsoft-visualc10.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-web-infrastructure1.0-cil.
+Unpacking libmono-microsoft-web-infrastructure1.0-cil (from .../libmono-microsoft-web-infrastructure1.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-oracle4.0-cil.
+Unpacking libmono-oracle4.0-cil (from .../libmono-oracle4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-parallel4.0-cil.
+Unpacking libmono-parallel4.0-cil (from .../libmono-parallel4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-simd4.0-cil.
+Unpacking libmono-simd4.0-cil (from .../libmono-simd4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-data-datasetextensions4.0-cil.
+Unpacking libmono-system-data-datasetextensions4.0-cil (from .../libmono-system-data-datasetextensions4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-data-entity4.0-cil.
+Unpacking libmono-system-data-entity4.0-cil (from .../libmono-system-data-entity4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-data-services4.0-cil.
+Unpacking libmono-system-data-services4.0-cil (from .../libmono-system-data-services4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-drawing-design4.0-cil.
+Unpacking libmono-system-drawing-design4.0-cil (from .../libmono-system-drawing-design4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-dynamic4.0-cil.
+Unpacking libmono-system-dynamic4.0-cil (from .../libmono-system-dynamic4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-io-compression4.0-cil.
+Unpacking libmono-system-io-compression4.0-cil (from .../libmono-system-io-compression4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-io-compression-filesystem4.0-cil.
+Unpacking libmono-system-io-compression-filesystem4.0-cil (from .../libmono-system-io-compression-filesystem4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-json4.0-cil.
+Unpacking libmono-system-json4.0-cil (from .../libmono-system-json4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-json-microsoft4.0-cil.
+Unpacking libmono-system-json-microsoft4.0-cil (from .../libmono-system-json-microsoft4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-ldap4.0-cil.
+Unpacking libmono-system-ldap4.0-cil (from .../libmono-system-ldap4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-ldap-protocols4.0-cil.
+Unpacking libmono-system-ldap-protocols4.0-cil (from .../libmono-system-ldap-protocols4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-management4.0-cil.
+Unpacking libmono-system-management4.0-cil (from .../libmono-system-management4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-net4.0-cil.
+Unpacking libmono-system-net4.0-cil (from .../libmono-system-net4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-net-http4.0-cil.
+Unpacking libmono-system-net-http4.0-cil (from .../libmono-system-net-http4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-net-http-formatting4.0-cil.
+Unpacking libmono-system-net-http-formatting4.0-cil (from .../libmono-system-net-http-formatting4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-net-http-webrequest4.0-cil.
+Unpacking libmono-system-net-http-webrequest4.0-cil (from .../libmono-system-net-http-webrequest4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-interfaces2.2-cil.
+Unpacking libmono-system-reactive-interfaces2.2-cil (from .../libmono-system-reactive-interfaces2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-core2.2-cil.
+Unpacking libmono-system-reactive-core2.2-cil (from .../libmono-system-reactive-core2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-linq2.2-cil.
+Unpacking libmono-system-reactive-linq2.2-cil (from .../libmono-system-reactive-linq2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-debugger2.2-cil.
+Unpacking libmono-system-reactive-debugger2.2-cil (from .../libmono-system-reactive-debugger2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-experimental2.2-cil.
+Unpacking libmono-system-reactive-experimental2.2-cil (from .../libmono-system-reactive-experimental2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-providers2.2-cil.
+Unpacking libmono-system-reactive-providers2.2-cil (from .../libmono-system-reactive-providers2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-observable-aliases0.0-cil.
+Unpacking libmono-system-reactive-observable-aliases0.0-cil (from .../libmono-system-reactive-observable-aliases0.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-platformservices2.2-cil.
+Unpacking libmono-system-reactive-platformservices2.2-cil (from .../libmono-system-reactive-platformservices2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-runtime-remoting2.2-cil.
+Unpacking libmono-system-reactive-runtime-remoting2.2-cil (from .../libmono-system-reactive-runtime-remoting2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-windows-forms2.2-cil.
+Unpacking libmono-system-reactive-windows-forms2.2-cil (from .../libmono-system-reactive-windows-forms2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-windowsbase4.0-cil.
+Unpacking libmono-windowsbase4.0-cil (from .../libmono-windowsbase4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-reactive-windows-threading2.2-cil.
+Unpacking libmono-system-reactive-windows-threading2.2-cil (from .../libmono-system-reactive-windows-threading2.2-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-runtime-caching4.0-cil.
+Unpacking libmono-system-runtime-caching4.0-cil (from .../libmono-system-runtime-caching4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-runtime-durableinstancing4.0-cil.
+Unpacking libmono-system-runtime-durableinstancing4.0-cil (from .../libmono-system-runtime-durableinstancing4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-servicemodel-discovery4.0-cil.
+Unpacking libmono-system-servicemodel-discovery4.0-cil (from .../libmono-system-servicemodel-discovery4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-servicemodel-routing4.0-cil.
+Unpacking libmono-system-servicemodel-routing4.0-cil (from .../libmono-system-servicemodel-routing4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-serviceprocess4.0-cil.
+Unpacking libmono-system-serviceprocess4.0-cil (from .../libmono-system-serviceprocess4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-threading-tasks-dataflow4.0-cil.
+Unpacking libmono-system-threading-tasks-dataflow4.0-cil (from .../libmono-system-threading-tasks-dataflow4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-abstractions4.0-cil.
+Unpacking libmono-system-web-abstractions4.0-cil (from .../libmono-system-web-abstractions4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-dynamicdata4.0-cil.
+Unpacking libmono-system-web-dynamicdata4.0-cil (from .../libmono-system-web-dynamicdata4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-extensions-design4.0-cil.
+Unpacking libmono-system-web-extensions-design4.0-cil (from .../libmono-system-web-extensions-design4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-http4.0-cil.
+Unpacking libmono-system-web-http4.0-cil (from .../libmono-system-web-http4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-http-selfhost4.0-cil.
+Unpacking libmono-system-web-http-selfhost4.0-cil (from .../libmono-system-web-http-selfhost4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-http-webhost4.0-cil.
+Unpacking libmono-system-web-http-webhost4.0-cil (from .../libmono-system-web-http-webhost4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-razor2.0-cil.
+Unpacking libmono-system-web-razor2.0-cil (from .../libmono-system-web-razor2.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-webpages-deployment2.0-cil.
+Unpacking libmono-system-web-webpages-deployment2.0-cil (from .../libmono-system-web-webpages-deployment2.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-webpages2.0-cil.
+Unpacking libmono-system-web-webpages2.0-cil (from .../libmono-system-web-webpages2.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-webpages-razor2.0-cil.
+Unpacking libmono-system-web-webpages-razor2.0-cil (from .../libmono-system-web-webpages-razor2.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-mvc3.0-cil.
+Unpacking libmono-system-web-mvc3.0-cil (from .../libmono-system-web-mvc3.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-web-routing4.0-cil.
+Unpacking libmono-system-web-routing4.0-cil (from .../libmono-system-web-routing4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-windows4.0-cil.
+Unpacking libmono-system-windows4.0-cil (from .../libmono-system-windows4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-windows-forms-datavisualization4.0a-cil.
+Unpacking libmono-system-windows-forms-datavisualization4.0a-cil (from .../libmono-system-windows-forms-datavisualization4.0a-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-system-xml-serialization4.0-cil.
+Unpacking libmono-system-xml-serialization4.0-cil (from .../libmono-system-xml-serialization4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-tasklets4.0-cil.
+Unpacking libmono-tasklets4.0-cil (from .../libmono-tasklets4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-webmatrix-data4.0-cil.
+Unpacking libmono-webmatrix-data4.0-cil (from .../libmono-webmatrix-data4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libnunit-core-interfaces2.6.3-cil.
+Unpacking libnunit-core-interfaces2.6.3-cil (from .../libnunit-core-interfaces2.6.3-cil_2.6.3+dfsg-1~xamarin2_all.deb) ...
+Selecting previously unselected package libnunit-core2.6.3-cil.
+Unpacking libnunit-core2.6.3-cil (from .../libnunit-core2.6.3-cil_2.6.3+dfsg-1~xamarin2_all.deb) ...
+Selecting previously unselected package libnunit-util2.6.3-cil.
+Unpacking libnunit-util2.6.3-cil (from .../libnunit-util2.6.3-cil_2.6.3+dfsg-1~xamarin2_all.deb) ...
+Selecting previously unselected package libnunit-console-runner2.6.3-cil.
+Unpacking libnunit-console-runner2.6.3-cil (from .../libnunit-console-runner2.6.3-cil_2.6.3+dfsg-1~xamarin2_all.deb) ...
+Selecting previously unselected package libnunit-framework2.6.3-cil.
+Unpacking libnunit-framework2.6.3-cil (from .../libnunit-framework2.6.3-cil_2.6.3+dfsg-1~xamarin2_all.deb) ...
+Selecting previously unselected package libnunit-mocks2.6.3-cil.
+Unpacking libnunit-mocks2.6.3-cil (from .../libnunit-mocks2.6.3-cil_2.6.3+dfsg-1~xamarin2_all.deb) ...
+Selecting previously unselected package libnunit-cil-dev.
+Unpacking libnunit-cil-dev (from .../libnunit-cil-dev_2.6.3+dfsg-1~xamarin2_all.deb) ...
+Selecting previously unselected package libmono-cil-dev.
+Unpacking libmono-cil-dev (from .../libmono-cil-dev_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmonoboehm-2.0-1.
+Unpacking libmonoboehm-2.0-1 (from .../libmonoboehm-2.0-1_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package libmonoboehm-2.0-dev.
+Unpacking libmonoboehm-2.0-dev (from .../libmonoboehm-2.0-dev_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package libmono-2.0-dev.
+Unpacking libmono-2.0-dev (from .../libmono-2.0-dev_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package mono-devel.
+Unpacking mono-devel (from .../mono-devel_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package fsharp.
+Unpacking fsharp (from .../fsharp_4.0.0.3-0xamarin1_all.deb) ...
+Selecting previously unselected package libgeoclue0.
+Unpacking libgeoclue0 (from .../libgeoclue0_0.12.0-1ubuntu12_amd64.deb) ...
+Selecting previously unselected package libglib2.0-cil.
+Unpacking libglib2.0-cil (from .../libglib2.0-cil_2.12.26-0xamarin1+compat1_amd64.deb) ...
+Selecting previously unselected package libgtk2.0-cil.
+Unpacking libgtk2.0-cil (from .../libgtk2.0-cil_2.12.26-0xamarin1+compat1_amd64.deb) ...
+Selecting previously unselected package libglade2.0-cil.
+Unpacking libglade2.0-cil (from .../libglade2.0-cil_2.12.26-0xamarin1+compat1_amd64.deb) ...
+Selecting previously unselected package libjavascriptcoregtk-1.0-0.
+Unpacking libjavascriptcoregtk-1.0-0 (from .../libjavascriptcoregtk-1.0-0_1.8.3-0ubuntu0.12.04.1_amd64.deb) ...
+Selecting previously unselected package libmono-2.0-1.
+Unpacking libmono-2.0-1 (from .../libmono-2.0-1_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package libmono-cecil-vb0.9-cil.
+Unpacking libmono-cecil-vb0.9-cil (from .../libmono-cecil-vb0.9-cil_4.0.1-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-corlib4.0-cil.
+Unpacking libmono-corlib4.0-cil (from .../libmono-corlib4.0-cil_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package libmono-microsoft-visualbasic10.0-cil.
+Unpacking libmono-microsoft-visualbasic10.0-cil (from .../libmono-microsoft-visualbasic10.0-cil_4.0.1-0xamarin1_all.deb) ...
+Selecting previously unselected package libmonosgen-2.0-1.
+Unpacking libmonosgen-2.0-1 (from .../libmonosgen-2.0-1_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package libmono-profiler.
+Unpacking libmono-profiler (from .../libmono-profiler_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package libnuget-core-cil.
+Unpacking libnuget-core-cil (from .../libnuget-core-cil_2.8.5+md59+dhx1-0xamarin1_all.deb) ...
+Selecting previously unselected package libwebkitgtk-1.0-common.
+Unpacking libwebkitgtk-1.0-common (from .../libwebkitgtk-1.0-common_1.8.3-0ubuntu0.12.04.1_all.deb) ...
+Selecting previously unselected package libwebkitgtk-1.0-0.
+Unpacking libwebkitgtk-1.0-0 (from .../libwebkitgtk-1.0-0_1.8.3-0ubuntu0.12.04.1_amd64.deb) ...
+Selecting previously unselected package libwebkit1.1-cil.
+Unpacking libwebkit1.1-cil (from .../libwebkit1.1-cil_0.3-5_all.deb) ...
+Selecting previously unselected package mono-4.0-service.
+Unpacking mono-4.0-service (from .../mono-4.0-service_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package mono-utils.
+Unpacking mono-utils (from .../mono-utils_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package mono-jay.
+Unpacking mono-jay (from .../mono-jay_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package mono-csharp-shell.
+Unpacking mono-csharp-shell (from .../mono-csharp-shell_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package monodoc-base.
+Unpacking monodoc-base (from .../monodoc-base_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package monodoc-manual.
+Unpacking monodoc-manual (from .../monodoc-manual_4.0.3.20-0xamarin1_all.deb) ...
+Selecting previously unselected package mono-complete.
+Unpacking mono-complete (from .../mono-complete_4.0.3.20-0xamarin1_amd64.deb) ...
+Selecting previously unselected package mono-vbnc.
+Unpacking mono-vbnc (from .../mono-vbnc_4.0.1-0xamarin1_all.deb) ...
+Selecting previously unselected package monodoc-browser.
+Unpacking monodoc-browser (from .../monodoc-browser_3.10-1xamarin1_all.deb) ...
+Selecting previously unselected package nuget.
+Unpacking nuget (from .../nuget_2.8.5+md59+dhx1-0xamarin1_all.deb) ...
+Selecting previously unselected package referenceassemblies-pcl.
+Unpacking referenceassemblies-pcl (from .../referenceassemblies-pcl_2014.04.14-1_all.deb) ...
+Processing triggers for gconf2 ...
+Processing triggers for libglib2.0-0 ...
+Processing triggers for man-db ...
+Processing triggers for postgresql-common ...
+Building PostgreSQL dictionaries from installed myspell/hunspell packages...
+  en_us
+Removing obsolete dictionary files:
+Setting up libart-2.0-2 (2.3.21-1ubuntu0.1) ...
+Setting up libglade2-0 (1:2.6.4-1ubuntu1.1) ...
+Setting up libgail18 (2.24.10-0ubuntu6.1) ...
+Setting up libgnomecanvas2-common (2.30.3-1ubuntu1.1) ...
+Setting up libgnomecanvas2-0 (2.30.3-1ubuntu1.1) ...
+Setting up libbonoboui2-common (2.24.5-0ubuntu1.1) ...
+Setting up libbonoboui2-0 (2.24.5-0ubuntu1.1) ...
+Setting up libgnomeui-common (2.24.5-2ubuntu2) ...
+Setting up libgnomeui-0 (2.24.5-2ubuntu2) ...
+Setting up libhunspell-1.3-0 (1.3.2-4) ...
+Setting up libproxy1 (0.4.7-0ubuntu4.1) ...
+Setting up glib-networking-common (2.32.1-1ubuntu2) ...
+Setting up glib-networking-services (2.32.1-1ubuntu2) ...
+Setting up gsettings-desktop-schemas (3.4.1-0ubuntu1) ...
+Setting up glib-networking (2.32.1-1ubuntu2) ...
+Setting up libsoup2.4-1 (2.38.1-1) ...
+Setting up libtext-iconv-perl (1.7-5) ...
+Setting up libaspell15 (0.60.7~20110707-1) ...
+Setting up dictionaries-common (1.12.1ubuntu2) ...
+install/dictionaries-common: Byte-compiling for emacsen flavour emacs23
+Wrote /usr/share/emacs23/site-lisp/dictionaries-common/debian-ispell.elc
+Wrote /usr/share/emacs23/site-lisp/dictionaries-common/ispell.elc
+Wrote /usr/share/emacs23/site-lisp/dictionaries-common/flyspell.elc
+Setting up binfmt-support (2.0.8) ...
+FATAL: Could not load /lib/modules/3.13.0-40-generic/modules.dep: No such file or directory
+update-binfmts: warning: Couldn't load the binfmt_misc module.
+FATAL: Could not load /lib/modules/3.13.0-40-generic/modules.dep: No such file or directory
+update-binfmts: warning: Couldn't load the binfmt_misc module.
+update-binfmts: warning: /usr/share/binfmts/cli: no executable /usr/bin/cli found, but continuing anyway as you request
+FATAL: Could not load /lib/modules/3.13.0-40-generic/modules.dep: No such file or directory
+update-binfmts: warning: Couldn't load the binfmt_misc module.
+binfmt-support stop/waiting
+Setting up cli-common (0.9~xamarin1) ...
+Setting up libgdiplus (3.12-0xamarin1+compat1) ...
+Setting up libmonoboehm-2.0-1 (4.0.3.20-0xamarin1) ...
+Setting up libmonoboehm-2.0-dev (4.0.3.20-0xamarin1) ...
+Setting up libmono-2.0-dev (4.0.3.20-0xamarin1) ...
+Setting up libgeoclue0 (0.12.0-1ubuntu12) ...
+Setting up libjavascriptcoregtk-1.0-0 (1.8.3-0ubuntu0.12.04.1) ...
+Setting up libmono-2.0-1 (4.0.3.20-0xamarin1) ...
+Setting up libmonosgen-2.0-1 (4.0.3.20-0xamarin1) ...
+Setting up libmono-profiler (4.0.3.20-0xamarin1) ...
+Setting up libwebkitgtk-1.0-common (1.8.3-0ubuntu0.12.04.1) ...
+Setting up mono-jay (4.0.3.20-0xamarin1) ...
+Setting up monodoc-manual (4.0.3.20-0xamarin1) ...
+Processing triggers for dictionaries-common ...
+aspell-autobuildhash: processing: en [en-common]
+aspell-autobuildhash: processing: en [en-variant_0]
+aspell-autobuildhash: processing: en [en-variant_1]
+aspell-autobuildhash: processing: en [en-variant_2]
+aspell-autobuildhash: processing: en [en_CA-w_accents-only]
+aspell-autobuildhash: processing: en [en_CA-wo_accents-only]
+aspell-autobuildhash: processing: en [en_GB-ise-w_accents-only]
+aspell-autobuildhash: processing: en [en_GB-ise-wo_accents-only]
+aspell-autobuildhash: processing: en [en_GB-ize-w_accents-only]
+aspell-autobuildhash: processing: en [en_GB-ize-wo_accents-only]
+aspell-autobuildhash: processing: en [en_US-w_accents-only]
+aspell-autobuildhash: processing: en [en_US-wo_accents-only]
+Setting up aspell (0.60.7~20110707-1) ...
+Setting up hunspell-en-us (20070829-4ubuntu3) ...
+Setting up libenchant1c2a (1.6.0-7) ...
+Setting up enchant (1.6.0-7) ...
+Setting up libwebkitgtk-1.0-0 (1.8.3-0ubuntu0.12.04.1) ...
+Processing triggers for dictionaries-common ...
+Setting up aspell-en (6.0-0-6ubuntu2) ...
+Processing triggers for dictionaries-common ...
+Setting up gamin (0.1.10-4ubuntu0.1) ...
+Setting up libgamin0 (0.1.10-4ubuntu0.1) ...
+Setting up libmono-system-xml4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-security4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-configuration4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-security4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up mono-4.0-gac (4.0.3.20-0xamarin1) ...
+Setting up mono-gac (4.0.3.20-0xamarin1) ...
+update-alternatives: using /usr/bin/gacutil to provide /usr/bin/cli-gacutil (global-assembly-cache-tool) in auto mode.
+Setting up mono-runtime-common (4.0.3.20-0xamarin1) ...
+update-binfmts: warning: /usr/share/binfmts/cli: no executable /usr/bin/cli found, but continuing anyway as you request
+FATAL: Could not load /lib/modules/3.13.0-40-generic/modules.dep: No such file or directory
+update-binfmts: warning: Couldn't load the binfmt_misc module.
+Setting up mono-runtime-sgen (4.0.3.20-0xamarin1) ...
+Setting up mono-runtime (4.0.3.20-0xamarin1) ...
+update-alternatives: using /usr/bin/mono to provide /usr/bin/cli (cli) in auto mode.
+Setting up libmono-corlib4.5-cil (4.0.3.20-0xamarin1) ...
+Setting up ca-certificates-mono (4.0.3.20-0xamarin1) ...
+Updating certificates in /etc/ssl/certs... 0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d....
+done.
+Updating Mono key store
+Linux Cert Store Sync - version 4.0.3.0
+Synchronize local certs with certs from local Linux trust store.
+Copyright 2002, 2003 Motus Technologies. Copyright 2004-2008 Novell. BSD licensed.
+
+I already trust 0, your new list has 164
+Certificate added: C=AT, O=A-Trust Ges. f. Sicherheitssysteme im elektr. Datenverkehr GmbH, OU=A-Trust-nQual-03, CN=A-Trust-nQual-03
+Certificate added: CN=ACEDICOM Root, OU=PKI, O=EDICOM, C=ES
+Certificate added: C=CO, O=Sociedad Cameral de Certificación Digital - Certicámara S.A., CN=AC Raíz Certicámara S.A.
+Certificate added: C=IT, L=Milan, O=Actalis S.p.A./03358520967, CN=Actalis Authentication Root CA
+Certificate added: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root
+Certificate added: C=SE, O=AddTrust AB, OU=AddTrust TTP Network, CN=AddTrust Class 1 CA Root
+Certificate added: C=SE, O=AddTrust AB, OU=AddTrust TTP Network, CN=AddTrust Public CA Root
+Certificate added: C=SE, O=AddTrust AB, OU=AddTrust TTP Network, CN=AddTrust Qualified CA Root
+Certificate added: C=US, O=AffirmTrust, CN=AffirmTrust Commercial
+Certificate added: C=US, O=AffirmTrust, CN=AffirmTrust Networking
+Certificate added: C=US, O=AffirmTrust, CN=AffirmTrust Premium
+Certificate added: C=US, O=AffirmTrust, CN=AffirmTrust Premium ECC
+Certificate added: C=US, O=America Online Inc., CN=America Online Root Certification Authority 1
+Certificate added: C=US, O=America Online Inc., CN=America Online Root Certification Authority 2
+Certificate added: C=JP, O=Japanese Government, OU=ApplicationCA
+Certificate added: C=ES, CN=Autoridad de Certificacion Firmaprofesional CIF A62634068
+Certificate added: C=IE, O=Baltimore, OU=CyberTrust, CN=Baltimore CyberTrust Root
+Certificate added: C=NO, O=Buypass AS-983163327, CN=Buypass Class 2 CA 1
+Certificate added: C=NO, O=Buypass AS-983163327, CN=Buypass Class 2 Root CA
+Certificate added: C=NO, O=Buypass AS-983163327, CN=Buypass Class 3 CA 1
+Certificate added: C=NO, O=Buypass AS-983163327, CN=Buypass Class 3 Root CA
+Certificate added: C=SK, L=Bratislava, O=Disig a.s., CN=CA Disig
+Certificate added: C=SK, L=Bratislava, O=Disig a.s., CN=CA Disig Root R1
+Certificate added: C=SK, L=Bratislava, O=Disig a.s., CN=CA Disig Root R2
+Certificate added: C=CN, O=CNNIC, CN=CNNIC ROOT
+Certificate added: C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO Certification Authority
+Certificate added: C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO ECC Certification Authority
+Certificate added: C=EU, O=AC Camerfirma SA CIF A82743287, OU=http://www.chambersign.org, CN=Chambers of Commerce Root
+Certificate added: C=EU, O=AC Camerfirma SA CIF A82743287, OU=http://www.chambersign.org, CN=Global Chambersign Root
+Certificate added: C=FR, O=Dhimyotis, CN=Certigna
+Certificate added: C=FR, O=Certinomis, OU=0002 433998903, CN=Certinomis - Autorité Racine
+Certificate added: C=FR, O=Certplus, CN=Class 2 Primary CA
+Certificate added: C=PL, O=Unizeto Sp. z o.o., CN=Certum CA
+Certificate added: C=PL, O=Unizeto Technologies S.A., OU=Certum Certification Authority, CN=Certum Trusted Network CA
+Certificate added: C=EU, L=Madrid (see current address at www.camerfirma.com/address), OID.2.5.4.5=A82743287, O=AC Camerfirma S.A., CN=Chambers of Commerce Root - 2008
+Certificate added: C=CN, O=China Internet Network Information Center, CN=China Internet Network Information Center EV Certificates Root
+Certificate added: CN=ComSign CA, O=ComSign, C=IL
+Certificate added: CN=ComSign Secured CA, O=ComSign, C=IL
+Certificate added: C=GB, S=Greater Manchester, L=Salford, O=Comodo CA Limited, CN=AAA Certificate Services
+Certificate added: C=GB, S=Greater Manchester, L=Salford, O=Comodo CA Limited, CN=Secure Certificate Services
+Certificate added: C=GB, S=Greater Manchester, L=Salford, O=Comodo CA Limited, CN=Trusted Certificate Services
+Certificate added: O="Cybertrust, Inc", CN=Cybertrust Global Root
+Certificate added: C=DE, O=D-Trust GmbH, CN=D-TRUST Root Class 3 CA 2 2009
+Certificate added: C=DE, O=D-Trust GmbH, CN=D-TRUST Root Class 3 CA 2 EV 2009
+Certificate added: C=US, O=Digital Signature Trust, OU=DST ACES, CN=DST ACES CA X6
+Certificate added: O=Digital Signature Trust Co., CN=DST Root CA X3
+Certificate added: C=DE, O=Deutsche Telekom AG, OU=T-TeleSec Trust Center, CN=Deutsche Telekom Root CA 2
+Certificate added: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert Assured ID Root CA
+Certificate added: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert Global Root CA
+Certificate added: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert High Assurance EV Root CA
+Certificate added: C=US, O=Digital Signature Trust Co., OU=DSTCA E1
+Certificate added: C=US, O=Digital Signature Trust Co., OU=DSTCA E2
+Certificate added: C=TR, O=Elektronik Bilgi Guvenligi A.S., CN=e-Guven Kok Elektronik Sertifika Hizmet Saglayicisi
+Certificate added: CN=EBG Elektronik Sertifika Hizmet Sağlayıcısı, O=EBG Bilişim Teknolojileri ve Hizmetleri A.Ş., C=TR
+Certificate added: C=ES, O=Agencia Catalana de Certificacio (NIF Q-0801176-I), OU=Serveis Publics de Certificacio, OU=Vegeu https://www.catcert.net/verarrel (c)03, OU=Jerarquia Entitats de Certificacio Catalanes, CN=EC-ACC
+Certificate added: C=EE, O=AS Sertifitseerimiskeskus, CN=EE Certification Centre Root CA, E=pki@sk.ee
+Certificate added: O=Entrust.net, OU=www.entrust.net/CPS_2048 incorp. by ref. (limits liab.), OU=(c) 1999 Entrust.net Limited, CN=Entrust.net Certification Authority (2048)
+Certificate added: C=US, O=Entrust.net, OU=www.entrust.net/CPS incorp. by ref. (limits liab.), OU=(c) 1999 Entrust.net Limited, CN=Entrust.net Secure Server Certification Authority
+Certificate added: C=US, O="Entrust, Inc.", OU=www.entrust.net/CPS is incorporated by reference, OU="(c) 2006 Entrust, Inc.", CN=Entrust Root Certification Authority
+Certificate added: C=US, O=Equifax, OU=Equifax Secure Certificate Authority
+Certificate added: C=US, O=Equifax Secure Inc., CN=Equifax Secure Global eBusiness CA-1
+Certificate added: C=US, O=Equifax Secure Inc., CN=Equifax Secure eBusiness CA-1
+Certificate added: C=ES, L=C/ Muntaner 244 Barcelona, CN=Autoridad de Certificacion Firmaprofesional CIF A62634068, E=ca@firmaprofesional.com
+Certificate added: C=US, O=GTE Corporation, OU="GTE CyberTrust Solutions, Inc.", CN=GTE CyberTrust Global Root
+Certificate added: C=US, O=GeoTrust Inc., CN=GeoTrust Global CA
+Certificate added: C=US, O=GeoTrust Inc., CN=GeoTrust Global CA 2
+Certificate added: C=US, O=GeoTrust Inc., CN=GeoTrust Primary Certification Authority
+Certificate added: C=US, O=GeoTrust Inc., OU=(c) 2007 GeoTrust Inc. - For authorized use only, CN=GeoTrust Primary Certification Authority - G2
+Certificate added: C=US, O=GeoTrust Inc., OU=(c) 2008 GeoTrust Inc. - For authorized use only, CN=GeoTrust Primary Certification Authority - G3
+Certificate added: C=US, O=GeoTrust Inc., CN=GeoTrust Universal CA
+Certificate added: C=US, O=GeoTrust Inc., CN=GeoTrust Universal CA 2
+Certificate added: C=BE, O=GlobalSign nv-sa, OU=Root CA, CN=GlobalSign Root CA
+Certificate added: OU=GlobalSign Root CA - R2, O=GlobalSign, CN=GlobalSign
+Certificate added: OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+Certificate added: C=EU, L=Madrid (see current address at www.camerfirma.com/address), OID.2.5.4.5=A82743287, O=AC Camerfirma S.A., CN=Global Chambersign Root - 2008
+Certificate added: C=US, O="The Go Daddy Group, Inc.", OU=Go Daddy Class 2 Certification Authority
+Certificate added: C=US, S=Arizona, L=Scottsdale, O="GoDaddy.com, Inc.", CN=Go Daddy Root Certificate Authority - G2
+Certificate added: C=GR, O=Hellenic Academic and Research Institutions Cert. Authority, CN=Hellenic Academic and Research Institutions RootCA 2011
+Certificate added: C=HK, O=Hongkong Post, CN=Hongkong Post Root CA 1
+Certificate added: C=FR, S=France, L=Paris, O=PM/SGDN, OU=DCSSI, CN=IGC/A, E=igca@sgdn.pm.gouv.fr
+Certificate added: C=ES, O=IZENPE S.A., CN=Izenpe.com
+Certificate added: E=pki@sk.ee, C=EE, O=AS Sertifitseerimiskeskus, CN=Juur-SK
+Certificate added: C=HU, L=Budapest, O=Microsec Ltd., OU=e-Szigno CA, CN=Microsec e-Szigno Root CA
+Certificate added: C=HU, L=Budapest, O=Microsec Ltd., CN=Microsec e-Szigno Root CA 2009, E=info@e-szigno.hu
+Certificate added: C=HU, L=Budapest, O=NetLock Kft., OU=Tanúsítványkiadók (Certification Services), CN=NetLock Arany (Class Gold) Főtanúsítvány
+Certificate added: C=HU, L=Budapest, O=NetLock Halozatbiztonsagi Kft., OU=Tanusitvanykiadok, CN=NetLock Uzleti (Class B) Tanusitvanykiado
+Certificate added: C=HU, L=Budapest, O=NetLock Halozatbiztonsagi Kft., OU=Tanusitvanykiadok, CN=NetLock Expressz (Class C) Tanusitvanykiado
+Certificate added: C=HU, S=Hungary, L=Budapest, O=NetLock Halozatbiztonsagi Kft., OU=Tanusitvanykiadok, CN=NetLock Kozjegyzoi (Class A) Tanusitvanykiado
+Certificate added: C=HU, L=Budapest, O=NetLock Halozatbiztonsagi Kft., OU=Tanusitvanykiadok, CN=NetLock Minositett Kozjegyzoi (Class QA) Tanusitvanykiado, E=info@netlock.hu
+Certificate added: C=US, O=Network Solutions L.L.C., CN=Network Solutions Certificate Authority
+Certificate added: C=CH, O=WISeKey, OU=Copyright (c) 2005, OU=OISTE Foundation Endorsed, CN=OISTE WISeKey Global Root GA CA
+Certificate added: E=contacto@procert.net.ve, L=Chacao, S=Miranda, OU=Proveedor de Certificados PROCERT, O=Sistema Nacional de Certificacion Electronica, C=VE, CN=PSCProcert
+Certificate added: C=BM, O=QuoVadis Limited, OU=Root Certification Authority, CN=QuoVadis Root Certification Authority
+Certificate added: C=BM, O=QuoVadis Limited, CN=QuoVadis Root CA 2
+Certificate added: C=BM, O=QuoVadis Limited, CN=QuoVadis Root CA 3
+Certificate added: L=ValiCert Validation Network, O="ValiCert, Inc.", OU=ValiCert Class 3 Policy Validation Authority, CN=http://www.valicert.com/, E=info@valicert.com
+Certificate added: O=RSA Security Inc, OU=RSA Security 2048 V3
+Certificate added: C=ES, O=Generalitat Valenciana, OU=PKIGVA, CN=Root CA Generalitat Valenciana
+Certificate added: C=DE, S=Baden-Wuerttemberg (BW), L=Stuttgart, O=Deutscher Sparkassen Verlag GmbH, CN=S-TRUST Authentication and Encryption Root CA 2005:PN
+Certificate added: C=JP, O="Japan Certification Services, Inc.", CN=SecureSign RootCA11
+Certificate added: C=US, O=SecureTrust Corporation, CN=SecureTrust CA
+Certificate added: C=US, O=SecureTrust Corporation, CN=Secure Global CA
+Certificate added: C=JP, O="SECOM Trust Systems CO.,LTD.", OU=Security Communication EV RootCA1
+Certificate added: C=JP, O="SECOM Trust Systems CO.,LTD.", OU=Security Communication RootCA2
+Certificate added: C=JP, O=SECOM Trust.net, OU=Security Communication RootCA1
+Certificate added: C=FI, O=Sonera, CN=Sonera Class1 CA
+Certificate added: C=FI, O=Sonera, CN=Sonera Class2 CA
+Certificate added: C=NL, O=Staat der Nederlanden, CN=Staat der Nederlanden Root CA
+Certificate added: C=NL, O=Staat der Nederlanden, CN=Staat der Nederlanden Root CA - G2
+Certificate added: C=US, O="Starfield Technologies, Inc.", OU=Starfield Class 2 Certification Authority
+Certificate added: C=US, S=Arizona, L=Scottsdale, O="Starfield Technologies, Inc.", CN=Starfield Root Certificate Authority - G2
+Certificate added: C=US, S=Arizona, L=Scottsdale, O="Starfield Technologies, Inc.", CN=Starfield Services Root Certificate Authority - G2
+Certificate added: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+Certificate added: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+Certificate added: C=IL, O=StartCom Ltd., CN=StartCom Certification Authority G2
+Certificate added: C=CH, O=SwissSign AG, CN=SwissSign Gold CA - G2
+Certificate added: C=CH, O=SwissSign AG, CN=SwissSign Platinum CA - G2
+Certificate added: C=CH, O=SwissSign AG, CN=SwissSign Silver CA - G2
+Certificate added: C=ch, O=Swisscom, OU=Digital Certificate Services, CN=Swisscom Root CA 1
+Certificate added: C=ch, O=Swisscom, OU=Digital Certificate Services, CN=Swisscom Root CA 2
+Certificate added: C=ch, O=Swisscom, OU=Digital Certificate Services, CN=Swisscom Root EV CA 2
+Certificate added: C=DE, O=T-Systems Enterprise Services GmbH, OU=T-Systems Trust Center, CN=T-TeleSec GlobalRoot Class 3
+Certificate added: C=DE, O=TC TrustCenter GmbH, OU=TC TrustCenter Class 2 CA, CN=TC TrustCenter Class 2 CA II
+Certificate added: C=DE, O=TC TrustCenter GmbH, OU=TC TrustCenter Class 3 CA, CN=TC TrustCenter Class 3 CA II
+Certificate added: C=DE, O=TC TrustCenter GmbH, OU=TC TrustCenter Universal CA, CN=TC TrustCenter Universal CA I
+Certificate added: C=DK, O=TDC Internet, OU=TDC Internet Root CA
+Certificate added: C=DK, O=TDC, CN=TDC OCES CA
+Certificate added: CN=TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı, C=TR, L=ANKARA, O=(c) 2005 TÜRKTRUST Bilgi İletişim ve Bilişim Güvenliği Hizmetleri A.Ş.
+Certificate added: CN=TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı, C=TR, L=Ankara, O=TÜRKTRUST Bilgi İletişim ve Bilişim Güvenliği Hizmetleri A.Ş. (c) Kasım 2005
+Certificate added: CN=TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı, C=TR, L=Ankara, O=TÜRKTRUST Bilgi İletişim ve Bilişim Güvenliği Hizmetleri A.Ş. (c) Aralık 2007
+Certificate added: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Root Certification Authority
+Certificate added: C=TW, O=Government Root Certification Authority
+Certificate added: C=ZA, S=Western Cape, L=Cape Town, O=Thawte Consulting cc, OU=Certification Services Division, CN=Thawte Premium Server CA, E=premium-server@thawte.com
+Certificate added: C=ZA, S=Western Cape, L=Cape Town, O=Thawte Consulting cc, OU=Certification Services Division, CN=Thawte Server CA, E=server-certs@thawte.com
+Certificate added: C=GB, O=Trustis Limited, OU=Trustis FPS Root CA
+Certificate added: C=TR, L=Gebze - Kocaeli, O=Türkiye Bilimsel ve Teknolojik Araştırma Kurumu - TÜBİTAK, OU=Ulusal Elektronik ve Kriptoloji Araştırma Enstitüsü - UEKAE, OU=Kamu Sertifikasyon Merkezi, CN=TÜBİTAK UEKAE Kök Sertifika Hizmet Sağlayıcısı - Sürüm 3
+Certificate added: C=US, S=UT, L=Salt Lake City, O=The USERTRUST Network, OU=http://www.usertrust.com, CN=UTN - DATACorp SGC
+Certificate added: C=US, S=UT, L=Salt Lake City, O=The USERTRUST Network, OU=http://www.usertrust.com, CN=UTN-USERFirst-Client Authentication and Email
+Certificate added: C=US, S=UT, L=Salt Lake City, O=The USERTRUST Network, OU=http://www.usertrust.com, CN=UTN-USERFirst-Hardware
+Certificate added: L=ValiCert Validation Network, O="ValiCert, Inc.", OU=ValiCert Class 1 Policy Validation Authority, CN=http://www.valicert.com/, E=info@valicert.com
+Certificate added: L=ValiCert Validation Network, O="ValiCert, Inc.", OU=ValiCert Class 2 Policy Validation Authority, CN=http://www.valicert.com/, E=info@valicert.com
+Certificate added: C=US, O="VeriSign, Inc.", OU=VeriSign Trust Network, OU="(c) 2007 VeriSign, Inc. - For authorized use only", CN=VeriSign Class 3 Public Primary Certification Authority - G4
+Certificate added: C=US, O="VeriSign, Inc.", OU=VeriSign Trust Network, OU="(c) 2006 VeriSign, Inc. - For authorized use only", CN=VeriSign Class 3 Public Primary Certification Authority - G5
+Certificate added: C=US, O="VeriSign, Inc.", OU=VeriSign Trust Network, OU="(c) 2008 VeriSign, Inc. - For authorized use only", CN=VeriSign Universal Root Certification Authority
+Certificate added: C=US, O="VeriSign, Inc.", OU=Class 1 Public Primary Certification Authority
+Certificate added: C=US, O="VeriSign, Inc.", OU=Class 1 Public Primary Certification Authority - G2, OU="(c) 1998 VeriSign, Inc. - For authorized use only", OU=VeriSign Trust Network
+Certificate added: C=US, O="VeriSign, Inc.", OU=VeriSign Trust Network, OU="(c) 1999 VeriSign, Inc. - For authorized use only", CN=VeriSign Class 1 Public Primary Certification Authority - G3
+Certificate added: C=US, O="VeriSign, Inc.", OU=Class 2 Public Primary Certification Authority - G2, OU="(c) 1998 VeriSign, Inc. - For authorized use only", OU=VeriSign Trust Network
+Certificate added: C=US, O="VeriSign, Inc.", OU=VeriSign Trust Network, OU="(c) 1999 VeriSign, Inc. - For authorized use only", CN=VeriSign Class 2 Public Primary Certification Authority - G3
+Certificate added: C=US, O="VeriSign, Inc.", OU=Class 3 Public Primary Certification Authority
+Certificate added: C=US, O="VeriSign, Inc.", OU=Class 3 Public Primary Certification Authority - G2, OU="(c) 1998 VeriSign, Inc. - For authorized use only", OU=VeriSign Trust Network
+Certificate added: C=US, O="VeriSign, Inc.", OU=VeriSign Trust Network, OU="(c) 1999 VeriSign, Inc. - For authorized use only", CN=VeriSign Class 3 Public Primary Certification Authority - G3
+Certificate added: C=US, O="VeriSign, Inc.", OU=Class 3 Public Primary Certification Authority
+Certificate added: C=US, O="VeriSign, Inc.", OU=VeriSign Trust Network, OU="(c) 1999 VeriSign, Inc. - For authorized use only", CN=VeriSign Class 4 Public Primary Certification Authority - G3
+Certificate added: C=US, O=VISA, OU=Visa International Service Association, CN=Visa eCommerce Root
+Certificate added: C=US, O=Wells Fargo WellsSecure, OU=Wells Fargo Bank NA, CN=WellsSecure Public Root Certificate Authority
+Certificate added: C=US, O=Wells Fargo, OU=Wells Fargo Certification Authority, CN=Wells Fargo Root Certificate Authority
+Certificate added: C=US, OU=www.xrampsecurity.com, O=XRamp Security Services Inc, CN=XRamp Global Certification Authority
+Certificate added: C=RO, O=certSIGN, OU=certSIGN ROOT CA
+Certificate added: C=TW, O="Chunghwa Telecom Co., Ltd.", OU=ePKI Root Certification Authority
+Certificate added: C=US, O="thawte, Inc.", OU=Certification Services Division, OU="(c) 2006 thawte, Inc. - For authorized use only", CN=thawte Primary Root CA
+Certificate added: C=US, O="thawte, Inc.", OU="(c) 2007 thawte, Inc. - For authorized use only", CN=thawte Primary Root CA - G2
+Certificate added: C=US, O="thawte, Inc.", OU=Certification Services Division, OU="(c) 2008 thawte, Inc. - For authorized use only", CN=thawte Primary Root CA - G3
+Certificate added: C=US, S=Indiana, L=Indianapolis, O=Software in the Public Interest, OU=hostmaster, CN=Certificate Authority, E=hostmaster@spi-inc.org
+164 new root certificates were added to your trust store.
+Import process completed.
+Done
+done.
+Setting up libmono-posix4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-core4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-numerics4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libfsharp-core4.3-cil (4.0.0.3-0xamarin1) ...
+* Installing 13 assemblies from libfsharp-core4.3-cil into Mono
+Setting up libmono-microsoft-build-framework4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-microsoft-build-utilities-v4.0-4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-microsoft-build-engine4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-xbuild-tasks4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-microsoft-build-tasks-v4.0-4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-runtime-serialization-formatters-soap4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-data-tds4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-transactions4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-enterpriseservices4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-data4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-sqlite4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-componentmodel-dataannotations4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-drawing4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-applicationservices4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-runtime4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-accessibility4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-webbrowser4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-i18n4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-i18n-west4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-windows-forms4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up mono-xbuild (4.0.3.20-0xamarin1) ...
+Setting up libmono-compilerservices-symbolwriter4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-cecil-private-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-codecontracts4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-csharp4.0c-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-ldap4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-messaging4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-peapi4.0a-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-rabbitmq4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-relaxng4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-sharpzip4.84-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-componentmodel-composition4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-configuration-install4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-runtime-serialization4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-data-linq4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-xml-linq4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-data-services-client4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-design4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-identitymodel4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-identitymodel-selectors4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-messaging4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-servicemodel-activation4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-xaml4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-microsoft-csharp4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up mono-mcs (4.0.3.20-0xamarin1) ...
+Setting up libmono-c5-1.1-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-cairo4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-cscompmgd0.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-custommarshalers4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-db2-1.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-debugger-soft4.0a-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-http4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-i18n-cjk4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-i18n-mideast4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-i18n-other4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-i18n-rare4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-i18n4.0-all (4.0.3.20-0xamarin1) ...
+Setting up libmono-management4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-messaging-rabbitmq4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-microsoft-build4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-microsoft-visualc10.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-microsoft-web-infrastructure1.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-oracle4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-parallel4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-simd4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-data-datasetextensions4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-data-entity4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-drawing-design4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-dynamic4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-io-compression4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-io-compression-filesystem4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-json4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-json-microsoft4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-ldap4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-ldap-protocols4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-management4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-net4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-net-http4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-net-http-formatting4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-net-http-webrequest4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-interfaces2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-core2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-linq2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-debugger2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-experimental2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-providers2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-observable-aliases0.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-platformservices2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-runtime-remoting2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-windows-forms2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-windowsbase4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-reactive-windows-threading2.2-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-runtime-caching4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-runtime-durableinstancing4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-serviceprocess4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-threading-tasks-dataflow4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-abstractions4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-extensions-design4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-http4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-http-webhost4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-razor2.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-webpages-deployment2.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-webpages2.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-webpages-razor2.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-routing4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-windows4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-windows-forms-datavisualization4.0a-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-tasklets4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-webmatrix-data4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libnunit-core-interfaces2.6.3-cil (2.6.3+dfsg-1~xamarin2) ...
+* Installing 1 assembly from libnunit-core-interfaces2.6.3-cil into Mono
+Setting up libnunit-core2.6.3-cil (2.6.3+dfsg-1~xamarin2) ...
+* Installing 1 assembly from libnunit-core2.6.3-cil into Mono
+Setting up libnunit-util2.6.3-cil (2.6.3+dfsg-1~xamarin2) ...
+* Installing 1 assembly from libnunit-util2.6.3-cil into Mono
+Setting up libnunit-console-runner2.6.3-cil (2.6.3+dfsg-1~xamarin2) ...
+* Installing 1 assembly from libnunit-console-runner2.6.3-cil into Mono
+Setting up libnunit-framework2.6.3-cil (2.6.3+dfsg-1~xamarin2) ...
+* Installing 1 assembly from libnunit-framework2.6.3-cil into Mono
+Setting up libnunit-mocks2.6.3-cil (2.6.3+dfsg-1~xamarin2) ...
+* Installing 1 assembly from libnunit-mocks2.6.3-cil into Mono
+Setting up libnunit-cil-dev (2.6.3+dfsg-1~xamarin2) ...
+Setting up libglib2.0-cil (2.12.26-0xamarin1+compat1) ...
+* Installing 1 assembly from libglib2.0-cil into Mono
+Setting up libgtk2.0-cil (2.12.26-0xamarin1+compat1) ...
+* Installing 5 assemblies from libgtk2.0-cil into Mono
+Setting up libglade2.0-cil (2.12.26-0xamarin1+compat1) ...
+* Installing 1 assembly from libglade2.0-cil into Mono
+Setting up libmono-cecil-vb0.9-cil (4.0.1-0xamarin1) ...
+Setting up libmono-corlib4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-microsoft-visualbasic10.0-cil (4.0.1-0xamarin1) ...
+Setting up libwebkit1.1-cil (0.3-5) ...
+* Installing 1 assembly from libwebkit1.1-cil into Mono
+Setting up mono-4.0-service (4.0.3.20-0xamarin1) ...
+Setting up mono-utils (4.0.3.20-0xamarin1) ...
+update-alternatives: using /usr/bin/monodis to provide /usr/bin/cli-ildasm (cil-disassembler) in auto mode.
+Setting up mono-csharp-shell (4.0.3.20-0xamarin1) ...
+Setting up monodoc-base (4.0.3.20-0xamarin1) ...
+Setting up referenceassemblies-pcl (2014.04.14-1) ...
+Setting up libmono-system-web-services4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-servicemodel4.0a-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-extensions4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-servicemodel-web4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-data-services4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-servicemodel-discovery4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-servicemodel-routing4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-dynamicdata4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-http-selfhost4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-web-mvc3.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-system-xml-serialization4.0-cil (4.0.3.20-0xamarin1) ...
+Setting up libmono-cil-dev (4.0.3.20-0xamarin1) ...
+Setting up mono-devel (4.0.3.20-0xamarin1) ...
+update-alternatives: using /usr/bin/mono-csc to provide /usr/bin/cli-csc (c-sharp-compiler) in auto mode.
+update-alternatives: using /usr/bin/resgen to provide /usr/bin/cli-resgen (resource-file-generator) in auto mode.
+update-alternatives: using /usr/bin/al to provide /usr/bin/cli-al (assembly-linker) in auto mode.
+update-alternatives: using /usr/bin/sn to provide /usr/bin/cli-sn (strong-name-tool) in auto mode.
+Setting up fsharp (4.0.0.3-0xamarin1) ...
+* Installing 11 assemblies from fsharp into Mono framework paths
+Setting up libnuget-core-cil (2.8.5+md59+dhx1-0xamarin1) ...
+Setting up mono-complete (4.0.3.20-0xamarin1) ...
+Setting up mono-vbnc (4.0.1-0xamarin1) ...
+Setting up monodoc-browser (3.10-1xamarin1) ...
+Setting up nuget (2.8.5+md59+dhx1-0xamarin1) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_time:end:0e6d1e8a:start=1439684089615892948,finish=1439684141591318007,duration=51975425059[0Ktravis_time:start:2eee6d78[0Ktravis_time:end:2eee6d78:start=1439684141594565726,finish=1439684142510502913,duration=915937187[0Ktravis_fold:end:mono-install[0Ktravis_fold:start:git.checkout[0Ktravis_time:start:0c6df8f8[0K$ git clone --depth=50 git://github.com/ShareX/ShareX.git ShareX/ShareX
+Cloning into 'ShareX/ShareX'...
+remote: Counting objects: 3207, done.[K
+remote: Compressing objects:   0% (1/1799)   [Kremote: Compressing objects:   1% (18/1799)   [Kremote: Compressing objects:   2% (36/1799)   [Kremote: Compressing objects:   3% (54/1799)   [Kremote: Compressing objects:   4% (72/1799)   [Kremote: Compressing objects:   5% (90/1799)   [Kremote: Compressing objects:   6% (108/1799)   [Kremote: Compressing objects:   7% (126/1799)   [Kremote: Compressing objects:   8% (144/1799)   [Kremote: Compressing objects:   9% (162/1799)   [Kremote: Compressing objects:  10% (180/1799)   [Kremote: Compressing objects:  11% (198/1799)   [Kremote: Compressing objects:  12% (216/1799)   [Kremote: Compressing objects:  13% (234/1799)   [Kremote: Compressing objects:  14% (252/1799)   [Kremote: Compressing objects:  15% (270/1799)   [Kremote: Compressing objects:  16% (288/1799)   [Kremote: Compressing objects:  17% (306/1799)   [Kremote: Compressing objects:  18% (324/1799)   [Kremote: Compressing objects:  19% (342/1799)   [Kremote: Compressing objects:  20% (360/1799)   [Kremote: Compressing objects:  21% (378/1799)   [Kremote: Compressing objects:  22% (396/1799)   [Kremote: Compressing objects:  23% (414/1799)   [Kremote: Compressing objects:  24% (432/1799)   [Kremote: Compressing objects:  25% (450/1799)   [Kremote: Compressing objects:  26% (468/1799)   [Kremote: Compressing objects:  27% (486/1799)   [Kremote: Compressing objects:  28% (504/1799)   [Kremote: Compressing objects:  29% (522/1799)   [Kremote: Compressing objects:  30% (540/1799)   [Kremote: Compressing objects:  31% (558/1799)   [Kremote: Compressing objects:  32% (576/1799)   [Kremote: Compressing objects:  33% (594/1799)   [Kremote: Compressing objects:  34% (612/1799)   [Kremote: Compressing objects:  35% (630/1799)   [Kremote: Compressing objects:  36% (648/1799)   [Kremote: Compressing objects:  37% (666/1799)   [Kremote: Compressing objects:  38% (684/1799)   [Kremote: Compressing objects:  39% (702/1799)   [Kremote: Compressing objects:  40% (720/1799)   [Kremote: Compressing objects:  41% (738/1799)   [Kremote: Compressing objects:  42% (756/1799)   [Kremote: Compressing objects:  43% (774/1799)   [Kremote: Compressing objects:  44% (792/1799)   [Kremote: Compressing objects:  45% (810/1799)   [Kremote: Compressing objects:  46% (828/1799)   [Kremote: Compressing objects:  47% (846/1799)   [Kremote: Compressing objects:  48% (864/1799)   [Kremote: Compressing objects:  49% (882/1799)   [Kremote: Compressing objects:  50% (900/1799)   [Kremote: Compressing objects:  51% (918/1799)   [Kremote: Compressing objects:  52% (936/1799)   [Kremote: Compressing objects:  53% (954/1799)   [Kremote: Compressing objects:  54% (972/1799)   [Kremote: Compressing objects:  55% (990/1799)   [Kremote: Compressing objects:  56% (1008/1799)   [Kremote: Compressing objects:  57% (1026/1799)   [Kremote: Compressing objects:  58% (1044/1799)   [Kremote: Compressing objects:  59% (1062/1799)   [Kremote: Compressing objects:  60% (1080/1799)   [Kremote: Compressing objects:  61% (1098/1799)   [Kremote: Compressing objects:  62% (1116/1799)   [Kremote: Compressing objects:  63% (1134/1799)   [Kremote: Compressing objects:  64% (1152/1799)   [Kremote: Compressing objects:  65% (1170/1799)   [Kremote: Compressing objects:  66% (1188/1799)   [Kremote: Compressing objects:  67% (1206/1799)   [Kremote: Compressing objects:  68% (1224/1799)   [Kremote: Compressing objects:  69% (1242/1799)   [Kremote: Compressing objects:  70% (1260/1799)   [Kremote: Compressing objects:  71% (1278/1799)   [Kremote: Compressing objects:  72% (1296/1799)   [Kremote: Compressing objects:  73% (1314/1799)   [Kremote: Compressing objects:  74% (1332/1799)   [Kremote: Compressing objects:  75% (1350/1799)   [Kremote: Compressing objects:  76% (1368/1799)   [Kremote: Compressing objects:  77% (1386/1799)   [Kremote: Compressing objects:  78% (1404/1799)   [Kremote: Compressing objects:  79% (1422/1799)   [Kremote: Compressing objects:  80% (1440/1799)   [Kremote: Compressing objects:  81% (1458/1799)   [Kremote: Compressing objects:  82% (1476/1799)   [Kremote: Compressing objects:  83% (1494/1799)   [Kremote: Compressing objects:  84% (1512/1799)   [Kremote: Compressing objects:  85% (1530/1799)   [Kremote: Compressing objects:  86% (1548/1799)   [Kremote: Compressing objects:  87% (1566/1799)   [Kremote: Compressing objects:  88% (1584/1799)   [Kremote: Compressing objects:  89% (1602/1799)   [Kremote: Compressing objects:  90% (1620/1799)   [Kremote: Compressing objects:  91% (1638/1799)   [Kremote: Compressing objects:  92% (1656/1799)   [Kremote: Compressing objects:  93% (1674/1799)   [Kremote: Compressing objects:  94% (1692/1799)   [Kremote: Compressing objects:  95% (1710/1799)   [Kremote: Compressing objects:  96% (1728/1799)   [Kremote: Compressing objects:  97% (1746/1799)   [Kremote: Compressing objects:  98% (1764/1799)   [Kremote: Compressing objects:  99% (1782/1799)   [Kremote: Compressing objects: 100% (1799/1799)   [Kremote: Compressing objects: 100% (1799/1799), done.[K
+Receiving objects:   0% (1/3207)   Receiving objects:   1% (33/3207)   Receiving objects:   2% (65/3207)   Receiving objects:   3% (97/3207)   Receiving objects:   4% (129/3207)   Receiving objects:   5% (161/3207)   Receiving objects:   6% (193/3207)   Receiving objects:   7% (225/3207)   Receiving objects:   8% (257/3207)   Receiving objects:   9% (289/3207)   Receiving objects:  10% (321/3207)   Receiving objects:  11% (353/3207)   Receiving objects:  12% (385/3207)   Receiving objects:  13% (417/3207)   Receiving objects:  14% (449/3207)   Receiving objects:  15% (482/3207)   Receiving objects:  16% (514/3207)   Receiving objects:  17% (546/3207)   Receiving objects:  18% (578/3207)   Receiving objects:  19% (610/3207)   Receiving objects:  20% (642/3207)   Receiving objects:  21% (674/3207)   Receiving objects:  22% (706/3207)   Receiving objects:  23% (738/3207)   Receiving objects:  24% (770/3207)   Receiving objects:  25% (802/3207)   Receiving objects:  26% (834/3207)   Receiving objects:  27% (866/3207)   Receiving objects:  28% (898/3207)   Receiving objects:  29% (931/3207)   Receiving objects:  30% (963/3207)   Receiving objects:  31% (995/3207)   Receiving objects:  32% (1027/3207)   Receiving objects:  33% (1059/3207)   Receiving objects:  34% (1091/3207)   Receiving objects:  35% (1123/3207)   Receiving objects:  36% (1155/3207)   Receiving objects:  37% (1187/3207)   Receiving objects:  38% (1219/3207)   Receiving objects:  39% (1251/3207)   Receiving objects:  40% (1283/3207)   Receiving objects:  41% (1315/3207)   Receiving objects:  42% (1347/3207)   Receiving objects:  43% (1380/3207)   Receiving objects:  44% (1412/3207)   Receiving objects:  45% (1444/3207)   Receiving objects:  46% (1476/3207)   Receiving objects:  47% (1508/3207)   Receiving objects:  48% (1540/3207)   Receiving objects:  49% (1572/3207)   Receiving objects:  50% (1604/3207)   Receiving objects:  51% (1636/3207)   Receiving objects:  52% (1668/3207)   Receiving objects:  53% (1700/3207)   Receiving objects:  54% (1732/3207)   Receiving objects:  55% (1764/3207)   Receiving objects:  56% (1796/3207)   Receiving objects:  57% (1828/3207)   Receiving objects:  58% (1861/3207)   Receiving objects:  59% (1893/3207)   Receiving objects:  60% (1925/3207)   Receiving objects:  61% (1957/3207)   Receiving objects:  62% (1989/3207)   Receiving objects:  63% (2021/3207)   Receiving objects:  64% (2053/3207)   Receiving objects:  65% (2085/3207)   Receiving objects:  66% (2117/3207)   Receiving objects:  67% (2149/3207)   Receiving objects:  68% (2181/3207)   Receiving objects:  69% (2213/3207)   Receiving objects:  70% (2245/3207)   Receiving objects:  71% (2277/3207)   Receiving objects:  72% (2310/3207)   Receiving objects:  73% (2342/3207)   Receiving objects:  74% (2374/3207)   Receiving objects:  75% (2406/3207)   Receiving objects:  76% (2438/3207)   Receiving objects:  77% (2470/3207)   Receiving objects:  78% (2502/3207)   Receiving objects:  79% (2534/3207)   Receiving objects:  80% (2566/3207)   Receiving objects:  81% (2598/3207)   Receiving objects:  82% (2630/3207)   Receiving objects:  83% (2662/3207)   Receiving objects:  84% (2694/3207)   Receiving objects:  85% (2726/3207)   Receiving objects:  86% (2759/3207)   Receiving objects:  87% (2791/3207)   Receiving objects:  88% (2823/3207)   Receiving objects:  89% (2855/3207)   Receiving objects:  90% (2887/3207)   Receiving objects:  91% (2919/3207)   Receiving objects:  92% (2951/3207)   remote: Total 3207 (delta 2275), reused 2205 (delta 1396), pack-reused 0[K
+Receiving objects:  93% (2983/3207)   Receiving objects:  94% (3015/3207)   Receiving objects:  95% (3047/3207)   Receiving objects:  96% (3079/3207)   Receiving objects:  97% (3111/3207)   Receiving objects:  98% (3143/3207)   Receiving objects:  99% (3175/3207)   Receiving objects: 100% (3207/3207)   Receiving objects: 100% (3207/3207), 4.44 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/2275)   Resolving deltas:   3% (89/2275)   Resolving deltas:   4% (92/2275)   Resolving deltas:   5% (117/2275)   Resolving deltas:   6% (142/2275)   Resolving deltas:   7% (160/2275)   Resolving deltas:  14% (325/2275)   Resolving deltas:  15% (342/2275)   Resolving deltas:  16% (366/2275)   Resolving deltas:  19% (447/2275)   Resolving deltas:  20% (455/2275)   Resolving deltas:  22% (511/2275)   Resolving deltas:  30% (704/2275)   Resolving deltas:  36% (824/2275)   Resolving deltas:  40% (919/2275)   Resolving deltas:  43% (983/2275)   Resolving deltas:  45% (1027/2275)   Resolving deltas:  46% (1068/2275)   Resolving deltas:  47% (1077/2275)   Resolving deltas:  48% (1102/2275)   Resolving deltas:  49% (1132/2275)   Resolving deltas:  50% (1139/2275)   Resolving deltas:  52% (1192/2275)   Resolving deltas:  53% (1211/2275)   Resolving deltas:  54% (1247/2275)   Resolving deltas:  55% (1252/2275)   Resolving deltas:  56% (1286/2275)   Resolving deltas:  57% (1297/2275)   Resolving deltas:  58% (1338/2275)   Resolving deltas:  59% (1343/2275)   Resolving deltas:  61% (1389/2275)   Resolving deltas:  62% (1425/2275)   Resolving deltas:  63% (1440/2275)   Resolving deltas:  64% (1459/2275)   Resolving deltas:  65% (1489/2275)   Resolving deltas:  66% (1502/2275)   Resolving deltas:  67% (1528/2275)   Resolving deltas:  68% (1554/2275)   Resolving deltas:  69% (1573/2275)   Resolving deltas:  71% (1636/2275)   Resolving deltas:  72% (1639/2275)   Resolving deltas:  73% (1676/2275)   Resolving deltas:  74% (1690/2275)   Resolving deltas:  75% (1717/2275)   Resolving deltas:  76% (1735/2275)   Resolving deltas:  77% (1759/2275)   Resolving deltas:  78% (1776/2275)   Resolving deltas:  79% (1811/2275)   Resolving deltas:  80% (1828/2275)   Resolving deltas:  81% (1843/2275)   Resolving deltas:  82% (1875/2275)   Resolving deltas:  83% (1895/2275)   Resolving deltas:  84% (1914/2275)   Resolving deltas:  85% (1934/2275)   Resolving deltas:  86% (1957/2275)   Resolving deltas:  87% (1983/2275)   Resolving deltas:  88% (2002/2275)   Resolving deltas:  89% (2033/2275)   Resolving deltas:  91% (2076/2275)   Resolving deltas:  92% (2096/2275)   Resolving deltas:  93% (2116/2275)   Resolving deltas:  94% (2148/2275)   Resolving deltas:  95% (2168/2275)   Resolving deltas:  96% (2185/2275)   Resolving deltas:  97% (2211/2275)   Resolving deltas:  99% (2265/2275)   Resolving deltas: 100% (2275/2275)   Resolving deltas: 100% (2275/2275), done.
+Checking connectivity... done.
+travis_time:end:0c6df8f8:start=1439684142514086493,finish=1439684143644654625,duration=1130568132[0K$ cd ShareX/ShareX
+travis_time:start:0767b5b7[0K$ git fetch origin +refs/pull/917/merge:
+remote: Counting objects: 17468, done.[K
+remote: Compressing objects:   0% (1/2749)   [Kremote: Compressing objects:   1% (28/2749)   [Kremote: Compressing objects:   2% (55/2749)   [Kremote: Compressing objects:   3% (83/2749)   [Kremote: Compressing objects:   4% (110/2749)   [Kremote: Compressing objects:   5% (138/2749)   [Kremote: Compressing objects:   6% (165/2749)   [Kremote: Compressing objects:   7% (193/2749)   [Kremote: Compressing objects:   8% (220/2749)   [Kremote: Compressing objects:   9% (248/2749)   [Kremote: Compressing objects:  10% (275/2749)   [Kremote: Compressing objects:  11% (303/2749)   [Kremote: Compressing objects:  12% (330/2749)   [Kremote: Compressing objects:  13% (358/2749)   [Kremote: Compressing objects:  14% (385/2749)   [Kremote: Compressing objects:  15% (413/2749)   [Kremote: Compressing objects:  16% (440/2749)   [Kremote: Compressing objects:  17% (468/2749)   [Kremote: Compressing objects:  18% (495/2749)   [Kremote: Compressing objects:  19% (523/2749)   [Kremote: Compressing objects:  20% (550/2749)   [Kremote: Compressing objects:  21% (578/2749)   [Kremote: Compressing objects:  22% (605/2749)   [Kremote: Compressing objects:  23% (633/2749)   [Kremote: Compressing objects:  24% (660/2749)   [Kremote: Compressing objects:  25% (688/2749)   [Kremote: Compressing objects:  26% (715/2749)   [Kremote: Compressing objects:  27% (743/2749)   [Kremote: Compressing objects:  28% (770/2749)   [Kremote: Compressing objects:  29% (798/2749)   [Kremote: Compressing objects:  30% (825/2749)   [Kremote: Compressing objects:  31% (853/2749)   [Kremote: Compressing objects:  32% (880/2749)   [Kremote: Compressing objects:  33% (908/2749)   [Kremote: Compressing objects:  34% (935/2749)   [Kremote: Compressing objects:  35% (963/2749)   [Kremote: Compressing objects:  36% (990/2749)   [Kremote: Compressing objects:  37% (1018/2749)   [Kremote: Compressing objects:  38% (1045/2749)   [Kremote: Compressing objects:  39% (1073/2749)   [Kremote: Compressing objects:  40% (1100/2749)   [Kremote: Compressing objects:  41% (1128/2749)   [Kremote: Compressing objects:  42% (1155/2749)   [Kremote: Compressing objects:  43% (1183/2749)   [Kremote: Compressing objects:  44% (1210/2749)   [Kremote: Compressing objects:  45% (1238/2749)   [Kremote: Compressing objects:  46% (1265/2749)   [Kremote: Compressing objects:  47% (1293/2749)   [Kremote: Compressing objects:  48% (1320/2749)   [Kremote: Compressing objects:  49% (1348/2749)   [Kremote: Compressing objects:  50% (1375/2749)   [Kremote: Compressing objects:  51% (1402/2749)   [Kremote: Compressing objects:  52% (1430/2749)   [Kremote: Compressing objects:  53% (1457/2749)   [Kremote: Compressing objects:  54% (1485/2749)   [Kremote: Compressing objects:  55% (1512/2749)   [Kremote: Compressing objects:  56% (1540/2749)   [Kremote: Compressing objects:  57% (1567/2749)   [Kremote: Compressing objects:  58% (1595/2749)   [Kremote: Compressing objects:  59% (1622/2749)   [Kremote: Compressing objects:  60% (1650/2749)   [Kremote: Compressing objects:  61% (1677/2749)   [Kremote: Compressing objects:  62% (1705/2749)   [Kremote: Compressing objects:  63% (1732/2749)   [Kremote: Compressing objects:  64% (1760/2749)   [Kremote: Compressing objects:  65% (1787/2749)   [Kremote: Compressing objects:  66% (1815/2749)   [Kremote: Compressing objects:  67% (1842/2749)   [Kremote: Compressing objects:  68% (1870/2749)   [Kremote: Compressing objects:  69% (1897/2749)   [Kremote: Compressing objects:  70% (1925/2749)   [Kremote: Compressing objects:  71% (1952/2749)   [Kremote: Compressing objects:  72% (1980/2749)   [Kremote: Compressing objects:  73% (2007/2749)   [Kremote: Compressing objects:  74% (2035/2749)   [Kremote: Compressing objects:  75% (2062/2749)   [Kremote: Compressing objects:  76% (2090/2749)   [Kremote: Compressing objects:  77% (2117/2749)   [Kremote: Compressing objects:  78% (2145/2749)   [Kremote: Compressing objects:  79% (2172/2749)   [Kremote: Compressing objects:  80% (2200/2749)   [Kremote: Compressing objects:  81% (2227/2749)   [Kremote: Compressing objects:  82% (2255/2749)   [Kremote: Compressing objects:  83% (2282/2749)   [Kremote: Compressing objects:  84% (2310/2749)   [Kremote: Compressing objects:  85% (2337/2749)   [Kremote: Compressing objects:  86% (2365/2749)   [Kremote: Compressing objects:  87% (2392/2749)   [Kremote: Compressing objects:  88% (2420/2749)   [Kremote: Compressing objects:  89% (2447/2749)   [Kremote: Compressing objects:  90% (2475/2749)   [Kremote: Compressing objects:  91% (2502/2749)   [Kremote: Compressing objects:  92% (2530/2749)   [Kremote: Compressing objects:  93% (2557/2749)   [Kremote: Compressing objects:  94% (2585/2749)   [Kremote: Compressing objects:  95% (2612/2749)   [Kremote: Compressing objects:  96% (2640/2749)   [Kremote: Compressing objects:  97% (2667/2749)   [Kremote: Compressing objects:  98% (2695/2749)   [Kremote: Compressing objects:  99% (2722/2749)   [Kremote: Compressing objects: 100% (2749/2749)   [Kremote: Compressing objects: 100% (2749/2749), done.[K
+Receiving objects:   0% (1/17468)   Receiving objects:   1% (175/17468)   Receiving objects:   2% (350/17468)   Receiving objects:   3% (525/17468)   Receiving objects:   4% (699/17468)   Receiving objects:   5% (874/17468)   Receiving objects:   6% (1049/17468)   Receiving objects:   7% (1223/17468)   Receiving objects:   8% (1398/17468)   Receiving objects:   9% (1573/17468)   Receiving objects:  10% (1747/17468)   Receiving objects:  11% (1922/17468)   Receiving objects:  12% (2097/17468)   Receiving objects:  13% (2271/17468)   Receiving objects:  14% (2446/17468)   Receiving objects:  15% (2621/17468)   Receiving objects:  16% (2795/17468)   Receiving objects:  17% (2970/17468)   Receiving objects:  18% (3145/17468)   Receiving objects:  19% (3319/17468)   Receiving objects:  20% (3494/17468)   Receiving objects:  21% (3669/17468)   Receiving objects:  22% (3843/17468)   Receiving objects:  23% (4018/17468)   Receiving objects:  24% (4193/17468)   Receiving objects:  25% (4367/17468)   Receiving objects:  26% (4542/17468)   Receiving objects:  27% (4717/17468)   Receiving objects:  28% (4892/17468)   Receiving objects:  29% (5066/17468)   Receiving objects:  30% (5241/17468)   Receiving objects:  31% (5416/17468)   Receiving objects:  32% (5590/17468)   Receiving objects:  33% (5765/17468)   Receiving objects:  34% (5940/17468)   Receiving objects:  35% (6114/17468)   Receiving objects:  36% (6289/17468)   Receiving objects:  37% (6464/17468)   Receiving objects:  38% (6638/17468)   Receiving objects:  39% (6813/17468)   Receiving objects:  40% (6988/17468)   Receiving objects:  41% (7162/17468)   Receiving objects:  42% (7337/17468)   Receiving objects:  43% (7512/17468)   Receiving objects:  44% (7686/17468)   Receiving objects:  45% (7861/17468)   Receiving objects:  46% (8036/17468)   Receiving objects:  47% (8210/17468)   Receiving objects:  48% (8385/17468)   Receiving objects:  49% (8560/17468)   Receiving objects:  50% (8734/17468)   Receiving objects:  51% (8909/17468)   Receiving objects:  52% (9084/17468)   Receiving objects:  53% (9259/17468)   Receiving objects:  54% (9433/17468)   Receiving objects:  55% (9608/17468)   Receiving objects:  56% (9783/17468)   Receiving objects:  57% (9957/17468)   Receiving objects:  58% (10132/17468)   Receiving objects:  59% (10307/17468)   Receiving objects:  60% (10481/17468)   Receiving objects:  61% (10656/17468)   Receiving objects:  62% (10831/17468)   Receiving objects:  63% (11005/17468)   Receiving objects:  64% (11180/17468)   Receiving objects:  65% (11355/17468)   Receiving objects:  66% (11529/17468)   Receiving objects:  67% (11704/17468)   Receiving objects:  68% (11879/17468)   Receiving objects:  69% (12053/17468)   Receiving objects:  70% (12228/17468)   Receiving objects:  71% (12403/17468)   Receiving objects:  72% (12577/17468)   Receiving objects:  73% (12752/17468)   Receiving objects:  74% (12927/17468)   Receiving objects:  75% (13101/17468)   Receiving objects:  76% (13276/17468)   Receiving objects:  77% (13451/17468)   Receiving objects:  78% (13626/17468)   Receiving objects:  79% (13800/17468)   Receiving objects:  80% (13975/17468)   Receiving objects:  81% (14150/17468)   Receiving objects:  82% (14324/17468)   Receiving objects:  83% (14499/17468)   Receiving objects:  84% (14674/17468)   Receiving objects:  85% (14848/17468)   Receiving objects:  86% (15023/17468)   Receiving objects:  87% (15198/17468)   Receiving objects:  88% (15372/17468)   Receiving objects:  89% (15547/17468)   Receiving objects:  90% (15722/17468)   Receiving objects:  91% (15896/17468)   Receiving objects:  92% (16071/17468)   Receiving objects:  93% (16246/17468)   Receiving objects:  94% (16420/17468)   Receiving objects:  95% (16595/17468)   Receiving objects:  96% (16770/17468)   Receiving objects:  97% (16944/17468)   Receiving objects:  98% (17119/17468)   Receiving objects:  99% (17294/17468)   remote: Total 17468 (delta 15115), reused 17008 (delta 14665), pack-reused 0[K
+Receiving objects: 100% (17468/17468)   Receiving objects: 100% (17468/17468), 18.64 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/15115)   Resolving deltas:   1% (236/15115)   Resolving deltas:   2% (324/15115)   Resolving deltas:   3% (457/15115)   Resolving deltas:   4% (611/15115)   Resolving deltas:   5% (781/15115)   Resolving deltas:   6% (1021/15115)   Resolving deltas:   7% (1061/15115)   Resolving deltas:   8% (1210/15115)   Resolving deltas:   9% (1369/15115)   Resolving deltas:  10% (1565/15115)   Resolving deltas:  11% (1698/15115)   Resolving deltas:  12% (1831/15115)   Resolving deltas:  13% (1968/15115)   Resolving deltas:  14% (2129/15115)   Resolving deltas:  15% (2384/15115)   Resolving deltas:  16% (2518/15115)   Resolving deltas:  17% (2612/15115)   Resolving deltas:  18% (2738/15115)   Resolving deltas:  19% (2920/15115)   Resolving deltas:  20% (3025/15115)   Resolving deltas:  21% (3176/15115)   Resolving deltas:  22% (3371/15115)   Resolving deltas:  23% (3479/15115)   Resolving deltas:  24% (3710/15115)   Resolving deltas:  25% (3835/15115)   Resolving deltas:  26% (3971/15115)   Resolving deltas:  27% (4096/15115)   Resolving deltas:  28% (4234/15115)   Resolving deltas:  29% (4424/15115)   Resolving deltas:  30% (4536/15115)   Resolving deltas:  31% (4800/15115)   Resolving deltas:  32% (4856/15115)   Resolving deltas:  33% (4988/15115)   Resolving deltas:  34% (5153/15115)   Resolving deltas:  35% (5291/15115)   Resolving deltas:  36% (5469/15115)   Resolving deltas:  37% (5603/15115)   Resolving deltas:  38% (5747/15115)   Resolving deltas:  39% (5922/15115)   Resolving deltas:  40% (6054/15115)   Resolving deltas:  41% (6203/15115)   Resolving deltas:  43% (6507/15115)   Resolving deltas:  44% (6654/15115)   Resolving deltas:  45% (6823/15115)   Resolving deltas:  46% (7047/15115)   Resolving deltas:  47% (7194/15115)   Resolving deltas:  48% (7256/15115)   Resolving deltas:  49% (7515/15115)   Resolving deltas:  50% (7672/15115)   Resolving deltas:  51% (7757/15115)   Resolving deltas:  52% (7879/15115)   Resolving deltas:  53% (8058/15115)   Resolving deltas:  55% (8364/15115)   Resolving deltas:  56% (8583/15115)   Resolving deltas:  58% (8783/15115)   Resolving deltas:  60% (9085/15115)   Resolving deltas:  61% (9223/15115)   Resolving deltas:  62% (9407/15115)   Resolving deltas:  66% (10042/15115)   Resolving deltas:  67% (10188/15115)   Resolving deltas:  68% (10340/15115)   Resolving deltas:  69% (10439/15115)   Resolving deltas:  71% (10873/15115)   Resolving deltas:  72% (10958/15115)   Resolving deltas:  74% (11218/15115)   Resolving deltas:  75% (11428/15115)   Resolving deltas:  76% (11564/15115)   Resolving deltas:  78% (11823/15115)   Resolving deltas:  79% (12011/15115)   Resolving deltas:  80% (12111/15115)   Resolving deltas:  81% (12284/15115)   Resolving deltas:  82% (12403/15115)   Resolving deltas:  83% (12560/15115)   Resolving deltas:  84% (12789/15115)   Resolving deltas:  85% (12853/15115)   Resolving deltas:  86% (13037/15115)   Resolving deltas:  87% (13193/15115)   Resolving deltas:  88% (13305/15115)   Resolving deltas:  89% (13454/15115)   Resolving deltas:  90% (13604/15115)   Resolving deltas:  91% (13763/15115)   Resolving deltas:  92% (13925/15115)   Resolving deltas:  93% (14068/15115)   Resolving deltas:  94% (14211/15115)   Resolving deltas:  95% (14363/15115)   Resolving deltas:  96% (14519/15115)   Resolving deltas:  97% (14664/15115)   Resolving deltas:  98% (14819/15115)   Resolving deltas:  99% (14993/15115)   Resolving deltas: 100% (15115/15115)   Resolving deltas: 100% (15115/15115), completed with 354 local objects.
+From git://github.com/ShareX/ShareX
+ * branch            refs/pull/917/merge -> FETCH_HEAD
+travis_time:end:0767b5b7:start=1439684143648209919,finish=1439684145740808148,duration=2092598229[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+[33;1mThis job is running on container-based infrastructure, which does not allow use of 'sudo', setuid and setguid executables.[0m
+[33;1mIf you require sudo, add 'sudo: required' to your .travis.yml[0m
+[33;1mSee http://docs.travis-ci.com/user/workers/container-based-infrastructure/ for details.[0m
+$ export TRAVIS_SOLUTION=ShareX.sln
+travis_time:start:0475de57[0K$ mono --version
+Mono JIT compiler version 4.0.3 (Stable 4.0.3.20/d6946b4 Tue Aug  4 09:43:57 UTC 2015)
+Copyright (C) 2002-2014 Novell, Inc, Xamarin Inc and Contributors. www.mono-project.com
+	TLS:           __thread
+	SIGSEGV:       altstack
+	Notifications: epoll
+	Architecture:  amd64
+	Disabled:      none
+	Misc:          softdebug 
+	LLVM:          supported, not enabled.
+	GC:            sgen
+travis_time:end:0475de57:start=1439684148222718477,finish=1439684148226909054,duration=4190577[0Ktravis_time:start:0008393d[0K$ xbuild /version
+XBuild Engine Version 12.0
+Mono, Version 4.0.3.0
+Copyright (C) 2005-2013 Various Mono authors
+travis_time:end:0008393d:start=1439684148230021975,finish=1439684148260455464,duration=30433489[0K
+travis_time:start:02427aaa[0K$ nuget restore ShareX.sln
+[?1h=[6n[H[2JInstalling 'System.Net.FtpClient 1.0.5281.14359'.
+Installing 'QrCode.Net 0.4.0.0'.
+Installing 'Newtonsoft.Json 7.0.1'.
+Installing 'MegaApiClient 1.1.1'.
+Installing 'ImageListView 11.0.1'.
+Installing 'SevenZipSharp 0.64'.
+Installing 'AWSSDK.Core 3.1.0.1'.
+Installing 'AWSSDK.S3 3.1.1.1'.
+Installing 'Portable.BouncyCastle 1.7.0.2'.
+Installing 'SSH.NET 2014.4.6-beta2'.
+Successfully installed 'SevenZipSharp 0.64'.
+Successfully installed 'MegaApiClient 1.1.1'.
+Successfully installed 'QrCode.Net 0.4.0.0'.
+Successfully installed 'Newtonsoft.Json 7.0.1'.
+Successfully installed 'ImageListView 11.0.1'.
+Successfully installed 'Portable.BouncyCastle 1.7.0.2'.
+Successfully installed 'AWSSDK.S3 3.1.1.1'.
+Successfully installed 'SSH.NET 2014.4.6-beta2'.
+Successfully installed 'AWSSDK.Core 3.1.0.1'.
+Successfully installed 'System.Net.FtpClient 1.0.5281.14359'.
+[?1l>[39;49mtravis_time:end:02427aaa:start=1439684148263707922,finish=1439684161907034223,duration=13643326301[0Ktravis_time:start:1646df87[0K$ xbuild /p:Configuration=Release ShareX.sln
+XBuild Engine Version 12.0
+Mono, Version 4.0.3.0
+Copyright (C) 2005-2013 Various Mono authors
+
+Build started 8/16/2015 12:16:01 AM.
+__________________________________________________
+/home/travis/build/ShareX/ShareX/ShareX.sln:  warning : Don't know how to handle GlobalSection ExtensibilityGlobals, Ignoring.
+Project "/home/travis/build/ShareX/ShareX/ShareX.sln" (default target(s)):
+	Target ValidateSolutionConfiguration:
+		Building solution configuration "Release|Any CPU".
+	Target Build:
+		Project "/home/travis/build/ShareX/ShareX/Greenshot.ImageEditor/Greenshot.ImageEditor.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Release Platform: AnyCPU
+				Created directory "bin/Release/"
+				Created directory "obj/Release/"
+			Target GenerateResources:
+				Tool /usr/lib/mono/4.5/resgen.exe execution started with arguments: /useSourcePath /compile "Properties/Resources.resx,obj/Release/Greenshot.Properties.Resources.resources" 
+				Tool /usr/lib/mono/4.5/resgen.exe execution started with arguments: /useSourcePath /compile "Core/GreenshotResources.resx,obj/Release/GreenshotPlugin.Core.GreenshotResources.resources" 
+				Tool /usr/lib/mono/4.5/resgen.exe execution started with arguments: /useSourcePath /compile "Forms/ColorDialog.resx,obj/Release/Greenshot.ColorDialog.resources" 
+				Tool /usr/lib/mono/4.5/resgen.exe execution started with arguments: /useSourcePath /compile "Forms/ImageEditorForm.resx,obj/Release/Greenshot.ImageEditorForm.resources" 
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target CoreCompile:
+				Tool /usr/lib/mono/4.5/mcs.exe execution started with arguments: /noconfig /debug:None /debug- /optimize+ /out:obj/Release/Greenshot.ImageEditor.dll /resource:obj/Release/Greenshot.Properties.Resources.resources /resource:obj/Release/GreenshotPlugin.Core.GreenshotResources.resources /resource:obj/Release/Greenshot.ColorDialog.resources /resource:obj/Release/Greenshot.ImageEditorForm.resources Configuration/EditorConfiguration.cs Controls/AnimatingForm.cs Controls/BackgroundForm.cs Controls/BackgroundForm.designer.cs Controls/BindableToolStripComboBox.cs Controls/BindableToolStripButton.cs Controls/BindableToolStripDropDownButton.cs Controls/ColorButton.cs Controls/FormWithoutActivation.cs Controls/GreenshotButton.cs Controls/GreenshotCheckBox.cs Controls/GreenshotColumnSorter.cs Controls/GreenshotComboBox.cs Controls/GreenshotForm.cs Controls/GreenshotGroupBox.cs Controls/GreenshotLabel.cs Controls/GreenshotRadioButton.cs Controls/GreenshotTabPage.cs Controls/GreenshotTextBox.cs Controls/GreenshotToolDropDownButton.cs Controls/GreenshotToolStripButton.cs Controls/GreenshotToolStripLabel.cs Controls/GreenshotToolStripMenuItem.cs Controls/IGreenshotConfigBindable.cs Controls/IGreenshotLanguageBindable.cs Controls/NonJumpingPanel.cs Controls/PleaseWaitForm.cs Controls/PleaseWaitForm.designer.cs Controls/QualityDialog.cs Controls/QualityDialog.designer.cs Controls/SaveImageFileDialog.cs Controls/ToolStripColorButton.cs Controls/FontFamilyComboBox.cs Controls/ToolStripNumericUpDown.cs Controls/ToolStripEx.cs Controls/MenuStripEx.cs Controls/Pipette.cs Core/BinaryStructHelper.cs Core/Cache.cs Core/ClipboardHelper.cs Configuration/CoreConfiguration.cs Core/Effects.cs Core/EncryptionHelper.cs Core/EnumExtensions.cs Core/FastBitmap.cs Core/FilenameHelper.cs Core/GreenshotResources.cs Core/ImageHelper.cs Core/ImageOutput.cs Core/Objects.cs Core/QuantizerHelper.cs Core/WindowCapture.cs Core/WindowsHelper.cs Drawing/ArrowContainer.cs Drawing/ImageContainer.cs Drawing/CropContainer.cs Drawing/CursorContainer.cs Drawing/DrawableContainer.cs Drawing/DrawableContainerList.cs Drawing/EllipseContainer.cs Drawing/Fields/AbstractFieldHolderWithChildren.cs Drawing/Fields/Binding/AbstractBindingConverter.cs Drawing/Fields/Binding/BidirectionalBinding.cs Drawing/Fields/Binding/DecimalDoublePercentageConverter.cs Drawing/Fields/Binding/DecimalFloatConverter.cs Drawing/Fields/Binding/DecimalIntConverter.cs Drawing/Fields/Binding/IBindingConverter.cs Drawing/Fields/Binding/IBindingValidator.cs Drawing/Fields/Binding/NotNullValidator.cs Drawing/FilterContainer.cs Drawing/Filters/AbstractFilter.cs Drawing/Filters/BrightnessFilter.cs Drawing/Filters/GrayscaleFilter.cs Drawing/Filters/HighlightFilter.cs Drawing/Filters/IFilter.cs Drawing/Filters/MagnifierFilter.cs Drawing/Filters/PixelizationFilter.cs Drawing/Filters/BlurFilter.cs Drawing/Gripper.cs Drawing/HighlightContainer.cs Drawing/IconContainer.cs Drawing/LineContainer.cs Drawing/Fields/AbstractFieldHolder.cs Drawing/Fields/Field.cs Drawing/Fields/FieldType.cs Drawing/Fields/IFieldHolder.cs Drawing/Fields/FieldAggregator.cs Drawing/ObfuscateContainer.cs Drawing/FreehandContainer.cs Drawing/RectangleContainer.cs Drawing/SpeechbubbleContainer.cs Drawing/StepLabelContainer.cs Drawing/Surface.cs Drawing/TextContainer.cs Forms/AboutForm.cs Forms/AboutForm.Designer.cs Forms/BaseForm.cs Properties/AssemblyInfo.cs Helpers/LOG.cs Properties/Resources.Designer.cs UnmanagedHelpers/DWM.cs UnmanagedHelpers/Enumerations.cs UnmanagedHelpers/GDI32.cs UnmanagedHelpers/GDIplus.cs UnmanagedHelpers/Kernel32.cs UnmanagedHelpers/PsAPI.cs UnmanagedHelpers/Shell32.cs UnmanagedHelpers/Structs.cs UnmanagedHelpers/User32.cs UnmanagedHelpers/Win32Errors.cs UnmanagedHelpers/WinMM.cs Forms/DropShadowSettingsForm.cs Forms/DropShadowSettingsForm.Designer.cs Forms/ImageEditorForm.cs Forms/ImageEditorForm.Designer.cs Forms/ResizeSettingsForm.cs Forms/ResizeSettingsForm.Designer.cs Forms/TornEdgeSettingsForm.cs Forms/TornEdgeSettingsForm.Designer.cs Forms/MovableShowColorForm.cs Forms/MovableShowColorForm.Designer.cs Helpers/Colors.cs Helpers/GeometryHelper.cs IniFile/IniAttributes.cs IniFile/IniConfig.cs IniFile/IniReader.cs IniFile/IniSection.cs IniFile/IniValue.cs Interfaces/Capture.cs Interfaces/Drawing/Container.cs Interfaces/Forms/ImageEditor.cs Interfaces/Generic.cs Interfaces/IDestination.cs Interfaces/IProcessor.cs Interfaces/Plugin/PluginInterfaces.cs Interop/Base.cs Interop/ComProgIdAttribute.cs Interop/COMWrapper.cs Interop/IAppVisibility.cs Interop/IOleCommandTarget.cs Interop/IOleWindow.cs Interop/IServiceProvider.cs Memento/AddElementMemento.cs Memento/ChangeFieldHolderMemento.cs Memento/DeleteElementMemento.cs Memento/TextChangeMemento.cs Memento/IMemento.cs Memento/DrawableContainerBoundsChangeMemento.cs Memento/SurfaceBackgroundChangeMemento.cs Helpers/GuiRectangle.cs Helpers/ScaleHelper.cs Helpers/ToolStripItemEndisabler.cs Forms/ColorDialog.Designer.cs Forms/ColorDialog.cs obj/Release/.NETFramework,Version=v4.0.AssemblyAttribute.cs /target:library /warnaserror- /unsafe+ /checked- /define:TRACE /nostdlib /platform:AnyCPU /reference:/usr/lib/mono/4.0/System.dll /reference:/usr/lib/mono/4.0/System.Drawing.dll /reference:/usr/lib/mono/4.0/System.Windows.Forms.dll /reference:/usr/lib/mono/4.0/System.Core.dll /reference:/usr/lib/mono/4.0/mscorlib.dll /warn:4
+CSC: error CS1902: Invalid debug option `None'. Valid options are `full' or `pdbonly'
+			Task "Csc" execution -- FAILED
+			Done building target "CoreCompile" in project "/home/travis/build/ShareX/ShareX/Greenshot.ImageEditor/Greenshot.ImageEditor.csproj".-- FAILED
+		Done building project "/home/travis/build/ShareX/ShareX/Greenshot.ImageEditor/Greenshot.ImageEditor.csproj".-- FAILED
+	Task "MSBuild" execution -- FAILED
+	Done building target "Build" in project "/home/travis/build/ShareX/ShareX/ShareX.sln".-- FAILED
+Done building project "/home/travis/build/ShareX/ShareX/ShareX.sln".-- FAILED
+
+Build FAILED.
+
+Warnings:
+
+/home/travis/build/ShareX/ShareX/ShareX.sln:  warning : Don't know how to handle GlobalSection ExtensibilityGlobals, Ignoring.
+
+Errors:
+
+/home/travis/build/ShareX/ShareX/ShareX.sln (default targets) ->
+(Build target) ->
+/home/travis/build/ShareX/ShareX/Greenshot.ImageEditor/Greenshot.ImageEditor.csproj (default targets) ->
+/usr/lib/mono/4.5/Microsoft.CSharp.targets (CoreCompile target) ->
+
+	CSC: error CS1902: Invalid debug option `None'. Valid options are `full' or `pdbonly'
+
+	 1 Warning(s)
+	 1 Error(s)
+
+Time Elapsed 00:00:01.1547070
+travis_time:end:1646df87:start=1439684161910700340,finish=1439684163170123124,duration=1259422784[0K
+[31;1mThe command "xbuild /p:Configuration=Release ShareX.sln" exited with 1.[0m
+
+Done. Your build exited with 1.

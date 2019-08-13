@@ -1,0 +1,427 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 115d2746-ecab-40c0-a3e4-43b56f018e99@1.worker-org-78c6f46d9c-qpsnw.gce-production-1
+version: v6.2.1 https://github.com/travis-ci/worker/tree/4e3246c044eb4915c2378ffacd0b3d3ed0136bba
+instance: travis-job-92649394-8dc6-493d-9c98-30372517e095 travis-ci-onion-1803-containers-1542208204-ad01dca (via amqp)
+startup: 7.197059074s
+travis_fold:end:worker_info[0Ktravis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: bed33b4e-2f06-48ff-b75d-5d4d1ba1074a@1.worker-org-78c6f46d9c-757jc.gce-production-1
+version: v6.2.1 https://github.com/travis-ci/worker/tree/4e3246c044eb4915c2378ffacd0b3d3ed0136bba
+instance: travis-job-aa2a6a0d-2a44-4c8e-a172-b22388adc766 travis-ci-onion-1803-containers-1542208204-ad01dca (via amqp)
+startup: 6.214331666s
+travis_fold:end:worker_info[0KSecret environment variables are not obfuscated on Windows, please refer to our documentation: https://docs.travis-ci.com/user/best-practices-security[0m
+
+travis_fold:start:git.checkout[0Ktravis_time:start:12c07b30[0K$ git clone --depth=1 https://github.com/jwilm/alacritty.git jwilm/alacritty
+Cloning into 'jwilm/alacritty'...
+Secret environment variables are not obfuscated on Windows, please refer to our documentation: https://docs.travis-ci.com/user/best-practices-security[0m
+
+travis_fold:start:git.checkout[0Ktravis_time:start:04c2d1e8[0K$ git clone --depth=1 https://github.com/jwilm/alacritty.git jwilm/alacritty
+Cloning into 'jwilm/alacritty'...
+travis_time:end:12c07b30:start=1564011813546334800,finish=1564011817234092400,duration=3687757600[0K$ cd jwilm/alacritty
+travis_time:start:0b62a0ba[0K$ git fetch origin +refs/pull/2676/merge:
+travis_time:end:04c2d1e8:start=1564012958188465000,finish=1564012962284280300,duration=4095815300[0K$ cd jwilm/alacritty
+travis_time:start:00372bde[0K$ git fetch origin +refs/pull/2676/merge:
+travis_time:end:00372bde:start=1564012962345776000,finish=1564012968235621400,duration=5889845400[0K[31;1mThe command "git fetch origin +refs/pull/2676/merge:" failed and exited with 128 during .[0m
+
+Your build has been stopped.
+fatal: Couldn't find remote ref refs/pull/2676/merge
+
+[31;1mThe command "eval git fetch origin +refs/pull/2676/merge: " failed. Retrying, 2 of 3.[0m
+
+fatal: Couldn't find remote ref refs/pull/2676/merge
+
+[31;1mThe command "eval git fetch origin +refs/pull/2676/merge: " failed. Retrying, 3 of 3.[0m
+
+fatal: Couldn't find remote ref refs/pull/2676/merge
+
+[31;1mThe command "eval git fetch origin +refs/pull/2676/merge: " failed 3 times.[0m
+
+travis_time:end:0b62a0ba:start=1564011817287831000,finish=1564011818025014900,duration=737183900[0K$ git checkout -qf FETCH_HEAD
+From https://github.com/jwilm/alacritty
+ * branch            refs/pull/2676/merge -> FETCH_HEAD
+travis_fold:end:git.checkout[0K
+
+[33;1mSetting environment variables from .travis.yml[0m
+$ export CLIPPY=true
+
+travis_fold:start:rustup-install[0K[33;1mInstalling Rust[0m
+travis_time:start:02d37f14[0K$ curl -sSf https://build.travis-ci.org/files/rustup-init.sh | sh -s -- --default-toolchain=$TRAVIS_RUST_VERSION -y
+info: downloading installer
+info: syncing channel updates for 'stable-x86_64-pc-windows-msvc'
+info: latest update on 2019-07-04, rust version 1.36.0 (a53f9df32 2019-07-03)
+info: downloading component 'rustc'
+info: downloading component 'rust-std'
+info: downloading component 'cargo'
+info: downloading component 'rust-docs'
+info: installing component 'rustc'
+info: installing component 'rust-std'
+info: installing component 'cargo'
+info: installing component 'rust-docs'
+Closing 18845 deferred file handles
+
+  stable installed - rustc 1.36.0 (a53f9df32 2019-07-03)
+
+
+Rust is installed now. Great!
+
+To get started you need Cargo's bin directory (%USERPROFILE%\.cargo\bin) in 
+your PATH environment variable. Future applications will automatically have the
+correct environment, but you may need to restart your current shell.
+travis_time:end:02d37f14:start=1564011819387476400,finish=1564011989327571100,duration=169940094700[0K$ export PATH=${TRAVIS_HOME}/.cargo/bin:$PATH
+travis_fold:end:rustup-install[0K$ rustc --version
+rustc 1.36.0 (a53f9df32 2019-07-03)
+$ rustup --version
+rustup 1.18.3 (435397f48 2019-05-22)
+$ cargo --version
+cargo 1.36.0 (c4fcfb725 2019-05-15)
+
+travis_fold:start:install[0Ktravis_time:start:226811e5[0K$ ci/install.sh
+info: default toolchain set to 'stable'
+info: downloading component 'clippy'
+info: installing component 'clippy'
+travis_time:end:226811e5:start=1564011989722506700,finish=1564011990906983300,duration=1184476600[0Ktravis_fold:end:install[0Ktravis_time:start:08955910[0K$ ci/script.sh
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded base64 v0.10.1
+  Downloaded mio v0.6.19
+  Downloaded mio-extras v2.0.5
+  Downloaded miow v0.3.3
+  Downloaded mio-anonymous-pipes v0.1.0
+  Downloaded serde_derive v1.0.94
+  Downloaded static_assertions v0.3.3
+  Downloaded parking_lot v0.7.1
+  Downloaded url v1.7.2
+  Downloaded euclid v0.19.9
+  Downloaded embed-resource v1.2.1
+  Downloaded vte v0.3.3
+  Downloaded zip v0.5.2
+  Downloaded env_logger v0.6.2
+  Downloaded named_pipe v0.3.0
+  Downloaded rustc_tools_util v0.2.0
+  Downloaded image v0.21.2
+  Downloaded log v0.4.7
+  Downloaded libc v0.2.60
+  Downloaded mio-named-pipes v0.1.6
+  Downloaded notify v4.0.12
+  Downloaded serde_yaml v0.8.9
+  Downloaded widestring v0.4.0
+  Downloaded serde v1.0.94
+  Downloaded winpty-sys v0.4.3
+  Downloaded gl_generator v0.11.0
+  Downloaded time v0.1.42
+  Downloaded glutin v0.21.0
+  Downloaded dunce v1.0.0
+  Downloaded errno v0.2.4
+  Downloaded fnv v1.0.6
+  Downloaded dirs v1.0.5
+  Downloaded serde_json v1.0.40
+  Downloaded terminfo v0.6.1
+  Downloaded winapi v0.3.7
+  Downloaded dwrote v0.9.0
+  Downloaded http_req v0.5.1
+  Downloaded tempfile v3.1.0
+  Downloaded clap v2.33.0
+  Downloaded bitflags v1.1.0
+  Downloaded crossbeam-channel v0.3.8
+  Downloaded foreign-types v0.4.0
+  Downloaded lazy_static v1.3.0
+  Downloaded quote v0.6.13
+  Downloaded euclid_macros v0.1.0
+  Downloaded glutin_wgl_sys v0.1.3
+  Downloaded parking_lot_core v0.4.0
+  Downloaded num-iter v0.1.39
+  Downloaded scoped_threadpool v0.1.9
+  Downloaded miow v0.2.1
+  Downloaded spsc-buffer v0.1.1
+  Downloaded walkdir v2.2.8
+  Downloaded dtoa v0.4.4
+  Downloaded phf v0.7.24
+  Downloaded matches v0.1.8
+  Downloaded nom v4.2.3
+  Downloaded native-tls v0.2.3
+  Downloaded bzip2 v0.3.3
+  Downloaded podio v0.1.6
+  Downloaded atty v0.2.13
+  Downloaded regex v1.1.9
+  Downloaded humantime v1.2.0
+  Downloaded cfg-if v0.1.9
+  Downloaded jpeg-decoder v0.1.15
+  Downloaded kernel32-sys v0.2.2
+  Downloaded itoa v0.4.4
+  Downloaded yaml-rust v0.4.3
+  Downloaded utf8parse v0.1.1
+  Downloaded rand v0.7.0
+  Downloaded xml-rs v0.8.0
+  Downloaded vec_map v0.8.1
+  Downloaded khronos_api v3.1.0
+  Downloaded num-rational v0.2.2
+  Downloaded slab v0.4.2
+  Downloaded phf_codegen v0.7.24
+  Downloaded winreg v0.5.1
+  Downloaded textwrap v0.11.0
+  Downloaded crc32fast v1.2.0
+  Downloaded net2 v0.2.33
+  Downloaded png v0.14.1
+  Downloaded vswhom v0.1.0
+  Downloaded strsim v0.8.0
+  Downloaded termcolor v1.0.5
+  Downloaded socket2 v0.3.9
+  Downloaded percent-encoding v1.0.1
+  Downloaded unicase v2.4.0
+  Downloaded idna v0.1.5
+  Downloaded winapi v0.2.8
+  Downloaded libloading v0.5.2
+  Downloaded winit v0.19.1
+  Downloaded bindgen v0.33.2
+  Downloaded linked-hash-map v0.5.2
+  Downloaded lazycell v1.2.1
+  Downloaded iovec v0.1.2
+  Downloaded gif v0.10.2
+  Downloaded num-traits v0.2.8
+  Downloaded libflate v0.1.25
+  Downloaded remove_dir_all v0.5.2
+  Downloaded cc v1.0.37
+  Downloaded ryu v1.0.0
+  Downloaded filetime v0.2.5
+  Downloaded tiff v0.2.2
+  Downloaded lzw v0.10.0
+  Downloaded lock_api v0.1.5
+  Downloaded glutin_egl_sys v0.1.3
+  Downloaded syn v0.15.39
+  Downloaded proc-macro2 v0.4.30
+  Downloaded byteorder v1.3.2
+  Downloaded crossbeam-utils v0.6.5
+  Downloaded spin v0.5.0
+  Downloaded foreign-types-macros v0.1.0
+  Downloaded owning_ref v0.4.0
+  Downloaded rustc_version v0.2.3
+  Downloaded inflate v0.4.5
+  Downloaded winapi-build v0.1.1
+  Downloaded version_check v0.1.5
+  Downloaded memchr v2.2.1
+  Downloaded unicode-bidi v0.3.4
+  Downloaded quote v0.3.15
+  Downloaded which v1.0.5
+  Downloaded getrandom v0.1.6
+  Downloaded rle-decode-fast v1.0.1
+  Downloaded aho-corasick v0.7.4
+  Downloaded wincolor v1.0.1
+  Downloaded utf8-ranges v1.0.3
+  Downloaded backtrace v0.3.30
+  Downloaded ws2_32-sys v0.2.1
+  Downloaded winapi-util v0.1.2
+  Downloaded rand v0.6.5
+  Downloaded cexpr v0.2.3
+  Downloaded schannel v0.1.15
+  Downloaded take_mut v0.2.2
+  Downloaded unicode-normalization v0.1.8
+  Downloaded regex-syntax v0.6.8
+  Downloaded scopeguard v0.3.3
+  Downloaded phf_shared v0.7.24
+  Downloaded clang-sys v0.22.0
+  Downloaded bzip2-sys v0.1.7
+  Downloaded thread_local v0.3.6
+  Downloaded unicode-xid v0.1.0
+  Downloaded color_quant v1.0.1
+  Downloaded env_logger v0.5.13
+  Downloaded rand_core v0.5.0
+  Downloaded vswhom-sys v0.1.0
+  Downloaded same-file v1.0.5
+  Downloaded rand_chacha v0.2.0
+  Downloaded num-integer v0.1.41
+  Downloaded num-derive v0.2.5
+  Downloaded foreign-types-shared v0.2.0
+  Downloaded quick-error v1.2.2
+  Downloaded adler32 v1.0.3
+  Downloaded regex v0.2.11
+  Downloaded peeking_take_while v0.1.2
+  Downloaded phf_generator v0.7.24
+  Downloaded deflate v0.7.20
+  Downloaded rayon v1.1.0
+  Downloaded autocfg v0.1.4
+  Downloaded smallvec v0.6.10
+  Downloaded either v1.5.2
+  Downloaded stable_deref_trait v1.1.1
+  Downloaded rand_core v0.4.0
+  Downloaded rand_chacha v0.1.1
+  Downloaded rand_os v0.1.3
+  Downloaded siphasher v0.2.3
+  Downloaded rustc-demangle v0.1.15
+  Downloaded glob v0.2.11
+  Downloaded nom v3.2.1
+  Downloaded rand_xorshift v0.1.1
+  Downloaded regex-syntax v0.5.6
+  Downloaded c2-chacha v0.2.2
+  Downloaded rand_hc v0.1.0
+  Downloaded ucd-util v0.1.3
+  Downloaded aho-corasick v0.6.10
+  Downloaded semver v0.9.0
+  Downloaded rand_isaac v0.1.1
+  Downloaded backtrace-sys v0.1.30
+  Downloaded rand_pcg v0.1.2
+  Downloaded rand_jitter v0.1.4
+  Downloaded rayon-core v1.5.0
+  Downloaded crossbeam-deque v0.6.3
+  Downloaded semver-parser v0.7.0
+  Downloaded ppv-lite86 v0.2.5
+  Downloaded memchr v1.0.2
+  Downloaded rand_core v0.3.1
+  Downloaded crossbeam-queue v0.1.2
+  Downloaded num_cpus v1.10.1
+  Downloaded crossbeam-epoch v0.7.1
+  Downloaded clipboard-win v2.2.0
+  Downloaded unicode-width v0.1.5
+  Downloaded memoffset v0.2.1
+  Downloaded arrayvec v0.4.11
+  Downloaded nodrop v0.1.13
+   Compiling arrayvec v0.4.11
+   Compiling spin v0.5.0
+   Compiling nodrop v0.1.13
+   Compiling cfg-if v0.1.9
+   Compiling libc v0.2.60
+   Compiling memoffset v0.2.1
+   Compiling scopeguard v0.3.3
+   Compiling rayon-core v1.5.0
+   Compiling winapi v0.3.7
+   Compiling either v1.5.2
+   Compiling memchr v2.2.1
+   Compiling autocfg v0.1.4
+   Compiling proc-macro2 v0.4.30
+   Compiling regex v1.1.9
+   Compiling bitflags v1.1.0
+   Compiling rand_core v0.4.0
+   Compiling glob v0.2.11
+   Compiling unicode-xid v0.1.0
+   Compiling ucd-util v0.1.3
+   Compiling log v0.4.7
+   Compiling ppv-lite86 v0.2.5
+   Compiling syn v0.15.39
+   Compiling quick-error v1.2.2
+   Compiling semver-parser v0.7.0
+   Compiling regex v0.2.11
+   Compiling crc32fast v1.2.0
+   Compiling getrandom v0.1.6
+   Compiling khronos_api v3.1.0
+   Compiling version_check v0.1.5
+   Compiling byteorder v1.3.2
+   Compiling utf8-ranges v1.0.3
+   Compiling unicode-width v0.1.5
+   Compiling num-derive v0.2.5
+   Compiling siphasher v0.2.3
+   Compiling strsim v0.8.0
+   Compiling vec_map v0.8.1
+   Compiling native-tls v0.2.3
+   Compiling bindgen v0.33.2
+   Compiling winapi-build v0.1.1
+   Compiling adler32 v1.0.3
+   Compiling quote v0.3.15
+   Compiling take_mut v0.2.2
+   Compiling peeking_take_while v0.1.2
+   Compiling rle-decode-fast v1.0.1
+   Compiling xml-rs v0.8.0
+   Compiling podio v0.1.6
+    Checking stable_deref_trait v1.1.1
+    Checking winapi v0.2.8
+    Checking lzw v0.10.0
+    Checking color_quant v1.0.1
+   Compiling serde v1.0.94
+    Checking smallvec v0.6.10
+    Checking matches v0.1.8
+    Checking scoped_threadpool v0.1.9
+    Checking rustc-demangle v0.1.15
+    Checking linked-hash-map v0.5.2
+    Checking slab v0.4.2
+    Checking foreign-types-shared v0.2.0
+   Compiling ryu v1.0.0
+    Checking widestring v0.4.0
+    Checking percent-encoding v1.0.1
+    Checking dtoa v0.4.4
+    Checking fnv v1.0.6
+    Checking spsc-buffer v0.1.1
+    Checking lazycell v1.2.1
+   Compiling rustc_tools_util v0.2.0
+    Checking utf8parse v0.1.1
+    Checking dunce v1.0.0
+    Checking static_assertions v0.3.3
+    Checking itoa v0.4.4
+   Compiling lazy_static v1.3.0
+    Checking filetime v0.2.5
+   Compiling rand_chacha v0.1.1
+   Compiling num-traits v0.2.8
+   Compiling rand_pcg v0.1.2
+   Compiling rand v0.6.5
+   Compiling num-integer v0.1.41
+   Compiling rand_chacha v0.2.0
+   Compiling num-iter v0.1.39
+   Compiling num-rational v0.2.2
+   Compiling backtrace v0.3.30
+   Compiling rand_core v0.3.1
+   Compiling clang-sys v0.22.0
+   Compiling regex-syntax v0.6.8
+   Compiling regex-syntax v0.5.6
+   Compiling humantime v1.2.0
+   Compiling semver v0.9.0
+   Compiling rand_core v0.5.0
+   Compiling unicase v2.4.0
+   Compiling nom v4.2.3
+   Compiling textwrap v0.11.0
+   Compiling phf_shared v0.7.24
+    Checking iovec v0.1.2
+   Compiling ws2_32-sys v0.2.1
+   Compiling kernel32-sys v0.2.2
+    Checking inflate v0.4.5
+    Checking owning_ref v0.4.0
+    Checking gif v0.10.2
+    Checking unicode-normalization v0.1.8
+    Checking unicode-bidi v0.3.4
+    Checking yaml-rust v0.4.3
+    Checking vte v0.3.3
+   Compiling alacritty v0.3.3 (C:\Users\travis\build\jwilm\alacritty\alacritty)
+    Checking crossbeam-utils v0.6.5
+    Checking thread_local v0.3.6
+   Compiling c2-chacha v0.2.2
+   Compiling rand_xorshift v0.1.1
+   Compiling rand_isaac v0.1.1
+   Compiling rand_hc v0.1.0
+   Compiling num_cpus v1.10.1
+   Compiling memchr v1.0.2
+   Compiling which v1.0.5
+    Checking rand_jitter v0.1.4
+    Checking rand_os v0.1.3
+    Checking net2 v0.2.33
+    Checking winapi-util v0.1.2
+    Checking socket2 v0.3.9
+    Checking clipboard-win v2.2.0
+    Checking errno v0.2.4
+    Checking atty v0.2.13
+    Checking dirs v1.0.5
+    Checking time v0.1.42
+   Compiling schannel v0.1.15
+   Compiling winreg v0.5.1
+   Compiling remove_dir_all v0.5.2
+   Compiling aho-corasick v0.7.4
+   Compiling aho-corasick v0.6.10
+    Checking named_pipe v0.3.0
+   Compiling gl_generator v0.11.0
+   Compiling libflate v0.1.25
+    Checking deflate v0.7.20
+    Checking base64 v0.10.1
+   Compiling quote v0.6.13
+    Checking serde_json v1.0.40
+   Compiling rustc_version v0.2.3
+    Checking lock_api v0.1.5
+    Checking phf v0.7.24
+    Checking idna v0.1.5
+    Checking serde_yaml v0.8.9
+    Checking crossbeam-epoch v0.7.1
+    Checking crossbeam-queue v0.1.2
+    Checking crossbeam-channel v0.3.8
+   Compiling nom v3.2.1
+    Checking same-file v1.0.5
+    Checking wincolor v1.0.1
+    Checking miow v0.2.1
+    Checking miow v0.3.3
+    Checking copypasta v0.6.0 (C:\Users\travis\build\jwilm\alacritty\copypasta)
+    Checking clap v2.33.0
+   Compiling glutin_wgl_sys v0.1.3
+   Compiling glutin_egl_sys v0.1.3
+   Compiling alacritty_terminal v0.3.3 (C:\Users\travis\build\jwilm\alacritty\alacritty_terminal)

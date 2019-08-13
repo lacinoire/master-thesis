@@ -1,0 +1,527 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: c49a8782-15ba-41db-b6e5-8085b45dbf21@1.worker-org-5dcc948c89-s9tds.gce-production-2
+version: v6.2.1 https://github.com/travis-ci/worker/tree/4e3246c044eb4915c2378ffacd0b3d3ed0136bba
+instance: travis-job-e43ff87f-476b-4c1d-abdf-82d81bfdb015 precise-php-stable-alternative (via amqp)
+startup: 7.288972303s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: php
+Build group: stable
+Build dist: precise
+Build id: 566643668
+Job id: 566643669
+Runtime kernel version: 3.13.0-115-generic
+travis-build version: 65949ed1e
+[34m[1mBuild image provisioning date and time[0m
+Tue Apr 11 21:48:56 UTC 2017
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-115-generic
+[34m[1mCookbooks Version[0m
+cc4eb5e https://github.com/travis-ci/travis-cookbooks/tree/cc4eb5e
+[34m[1mGit version[0m
+git version 1.8.5.6
+[34m[1mbash version[0m
+GNU bash, version 4.2.25(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2011 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.2.6
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.7.4
+[34m[1mmysql --version[0m
+mysql  Ver 14.14 Distrib 5.5.54, for debian-linux-gnu (x86_64) using readline 6.2
+[34m[1mPre-installed PostgreSQL versions[0m
+9.1.24
+9.2.20
+9.3.16
+9.4.11
+9.5.6
+[34m[1mRedis version[0m
+redis-server 3.0.7
+[34m[1mriak version[0m
+2.0.2
+[34m[1mmemcached version[0m
+1.4.13
+[34m[1mMongoDB version[0m
+MongoDB 2.4.14
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 38.4.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_80, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "3.13.0-115-generic", arch: "amd64", family: "unix"
+[34m[1mphpenv versions[0m
+* system (set by /home/travis/.phpenv/version)
+  5.3.29
+  5.3.3
+  5.4
+  5.4.45
+  5.5.29
+  5.5.9
+  5.6.13
+travis_fold:end:system_info[0K
+sudo: unable to resolve host travis-job-e43ff87f-476b-4c1d-abdf-82d81bfdb015
+sudo: unable to resolve host travis-job-e43ff87f-476b-4c1d-abdf-82d81bfdb015
+sudo: unable to resolve host travis-job-e43ff87f-476b-4c1d-abdf-82d81bfdb015
+travis_fold:start:docker_mtu[0Ktee: /etc/docker/daemon.json: No such file or directory
+docker: unrecognized service
+travis_fold:end:docker_mtu[0Ktravis_fold:start:resolvconf[0Kresolvconf stop/waiting
+resolvconf start/running
+travis_fold:end:resolvconf[0Ktravis_fold:start:apt[0K[33;1mInstalling APT Packages[0m
+travis_time:start:0fc36baa[0K$ travis_apt_get_update
+travis_time:end:0fc36baa:start=1564688908111084931,finish=1564688917233199871,duration=9122114940[0Ktravis_time:start:10489ff8[0K$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install parallel
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  parallel
+0 upgraded, 1 newly installed, 0 to remove and 35 not upgraded.
+Need to get 161 kB of archives.
+After this operation, 540 kB of additional disk space will be used.
+Get:1 http://us-central1.gce.archive.ubuntu.com/ubuntu precise-backports/universe amd64 parallel all 20121122-0ubuntu1~ubuntu12.04.1 [161 kB]
+Fetched 161 kB in 0s (1,205 kB/s)
+Selecting previously unselected package parallel.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 75907 files and directories currently installed.)
+Unpacking parallel (from .../parallel_20121122-0ubuntu1~ubuntu12.04.1_all.deb) ...
+Adding 'diversion of /usr/bin/parallel to /usr/bin/parallel.moreutils by parallel'
+Adding 'diversion of /usr/share/man/man1/parallel.1.gz to /usr/share/man/man1/parallel.moreutils.1.gz by parallel'
+Processing triggers for man-db ...
+Setting up parallel (20121122-0ubuntu1~ubuntu12.04.1) ...
+travis_time:end:10489ff8:start=1564688917236508926,finish=1564688920025555081,duration=2789046155[0Ktravis_fold:end:apt[0K
+travis_fold:start:git.checkout[0Ktravis_time:start:27ba28a4[0K$ git clone --depth=5 https://github.com/composer/composer.git composer/composer
+Cloning into 'composer/composer'...
+remote: Enumerating objects: 844, done.[K
+remote: Counting objects:   0% (1/844)   [Kremote: Counting objects:   1% (9/844)   [Kremote: Counting objects:   2% (17/844)   [Kremote: Counting objects:   3% (26/844)   [Kremote: Counting objects:   4% (34/844)   [Kremote: Counting objects:   5% (43/844)   [Kremote: Counting objects:   6% (51/844)   [Kremote: Counting objects:   7% (60/844)   [Kremote: Counting objects:   8% (68/844)   [Kremote: Counting objects:   9% (76/844)   [Kremote: Counting objects:  10% (85/844)   [Kremote: Counting objects:  11% (93/844)   [Kremote: Counting objects:  12% (102/844)   [Kremote: Counting objects:  13% (110/844)   [Kremote: Counting objects:  14% (119/844)   [Kremote: Counting objects:  15% (127/844)   [Kremote: Counting objects:  16% (136/844)   [Kremote: Counting objects:  17% (144/844)   [Kremote: Counting objects:  18% (152/844)   [Kremote: Counting objects:  19% (161/844)   [Kremote: Counting objects:  20% (169/844)   [Kremote: Counting objects:  21% (178/844)   [Kremote: Counting objects:  22% (186/844)   [Kremote: Counting objects:  23% (195/844)   [Kremote: Counting objects:  24% (203/844)   [Kremote: Counting objects:  25% (211/844)   [Kremote: Counting objects:  26% (220/844)   [Kremote: Counting objects:  27% (228/844)   [Kremote: Counting objects:  28% (237/844)   [Kremote: Counting objects:  29% (245/844)   [Kremote: Counting objects:  30% (254/844)   [Kremote: Counting objects:  31% (262/844)   [Kremote: Counting objects:  32% (271/844)   [Kremote: Counting objects:  33% (279/844)   [Kremote: Counting objects:  34% (287/844)   [Kremote: Counting objects:  35% (296/844)   [Kremote: Counting objects:  36% (304/844)   [Kremote: Counting objects:  37% (313/844)   [Kremote: Counting objects:  38% (321/844)   [Kremote: Counting objects:  39% (330/844)   [Kremote: Counting objects:  40% (338/844)   [Kremote: Counting objects:  41% (347/844)   [Kremote: Counting objects:  42% (355/844)   [Kremote: Counting objects:  43% (363/844)   [Kremote: Counting objects:  44% (372/844)   [Kremote: Counting objects:  45% (380/844)   [Kremote: Counting objects:  46% (389/844)   [Kremote: Counting objects:  47% (397/844)   [Kremote: Counting objects:  48% (406/844)   [Kremote: Counting objects:  49% (414/844)   [Kremote: Counting objects:  50% (422/844)   [Kremote: Counting objects:  51% (431/844)   [Kremote: Counting objects:  52% (439/844)   [Kremote: Counting objects:  53% (448/844)   [Kremote: Counting objects:  54% (456/844)   [Kremote: Counting objects:  55% (465/844)   [Kremote: Counting objects:  56% (473/844)   [Kremote: Counting objects:  57% (482/844)   [Kremote: Counting objects:  58% (490/844)   [Kremote: Counting objects:  59% (498/844)   [Kremote: Counting objects:  60% (507/844)   [Kremote: Counting objects:  61% (515/844)   [Kremote: Counting objects:  62% (524/844)   [Kremote: Counting objects:  63% (532/844)   [Kremote: Counting objects:  64% (541/844)   [Kremote: Counting objects:  65% (549/844)   [Kremote: Counting objects:  66% (558/844)   [Kremote: Counting objects:  67% (566/844)   [Kremote: Counting objects:  68% (574/844)   [Kremote: Counting objects:  69% (583/844)   [Kremote: Counting objects:  70% (591/844)   [Kremote: Counting objects:  71% (600/844)   [Kremote: Counting objects:  72% (608/844)   [Kremote: Counting objects:  73% (617/844)   [Kremote: Counting objects:  74% (625/844)   [Kremote: Counting objects:  75% (633/844)   [Kremote: Counting objects:  76% (642/844)   [Kremote: Counting objects:  77% (650/844)   [Kremote: Counting objects:  78% (659/844)   [Kremote: Counting objects:  79% (667/844)   [Kremote: Counting objects:  80% (676/844)   [Kremote: Counting objects:  81% (684/844)   [Kremote: Counting objects:  82% (693/844)   [Kremote: Counting objects:  83% (701/844)   [Kremote: Counting objects:  84% (709/844)   [Kremote: Counting objects:  85% (718/844)   [Kremote: Counting objects:  86% (726/844)   [Kremote: Counting objects:  87% (735/844)   [Kremote: Counting objects:  88% (743/844)   [Kremote: Counting objects:  89% (752/844)   [Kremote: Counting objects:  90% (760/844)   [Kremote: Counting objects:  91% (769/844)   [Kremote: Counting objects:  92% (777/844)   [Kremote: Counting objects:  93% (785/844)   [Kremote: Counting objects:  94% (794/844)   [Kremote: Counting objects:  95% (802/844)   [Kremote: Counting objects:  96% (811/844)   [Kremote: Counting objects:  97% (819/844)   [Kremote: Counting objects:  98% (828/844)   [Kremote: Counting objects:  99% (836/844)   [Kremote: Counting objects: 100% (844/844)   [Kremote: Counting objects: 100% (844/844), done.[K
+remote: Compressing objects:   0% (1/687)   [Kremote: Compressing objects:   1% (7/687)   [Kremote: Compressing objects:   2% (14/687)   [Kremote: Compressing objects:   3% (21/687)   [Kremote: Compressing objects:   4% (28/687)   [Kremote: Compressing objects:   5% (35/687)   [Kremote: Compressing objects:   6% (42/687)   [Kremote: Compressing objects:   7% (49/687)   [Kremote: Compressing objects:   8% (55/687)   [Kremote: Compressing objects:   9% (62/687)   [Kremote: Compressing objects:  10% (69/687)   [Kremote: Compressing objects:  11% (76/687)   [Kremote: Compressing objects:  12% (83/687)   [Kremote: Compressing objects:  13% (90/687)   [Kremote: Compressing objects:  14% (97/687)   [Kremote: Compressing objects:  15% (104/687)   [Kremote: Compressing objects:  16% (110/687)   [Kremote: Compressing objects:  17% (117/687)   [Kremote: Compressing objects:  18% (124/687)   [Kremote: Compressing objects:  19% (131/687)   [Kremote: Compressing objects:  20% (138/687)   [Kremote: Compressing objects:  21% (145/687)   [Kremote: Compressing objects:  22% (152/687)   [Kremote: Compressing objects:  23% (159/687)   [Kremote: Compressing objects:  24% (165/687)   [Kremote: Compressing objects:  25% (172/687)   [Kremote: Compressing objects:  26% (179/687)   [Kremote: Compressing objects:  27% (186/687)   [Kremote: Compressing objects:  28% (193/687)   [Kremote: Compressing objects:  29% (200/687)   [Kremote: Compressing objects:  30% (207/687)   [Kremote: Compressing objects:  31% (213/687)   [Kremote: Compressing objects:  32% (220/687)   [Kremote: Compressing objects:  33% (227/687)   [Kremote: Compressing objects:  34% (234/687)   [Kremote: Compressing objects:  35% (241/687)   [Kremote: Compressing objects:  36% (248/687)   [Kremote: Compressing objects:  37% (255/687)   [Kremote: Compressing objects:  38% (262/687)   [Kremote: Compressing objects:  39% (268/687)   [Kremote: Compressing objects:  40% (275/687)   [Kremote: Compressing objects:  41% (282/687)   [Kremote: Compressing objects:  42% (289/687)   [Kremote: Compressing objects:  43% (296/687)   [Kremote: Compressing objects:  44% (303/687)   [Kremote: Compressing objects:  45% (310/687)   [Kremote: Compressing objects:  46% (317/687)   [Kremote: Compressing objects:  47% (323/687)   [Kremote: Compressing objects:  48% (330/687)   [Kremote: Compressing objects:  49% (337/687)   [Kremote: Compressing objects:  50% (344/687)   [Kremote: Compressing objects:  51% (351/687)   [Kremote: Compressing objects:  52% (358/687)   [Kremote: Compressing objects:  53% (365/687)   [Kremote: Compressing objects:  54% (371/687)   [Kremote: Compressing objects:  55% (378/687)   [Kremote: Compressing objects:  56% (385/687)   [Kremote: Compressing objects:  57% (392/687)   [Kremote: Compressing objects:  58% (399/687)   [Kremote: Compressing objects:  59% (406/687)   [Kremote: Compressing objects:  60% (413/687)   [Kremote: Compressing objects:  61% (420/687)   [Kremote: Compressing objects:  62% (426/687)   [Kremote: Compressing objects:  63% (433/687)   [Kremote: Compressing objects:  64% (440/687)   [Kremote: Compressing objects:  65% (447/687)   [Kremote: Compressing objects:  66% (454/687)   [Kremote: Compressing objects:  67% (461/687)   [Kremote: Compressing objects:  68% (468/687)   [Kremote: Compressing objects:  69% (475/687)   [Kremote: Compressing objects:  70% (481/687)   [Kremote: Compressing objects:  71% (488/687)   [Kremote: Compressing objects:  72% (495/687)   [Kremote: Compressing objects:  73% (502/687)   [Kremote: Compressing objects:  74% (509/687)   [Kremote: Compressing objects:  75% (516/687)   [Kremote: Compressing objects:  76% (523/687)   [Kremote: Compressing objects:  77% (529/687)   [Kremote: Compressing objects:  78% (536/687)   [Kremote: Compressing objects:  79% (543/687)   [Kremote: Compressing objects:  80% (550/687)   [Kremote: Compressing objects:  81% (557/687)   [Kremote: Compressing objects:  82% (564/687)   [Kremote: Compressing objects:  83% (571/687)   [Kremote: Compressing objects:  84% (578/687)   [Kremote: Compressing objects:  85% (584/687)   [Kremote: Compressing objects:  86% (591/687)   [Kremote: Compressing objects:  87% (598/687)   [Kremote: Compressing objects:  88% (605/687)   [Kremote: Compressing objects:  89% (612/687)   [Kremote: Compressing objects:  90% (619/687)   [Kremote: Compressing objects:  91% (626/687)   [Kremote: Compressing objects:  92% (633/687)   [Kremote: Compressing objects:  93% (639/687)   [Kremote: Compressing objects:  94% (646/687)   [Kremote: Compressing objects:  95% (653/687)   [Kremote: Compressing objects:  96% (660/687)   [Kremote: Compressing objects:  97% (667/687)   [Kremote: Compressing objects:  98% (674/687)   [Kremote: Compressing objects:  99% (681/687)   [Kremote: Compressing objects: 100% (687/687)   [Kremote: Compressing objects: 100% (687/687), done.[K
+Receiving objects:   0% (1/844)   Receiving objects:   1% (9/844)   Receiving objects:   2% (17/844)   Receiving objects:   3% (26/844)   Receiving objects:   4% (34/844)   Receiving objects:   5% (43/844)   Receiving objects:   6% (51/844)   Receiving objects:   7% (60/844)   Receiving objects:   8% (68/844)   Receiving objects:   9% (76/844)   Receiving objects:  10% (85/844)   Receiving objects:  11% (93/844)   Receiving objects:  12% (102/844)   Receiving objects:  13% (110/844)   Receiving objects:  14% (119/844)   Receiving objects:  15% (127/844)   Receiving objects:  16% (136/844)   Receiving objects:  17% (144/844)   Receiving objects:  18% (152/844)   Receiving objects:  19% (161/844)   Receiving objects:  20% (169/844)   Receiving objects:  21% (178/844)   Receiving objects:  22% (186/844)   Receiving objects:  23% (195/844)   Receiving objects:  24% (203/844)   Receiving objects:  25% (211/844)   Receiving objects:  26% (220/844)   Receiving objects:  27% (228/844)   Receiving objects:  28% (237/844)   Receiving objects:  29% (245/844)   Receiving objects:  30% (254/844)   Receiving objects:  31% (262/844)   Receiving objects:  32% (271/844)   Receiving objects:  33% (279/844)   Receiving objects:  34% (287/844)   Receiving objects:  35% (296/844)   Receiving objects:  36% (304/844)   Receiving objects:  37% (313/844)   Receiving objects:  38% (321/844)   Receiving objects:  39% (330/844)   Receiving objects:  40% (338/844)   Receiving objects:  41% (347/844)   Receiving objects:  42% (355/844)   Receiving objects:  43% (363/844)   Receiving objects:  44% (372/844)   Receiving objects:  45% (380/844)   Receiving objects:  46% (389/844)   Receiving objects:  47% (397/844)   Receiving objects:  48% (406/844)   Receiving objects:  49% (414/844)   Receiving objects:  50% (422/844)   Receiving objects:  51% (431/844)   Receiving objects:  52% (439/844)   Receiving objects:  53% (448/844)   Receiving objects:  54% (456/844)   Receiving objects:  55% (465/844)   Receiving objects:  56% (473/844)   Receiving objects:  57% (482/844)   Receiving objects:  58% (490/844)   Receiving objects:  59% (498/844)   Receiving objects:  60% (507/844)   Receiving objects:  61% (515/844)   Receiving objects:  62% (524/844)   Receiving objects:  63% (532/844)   Receiving objects:  64% (541/844)   Receiving objects:  65% (549/844)   Receiving objects:  66% (558/844)   Receiving objects:  67% (566/844)   Receiving objects:  68% (574/844)   Receiving objects:  69% (583/844)   Receiving objects:  70% (591/844)   Receiving objects:  71% (600/844)   Receiving objects:  72% (608/844)   Receiving objects:  73% (617/844)   Receiving objects:  74% (625/844)   Receiving objects:  75% (633/844)   Receiving objects:  76% (642/844)   Receiving objects:  77% (650/844)   Receiving objects:  78% (659/844)   Receiving objects:  79% (667/844)   Receiving objects:  80% (676/844)   remote: Total 844 (delta 224), reused 365 (delta 117), pack-reused 0[K
+Receiving objects:  81% (684/844)   Receiving objects:  82% (693/844)   Receiving objects:  83% (701/844)   Receiving objects:  84% (709/844)   Receiving objects:  85% (718/844)   Receiving objects:  86% (726/844)   Receiving objects:  87% (735/844)   Receiving objects:  88% (743/844)   Receiving objects:  89% (752/844)   Receiving objects:  90% (760/844)   Receiving objects:  91% (769/844)   Receiving objects:  92% (777/844)   Receiving objects:  93% (785/844)   Receiving objects:  94% (794/844)   Receiving objects:  95% (802/844)   Receiving objects:  96% (811/844)   Receiving objects:  97% (819/844)   Receiving objects:  98% (828/844)   Receiving objects:  99% (836/844)   Receiving objects: 100% (844/844)   Receiving objects: 100% (844/844), 1.25 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/224)   Resolving deltas:   2% (5/224)   Resolving deltas:   4% (11/224)   Resolving deltas:   5% (13/224)   Resolving deltas:   6% (15/224)   Resolving deltas:   7% (16/224)   Resolving deltas:   8% (19/224)   Resolving deltas:   9% (21/224)   Resolving deltas:  10% (23/224)   Resolving deltas:  14% (32/224)   Resolving deltas:  17% (39/224)   Resolving deltas:  18% (41/224)   Resolving deltas:  19% (44/224)   Resolving deltas:  20% (46/224)   Resolving deltas:  21% (49/224)   Resolving deltas:  22% (50/224)   Resolving deltas:  24% (55/224)   Resolving deltas:  25% (57/224)   Resolving deltas:  26% (60/224)   Resolving deltas:  28% (63/224)   Resolving deltas:  29% (65/224)   Resolving deltas:  30% (68/224)   Resolving deltas:  31% (70/224)   Resolving deltas:  32% (72/224)   Resolving deltas:  33% (76/224)   Resolving deltas:  34% (78/224)   Resolving deltas:  35% (79/224)   Resolving deltas:  36% (82/224)   Resolving deltas:  37% (83/224)   Resolving deltas:  38% (87/224)   Resolving deltas:  39% (89/224)   Resolving deltas:  40% (90/224)   Resolving deltas:  41% (92/224)   Resolving deltas:  42% (95/224)   Resolving deltas:  43% (97/224)   Resolving deltas:  45% (103/224)   Resolving deltas:  46% (104/224)   Resolving deltas:  47% (106/224)   Resolving deltas:  49% (110/224)   Resolving deltas:  50% (112/224)   Resolving deltas:  51% (115/224)   Resolving deltas:  52% (118/224)   Resolving deltas:  53% (119/224)   Resolving deltas:  54% (121/224)   Resolving deltas:  55% (124/224)   Resolving deltas:  57% (129/224)   Resolving deltas:  59% (134/224)   Resolving deltas:  60% (135/224)   Resolving deltas:  61% (137/224)   Resolving deltas:  62% (139/224)   Resolving deltas:  63% (143/224)   Resolving deltas:  64% (144/224)   Resolving deltas:  65% (147/224)   Resolving deltas:  66% (149/224)   Resolving deltas:  68% (153/224)   Resolving deltas:  70% (158/224)   Resolving deltas:  71% (160/224)   Resolving deltas:  72% (162/224)   Resolving deltas:  74% (166/224)   Resolving deltas:  75% (170/224)   Resolving deltas:  76% (171/224)   Resolving deltas:  77% (174/224)   Resolving deltas:  78% (176/224)   Resolving deltas:  79% (177/224)   Resolving deltas:  80% (181/224)   Resolving deltas:  82% (185/224)   Resolving deltas:  83% (187/224)   Resolving deltas:  84% (190/224)   Resolving deltas:  85% (191/224)   Resolving deltas:  87% (195/224)   Resolving deltas:  90% (203/224)   Resolving deltas:  91% (205/224)   Resolving deltas:  92% (207/224)   Resolving deltas:  93% (210/224)   Resolving deltas:  94% (212/224)   Resolving deltas:  95% (215/224)   Resolving deltas:  96% (217/224)   Resolving deltas:  97% (218/224)   Resolving deltas:  98% (220/224)   Resolving deltas:  99% (222/224)   Resolving deltas: 100% (224/224)   Resolving deltas: 100% (224/224), done.
+Checking connectivity... done.
+travis_time:end:27ba28a4:start=1564688920029122742,finish=1564688922167567921,duration=2138445179[0K$ cd composer/composer
+travis_time:start:102d2357[0K$ git fetch origin +refs/pull/8257/merge:
+remote: Enumerating objects: 18, done.[K
+remote: Counting objects:   5% (1/18)   [Kremote: Counting objects:  11% (2/18)   [Kremote: Counting objects:  16% (3/18)   [Kremote: Counting objects:  22% (4/18)   [Kremote: Counting objects:  27% (5/18)   [Kremote: Counting objects:  33% (6/18)   [Kremote: Counting objects:  38% (7/18)   [Kremote: Counting objects:  44% (8/18)   [Kremote: Counting objects:  50% (9/18)   [Kremote: Counting objects:  55% (10/18)   [Kremote: Counting objects:  61% (11/18)   [Kremote: Counting objects:  66% (12/18)   [Kremote: Counting objects:  72% (13/18)   [Kremote: Counting objects:  77% (14/18)   [Kremote: Counting objects:  83% (15/18)   [Kremote: Counting objects:  88% (16/18)   [Kremote: Counting objects:  94% (17/18)   [Kremote: Counting objects: 100% (18/18)   [Kremote: Counting objects: 100% (18/18), done.[K
+remote: Compressing objects:  20% (1/5)   [Kremote: Compressing objects:  40% (2/5)   [Kremote: Compressing objects:  60% (3/5)   [Kremote: Compressing objects:  80% (4/5)   [Kremote: Compressing objects: 100% (5/5)   [Kremote: Compressing objects: 100% (5/5), done.[K
+remote: Total 13 (delta 8), reused 12 (delta 8), pack-reused 0[K
+Unpacking objects:   7% (1/13)   Unpacking objects:  15% (2/13)   Unpacking objects:  23% (3/13)   Unpacking objects:  30% (4/13)   Unpacking objects:  38% (5/13)   Unpacking objects:  46% (6/13)   Unpacking objects:  53% (7/13)   Unpacking objects:  61% (8/13)   Unpacking objects:  69% (9/13)   Unpacking objects:  76% (10/13)   Unpacking objects:  84% (11/13)   Unpacking objects:  92% (12/13)   Unpacking objects: 100% (13/13)   Unpacking objects: 100% (13/13), done.
+From https://github.com/composer/composer
+ * branch            refs/pull/8257/merge -> FETCH_HEAD
+travis_time:end:102d2357:start=1564688922171272097,finish=1564688923227607545,duration=1056335448[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+
+[33;1mEncrypted environment variables have been removed for security reasons.[0m
+[33;1mSee https://docs.travis-ci.com/user/pull-requests/#pull-requests-and-security-restrictions[0m
+travis_time:start:031999c4[0K$ phpenv global 5.3 2>/dev/null
+travis_time:end:031999c4:start=1564688923334749395,finish=1564688923354322609,duration=19573214[0K[33;1m5.3 is not pre-installed; installing[0m
+[33;1mDownloading archive: https://storage.googleapis.com/travis-ci-language-archives/php/binaries/ubuntu/12.04/x86_64/php-5.3.tar.bz2[0m
+travis_time:start:19f259c0[0K$ curl -s -o archive.tar.bz2 $archive_url && tar xjf archive.tar.bz2 --directory /
+travis_time:end:19f259c0:start=1564688923409942373,finish=1564688928198978682,duration=4789036309[0Ktravis_time:start:06919946[0Ktravis_time:end:06919946:start=1564688928202183931,finish=1564688928209537476,duration=7353545[0Ktravis_time:start:0b1edd98[0K$ phpenv global 5.3
+travis_time:end:0b1edd98:start=1564688928212968747,finish=1564688928230167707,duration=17198960[0KYou are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug
+Warning: This development build of composer is over 60 days old. It is recommended to update it by running "/home/travis/.phpenv/versions/5.3/bin/composer self-update" to get the latest version.
+travis_time:start:1ee47a1c[0K$ composer self-update 1.0.0
+[30;43mYou are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug[39;49m
+Updating to version [32m1.0.0[39m.
+    Downloading: [33mConnecting...[39m    Downloading: [33m100%[39m         
+Use [32mcomposer self-update --rollback[39m to return to version 2b14f0a047dd4f3545ec82381f65c36ea93a4c81
+travis_time:end:1ee47a1c:start=1564688928464252360,finish=1564688929534806591,duration=1070554231[0Ktravis_time:start:015802b4[0K$ composer self-update
+[30;43mYou are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug[39;49m
+Updating to version [32m1.8.6[39m.
+    Downloading: [33mConnecting...[39m    Downloading: [33m100%[39m         
+Use [32mcomposer self-update --rollback[39m to return to version 1.0.0
+travis_time:end:015802b4:start=1564688929538429564,finish=1564688931256754084,duration=1718324520[0Ktravis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+travis_time:start:11b35b97[0K$ Installing caching utilities
+travis_time:end:11b35b97:start=1564688936348070547,finish=1564688936557539392,duration=209468845[0Ktravis_time:start:04897100[0Ktravis_time:end:04897100:start=1564688936562569975,finish=1564688936565413915,duration=2843940[0Ktravis_time:start:22eb38ce[0Kattempting to download cache archive[0m
+[32;1mfetching PR.8257/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--php-5.3.tgz[0m
+[32;1mfetching PR.8257/cache--php-5.3.tgz[0m
+[32;1mfetching master/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--php-5.3.tgz[0m
+[32;1mfound cache[0m
+travis_time:end:22eb38ce:start=1564688936569061214,finish=1564688938080622139,duration=1511560925[0Ktravis_time:start:2018d425[0Ktravis_time:end:2018d425:start=1564688938084341184,finish=1564688938087066688,duration=2725504[0Ktravis_time:start:128c7398[0Kadding /home/travis/.composer/cache to cache[0m
+travis_time:end:128c7398:start=1564688938090721051,finish=1564688939198450442,duration=1107729391[0Ktravis_fold:end:cache.1[0K
+$ php --version
+PHP 5.3.29 (cli) (built: Nov 26 2015 00:52:51) 
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.3.0, Copyright (c) 1998-2014 Zend Technologies
+    with Xdebug v2.2.7, Copyright (c) 2002-2015, by Derick Rethans
+$ composer --version
+[30;43mYou are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug[39;49m
+[32mComposer[39m version [33m1.8.6[39m 2019-06-11 15:03:05
+[0m
+travis_fold:start:before_install.1[0Ktravis_time:start:18436908[0K$ phpenv config-rm xdebug.ini || echo "xdebug not available"
+File xdebug.ini removed from /home/travis/.phpenv/versions/5.3/etc/conf.d.
+travis_time:end:18436908:start=1564688939478018422,finish=1564688939505452688,duration=27434266[0Ktravis_fold:end:before_install.1[0Ktravis_fold:start:before_install.2[0Ktravis_time:start:13593458[0K$ export INI=~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+travis_time:end:13593458:start=1564688939509339146,finish=1564688939534666917,duration=25327771[0Ktravis_fold:end:before_install.2[0Ktravis_fold:start:before_install.3[0Ktravis_time:start:135904fa[0K$ echo memory_limit = -1 >> $INI
+travis_time:end:135904fa:start=1564688939538585561,finish=1564688939541165841,duration=2580280[0Ktravis_fold:end:before_install.3[0Ktravis_fold:start:before_install.4[0Ktravis_time:start:3d23619d[0K$ composer validate
+[32m./composer.json is valid[39m
+travis_time:end:3d23619d:start=1564688939545008211,finish=1564688939802767470,duration=257759259[0Ktravis_fold:end:before_install.4[0Ktravis_fold:start:install.1[0Ktravis_time:start:089bc722[0K$ flags="--ansi --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
+travis_time:end:089bc722:start=1564688939808776761,finish=1564688939811891214,duration=3114453[0Ktravis_fold:end:install.1[0Ktravis_fold:start:install.2[0Ktravis_time:start:043f6884[0K$ if [ "$deps" == "high" ]; then composer config platform.php 7.2.4; composer update $flags; fi
+travis_time:end:043f6884:start=1564688939817452917,finish=1564688939821162718,duration=3709801[0Ktravis_fold:end:install.2[0Ktravis_fold:start:install.3[0Ktravis_time:start:06d27e32[0K$ composer install $flags
+[32mLoading composer repositories with package information[39m
+[32mInstalling dependencies (including require-dev) from lock file[39m
+[32mPackage operations: 33 installs, 0 updates, 0 removals[39m
+  - Installing [32mcomposer/ca-bundle[39m ([33m1.1.4[39m): Loading from cache
+  - Installing [32mcomposer/semver[39m ([33m1.5.0[39m): Loading from cache
+  - Installing [32mcomposer/spdx-licenses[39m ([33m1.5.1[39m): Loading from cache
+  - Installing [32mpsr/log[39m ([33m1.1.0[39m): Loading from cache
+  - Installing [32mcomposer/xdebug-handler[39m ([33m1.3.3[39m): Loading from cache
+  - Installing [32mjustinrainbow/json-schema[39m ([33m5.2.8[39m): Loading from cache
+  - Installing [32mseld/jsonlint[39m ([33m1.7.1[39m): Loading from cache
+  - Installing [32mseld/phar-utils[39m ([33m1.0.1[39m): Loading from cache
+  - Installing [32msymfony/polyfill-mbstring[39m ([33mv1.11.0[39m): Loading from cache
+  - Installing [32msymfony/debug[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msymfony/console[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msymfony/polyfill-ctype[39m ([33mv1.11.0[39m): Loading from cache
+  - Installing [32msymfony/filesystem[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msymfony/finder[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msymfony/process[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32mphpdocumentor/reflection-docblock[39m ([33m2.0.5[39m): Loading from cache
+  - Installing [32mphpunit/php-token-stream[39m ([33m1.4.12[39m): Loading from cache
+  - Installing [32msymfony/yaml[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msebastian/version[39m ([33m1.0.6[39m): Loading from cache
+  - Installing [32msebastian/global-state[39m ([33m1.1.1[39m): Loading from cache
+  - Installing [32msebastian/recursion-context[39m ([33m1.0.5[39m): Loading from cache
+  - Installing [32msebastian/exporter[39m ([33m1.2.2[39m): Loading from cache
+  - Installing [32msebastian/environment[39m ([33m1.3.8[39m): Loading from cache
+  - Installing [32msebastian/diff[39m ([33m1.4.3[39m): Loading from cache
+  - Installing [32msebastian/comparator[39m ([33m1.2.4[39m): Loading from cache
+  - Installing [32mphpunit/php-text-template[39m ([33m1.2.1[39m): Loading from cache
+  - Installing [32mdoctrine/instantiator[39m ([33m1.0.5[39m): Loading from cache
+  - Installing [32mphpunit/phpunit-mock-objects[39m ([33m2.3.8[39m): Loading from cache
+  - Installing [32mphpunit/php-timer[39m ([33m1.0.9[39m): Loading from cache
+  - Installing [32mphpunit/php-file-iterator[39m ([33m1.4.5[39m): Loading from cache
+  - Installing [32mphpunit/php-code-coverage[39m ([33m2.2.4[39m): Loading from cache
+  - Installing [32mphpspec/prophecy[39m ([33m1.8.0[39m): Loading from cache
+  - Installing [32mphpunit/phpunit[39m ([33m4.8.36[39m): Loading from cache
+[30;43mPackage phpunit/phpunit-mock-objects is abandoned, you should avoid using it. No replacement was suggested.[39;49m
+[32mGenerating optimized autoload files[39m
+travis_time:end:06d27e32:start=1564688939826268780,finish=1564688942349154625,duration=2522885845[0Ktravis_fold:end:install.3[0Ktravis_fold:start:install.4[0Ktravis_time:start:06fec0df[0K$ bin/composer install $flags
+[32mLoading composer repositories with package information[39m
+[32mInstalling dependencies (including require-dev) from lock file[39m
+Nothing to install or update
+[30;43mPackage phpunit/phpunit-mock-objects is abandoned, you should avoid using it. No replacement was suggested.[39;49m
+[32mGenerating optimized autoload files[39m
+travis_time:end:06fec0df:start=1564688942353320276,finish=1564688943447842407,duration=1094522131[0Ktravis_fold:end:install.4[0Ktravis_fold:start:before_script.1[0Ktravis_time:start:0973e1bf[0K$ git config --global user.name travis-ci
+travis_time:end:0973e1bf:start=1564688943452103552,finish=1564688943457408520,duration=5304968[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:0e49bc3e[0K$ git config --global user.email travis@example.com
+travis_time:end:0e49bc3e:start=1564688943461294007,finish=1564688943465353852,duration=4059845[0Ktravis_fold:end:before_script.2[0Ktravis_time:start:08f294c0[0K$ ls -d tests/Composer/Test/* | grep -v TestCase.php | parallel --gnu --keep-order 'echo "Running {} tests"; ./vendor/bin/phpunit -c tests/complete.phpunit.xml --colors=always {} || (echo -e "\e[41mFAILED\e[0m {}" && exit 1);'
+Running tests/Composer/Test/AllFunctionalTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...
+
+Time: 44.14 seconds, Memory: 8.50MB
+
+[30;42mOK (3 tests, 3 assertions)[0m
+Running tests/Composer/Test/ApplicationTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...
+
+Time: 1.13 seconds, Memory: 26.50MB
+
+[30;42mOK (3 tests, 6 assertions)[0m
+Running tests/Composer/Test/Autoload tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+..............................................
+
+Time: 1.21 seconds, Memory: 19.25MB
+
+[30;42mOK (46 tests, 200 assertions)[0m
+Running tests/Composer/Test/CacheTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...
+
+Time: 476 ms, Memory: 9.75MB
+
+[30;42mOK (3 tests, 15 assertions)[0m
+Running tests/Composer/Test/Command tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+............
+
+Time: 726 ms, Memory: 10.00MB
+
+[30;42mOK (12 tests, 18 assertions)[0m
+Running tests/Composer/Test/ComposerTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.....
+
+Time: 955 ms, Memory: 9.25MB
+
+[30;42mOK (5 tests, 5 assertions)[0m
+Running tests/Composer/Test/Config tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.........................................
+
+Time: 465 ms, Memory: 8.75MB
+
+[30;42mOK (41 tests, 123 assertions)[0m
+Running tests/Composer/Test/ConfigTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+....................................
+
+Time: 703 ms, Memory: 8.00MB
+
+[30;42mOK (36 tests, 45 assertions)[0m
+Running tests/Composer/Test/Console tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.
+
+Time: 912 ms, Memory: 7.25MB
+
+[30;42mOK (1 test, 1 assertion)[0m
+Running tests/Composer/Test/DefaultConfigTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.
+
+Time: 99 ms, Memory: 7.25MB
+
+[30;42mOK (1 test, 1 assertion)[0m
+Running tests/Composer/Test/DependencyResolver tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................................................. 65 / 83 ( 78%)
+..................
+
+Time: 434 ms, Memory: 13.75MB
+
+[30;42mOK (83 tests, 100 assertions)[0m
+Running tests/Composer/Test/Downloader tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...............................................................  63 / 100 ( 63%)
+.....................................
+
+Time: 2.4 seconds, Memory: 17.00MB
+
+[30;42mOK (100 tests, 202 assertions)[0m
+Running tests/Composer/Test/EventDispatcher tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...............
+
+Time: 702 ms, Memory: 12.50MB
+
+[30;42mOK (15 tests, 34 assertions)[0m
+Running tests/Composer/Test/FactoryTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.
+
+Time: 923 ms, Memory: 8.75MB
+
+[30;42mOK (1 test, 1 assertion)[0m
+Running tests/Composer/Test/Fixtures tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+
+
+Time: 106 ms, Memory: 6.50MB
+
+[30;43mNo tests executed![0m
+Running tests/Composer/Test/Installer tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................
+
+Time: 524 ms, Memory: 14.25MB
+
+[30;42mOK (32 tests, 76 assertions)[0m
+Running tests/Composer/Test/InstallerTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................................................. 65 / 78 ( 83%)
+.............
+
+Time: 6.46 seconds, Memory: 26.75MB
+
+[30;42mOK (78 tests, 197 assertions)[0m
+Running tests/Composer/Test/IO tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.....................
+
+Time: 789 ms, Memory: 10.25MB
+
+[30;42mOK (21 tests, 32 assertions)[0m
+Running tests/Composer/Test/Json tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................................................. 65 / 94 ( 69%)
+.............................
+
+Time: 1.03 seconds, Memory: 15.00MB
+
+[30;42mOK (94 tests, 182 assertions)[0m
+Running tests/Composer/Test/Mock tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+
+
+Time: 157 ms, Memory: 6.50MB
+
+[30;43mNo tests executed![0m
+Running tests/Composer/Test/Package tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...............................................................  63 / 198 ( 31%)
+............................................................... 126 / 198 ( 63%)
+............................................................... 189 / 198 ( 95%)
+.........
+
+Time: 1.38 seconds, Memory: 24.50MB
+
+[30;42mOK (198 tests, 345 assertions)[0m
+Running tests/Composer/Test/Plugin tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+......................
+
+Time: 919 ms, Memory: 14.25MB
+
+[30;42mOK (22 tests, 57 assertions)[0m
+Running tests/Composer/Test/Question tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...........
+
+Time: 70 ms, Memory: 8.00MB
+
+[30;42mOK (11 tests, 16 assertions)[0m
+Running tests/Composer/Test/Repository tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................................[36;1mS[0m[36;1mS[0m.............  63 / 127 ( 49%)
+............................................................... 126 / 127 ( 99%)
+[36;1mS[0m
+
+Time: 986 ms, Memory: 29.75MB
+
+[30;43mOK, but incomplete, skipped, or risky tests![0m
+[30;43mTests: 127[0m[30;43m, Assertions: 317[0m[30;43m, Skipped: 3[0m[30;43m.[0m
+Running tests/Composer/Test/Script tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+..
+
+Time: 285 ms, Memory: 8.25MB
+
+[30;42mOK (2 tests, 4 assertions)[0m
+Running tests/Composer/Test/Util tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...............................................................  63 / 250 ( 25%)
+............................................................... 126 / 250 ( 50%)
+............................................................... 189 / 250 ( 75%)
+......[41;37mF[0m[41;37mF[0m[41;37mF[0m............................................[36;1mS[0m.......
+
+Time: 2.95 seconds, Memory: 21.00MB
+
+There were 3 failures:
+
+1) Composer\Test\Util\StreamContextFactoryTest::testHttpsProxyOverride
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+     'http' => Array (
+-        'proxy' => 'ssl://woopproxy.net:443'
++        'proxy' => 'tcp://woopproxy.net:443'
+         'request_fulluri' => true
+         'method' => 'GET'
+         'max_redirects' => 20
+         'follow_location' => 1
+         'header' => Array (...)
+     )
+     'ssl' => Array (...)
+ )
+
+/home/travis/build/composer/composer/tests/Composer/Test/Util/StreamContextFactoryTest.php:189
+
+2) Composer\Test\Util\StreamContextFactoryTest::testSSLProxy with data set #0 ('ssl://proxyserver:443', 'https://proxyserver/')
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+     'http' => Array (
+-        'proxy' => 'ssl://proxyserver:443'
++        'proxy' => 'tcp://proxyserver:443'
+         'request_fulluri' => true
+         'max_redirects' => 20
+         'follow_location' => 1
+         'header' => Array (...)
+     )
+ )
+
+/home/travis/build/composer/composer/tests/Composer/Test/Util/StreamContextFactoryTest.php:209
+
+3) Composer\Test\Util\StreamContextFactoryTest::testSSLProxy with data set #1 ('ssl://proxyserver:8443', 'https://proxyserver:8443')
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+     'http' => Array (
+-        'proxy' => 'ssl://proxyserver:8443'
++        'proxy' => 'tcp://proxyserver:8443'
+         'request_fulluri' => true
+         'max_redirects' => 20
+         'follow_location' => 1
+         'header' => Array (...)
+     )
+ )
+
+/home/travis/build/composer/composer/tests/Composer/Test/Util/StreamContextFactoryTest.php:209
+
+[37;41mFAILURES![0m
+[37;41mTests: 250[0m[37;41m, Assertions: 429[0m[37;41m, Failures: 3[0m[37;41m, Skipped: 1[0m[37;41m.[0m
+[41mFAILED[0m tests/Composer/Test/Util
+travis_time:end:08f294c0:start=1564688943469367369,finish=1564688987874851336,duration=44405483967[0K[31;1mThe command "ls -d tests/Composer/Test/* | grep -v TestCase.php | parallel --gnu --keep-order 'echo "Running {} tests"; ./vendor/bin/phpunit -c tests/complete.phpunit.xml --colors=always {} || (echo -e "[41mFAILED[0m {}" && exit 1);'" exited with 1.[0m
+
+travis_fold:start:cache.2[0Kstore build cache
+travis_time:start:2149dddd[0Ktravis_time:end:2149dddd:start=1564688987880920678,finish=1564688987885121849,duration=4201171[0Ktravis_time:start:08f19dbc[0K[32;1mnothing changed[0m
+travis_time:end:08f19dbc:start=1564688987890874331,finish=1564688989063657002,duration=1172782671[0Ktravis_fold:end:cache.2[0K
+
+Done. Your build exited with 1.

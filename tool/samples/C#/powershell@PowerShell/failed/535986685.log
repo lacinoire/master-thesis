@@ -1,0 +1,534 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 38ea5bc7-ee2c-4635-8c98-6cc6a7ca0e75@1.worker-custom-1-857795778b-fwb2t.macstadium-prod-2
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: 40b5881c-8730-4b1d-8935-e3737b7f61eb travis-ci-macos-10.13-xcode9.4.1-1529955246 (via amqp)
+startup: 1m9.456147957s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: cpp
+Build id: 535986685
+Job id: 535986687
+Runtime kernel version: 17.4.0
+travis-build version: 0696e6115
+[34m[1mBuild image provisioning date and time[0m
+Mon Jun 25 21:55:14 GMT 2018
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.13.3
+BuildVersion:	17D102
+[34m[1mGit version[0m
+git version 2.18.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.3
+[34m[1mPre-installed Node.js versions[0m
+v4.9.1
+v5.12.0
+v6.14.3
+v8.11.3
+[34m[1mmvn -version[0m
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T18:33:14Z)
+Maven home: /usr/local/Cellar/maven/3.5.4/libexec
+Java version: 10.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+Uninstalled oclint to prevent interference with other packages.
+If you need oclint, you must explicitly install it.
+
+
+travis_fold:start:git.checkout[0Ktravis_time:start:02be93ee[0K$ git clone --depth=1000 --branch=dependabot/nuget/release/v6.1.5/Newtonsoft.Json-12.0.2 https://github.com/PowerShell/PowerShell.git PowerShell/PowerShell
+Cloning into 'PowerShell/PowerShell'...
+travis_time:end:02be93ee:start=1558560026285431000,finish=1558560032463611000,duration=6178180000[0K$ cd PowerShell/PowerShell
+$ git checkout -qf 9d0b9d1f6b20f3db9a77c444174bd18ed1a172ee
+travis_fold:end:git.checkout[0K
+travis_fold:start:git.submodule[0Ktravis_time:start:038d5724[0K$ git submodule update --init --recursive
+Submodule 'src/libpsl-native/test/googletest' (https://github.com/google/googletest.git) registered for path 'src/libpsl-native/test/googletest'
+Cloning into '/Users/travis/build/PowerShell/PowerShell/src/libpsl-native/test/googletest'...
+Submodule path 'src/libpsl-native/test/googletest': checked out 'c99458533a9b4c743ed51537e25989ea55944908'
+travis_time:end:038d5724:start=1558560032993911000,finish=1558560034611324000,duration=1617413000[0Ktravis_fold:end:git.submodule[0K
+[33;1mSetting environment variables from repository settings[0m
+$ export ARTIFACTS_BUCKET=[secure]
+$ export ARTIFACTS_KEY=[secure]
+$ export ARTIFACTS_SECRET=[secure]
+$ export TestResultAccountName=[secure]
+$ export TestResultAccountKey=[secure]
+$ export NUGET_URL=[secure]
+$ export NUGET_KEY=[secure]
+$ export WebHookUrl=[secure]
+
+[33;1mSetting environment variables from .travis.yml[0m
+$ export CACHE_VERSION=netcoreapp.2.1-sdk.2.1.401
+$ export POWERSHELL_TELEMETRY_OPTOUT=1
+$ export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+$ export TRAVIS_CI_CACHE_NAME=macOS
+
+$ export TRAVIS_COMPILER=g++
+$ export CXX=g++
+$ export CXX_FOR_BUILD=g++
+$ export CC=gcc
+$ export CC_FOR_BUILD=gcc
+travis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+travis_time:start:3727c428[0K$ Installing caching utilities
+travis_time:end:3727c428:start=1558560036323265000,finish=1558560036523870000,duration=200605000[0Ktravis_time:start:17ffe5e0[0Ktravis_time:end:17ffe5e0:start=1558560036556779000,finish=1558560036566917000,duration=10138000[0Ktravis_time:start:03d57bda[0K[32;1mattempting to download cache archive[0m
+[32;1mfetching Newtonsoft.Json-12.0.2/cache-osx-xcode9.4-34af5f911c1fc54690da9fa899b4eecd309f5440706acd6c5b91740e571e3d46--compiler-gpp.tgz[0m
+[32;1mfetching Newtonsoft.Json-12.0.2/cache--compiler-gpp.tgz[0m
+[32;1mfetching dependabotnugetreleasev6.1.5Newtonsoft.Json-12.0.2/cache-osx-xcode9.4-34af5f911c1fc54690da9fa899b4eecd309f5440706acd6c5b91740e571e3d46--compiler-gpp.tgz[0m
+[32;1mfetching dependabotnugetreleasev6.1.5Newtonsoft.Json-12.0.2/cache--compiler-gpp.tgz[0m
+[32;1mfetching master/cache-osx-xcode9.4-34af5f911c1fc54690da9fa899b4eecd309f5440706acd6c5b91740e571e3d46--compiler-gpp.tgz[0m
+[32;1mfetching master/cache--compiler-gpp.tgz[0m
+[31;1mcould not download cache[0m
+travis_time:end:03d57bda:start=1558560036597892000,finish=1558560040712854000,duration=4114962000[0Ktravis_time:start:0f947441[0Ktravis_time:end:0f947441:start=1558560040742291000,finish=1558560040752950000,duration=10659000[0Ktravis_time:start:21d60251[0K[32;1madding /Users/travis/.nuget to cache[0m
+[32;1mcreating directory /Users/travis/.nuget[0m
+[32;1madding /Users/travis/Library/Caches/Homebrew to cache[0m
+travis_time:end:21d60251:start=1558560040782116000,finish=1558560043467749000,duration=2685633000[0Ktravis_fold:end:cache.1[0K
+$ g++ --version
+Configured with: --prefix=/Applications/Xcode-9.4.1.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+travis_fold:start:install.1[0Ktravis_time:start:08b29162[0K$ if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm install ruby-2.3.3; rvm --default use 2.3.3; fi
+Warning, new version of rvm available '1.29.8-next', you are using older version '1.29.3'.
+You can disable this warning with:    echo rvm_autoupdate_flag=0 >> ~/.rvmrc
+You can enable  auto-update  with:    echo rvm_autoupdate_flag=2 >> ~/.rvmrc
+Searching for binary rubies, this might take some time.
+Found remote file https://rubies.travis-ci.org/osx/10.13/x86_64/ruby-2.3.3.tar.bz2
+Checking requirements for osx.
+Certificates bundle '/usr/local/etc/openssl/cert.pem' is already up to date.
+Requirements installation successful.
+ruby-2.3.3 - #configure
+ruby-2.3.3 - #download
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  5 9187k    5  509k    0     0   825k      0  0:00:11 --:--:--  0:00:11  825k100 9187k  100 9187k    0     0  8645k      0  0:00:01  0:00:01 --:--:-- 19.0M
+No checksum for downloaded archive, recording checksum in user configuration.
+ruby-2.3.3 - #validate archive
+ruby-2.3.3 - #extract
+ruby-2.3.3 - #validate binary
+ruby-2.3.3 - #setup
+ruby-2.3.3 - #gemset created /Users/travis/.rvm/gems/ruby-2.3.3@global
+[32mruby-2.3.3 - #importing gemset /Users/travis/.rvm/gemsets/global.gems[0m|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|..
+[32mruby-2.3.3 - #generating global wrappers[0m|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/.
+ruby-2.3.3 - #gemset created /Users/travis/.rvm/gems/ruby-2.3.3
+ruby-2.3.3 - #importing gemsetfile /Users/travis/.rvm/gemsets/default.gems evaluated to empty gem list
+[32mruby-2.3.3 - #generating default wrappers[0m|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-.
+Using /Users/travis/.rvm/gems/ruby-2.3.3
+travis_time:end:08b29162:start=1558560045110953000,finish=1558560086283616000,duration=41172663000[0Ktravis_fold:end:install.1[0Ktravis_fold:start:install.2[0Ktravis_time:start:0a571ffc[0K$ if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export DYLD_LIBRARY_PATH=/usr/local/opt/curl/lib:/usr/local/opt/openssl/lib:${DYLD_LIBRARY_PATH}; fi
+travis_time:end:0a571ffc:start=1558560086312214000,finish=1558560086333048000,duration=20834000[0Ktravis_fold:end:install.2[0Ktravis_fold:start:install.3[0Ktravis_time:start:1e3627ff[0K$ pushd tools
+~/build/PowerShell/PowerShell/tools ~/build/PowerShell/PowerShell
+travis_time:end:1e3627ff:start=1558560086391471000,finish=1558560086448094000,duration=56623000[0Ktravis_fold:end:install.3[0Ktravis_fold:start:install.4[0Ktravis_time:start:0f193d4c[0K$ ./install-powershell.sh
+Get-PowerShell Core MASTER Installer Version 1.2.0
+Installs PowerShell Core and Optional The Development Environment
+  Original script is at: https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools$gitscriptname
+Arguments used: 
+
+Operating System Details:
+  OS: osx
+  DIST: 
+  DistroBasedOn: osx
+  PSUEDONAME: 
+  REV: 
+  KERNEL: 17.4.0
+  MACH: x86_64
+Configuring PowerShell Core Enviornment for: osx  
+*** PowerShell Core Development Environment Installer 1.1.2 for osx
+***    Current PowerShell Core Version: 
+***    Original script is at: https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/installpsh-osx.sh
+*** Arguments used: 
+*** Installing PowerShell Core for osx...
+Howebrew is already installed, skipping...
+Refreshing Homebrew cache...
+Installing cask...
+Cloning into '/usr/local/Homebrew/Library/Taps/caskroom/homebrew-cask'...
+Checking out files:  82% (3057/3712)   Checking out files:  83% (3081/3712)   Checking out files:  84% (3119/3712)   Checking out files:  85% (3156/3712)   Checking out files:  86% (3193/3712)   Checking out files:  87% (3230/3712)   Checking out files:  88% (3267/3712)   Checking out files:  89% (3304/3712)   Checking out files:  90% (3341/3712)   Checking out files:  91% (3378/3712)   Checking out files:  92% (3416/3712)   Checking out files:  93% (3453/3712)   Checking out files:  94% (3490/3712)   Checking out files:  95% (3527/3712)   Checking out files:  96% (3564/3712)   Checking out files:  97% (3601/3712)   Checking out files:  98% (3638/3712)   Checking out files:  99% (3675/3712)   Checking out files: 100% (3712/3712)   Checking out files: 100% (3712/3712), done.
+Installing PowerShell...
+Updating Homebrew...
+==> Satisfying dependencies
+All Formula dependencies satisfied.
+==> Downloading https://github.com/PowerShell/PowerShell/releases/download/v6.2.1/powershell-6.2.1-osx-x64.pkg
+==> Downloading from https://github-production-release-asset-2e65be.s3.amazonaws.com/49609581/91aceb00-7bb0-11e9-8431-4cc0dbb1f141?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190522%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190522T212713Z&X-Amz-Expires=300&X-Amz-Signature=1164cd500db5cdd0c27c81ed4152232fa933b4346142e9b3cf532a05bc8d2cf4&X-Amz-SignedHeaders=host&actor_id=0&response-content-disposition=attachment%3B%20filename%3Dpowershell-6.2.1-osx-x64.pkg&response-content-type=application%2Foctet-stream
+==> Verifying SHA-256 checksum for Cask 'powershell'.
+==> Installing Cask powershell
+==> Running installer for powershell; your password may be necessary.
+==> Package installers may write to any location; options such as --appdir are ignored.
+installer: Package name is PowerShell - 6.2.1
+installer: Installing at base path /
+installer: The install was successful.
+🍺  powershell was successfully installed!
+Congratulations! PowerShell is installed at /usr/local/microsoft/powershell/6.
+Run "pwsh" to start a PowerShell session.
+*** NOTE: Run your regular package manager update cycle to update PowerShell Core
+*** Install Complete
+travis_time:end:0f193d4c:start=1558560086507507000,finish=1558560458815422000,duration=372307915000[0Ktravis_fold:end:install.4[0Ktravis_fold:start:install.5[0Ktravis_time:start:29d9deb4[0K$ popd
+~/build/PowerShell/PowerShell
+travis_time:end:29d9deb4:start=1558560458889341000,finish=1558560458951110000,duration=61769000[0Ktravis_fold:end:install.5[0Ktravis_fold:start:install.6[0Ktravis_time:start:00ef12c1[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then nvm install 6.4.0 && npm install -g markdown-spellcheck@0.11.0; fi
+travis_time:end:00ef12c1:start=1558560459020611000,finish=1558560459043603000,duration=22992000[0Ktravis_fold:end:install.6[0Ktravis_fold:start:install.7[0Ktravis_time:start:2674d328[0K$ ulimit -n 4096
+travis_time:end:2674d328:start=1558560459118947000,finish=1558560459152042000,duration=33095000[0Ktravis_fold:end:install.7[0Ktravis_fold:start:install.8[0Ktravis_time:start:0ba11778[0K$ pwsh -File tools/travis.ps1 -Stage Bootstrap
+Executing travis.ps1 -BootStrap $isPR='False' - Build(deps): Bump Newtonsoft.Json from 11.0.2 to 12.0.2
+
+Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 11.0.2 to 12.0.2.
+- [Release notes](https://github.com/JamesNK/Newtonsoft.Json/releases)
+- [Commits](https://github.com/JamesNK/Newtonsoft.Json/compare/11.0.2...12.0.2)
+
+Signed-off-by: dependabot[bot] <support@dependabot.com>
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/omi.path'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/omi.url'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/omi.branch'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/omi-provider.path'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/omi-provider.url'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/windows-build.path'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/windows-build.url'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/Microsoft.PowerShell.Linux.Host/Modules/Pester.path'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/Microsoft.PowerShell.Linux.Host/Modules/Pester.url'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/Microsoft.PowerShell.Linux.Host/Modules/Pester.branch'. Skipping second one!
+warning: 0102a55da5aa443341887c5191b3a2877577be5b:.gitmodules, multiple configurations found for 'submodule.src/Microsoft.PowerShell.Linux.Host/Modules/Pester.ignore'. Skipping second one!
+warning: Submodule in commit 81984534b8514ad5f9258b13cf26cf4109497976 at path: '(null)' collides with a submodule named the same. Skipping it.
+Installing PowerShell build dependencies
+True
+Error: openssl 1.0.2o_2 is already installed
+To upgrade to 1.0.2r, run `brew upgrade openssl`
+Error: cmake 3.11.4 is already installed
+To upgrade to 3.14.4, run `brew upgrade cmake`.
+==> `brew cleanup` has not been run in 30 days, running now...
+Removing: /Users/travis/Library/Caches/Homebrew/adns-1.5.1.high_sierra.bottle.tar.gz... (269.0KB)
+Removing: /Users/travis/Library/Caches/Homebrew/autoconf-2.69.high_sierra.bottle.4.tar.gz... (871.2KB)
+Removing: /Users/travis/Library/Caches/Homebrew/automake-1.16.1.high_sierra.bottle.tar.gz... (943.0KB)
+Removing: /Users/travis/Library/Caches/Homebrew/boost-1.67.0_1.high_sierra.bottle.tar.gz... (87.1MB)
+Removing: /Users/travis/Library/Caches/Homebrew/carthage-0.29.0.high_sierra.bottle.tar.gz... (8.3MB)
+Removing: /Users/travis/Library/Caches/Homebrew/cgal-4.12.high_sierra.bottle.tar.gz... (5.9MB)
+Removing: /Users/travis/Library/Caches/Homebrew/cmake-3.11.4.high_sierra.bottle.tar.gz... (11.7MB)
+Removing: /Users/travis/Library/Caches/Homebrew/coreutils-8.29.high_sierra.bottle.tar.gz... (3.9MB)
+Removing: /Users/travis/Library/Caches/Homebrew/freexl-1.0.5.high_sierra.bottle.tar.gz... (46KB)
+Removing: /Users/travis/Library/Caches/Homebrew/gdal-2.3.0.high_sierra.bottle.tar.gz... (16MB)
+Removing: /Users/travis/Library/Caches/Homebrew/gdbm-1.15.high_sierra.bottle.tar.gz... (187.8KB)
+Removing: /Users/travis/Library/Caches/Homebrew/geos-3.6.2.high_sierra.bottle.tar.gz... (2MB)
+Removing: /Users/travis/Library/Caches/Homebrew/gettext-0.19.8.1.high_sierra.bottle.tar.gz... (7.8MB)
+Removing: /Users/travis/Library/Caches/Homebrew/giflib-5.1.4.high_sierra.bottle.tar.gz... (88KB)
+Removing: /Users/travis/Library/Caches/Homebrew/git-2.18.0.high_sierra.bottle.tar.gz... (13.3MB)
+Removing: /Users/travis/Library/Caches/Homebrew/gmp-6.1.2_2.high_sierra.bottle.tar.gz... (1005KB)
+Removing: /Users/travis/Library/Caches/Homebrew/gnupg-2.2.8.high_sierra.bottle.tar.gz... (4MB)
+Removing: /Users/travis/Library/Caches/Homebrew/gnutls-3.5.18.high_sierra.bottle.tar.gz... (2.3MB)
+Removing: /Users/travis/Library/Caches/Homebrew/go-1.10.3.high_sierra.bottle.tar.gz... (102.6MB)
+Removing: /Users/travis/Library/Caches/Homebrew/icu4c-62.1.high_sierra.bottle.tar.gz... (25.5MB)
+Removing: /Users/travis/Library/Caches/Homebrew/jpeg-9c.high_sierra.bottle.tar.gz... (297.6KB)
+Removing: /Users/travis/Library/Caches/Homebrew/json-c-0.13.1.high_sierra.bottle.tar.gz... (79.5KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libassuan-2.5.1.high_sierra.bottle.tar.gz... (146.4KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libevent-2.1.8.high_sierra.bottle.tar.gz... (753KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libffi-3.2.1.high_sierra.bottle.tar.gz... (97.2KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libgcrypt-1.8.3.high_sierra.bottle.tar.gz... (1MB)
+Removing: /Users/travis/Library/Caches/Homebrew/libgeotiff-1.4.2_2.high_sierra.bottle.tar.gz... (1.2MB)
+Removing: /Users/travis/Library/Caches/Homebrew/libgpg-error-1.31.high_sierra.bottle.tar.gz... (261.3KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libidn2-2.0.5.high_sierra.bottle.tar.gz... (217.2KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libksba-1.3.5.high_sierra.bottle.tar.gz... (131.8KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libpng-1.6.34.high_sierra.bottle.tar.gz... (444.4KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libpq-10.4.high_sierra.bottle.tar.gz... (6MB)
+Removing: /Users/travis/Library/Caches/Homebrew/libspatialite-4.3.0a_6.high_sierra.bottle.tar.gz... (5.2MB)
+Removing: /Users/travis/Library/Caches/Homebrew/libssh-0.7.5.high_sierra.bottle.tar.gz... (416.2KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libtasn1-4.13.high_sierra.bottle.tar.gz... (131.1KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libtiff-4.0.9_3.high_sierra.bottle.tar.gz... (1MB)
+Removing: /Users/travis/Library/Caches/Homebrew/libtool-2.4.6_1.high_sierra.bottle.tar.gz... (1009.5KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libunistring-0.9.10.high_sierra.bottle.tar.gz... (1.4MB)
+Removing: /Users/travis/Library/Caches/Homebrew/libusb-1.0.22.high_sierra.bottle.tar.gz... (159.2KB)
+Removing: /Users/travis/Library/Caches/Homebrew/libxml2-2.9.7.high_sierra.bottle.tar.gz... (2.4MB)
+Removing: /Users/travis/Library/Caches/Homebrew/libyaml-0.1.7.high_sierra.bottle.tar.gz... (100.4KB)
+Removing: /Users/travis/Library/Caches/Homebrew/maven-3.5.4.tar.gz... (8.4MB)
+Removing: /Users/travis/Library/Caches/Homebrew/md5deep-4.4.high_sierra.bottle.tar.gz... (706.8KB)
+Removing: /Users/travis/Library/Caches/Homebrew/mercurial-4.6.1.high_sierra.bottle.tar.gz... (2MB)
+Removing: /Users/travis/Library/Caches/Homebrew/mpfr-4.0.1.high_sierra.bottle.tar.gz... (1.1MB)
+Removing: /Users/travis/Library/Caches/Homebrew/msgpack-3.0.1.high_sierra.bottle.tar.gz... (379.2KB)
+Removing: /Users/travis/Library/Caches/Homebrew/nettle-3.4.high_sierra.bottle.tar.gz... (721.6KB)
+Removing: /Users/travis/Library/Caches/Homebrew/node-10.5.0_1.high_sierra.bottle.tar.gz... (16MB)
+Removing: /Users/travis/Library/Caches/Homebrew/npth-1.5.high_sierra.bottle.tar.gz... (23.5KB)
+Removing: /Users/travis/Library/Caches/Homebrew/numpy-1.14.5.high_sierra.bottle.tar.gz... (6.3MB)
+Removing: /Users/travis/Library/Caches/Homebrew/openssl-1.0.2o_2.high_sierra.bottle.tar.gz... (3.7MB)
+Removing: /Users/travis/Library/Caches/Homebrew/openssl@1.1-1.1.0h.high_sierra.bottle.tar.gz... (4.5MB)
+Removing: /Users/travis/Library/Caches/Homebrew/p11-kit-0.23.12.high_sierra.bottle.tar.gz... (696.3KB)
+Removing: /Users/travis/Library/Caches/Homebrew/pcre-8.42.high_sierra.bottle.tar.gz... (1.8MB)
+Removing: /Users/travis/Library/Caches/Homebrew/pinentry-1.1.0_1.high_sierra.bottle.tar.gz... (102.8KB)
+Removing: /Users/travis/Library/Caches/Homebrew/pkg-config-0.29.2.high_sierra.bottle.tar.gz... (235.8KB)
+Removing: /Users/travis/Library/Caches/Homebrew/postgis-2.4.4_1.high_sierra.bottle.tar.gz... (12.4MB)
+Removing: /Users/travis/Library/Caches/Homebrew/postgresql-10.4.high_sierra.bottle.tar.gz... (10.6MB)
+Removing: /Users/travis/Library/Caches/Homebrew/proj-5.1.0.high_sierra.bottle.tar.gz... (7.0MB)
+Removing: /Users/travis/Library/Caches/Homebrew/pyenv-1.2.4.high_sierra.bottle.tar.gz... (589.8KB)
+Removing: /Users/travis/Library/Caches/Homebrew/python-3.6.5_1.high_sierra.bottle.tar.gz... (21.9MB)
+Removing: /Users/travis/Library/Caches/Homebrew/python@2-2.7.15_1.high_sierra.bottle.tar.gz... (18.3MB)
+Removing: /Users/travis/Library/Caches/Homebrew/readline-7.0.3_1.high_sierra.bottle.tar.gz... (495.5KB)
+Removing: /Users/travis/Library/Caches/Homebrew/sfcgal-1.3.5.high_sierra.bottle.tar.gz... (2.0MB)
+Removing: /Users/travis/Library/Caches/Homebrew/sqlite-3.24.0.high_sierra.bottle.tar.gz... (1.7MB)
+Removing: /Users/travis/Library/Caches/Homebrew/swiftlint-0.26.0.high_sierra.bottle.tar.gz... (4.9MB)
+Removing: /Users/travis/Library/Caches/Homebrew/tmate-2.2.1_3.high_sierra.bottle.tar.gz... (269.2KB)
+Removing: /Users/travis/Library/Caches/Homebrew/wget-1.19.5.high_sierra.bottle.tar.gz... (1.3MB)
+Removing: /Users/travis/Library/Caches/Homebrew/xctool-0.3.4.high_sierra.bottle.tar.gz... (1013.5KB)
+Removing: /Users/travis/Library/Caches/Homebrew/xz-5.2.4.high_sierra.bottle.tar.gz... (372.7KB)
+Removing: /Users/travis/Library/Logs/Homebrew/adns... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/autoconf... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/automake... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/boost... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/carthage... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/cgal... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/cmake... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/coreutils... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/freexl... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/gdal... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/gdbm... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/geos... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/gettext... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/giflib... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/git... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/gmp... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/gnupg... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/gnutls... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/go... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/icu4c... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/jpeg... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/json-c... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libassuan... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libevent... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libffi... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libgcrypt... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libgeotiff... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libgpg-error... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libidn2... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libksba... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libpng... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libpq... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libspatialite... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libssh... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libtasn1... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libtiff... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libtool... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libunistring... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libusb... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libxml2... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/libyaml... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/maven... (107B)
+Removing: /Users/travis/Library/Logs/Homebrew/md5deep... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/mercurial... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/mpfr... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/msgpack... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/nettle... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/node... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/npth... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/numpy... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/openssl... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/openssl@1.1... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/p11-kit... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/pcre... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/pinentry... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/pkg-config... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/postgis... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/postgresql... (1.3KB)
+Removing: /Users/travis/Library/Logs/Homebrew/proj... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/pyenv... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/python... (3 files, 127.8KB)
+Removing: /Users/travis/Library/Logs/Homebrew/python@2... (3 files, 123.7KB)
+Removing: /Users/travis/Library/Logs/Homebrew/readline... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/sfcgal... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/sqlite... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/swiftlint... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/tmate... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/wget... (68B)
+Removing: /Users/travis/Library/Logs/Homebrew/xctool... (8 files, 2KB)
+Removing: /Users/travis/Library/Logs/Homebrew/xz... (68B)
+Pruned 0 symbolic links and 5 directories from /usr/local
+Usage: brew install [options] formula
+
+Install formula.
+
+formula is usually the name of the formula to install, but it can be specified
+in several different ways.
+
+Unless HOMEBREW_NO_INSTALL_CLEANUP is set, brew cleanup will be run for the
+installed formulae or, every 30 days, for all formulae.
+
+    -d, --debug                      If brewing fails, open an interactive
+                                     debugging session with access to IRB or a
+                                     shell inside the temporary build directory
+        --env                        If std is passed, use the standard build
+                                     environment instead of superenv.If super
+                                     is passed, use superenv even if the formula
+                                     specifies the standard build environment.
+        --ignore-dependencies        An unsupported Homebrew development flag to
+                                     skip installing any dependencies of any
+                                     kind. If the dependencies are not already
+                                     present, the formula will have issues. If
+                                     you're not developing Homebrew, consider
+                                     adjusting your PATH rather than using this
+                                     flag.
+        --only-dependencies          Install the dependencies with specified
+                                     options but do not install the specified
+                                     formula.
+        --cc                         Attempt to compile using provided
+                                     compiler. compiler should be the name
+                                     of the compiler's executable, for instance
+                                     gcc-7 for GCC 7. In order to use LLVM's
+                                     clang, use llvm_clang. To specify the
+                                     Apple-provided clang, use clang. This
+                                     parameter will only accept compilers that
+                                     are provided by Homebrew or bundled with
+                                     macOS. Please do not file issues if you
+                                     encounter errors while using this flag.
+    -s, --build-from-source          Compile the specified formula from source
+                                     even if a bottle is provided. Dependencies
+                                     will still be installed from bottles if
+                                     they are available.
+        --force-bottle               Install from a bottle if it exists for the
+                                     current or newest version of macOS, even if
+                                     it would not normally be used for
+                                     installation.
+        --include-test               Install testing dependencies required to
+                                     run brew test.
+        --devel                      If formula defines it, install the
+                                     development version.
+        --HEAD                       If formula defines it, install the HEAD
+                                     version, aka. master, trunk, unstable.
+        --fetch-HEAD                 Fetch the upstream repository to detect if
+                                     the HEAD installation of the formula is
+                                     outdated. Otherwise, the repository's HEAD
+                                     will be checked for updates when a new
+                                     stable or development version has been
+                                     released.
+        --keep-tmp                   Don't delete the temporary files created
+                                     during installation.
+        --build-bottle               Prepare the formula for eventual bottling
+                                     during installation.
+        --bottle-arch                Optimise bottles for the given architecture
+                                     rather than the oldest architecture
+                                     supported by the version of macOS the
+                                     bottles are built on.
+    -f, --force                      Install without checking for previously
+                                     installed keg-only or non-migrated
+                                     versions.
+    -v, --verbose                    Print the verification and postinstall
+                                     steps.
+        --display-times              Print install times for each formula at the
+                                     end of the run.
+    -i, --interactive                Download and patch formula, then open a
+                                     shell. This allows the user to run
+                                     ./configure --help and otherwise
+                                     determine how to turn the software package
+                                     into a Homebrew package.
+    -g, --git                        Create a Git repository, useful for
+                                     creating patches to the software.
+    -h, --help                       Show this message.
+Error: invalid option: --with-openssl
+Successfully installed stud-0.0.23
+Successfully installed dotenv-2.7.2
+Successfully installed insist-1.0.0
+Successfully installed mustache-0.99.8
+Successfully installed clamp-1.0.1
+Successfully installed cabin-0.9.0
+Successfully installed pleaserun-0.0.30
+Successfully installed io-like-0.3.0
+Building native extensions.  This could take a while...
+Successfully installed ffi-1.11.1
+Successfully installed ruby-xz-0.2.3
+Successfully installed childprocess-0.9.0
+Successfully installed arr-pm-0.0.10
+Successfully installed backports-3.15.0
+Successfully installed fpm-1.11.0
+14 gems installed
+Building native extensions.  This could take a while...
+Successfully installed rdiscount-2.2.0.1
+Building native extensions.  This could take a while...
+Successfully installed hpricot-0.8.6
+Successfully installed ronn-0.7.3
+3 gems installed
+WARNING: Could not find 'dotnet', appending /Users/travis/.dotnet to PATH.
+WARNING: Still could not find 'dotnet', restoring PATH.
+dotnet not present.  Installing dotnet.
+Deleting install root - /usr/local/share/dotnet
+dotnet packages removal succeeded.
+dotnet-install: Downloading link: https://dotnetcli.azureedge.net/dotnet/Sdk/2.1.507/dotnet-sdk-2.1.507-osx-x64.tar.gz
+dotnet-install: Extracting zip from https://dotnetcli.azureedge.net/dotnet/Sdk/2.1.507/dotnet-sdk-2.1.507-osx-x64.tar.gz
+dotnet-install: Adding to current process PATH: `/Users/travis/.dotnet`. Note: This change will be visible only when sourcing script.
+dotnet-install: Installation finished successfully.
+travis_time:end:0ba11778:start=1558560459228466000,finish=1558560591135405000,duration=131906939000[0Ktravis_fold:end:install.8[0Ktravis_time:start:05e6fe76[0K$ pwsh -File tools/travis.ps1
+Executing travis.ps1 $isPR='False' $isFullBuild='False' - Build(deps): Bump Newtonsoft.Json from 11.0.2 to 12.0.2
+
+Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 11.0.2 to 12.0.2.
+- [Release notes](https://github.com/JamesNK/Newtonsoft.Json/releases)
+- [Commits](https://github.com/JamesNK/Newtonsoft.Json/compare/11.0.2...12.0.2)
+
+Signed-off-by: dependabot[bot] <support@dependabot.com>
+WARNING: Could not find 'dotnet', appending /Users/travis/.dotnet to PATH.
+VERBOSE: Using configuration 'Release'
+VERBOSE: Top project directory is /Users/travis/build/PowerShell/PowerShell/src/powershell-unix
+VERBOSE: Using framework 'netcoreapp2.1'
+VERBOSE: Using runtime 'osx-x64'
+Run dotnet restore /Users/travis/build/PowerShell/PowerShell/src/powershell-unix --runtime osx-x64 --verbosity quiet
+Done restoring /Users/travis/build/PowerShell/PowerShell/src/powershell-unix
+Run dotnet restore /Users/travis/build/PowerShell/PowerShell/src/TypeCatalogGen --runtime osx-x64 --verbosity quiet
+Done restoring /Users/travis/build/PowerShell/PowerShell/src/TypeCatalogGen
+Run dotnet restore /Users/travis/build/PowerShell/PowerShell/src/ResGen --runtime osx-x64 --verbosity quiet
+Done restoring /Users/travis/build/PowerShell/PowerShell/src/ResGen
+Run dotnet restore /Users/travis/build/PowerShell/PowerShell/src/Modules --runtime osx-x64 --verbosity quiet
+Done restoring /Users/travis/build/PowerShell/PowerShell/src/Modules
+Run ResGen (generating C# bindings for resx files)
+
+The build failed. Please fix the build errors and run again.
+Execution of { dotnet run } by build.psm1: line 1885 failed with exit code 1
+At /Users/travis/build/PowerShell/PowerShell/build.psm1:2038 char:17
++                 throw $errorMessage
++                 ~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : OperationStopped: (Execution of { dotn\u2026ed with exit code 1:String) [], RuntimeException
++ FullyQualifiedErrorId : Execution of { dotnet run } by build.psm1: line 1885 failed with exit code 1
+ 
+travis_time:end:05e6fe76:start=1558560591271429000,finish=1558560641760140000,duration=50488711000[0K[31;1mThe command "pwsh -File tools/travis.ps1" exited with 1.[0m
+
+travis_time:start:05cda5c3[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mdspell '**/*.md' '!**/Pester/**/*.md' --ignore-numbers --ignore-acronyms --report --en-us; fi
+travis_time:end:05cda5c3:start=1558560641822520000,finish=1558560641841742000,duration=19222000[0K[32;1mThe command "if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mdspell '**/*.md' '!**/Pester/**/*.md' --ignore-numbers --ignore-acronyms --report --en-us; fi" exited with 0.[0m
+
+travis_fold:start:cache.2[0Kstore build cache
+travis_time:start:1777d47b[0Ktravis_time:end:1777d47b:start=1558560641997954000,finish=1558560642017726000,duration=19772000[0Ktravis_time:start:26658a14[0K[32;1mchanges detected, packing new archive[0m
+.
+.
+.
+.
+.
+.
+.
+[32;1muploading Newtonsoft.Json-12.0.2/cache-osx-xcode9.4-34af5f911c1fc54690da9fa899b4eecd309f5440706acd6c5b91740e571e3d46--compiler-gpp.tgz[0m
+[32;1mcache uploaded[0m
+travis_time:end:26658a14:start=1558560642079362000,finish=1558560700042971000,duration=57963609000[0Ktravis_fold:end:cache.2[0K
+travis_fold:start:after_failure[0Ktravis_time:start:004a364e[0K$ pwsh -File tools/travis.ps1 -Stage Failure
+We only send bagde or webhook update for Cron builds
+travis_time:end:004a364e:start=1558560700194280000,finish=1558560701797013000,duration=1602733000[0Ktravis_fold:end:after_failure[0K
+[33;1mUploading Artifacts[0m
+travis_fold:start:artifacts.setup[0Kartifacts version v0.7.9-1-g41cb564 revision=41cb5646dcb85578469a5029968358b4ac46e083
+$ export ARTIFACTS_PATHS="$(ls powershell*{deb,pkg,AppImage,gz} | tr \"\\n\" \":\"):TestResultsSudo.xml:TestResultsNoSudo.xml"
+ls: powershell*AppImage: No such file or directory
+ls: powershell*deb: No such file or directory
+ls: powershell*gz: No such file or directory
+ls: powershell*pkg: No such file or directory
+travis_fold:end:artifacts.setup[0K$ artifacts upload
+INFO: uploading with settings
+  bucket: [secure]
+  cache_control: private
+  permissions: private
+
+[31;1mERROR: failed to upload: /Users/travis/build/PowerShell/PowerShell/TestResultsSudo.xml
+[0m  err: open /Users/travis/build/PowerShell/PowerShell/TestResultsSudo.xml: no such file or directory
+
+[31;1mERROR: failed to upload: /Users/travis/build/PowerShell/PowerShell/TestResultsNoSudo.xml
+[0m  err: open /Users/travis/build/PowerShell/PowerShell/TestResultsNoSudo.xml: no such file or directory
+
+[33;1mDone uploading artifacts[0m
+
+
+Done. Your build exited with 1.

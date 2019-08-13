@@ -1,0 +1,1581 @@
+travis_fold:start:step_start_instance[0K[33;1mStarting instance[0m
+✓ selected image "travis-ci-macos-10.13-xcode9.4.1-1529955246"
+✓ started instance
+• sleeping 3s before checking instance start
+• polling for instance start completion.....................
+• waiting for ssh connectivity...
+✓ instance is ready (1m4.285s)
+travis_fold:end:step_start_instance[0Ktravis_fold:start:step_upload_script[0K[33;1mUploading script[0m
+• waiting for ssh connectivity...
+✓ ssh connectivity established (90ms)
+✓ uploaded script
+✓ uploaded wrapper.sh script
+travis_fold:end:step_upload_script[0Ktravis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: b0fc57a1-5b13-4068-9502-0b1890bba0dd@4921.wjb-2
+version: v4.1.2 https://github.com/travis-ci/worker/tree/91246b057ccd93649046771f29221f839c19a7d3
+instance: d785c213-6490-47b7-84d8-ad13f7010f8d travis-ci-macos-10.13-xcode9.4.1-1529955246 (via amqp)
+startup: 1m4.285429194s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: objective-c
+Build id: 431826490
+Job id: 431826491
+Runtime kernel version: 17.4.0
+travis-build version: 92b1f419b
+[34m[1mBuild image provisioning date and time[0m
+Mon Jun 25 21:55:14 GMT 2018
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.13.3
+BuildVersion:	17D102
+[34m[1mGit version[0m
+git version 2.18.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.3
+[34m[1mPre-installed Node.js versions[0m
+v4.9.1
+v5.12.0
+v6.14.3
+v8.11.3
+[34m[1mmvn -version[0m
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T18:33:14Z)
+Maven home: /usr/local/Cellar/maven/3.5.4/libexec
+Java version: 10.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+[32;1mNetwork availability confirmed.[0m
+
+Fix WWDRCA Certificate
+Unable to delete certificate matching "0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75"security: AppleWWDRCA.cer: already in /Library/Keychains/System.keychain
+$ rvm use
+[32mUsing /Users/travis/.rvm/gems/ruby-2.4.3[0m
+
+travis_fold:start:git.checkout[0Ktravis_time:start:02cacda8[0K$ git clone --depth=50 https://github.com/SwiftyJSON/SwiftyJSON.git SwiftyJSON/SwiftyJSON
+Cloning into 'SwiftyJSON/SwiftyJSON'...
+remote: Enumerating objects: 881, done.[K
+remote: Counting objects:   0% (1/881)   [Kremote: Counting objects:   1% (9/881)   [Kremote: Counting objects:   2% (18/881)   [Kremote: Counting objects:   3% (27/881)   [Kremote: Counting objects:   4% (36/881)   [Kremote: Counting objects:   5% (45/881)   [Kremote: Counting objects:   6% (53/881)   [Kremote: Counting objects:   7% (62/881)   [Kremote: Counting objects:   8% (71/881)   [Kremote: Counting objects:   9% (80/881)   [Kremote: Counting objects:  10% (89/881)   [Kremote: Counting objects:  11% (97/881)   [Kremote: Counting objects:  12% (106/881)   [Kremote: Counting objects:  13% (115/881)   [Kremote: Counting objects:  14% (124/881)   [Kremote: Counting objects:  15% (133/881)   [Kremote: Counting objects:  16% (141/881)   [Kremote: Counting objects:  17% (150/881)   [Kremote: Counting objects:  18% (159/881)   [Kremote: Counting objects:  19% (168/881)   [Kremote: Counting objects:  20% (177/881)   [Kremote: Counting objects:  21% (186/881)   [Kremote: Counting objects:  22% (194/881)   [Kremote: Counting objects:  23% (203/881)   [Kremote: Counting objects:  24% (212/881)   [Kremote: Counting objects:  25% (221/881)   [Kremote: Counting objects:  26% (230/881)   [Kremote: Counting objects:  27% (238/881)   [Kremote: Counting objects:  28% (247/881)   [Kremote: Counting objects:  29% (256/881)   [Kremote: Counting objects:  30% (265/881)   [Kremote: Counting objects:  31% (274/881)   [Kremote: Counting objects:  32% (282/881)   [Kremote: Counting objects:  33% (291/881)   [Kremote: Counting objects:  34% (300/881)   [Kremote: Counting objects:  35% (309/881)   [Kremote: Counting objects:  36% (318/881)   [Kremote: Counting objects:  37% (326/881)   [Kremote: Counting objects:  38% (335/881)   [Kremote: Counting objects:  39% (344/881)   [Kremote: Counting objects:  40% (353/881)   [Kremote: Counting objects:  41% (362/881)   [Kremote: Counting objects:  42% (371/881)   [Kremote: Counting objects:  43% (379/881)   [Kremote: Counting objects:  44% (388/881)   [Kremote: Counting objects:  45% (397/881)   [Kremote: Counting objects:  46% (406/881)   [Kremote: Counting objects:  47% (415/881)   [Kremote: Counting objects:  48% (423/881)   [Kremote: Counting objects:  49% (432/881)   [Kremote: Counting objects:  50% (441/881)   [Kremote: Counting objects:  51% (450/881)   [Kremote: Counting objects:  52% (459/881)   [Kremote: Counting objects:  53% (467/881)   [Kremote: Counting objects:  54% (476/881)   [Kremote: Counting objects:  55% (485/881)   [Kremote: Counting objects:  56% (494/881)   [Kremote: Counting objects:  57% (503/881)   [Kremote: Counting objects:  58% (511/881)   [Kremote: Counting objects:  59% (520/881)   [Kremote: Counting objects:  60% (529/881)   [Kremote: Counting objects:  61% (538/881)   [Kremote: Counting objects:  62% (547/881)   [Kremote: Counting objects:  63% (556/881)   [Kremote: Counting objects:  64% (564/881)   [Kremote: Counting objects:  65% (573/881)   [Kremote: Counting objects:  66% (582/881)   [Kremote: Counting objects:  67% (591/881)   [Kremote: Counting objects:  68% (600/881)   [Kremote: Counting objects:  69% (608/881)   [Kremote: Counting objects:  70% (617/881)   [Kremote: Counting objects:  71% (626/881)   [Kremote: Counting objects:  72% (635/881)   [Kremote: Counting objects:  73% (644/881)   [Kremote: Counting objects:  74% (652/881)   [Kremote: Counting objects:  75% (661/881)   [Kremote: Counting objects:  76% (670/881)   [Kremote: Counting objects:  77% (679/881)   [Kremote: Counting objects:  78% (688/881)   [Kremote: Counting objects:  79% (696/881)   [Kremote: Counting objects:  80% (705/881)   [Kremote: Counting objects:  81% (714/881)   [Kremote: Counting objects:  82% (723/881)   [Kremote: Counting objects:  83% (732/881)   [Kremote: Counting objects:  84% (741/881)   [Kremote: Counting objects:  85% (749/881)   [Kremote: Counting objects:  86% (758/881)   [Kremote: Counting objects:  87% (767/881)   [Kremote: Counting objects:  88% (776/881)   [Kremote: Counting objects:  89% (785/881)   [Kremote: Counting objects:  90% (793/881)   [Kremote: Counting objects:  91% (802/881)   [Kremote: Counting objects:  92% (811/881)   [Kremote: Counting objects:  93% (820/881)   [Kremote: Counting objects:  94% (829/881)   [Kremote: Counting objects:  95% (837/881)   [Kremote: Counting objects:  96% (846/881)   [Kremote: Counting objects:  97% (855/881)   [Kremote: Counting objects:  98% (864/881)   [Kremote: Counting objects:  99% (873/881)   [Kremote: Counting objects: 100% (881/881)   [Kremote: Counting objects: 100% (881/881), done.[K
+remote: Compressing objects:   0% (1/424)   [Kremote: Compressing objects:   1% (5/424)   [Kremote: Compressing objects:   2% (9/424)   [Kremote: Compressing objects:   3% (13/424)   [Kremote: Compressing objects:   4% (17/424)   [Kremote: Compressing objects:   5% (22/424)   [Kremote: Compressing objects:   6% (26/424)   [Kremote: Compressing objects:   7% (30/424)   [Kremote: Compressing objects:   8% (34/424)   [Kremote: Compressing objects:   9% (39/424)   [Kremote: Compressing objects:  10% (43/424)   [Kremote: Compressing objects:  11% (47/424)   [Kremote: Compressing objects:  12% (51/424)   [Kremote: Compressing objects:  13% (56/424)   [Kremote: Compressing objects:  14% (60/424)   [Kremote: Compressing objects:  15% (64/424)   [Kremote: Compressing objects:  16% (68/424)   [Kremote: Compressing objects:  17% (73/424)   [Kremote: Compressing objects:  18% (77/424)   [Kremote: Compressing objects:  19% (81/424)   [Kremote: Compressing objects:  20% (85/424)   [Kremote: Compressing objects:  21% (90/424)   [Kremote: Compressing objects:  22% (94/424)   [Kremote: Compressing objects:  23% (98/424)   [Kremote: Compressing objects:  24% (102/424)   [Kremote: Compressing objects:  25% (106/424)   [Kremote: Compressing objects:  26% (111/424)   [Kremote: Compressing objects:  27% (115/424)   [Kremote: Compressing objects:  28% (119/424)   [Kremote: Compressing objects:  29% (123/424)   [Kremote: Compressing objects:  30% (128/424)   [Kremote: Compressing objects:  31% (132/424)   [Kremote: Compressing objects:  32% (136/424)   [Kremote: Compressing objects:  33% (140/424)   [Kremote: Compressing objects:  34% (145/424)   [Kremote: Compressing objects:  35% (149/424)   [Kremote: Compressing objects:  36% (153/424)   [Kremote: Compressing objects:  37% (157/424)   [Kremote: Compressing objects:  38% (162/424)   [Kremote: Compressing objects:  39% (166/424)   [Kremote: Compressing objects:  40% (170/424)   [Kremote: Compressing objects:  41% (174/424)   [Kremote: Compressing objects:  42% (179/424)   [Kremote: Compressing objects:  43% (183/424)   [Kremote: Compressing objects:  44% (187/424)   [Kremote: Compressing objects:  45% (191/424)   [Kremote: Compressing objects:  46% (196/424)   [Kremote: Compressing objects:  47% (200/424)   [Kremote: Compressing objects:  48% (204/424)   [Kremote: Compressing objects:  49% (208/424)   [Kremote: Compressing objects:  50% (212/424)   [Kremote: Compressing objects:  51% (217/424)   [Kremote: Compressing objects:  52% (221/424)   [Kremote: Compressing objects:  53% (225/424)   [Kremote: Compressing objects:  54% (229/424)   [Kremote: Compressing objects:  55% (234/424)   [Kremote: Compressing objects:  56% (238/424)   [Kremote: Compressing objects:  57% (242/424)   [Kremote: Compressing objects:  58% (246/424)   [Kremote: Compressing objects:  59% (251/424)   [Kremote: Compressing objects:  60% (255/424)   [Kremote: Compressing objects:  61% (259/424)   [Kremote: Compressing objects:  62% (263/424)   [Kremote: Compressing objects:  63% (268/424)   [Kremote: Compressing objects:  64% (272/424)   [Kremote: Compressing objects:  65% (276/424)   [Kremote: Compressing objects:  66% (280/424)   [Kremote: Compressing objects:  67% (285/424)   [Kremote: Compressing objects:  68% (289/424)   [Kremote: Compressing objects:  69% (293/424)   [Kremote: Compressing objects:  70% (297/424)   [Kremote: Compressing objects:  71% (302/424)   [Kremote: Compressing objects:  72% (306/424)   [Kremote: Compressing objects:  73% (310/424)   [Kremote: Compressing objects:  74% (314/424)   [Kremote: Compressing objects:  75% (318/424)   [Kremote: Compressing objects:  76% (323/424)   [Kremote: Compressing objects:  77% (327/424)   [Kremote: Compressing objects:  78% (331/424)   [Kremote: Compressing objects:  79% (335/424)   [Kremote: Compressing objects:  80% (340/424)   [Kremote: Compressing objects:  81% (344/424)   [Kremote: Compressing objects:  82% (348/424)   [Kremote: Compressing objects:  83% (352/424)   [Kremote: Compressing objects:  84% (357/424)   [Kremote: Compressing objects:  85% (361/424)   [Kremote: Compressing objects:  86% (365/424)   [Kremote: Compressing objects:  87% (369/424)   [Kremote: Compressing objects:  88% (374/424)   [Kremote: Compressing objects:  89% (378/424)   [Kremote: Compressing objects:  90% (382/424)   [Kremote: Compressing objects:  91% (386/424)   [Kremote: Compressing objects:  92% (391/424)   [Kremote: Compressing objects:  93% (395/424)   [Kremote: Compressing objects:  94% (399/424)   [Kremote: Compressing objects:  95% (403/424)   [Kremote: Compressing objects:  96% (408/424)   [Kremote: Compressing objects:  97% (412/424)   [Kremote: Compressing objects:  98% (416/424)   [Kremote: Compressing objects:  99% (420/424)   [Kremote: Compressing objects: 100% (424/424)   [Kremote: Compressing objects: 100% (424/424), done.[K
+Receiving objects:   0% (1/881)   Receiving objects:   1% (9/881)   Receiving objects:   2% (18/881)   Receiving objects:   3% (27/881)   Receiving objects:   4% (36/881)   Receiving objects:   5% (45/881)   Receiving objects:   6% (53/881)   Receiving objects:   7% (62/881)   Receiving objects:   8% (71/881)   Receiving objects:   9% (80/881)   Receiving objects:  10% (89/881)   Receiving objects:  11% (97/881)   Receiving objects:  12% (106/881)   Receiving objects:  13% (115/881)   Receiving objects:  14% (124/881)   Receiving objects:  15% (133/881)   Receiving objects:  16% (141/881)   Receiving objects:  17% (150/881)   Receiving objects:  18% (159/881)   Receiving objects:  19% (168/881)   Receiving objects:  20% (177/881)   Receiving objects:  21% (186/881)   Receiving objects:  22% (194/881)   Receiving objects:  23% (203/881)   Receiving objects:  24% (212/881)   Receiving objects:  25% (221/881)   Receiving objects:  26% (230/881)   Receiving objects:  27% (238/881)   Receiving objects:  28% (247/881)   Receiving objects:  29% (256/881)   Receiving objects:  30% (265/881)   Receiving objects:  31% (274/881)   Receiving objects:  32% (282/881)   Receiving objects:  33% (291/881)   Receiving objects:  34% (300/881)   Receiving objects:  35% (309/881)   Receiving objects:  36% (318/881)   Receiving objects:  37% (326/881)   Receiving objects:  38% (335/881)   Receiving objects:  39% (344/881)   Receiving objects:  40% (353/881)   Receiving objects:  41% (362/881)   Receiving objects:  42% (371/881)   Receiving objects:  43% (379/881)   Receiving objects:  44% (388/881)   Receiving objects:  45% (397/881)   Receiving objects:  46% (406/881)   Receiving objects:  47% (415/881)   Receiving objects:  48% (423/881)   Receiving objects:  49% (432/881)   Receiving objects:  50% (441/881)   Receiving objects:  51% (450/881)   Receiving objects:  52% (459/881)   Receiving objects:  53% (467/881)   Receiving objects:  54% (476/881)   Receiving objects:  55% (485/881)   Receiving objects:  56% (494/881)   Receiving objects:  57% (503/881)   Receiving objects:  58% (511/881)   Receiving objects:  59% (520/881)   Receiving objects:  60% (529/881)   Receiving objects:  61% (538/881)   Receiving objects:  62% (547/881)   Receiving objects:  63% (556/881)   Receiving objects:  64% (564/881)   Receiving objects:  65% (573/881)   Receiving objects:  66% (582/881)   Receiving objects:  67% (591/881)   Receiving objects:  68% (600/881)   Receiving objects:  69% (608/881)   Receiving objects:  70% (617/881)   Receiving objects:  71% (626/881)   Receiving objects:  72% (635/881)   Receiving objects:  73% (644/881)   Receiving objects:  74% (652/881)   Receiving objects:  75% (661/881)   Receiving objects:  76% (670/881)   Receiving objects:  77% (679/881)   Receiving objects:  78% (688/881)   Receiving objects:  79% (696/881)   Receiving objects:  80% (705/881)   Receiving objects:  81% (714/881)   Receiving objects:  82% (723/881)   Receiving objects:  83% (732/881)   Receiving objects:  84% (741/881)   Receiving objects:  85% (749/881)   Receiving objects:  86% (758/881)   Receiving objects:  87% (767/881)   Receiving objects:  88% (776/881)   Receiving objects:  89% (785/881)   Receiving objects:  90% (793/881)   Receiving objects:  91% (802/881)   Receiving objects:  92% (811/881)   Receiving objects:  93% (820/881)   Receiving objects:  94% (829/881)   Receiving objects:  95% (837/881)   Receiving objects:  96% (846/881)   Receiving objects:  97% (855/881)   remote: Total 881 (delta 525), reused 731 (delta 404), pack-reused 0[K
+Receiving objects:  98% (864/881)   Receiving objects:  99% (873/881)   Receiving objects: 100% (881/881)   Receiving objects: 100% (881/881), 217.53 KiB | 8.70 MiB/s, done.
+Resolving deltas:   0% (0/525)   Resolving deltas:   1% (6/525)   Resolving deltas:   2% (11/525)   Resolving deltas:  16% (86/525)   Resolving deltas:  17% (91/525)   Resolving deltas:  20% (106/525)   Resolving deltas:  22% (120/525)   Resolving deltas:  23% (121/525)   Resolving deltas:  24% (131/525)   Resolving deltas:  25% (132/525)   Resolving deltas:  26% (138/525)   Resolving deltas:  27% (143/525)   Resolving deltas:  30% (158/525)   Resolving deltas:  36% (189/525)   Resolving deltas:  37% (196/525)   Resolving deltas:  39% (209/525)   Resolving deltas:  40% (210/525)   Resolving deltas:  41% (217/525)   Resolving deltas:  42% (221/525)   Resolving deltas:  44% (231/525)   Resolving deltas:  45% (239/525)   Resolving deltas:  46% (244/525)   Resolving deltas:  48% (253/525)   Resolving deltas:  49% (261/525)   Resolving deltas:  51% (268/525)   Resolving deltas:  53% (280/525)   Resolving deltas:  54% (286/525)   Resolving deltas:  59% (311/525)   Resolving deltas:  61% (322/525)   Resolving deltas:  62% (330/525)   Resolving deltas:  63% (332/525)   Resolving deltas:  68% (357/525)   Resolving deltas:  72% (380/525)   Resolving deltas:  77% (405/525)   Resolving deltas:  79% (415/525)   Resolving deltas:  83% (437/525)   Resolving deltas:  84% (444/525)   Resolving deltas:  86% (453/525)   Resolving deltas:  90% (476/525)   Resolving deltas:  92% (484/525)   Resolving deltas:  94% (497/525)   Resolving deltas:  95% (500/525)   Resolving deltas:  97% (514/525)   Resolving deltas:  98% (515/525)   Resolving deltas:  99% (520/525)   Resolving deltas: 100% (525/525)   Resolving deltas: 100% (525/525), done.
+
+travis_time:end:02cacda8:start=1537611458946079000,finish=1537611459572077000,duration=625998000[0K$ cd SwiftyJSON/SwiftyJSON
+travis_time:start:094b68db[0K$ git fetch origin +refs/pull/986/merge:
+remote: Enumerating objects: 75, done.[K
+remote: Counting objects:   1% (1/75)   [Kremote: Counting objects:   2% (2/75)   [Kremote: Counting objects:   4% (3/75)   [Kremote: Counting objects:   5% (4/75)   [Kremote: Counting objects:   6% (5/75)   [Kremote: Counting objects:   8% (6/75)   [Kremote: Counting objects:   9% (7/75)   [Kremote: Counting objects:  10% (8/75)   [Kremote: Counting objects:  12% (9/75)   [Kremote: Counting objects:  13% (10/75)   [Kremote: Counting objects:  14% (11/75)   [Kremote: Counting objects:  16% (12/75)   [Kremote: Counting objects:  17% (13/75)   [Kremote: Counting objects:  18% (14/75)   [Kremote: Counting objects:  20% (15/75)   [Kremote: Counting objects:  21% (16/75)   [Kremote: Counting objects:  22% (17/75)   [Kremote: Counting objects:  24% (18/75)   [Kremote: Counting objects:  25% (19/75)   [Kremote: Counting objects:  26% (20/75)   [Kremote: Counting objects:  28% (21/75)   [Kremote: Counting objects:  29% (22/75)   [Kremote: Counting objects:  30% (23/75)   [Kremote: Counting objects:  32% (24/75)   [Kremote: Counting objects:  33% (25/75)   [Kremote: Counting objects:  34% (26/75)   [Kremote: Counting objects:  36% (27/75)   [Kremote: Counting objects:  37% (28/75)   [Kremote: Counting objects:  38% (29/75)   [Kremote: Counting objects:  40% (30/75)   [Kremote: Counting objects:  41% (31/75)   [Kremote: Counting objects:  42% (32/75)   [Kremote: Counting objects:  44% (33/75)   [Kremote: Counting objects:  45% (34/75)   [Kremote: Counting objects:  46% (35/75)   [Kremote: Counting objects:  48% (36/75)   [Kremote: Counting objects:  49% (37/75)   [Kremote: Counting objects:  50% (38/75)   [Kremote: Counting objects:  52% (39/75)   [Kremote: Counting objects:  53% (40/75)   [Kremote: Counting objects:  54% (41/75)   [Kremote: Counting objects:  56% (42/75)   [Kremote: Counting objects:  57% (43/75)   [Kremote: Counting objects:  58% (44/75)   [Kremote: Counting objects:  60% (45/75)   [Kremote: Counting objects:  61% (46/75)   [Kremote: Counting objects:  62% (47/75)   [Kremote: Counting objects:  64% (48/75)   [Kremote: Counting objects:  65% (49/75)   [Kremote: Counting objects:  66% (50/75)   [Kremote: Counting objects:  68% (51/75)   [Kremote: Counting objects:  69% (52/75)   [Kremote: Counting objects:  70% (53/75)   [Kremote: Counting objects:  72% (54/75)   [Kremote: Counting objects:  73% (55/75)   [Kremote: Counting objects:  74% (56/75)   [Kremote: Counting objects:  76% (57/75)   [Kremote: Counting objects:  77% (58/75)   [Kremote: Counting objects:  78% (59/75)   [Kremote: Counting objects:  80% (60/75)   [Kremote: Counting objects:  81% (61/75)   [Kremote: Counting objects:  82% (62/75)   [Kremote: Counting objects:  84% (63/75)   [Kremote: Counting objects:  85% (64/75)   [Kremote: Counting objects:  86% (65/75)   [Kremote: Counting objects:  88% (66/75)   [Kremote: Counting objects:  89% (67/75)   [Kremote: Counting objects:  90% (68/75)   [Kremote: Counting objects:  92% (69/75)   [Kremote: Counting objects:  93% (70/75)   [Kremote: Counting objects:  94% (71/75)   [Kremote: Counting objects:  96% (72/75)   [Kremote: Counting objects:  97% (73/75)   [Kremote: Counting objects:  98% (74/75)   [Kremote: Counting objects: 100% (75/75)   [Kremote: Counting objects: 100% (75/75), done.[K
+remote: Compressing objects:   4% (1/22)   [Kremote: Compressing objects:   9% (2/22)   [Kremote: Compressing objects:  13% (3/22)   [Kremote: Compressing objects:  18% (4/22)   [Kremote: Compressing objects:  22% (5/22)   [Kremote: Compressing objects:  27% (6/22)   [Kremote: Compressing objects:  31% (7/22)   [Kremote: Compressing objects:  36% (8/22)   [Kremote: Compressing objects:  40% (9/22)   [Kremote: Compressing objects:  45% (10/22)   [Kremote: Compressing objects:  50% (11/22)   [Kremote: Compressing objects:  54% (12/22)   [Kremote: Compressing objects:  59% (13/22)   [Kremote: Compressing objects:  63% (14/22)   [Kremote: Compressing objects:  68% (15/22)   [Kremote: Compressing objects:  72% (16/22)   [Kremote: Compressing objects:  77% (17/22)   [Kremote: Compressing objects:  81% (18/22)   [Kremote: Compressing objects:  86% (19/22)   [Kremote: Compressing objects:  90% (20/22)   [Kremote: Compressing objects:  95% (21/22)   [Kremote: Compressing objects: 100% (22/22)   [Kremote: Compressing objects: 100% (22/22), done.[K
+remote: Total 39 (delta 24), reused 28 (delta 15), pack-reused 0[K
+Unpacking objects:   2% (1/39)   Unpacking objects:   5% (2/39)   Unpacking objects:   7% (3/39)   Unpacking objects:  10% (4/39)   Unpacking objects:  12% (5/39)   Unpacking objects:  15% (6/39)   Unpacking objects:  17% (7/39)   Unpacking objects:  20% (8/39)   Unpacking objects:  23% (9/39)   Unpacking objects:  25% (10/39)   Unpacking objects:  28% (11/39)   Unpacking objects:  30% (12/39)   Unpacking objects:  33% (13/39)   Unpacking objects:  35% (14/39)   Unpacking objects:  38% (15/39)   Unpacking objects:  41% (16/39)   Unpacking objects:  43% (17/39)   Unpacking objects:  46% (18/39)   Unpacking objects:  48% (19/39)   Unpacking objects:  51% (20/39)   Unpacking objects:  53% (21/39)   Unpacking objects:  56% (22/39)   Unpacking objects:  58% (23/39)   Unpacking objects:  61% (24/39)   Unpacking objects:  64% (25/39)   Unpacking objects:  66% (26/39)   Unpacking objects:  69% (27/39)   Unpacking objects:  71% (28/39)   Unpacking objects:  74% (29/39)   Unpacking objects:  76% (30/39)   Unpacking objects:  79% (31/39)   Unpacking objects:  82% (32/39)   Unpacking objects:  84% (33/39)   Unpacking objects:  87% (34/39)   Unpacking objects:  89% (35/39)   Unpacking objects:  92% (36/39)   Unpacking objects:  94% (37/39)   Unpacking objects:  97% (38/39)   Unpacking objects: 100% (39/39)   Unpacking objects: 100% (39/39), done.
+From https://github.com/SwiftyJSON/SwiftyJSON
+ * branch            refs/pull/986/merge -> FETCH_HEAD
+
+travis_time:end:094b68db:start=1537611459615759000,finish=1537611459944258000,duration=328499000[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+[33;1mSetting environment variables from .travis.yml[0m
+$ export SWIFT_VERSION=4.2.0
+
+[33;1mDisabling Homebrew auto update. If your Homebrew package requires Homebrew DB be up to date, please run `brew update` explicitly.[0m
+$ export HOMEBREW_NO_AUTO_UPDATE=1
+travis_fold:start:rvm[0Ktravis_time:start:0046fef4[0K$ rvm use default
+[32mUsing /Users/travis/.rvm/gems/ruby-2.4.3[0m
+
+travis_time:end:0046fef4:start=1537611459989715000,finish=1537611461395935000,duration=1406220000[0Ktravis_fold:end:rvm[0K$ ruby --version
+ruby 2.4.3p205 (2017-12-14 revision 61247) [x86_64-darwin17]
+$ rvm --version
+rvm 1.29.3 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+$ bundle --version
+Bundler version 1.16.2
+travis_fold:start:announce[0K$ xcodebuild -version -sdk
+iPhoneOS11.4.sdk - iOS 11.4 (iphoneos11.4)
+SDKVersion: 11.4
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk
+PlatformVersion: 11.4
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneOS.platform
+BuildID: F6E11FE6-5596-11E8-9BDA-5AB96C5CAEA5
+ProductBuildVersion: 15F79
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: iPhone OS
+ProductVersion: 11.4
+
+iPhoneSimulator11.4.sdk - Simulator - iOS 11.4 (iphonesimulator11.4)
+SDKVersion: 11.4
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.4.sdk
+PlatformVersion: 11.4
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform
+BuildID: F6E11FE6-5596-11E8-9BDA-5AB96C5CAEA5
+ProductBuildVersion: 15F79
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: iPhone OS
+ProductVersion: 11.4
+
+MacOSX10.13.sdk - macOS 10.13 (macosx10.13)
+SDKVersion: 10.13
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
+PlatformVersion: 1.1
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/MacOSX.platform
+ProductBuildVersion: 17E189
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Mac OS X
+ProductUserVisibleVersion: 10.13.4
+ProductVersion: 10.13.4
+
+AppleTVOS11.4.sdk - tvOS 11.4 (appletvos11.4)
+SDKVersion: 11.4
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS11.4.sdk
+PlatformVersion: 11.4
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/AppleTVOS.platform
+BuildID: 2A4D8C64-54C2-11E8-9ADF-18993D72DF6D
+ProductBuildVersion: 15L576
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Apple TVOS
+ProductVersion: 11.4
+
+AppleTVSimulator11.4.sdk - Simulator - tvOS 11.4 (appletvsimulator11.4)
+SDKVersion: 11.4
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator11.4.sdk
+PlatformVersion: 11.4
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/AppleTVSimulator.platform
+BuildID: 2A4D8C64-54C2-11E8-9ADF-18993D72DF6D
+ProductBuildVersion: 15L576
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Apple TVOS
+ProductVersion: 11.4
+
+WatchOS4.3.sdk - watchOS 4.3 (watchos4.3)
+SDKVersion: 4.3
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.3.sdk
+PlatformVersion: 4.3
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/WatchOS.platform
+BuildID: 4AF39DC2-2782-11E8-A671-639E35235AA8
+ProductBuildVersion: 15T212
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Watch OS
+ProductVersion: 4.3
+
+WatchSimulator4.3.sdk - Simulator - watchOS 4.3 (watchsimulator4.3)
+SDKVersion: 4.3
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/WatchSimulator.platform/Developer/SDKs/WatchSimulator4.3.sdk
+PlatformVersion: 4.3
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/WatchSimulator.platform
+BuildID: 4AF39DC2-2782-11E8-A671-639E35235AA8
+ProductBuildVersion: 15T212
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Watch OS
+ProductVersion: 4.3
+
+Xcode 9.4.1
+Build version 9F2000
+$ xcrun simctl list
+== Device Types ==
+iPhone 4s (com.apple.CoreSimulator.SimDeviceType.iPhone-4s)
+iPhone 5 (com.apple.CoreSimulator.SimDeviceType.iPhone-5)
+iPhone 5s (com.apple.CoreSimulator.SimDeviceType.iPhone-5s)
+iPhone 6 (com.apple.CoreSimulator.SimDeviceType.iPhone-6)
+iPhone 6 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-6-Plus)
+iPhone 6s (com.apple.CoreSimulator.SimDeviceType.iPhone-6s)
+iPhone 6s Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-6s-Plus)
+iPhone 7 (com.apple.CoreSimulator.SimDeviceType.iPhone-7)
+iPhone 7 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-7-Plus)
+iPhone 8 (com.apple.CoreSimulator.SimDeviceType.iPhone-8)
+iPhone 8 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-8-Plus)
+iPhone SE (com.apple.CoreSimulator.SimDeviceType.iPhone-SE)
+iPhone X (com.apple.CoreSimulator.SimDeviceType.iPhone-X)
+iPad 2 (com.apple.CoreSimulator.SimDeviceType.iPad-2)
+iPad Retina (com.apple.CoreSimulator.SimDeviceType.iPad-Retina)
+iPad Air (com.apple.CoreSimulator.SimDeviceType.iPad-Air)
+iPad Air 2 (com.apple.CoreSimulator.SimDeviceType.iPad-Air-2)
+iPad (5th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--5th-generation-)
+iPad Pro (9.7-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--9-7-inch-)
+iPad Pro (12.9-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro)
+iPad Pro (12.9-inch) (2nd generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-)
+iPad Pro (10.5-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--10-5-inch-)
+iPad (6th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--6th-generation-)
+Apple TV (com.apple.CoreSimulator.SimDeviceType.Apple-TV-1080p)
+Apple TV 4K (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-4K)
+Apple TV 4K (at 1080p) (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-1080p)
+Apple Watch - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-38mm)
+Apple Watch - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-42mm)
+Apple Watch Series 2 - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-38mm)
+Apple Watch Series 2 - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-42mm)
+Apple Watch Series 3 - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-38mm)
+Apple Watch Series 3 - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-42mm)
+== Runtimes ==
+iOS 8.1 (8.1 - 12B411) - com.apple.CoreSimulator.SimRuntime.iOS-8-1
+iOS 8.2 (8.2 - 12D508) - com.apple.CoreSimulator.SimRuntime.iOS-8-2
+iOS 8.3 (8.3 - 12F70) - com.apple.CoreSimulator.SimRuntime.iOS-8-3
+iOS 8.4 (8.4 - 12H141) - com.apple.CoreSimulator.SimRuntime.iOS-8-4
+iOS 9.0 (9.0 - 13A344) - com.apple.CoreSimulator.SimRuntime.iOS-9-0
+iOS 9.1 (9.1 - 13B143) - com.apple.CoreSimulator.SimRuntime.iOS-9-1
+iOS 9.2 (9.2 - 13C75) - com.apple.CoreSimulator.SimRuntime.iOS-9-2
+iOS 9.3 (9.3 - 13E233) - com.apple.CoreSimulator.SimRuntime.iOS-9-3
+iOS 10.0 (10.0 - 14A345) - com.apple.CoreSimulator.SimRuntime.iOS-10-0
+iOS 10.1 (10.1 - 14B72) - com.apple.CoreSimulator.SimRuntime.iOS-10-1
+iOS 10.2 (10.2 - 14C89) - com.apple.CoreSimulator.SimRuntime.iOS-10-2
+iOS 10.3 (10.3.1 - 14E8301) - com.apple.CoreSimulator.SimRuntime.iOS-10-3
+iOS 11.0 (11.0.1 - 15A8401) - com.apple.CoreSimulator.SimRuntime.iOS-11-0
+iOS 11.1 (11.1 - 15B87) - com.apple.CoreSimulator.SimRuntime.iOS-11-1
+iOS 11.2 (11.2 - 15C107) - com.apple.CoreSimulator.SimRuntime.iOS-11-2
+iOS 11.3 (11.3 - 15E217) - com.apple.CoreSimulator.SimRuntime.iOS-11-3
+iOS 11.4 (11.4 - 15F79) - com.apple.CoreSimulator.SimRuntime.iOS-11-4
+tvOS 9.0 (9.0 - 13T395) - com.apple.CoreSimulator.SimRuntime.tvOS-9-0
+tvOS 9.1 (9.1 - 13U85) - com.apple.CoreSimulator.SimRuntime.tvOS-9-1
+tvOS 9.2 (9.2 - 13Y234) - com.apple.CoreSimulator.SimRuntime.tvOS-9-2
+tvOS 10.0 (10.0 - 14T328) - com.apple.CoreSimulator.SimRuntime.tvOS-10-0
+tvOS 10.1 (10.1 - 14U591) - com.apple.CoreSimulator.SimRuntime.tvOS-10-1
+tvOS 10.2 (10.2 - 14W260) - com.apple.CoreSimulator.SimRuntime.tvOS-10-2
+tvOS 11.0 (11.0 - 15J380) - com.apple.CoreSimulator.SimRuntime.tvOS-11-0
+tvOS 11.1 (11.1 - 15J580) - com.apple.CoreSimulator.SimRuntime.tvOS-11-1
+tvOS 11.2 (11.2 - 15K104) - com.apple.CoreSimulator.SimRuntime.tvOS-11-2
+tvOS 11.3 (11.3 - 15L211) - com.apple.CoreSimulator.SimRuntime.tvOS-11-3
+tvOS 11.4 (11.4 - 15L576) - com.apple.CoreSimulator.SimRuntime.tvOS-11-4
+watchOS 2.0 (2.0 - 13S343) - com.apple.CoreSimulator.SimRuntime.watchOS-2-0
+watchOS 2.1 (2.1 - 13S661) - com.apple.CoreSimulator.SimRuntime.watchOS-2-1
+watchOS 2.2 (2.2 - 13V144) - com.apple.CoreSimulator.SimRuntime.watchOS-2-2
+watchOS 3.1 (3.1 - 14S471a) - com.apple.CoreSimulator.SimRuntime.watchOS-3-1
+watchOS 3.2 (3.2 - 14V243) - com.apple.CoreSimulator.SimRuntime.watchOS-3-2
+watchOS 4.0 (4.0 - 15R372) - com.apple.CoreSimulator.SimRuntime.watchOS-4-0
+watchOS 4.1 (4.1 - 15R844) - com.apple.CoreSimulator.SimRuntime.watchOS-4-1
+watchOS 4.2 (4.2 - 15S100) - com.apple.CoreSimulator.SimRuntime.watchOS-4-2
+watchOS 4.3 (4.3 - 15T212) - com.apple.CoreSimulator.SimRuntime.watchOS-4-3
+== Devices ==
+-- iOS 8.1 --
+    iPhone 4s (0249462A-BCD6-4AD8-8523-EE31C2CCA42B) (Shutdown)
+    iPhone 5 (87AA77DF-259E-4E80-87EB-6F3096EAA780) (Shutdown)
+    iPhone 5s (EC425828-6440-47B1-9ECE-8B6F3D50DF8B) (Shutdown)
+    iPhone 6 (2BFFFD01-80C8-48F9-8D30-2923E85E903F) (Shutdown)
+    iPhone 6 Plus (E8BDC41C-DC07-42FA-B3AD-FE9EA25FB796) (Shutdown)
+    iPad 2 (A95A6DA8-F5E3-46A9-BE0F-3C6926172DB1) (Shutdown)
+    iPad Retina (9EB86673-DB75-45F2-AACC-8AD1F01688FB) (Shutdown)
+    iPad Air (17A0E050-FA3A-4F8E-82C7-6A517C14D5DD) (Shutdown)
+-- iOS 8.2 --
+    iPhone 4s (0D86B03B-6A3D-48CD-A6FC-66BECC590325) (Shutdown)
+    iPhone 5 (3C5C488E-3BF2-43B5-BA35-EBC5AC4A34AF) (Shutdown)
+    iPhone 5s (88CAAAC2-6590-40FF-9ED6-3EE99DDE1F10) (Shutdown)
+    iPhone 6 (6BC69E2C-FA6C-4E3A-BD94-5362E45983E4) (Shutdown)
+    iPhone 6 Plus (FAF7DDB6-FA9A-4C32-A22B-B2228F44E1AA) (Shutdown)
+    iPad 2 (6160B903-2593-4797-BB14-0332914D09D5) (Shutdown)
+    iPad Retina (64070310-53CC-423B-A826-3550762F0297) (Shutdown)
+    iPad Air (CB3C5E09-F743-454C-9C3D-B5C41F604E6D) (Shutdown)
+-- iOS 8.3 --
+    iPhone 4s (1AC930D7-6D9C-4975-BA5E-C2A9132AED44) (Shutdown)
+    iPhone 5 (FA316434-7008-438B-A48A-8E47828F4A9F) (Shutdown)
+    iPhone 5s (8164B28A-43B5-48D0-BF0E-5138334EDB57) (Shutdown)
+    iPhone 6 (A9099B03-FC36-4BE7-AD18-243A47377EA2) (Shutdown)
+    iPhone 6 Plus (F0941667-3069-4A6D-9ECD-503B51107C35) (Shutdown)
+    iPad 2 (0BF27476-D756-4865-B29D-6D7B3DCA1A70) (Shutdown)
+    iPad Retina (55B2AC75-57C7-47B5-9E3B-ABECC590A12A) (Shutdown)
+    iPad Air (8C915B98-B608-4AE3-B5AA-B012B72ACFDB) (Shutdown)
+-- iOS 8.4 --
+    iPhone 4s (4F70190B-85E5-4402-AE9E-465D6FFE491A) (Shutdown)
+    iPhone 5 (6099B4C7-8BAE-4D3C-A002-30192D0B41C1) (Shutdown)
+    iPhone 5s (3019CA97-7A4E-4599-95C6-B0B04092088F) (Shutdown)
+    iPhone 6 (23C347E1-18BD-4E07-A694-A8595FF83C7F) (Shutdown)
+    iPhone 6 Plus (99035083-847E-4A11-9F2E-7D08A091B50A) (Shutdown)
+    iPad 2 (43E8DCE9-B349-4EFF-9C9D-FCE7ECA47ADE) (Shutdown)
+    iPad Retina (6211A19E-97FF-4F9B-9180-48A10434E96C) (Shutdown)
+    iPad Air (368DB039-5130-4337-B410-E43C3D8AD452) (Shutdown)
+-- iOS 9.0 --
+    iPhone 4s (B278A03C-C15F-4F6A-83F1-AF0438C3C7E4) (Shutdown)
+    iPhone 5 (9BDA4B06-8978-4405-85A7-A8F595ABDE1E) (Shutdown)
+    iPhone 5s (70B5B154-496B-4326-B4B7-B167BC4D09F1) (Shutdown)
+    iPhone 6 (A5C64987-58C6-41B6-A821-6ED43F1980E1) (Shutdown)
+    iPhone 6 Plus (60969D0C-C43A-42B4-99FE-17DD8839BBC7) (Shutdown)
+    iPhone 6s (7DAF65A2-B5ED-4F22-84E5-A9F66B7CAAA2) (Shutdown)
+    iPhone 6s Plus (5A8CAE95-6C12-4EEB-B595-CB3A7D522569) (Shutdown)
+    iPad 2 (A85A943F-85ED-4D82-8AEC-687197518470) (Shutdown)
+    iPad Retina (FDDB0372-BA8F-441C-90AB-FC03F8DF44C2) (Shutdown)
+    iPad Air (FD6F3230-846F-4924-A8F7-0A8B53E2B43E) (Shutdown)
+    iPad Air 2 (98C9CB4A-935C-4947-A667-1F5CCAE701AF) (Shutdown)
+-- iOS 9.1 --
+    iPhone 4s (B64D3462-5699-4372-B01B-CE98F8E19999) (Shutdown)
+    iPhone 5 (1182E8CA-8864-4928-9670-9283ED0F2C61) (Shutdown)
+    iPhone 5s (C6206239-67C1-4B3E-8D0C-DFD8A34DD8DE) (Shutdown)
+    iPhone 6 (A663F313-691A-41EA-9B8E-9C13BCED198A) (Shutdown)
+    iPhone 6 Plus (85DD6230-FE87-4F47-B0DF-7A90F6DE39B9) (Shutdown)
+    iPhone 6s (0804F654-C416-4CA4-8DCC-E669271750F5) (Shutdown)
+    iPhone 6s Plus (4079A6CA-F504-4AC0-BBF9-FF5B5ED27177) (Shutdown)
+    iPad 2 (C667CE8F-1790-4A1E-972A-9C4463A347D8) (Shutdown)
+    iPad Retina (C074D4D9-902B-4F34-A58E-4C0952D1A1DB) (Shutdown)
+    iPad Air (218D79B3-DCE8-4094-AC21-C82990E3B41E) (Shutdown)
+    iPad Air 2 (AA59EC7F-2848-4801-B5FB-13F5A94B0BAA) (Shutdown)
+    iPad Pro (84F62264-105F-412E-9F4B-8947A4B600ED) (Shutdown)
+-- iOS 9.2 --
+    iPhone 4s (9A367BEB-AEA9-485A-A8DA-B59275891B40) (Shutdown)
+    iPhone 5 (CE788CCC-7DD7-4634-804A-8744CFE83ADE) (Shutdown)
+    iPhone 5s (020B606F-FA5C-4E37-8E02-7EA7B20878A7) (Shutdown)
+    iPhone 6 (611FE619-14F2-4243-B72C-E285BF50C8B5) (Shutdown)
+    iPhone 6 Plus (2A7C1989-D6B2-4734-956F-275FDEDB6BFF) (Shutdown)
+    iPhone 6s (26799EBF-B3A8-43EE-9E2E-414C7E4C96B9) (Shutdown)
+    iPhone 6s Plus (89AB292F-A1C4-43C8-ACD8-67ABED7DD449) (Shutdown)
+    iPad 2 (9B35D13B-AEC3-4D43-A15C-F7B2C755CA2A) (Shutdown)
+    iPad Retina (8E1F2F61-7C3C-4C3B-AA00-FD8CD5D0C65F) (Shutdown)
+    iPad Air (89B7A34A-51B5-40B6-99F6-281A1452388B) (Shutdown)
+    iPad Air 2 (8BF6B30B-F942-4315-8783-8542EB848ED9) (Shutdown)
+    iPad Pro (FC21F7B0-261C-4D6B-B43E-E0A08B9076DC) (Shutdown)
+-- iOS 9.3 --
+    iPhone 4s (5C73E8BF-9F1D-4B29-8C69-08B107285FB0) (Shutdown)
+    iPhone 5 (01DCAF95-F266-4720-AD2C-51CF279CCB6C) (Shutdown)
+    iPhone 5s (8CD51D9A-9F67-4CD7-A8D1-8698B551E577) (Shutdown)
+    iPhone 6 (D3EE8F5D-2AED-4A72-802D-FDDC37A6BCB5) (Shutdown)
+    iPhone 6 Plus (402A84FF-D922-43D9-93B2-98C29D488D14) (Shutdown)
+    iPhone 6s (15C825AA-C8F7-44D2-95FB-C92D38A0D9BA) (Shutdown)
+    iPhone 6s Plus (88F3D527-A08C-4A5D-8541-9901BE89336B) (Shutdown)
+    iPad 2 (1C3F1904-E0A7-4E5A-A9E9-436E8E79BEC6) (Shutdown)
+    iPad Retina (1A8FF421-409E-4FAB-938E-7E91961BD9EB) (Shutdown)
+    iPad Air (9073977E-0387-4C08-8628-5F3FDB7E7628) (Shutdown)
+    iPad Air 2 (747B2225-4B98-4677-81E7-519A02784945) (Shutdown)
+    iPad Pro (B5EA4A24-229C-4840-845E-269FA42E8BEB) (Shutdown)
+-- iOS 10.0 --
+    iPhone 5 (38602345-96D7-40FE-851D-A18605C3A14D) (Shutdown)
+    iPhone 5s (CD6B7230-DDF8-4C42-BFBA-5A2DEFD5F69A) (Shutdown)
+    iPhone 6 (BD798BF0-5019-40FD-B2B4-D8D5C8C47A25) (Shutdown)
+    iPhone 6 Plus (F31D2E4E-B4BC-43E2-9B5E-C9CFF5669C92) (Shutdown)
+    iPhone 6s (FBD5EE0F-F2C5-484C-8B51-1DB1B69ED6AF) (Shutdown)
+    iPhone 6s Plus (DAB0E600-4827-492A-8F91-A78F877F4C4C) (Shutdown)
+    iPhone SE (C87BBC3B-3B7F-4C09-8F9C-165C2FD827D3) (Shutdown)
+    iPad Air (794C8F86-3466-4A1E-BFF3-E7C0A9705DD5) (Shutdown)
+    iPad Air 2 (0446F2F8-F7E0-4391-A9F7-D117FF2DFB6E) (Shutdown)
+    iPad Pro (9.7 inch) (DB1ECDD4-6297-4D8F-971C-6FF53D9558C5) (Shutdown)
+    iPad Pro (12.9 inch) (176C2710-6129-4C31-ADC2-56A2FE9E44B8) (Shutdown)
+-- iOS 10.1 --
+    iPhone 5 (D3442F27-8F49-4CA0-9904-E33D9FE5D656) (Shutdown)
+    iPhone 5s (8C0DF6CB-FE74-4110-ADD7-3210910D7C60) (Shutdown)
+    iPhone 6 (27525FD7-EC26-48CC-A9BE-A0C06CC57093) (Shutdown)
+    iPhone 6 Plus (6B79DDC4-1382-481D-A53E-9C8F6E790E51) (Shutdown)
+    iPhone 6s (3D4E4C6A-772D-4378-90A6-0CB4F1E88D26) (Shutdown)
+    iPhone 6s Plus (CD905A1B-47A2-4A6B-AC77-16E4FD2C7D57) (Shutdown)
+    iPhone 7 (3817F470-271D-4373-B20F-6FD6C063EA58) (Shutdown)
+    iPhone 7 Plus (4A74CE64-F73C-4238-A205-5429738D8CE9) (Shutdown)
+    iPhone SE (8F3F0194-E1AF-41C2-B2A1-645456B89F5D) (Shutdown)
+    iPad Air (0769C554-89F8-4726-AF4F-2F086BD4E130) (Shutdown)
+    iPad Air 2 (A8F97452-1E3A-432C-88BA-6D19F2DEB5B5) (Shutdown)
+    iPad Pro (9.7 inch) (43EE6103-FB05-4325-B866-0BB0EB76DA03) (Shutdown)
+    iPad Pro (12.9 inch) (7EFCD587-3A33-40B2-ABC6-B778AB7A1D4E) (Shutdown)
+-- iOS 10.2 --
+    iPhone 5 (3E356030-3500-494E-A676-E1D57CAEE44D) (Shutdown)
+    iPhone 5s (3EA9A76D-BCC7-42B3-9783-C71EB76DC6A9) (Shutdown)
+    iPhone 6 (136AF46E-4EFF-49D8-BB5D-EE436C578BC4) (Shutdown)
+    iPhone 6 Plus (9C41A2C4-A752-4ECB-AFE6-6BC94C2CA98C) (Shutdown)
+    iPhone 6s (CF02F9DC-ADFF-468B-B7DB-F49B53311E7C) (Shutdown)
+    iPhone 6s Plus (AFEB4258-F039-4360-9B37-977793E98A75) (Shutdown)
+    iPhone 7 (B8CA1064-2EEC-4D75-BB1E-662EF7FBC2EC) (Shutdown)
+    iPhone 7 Plus (599424B6-B002-4F67-BA5B-91ABDBE3C24D) (Shutdown)
+    iPhone SE (24ADD8C1-96A1-4E65-BC56-7B60A45CC272) (Shutdown)
+    iPad Air (756B5591-D2C2-40E2-A1C5-4AC7003F27C5) (Shutdown)
+    iPad Air 2 (454E07E2-A405-481C-AAFE-5C665A28F869) (Shutdown)
+    iPad Pro (9.7 inch) (7B17A4C7-8798-4BB7-9F8E-6066034C2EC8) (Shutdown)
+    iPad Pro (12.9 inch) (89D4B43B-4823-46AF-BBD0-A6F56AE66009) (Shutdown)
+-- iOS 10.3 --
+    iPhone 5 (DC180A1E-B40B-4F10-8F32-BDD141E932E4) (Shutdown)
+    iPhone 5s (DB6FCD8E-F844-425E-A5B0-07986A77B6E2) (Shutdown)
+    iPhone 6 (6B7C73F6-82E1-4FC7-A47E-C8BE0B2D7B30) (Shutdown)
+    iPhone 6 Plus (BB5D3870-77EE-4135-AAE3-C7F0D245862F) (Shutdown)
+    iPhone 6s (E68E4CCD-77AA-42AF-9DFB-DEDB9A161166) (Shutdown)
+    iPhone 6s Plus (AF20A6BA-8E32-4835-8CA3-69F9978C1C70) (Shutdown)
+    iPhone 7 (6AC4C35F-F1A5-4C54-88CF-E903C9B910C4) (Shutdown)
+    iPhone 7 Plus (AE68934B-30AF-46A8-BBCC-53FB7205978A) (Shutdown)
+    iPhone SE (1C63BDA4-127A-4794-80E8-DB87D29975EC) (Shutdown)
+    iPad Air (518EE86F-705C-4668-B366-1AC154700475) (Shutdown)
+    iPad Air 2 (305E30FD-E726-4576-8515-DF9BF4793A14) (Shutdown)
+    iPad (5th generation) (FD4602BE-4676-4769-BB84-40D92AA0DD73) (Shutdown)
+    iPad Pro (9.7 inch) (A1C0F99A-FC6A-47E7-8574-F703FE78BF36) (Shutdown)
+    iPad Pro (12.9 inch) (1385412A-6D8D-4205-9440-CFFDA1B2188D) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (7502974D-3AF4-4DF5-877E-8EE6D1BC022C) (Shutdown)
+    iPad Pro (10.5-inch) (A6E5057C-144C-4FC6-8405-950ABF8BFBFA) (Shutdown)
+-- iOS 11.0 --
+    iPhone 5s (F063E289-BF52-4F2F-A307-4C68604271CF) (Shutdown)
+    iPhone 6 (04C3AE27-EF87-461A-A610-B294146E704A) (Shutdown)
+    iPhone 6 Plus (0104293D-D20D-4C2B-8517-DDACA5413279) (Shutdown)
+    iPhone 6s (2AB0A048-B2DD-44B5-B6EA-EEFE6B902DA5) (Shutdown)
+    iPhone 6s Plus (41DA2456-67C8-48B3-BBB3-667F6BC1436A) (Shutdown)
+    iPhone 7 (699ED516-E0C6-4529-9A12-7AA4E8626639) (Shutdown)
+    iPhone 7 Plus (6B0C25EA-09DB-4AF5-847F-EB503AE29129) (Shutdown)
+    iPhone 8 (BFC6320A-7D97-42F1-ADF2-A3CF74073B61) (Shutdown)
+    iPhone 8 Plus (5B92FA1F-120C-4604-8807-0A416979DE0F) (Shutdown)
+    iPhone SE (AAE7CB94-027E-4206-BE72-96F1BC072527) (Shutdown)
+    iPhone X (AB0DEA05-54F5-49DA-9DC1-6D3EB0E53AFA) (Shutdown)
+    iPad Air (B301BF38-6816-42B4-9B56-E63E38AEACCE) (Shutdown)
+    iPad Air 2 (2F58313B-68B1-4D7F-A69D-936E754F8AD6) (Shutdown)
+    iPad (5th generation) (5217DF5A-6D99-46CA-8E5F-C0A6F784854D) (Shutdown)
+    iPad Pro (9.7-inch) (C2F50040-F433-45AC-A6DE-6CD691EEE784) (Shutdown)
+    iPad Pro (12.9-inch) (67B41083-C811-4606-A267-20179D0F787A) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (56454F44-9C64-46D4-AD1D-CA43F3B6688E) (Shutdown)
+    iPad Pro (10.5-inch) (1D0DC981-7AFC-4BC5-8E60-4FD86E0FA876) (Shutdown)
+-- iOS 11.1 --
+    iPhone 5s (2C9B090B-3617-4024-8836-28329FF46844) (Shutdown)
+    iPhone 6 (8420A7FD-699A-4063-A79F-49969CA1BE8C) (Shutdown)
+    iPhone 6 Plus (9138A005-5148-4BE4-AD1C-5BF953DA7313) (Shutdown)
+    iPhone 6s (345FFAEB-0052-4FDD-AD4B-16BE10226C32) (Shutdown)
+    iPhone 6s Plus (2FBFEDDB-B2E8-4371-85B0-04F0B76C2740) (Shutdown)
+    iPhone 7 (EFA10134-FE95-4DC6-8225-F70393BB3B65) (Shutdown)
+    iPhone 7 Plus (CBC5537A-7911-46DA-9662-22FF8284BB2F) (Shutdown)
+    iPhone 8 (1E53D31E-F880-4137-AF9A-A6754E531F04) (Shutdown)
+    iPhone 8 Plus (25A1DAA2-FA3C-4CA3-A249-4854E2E7F53A) (Shutdown)
+    iPhone SE (B836DC75-54BB-4841-A197-285800F14767) (Shutdown)
+    iPhone X (E71AD5B8-2A5E-4F53-B94D-9AC8B4ED1EE5) (Shutdown)
+    iPad Air (8EC220ED-B5EF-4136-BF01-D6FA61F88232) (Shutdown)
+    iPad Air 2 (9DC346E6-972C-40BF-BBE3-0F63BD4E362B) (Shutdown)
+    iPad (5th generation) (9ED52B02-4121-4B95-88E7-28652AEDCFBE) (Shutdown)
+    iPad Pro (9.7-inch) (5C4F2820-45AD-4AAD-906C-16DF3960286E) (Shutdown)
+    iPad Pro (12.9-inch) (4680F565-4D88-422A-B20C-396810409C3B) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (B1E5B4A8-0803-485E-B8EE-2BEAF774DD07) (Shutdown)
+    iPad Pro (10.5-inch) (0B35B74D-15B7-4156-AB0E-03D3D7D306A1) (Shutdown)
+-- iOS 11.2 --
+    iPhone 5s (D19316E0-DC76-4970-9423-C2EF7E7D745E) (Shutdown)
+    iPhone 6 (BFE04B76-0D7E-4056-A6C9-CB81F8EEE0E3) (Shutdown)
+    iPhone 6 Plus (CD4B9B09-03C1-470B-BDD1-46B42D5919F1) (Shutdown)
+    iPhone 6s (70DFBD87-956B-4C10-978E-9AD7807E955E) (Shutdown)
+    iPhone 6s Plus (FF8A43CE-7B2C-4F4A-83C3-F2610DEDAA55) (Shutdown)
+    iPhone 7 (051D3CB9-40F6-45B1-B6E7-6149190C6565) (Shutdown)
+    iPhone 7 Plus (D8AFCF22-19AD-48D3-AA19-AF58BF5911B6) (Shutdown)
+    iPhone 8 (F48D4B33-60EE-4C03-96CC-8F9D3F5EAF6D) (Shutdown)
+    iPhone 8 Plus (227A9793-7525-429D-92D8-BD1D4BB651CF) (Shutdown)
+    iPhone SE (7D3B8D57-0EB8-4A84-AB09-E02D7F3F1AB9) (Shutdown)
+    iPhone X (A5BB85E3-EBB5-4767-9B81-4A7DF2DC1B76) (Shutdown)
+    iPad Air (D4FE15DB-816E-488C-9297-E942FE3DAD1F) (Shutdown)
+    iPad Air 2 (D45224C5-D30C-4B40-8AFF-91D435BE7321) (Shutdown)
+    iPad (5th generation) (B0DF6B75-3D8B-4BFE-AA2D-E10FF6BBFAC6) (Shutdown)
+    iPad Pro (9.7-inch) (28EF80F2-0293-4D9D-8E04-D116ADC1D6B2) (Shutdown)
+    iPad Pro (12.9-inch) (E5F40FE8-5903-4537-9519-A3D4010F2C54) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (FE62F490-F5DE-421E-9C99-F6123CD2E1F1) (Shutdown)
+    iPad Pro (10.5-inch) (A11880E4-170C-4E27-948C-34E3E2B98EC6) (Shutdown)
+-- iOS 11.3 --
+    iPhone 5s (746C2A5F-B0BE-4164-A178-B53A6BDBE20C) (Shutdown)
+    iPhone 6 (41736ECF-B56E-43C0-92A1-7E1FD8302B88) (Shutdown)
+    iPhone 6 Plus (76B76782-4957-42B4-B7B8-779BBB286AE4) (Shutdown)
+    iPhone 6s (4B212682-BCF0-49D3-8FEA-01688DEA8711) (Shutdown)
+    iPhone 6s Plus (8909BBA4-4FA3-47CB-B2C3-75798A2DD088) (Shutdown)
+    iPhone 7 (65DFF9C4-B3A4-45F4-A46D-A906AA5DEB7B) (Shutdown)
+    iPhone 7 Plus (F9E3FEC5-D127-4F92-9BE2-3921033653B5) (Shutdown)
+    iPhone 8 (361E7D26-A9BD-447D-939C-1DBF01B0B1E0) (Shutdown)
+    iPhone 8 Plus (A5C08804-E339-4E78-A478-0D099F54B973) (Shutdown)
+    iPhone SE (92550947-1AE2-40B6-9D1C-F04D27BF3ED3) (Shutdown)
+    iPhone X (5E4E0408-E061-4CDF-955A-EF404C743CB8) (Shutdown)
+    iPad Air (70B8A002-9B21-466E-950C-098F4827C7B6) (Shutdown)
+    iPad Air 2 (7AD53AD3-6E79-43B5-B98D-E5134A218F2A) (Shutdown)
+    iPad (5th generation) (070A7D7E-830F-4006-9BC2-5332E41EB48F) (Shutdown)
+    iPad Pro (9.7-inch) (8B1AB4E3-0781-44F5-9051-C72D44F5A2FE) (Shutdown)
+    iPad Pro (12.9-inch) (478F89A7-7796-4207-A6BF-6EBF80D84170) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (DFFF359C-6866-455F-AF8B-09BB13418355) (Shutdown)
+    iPad Pro (10.5-inch) (2B7A12DA-4F66-402F-84E5-66DC177BA89F) (Shutdown)
+-- iOS 11.4 --
+    iPhone 5s (F5F84F68-FEE6-4817-92D3-A101BE655657) (Shutdown)
+    iPhone 6 (6493A715-04AC-4497-88F8-E81024078287) (Shutdown)
+    iPhone 6 Plus (B00AEC63-696C-4297-A3A5-A573B1EFBEBE) (Shutdown)
+    iPhone 6s (30883235-39F9-4606-9C83-F4D4C630EDB9) (Shutdown)
+    iPhone 6s Plus (BEEA8A39-963D-43F1-A555-70F6EF246A64) (Shutdown)
+    iPhone 7 (8ABF0B4E-0370-4D7D-B9F6-E508760687A5) (Shutdown)
+    iPhone 7 Plus (6E127CF0-6BCD-4EE2-9C84-25BF64073611) (Shutdown)
+    iPhone 8 (1CAB698D-0215-498B-B6DC-6C7CCE5F99D7) (Shutdown)
+    iPhone 8 Plus (384E22B2-1BF5-48E7-8FB0-3DC8D6B625D1) (Shutdown)
+    iPhone SE (B23EF716-1D30-44F3-916D-778BD8D2DD00) (Shutdown)
+    iPhone X (19ABD42A-1EBA-4455-9EB1-8B8D2DD9BC5A) (Shutdown)
+    iPad Air (68769750-3781-4D80-B348-D07AF80EA6BA) (Shutdown)
+    iPad Air 2 (04D6C823-FDA3-472B-85EA-9B484AF6E42F) (Shutdown)
+    iPad (5th generation) (21DD3A28-FAEB-49CA-B92F-C634BC438358) (Shutdown)
+    iPad Pro (9.7-inch) (D2E2A588-90B6-4265-B868-52CCC62C5EBF) (Shutdown)
+    iPad Pro (12.9-inch) (837DF8E5-F517-4A86-8BB9-048C9998636E) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (32B3A5BD-7EC0-4F96-AEFE-9685192C7440) (Shutdown)
+    iPad Pro (10.5-inch) (0199AF6F-93CC-46B8-AF63-10AE97DF46DF) (Shutdown)
+-- tvOS 9.0 --
+    Apple TV 1080p (B44BD845-730F-4222-A5E8-9EF556A73ED9) (Shutdown)
+-- tvOS 9.1 --
+    Apple TV 1080p (D7BA1BBB-58A2-4F5F-ADCB-D530B64BF07A) (Shutdown)
+-- tvOS 9.2 --
+    Apple TV 1080p (DD9361A0-3233-44CF-90AB-EECA016ADC6F) (Shutdown)
+-- tvOS 10.0 --
+    Apple TV 1080p (9AB885F9-D262-49DE-9E54-6CA01B6BE585) (Shutdown)
+-- tvOS 10.1 --
+    Apple TV 1080p (43FE2980-0524-41CB-93CA-801CC992C9E4) (Shutdown)
+-- tvOS 10.2 --
+    Apple TV 1080p (4F9152DB-C7D3-4E23-AE69-AA2ED7598CC5) (Shutdown)
+-- tvOS 11.0 --
+    Apple TV (275FDABC-42E5-4508-ABA0-16E258796612) (Shutdown)
+    Apple TV 4K (0B00991F-14DB-486D-AA80-7F4E8AA8AD1D) (Shutdown)
+    Apple TV 4K (at 1080p) (FEEEFB34-4CD9-47AD-A556-F76649F6D3DF) (Shutdown)
+-- tvOS 11.1 --
+    Apple TV (FDA5C07E-94C6-49DF-8AD2-8A4519598113) (Shutdown)
+    Apple TV 4K (107D1683-D13A-4E1C-9DFC-E87751F3DEB5) (Shutdown)
+    Apple TV 4K (at 1080p) (9E8BF6BF-4F40-47C9-A58A-535EA156B5F9) (Shutdown)
+-- tvOS 11.2 --
+    Apple TV (ADCAFE81-62F2-44BA-A1CB-AAB8B603FB8A) (Shutdown)
+    Apple TV 4K (23B747C9-A90E-4078-BE58-78A815FA6711) (Shutdown)
+    Apple TV 4K (at 1080p) (A25169A0-47E3-4296-A2CA-14DC5286816C) (Shutdown)
+-- tvOS 11.3 --
+    Apple TV (4C61FCE6-10FD-420D-88C2-EB50772D539A) (Shutdown)
+    Apple TV 4K (BA8DBE97-9082-441C-89B4-7FD5F4DC922C) (Shutdown)
+    Apple TV 4K (at 1080p) (15D00734-AAC3-4B39-BFA9-8A86577A644C) (Shutdown)
+-- tvOS 11.4 --
+    Apple TV (A6AD8D87-509A-41F3-B093-E05E4E99FDC1) (Shutdown)
+    Apple TV 4K (43581E95-B1BF-4EEB-A4FA-6DF0540407C5) (Shutdown)
+    Apple TV 4K (at 1080p) (6AF62079-B740-4F04-9B8E-3C07C1ADE71D) (Shutdown)
+-- watchOS 2.0 --
+    Apple Watch - 38mm (5325215A-B275-4A5F-A5BD-18D4EACD21E9) (Shutdown)
+    Apple Watch - 42mm (D3ABCFE8-4FC1-4728-A84F-4E63C4EB3568) (Shutdown)
+-- watchOS 2.1 --
+    Apple Watch - 38mm (C4219BA0-10B3-48A6-B664-7E684CC40FEB) (Shutdown)
+    Apple Watch - 42mm (5666FF7D-12C6-4DB4-91C4-083C6C004EA1) (Shutdown)
+-- watchOS 2.2 --
+    Apple Watch - 38mm (88FB5B0A-96A6-4306-86D1-475260FC72FD) (Shutdown)
+    Apple Watch - 42mm (A112AA4C-AA5D-4A0F-9AA0-40AA1CAB9BC4) (Shutdown)
+-- watchOS 3.1 --
+    Apple Watch - 38mm (A81E6450-BACC-4201-83AA-C671C356C965) (Shutdown)
+    Apple Watch - 42mm (6C5A66B4-11F5-45A6-80F9-6B2B078D4F7B) (Shutdown)
+    Apple Watch Series 2 - 38mm (191C4584-20A6-4E20-A5F0-432AC3DAB307) (Shutdown)
+    Apple Watch Series 2 - 42mm (7A8F3361-EBAE-436B-9EC5-3A48AD8EAD85) (Shutdown)
+-- watchOS 3.2 --
+    Apple Watch - 38mm (43002C12-D3DC-4A65-AAB6-B51034E8D71B) (Shutdown)
+    Apple Watch - 42mm (BD8B5509-4664-4219-80BE-8306E93299D3) (Shutdown)
+    Apple Watch Series 2 - 38mm (47D354A7-A3C1-4C07-96F4-EEA0E6C8C908) (Shutdown)
+    Apple Watch Series 2 - 42mm (8996E94F-2667-4AF0-822C-381CA9074F3A) (Shutdown)
+-- watchOS 4.0 --
+    Apple Watch - 38mm (1454567A-B05C-4E58-B250-46068E295060) (Shutdown)
+    Apple Watch - 42mm (027309AA-FAFF-4430-A48E-0F44C38607B1) (Shutdown)
+    Apple Watch Series 2 - 38mm (BF3FC4C1-E3D5-4692-8502-779EF1B62682) (Shutdown)
+    Apple Watch Series 2 - 42mm (0F6E19BD-F465-42B8-AFAE-679FF2B982A5) (Shutdown)
+    Apple Watch Series 3 - 38mm (526C953C-A654-456F-B81C-DC43BE0E315B) (Shutdown)
+    Apple Watch Series 3 - 42mm (6642BD7D-3360-48BD-8E6C-6CA99440789D) (Shutdown)
+-- watchOS 4.1 --
+    Apple Watch - 38mm (8282F8EA-E762-4889-B399-CC7BC0969A88) (Shutdown)
+    Apple Watch - 42mm (CE477EAD-8373-4EAB-B0F6-B5989D0D89A2) (Shutdown)
+    Apple Watch Series 2 - 38mm (D5E00E10-9263-47E9-A444-BF13960780BB) (Shutdown)
+    Apple Watch Series 2 - 42mm (B9847BD0-8DEF-41BA-8008-B79D1189482D) (Shutdown)
+    Apple Watch Series 3 - 38mm (AE79B513-305A-418E-838B-3D8185681804) (Shutdown)
+    Apple Watch Series 3 - 42mm (F7F86CAE-F5D3-416A-A811-325C536321C6) (Shutdown)
+-- watchOS 4.2 --
+    Apple Watch - 38mm (F28EEA4A-1EF2-4748-8E27-883D1E7F6156) (Shutdown)
+    Apple Watch - 42mm (6FCBF431-CE19-44CB-BE70-9D92A23DB6E4) (Shutdown)
+    Apple Watch Series 2 - 38mm (B85A2F75-28C8-42B8-9066-8400638B5667) (Shutdown)
+    Apple Watch Series 2 - 42mm (BCF59632-5FED-40EB-B128-7BCE68EAD983) (Shutdown)
+    Apple Watch Series 3 - 38mm (37D5399C-D6F3-41AF-95D8-BFF040576B32) (Shutdown)
+    Apple Watch Series 3 - 42mm (258E7249-3D6E-43D6-B33F-E6327C112D2B) (Shutdown)
+-- watchOS 4.3 --
+    Apple Watch - 38mm (C4E58B70-DA61-413B-A352-2DA6D1F1AE66) (Shutdown)
+    Apple Watch - 42mm (0B637EA0-65AD-4B3D-8A74-5BEF58DD3555) (Shutdown)
+    Apple Watch Series 2 - 38mm (DBB04722-4BE2-4BC7-9890-A279DD6B79AA) (Shutdown)
+    Apple Watch Series 2 - 42mm (6EF34C4E-1EB4-495D-8AD1-BC96B9434874) (Shutdown)
+    Apple Watch Series 3 - 38mm (AD9342E0-EE28-4714-A34D-374E5D66901F) (Shutdown)
+    Apple Watch Series 3 - 42mm (5337670E-C054-4224-AF00-4A5CF6F9B0F0) (Shutdown)
+== Device Pairs ==
+D25C0A2C-22CE-427B-BAF1-E5BE5DEDBF01 (active, disconnected)
+    Watch: Apple Watch Series 2 - 38mm (DBB04722-4BE2-4BC7-9890-A279DD6B79AA) (Shutdown)
+    Phone: iPhone 7 (8ABF0B4E-0370-4D7D-B9F6-E508760687A5) (Shutdown)
+30975C58-8818-445F-9F9D-DCAE204DB9DE (active, disconnected)
+    Watch: Apple Watch Series 2 - 42mm (6EF34C4E-1EB4-495D-8AD1-BC96B9434874) (Shutdown)
+    Phone: iPhone 7 Plus (6E127CF0-6BCD-4EE2-9C84-25BF64073611) (Shutdown)
+1FE3C90F-B56E-425E-AC93-8699BEFAA23B (active, disconnected)
+    Watch: Apple Watch Series 3 - 38mm (AD9342E0-EE28-4714-A34D-374E5D66901F) (Shutdown)
+    Phone: iPhone 8 (1CAB698D-0215-498B-B6DC-6C7CCE5F99D7) (Shutdown)
+8583E80B-7721-4A88-A880-9AB7E7AF4F37 (active, disconnected)
+    Watch: Apple Watch Series 3 - 42mm (5337670E-C054-4224-AF00-4A5CF6F9B0F0) (Shutdown)
+    Phone: iPhone 8 Plus (384E22B2-1BF5-48E7-8FB0-3DC8D6B625D1) (Shutdown)
+travis_fold:end:announce[0KNo Gemfile found, skipping bundle install
+travis_time:start:0eb137bb[0K$ set -o pipefail
+
+travis_time:end:0eb137bb:start=1537611465274880000,finish=1537611465283487000,duration=8607000[0K
+[32;1mThe command "set -o pipefail" exited with 0.[0m
+travis_time:start:117e7270[0K$ travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON iOS" -destination "platform=iOS Simulator,OS=12.0,name=iPhone 6" build-for-testing test | xcpretty
+xcodebuild: error: Unable to find a destination matching the provided destination specifier:
+		{ platform:iOS Simulator, OS:12.0, name:iPhone 6 }
+
+	The requested device could not be found because no available devices matched the request.
+
+	Available destinations for the "SwiftyJSON iOS" scheme:
+		{ platform:iOS Simulator, id:FD4602BE-4676-4769-BB84-40D92AA0DD73, OS:10.3.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:5217DF5A-6D99-46CA-8E5F-C0A6F784854D, OS:11.0.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:9ED52B02-4121-4B95-88E7-28652AEDCFBE, OS:11.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:B0DF6B75-3D8B-4BFE-AA2D-E10FF6BBFAC6, OS:11.2, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:070A7D7E-830F-4006-9BC2-5332E41EB48F, OS:11.3, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:21DD3A28-FAEB-49CA-B92F-C634BC438358, OS:11.4, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:A95A6DA8-F5E3-46A9-BE0F-3C6926172DB1, OS:8.1, name:iPad 2 }
+		{ platform:iOS Simulator, id:6160B903-2593-4797-BB14-0332914D09D5, OS:8.2, name:iPad 2 }
+		{ platform:iOS Simulator, id:0BF27476-D756-4865-B29D-6D7B3DCA1A70, OS:8.3, name:iPad 2 }
+		{ platform:iOS Simulator, id:43E8DCE9-B349-4EFF-9C9D-FCE7ECA47ADE, OS:8.4, name:iPad 2 }
+		{ platform:iOS Simulator, id:A85A943F-85ED-4D82-8AEC-687197518470, OS:9.0, name:iPad 2 }
+		{ platform:iOS Simulator, id:C667CE8F-1790-4A1E-972A-9C4463A347D8, OS:9.1, name:iPad 2 }
+		{ platform:iOS Simulator, id:9B35D13B-AEC3-4D43-A15C-F7B2C755CA2A, OS:9.2, name:iPad 2 }
+		{ platform:iOS Simulator, id:1C3F1904-E0A7-4E5A-A9E9-436E8E79BEC6, OS:9.3, name:iPad 2 }
+		{ platform:iOS Simulator, id:17A0E050-FA3A-4F8E-82C7-6A517C14D5DD, OS:8.1, name:iPad Air }
+		{ platform:iOS Simulator, id:CB3C5E09-F743-454C-9C3D-B5C41F604E6D, OS:8.2, name:iPad Air }
+		{ platform:iOS Simulator, id:8C915B98-B608-4AE3-B5AA-B012B72ACFDB, OS:8.3, name:iPad Air }
+		{ platform:iOS Simulator, id:368DB039-5130-4337-B410-E43C3D8AD452, OS:8.4, name:iPad Air }
+		{ platform:iOS Simulator, id:FD6F3230-846F-4924-A8F7-0A8B53E2B43E, OS:9.0, name:iPad Air }
+		{ platform:iOS Simulator, id:218D79B3-DCE8-4094-AC21-C82990E3B41E, OS:9.1, name:iPad Air }
+		{ platform:iOS Simulator, id:89B7A34A-51B5-40B6-99F6-281A1452388B, OS:9.2, name:iPad Air }
+		{ platform:iOS Simulator, id:9073977E-0387-4C08-8628-5F3FDB7E7628, OS:9.3, name:iPad Air }
+		{ platform:iOS Simulator, id:794C8F86-3466-4A1E-BFF3-E7C0A9705DD5, OS:10.0, name:iPad Air }
+		{ platform:iOS Simulator, id:0769C554-89F8-4726-AF4F-2F086BD4E130, OS:10.1, name:iPad Air }
+		{ platform:iOS Simulator, id:756B5591-D2C2-40E2-A1C5-4AC7003F27C5, OS:10.2, name:iPad Air }
+		{ platform:iOS Simulator, id:518EE86F-705C-4668-B366-1AC154700475, OS:10.3.1, name:iPad Air }
+		{ platform:iOS Simulator, id:B301BF38-6816-42B4-9B56-E63E38AEACCE, OS:11.0.1, name:iPad Air }
+		{ platform:iOS Simulator, id:8EC220ED-B5EF-4136-BF01-D6FA61F88232, OS:11.1, name:iPad Air }
+		{ platform:iOS Simulator, id:D4FE15DB-816E-488C-9297-E942FE3DAD1F, OS:11.2, name:iPad Air }
+		{ platform:iOS Simulator, id:70B8A002-9B21-466E-950C-098F4827C7B6, OS:11.3, name:iPad Air }
+		{ platform:iOS Simulator, id:68769750-3781-4D80-B348-D07AF80EA6BA, OS:11.4, name:iPad Air }
+		{ platform:iOS Simulator, id:98C9CB4A-935C-4947-A667-1F5CCAE701AF, OS:9.0, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:AA59EC7F-2848-4801-B5FB-13F5A94B0BAA, OS:9.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:8BF6B30B-F942-4315-8783-8542EB848ED9, OS:9.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:747B2225-4B98-4677-81E7-519A02784945, OS:9.3, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:0446F2F8-F7E0-4391-A9F7-D117FF2DFB6E, OS:10.0, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:A8F97452-1E3A-432C-88BA-6D19F2DEB5B5, OS:10.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:454E07E2-A405-481C-AAFE-5C665A28F869, OS:10.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:305E30FD-E726-4576-8515-DF9BF4793A14, OS:10.3.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:2F58313B-68B1-4D7F-A69D-936E754F8AD6, OS:11.0.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:9DC346E6-972C-40BF-BBE3-0F63BD4E362B, OS:11.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:D45224C5-D30C-4B40-8AFF-91D435BE7321, OS:11.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:7AD53AD3-6E79-43B5-B98D-E5134A218F2A, OS:11.3, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:04D6C823-FDA3-472B-85EA-9B484AF6E42F, OS:11.4, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:84F62264-105F-412E-9F4B-8947A4B600ED, OS:9.1, name:iPad Pro }
+		{ platform:iOS Simulator, id:FC21F7B0-261C-4D6B-B43E-E0A08B9076DC, OS:9.2, name:iPad Pro }
+		{ platform:iOS Simulator, id:B5EA4A24-229C-4840-845E-269FA42E8BEB, OS:9.3, name:iPad Pro }
+		{ platform:iOS Simulator, id:DB1ECDD4-6297-4D8F-971C-6FF53D9558C5, OS:10.0, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:43EE6103-FB05-4325-B866-0BB0EB76DA03, OS:10.1, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:7B17A4C7-8798-4BB7-9F8E-6066034C2EC8, OS:10.2, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:A1C0F99A-FC6A-47E7-8574-F703FE78BF36, OS:10.3.1, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:C2F50040-F433-45AC-A6DE-6CD691EEE784, OS:11.0.1, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:5C4F2820-45AD-4AAD-906C-16DF3960286E, OS:11.1, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:28EF80F2-0293-4D9D-8E04-D116ADC1D6B2, OS:11.2, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:8B1AB4E3-0781-44F5-9051-C72D44F5A2FE, OS:11.3, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:D2E2A588-90B6-4265-B868-52CCC62C5EBF, OS:11.4, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:A6E5057C-144C-4FC6-8405-950ABF8BFBFA, OS:10.3.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:1D0DC981-7AFC-4BC5-8E60-4FD86E0FA876, OS:11.0.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:0B35B74D-15B7-4156-AB0E-03D3D7D306A1, OS:11.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:A11880E4-170C-4E27-948C-34E3E2B98EC6, OS:11.2, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:2B7A12DA-4F66-402F-84E5-66DC177BA89F, OS:11.3, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:0199AF6F-93CC-46B8-AF63-10AE97DF46DF, OS:11.4, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:176C2710-6129-4C31-ADC2-56A2FE9E44B8, OS:10.0, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:7EFCD587-3A33-40B2-ABC6-B778AB7A1D4E, OS:10.1, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:89D4B43B-4823-46AF-BBD0-A6F56AE66009, OS:10.2, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:1385412A-6D8D-4205-9440-CFFDA1B2188D, OS:10.3.1, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:67B41083-C811-4606-A267-20179D0F787A, OS:11.0.1, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:4680F565-4D88-422A-B20C-396810409C3B, OS:11.1, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:E5F40FE8-5903-4537-9519-A3D4010F2C54, OS:11.2, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:478F89A7-7796-4207-A6BF-6EBF80D84170, OS:11.3, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:837DF8E5-F517-4A86-8BB9-048C9998636E, OS:11.4, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:7502974D-3AF4-4DF5-877E-8EE6D1BC022C, OS:10.3.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:56454F44-9C64-46D4-AD1D-CA43F3B6688E, OS:11.0.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:B1E5B4A8-0803-485E-B8EE-2BEAF774DD07, OS:11.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:FE62F490-F5DE-421E-9C99-F6123CD2E1F1, OS:11.2, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:DFFF359C-6866-455F-AF8B-09BB13418355, OS:11.3, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:32B3A5BD-7EC0-4F96-AEFE-9685192C7440, OS:11.4, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:9EB86673-DB75-45F2-AACC-8AD1F01688FB, OS:8.1, name:iPad Retina }
+		{ platform:iOS Simulator, id:64070310-53CC-423B-A826-3550762F0297, OS:8.2, name:iPad Retina }
+		{ platform:iOS Simulator, id:55B2AC75-57C7-47B5-9E3B-ABECC590A12A, OS:8.3, name:iPad Retina }
+		{ platform:iOS Simulator, id:6211A19E-97FF-4F9B-9180-48A10434E96C, OS:8.4, name:iPad Retina }
+		{ platform:iOS Simulator, id:FDDB0372-BA8F-441C-90AB-FC03F8DF44C2, OS:9.0, name:iPad Retina }
+		{ platform:iOS Simulator, id:C074D4D9-902B-4F34-A58E-4C0952D1A1DB, OS:9.1, name:iPad Retina }
+		{ platform:iOS Simulator, id:8E1F2F61-7C3C-4C3B-AA00-FD8CD5D0C65F, OS:9.2, name:iPad Retina }
+		{ platform:iOS Simulator, id:1A8FF421-409E-4FAB-938E-7E91961BD9EB, OS:9.3, name:iPad Retina }
+		{ platform:iOS Simulator, id:0249462A-BCD6-4AD8-8523-EE31C2CCA42B, OS:8.1, name:iPhone 4s }
+		{ platform:iOS Simulator, id:0D86B03B-6A3D-48CD-A6FC-66BECC590325, OS:8.2, name:iPhone 4s }
+		{ platform:iOS Simulator, id:1AC930D7-6D9C-4975-BA5E-C2A9132AED44, OS:8.3, name:iPhone 4s }
+		{ platform:iOS Simulator, id:4F70190B-85E5-4402-AE9E-465D6FFE491A, OS:8.4, name:iPhone 4s }
+		{ platform:iOS Simulator, id:B278A03C-C15F-4F6A-83F1-AF0438C3C7E4, OS:9.0, name:iPhone 4s }
+		{ platform:iOS Simulator, id:B64D3462-5699-4372-B01B-CE98F8E19999, OS:9.1, name:iPhone 4s }
+		{ platform:iOS Simulator, id:9A367BEB-AEA9-485A-A8DA-B59275891B40, OS:9.2, name:iPhone 4s }
+		{ platform:iOS Simulator, id:5C73E8BF-9F1D-4B29-8C69-08B107285FB0, OS:9.3, name:iPhone 4s }
+		{ platform:iOS Simulator, id:87AA77DF-259E-4E80-87EB-6F3096EAA780, OS:8.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:3C5C488E-3BF2-43B5-BA35-EBC5AC4A34AF, OS:8.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:FA316434-7008-438B-A48A-8E47828F4A9F, OS:8.3, name:iPhone 5 }
+		{ platform:iOS Simulator, id:6099B4C7-8BAE-4D3C-A002-30192D0B41C1, OS:8.4, name:iPhone 5 }
+		{ platform:iOS Simulator, id:9BDA4B06-8978-4405-85A7-A8F595ABDE1E, OS:9.0, name:iPhone 5 }
+		{ platform:iOS Simulator, id:1182E8CA-8864-4928-9670-9283ED0F2C61, OS:9.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:CE788CCC-7DD7-4634-804A-8744CFE83ADE, OS:9.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:01DCAF95-F266-4720-AD2C-51CF279CCB6C, OS:9.3, name:iPhone 5 }
+		{ platform:iOS Simulator, id:38602345-96D7-40FE-851D-A18605C3A14D, OS:10.0, name:iPhone 5 }
+		{ platform:iOS Simulator, id:D3442F27-8F49-4CA0-9904-E33D9FE5D656, OS:10.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:3E356030-3500-494E-A676-E1D57CAEE44D, OS:10.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:DC180A1E-B40B-4F10-8F32-BDD141E932E4, OS:10.3.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:EC425828-6440-47B1-9ECE-8B6F3D50DF8B, OS:8.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:88CAAAC2-6590-40FF-9ED6-3EE99DDE1F10, OS:8.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8164B28A-43B5-48D0-BF0E-5138334EDB57, OS:8.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:3019CA97-7A4E-4599-95C6-B0B04092088F, OS:8.4, name:iPhone 5s }
+		{ platform:iOS Simulator, id:70B5B154-496B-4326-B4B7-B167BC4D09F1, OS:9.0, name:iPhone 5s }
+		{ platform:iOS Simulator, id:C6206239-67C1-4B3E-8D0C-DFD8A34DD8DE, OS:9.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:020B606F-FA5C-4E37-8E02-7EA7B20878A7, OS:9.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8CD51D9A-9F67-4CD7-A8D1-8698B551E577, OS:9.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:CD6B7230-DDF8-4C42-BFBA-5A2DEFD5F69A, OS:10.0, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8C0DF6CB-FE74-4110-ADD7-3210910D7C60, OS:10.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:3EA9A76D-BCC7-42B3-9783-C71EB76DC6A9, OS:10.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:DB6FCD8E-F844-425E-A5B0-07986A77B6E2, OS:10.3.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:F063E289-BF52-4F2F-A307-4C68604271CF, OS:11.0.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:2C9B090B-3617-4024-8836-28329FF46844, OS:11.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:D19316E0-DC76-4970-9423-C2EF7E7D745E, OS:11.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:746C2A5F-B0BE-4164-A178-B53A6BDBE20C, OS:11.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:F5F84F68-FEE6-4817-92D3-A101BE655657, OS:11.4, name:iPhone 5s }
+		{ platform:iOS Simulator, id:2BFFFD01-80C8-48F9-8D30-2923E85E903F, OS:8.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6BC69E2C-FA6C-4E3A-BD94-5362E45983E4, OS:8.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A9099B03-FC36-4BE7-AD18-243A47377EA2, OS:8.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:23C347E1-18BD-4E07-A694-A8595FF83C7F, OS:8.4, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A5C64987-58C6-41B6-A821-6ED43F1980E1, OS:9.0, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A663F313-691A-41EA-9B8E-9C13BCED198A, OS:9.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:611FE619-14F2-4243-B72C-E285BF50C8B5, OS:9.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:D3EE8F5D-2AED-4A72-802D-FDDC37A6BCB5, OS:9.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:BD798BF0-5019-40FD-B2B4-D8D5C8C47A25, OS:10.0, name:iPhone 6 }
+		{ platform:iOS Simulator, id:27525FD7-EC26-48CC-A9BE-A0C06CC57093, OS:10.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:136AF46E-4EFF-49D8-BB5D-EE436C578BC4, OS:10.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6B7C73F6-82E1-4FC7-A47E-C8BE0B2D7B30, OS:10.3.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:04C3AE27-EF87-461A-A610-B294146E704A, OS:11.0.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:8420A7FD-699A-4063-A79F-49969CA1BE8C, OS:11.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:BFE04B76-0D7E-4056-A6C9-CB81F8EEE0E3, OS:11.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:41736ECF-B56E-43C0-92A1-7E1FD8302B88, OS:11.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6493A715-04AC-4497-88F8-E81024078287, OS:11.4, name:iPhone 6 }
+		{ platform:iOS Simulator, id:E8BDC41C-DC07-42FA-B3AD-FE9EA25FB796, OS:8.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:FAF7DDB6-FA9A-4C32-A22B-B2228F44E1AA, OS:8.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:F0941667-3069-4A6D-9ECD-503B51107C35, OS:8.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:99035083-847E-4A11-9F2E-7D08A091B50A, OS:8.4, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:60969D0C-C43A-42B4-99FE-17DD8839BBC7, OS:9.0, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:85DD6230-FE87-4F47-B0DF-7A90F6DE39B9, OS:9.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:2A7C1989-D6B2-4734-956F-275FDEDB6BFF, OS:9.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:402A84FF-D922-43D9-93B2-98C29D488D14, OS:9.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:F31D2E4E-B4BC-43E2-9B5E-C9CFF5669C92, OS:10.0, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:6B79DDC4-1382-481D-A53E-9C8F6E790E51, OS:10.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:9C41A2C4-A752-4ECB-AFE6-6BC94C2CA98C, OS:10.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:BB5D3870-77EE-4135-AAE3-C7F0D245862F, OS:10.3.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:0104293D-D20D-4C2B-8517-DDACA5413279, OS:11.0.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:9138A005-5148-4BE4-AD1C-5BF953DA7313, OS:11.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:CD4B9B09-03C1-470B-BDD1-46B42D5919F1, OS:11.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:76B76782-4957-42B4-B7B8-779BBB286AE4, OS:11.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:B00AEC63-696C-4297-A3A5-A573B1EFBEBE, OS:11.4, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:7DAF65A2-B5ED-4F22-84E5-A9F66B7CAAA2, OS:9.0, name:iPhone 6s }
+		{ platform:iOS Simulator, id:0804F654-C416-4CA4-8DCC-E669271750F5, OS:9.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:26799EBF-B3A8-43EE-9E2E-414C7E4C96B9, OS:9.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:15C825AA-C8F7-44D2-95FB-C92D38A0D9BA, OS:9.3, name:iPhone 6s }
+		{ platform:iOS Simulator, id:FBD5EE0F-F2C5-484C-8B51-1DB1B69ED6AF, OS:10.0, name:iPhone 6s }
+		{ platform:iOS Simulator, id:3D4E4C6A-772D-4378-90A6-0CB4F1E88D26, OS:10.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:CF02F9DC-ADFF-468B-B7DB-F49B53311E7C, OS:10.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:E68E4CCD-77AA-42AF-9DFB-DEDB9A161166, OS:10.3.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:2AB0A048-B2DD-44B5-B6EA-EEFE6B902DA5, OS:11.0.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:345FFAEB-0052-4FDD-AD4B-16BE10226C32, OS:11.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:70DFBD87-956B-4C10-978E-9AD7807E955E, OS:11.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:4B212682-BCF0-49D3-8FEA-01688DEA8711, OS:11.3, name:iPhone 6s }
+		{ platform:iOS Simulator, id:30883235-39F9-4606-9C83-F4D4C630EDB9, OS:11.4, name:iPhone 6s }
+		{ platform:iOS Simulator, id:5A8CAE95-6C12-4EEB-B595-CB3A7D522569, OS:9.0, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:4079A6CA-F504-4AC0-BBF9-FF5B5ED27177, OS:9.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:89AB292F-A1C4-43C8-ACD8-67ABED7DD449, OS:9.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:88F3D527-A08C-4A5D-8541-9901BE89336B, OS:9.3, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:DAB0E600-4827-492A-8F91-A78F877F4C4C, OS:10.0, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:CD905A1B-47A2-4A6B-AC77-16E4FD2C7D57, OS:10.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:AFEB4258-F039-4360-9B37-977793E98A75, OS:10.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:AF20A6BA-8E32-4835-8CA3-69F9978C1C70, OS:10.3.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:41DA2456-67C8-48B3-BBB3-667F6BC1436A, OS:11.0.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:2FBFEDDB-B2E8-4371-85B0-04F0B76C2740, OS:11.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:FF8A43CE-7B2C-4F4A-83C3-F2610DEDAA55, OS:11.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:8909BBA4-4FA3-47CB-B2C3-75798A2DD088, OS:11.3, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:BEEA8A39-963D-43F1-A555-70F6EF246A64, OS:11.4, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:3817F470-271D-4373-B20F-6FD6C063EA58, OS:10.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:B8CA1064-2EEC-4D75-BB1E-662EF7FBC2EC, OS:10.2, name:iPhone 7 }
+		{ platform:iOS Simulator, id:6AC4C35F-F1A5-4C54-88CF-E903C9B910C4, OS:10.3.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:699ED516-E0C6-4529-9A12-7AA4E8626639, OS:11.0.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:EFA10134-FE95-4DC6-8225-F70393BB3B65, OS:11.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:051D3CB9-40F6-45B1-B6E7-6149190C6565, OS:11.2, name:iPhone 7 }
+		{ platform:iOS Simulator, id:65DFF9C4-B3A4-45F4-A46D-A906AA5DEB7B, OS:11.3, name:iPhone 7 }
+		{ platform:iOS Simulator, id:8ABF0B4E-0370-4D7D-B9F6-E508760687A5, OS:11.4, name:iPhone 7 }
+		{ platform:iOS Simulator, id:4A74CE64-F73C-4238-A205-5429738D8CE9, OS:10.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:599424B6-B002-4F67-BA5B-91ABDBE3C24D, OS:10.2, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:AE68934B-30AF-46A8-BBCC-53FB7205978A, OS:10.3.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:6B0C25EA-09DB-4AF5-847F-EB503AE29129, OS:11.0.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:CBC5537A-7911-46DA-9662-22FF8284BB2F, OS:11.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:D8AFCF22-19AD-48D3-AA19-AF58BF5911B6, OS:11.2, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:F9E3FEC5-D127-4F92-9BE2-3921033653B5, OS:11.3, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:6E127CF0-6BCD-4EE2-9C84-25BF64073611, OS:11.4, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:BFC6320A-7D97-42F1-ADF2-A3CF74073B61, OS:11.0.1, name:iPhone 8 }
+		{ platform:iOS Simulator, id:1E53D31E-F880-4137-AF9A-A6754E531F04, OS:11.1, name:iPhone 8 }
+		{ platform:iOS Simulator, id:F48D4B33-60EE-4C03-96CC-8F9D3F5EAF6D, OS:11.2, name:iPhone 8 }
+		{ platform:iOS Simulator, id:361E7D26-A9BD-447D-939C-1DBF01B0B1E0, OS:11.3, name:iPhone 8 }
+		{ platform:iOS Simulator, id:1CAB698D-0215-498B-B6DC-6C7CCE5F99D7, OS:11.4, name:iPhone 8 }
+		{ platform:iOS Simulator, id:5B92FA1F-120C-4604-8807-0A416979DE0F, OS:11.0.1, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:25A1DAA2-FA3C-4CA3-A249-4854E2E7F53A, OS:11.1, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:227A9793-7525-429D-92D8-BD1D4BB651CF, OS:11.2, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:A5C08804-E339-4E78-A478-0D099F54B973, OS:11.3, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:384E22B2-1BF5-48E7-8FB0-3DC8D6B625D1, OS:11.4, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:C87BBC3B-3B7F-4C09-8F9C-165C2FD827D3, OS:10.0, name:iPhone SE }
+		{ platform:iOS Simulator, id:8F3F0194-E1AF-41C2-B2A1-645456B89F5D, OS:10.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:24ADD8C1-96A1-4E65-BC56-7B60A45CC272, OS:10.2, name:iPhone SE }
+		{ platform:iOS Simulator, id:1C63BDA4-127A-4794-80E8-DB87D29975EC, OS:10.3.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:AAE7CB94-027E-4206-BE72-96F1BC072527, OS:11.0.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:B836DC75-54BB-4841-A197-285800F14767, OS:11.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:7D3B8D57-0EB8-4A84-AB09-E02D7F3F1AB9, OS:11.2, name:iPhone SE }
+		{ platform:iOS Simulator, id:92550947-1AE2-40B6-9D1C-F04D27BF3ED3, OS:11.3, name:iPhone SE }
+		{ platform:iOS Simulator, id:B23EF716-1D30-44F3-916D-778BD8D2DD00, OS:11.4, name:iPhone SE }
+		{ platform:iOS Simulator, id:AB0DEA05-54F5-49DA-9DC1-6D3EB0E53AFA, OS:11.0.1, name:iPhone X }
+		{ platform:iOS Simulator, id:E71AD5B8-2A5E-4F53-B94D-9AC8B4ED1EE5, OS:11.1, name:iPhone X }
+		{ platform:iOS Simulator, id:A5BB85E3-EBB5-4767-9B81-4A7DF2DC1B76, OS:11.2, name:iPhone X }
+		{ platform:iOS Simulator, id:5E4E0408-E061-4CDF-955A-EF404C743CB8, OS:11.3, name:iPhone X }
+		{ platform:iOS Simulator, id:19ABD42A-1EBA-4455-9EB1-8B8D2DD9BC5A, OS:11.4, name:iPhone X }
+
+	Ineligible destinations for the "SwiftyJSON iOS" scheme:
+		{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Generic iOS Device }
+		{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Generic iOS Simulator Device }
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON iOS -destination platform=iOS Simulator,OS=12.0,name=iPhone 6 build-for-testing test" failed. Retrying, 2 of 3.[0m
+
+xcodebuild: error: Unable to find a destination matching the provided destination specifier:
+		{ platform:iOS Simulator, OS:12.0, name:iPhone 6 }
+
+	The requested device could not be found because no available devices matched the request.
+
+	Available destinations for the "SwiftyJSON iOS" scheme:
+		{ platform:iOS Simulator, id:FD4602BE-4676-4769-BB84-40D92AA0DD73, OS:10.3.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:5217DF5A-6D99-46CA-8E5F-C0A6F784854D, OS:11.0.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:9ED52B02-4121-4B95-88E7-28652AEDCFBE, OS:11.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:B0DF6B75-3D8B-4BFE-AA2D-E10FF6BBFAC6, OS:11.2, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:070A7D7E-830F-4006-9BC2-5332E41EB48F, OS:11.3, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:21DD3A28-FAEB-49CA-B92F-C634BC438358, OS:11.4, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:A95A6DA8-F5E3-46A9-BE0F-3C6926172DB1, OS:8.1, name:iPad 2 }
+		{ platform:iOS Simulator, id:6160B903-2593-4797-BB14-0332914D09D5, OS:8.2, name:iPad 2 }
+		{ platform:iOS Simulator, id:0BF27476-D756-4865-B29D-6D7B3DCA1A70, OS:8.3, name:iPad 2 }
+		{ platform:iOS Simulator, id:43E8DCE9-B349-4EFF-9C9D-FCE7ECA47ADE, OS:8.4, name:iPad 2 }
+		{ platform:iOS Simulator, id:A85A943F-85ED-4D82-8AEC-687197518470, OS:9.0, name:iPad 2 }
+		{ platform:iOS Simulator, id:C667CE8F-1790-4A1E-972A-9C4463A347D8, OS:9.1, name:iPad 2 }
+		{ platform:iOS Simulator, id:9B35D13B-AEC3-4D43-A15C-F7B2C755CA2A, OS:9.2, name:iPad 2 }
+		{ platform:iOS Simulator, id:1C3F1904-E0A7-4E5A-A9E9-436E8E79BEC6, OS:9.3, name:iPad 2 }
+		{ platform:iOS Simulator, id:17A0E050-FA3A-4F8E-82C7-6A517C14D5DD, OS:8.1, name:iPad Air }
+		{ platform:iOS Simulator, id:CB3C5E09-F743-454C-9C3D-B5C41F604E6D, OS:8.2, name:iPad Air }
+		{ platform:iOS Simulator, id:8C915B98-B608-4AE3-B5AA-B012B72ACFDB, OS:8.3, name:iPad Air }
+		{ platform:iOS Simulator, id:368DB039-5130-4337-B410-E43C3D8AD452, OS:8.4, name:iPad Air }
+		{ platform:iOS Simulator, id:FD6F3230-846F-4924-A8F7-0A8B53E2B43E, OS:9.0, name:iPad Air }
+		{ platform:iOS Simulator, id:218D79B3-DCE8-4094-AC21-C82990E3B41E, OS:9.1, name:iPad Air }
+		{ platform:iOS Simulator, id:89B7A34A-51B5-40B6-99F6-281A1452388B, OS:9.2, name:iPad Air }
+		{ platform:iOS Simulator, id:9073977E-0387-4C08-8628-5F3FDB7E7628, OS:9.3, name:iPad Air }
+		{ platform:iOS Simulator, id:794C8F86-3466-4A1E-BFF3-E7C0A9705DD5, OS:10.0, name:iPad Air }
+		{ platform:iOS Simulator, id:0769C554-89F8-4726-AF4F-2F086BD4E130, OS:10.1, name:iPad Air }
+		{ platform:iOS Simulator, id:756B5591-D2C2-40E2-A1C5-4AC7003F27C5, OS:10.2, name:iPad Air }
+		{ platform:iOS Simulator, id:518EE86F-705C-4668-B366-1AC154700475, OS:10.3.1, name:iPad Air }
+		{ platform:iOS Simulator, id:B301BF38-6816-42B4-9B56-E63E38AEACCE, OS:11.0.1, name:iPad Air }
+		{ platform:iOS Simulator, id:8EC220ED-B5EF-4136-BF01-D6FA61F88232, OS:11.1, name:iPad Air }
+		{ platform:iOS Simulator, id:D4FE15DB-816E-488C-9297-E942FE3DAD1F, OS:11.2, name:iPad Air }
+		{ platform:iOS Simulator, id:70B8A002-9B21-466E-950C-098F4827C7B6, OS:11.3, name:iPad Air }
+		{ platform:iOS Simulator, id:68769750-3781-4D80-B348-D07AF80EA6BA, OS:11.4, name:iPad Air }
+		{ platform:iOS Simulator, id:98C9CB4A-935C-4947-A667-1F5CCAE701AF, OS:9.0, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:AA59EC7F-2848-4801-B5FB-13F5A94B0BAA, OS:9.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:8BF6B30B-F942-4315-8783-8542EB848ED9, OS:9.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:747B2225-4B98-4677-81E7-519A02784945, OS:9.3, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:0446F2F8-F7E0-4391-A9F7-D117FF2DFB6E, OS:10.0, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:A8F97452-1E3A-432C-88BA-6D19F2DEB5B5, OS:10.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:454E07E2-A405-481C-AAFE-5C665A28F869, OS:10.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:305E30FD-E726-4576-8515-DF9BF4793A14, OS:10.3.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:2F58313B-68B1-4D7F-A69D-936E754F8AD6, OS:11.0.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:9DC346E6-972C-40BF-BBE3-0F63BD4E362B, OS:11.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:D45224C5-D30C-4B40-8AFF-91D435BE7321, OS:11.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:7AD53AD3-6E79-43B5-B98D-E5134A218F2A, OS:11.3, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:04D6C823-FDA3-472B-85EA-9B484AF6E42F, OS:11.4, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:84F62264-105F-412E-9F4B-8947A4B600ED, OS:9.1, name:iPad Pro }
+		{ platform:iOS Simulator, id:FC21F7B0-261C-4D6B-B43E-E0A08B9076DC, OS:9.2, name:iPad Pro }
+		{ platform:iOS Simulator, id:B5EA4A24-229C-4840-845E-269FA42E8BEB, OS:9.3, name:iPad Pro }
+		{ platform:iOS Simulator, id:DB1ECDD4-6297-4D8F-971C-6FF53D9558C5, OS:10.0, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:43EE6103-FB05-4325-B866-0BB0EB76DA03, OS:10.1, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:7B17A4C7-8798-4BB7-9F8E-6066034C2EC8, OS:10.2, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:A1C0F99A-FC6A-47E7-8574-F703FE78BF36, OS:10.3.1, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:C2F50040-F433-45AC-A6DE-6CD691EEE784, OS:11.0.1, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:5C4F2820-45AD-4AAD-906C-16DF3960286E, OS:11.1, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:28EF80F2-0293-4D9D-8E04-D116ADC1D6B2, OS:11.2, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:8B1AB4E3-0781-44F5-9051-C72D44F5A2FE, OS:11.3, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:D2E2A588-90B6-4265-B868-52CCC62C5EBF, OS:11.4, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:A6E5057C-144C-4FC6-8405-950ABF8BFBFA, OS:10.3.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:1D0DC981-7AFC-4BC5-8E60-4FD86E0FA876, OS:11.0.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:0B35B74D-15B7-4156-AB0E-03D3D7D306A1, OS:11.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:A11880E4-170C-4E27-948C-34E3E2B98EC6, OS:11.2, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:2B7A12DA-4F66-402F-84E5-66DC177BA89F, OS:11.3, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:0199AF6F-93CC-46B8-AF63-10AE97DF46DF, OS:11.4, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:176C2710-6129-4C31-ADC2-56A2FE9E44B8, OS:10.0, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:7EFCD587-3A33-40B2-ABC6-B778AB7A1D4E, OS:10.1, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:89D4B43B-4823-46AF-BBD0-A6F56AE66009, OS:10.2, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:1385412A-6D8D-4205-9440-CFFDA1B2188D, OS:10.3.1, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:67B41083-C811-4606-A267-20179D0F787A, OS:11.0.1, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:4680F565-4D88-422A-B20C-396810409C3B, OS:11.1, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:E5F40FE8-5903-4537-9519-A3D4010F2C54, OS:11.2, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:478F89A7-7796-4207-A6BF-6EBF80D84170, OS:11.3, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:837DF8E5-F517-4A86-8BB9-048C9998636E, OS:11.4, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:7502974D-3AF4-4DF5-877E-8EE6D1BC022C, OS:10.3.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:56454F44-9C64-46D4-AD1D-CA43F3B6688E, OS:11.0.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:B1E5B4A8-0803-485E-B8EE-2BEAF774DD07, OS:11.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:FE62F490-F5DE-421E-9C99-F6123CD2E1F1, OS:11.2, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:DFFF359C-6866-455F-AF8B-09BB13418355, OS:11.3, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:32B3A5BD-7EC0-4F96-AEFE-9685192C7440, OS:11.4, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:9EB86673-DB75-45F2-AACC-8AD1F01688FB, OS:8.1, name:iPad Retina }
+		{ platform:iOS Simulator, id:64070310-53CC-423B-A826-3550762F0297, OS:8.2, name:iPad Retina }
+		{ platform:iOS Simulator, id:55B2AC75-57C7-47B5-9E3B-ABECC590A12A, OS:8.3, name:iPad Retina }
+		{ platform:iOS Simulator, id:6211A19E-97FF-4F9B-9180-48A10434E96C, OS:8.4, name:iPad Retina }
+		{ platform:iOS Simulator, id:FDDB0372-BA8F-441C-90AB-FC03F8DF44C2, OS:9.0, name:iPad Retina }
+		{ platform:iOS Simulator, id:C074D4D9-902B-4F34-A58E-4C0952D1A1DB, OS:9.1, name:iPad Retina }
+		{ platform:iOS Simulator, id:8E1F2F61-7C3C-4C3B-AA00-FD8CD5D0C65F, OS:9.2, name:iPad Retina }
+		{ platform:iOS Simulator, id:1A8FF421-409E-4FAB-938E-7E91961BD9EB, OS:9.3, name:iPad Retina }
+		{ platform:iOS Simulator, id:0249462A-BCD6-4AD8-8523-EE31C2CCA42B, OS:8.1, name:iPhone 4s }
+		{ platform:iOS Simulator, id:0D86B03B-6A3D-48CD-A6FC-66BECC590325, OS:8.2, name:iPhone 4s }
+		{ platform:iOS Simulator, id:1AC930D7-6D9C-4975-BA5E-C2A9132AED44, OS:8.3, name:iPhone 4s }
+		{ platform:iOS Simulator, id:4F70190B-85E5-4402-AE9E-465D6FFE491A, OS:8.4, name:iPhone 4s }
+		{ platform:iOS Simulator, id:B278A03C-C15F-4F6A-83F1-AF0438C3C7E4, OS:9.0, name:iPhone 4s }
+		{ platform:iOS Simulator, id:B64D3462-5699-4372-B01B-CE98F8E19999, OS:9.1, name:iPhone 4s }
+		{ platform:iOS Simulator, id:9A367BEB-AEA9-485A-A8DA-B59275891B40, OS:9.2, name:iPhone 4s }
+		{ platform:iOS Simulator, id:5C73E8BF-9F1D-4B29-8C69-08B107285FB0, OS:9.3, name:iPhone 4s }
+		{ platform:iOS Simulator, id:87AA77DF-259E-4E80-87EB-6F3096EAA780, OS:8.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:3C5C488E-3BF2-43B5-BA35-EBC5AC4A34AF, OS:8.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:FA316434-7008-438B-A48A-8E47828F4A9F, OS:8.3, name:iPhone 5 }
+		{ platform:iOS Simulator, id:6099B4C7-8BAE-4D3C-A002-30192D0B41C1, OS:8.4, name:iPhone 5 }
+		{ platform:iOS Simulator, id:9BDA4B06-8978-4405-85A7-A8F595ABDE1E, OS:9.0, name:iPhone 5 }
+		{ platform:iOS Simulator, id:1182E8CA-8864-4928-9670-9283ED0F2C61, OS:9.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:CE788CCC-7DD7-4634-804A-8744CFE83ADE, OS:9.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:01DCAF95-F266-4720-AD2C-51CF279CCB6C, OS:9.3, name:iPhone 5 }
+		{ platform:iOS Simulator, id:38602345-96D7-40FE-851D-A18605C3A14D, OS:10.0, name:iPhone 5 }
+		{ platform:iOS Simulator, id:D3442F27-8F49-4CA0-9904-E33D9FE5D656, OS:10.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:3E356030-3500-494E-A676-E1D57CAEE44D, OS:10.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:DC180A1E-B40B-4F10-8F32-BDD141E932E4, OS:10.3.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:EC425828-6440-47B1-9ECE-8B6F3D50DF8B, OS:8.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:88CAAAC2-6590-40FF-9ED6-3EE99DDE1F10, OS:8.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8164B28A-43B5-48D0-BF0E-5138334EDB57, OS:8.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:3019CA97-7A4E-4599-95C6-B0B04092088F, OS:8.4, name:iPhone 5s }
+		{ platform:iOS Simulator, id:70B5B154-496B-4326-B4B7-B167BC4D09F1, OS:9.0, name:iPhone 5s }
+		{ platform:iOS Simulator, id:C6206239-67C1-4B3E-8D0C-DFD8A34DD8DE, OS:9.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:020B606F-FA5C-4E37-8E02-7EA7B20878A7, OS:9.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8CD51D9A-9F67-4CD7-A8D1-8698B551E577, OS:9.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:CD6B7230-DDF8-4C42-BFBA-5A2DEFD5F69A, OS:10.0, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8C0DF6CB-FE74-4110-ADD7-3210910D7C60, OS:10.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:3EA9A76D-BCC7-42B3-9783-C71EB76DC6A9, OS:10.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:DB6FCD8E-F844-425E-A5B0-07986A77B6E2, OS:10.3.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:F063E289-BF52-4F2F-A307-4C68604271CF, OS:11.0.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:2C9B090B-3617-4024-8836-28329FF46844, OS:11.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:D19316E0-DC76-4970-9423-C2EF7E7D745E, OS:11.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:746C2A5F-B0BE-4164-A178-B53A6BDBE20C, OS:11.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:F5F84F68-FEE6-4817-92D3-A101BE655657, OS:11.4, name:iPhone 5s }
+		{ platform:iOS Simulator, id:2BFFFD01-80C8-48F9-8D30-2923E85E903F, OS:8.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6BC69E2C-FA6C-4E3A-BD94-5362E45983E4, OS:8.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A9099B03-FC36-4BE7-AD18-243A47377EA2, OS:8.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:23C347E1-18BD-4E07-A694-A8595FF83C7F, OS:8.4, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A5C64987-58C6-41B6-A821-6ED43F1980E1, OS:9.0, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A663F313-691A-41EA-9B8E-9C13BCED198A, OS:9.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:611FE619-14F2-4243-B72C-E285BF50C8B5, OS:9.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:D3EE8F5D-2AED-4A72-802D-FDDC37A6BCB5, OS:9.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:BD798BF0-5019-40FD-B2B4-D8D5C8C47A25, OS:10.0, name:iPhone 6 }
+		{ platform:iOS Simulator, id:27525FD7-EC26-48CC-A9BE-A0C06CC57093, OS:10.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:136AF46E-4EFF-49D8-BB5D-EE436C578BC4, OS:10.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6B7C73F6-82E1-4FC7-A47E-C8BE0B2D7B30, OS:10.3.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:04C3AE27-EF87-461A-A610-B294146E704A, OS:11.0.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:8420A7FD-699A-4063-A79F-49969CA1BE8C, OS:11.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:BFE04B76-0D7E-4056-A6C9-CB81F8EEE0E3, OS:11.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:41736ECF-B56E-43C0-92A1-7E1FD8302B88, OS:11.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6493A715-04AC-4497-88F8-E81024078287, OS:11.4, name:iPhone 6 }
+		{ platform:iOS Simulator, id:E8BDC41C-DC07-42FA-B3AD-FE9EA25FB796, OS:8.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:FAF7DDB6-FA9A-4C32-A22B-B2228F44E1AA, OS:8.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:F0941667-3069-4A6D-9ECD-503B51107C35, OS:8.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:99035083-847E-4A11-9F2E-7D08A091B50A, OS:8.4, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:60969D0C-C43A-42B4-99FE-17DD8839BBC7, OS:9.0, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:85DD6230-FE87-4F47-B0DF-7A90F6DE39B9, OS:9.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:2A7C1989-D6B2-4734-956F-275FDEDB6BFF, OS:9.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:402A84FF-D922-43D9-93B2-98C29D488D14, OS:9.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:F31D2E4E-B4BC-43E2-9B5E-C9CFF5669C92, OS:10.0, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:6B79DDC4-1382-481D-A53E-9C8F6E790E51, OS:10.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:9C41A2C4-A752-4ECB-AFE6-6BC94C2CA98C, OS:10.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:BB5D3870-77EE-4135-AAE3-C7F0D245862F, OS:10.3.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:0104293D-D20D-4C2B-8517-DDACA5413279, OS:11.0.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:9138A005-5148-4BE4-AD1C-5BF953DA7313, OS:11.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:CD4B9B09-03C1-470B-BDD1-46B42D5919F1, OS:11.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:76B76782-4957-42B4-B7B8-779BBB286AE4, OS:11.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:B00AEC63-696C-4297-A3A5-A573B1EFBEBE, OS:11.4, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:7DAF65A2-B5ED-4F22-84E5-A9F66B7CAAA2, OS:9.0, name:iPhone 6s }
+		{ platform:iOS Simulator, id:0804F654-C416-4CA4-8DCC-E669271750F5, OS:9.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:26799EBF-B3A8-43EE-9E2E-414C7E4C96B9, OS:9.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:15C825AA-C8F7-44D2-95FB-C92D38A0D9BA, OS:9.3, name:iPhone 6s }
+		{ platform:iOS Simulator, id:FBD5EE0F-F2C5-484C-8B51-1DB1B69ED6AF, OS:10.0, name:iPhone 6s }
+		{ platform:iOS Simulator, id:3D4E4C6A-772D-4378-90A6-0CB4F1E88D26, OS:10.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:CF02F9DC-ADFF-468B-B7DB-F49B53311E7C, OS:10.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:E68E4CCD-77AA-42AF-9DFB-DEDB9A161166, OS:10.3.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:2AB0A048-B2DD-44B5-B6EA-EEFE6B902DA5, OS:11.0.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:345FFAEB-0052-4FDD-AD4B-16BE10226C32, OS:11.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:70DFBD87-956B-4C10-978E-9AD7807E955E, OS:11.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:4B212682-BCF0-49D3-8FEA-01688DEA8711, OS:11.3, name:iPhone 6s }
+		{ platform:iOS Simulator, id:30883235-39F9-4606-9C83-F4D4C630EDB9, OS:11.4, name:iPhone 6s }
+		{ platform:iOS Simulator, id:5A8CAE95-6C12-4EEB-B595-CB3A7D522569, OS:9.0, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:4079A6CA-F504-4AC0-BBF9-FF5B5ED27177, OS:9.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:89AB292F-A1C4-43C8-ACD8-67ABED7DD449, OS:9.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:88F3D527-A08C-4A5D-8541-9901BE89336B, OS:9.3, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:DAB0E600-4827-492A-8F91-A78F877F4C4C, OS:10.0, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:CD905A1B-47A2-4A6B-AC77-16E4FD2C7D57, OS:10.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:AFEB4258-F039-4360-9B37-977793E98A75, OS:10.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:AF20A6BA-8E32-4835-8CA3-69F9978C1C70, OS:10.3.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:41DA2456-67C8-48B3-BBB3-667F6BC1436A, OS:11.0.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:2FBFEDDB-B2E8-4371-85B0-04F0B76C2740, OS:11.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:FF8A43CE-7B2C-4F4A-83C3-F2610DEDAA55, OS:11.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:8909BBA4-4FA3-47CB-B2C3-75798A2DD088, OS:11.3, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:BEEA8A39-963D-43F1-A555-70F6EF246A64, OS:11.4, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:3817F470-271D-4373-B20F-6FD6C063EA58, OS:10.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:B8CA1064-2EEC-4D75-BB1E-662EF7FBC2EC, OS:10.2, name:iPhone 7 }
+		{ platform:iOS Simulator, id:6AC4C35F-F1A5-4C54-88CF-E903C9B910C4, OS:10.3.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:699ED516-E0C6-4529-9A12-7AA4E8626639, OS:11.0.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:EFA10134-FE95-4DC6-8225-F70393BB3B65, OS:11.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:051D3CB9-40F6-45B1-B6E7-6149190C6565, OS:11.2, name:iPhone 7 }
+		{ platform:iOS Simulator, id:65DFF9C4-B3A4-45F4-A46D-A906AA5DEB7B, OS:11.3, name:iPhone 7 }
+		{ platform:iOS Simulator, id:8ABF0B4E-0370-4D7D-B9F6-E508760687A5, OS:11.4, name:iPhone 7 }
+		{ platform:iOS Simulator, id:4A74CE64-F73C-4238-A205-5429738D8CE9, OS:10.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:599424B6-B002-4F67-BA5B-91ABDBE3C24D, OS:10.2, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:AE68934B-30AF-46A8-BBCC-53FB7205978A, OS:10.3.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:6B0C25EA-09DB-4AF5-847F-EB503AE29129, OS:11.0.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:CBC5537A-7911-46DA-9662-22FF8284BB2F, OS:11.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:D8AFCF22-19AD-48D3-AA19-AF58BF5911B6, OS:11.2, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:F9E3FEC5-D127-4F92-9BE2-3921033653B5, OS:11.3, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:6E127CF0-6BCD-4EE2-9C84-25BF64073611, OS:11.4, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:BFC6320A-7D97-42F1-ADF2-A3CF74073B61, OS:11.0.1, name:iPhone 8 }
+		{ platform:iOS Simulator, id:1E53D31E-F880-4137-AF9A-A6754E531F04, OS:11.1, name:iPhone 8 }
+		{ platform:iOS Simulator, id:F48D4B33-60EE-4C03-96CC-8F9D3F5EAF6D, OS:11.2, name:iPhone 8 }
+		{ platform:iOS Simulator, id:361E7D26-A9BD-447D-939C-1DBF01B0B1E0, OS:11.3, name:iPhone 8 }
+		{ platform:iOS Simulator, id:1CAB698D-0215-498B-B6DC-6C7CCE5F99D7, OS:11.4, name:iPhone 8 }
+		{ platform:iOS Simulator, id:5B92FA1F-120C-4604-8807-0A416979DE0F, OS:11.0.1, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:25A1DAA2-FA3C-4CA3-A249-4854E2E7F53A, OS:11.1, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:227A9793-7525-429D-92D8-BD1D4BB651CF, OS:11.2, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:A5C08804-E339-4E78-A478-0D099F54B973, OS:11.3, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:384E22B2-1BF5-48E7-8FB0-3DC8D6B625D1, OS:11.4, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:C87BBC3B-3B7F-4C09-8F9C-165C2FD827D3, OS:10.0, name:iPhone SE }
+		{ platform:iOS Simulator, id:8F3F0194-E1AF-41C2-B2A1-645456B89F5D, OS:10.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:24ADD8C1-96A1-4E65-BC56-7B60A45CC272, OS:10.2, name:iPhone SE }
+		{ platform:iOS Simulator, id:1C63BDA4-127A-4794-80E8-DB87D29975EC, OS:10.3.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:AAE7CB94-027E-4206-BE72-96F1BC072527, OS:11.0.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:B836DC75-54BB-4841-A197-285800F14767, OS:11.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:7D3B8D57-0EB8-4A84-AB09-E02D7F3F1AB9, OS:11.2, name:iPhone SE }
+		{ platform:iOS Simulator, id:92550947-1AE2-40B6-9D1C-F04D27BF3ED3, OS:11.3, name:iPhone SE }
+		{ platform:iOS Simulator, id:B23EF716-1D30-44F3-916D-778BD8D2DD00, OS:11.4, name:iPhone SE }
+		{ platform:iOS Simulator, id:AB0DEA05-54F5-49DA-9DC1-6D3EB0E53AFA, OS:11.0.1, name:iPhone X }
+		{ platform:iOS Simulator, id:E71AD5B8-2A5E-4F53-B94D-9AC8B4ED1EE5, OS:11.1, name:iPhone X }
+		{ platform:iOS Simulator, id:A5BB85E3-EBB5-4767-9B81-4A7DF2DC1B76, OS:11.2, name:iPhone X }
+		{ platform:iOS Simulator, id:5E4E0408-E061-4CDF-955A-EF404C743CB8, OS:11.3, name:iPhone X }
+		{ platform:iOS Simulator, id:19ABD42A-1EBA-4455-9EB1-8B8D2DD9BC5A, OS:11.4, name:iPhone X }
+
+	Ineligible destinations for the "SwiftyJSON iOS" scheme:
+		{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Generic iOS Device }
+		{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Generic iOS Simulator Device }
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON iOS -destination platform=iOS Simulator,OS=12.0,name=iPhone 6 build-for-testing test" failed. Retrying, 3 of 3.[0m
+
+xcodebuild: error: Unable to find a destination matching the provided destination specifier:
+		{ platform:iOS Simulator, OS:12.0, name:iPhone 6 }
+
+	The requested device could not be found because no available devices matched the request.
+
+	Available destinations for the "SwiftyJSON iOS" scheme:
+		{ platform:iOS Simulator, id:FD4602BE-4676-4769-BB84-40D92AA0DD73, OS:10.3.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:5217DF5A-6D99-46CA-8E5F-C0A6F784854D, OS:11.0.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:9ED52B02-4121-4B95-88E7-28652AEDCFBE, OS:11.1, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:B0DF6B75-3D8B-4BFE-AA2D-E10FF6BBFAC6, OS:11.2, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:070A7D7E-830F-4006-9BC2-5332E41EB48F, OS:11.3, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:21DD3A28-FAEB-49CA-B92F-C634BC438358, OS:11.4, name:iPad (5th generation) }
+		{ platform:iOS Simulator, id:A95A6DA8-F5E3-46A9-BE0F-3C6926172DB1, OS:8.1, name:iPad 2 }
+		{ platform:iOS Simulator, id:6160B903-2593-4797-BB14-0332914D09D5, OS:8.2, name:iPad 2 }
+		{ platform:iOS Simulator, id:0BF27476-D756-4865-B29D-6D7B3DCA1A70, OS:8.3, name:iPad 2 }
+		{ platform:iOS Simulator, id:43E8DCE9-B349-4EFF-9C9D-FCE7ECA47ADE, OS:8.4, name:iPad 2 }
+		{ platform:iOS Simulator, id:A85A943F-85ED-4D82-8AEC-687197518470, OS:9.0, name:iPad 2 }
+		{ platform:iOS Simulator, id:C667CE8F-1790-4A1E-972A-9C4463A347D8, OS:9.1, name:iPad 2 }
+		{ platform:iOS Simulator, id:9B35D13B-AEC3-4D43-A15C-F7B2C755CA2A, OS:9.2, name:iPad 2 }
+		{ platform:iOS Simulator, id:1C3F1904-E0A7-4E5A-A9E9-436E8E79BEC6, OS:9.3, name:iPad 2 }
+		{ platform:iOS Simulator, id:17A0E050-FA3A-4F8E-82C7-6A517C14D5DD, OS:8.1, name:iPad Air }
+		{ platform:iOS Simulator, id:CB3C5E09-F743-454C-9C3D-B5C41F604E6D, OS:8.2, name:iPad Air }
+		{ platform:iOS Simulator, id:8C915B98-B608-4AE3-B5AA-B012B72ACFDB, OS:8.3, name:iPad Air }
+		{ platform:iOS Simulator, id:368DB039-5130-4337-B410-E43C3D8AD452, OS:8.4, name:iPad Air }
+		{ platform:iOS Simulator, id:FD6F3230-846F-4924-A8F7-0A8B53E2B43E, OS:9.0, name:iPad Air }
+		{ platform:iOS Simulator, id:218D79B3-DCE8-4094-AC21-C82990E3B41E, OS:9.1, name:iPad Air }
+		{ platform:iOS Simulator, id:89B7A34A-51B5-40B6-99F6-281A1452388B, OS:9.2, name:iPad Air }
+		{ platform:iOS Simulator, id:9073977E-0387-4C08-8628-5F3FDB7E7628, OS:9.3, name:iPad Air }
+		{ platform:iOS Simulator, id:794C8F86-3466-4A1E-BFF3-E7C0A9705DD5, OS:10.0, name:iPad Air }
+		{ platform:iOS Simulator, id:0769C554-89F8-4726-AF4F-2F086BD4E130, OS:10.1, name:iPad Air }
+		{ platform:iOS Simulator, id:756B5591-D2C2-40E2-A1C5-4AC7003F27C5, OS:10.2, name:iPad Air }
+		{ platform:iOS Simulator, id:518EE86F-705C-4668-B366-1AC154700475, OS:10.3.1, name:iPad Air }
+		{ platform:iOS Simulator, id:B301BF38-6816-42B4-9B56-E63E38AEACCE, OS:11.0.1, name:iPad Air }
+		{ platform:iOS Simulator, id:8EC220ED-B5EF-4136-BF01-D6FA61F88232, OS:11.1, name:iPad Air }
+		{ platform:iOS Simulator, id:D4FE15DB-816E-488C-9297-E942FE3DAD1F, OS:11.2, name:iPad Air }
+		{ platform:iOS Simulator, id:70B8A002-9B21-466E-950C-098F4827C7B6, OS:11.3, name:iPad Air }
+		{ platform:iOS Simulator, id:68769750-3781-4D80-B348-D07AF80EA6BA, OS:11.4, name:iPad Air }
+		{ platform:iOS Simulator, id:98C9CB4A-935C-4947-A667-1F5CCAE701AF, OS:9.0, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:AA59EC7F-2848-4801-B5FB-13F5A94B0BAA, OS:9.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:8BF6B30B-F942-4315-8783-8542EB848ED9, OS:9.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:747B2225-4B98-4677-81E7-519A02784945, OS:9.3, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:0446F2F8-F7E0-4391-A9F7-D117FF2DFB6E, OS:10.0, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:A8F97452-1E3A-432C-88BA-6D19F2DEB5B5, OS:10.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:454E07E2-A405-481C-AAFE-5C665A28F869, OS:10.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:305E30FD-E726-4576-8515-DF9BF4793A14, OS:10.3.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:2F58313B-68B1-4D7F-A69D-936E754F8AD6, OS:11.0.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:9DC346E6-972C-40BF-BBE3-0F63BD4E362B, OS:11.1, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:D45224C5-D30C-4B40-8AFF-91D435BE7321, OS:11.2, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:7AD53AD3-6E79-43B5-B98D-E5134A218F2A, OS:11.3, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:04D6C823-FDA3-472B-85EA-9B484AF6E42F, OS:11.4, name:iPad Air 2 }
+		{ platform:iOS Simulator, id:84F62264-105F-412E-9F4B-8947A4B600ED, OS:9.1, name:iPad Pro }
+		{ platform:iOS Simulator, id:FC21F7B0-261C-4D6B-B43E-E0A08B9076DC, OS:9.2, name:iPad Pro }
+		{ platform:iOS Simulator, id:B5EA4A24-229C-4840-845E-269FA42E8BEB, OS:9.3, name:iPad Pro }
+		{ platform:iOS Simulator, id:DB1ECDD4-6297-4D8F-971C-6FF53D9558C5, OS:10.0, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:43EE6103-FB05-4325-B866-0BB0EB76DA03, OS:10.1, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:7B17A4C7-8798-4BB7-9F8E-6066034C2EC8, OS:10.2, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:A1C0F99A-FC6A-47E7-8574-F703FE78BF36, OS:10.3.1, name:iPad Pro (9.7 inch) }
+		{ platform:iOS Simulator, id:C2F50040-F433-45AC-A6DE-6CD691EEE784, OS:11.0.1, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:5C4F2820-45AD-4AAD-906C-16DF3960286E, OS:11.1, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:28EF80F2-0293-4D9D-8E04-D116ADC1D6B2, OS:11.2, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:8B1AB4E3-0781-44F5-9051-C72D44F5A2FE, OS:11.3, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:D2E2A588-90B6-4265-B868-52CCC62C5EBF, OS:11.4, name:iPad Pro (9.7-inch) }
+		{ platform:iOS Simulator, id:A6E5057C-144C-4FC6-8405-950ABF8BFBFA, OS:10.3.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:1D0DC981-7AFC-4BC5-8E60-4FD86E0FA876, OS:11.0.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:0B35B74D-15B7-4156-AB0E-03D3D7D306A1, OS:11.1, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:A11880E4-170C-4E27-948C-34E3E2B98EC6, OS:11.2, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:2B7A12DA-4F66-402F-84E5-66DC177BA89F, OS:11.3, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:0199AF6F-93CC-46B8-AF63-10AE97DF46DF, OS:11.4, name:iPad Pro (10.5-inch) }
+		{ platform:iOS Simulator, id:176C2710-6129-4C31-ADC2-56A2FE9E44B8, OS:10.0, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:7EFCD587-3A33-40B2-ABC6-B778AB7A1D4E, OS:10.1, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:89D4B43B-4823-46AF-BBD0-A6F56AE66009, OS:10.2, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:1385412A-6D8D-4205-9440-CFFDA1B2188D, OS:10.3.1, name:iPad Pro (12.9 inch) }
+		{ platform:iOS Simulator, id:67B41083-C811-4606-A267-20179D0F787A, OS:11.0.1, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:4680F565-4D88-422A-B20C-396810409C3B, OS:11.1, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:E5F40FE8-5903-4537-9519-A3D4010F2C54, OS:11.2, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:478F89A7-7796-4207-A6BF-6EBF80D84170, OS:11.3, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:837DF8E5-F517-4A86-8BB9-048C9998636E, OS:11.4, name:iPad Pro (12.9-inch) }
+		{ platform:iOS Simulator, id:7502974D-3AF4-4DF5-877E-8EE6D1BC022C, OS:10.3.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:56454F44-9C64-46D4-AD1D-CA43F3B6688E, OS:11.0.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:B1E5B4A8-0803-485E-B8EE-2BEAF774DD07, OS:11.1, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:FE62F490-F5DE-421E-9C99-F6123CD2E1F1, OS:11.2, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:DFFF359C-6866-455F-AF8B-09BB13418355, OS:11.3, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:32B3A5BD-7EC0-4F96-AEFE-9685192C7440, OS:11.4, name:iPad Pro (12.9-inch) (2nd generation) }
+		{ platform:iOS Simulator, id:9EB86673-DB75-45F2-AACC-8AD1F01688FB, OS:8.1, name:iPad Retina }
+		{ platform:iOS Simulator, id:64070310-53CC-423B-A826-3550762F0297, OS:8.2, name:iPad Retina }
+		{ platform:iOS Simulator, id:55B2AC75-57C7-47B5-9E3B-ABECC590A12A, OS:8.3, name:iPad Retina }
+		{ platform:iOS Simulator, id:6211A19E-97FF-4F9B-9180-48A10434E96C, OS:8.4, name:iPad Retina }
+		{ platform:iOS Simulator, id:FDDB0372-BA8F-441C-90AB-FC03F8DF44C2, OS:9.0, name:iPad Retina }
+		{ platform:iOS Simulator, id:C074D4D9-902B-4F34-A58E-4C0952D1A1DB, OS:9.1, name:iPad Retina }
+		{ platform:iOS Simulator, id:8E1F2F61-7C3C-4C3B-AA00-FD8CD5D0C65F, OS:9.2, name:iPad Retina }
+		{ platform:iOS Simulator, id:1A8FF421-409E-4FAB-938E-7E91961BD9EB, OS:9.3, name:iPad Retina }
+		{ platform:iOS Simulator, id:0249462A-BCD6-4AD8-8523-EE31C2CCA42B, OS:8.1, name:iPhone 4s }
+		{ platform:iOS Simulator, id:0D86B03B-6A3D-48CD-A6FC-66BECC590325, OS:8.2, name:iPhone 4s }
+		{ platform:iOS Simulator, id:1AC930D7-6D9C-4975-BA5E-C2A9132AED44, OS:8.3, name:iPhone 4s }
+		{ platform:iOS Simulator, id:4F70190B-85E5-4402-AE9E-465D6FFE491A, OS:8.4, name:iPhone 4s }
+		{ platform:iOS Simulator, id:B278A03C-C15F-4F6A-83F1-AF0438C3C7E4, OS:9.0, name:iPhone 4s }
+		{ platform:iOS Simulator, id:B64D3462-5699-4372-B01B-CE98F8E19999, OS:9.1, name:iPhone 4s }
+		{ platform:iOS Simulator, id:9A367BEB-AEA9-485A-A8DA-B59275891B40, OS:9.2, name:iPhone 4s }
+		{ platform:iOS Simulator, id:5C73E8BF-9F1D-4B29-8C69-08B107285FB0, OS:9.3, name:iPhone 4s }
+		{ platform:iOS Simulator, id:87AA77DF-259E-4E80-87EB-6F3096EAA780, OS:8.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:3C5C488E-3BF2-43B5-BA35-EBC5AC4A34AF, OS:8.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:FA316434-7008-438B-A48A-8E47828F4A9F, OS:8.3, name:iPhone 5 }
+		{ platform:iOS Simulator, id:6099B4C7-8BAE-4D3C-A002-30192D0B41C1, OS:8.4, name:iPhone 5 }
+		{ platform:iOS Simulator, id:9BDA4B06-8978-4405-85A7-A8F595ABDE1E, OS:9.0, name:iPhone 5 }
+		{ platform:iOS Simulator, id:1182E8CA-8864-4928-9670-9283ED0F2C61, OS:9.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:CE788CCC-7DD7-4634-804A-8744CFE83ADE, OS:9.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:01DCAF95-F266-4720-AD2C-51CF279CCB6C, OS:9.3, name:iPhone 5 }
+		{ platform:iOS Simulator, id:38602345-96D7-40FE-851D-A18605C3A14D, OS:10.0, name:iPhone 5 }
+		{ platform:iOS Simulator, id:D3442F27-8F49-4CA0-9904-E33D9FE5D656, OS:10.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:3E356030-3500-494E-A676-E1D57CAEE44D, OS:10.2, name:iPhone 5 }
+		{ platform:iOS Simulator, id:DC180A1E-B40B-4F10-8F32-BDD141E932E4, OS:10.3.1, name:iPhone 5 }
+		{ platform:iOS Simulator, id:EC425828-6440-47B1-9ECE-8B6F3D50DF8B, OS:8.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:88CAAAC2-6590-40FF-9ED6-3EE99DDE1F10, OS:8.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8164B28A-43B5-48D0-BF0E-5138334EDB57, OS:8.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:3019CA97-7A4E-4599-95C6-B0B04092088F, OS:8.4, name:iPhone 5s }
+		{ platform:iOS Simulator, id:70B5B154-496B-4326-B4B7-B167BC4D09F1, OS:9.0, name:iPhone 5s }
+		{ platform:iOS Simulator, id:C6206239-67C1-4B3E-8D0C-DFD8A34DD8DE, OS:9.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:020B606F-FA5C-4E37-8E02-7EA7B20878A7, OS:9.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8CD51D9A-9F67-4CD7-A8D1-8698B551E577, OS:9.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:CD6B7230-DDF8-4C42-BFBA-5A2DEFD5F69A, OS:10.0, name:iPhone 5s }
+		{ platform:iOS Simulator, id:8C0DF6CB-FE74-4110-ADD7-3210910D7C60, OS:10.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:3EA9A76D-BCC7-42B3-9783-C71EB76DC6A9, OS:10.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:DB6FCD8E-F844-425E-A5B0-07986A77B6E2, OS:10.3.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:F063E289-BF52-4F2F-A307-4C68604271CF, OS:11.0.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:2C9B090B-3617-4024-8836-28329FF46844, OS:11.1, name:iPhone 5s }
+		{ platform:iOS Simulator, id:D19316E0-DC76-4970-9423-C2EF7E7D745E, OS:11.2, name:iPhone 5s }
+		{ platform:iOS Simulator, id:746C2A5F-B0BE-4164-A178-B53A6BDBE20C, OS:11.3, name:iPhone 5s }
+		{ platform:iOS Simulator, id:F5F84F68-FEE6-4817-92D3-A101BE655657, OS:11.4, name:iPhone 5s }
+		{ platform:iOS Simulator, id:2BFFFD01-80C8-48F9-8D30-2923E85E903F, OS:8.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6BC69E2C-FA6C-4E3A-BD94-5362E45983E4, OS:8.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A9099B03-FC36-4BE7-AD18-243A47377EA2, OS:8.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:23C347E1-18BD-4E07-A694-A8595FF83C7F, OS:8.4, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A5C64987-58C6-41B6-A821-6ED43F1980E1, OS:9.0, name:iPhone 6 }
+		{ platform:iOS Simulator, id:A663F313-691A-41EA-9B8E-9C13BCED198A, OS:9.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:611FE619-14F2-4243-B72C-E285BF50C8B5, OS:9.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:D3EE8F5D-2AED-4A72-802D-FDDC37A6BCB5, OS:9.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:BD798BF0-5019-40FD-B2B4-D8D5C8C47A25, OS:10.0, name:iPhone 6 }
+		{ platform:iOS Simulator, id:27525FD7-EC26-48CC-A9BE-A0C06CC57093, OS:10.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:136AF46E-4EFF-49D8-BB5D-EE436C578BC4, OS:10.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6B7C73F6-82E1-4FC7-A47E-C8BE0B2D7B30, OS:10.3.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:04C3AE27-EF87-461A-A610-B294146E704A, OS:11.0.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:8420A7FD-699A-4063-A79F-49969CA1BE8C, OS:11.1, name:iPhone 6 }
+		{ platform:iOS Simulator, id:BFE04B76-0D7E-4056-A6C9-CB81F8EEE0E3, OS:11.2, name:iPhone 6 }
+		{ platform:iOS Simulator, id:41736ECF-B56E-43C0-92A1-7E1FD8302B88, OS:11.3, name:iPhone 6 }
+		{ platform:iOS Simulator, id:6493A715-04AC-4497-88F8-E81024078287, OS:11.4, name:iPhone 6 }
+		{ platform:iOS Simulator, id:E8BDC41C-DC07-42FA-B3AD-FE9EA25FB796, OS:8.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:FAF7DDB6-FA9A-4C32-A22B-B2228F44E1AA, OS:8.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:F0941667-3069-4A6D-9ECD-503B51107C35, OS:8.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:99035083-847E-4A11-9F2E-7D08A091B50A, OS:8.4, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:60969D0C-C43A-42B4-99FE-17DD8839BBC7, OS:9.0, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:85DD6230-FE87-4F47-B0DF-7A90F6DE39B9, OS:9.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:2A7C1989-D6B2-4734-956F-275FDEDB6BFF, OS:9.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:402A84FF-D922-43D9-93B2-98C29D488D14, OS:9.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:F31D2E4E-B4BC-43E2-9B5E-C9CFF5669C92, OS:10.0, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:6B79DDC4-1382-481D-A53E-9C8F6E790E51, OS:10.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:9C41A2C4-A752-4ECB-AFE6-6BC94C2CA98C, OS:10.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:BB5D3870-77EE-4135-AAE3-C7F0D245862F, OS:10.3.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:0104293D-D20D-4C2B-8517-DDACA5413279, OS:11.0.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:9138A005-5148-4BE4-AD1C-5BF953DA7313, OS:11.1, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:CD4B9B09-03C1-470B-BDD1-46B42D5919F1, OS:11.2, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:76B76782-4957-42B4-B7B8-779BBB286AE4, OS:11.3, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:B00AEC63-696C-4297-A3A5-A573B1EFBEBE, OS:11.4, name:iPhone 6 Plus }
+		{ platform:iOS Simulator, id:7DAF65A2-B5ED-4F22-84E5-A9F66B7CAAA2, OS:9.0, name:iPhone 6s }
+		{ platform:iOS Simulator, id:0804F654-C416-4CA4-8DCC-E669271750F5, OS:9.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:26799EBF-B3A8-43EE-9E2E-414C7E4C96B9, OS:9.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:15C825AA-C8F7-44D2-95FB-C92D38A0D9BA, OS:9.3, name:iPhone 6s }
+		{ platform:iOS Simulator, id:FBD5EE0F-F2C5-484C-8B51-1DB1B69ED6AF, OS:10.0, name:iPhone 6s }
+		{ platform:iOS Simulator, id:3D4E4C6A-772D-4378-90A6-0CB4F1E88D26, OS:10.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:CF02F9DC-ADFF-468B-B7DB-F49B53311E7C, OS:10.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:E68E4CCD-77AA-42AF-9DFB-DEDB9A161166, OS:10.3.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:2AB0A048-B2DD-44B5-B6EA-EEFE6B902DA5, OS:11.0.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:345FFAEB-0052-4FDD-AD4B-16BE10226C32, OS:11.1, name:iPhone 6s }
+		{ platform:iOS Simulator, id:70DFBD87-956B-4C10-978E-9AD7807E955E, OS:11.2, name:iPhone 6s }
+		{ platform:iOS Simulator, id:4B212682-BCF0-49D3-8FEA-01688DEA8711, OS:11.3, name:iPhone 6s }
+		{ platform:iOS Simulator, id:30883235-39F9-4606-9C83-F4D4C630EDB9, OS:11.4, name:iPhone 6s }
+		{ platform:iOS Simulator, id:5A8CAE95-6C12-4EEB-B595-CB3A7D522569, OS:9.0, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:4079A6CA-F504-4AC0-BBF9-FF5B5ED27177, OS:9.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:89AB292F-A1C4-43C8-ACD8-67ABED7DD449, OS:9.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:88F3D527-A08C-4A5D-8541-9901BE89336B, OS:9.3, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:DAB0E600-4827-492A-8F91-A78F877F4C4C, OS:10.0, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:CD905A1B-47A2-4A6B-AC77-16E4FD2C7D57, OS:10.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:AFEB4258-F039-4360-9B37-977793E98A75, OS:10.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:AF20A6BA-8E32-4835-8CA3-69F9978C1C70, OS:10.3.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:41DA2456-67C8-48B3-BBB3-667F6BC1436A, OS:11.0.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:2FBFEDDB-B2E8-4371-85B0-04F0B76C2740, OS:11.1, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:FF8A43CE-7B2C-4F4A-83C3-F2610DEDAA55, OS:11.2, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:8909BBA4-4FA3-47CB-B2C3-75798A2DD088, OS:11.3, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:BEEA8A39-963D-43F1-A555-70F6EF246A64, OS:11.4, name:iPhone 6s Plus }
+		{ platform:iOS Simulator, id:3817F470-271D-4373-B20F-6FD6C063EA58, OS:10.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:B8CA1064-2EEC-4D75-BB1E-662EF7FBC2EC, OS:10.2, name:iPhone 7 }
+		{ platform:iOS Simulator, id:6AC4C35F-F1A5-4C54-88CF-E903C9B910C4, OS:10.3.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:699ED516-E0C6-4529-9A12-7AA4E8626639, OS:11.0.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:EFA10134-FE95-4DC6-8225-F70393BB3B65, OS:11.1, name:iPhone 7 }
+		{ platform:iOS Simulator, id:051D3CB9-40F6-45B1-B6E7-6149190C6565, OS:11.2, name:iPhone 7 }
+		{ platform:iOS Simulator, id:65DFF9C4-B3A4-45F4-A46D-A906AA5DEB7B, OS:11.3, name:iPhone 7 }
+		{ platform:iOS Simulator, id:8ABF0B4E-0370-4D7D-B9F6-E508760687A5, OS:11.4, name:iPhone 7 }
+		{ platform:iOS Simulator, id:4A74CE64-F73C-4238-A205-5429738D8CE9, OS:10.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:599424B6-B002-4F67-BA5B-91ABDBE3C24D, OS:10.2, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:AE68934B-30AF-46A8-BBCC-53FB7205978A, OS:10.3.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:6B0C25EA-09DB-4AF5-847F-EB503AE29129, OS:11.0.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:CBC5537A-7911-46DA-9662-22FF8284BB2F, OS:11.1, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:D8AFCF22-19AD-48D3-AA19-AF58BF5911B6, OS:11.2, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:F9E3FEC5-D127-4F92-9BE2-3921033653B5, OS:11.3, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:6E127CF0-6BCD-4EE2-9C84-25BF64073611, OS:11.4, name:iPhone 7 Plus }
+		{ platform:iOS Simulator, id:BFC6320A-7D97-42F1-ADF2-A3CF74073B61, OS:11.0.1, name:iPhone 8 }
+		{ platform:iOS Simulator, id:1E53D31E-F880-4137-AF9A-A6754E531F04, OS:11.1, name:iPhone 8 }
+		{ platform:iOS Simulator, id:F48D4B33-60EE-4C03-96CC-8F9D3F5EAF6D, OS:11.2, name:iPhone 8 }
+		{ platform:iOS Simulator, id:361E7D26-A9BD-447D-939C-1DBF01B0B1E0, OS:11.3, name:iPhone 8 }
+		{ platform:iOS Simulator, id:1CAB698D-0215-498B-B6DC-6C7CCE5F99D7, OS:11.4, name:iPhone 8 }
+		{ platform:iOS Simulator, id:5B92FA1F-120C-4604-8807-0A416979DE0F, OS:11.0.1, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:25A1DAA2-FA3C-4CA3-A249-4854E2E7F53A, OS:11.1, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:227A9793-7525-429D-92D8-BD1D4BB651CF, OS:11.2, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:A5C08804-E339-4E78-A478-0D099F54B973, OS:11.3, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:384E22B2-1BF5-48E7-8FB0-3DC8D6B625D1, OS:11.4, name:iPhone 8 Plus }
+		{ platform:iOS Simulator, id:C87BBC3B-3B7F-4C09-8F9C-165C2FD827D3, OS:10.0, name:iPhone SE }
+		{ platform:iOS Simulator, id:8F3F0194-E1AF-41C2-B2A1-645456B89F5D, OS:10.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:24ADD8C1-96A1-4E65-BC56-7B60A45CC272, OS:10.2, name:iPhone SE }
+		{ platform:iOS Simulator, id:1C63BDA4-127A-4794-80E8-DB87D29975EC, OS:10.3.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:AAE7CB94-027E-4206-BE72-96F1BC072527, OS:11.0.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:B836DC75-54BB-4841-A197-285800F14767, OS:11.1, name:iPhone SE }
+		{ platform:iOS Simulator, id:7D3B8D57-0EB8-4A84-AB09-E02D7F3F1AB9, OS:11.2, name:iPhone SE }
+		{ platform:iOS Simulator, id:92550947-1AE2-40B6-9D1C-F04D27BF3ED3, OS:11.3, name:iPhone SE }
+		{ platform:iOS Simulator, id:B23EF716-1D30-44F3-916D-778BD8D2DD00, OS:11.4, name:iPhone SE }
+		{ platform:iOS Simulator, id:AB0DEA05-54F5-49DA-9DC1-6D3EB0E53AFA, OS:11.0.1, name:iPhone X }
+		{ platform:iOS Simulator, id:E71AD5B8-2A5E-4F53-B94D-9AC8B4ED1EE5, OS:11.1, name:iPhone X }
+		{ platform:iOS Simulator, id:A5BB85E3-EBB5-4767-9B81-4A7DF2DC1B76, OS:11.2, name:iPhone X }
+		{ platform:iOS Simulator, id:5E4E0408-E061-4CDF-955A-EF404C743CB8, OS:11.3, name:iPhone X }
+		{ platform:iOS Simulator, id:19ABD42A-1EBA-4455-9EB1-8B8D2DD9BC5A, OS:11.4, name:iPhone X }
+
+	Ineligible destinations for the "SwiftyJSON iOS" scheme:
+		{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Generic iOS Device }
+		{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Generic iOS Simulator Device }
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON iOS -destination platform=iOS Simulator,OS=12.0,name=iPhone 6 build-for-testing test" failed 3 times.[0m
+
+
+travis_time:end:117e7270:start=1537611465294021000,finish=1537611564417923000,duration=99123902000[0K
+[31;1mThe command "travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON iOS" -destination "platform=iOS Simulator,OS=12.0,name=iPhone 6" build-for-testing test | xcpretty" exited with 70.[0m
+travis_time:start:0c3a771f[0K$ travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON macOS" build-for-testing test | xcpretty
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mProcessing[0m Info-macOS.plist
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 10:19:34.649 xcodebuild[2142:6596] [MT] IDETestOperationsObserverDebug: (D7E111B3-8624-423F-8E8D-84BE168CC80D) Beginning test session SwiftyJSON macOS Tests-D7E111B3-8624-423F-8E8D-84BE168CC80D at 2018-09-22 10:19:34.649 with Xcode 9F2000 on target <DVTLocalComputer: 0x7fe43dd018b0 (My Mac | x86_64)> (10.13.3 (17D102))
+2018-09-22 10:19:34.651 xcodebuild[2142:6598]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-24E59D62-D446-4EE4-9568-B380E87C3029/SwiftyJSON macOS Tests-A32AA9CE-9D4B-4D01-B753-E8B4497F1572/Session-SwiftyJSON macOS Tests-2018-09-22_101934-REbJOh.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 10:19:35.695 xcodebuild[2142:6596] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-24E59D62-D446-4EE4-9568-B380E87C3029/SwiftyJSON macOS Tests-A32AA9CE-9D4B-4D01-B753-E8B4497F1572/Session-SwiftyJSON macOS Tests-2018-09-22_101934-REbJOh.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-24E59D62-D446-4EE4-9568-B380E87C3029/SwiftyJSON macOS Tests-A32AA9CE-9D4B-4D01-B753-E8B4497F1572/Session-SwiftyJSON macOS Tests-2018-09-22_101934-REbJOh.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON macOS build-for-testing test" failed. Retrying, 2 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 10:19:39.157 xcodebuild[2159:6801]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-507B3098-7451-4D8C-9BC1-762151379FF8/SwiftyJSON macOS Tests-14F3C1DC-B111-48F1-A80A-9E8BB81A9B8B/Session-SwiftyJSON macOS Tests-2018-09-22_101939-9q47pO.log
+2018-09-22 10:19:39.158 xcodebuild[2159:6799] [MT] IDETestOperationsObserverDebug: (979B90C3-8DE3-4623-9C7A-8E223A886864) Beginning test session SwiftyJSON macOS Tests-979B90C3-8DE3-4623-9C7A-8E223A886864 at 2018-09-22 10:19:39.158 with Xcode 9F2000 on target <DVTLocalComputer: 0x7febe6cf4b10 (My Mac | x86_64)> (10.13.3 (17D102))
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 10:19:40.032 xcodebuild[2159:6799] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-507B3098-7451-4D8C-9BC1-762151379FF8/SwiftyJSON macOS Tests-14F3C1DC-B111-48F1-A80A-9E8BB81A9B8B/Session-SwiftyJSON macOS Tests-2018-09-22_101939-9q47pO.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-507B3098-7451-4D8C-9BC1-762151379FF8/SwiftyJSON macOS Tests-14F3C1DC-B111-48F1-A80A-9E8BB81A9B8B/Session-SwiftyJSON macOS Tests-2018-09-22_101939-9q47pO.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON macOS build-for-testing test" failed. Retrying, 3 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 10:19:43.982 xcodebuild[2175:6909]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-FA54229F-4887-49AD-8310-1D7D17AF8068/SwiftyJSON macOS Tests-F3766C98-5866-43C7-B524-C5AA27AC47D9/Session-SwiftyJSON macOS Tests-2018-09-22_101943-OrTLeG.log
+2018-09-22 10:19:43.982 xcodebuild[2175:6895] [MT] IDETestOperationsObserverDebug: (086E3180-3874-4A5F-A08A-7D05F14BFD60) Beginning test session SwiftyJSON macOS Tests-086E3180-3874-4A5F-A08A-7D05F14BFD60 at 2018-09-22 10:19:43.982 with Xcode 9F2000 on target <DVTLocalComputer: 0x7fcddde0b750 (My Mac | x86_64)> (10.13.3 (17D102))
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 10:19:44.801 xcodebuild[2175:6895] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-FA54229F-4887-49AD-8310-1D7D17AF8068/SwiftyJSON macOS Tests-F3766C98-5866-43C7-B524-C5AA27AC47D9/Session-SwiftyJSON macOS Tests-2018-09-22_101943-OrTLeG.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-FA54229F-4887-49AD-8310-1D7D17AF8068/SwiftyJSON macOS Tests-F3766C98-5866-43C7-B524-C5AA27AC47D9/Session-SwiftyJSON macOS Tests-2018-09-22_101943-OrTLeG.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON macOS build-for-testing test" failed 3 times.[0m
+
+
+travis_time:end:0c3a771f:start=1537611564431458000,finish=1537611585844902000,duration=21413444000[0K
+[31;1mThe command "travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON macOS" build-for-testing test | xcpretty" exited with 65.[0m
+travis_time:start:2db2466d[0K$ travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON tvOS" -destination "platform=tvOS Simulator,name=Apple TV" build-for-testing test | xcpretty
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mProcessing[0m Info-tvOS.plist
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 10:19:53.189 xcodebuild[2198:6995] [MT] IDETestOperationsObserverDebug: (57FBBB7B-1C28-4C11-A6B9-0E9E201A5CB7) Beginning test session SwiftyJSON tvOS Tests-57FBBB7B-1C28-4C11-A6B9-0E9E201A5CB7 at 2018-09-22 10:19:53.185 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7fb16a8b5020> {
+		SimDevice: Apple TV (A6AD8D87-509A-41F3-B093-E05E4E99FDC1, tvOS 11.4, Booted)
+} (11.4 (15L576))
+2018-09-22 10:19:53.223 xcodebuild[2198:6997]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-9E524BD0-FA7D-40FB-BB07-273D243DC0CD/SwiftyJSON tvOS Tests-0839FC0B-5328-42D2-9877-FA0D53175DBA/Session-SwiftyJSON tvOS Tests-2018-09-22_101953-8Bw2KO.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 10:20:01.529 xcodebuild[2198:6995] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-9E524BD0-FA7D-40FB-BB07-273D243DC0CD/SwiftyJSON tvOS Tests-0839FC0B-5328-42D2-9877-FA0D53175DBA/Session-SwiftyJSON tvOS Tests-2018-09-22_101953-8Bw2KO.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-9E524BD0-FA7D-40FB-BB07-273D243DC0CD/SwiftyJSON tvOS Tests-0839FC0B-5328-42D2-9877-FA0D53175DBA/Session-SwiftyJSON tvOS Tests-2018-09-22_101953-8Bw2KO.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON tvOS -destination platform=tvOS Simulator,name=Apple TV build-for-testing test" failed. Retrying, 2 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 10:20:15.018 xcodebuild[2265:7618] [MT] IDETestOperationsObserverDebug: (C7C561DC-D33E-4712-9AF5-49237DE584AF) Beginning test session SwiftyJSON tvOS Tests-C7C561DC-D33E-4712-9AF5-49237DE584AF at 2018-09-22 10:20:15.017 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7f9e2a9a1fe0> {
+		SimDevice: Apple TV (A6AD8D87-509A-41F3-B093-E05E4E99FDC1, tvOS 11.4, Booted)
+} (11.4 (15L576))
+2018-09-22 10:20:15.041 xcodebuild[2265:7655]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-BC592EF0-FC0D-4BD8-A624-6F6F511657F0/SwiftyJSON tvOS Tests-10EAD4BB-BD2F-4BD2-9D9D-3E2EB75757A1/Session-SwiftyJSON tvOS Tests-2018-09-22_102015-k8gNgo.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 10:20:20.133 xcodebuild[2265:7618] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-BC592EF0-FC0D-4BD8-A624-6F6F511657F0/SwiftyJSON tvOS Tests-10EAD4BB-BD2F-4BD2-9D9D-3E2EB75757A1/Session-SwiftyJSON tvOS Tests-2018-09-22_102015-k8gNgo.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-BC592EF0-FC0D-4BD8-A624-6F6F511657F0/SwiftyJSON tvOS Tests-10EAD4BB-BD2F-4BD2-9D9D-3E2EB75757A1/Session-SwiftyJSON tvOS Tests-2018-09-22_102015-k8gNgo.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON tvOS -destination platform=tvOS Simulator,name=Apple TV build-for-testing test" failed. Retrying, 3 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 10:20:34.249 xcodebuild[2328:8166] [MT] IDETestOperationsObserverDebug: (B10DF127-D1CF-4933-BF78-0394F58C90E2) Beginning test session SwiftyJSON tvOS Tests-B10DF127-D1CF-4933-BF78-0394F58C90E2 at 2018-09-22 10:20:34.249 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7f86401f33d0> {
+		SimDevice: Apple TV (A6AD8D87-509A-41F3-B093-E05E4E99FDC1, tvOS 11.4, Booted)
+} (11.4 (15L576))
+2018-09-22 10:20:34.363 xcodebuild[2328:8176]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-19A3BE90-5363-43B3-B255-96D20CF16ABB/SwiftyJSON tvOS Tests-82BCA7CB-6641-4C54-9B5E-BF1E6CFE4267/Session-SwiftyJSON tvOS Tests-2018-09-22_102034-W0HPWc.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 10:20:39.764 xcodebuild[2328:8166] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-19A3BE90-5363-43B3-B255-96D20CF16ABB/SwiftyJSON tvOS Tests-82BCA7CB-6641-4C54-9B5E-BF1E6CFE4267/Session-SwiftyJSON tvOS Tests-2018-09-22_102034-W0HPWc.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-19A3BE90-5363-43B3-B255-96D20CF16ABB/SwiftyJSON tvOS Tests-82BCA7CB-6641-4C54-9B5E-BF1E6CFE4267/Session-SwiftyJSON tvOS Tests-2018-09-22_102034-W0HPWc.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON tvOS -destination platform=tvOS Simulator,name=Apple TV build-for-testing test" failed 3 times.[0m
+
+
+travis_time:end:2db2466d:start=1537611585855026000,finish=1537611650941295000,duration=65086269000[0K
+[31;1mThe command "travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON tvOS" -destination "platform=tvOS Simulator,name=Apple TV" build-for-testing test | xcpretty" exited with 65.[0m
+
+Done. Your build exited with 1.

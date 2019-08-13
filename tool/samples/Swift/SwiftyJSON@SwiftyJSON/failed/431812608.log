@@ -1,0 +1,1011 @@
+travis_fold:start:step_start_instance[0K[33;1mStarting instance[0m
+✓ selected image "travis-ci-macos-10.13-xcode9.4.1-1529955246"
+✓ started instance
+• sleeping 3s before checking instance start
+• polling for instance start completion.....................
+• waiting for ssh connectivity...
+✓ instance is ready (1m3.425s)
+travis_fold:end:step_start_instance[0Ktravis_fold:start:step_upload_script[0K[33;1mUploading script[0m
+• waiting for ssh connectivity...
+✓ ssh connectivity established (97ms)
+✓ uploaded script
+✓ uploaded wrapper.sh script
+travis_fold:end:step_upload_script[0Ktravis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 4672e23a-d3a3-47e4-b983-e9b125b7b7b5@19528.wjb-1
+version: v4.1.2 https://github.com/travis-ci/worker/tree/91246b057ccd93649046771f29221f839c19a7d3
+instance: b1064f17-f055-4e34-9597-5789830deb6a travis-ci-macos-10.13-xcode9.4.1-1529955246 (via amqp)
+startup: 1m3.425893668s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: objective-c
+Build id: 431812608
+Job id: 431812609
+Runtime kernel version: 17.4.0
+travis-build version: 92b1f419b
+[34m[1mBuild image provisioning date and time[0m
+Mon Jun 25 21:55:14 GMT 2018
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.13.3
+BuildVersion:	17D102
+[34m[1mGit version[0m
+git version 2.18.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.3
+[34m[1mPre-installed Node.js versions[0m
+v4.9.1
+v5.12.0
+v6.14.3
+v8.11.3
+[34m[1mmvn -version[0m
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T18:33:14Z)
+Maven home: /usr/local/Cellar/maven/3.5.4/libexec
+Java version: 10.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+[32;1mNetwork availability confirmed.[0m
+
+Fix WWDRCA Certificate
+Unable to delete certificate matching "0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75"security: AppleWWDRCA.cer: already in /Library/Keychains/System.keychain
+$ rvm use
+[32mUsing /Users/travis/.rvm/gems/ruby-2.4.3[0m
+
+travis_fold:start:git.checkout[0Ktravis_time:start:0d0e8f0a[0K$ git clone --depth=50 https://github.com/SwiftyJSON/SwiftyJSON.git SwiftyJSON/SwiftyJSON
+Cloning into 'SwiftyJSON/SwiftyJSON'...
+remote: Enumerating objects: 881, done.[K
+remote: Counting objects:   0% (1/881)   [Kremote: Counting objects:   1% (9/881)   [Kremote: Counting objects:   2% (18/881)   [Kremote: Counting objects:   3% (27/881)   [Kremote: Counting objects:   4% (36/881)   [Kremote: Counting objects:   5% (45/881)   [Kremote: Counting objects:   6% (53/881)   [Kremote: Counting objects:   7% (62/881)   [Kremote: Counting objects:   8% (71/881)   [Kremote: Counting objects:   9% (80/881)   [Kremote: Counting objects:  10% (89/881)   [Kremote: Counting objects:  11% (97/881)   [Kremote: Counting objects:  12% (106/881)   [Kremote: Counting objects:  13% (115/881)   [Kremote: Counting objects:  14% (124/881)   [Kremote: Counting objects:  15% (133/881)   [Kremote: Counting objects:  16% (141/881)   [Kremote: Counting objects:  17% (150/881)   [Kremote: Counting objects:  18% (159/881)   [Kremote: Counting objects:  19% (168/881)   [Kremote: Counting objects:  20% (177/881)   [Kremote: Counting objects:  21% (186/881)   [Kremote: Counting objects:  22% (194/881)   [Kremote: Counting objects:  23% (203/881)   [Kremote: Counting objects:  24% (212/881)   [Kremote: Counting objects:  25% (221/881)   [Kremote: Counting objects:  26% (230/881)   [Kremote: Counting objects:  27% (238/881)   [Kremote: Counting objects:  28% (247/881)   [Kremote: Counting objects:  29% (256/881)   [Kremote: Counting objects:  30% (265/881)   [Kremote: Counting objects:  31% (274/881)   [Kremote: Counting objects:  32% (282/881)   [Kremote: Counting objects:  33% (291/881)   [Kremote: Counting objects:  34% (300/881)   [Kremote: Counting objects:  35% (309/881)   [Kremote: Counting objects:  36% (318/881)   [Kremote: Counting objects:  37% (326/881)   [Kremote: Counting objects:  38% (335/881)   [Kremote: Counting objects:  39% (344/881)   [Kremote: Counting objects:  40% (353/881)   [Kremote: Counting objects:  41% (362/881)   [Kremote: Counting objects:  42% (371/881)   [Kremote: Counting objects:  43% (379/881)   [Kremote: Counting objects:  44% (388/881)   [Kremote: Counting objects:  45% (397/881)   [Kremote: Counting objects:  46% (406/881)   [Kremote: Counting objects:  47% (415/881)   [Kremote: Counting objects:  48% (423/881)   [Kremote: Counting objects:  49% (432/881)   [Kremote: Counting objects:  50% (441/881)   [Kremote: Counting objects:  51% (450/881)   [Kremote: Counting objects:  52% (459/881)   [Kremote: Counting objects:  53% (467/881)   [Kremote: Counting objects:  54% (476/881)   [Kremote: Counting objects:  55% (485/881)   [Kremote: Counting objects:  56% (494/881)   [Kremote: Counting objects:  57% (503/881)   [Kremote: Counting objects:  58% (511/881)   [Kremote: Counting objects:  59% (520/881)   [Kremote: Counting objects:  60% (529/881)   [Kremote: Counting objects:  61% (538/881)   [Kremote: Counting objects:  62% (547/881)   [Kremote: Counting objects:  63% (556/881)   [Kremote: Counting objects:  64% (564/881)   [Kremote: Counting objects:  65% (573/881)   [Kremote: Counting objects:  66% (582/881)   [Kremote: Counting objects:  67% (591/881)   [Kremote: Counting objects:  68% (600/881)   [Kremote: Counting objects:  69% (608/881)   [Kremote: Counting objects:  70% (617/881)   [Kremote: Counting objects:  71% (626/881)   [Kremote: Counting objects:  72% (635/881)   [Kremote: Counting objects:  73% (644/881)   [Kremote: Counting objects:  74% (652/881)   [Kremote: Counting objects:  75% (661/881)   [Kremote: Counting objects:  76% (670/881)   [Kremote: Counting objects:  77% (679/881)   [Kremote: Counting objects:  78% (688/881)   [Kremote: Counting objects:  79% (696/881)   [Kremote: Counting objects:  80% (705/881)   [Kremote: Counting objects:  81% (714/881)   [Kremote: Counting objects:  82% (723/881)   [Kremote: Counting objects:  83% (732/881)   [Kremote: Counting objects:  84% (741/881)   [Kremote: Counting objects:  85% (749/881)   [Kremote: Counting objects:  86% (758/881)   [Kremote: Counting objects:  87% (767/881)   [Kremote: Counting objects:  88% (776/881)   [Kremote: Counting objects:  89% (785/881)   [Kremote: Counting objects:  90% (793/881)   [Kremote: Counting objects:  91% (802/881)   [Kremote: Counting objects:  92% (811/881)   [Kremote: Counting objects:  93% (820/881)   [Kremote: Counting objects:  94% (829/881)   [Kremote: Counting objects:  95% (837/881)   [Kremote: Counting objects:  96% (846/881)   [Kremote: Counting objects:  97% (855/881)   [Kremote: Counting objects:  98% (864/881)   [Kremote: Counting objects:  99% (873/881)   [Kremote: Counting objects: 100% (881/881)   [Kremote: Counting objects: 100% (881/881), done.[K
+remote: Compressing objects:   0% (1/424)   [Kremote: Compressing objects:   1% (5/424)   [Kremote: Compressing objects:   2% (9/424)   [Kremote: Compressing objects:   3% (13/424)   [Kremote: Compressing objects:   4% (17/424)   [Kremote: Compressing objects:   5% (22/424)   [Kremote: Compressing objects:   6% (26/424)   [Kremote: Compressing objects:   7% (30/424)   [Kremote: Compressing objects:   8% (34/424)   [Kremote: Compressing objects:   9% (39/424)   [Kremote: Compressing objects:  10% (43/424)   [Kremote: Compressing objects:  11% (47/424)   [Kremote: Compressing objects:  12% (51/424)   [Kremote: Compressing objects:  13% (56/424)   [Kremote: Compressing objects:  14% (60/424)   [Kremote: Compressing objects:  15% (64/424)   [Kremote: Compressing objects:  16% (68/424)   [Kremote: Compressing objects:  17% (73/424)   [Kremote: Compressing objects:  18% (77/424)   [Kremote: Compressing objects:  19% (81/424)   [Kremote: Compressing objects:  20% (85/424)   [Kremote: Compressing objects:  21% (90/424)   [Kremote: Compressing objects:  22% (94/424)   [Kremote: Compressing objects:  23% (98/424)   [Kremote: Compressing objects:  24% (102/424)   [Kremote: Compressing objects:  25% (106/424)   [Kremote: Compressing objects:  26% (111/424)   [Kremote: Compressing objects:  27% (115/424)   [Kremote: Compressing objects:  28% (119/424)   [Kremote: Compressing objects:  29% (123/424)   [Kremote: Compressing objects:  30% (128/424)   [Kremote: Compressing objects:  31% (132/424)   [Kremote: Compressing objects:  32% (136/424)   [Kremote: Compressing objects:  33% (140/424)   [Kremote: Compressing objects:  34% (145/424)   [Kremote: Compressing objects:  35% (149/424)   [Kremote: Compressing objects:  36% (153/424)   [Kremote: Compressing objects:  37% (157/424)   [Kremote: Compressing objects:  38% (162/424)   [Kremote: Compressing objects:  39% (166/424)   [Kremote: Compressing objects:  40% (170/424)   [Kremote: Compressing objects:  41% (174/424)   [Kremote: Compressing objects:  42% (179/424)   [Kremote: Compressing objects:  43% (183/424)   [Kremote: Compressing objects:  44% (187/424)   [Kremote: Compressing objects:  45% (191/424)   [Kremote: Compressing objects:  46% (196/424)   [Kremote: Compressing objects:  47% (200/424)   [Kremote: Compressing objects:  48% (204/424)   [Kremote: Compressing objects:  49% (208/424)   [Kremote: Compressing objects:  50% (212/424)   [Kremote: Compressing objects:  51% (217/424)   [Kremote: Compressing objects:  52% (221/424)   [Kremote: Compressing objects:  53% (225/424)   [Kremote: Compressing objects:  54% (229/424)   [Kremote: Compressing objects:  55% (234/424)   [Kremote: Compressing objects:  56% (238/424)   [Kremote: Compressing objects:  57% (242/424)   [Kremote: Compressing objects:  58% (246/424)   [Kremote: Compressing objects:  59% (251/424)   [Kremote: Compressing objects:  60% (255/424)   [Kremote: Compressing objects:  61% (259/424)   [Kremote: Compressing objects:  62% (263/424)   [Kremote: Compressing objects:  63% (268/424)   [Kremote: Compressing objects:  64% (272/424)   [Kremote: Compressing objects:  65% (276/424)   [Kremote: Compressing objects:  66% (280/424)   [Kremote: Compressing objects:  67% (285/424)   [Kremote: Compressing objects:  68% (289/424)   [Kremote: Compressing objects:  69% (293/424)   [Kremote: Compressing objects:  70% (297/424)   [Kremote: Compressing objects:  71% (302/424)   [Kremote: Compressing objects:  72% (306/424)   [Kremote: Compressing objects:  73% (310/424)   [Kremote: Compressing objects:  74% (314/424)   [Kremote: Compressing objects:  75% (318/424)   [Kremote: Compressing objects:  76% (323/424)   [Kremote: Compressing objects:  77% (327/424)   [Kremote: Compressing objects:  78% (331/424)   [Kremote: Compressing objects:  79% (335/424)   [Kremote: Compressing objects:  80% (340/424)   [Kremote: Compressing objects:  81% (344/424)   [Kremote: Compressing objects:  82% (348/424)   [Kremote: Compressing objects:  83% (352/424)   [Kremote: Compressing objects:  84% (357/424)   [Kremote: Compressing objects:  85% (361/424)   [Kremote: Compressing objects:  86% (365/424)   [Kremote: Compressing objects:  87% (369/424)   [Kremote: Compressing objects:  88% (374/424)   [Kremote: Compressing objects:  89% (378/424)   [Kremote: Compressing objects:  90% (382/424)   [Kremote: Compressing objects:  91% (386/424)   [Kremote: Compressing objects:  92% (391/424)   [Kremote: Compressing objects:  93% (395/424)   [Kremote: Compressing objects:  94% (399/424)   [Kremote: Compressing objects:  95% (403/424)   [Kremote: Compressing objects:  96% (408/424)   [Kremote: Compressing objects:  97% (412/424)   [Kremote: Compressing objects:  98% (416/424)   [Kremote: Compressing objects:  99% (420/424)   [Kremote: Compressing objects: 100% (424/424)   [Kremote: Compressing objects: 100% (424/424), done.[K
+Receiving objects:   0% (1/881)   Receiving objects:   1% (9/881)   Receiving objects:   2% (18/881)   Receiving objects:   3% (27/881)   Receiving objects:   4% (36/881)   Receiving objects:   5% (45/881)   Receiving objects:   6% (53/881)   Receiving objects:   7% (62/881)   Receiving objects:   8% (71/881)   Receiving objects:   9% (80/881)   Receiving objects:  10% (89/881)   Receiving objects:  11% (97/881)   Receiving objects:  12% (106/881)   Receiving objects:  13% (115/881)   Receiving objects:  14% (124/881)   Receiving objects:  15% (133/881)   Receiving objects:  16% (141/881)   Receiving objects:  17% (150/881)   Receiving objects:  18% (159/881)   Receiving objects:  19% (168/881)   Receiving objects:  20% (177/881)   Receiving objects:  21% (186/881)   Receiving objects:  22% (194/881)   Receiving objects:  23% (203/881)   Receiving objects:  24% (212/881)   Receiving objects:  25% (221/881)   Receiving objects:  26% (230/881)   Receiving objects:  27% (238/881)   Receiving objects:  28% (247/881)   Receiving objects:  29% (256/881)   Receiving objects:  30% (265/881)   Receiving objects:  31% (274/881)   Receiving objects:  32% (282/881)   Receiving objects:  33% (291/881)   Receiving objects:  34% (300/881)   Receiving objects:  35% (309/881)   Receiving objects:  36% (318/881)   Receiving objects:  37% (326/881)   Receiving objects:  38% (335/881)   Receiving objects:  39% (344/881)   Receiving objects:  40% (353/881)   Receiving objects:  41% (362/881)   Receiving objects:  42% (371/881)   Receiving objects:  43% (379/881)   Receiving objects:  44% (388/881)   Receiving objects:  45% (397/881)   Receiving objects:  46% (406/881)   Receiving objects:  47% (415/881)   Receiving objects:  48% (423/881)   Receiving objects:  49% (432/881)   Receiving objects:  50% (441/881)   Receiving objects:  51% (450/881)   Receiving objects:  52% (459/881)   Receiving objects:  53% (467/881)   Receiving objects:  54% (476/881)   Receiving objects:  55% (485/881)   Receiving objects:  56% (494/881)   Receiving objects:  57% (503/881)   Receiving objects:  58% (511/881)   Receiving objects:  59% (520/881)   Receiving objects:  60% (529/881)   Receiving objects:  61% (538/881)   Receiving objects:  62% (547/881)   Receiving objects:  63% (556/881)   Receiving objects:  64% (564/881)   Receiving objects:  65% (573/881)   Receiving objects:  66% (582/881)   Receiving objects:  67% (591/881)   Receiving objects:  68% (600/881)   Receiving objects:  69% (608/881)   Receiving objects:  70% (617/881)   Receiving objects:  71% (626/881)   Receiving objects:  72% (635/881)   Receiving objects:  73% (644/881)   Receiving objects:  74% (652/881)   Receiving objects:  75% (661/881)   Receiving objects:  76% (670/881)   Receiving objects:  77% (679/881)   Receiving objects:  78% (688/881)   Receiving objects:  79% (696/881)   Receiving objects:  80% (705/881)   Receiving objects:  81% (714/881)   Receiving objects:  82% (723/881)   Receiving objects:  83% (732/881)   Receiving objects:  84% (741/881)   Receiving objects:  85% (749/881)   Receiving objects:  86% (758/881)   Receiving objects:  87% (767/881)   Receiving objects:  88% (776/881)   Receiving objects:  89% (785/881)   Receiving objects:  90% (793/881)   Receiving objects:  91% (802/881)   Receiving objects:  92% (811/881)   Receiving objects:  93% (820/881)   Receiving objects:  94% (829/881)   Receiving objects:  95% (837/881)   Receiving objects:  96% (846/881)   remote: Total 881 (delta 525), reused 731 (delta 404), pack-reused 0[K
+Receiving objects:  97% (855/881)   Receiving objects:  98% (864/881)   Receiving objects:  99% (873/881)   Receiving objects: 100% (881/881)   Receiving objects: 100% (881/881), 217.53 KiB | 8.70 MiB/s, done.
+Resolving deltas:   0% (0/525)   Resolving deltas:   1% (6/525)   Resolving deltas:   2% (12/525)   Resolving deltas:  16% (89/525)   Resolving deltas:  17% (90/525)   Resolving deltas:  18% (97/525)   Resolving deltas:  19% (103/525)   Resolving deltas:  23% (125/525)   Resolving deltas:  24% (126/525)   Resolving deltas:  25% (133/525)   Resolving deltas:  26% (138/525)   Resolving deltas:  27% (143/525)   Resolving deltas:  29% (153/525)   Resolving deltas:  34% (183/525)   Resolving deltas:  35% (186/525)   Resolving deltas:  36% (189/525)   Resolving deltas:  38% (203/525)   Resolving deltas:  40% (210/525)   Resolving deltas:  43% (226/525)   Resolving deltas:  44% (234/525)   Resolving deltas:  45% (237/525)   Resolving deltas:  46% (245/525)   Resolving deltas:  47% (248/525)   Resolving deltas:  48% (254/525)   Resolving deltas:  49% (258/525)   Resolving deltas:  50% (263/525)   Resolving deltas:  51% (269/525)   Resolving deltas:  53% (280/525)   Resolving deltas:  54% (284/525)   Resolving deltas:  59% (313/525)   Resolving deltas:  60% (316/525)   Resolving deltas:  62% (328/525)   Resolving deltas:  67% (355/525)   Resolving deltas:  71% (377/525)   Resolving deltas:  75% (397/525)   Resolving deltas:  76% (404/525)   Resolving deltas:  79% (419/525)   Resolving deltas:  80% (425/525)   Resolving deltas:  82% (432/525)   Resolving deltas:  87% (457/525)   Resolving deltas:  88% (465/525)   Resolving deltas:  91% (481/525)   Resolving deltas:  94% (497/525)   Resolving deltas:  97% (510/525)   Resolving deltas:  98% (518/525)   Resolving deltas:  99% (520/525)   Resolving deltas: 100% (525/525)   Resolving deltas: 100% (525/525), done.
+
+travis_time:end:0d0e8f0a:start=1537606661847236000,finish=1537606662440495000,duration=593259000[0K$ cd SwiftyJSON/SwiftyJSON
+travis_time:start:30dadfb4[0K$ git fetch origin +refs/pull/986/merge:
+remote: Enumerating objects: 66, done.[K
+remote: Counting objects:   1% (1/66)   [Kremote: Counting objects:   3% (2/66)   [Kremote: Counting objects:   4% (3/66)   [Kremote: Counting objects:   6% (4/66)   [Kremote: Counting objects:   7% (5/66)   [Kremote: Counting objects:   9% (6/66)   [Kremote: Counting objects:  10% (7/66)   [Kremote: Counting objects:  12% (8/66)   [Kremote: Counting objects:  13% (9/66)   [Kremote: Counting objects:  15% (10/66)   [Kremote: Counting objects:  16% (11/66)   [Kremote: Counting objects:  18% (12/66)   [Kremote: Counting objects:  19% (13/66)   [Kremote: Counting objects:  21% (14/66)   [Kremote: Counting objects:  22% (15/66)   [Kremote: Counting objects:  24% (16/66)   [Kremote: Counting objects:  25% (17/66)   [Kremote: Counting objects:  27% (18/66)   [Kremote: Counting objects:  28% (19/66)   [Kremote: Counting objects:  30% (20/66)   [Kremote: Counting objects:  31% (21/66)   [Kremote: Counting objects:  33% (22/66)   [Kremote: Counting objects:  34% (23/66)   [Kremote: Counting objects:  36% (24/66)   [Kremote: Counting objects:  37% (25/66)   [Kremote: Counting objects:  39% (26/66)   [Kremote: Counting objects:  40% (27/66)   [Kremote: Counting objects:  42% (28/66)   [Kremote: Counting objects:  43% (29/66)   [Kremote: Counting objects:  45% (30/66)   [Kremote: Counting objects:  46% (31/66)   [Kremote: Counting objects:  48% (32/66)   [Kremote: Counting objects:  50% (33/66)   [Kremote: Counting objects:  51% (34/66)   [Kremote: Counting objects:  53% (35/66)   [Kremote: Counting objects:  54% (36/66)   [Kremote: Counting objects:  56% (37/66)   [Kremote: Counting objects:  57% (38/66)   [Kremote: Counting objects:  59% (39/66)   [Kremote: Counting objects:  60% (40/66)   [Kremote: Counting objects:  62% (41/66)   [Kremote: Counting objects:  63% (42/66)   [Kremote: Counting objects:  65% (43/66)   [Kremote: Counting objects:  66% (44/66)   [Kremote: Counting objects:  68% (45/66)   [Kremote: Counting objects:  69% (46/66)   [Kremote: Counting objects:  71% (47/66)   [Kremote: Counting objects:  72% (48/66)   [Kremote: Counting objects:  74% (49/66)   [Kremote: Counting objects:  75% (50/66)   [Kremote: Counting objects:  77% (51/66)   [Kremote: Counting objects:  78% (52/66)   [Kremote: Counting objects:  80% (53/66)   [Kremote: Counting objects:  81% (54/66)   [Kremote: Counting objects:  83% (55/66)   [Kremote: Counting objects:  84% (56/66)   [Kremote: Counting objects:  86% (57/66)   [Kremote: Counting objects:  87% (58/66)   [Kremote: Counting objects:  89% (59/66)   [Kremote: Counting objects:  90% (60/66)   [Kremote: Counting objects:  92% (61/66)   [Kremote: Counting objects:  93% (62/66)   [Kremote: Counting objects:  95% (63/66)   [Kremote: Counting objects:  96% (64/66)   [Kremote: Counting objects:  98% (65/66)   [Kremote: Counting objects: 100% (66/66)   [Kremote: Counting objects: 100% (66/66), done.[K
+remote: Compressing objects:   6% (1/15)   [Kremote: Compressing objects:  13% (2/15)   [Kremote: Compressing objects:  20% (3/15)   [Kremote: Compressing objects:  26% (4/15)   [Kremote: Compressing objects:  33% (5/15)   [Kremote: Compressing objects:  40% (6/15)   [Kremote: Compressing objects:  46% (7/15)   [Kremote: Compressing objects:  53% (8/15)   [Kremote: Compressing objects:  60% (9/15)   [Kremote: Compressing objects:  66% (10/15)   [Kremote: Compressing objects:  73% (11/15)   [Kremote: Compressing objects:  80% (12/15)   [Kremote: Compressing objects:  86% (13/15)   [Kremote: Compressing objects:  93% (14/15)   [Kremote: Compressing objects: 100% (15/15)   [Kremote: Compressing objects: 100% (15/15), done.[K
+remote: Total 30 (delta 18), reused 23 (delta 13), pack-reused 0[K
+Unpacking objects:   3% (1/30)   Unpacking objects:   6% (2/30)   Unpacking objects:  10% (3/30)   Unpacking objects:  13% (4/30)   Unpacking objects:  16% (5/30)   Unpacking objects:  20% (6/30)   Unpacking objects:  23% (7/30)   Unpacking objects:  26% (8/30)   Unpacking objects:  30% (9/30)   Unpacking objects:  33% (10/30)   Unpacking objects:  36% (11/30)   Unpacking objects:  40% (12/30)   Unpacking objects:  43% (13/30)   Unpacking objects:  46% (14/30)   Unpacking objects:  50% (15/30)   Unpacking objects:  53% (16/30)   Unpacking objects:  56% (17/30)   Unpacking objects:  60% (18/30)   Unpacking objects:  63% (19/30)   Unpacking objects:  66% (20/30)   Unpacking objects:  70% (21/30)   Unpacking objects:  73% (22/30)   Unpacking objects:  76% (23/30)   Unpacking objects:  80% (24/30)   Unpacking objects:  83% (25/30)   Unpacking objects:  86% (26/30)   Unpacking objects:  90% (27/30)   Unpacking objects:  93% (28/30)   Unpacking objects:  96% (29/30)   Unpacking objects: 100% (30/30)   Unpacking objects: 100% (30/30), done.
+From https://github.com/SwiftyJSON/SwiftyJSON
+ * branch            refs/pull/986/merge -> FETCH_HEAD
+
+travis_time:end:30dadfb4:start=1537606662485390000,finish=1537606662812279000,duration=326889000[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K[33;1mDisabling Homebrew auto update. If your Homebrew package requires Homebrew DB be up to date, please run `brew update` explicitly.[0m
+$ export HOMEBREW_NO_AUTO_UPDATE=1
+travis_fold:start:rvm[0Ktravis_time:start:1cde4fbb[0K$ rvm use default
+[32mUsing /Users/travis/.rvm/gems/ruby-2.4.3[0m
+
+travis_time:end:1cde4fbb:start=1537606662857600000,finish=1537606664289632000,duration=1432032000[0Ktravis_fold:end:rvm[0K$ ruby --version
+ruby 2.4.3p205 (2017-12-14 revision 61247) [x86_64-darwin17]
+$ rvm --version
+rvm 1.29.3 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+$ bundle --version
+Bundler version 1.16.2
+travis_fold:start:announce[0K$ xcodebuild -version -sdk
+iPhoneOS11.4.sdk - iOS 11.4 (iphoneos11.4)
+SDKVersion: 11.4
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk
+PlatformVersion: 11.4
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneOS.platform
+BuildID: F6E11FE6-5596-11E8-9BDA-5AB96C5CAEA5
+ProductBuildVersion: 15F79
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: iPhone OS
+ProductVersion: 11.4
+
+iPhoneSimulator11.4.sdk - Simulator - iOS 11.4 (iphonesimulator11.4)
+SDKVersion: 11.4
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.4.sdk
+PlatformVersion: 11.4
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform
+BuildID: F6E11FE6-5596-11E8-9BDA-5AB96C5CAEA5
+ProductBuildVersion: 15F79
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: iPhone OS
+ProductVersion: 11.4
+
+MacOSX10.13.sdk - macOS 10.13 (macosx10.13)
+SDKVersion: 10.13
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
+PlatformVersion: 1.1
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/MacOSX.platform
+ProductBuildVersion: 17E189
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Mac OS X
+ProductUserVisibleVersion: 10.13.4
+ProductVersion: 10.13.4
+
+AppleTVOS11.4.sdk - tvOS 11.4 (appletvos11.4)
+SDKVersion: 11.4
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS11.4.sdk
+PlatformVersion: 11.4
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/AppleTVOS.platform
+BuildID: 2A4D8C64-54C2-11E8-9ADF-18993D72DF6D
+ProductBuildVersion: 15L576
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Apple TVOS
+ProductVersion: 11.4
+
+AppleTVSimulator11.4.sdk - Simulator - tvOS 11.4 (appletvsimulator11.4)
+SDKVersion: 11.4
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator11.4.sdk
+PlatformVersion: 11.4
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/AppleTVSimulator.platform
+BuildID: 2A4D8C64-54C2-11E8-9ADF-18993D72DF6D
+ProductBuildVersion: 15L576
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Apple TVOS
+ProductVersion: 11.4
+
+WatchOS4.3.sdk - watchOS 4.3 (watchos4.3)
+SDKVersion: 4.3
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.3.sdk
+PlatformVersion: 4.3
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/WatchOS.platform
+BuildID: 4AF39DC2-2782-11E8-A671-639E35235AA8
+ProductBuildVersion: 15T212
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Watch OS
+ProductVersion: 4.3
+
+WatchSimulator4.3.sdk - Simulator - watchOS 4.3 (watchsimulator4.3)
+SDKVersion: 4.3
+Path: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/WatchSimulator.platform/Developer/SDKs/WatchSimulator4.3.sdk
+PlatformVersion: 4.3
+PlatformPath: /Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/WatchSimulator.platform
+BuildID: 4AF39DC2-2782-11E8-A671-639E35235AA8
+ProductBuildVersion: 15T212
+ProductCopyright: 1983-2018 Apple Inc.
+ProductName: Watch OS
+ProductVersion: 4.3
+
+Xcode 9.4.1
+Build version 9F2000
+$ xcrun simctl list
+== Device Types ==
+iPhone 4s (com.apple.CoreSimulator.SimDeviceType.iPhone-4s)
+iPhone 5 (com.apple.CoreSimulator.SimDeviceType.iPhone-5)
+iPhone 5s (com.apple.CoreSimulator.SimDeviceType.iPhone-5s)
+iPhone 6 (com.apple.CoreSimulator.SimDeviceType.iPhone-6)
+iPhone 6 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-6-Plus)
+iPhone 6s (com.apple.CoreSimulator.SimDeviceType.iPhone-6s)
+iPhone 6s Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-6s-Plus)
+iPhone 7 (com.apple.CoreSimulator.SimDeviceType.iPhone-7)
+iPhone 7 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-7-Plus)
+iPhone 8 (com.apple.CoreSimulator.SimDeviceType.iPhone-8)
+iPhone 8 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-8-Plus)
+iPhone SE (com.apple.CoreSimulator.SimDeviceType.iPhone-SE)
+iPhone X (com.apple.CoreSimulator.SimDeviceType.iPhone-X)
+iPad 2 (com.apple.CoreSimulator.SimDeviceType.iPad-2)
+iPad Retina (com.apple.CoreSimulator.SimDeviceType.iPad-Retina)
+iPad Air (com.apple.CoreSimulator.SimDeviceType.iPad-Air)
+iPad Air 2 (com.apple.CoreSimulator.SimDeviceType.iPad-Air-2)
+iPad (5th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--5th-generation-)
+iPad Pro (9.7-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--9-7-inch-)
+iPad Pro (12.9-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro)
+iPad Pro (12.9-inch) (2nd generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-)
+iPad Pro (10.5-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--10-5-inch-)
+iPad (6th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--6th-generation-)
+Apple TV (com.apple.CoreSimulator.SimDeviceType.Apple-TV-1080p)
+Apple TV 4K (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-4K)
+Apple TV 4K (at 1080p) (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-1080p)
+Apple Watch - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-38mm)
+Apple Watch - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-42mm)
+Apple Watch Series 2 - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-38mm)
+Apple Watch Series 2 - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-42mm)
+Apple Watch Series 3 - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-38mm)
+Apple Watch Series 3 - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-42mm)
+== Runtimes ==
+iOS 8.1 (8.1 - 12B411) - com.apple.CoreSimulator.SimRuntime.iOS-8-1
+iOS 8.2 (8.2 - 12D508) - com.apple.CoreSimulator.SimRuntime.iOS-8-2
+iOS 8.3 (8.3 - 12F70) - com.apple.CoreSimulator.SimRuntime.iOS-8-3
+iOS 8.4 (8.4 - 12H141) - com.apple.CoreSimulator.SimRuntime.iOS-8-4
+iOS 9.0 (9.0 - 13A344) - com.apple.CoreSimulator.SimRuntime.iOS-9-0
+iOS 9.1 (9.1 - 13B143) - com.apple.CoreSimulator.SimRuntime.iOS-9-1
+iOS 9.2 (9.2 - 13C75) - com.apple.CoreSimulator.SimRuntime.iOS-9-2
+iOS 9.3 (9.3 - 13E233) - com.apple.CoreSimulator.SimRuntime.iOS-9-3
+iOS 10.0 (10.0 - 14A345) - com.apple.CoreSimulator.SimRuntime.iOS-10-0
+iOS 10.1 (10.1 - 14B72) - com.apple.CoreSimulator.SimRuntime.iOS-10-1
+iOS 10.2 (10.2 - 14C89) - com.apple.CoreSimulator.SimRuntime.iOS-10-2
+iOS 10.3 (10.3.1 - 14E8301) - com.apple.CoreSimulator.SimRuntime.iOS-10-3
+iOS 11.0 (11.0.1 - 15A8401) - com.apple.CoreSimulator.SimRuntime.iOS-11-0
+iOS 11.1 (11.1 - 15B87) - com.apple.CoreSimulator.SimRuntime.iOS-11-1
+iOS 11.2 (11.2 - 15C107) - com.apple.CoreSimulator.SimRuntime.iOS-11-2
+iOS 11.3 (11.3 - 15E217) - com.apple.CoreSimulator.SimRuntime.iOS-11-3
+iOS 11.4 (11.4 - 15F79) - com.apple.CoreSimulator.SimRuntime.iOS-11-4
+tvOS 9.0 (9.0 - 13T395) - com.apple.CoreSimulator.SimRuntime.tvOS-9-0
+tvOS 9.1 (9.1 - 13U85) - com.apple.CoreSimulator.SimRuntime.tvOS-9-1
+tvOS 9.2 (9.2 - 13Y234) - com.apple.CoreSimulator.SimRuntime.tvOS-9-2
+tvOS 10.0 (10.0 - 14T328) - com.apple.CoreSimulator.SimRuntime.tvOS-10-0
+tvOS 10.1 (10.1 - 14U591) - com.apple.CoreSimulator.SimRuntime.tvOS-10-1
+tvOS 10.2 (10.2 - 14W260) - com.apple.CoreSimulator.SimRuntime.tvOS-10-2
+tvOS 11.0 (11.0 - 15J380) - com.apple.CoreSimulator.SimRuntime.tvOS-11-0
+tvOS 11.1 (11.1 - 15J580) - com.apple.CoreSimulator.SimRuntime.tvOS-11-1
+tvOS 11.2 (11.2 - 15K104) - com.apple.CoreSimulator.SimRuntime.tvOS-11-2
+tvOS 11.3 (11.3 - 15L211) - com.apple.CoreSimulator.SimRuntime.tvOS-11-3
+tvOS 11.4 (11.4 - 15L576) - com.apple.CoreSimulator.SimRuntime.tvOS-11-4
+watchOS 2.0 (2.0 - 13S343) - com.apple.CoreSimulator.SimRuntime.watchOS-2-0
+watchOS 2.1 (2.1 - 13S661) - com.apple.CoreSimulator.SimRuntime.watchOS-2-1
+watchOS 2.2 (2.2 - 13V144) - com.apple.CoreSimulator.SimRuntime.watchOS-2-2
+watchOS 3.1 (3.1 - 14S471a) - com.apple.CoreSimulator.SimRuntime.watchOS-3-1
+watchOS 3.2 (3.2 - 14V243) - com.apple.CoreSimulator.SimRuntime.watchOS-3-2
+watchOS 4.0 (4.0 - 15R372) - com.apple.CoreSimulator.SimRuntime.watchOS-4-0
+watchOS 4.1 (4.1 - 15R844) - com.apple.CoreSimulator.SimRuntime.watchOS-4-1
+watchOS 4.2 (4.2 - 15S100) - com.apple.CoreSimulator.SimRuntime.watchOS-4-2
+watchOS 4.3 (4.3 - 15T212) - com.apple.CoreSimulator.SimRuntime.watchOS-4-3
+== Devices ==
+-- iOS 8.1 --
+    iPhone 4s (2B0671BD-7CAD-47F8-9160-F14DB20F1262) (Shutdown)
+    iPhone 5 (86EDFC00-BAEB-4EFC-8F12-5AFBC0473770) (Shutdown)
+    iPhone 5s (457B6F86-26C1-4375-930F-9E04FE4AA9A4) (Shutdown)
+    iPhone 6 (EDAA4F34-F795-44A5-9504-F90B28390E24) (Shutdown)
+    iPhone 6 Plus (C3E159D1-92EA-4D65-9A6C-CA93EDCCAE3B) (Shutdown)
+    iPad 2 (2CD5957A-6D0C-45E1-8AA3-CD4F9AB8C10B) (Shutdown)
+    iPad Retina (5450E3F8-4996-4782-9775-FD9CB371A062) (Shutdown)
+    iPad Air (4150FFDE-4344-4809-BEEE-78D237BA7353) (Shutdown)
+-- iOS 8.2 --
+    iPhone 4s (4DADE89C-EB1D-4D52-A250-D03B115C22B1) (Shutdown)
+    iPhone 5 (09E059C6-DC11-4CCA-9C54-F7E791BF49BC) (Shutdown)
+    iPhone 5s (75F48A28-BA25-4582-B21B-7B4F4A718F48) (Shutdown)
+    iPhone 6 (62703339-2564-480A-9000-3D3B4D9D4F35) (Shutdown)
+    iPhone 6 Plus (D1722CA4-7AD9-48CD-8FC5-0CB143ED644B) (Shutdown)
+    iPad 2 (51E966A7-98BB-4AB9-B5C4-B40E5FC7FFED) (Shutdown)
+    iPad Retina (BEBED407-8863-44EA-8000-EB39B51BBCD1) (Shutdown)
+    iPad Air (686D0A3F-BD2D-4630-8DB6-C6B9ACECE5D2) (Shutdown)
+-- iOS 8.3 --
+    iPhone 4s (3CDF0605-D4AF-4242-AFA1-FF2C157A9C70) (Shutdown)
+    iPhone 5 (19AF02F6-DB79-49B3-A8C6-A1C336BCE3F1) (Shutdown)
+    iPhone 5s (86EA2F80-F818-4C19-A468-21DB5C0C8E66) (Shutdown)
+    iPhone 6 (991AE0D6-B245-429C-B99E-8293C552515C) (Shutdown)
+    iPhone 6 Plus (64AFC437-4EEC-48F8-9D57-28D81ED68408) (Shutdown)
+    iPad 2 (2AA4BDFD-F5C2-46DF-9F5F-DB514B6ED56F) (Shutdown)
+    iPad Retina (09A49FD7-7BF3-47D8-AFF2-54B3AA232BA2) (Shutdown)
+    iPad Air (C7CC9A95-F717-43BE-BC49-E96480CCB8FD) (Shutdown)
+-- iOS 8.4 --
+    iPhone 4s (6BCD79BC-D0CB-43AF-9870-F0B68A8556E7) (Shutdown)
+    iPhone 5 (E6A3B0AF-AB73-40F8-9BC8-0B40790DEE39) (Shutdown)
+    iPhone 5s (B43FBA4E-1FD2-44B1-AA63-E3A7278F7105) (Shutdown)
+    iPhone 6 (3FF68940-AAB8-43BA-97EF-9CF1E73E38B0) (Shutdown)
+    iPhone 6 Plus (51CE983B-4088-4476-A55D-EC102C4EC518) (Shutdown)
+    iPad 2 (608382E4-F0D6-4320-BFEA-B8C40744AD0A) (Shutdown)
+    iPad Retina (656BEC2A-1437-491A-B76A-B815B11AA3F6) (Shutdown)
+    iPad Air (56F1E42E-634C-4271-B1F8-929C5FA09F17) (Shutdown)
+-- iOS 9.0 --
+    iPhone 4s (14C73E2C-9E93-4D65-B014-C4BED07043C9) (Shutdown)
+    iPhone 5 (779B1757-2F85-49DB-8692-1CB7F525A0A8) (Shutdown)
+    iPhone 5s (D73669A5-7AA1-40C6-B97F-7AFAC3032A02) (Shutdown)
+    iPhone 6 (D2F6C51F-A7E5-4D35-AB11-7E39524C6AC1) (Shutdown)
+    iPhone 6 Plus (E52E4E23-652B-42AE-8B0E-8FDCF383E27B) (Shutdown)
+    iPhone 6s (B6C52922-3BDD-409C-AA41-7B561D7E69A4) (Shutdown)
+    iPhone 6s Plus (BA1AC073-887F-46DF-A508-6D988AB6BD4F) (Shutdown)
+    iPad 2 (E27A635C-52D2-4603-8B58-9859FBB02C94) (Shutdown)
+    iPad Retina (53D1C769-9C51-41D1-9C96-E797921860F7) (Shutdown)
+    iPad Air (A3F3D781-ACC6-478C-9B2D-7FF7E46BC386) (Shutdown)
+    iPad Air 2 (23091268-7391-496F-B159-E3270DB4DCC2) (Shutdown)
+-- iOS 9.1 --
+    iPhone 4s (A89FE6CE-C5EA-49C6-A138-B926DF6A9C25) (Shutdown)
+    iPhone 5 (010AFBC3-5339-4257-824C-83AA3863405C) (Shutdown)
+    iPhone 5s (6034A261-6971-4C54-A0E9-FDE1B3C08487) (Shutdown)
+    iPhone 6 (B1458D77-7232-44DA-BBEF-CEFA40647FDA) (Shutdown)
+    iPhone 6 Plus (995B7565-9DE5-431E-AE20-279888580BD6) (Shutdown)
+    iPhone 6s (7671DCA7-2C17-4F70-931D-6F0E03B21F3F) (Shutdown)
+    iPhone 6s Plus (FB3B06E0-8DFA-4E9D-A149-88A42EFBCE3A) (Shutdown)
+    iPad 2 (8EA602F3-BFE7-41D1-856C-080F634794EE) (Shutdown)
+    iPad Retina (7FBEF989-EAF1-4760-8F3F-3F8F516121CC) (Shutdown)
+    iPad Air (BA89853E-45CC-464B-A12E-1C16656D4ADF) (Shutdown)
+    iPad Air 2 (6194B82C-EEF3-4376-A87A-7E06C95AC506) (Shutdown)
+    iPad Pro (86F4D8B9-0F17-437B-A9AA-FFD0AB7688A2) (Shutdown)
+-- iOS 9.2 --
+    iPhone 4s (91EC8B43-47E2-4B42-AE82-F4AD5D28CB5A) (Shutdown)
+    iPhone 5 (8E0692AE-4F39-4167-A822-792ED58A63F2) (Shutdown)
+    iPhone 5s (FAE64C7A-EAAE-46E8-9574-D60E0664972B) (Shutdown)
+    iPhone 6 (5221D898-F188-4F84-9F38-75619511579A) (Shutdown)
+    iPhone 6 Plus (00893EF6-97F2-4E05-A755-05674C0CC026) (Shutdown)
+    iPhone 6s (1B93209F-4908-4D22-AD55-060F40A49521) (Shutdown)
+    iPhone 6s Plus (B3A312F1-332D-4C65-A29F-C1ED9ED9BF8D) (Shutdown)
+    iPad 2 (3A2B73DD-D059-4A60-9968-33F6FFC5029B) (Shutdown)
+    iPad Retina (639A30CD-F361-463E-A171-DFBA8E7298EC) (Shutdown)
+    iPad Air (ACEC701E-9AAF-448F-9B03-0011014446FF) (Shutdown)
+    iPad Air 2 (71673F89-CF2E-4B6E-A505-ABAC18B3F69D) (Shutdown)
+    iPad Pro (248EFA4E-4723-4C2D-98B1-527E7585437C) (Shutdown)
+-- iOS 9.3 --
+    iPhone 4s (D22DA37A-5F16-4193-AB57-4DF2E9372378) (Shutdown)
+    iPhone 5 (45787325-D869-4769-ACB9-C6309BCF883B) (Shutdown)
+    iPhone 5s (58FC13DC-26A0-4A50-BDE0-E5F1558DB73C) (Shutdown)
+    iPhone 6 (8A462E89-DC29-4C3E-9E67-65D5589D409E) (Shutdown)
+    iPhone 6 Plus (0A702B8B-B2A1-4A9D-BA55-A5822DA972B8) (Shutdown)
+    iPhone 6s (866BCD97-88C4-49D9-BB38-E50197D7EC01) (Shutdown)
+    iPhone 6s Plus (3FB5F0BB-7C22-44EB-BF47-95A298256F6E) (Shutdown)
+    iPad 2 (1E85B325-92C1-4E0E-82E5-F6D4C08BB6EB) (Shutdown)
+    iPad Retina (2AF8A63E-D272-4F9B-ABC9-0775BE6045D6) (Shutdown)
+    iPad Air (10656696-3ACC-4418-9928-B49D1DABB801) (Shutdown)
+    iPad Air 2 (E319AB99-F82E-4F5F-9EE8-14CF4D2ED9E5) (Shutdown)
+    iPad Pro (F05DB4F0-30C0-4BBB-B90C-7E9C7DB632B2) (Shutdown)
+-- iOS 10.0 --
+    iPhone 5 (BF94643A-4024-4FE2-B71F-3869071B6166) (Shutdown)
+    iPhone 5s (CCCEB864-D49E-427D-ABCC-4C7E01DD4D85) (Shutdown)
+    iPhone 6 (872D1DAE-7744-4912-8FF4-818FAF514FA8) (Shutdown)
+    iPhone 6 Plus (73F619BF-3F23-4F70-BC2B-BE6F2767DE69) (Shutdown)
+    iPhone 6s (6E4A14AA-F6D0-4DA9-BBA1-C354DBEB4DE7) (Shutdown)
+    iPhone 6s Plus (6B8A2096-C5A7-447A-B0D4-BAB352DD922E) (Shutdown)
+    iPhone SE (D7BCCF4C-F0DA-45C8-AE67-06497B10D1CF) (Shutdown)
+    iPad Air (9C74559B-3B60-4BE2-B1E1-97925D455961) (Shutdown)
+    iPad Air 2 (D88F9898-D11E-417B-9802-D89CCEAF3C2F) (Shutdown)
+    iPad Pro (9.7 inch) (7D34DFC4-124A-4D0F-A057-669581B756B7) (Shutdown)
+    iPad Pro (12.9 inch) (150C9556-CA98-47F6-88C0-5CCF8EA67A2D) (Shutdown)
+-- iOS 10.1 --
+    iPhone 5 (AF7167AF-7465-435B-B5D3-E411E1C3CFD0) (Shutdown)
+    iPhone 5s (E62C5DCF-8B23-406E-86F0-BDAE65734FF2) (Shutdown)
+    iPhone 6 (9FF0EC38-320A-4EAC-BAA1-789C3FF26067) (Shutdown)
+    iPhone 6 Plus (2573CAC3-0BA6-475C-BA22-70EC7ACA77E9) (Shutdown)
+    iPhone 6s (78117574-E9E9-4166-BC22-01F2934522E2) (Shutdown)
+    iPhone 6s Plus (25FB316B-392B-4E24-A008-895B8679B516) (Shutdown)
+    iPhone 7 (C2296C10-3B11-4A23-9DC8-F232AA402A9B) (Shutdown)
+    iPhone 7 Plus (DB93129F-18C4-48E6-A5D0-32031391835C) (Shutdown)
+    iPhone SE (0DDA4427-0558-4A13-A860-0A9CA9D10994) (Shutdown)
+    iPad Air (A94A9CA0-B9CC-421E-AA4F-FA6C3D02E2EB) (Shutdown)
+    iPad Air 2 (A37BDB3E-1072-4F4D-AD24-B9D0FE6CBC42) (Shutdown)
+    iPad Pro (9.7 inch) (B99D7005-CA3C-4A18-B6CE-59526EBC6445) (Shutdown)
+    iPad Pro (12.9 inch) (B53A29DC-4861-465F-80D2-F95B18B68E28) (Shutdown)
+-- iOS 10.2 --
+    iPhone 5 (E7CA5C45-64CD-4901-BFD8-D5A83207410A) (Shutdown)
+    iPhone 5s (CF936ABC-A791-4C3B-A42D-1162B35C0A11) (Shutdown)
+    iPhone 6 (967D56E6-2A3E-47A2-BFAD-F016530DA3F5) (Shutdown)
+    iPhone 6 Plus (84DD62A4-9D62-47E8-89F4-274890231838) (Shutdown)
+    iPhone 6s (BFF57F62-8EC9-4151-8C16-CAE7D58718C3) (Shutdown)
+    iPhone 6s Plus (791D6919-053B-47B3-B376-F89D9FD33D44) (Shutdown)
+    iPhone 7 (F23BF19F-9C35-48C9-A2AF-D120B72E8CAA) (Shutdown)
+    iPhone 7 Plus (14DFD8E2-A7F0-4162-B916-4B2F05E3BCE1) (Shutdown)
+    iPhone SE (9A4D2707-090A-462E-AF38-916D4D9C2CE5) (Shutdown)
+    iPad Air (87C9678D-89F5-4F84-A736-5D21DA43A1F1) (Shutdown)
+    iPad Air 2 (25BC5E05-BAEF-4971-8416-85ADDAEB0BEC) (Shutdown)
+    iPad Pro (9.7 inch) (2FC5189A-52CB-4C1D-AB60-B64115D09EF6) (Shutdown)
+    iPad Pro (12.9 inch) (FAA75C47-D16B-44A3-A810-4ACE2C0751C6) (Shutdown)
+-- iOS 10.3 --
+    iPhone 5 (835159AB-C5A9-40CE-8DDA-0C7BF85D1F92) (Shutdown)
+    iPhone 5s (FB172944-43CD-4AC6-9514-CF694CD4A3E8) (Shutdown)
+    iPhone 6 (7979A6FF-BEC9-4620-A620-A42026875B34) (Shutdown)
+    iPhone 6 Plus (D3F65B95-5818-434C-878B-0BB6BFA5790E) (Shutdown)
+    iPhone 6s (716D2E9F-936A-49D7-AAB8-F75C85B963B2) (Shutdown)
+    iPhone 6s Plus (D93B3184-C9CA-4FC5-B557-EC0D7A879B17) (Shutdown)
+    iPhone 7 (4613405A-5789-40C7-BAFD-1F75276DF01B) (Shutdown)
+    iPhone 7 Plus (96A7AA09-E958-432D-BF8C-CFDD974D925E) (Shutdown)
+    iPhone SE (4BE5E4FF-A2D5-4899-B2E0-8BB3A2CD0B8B) (Shutdown)
+    iPad Air (12F0E506-A78B-4D94-9821-74370A9DCE11) (Shutdown)
+    iPad Air 2 (17419E8A-4CBF-4396-8543-5B630761CFC8) (Shutdown)
+    iPad (5th generation) (6839934C-005F-4EF5-B6A8-245B69DE3867) (Shutdown)
+    iPad Pro (9.7 inch) (3C64B4B9-74CD-42E0-86AD-A90686DCD5E8) (Shutdown)
+    iPad Pro (12.9 inch) (B9E5C3B4-3566-436C-8D63-F383E2FBC03C) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (BC8AD80A-D8B2-4267-8B77-6354FD8E8E4C) (Shutdown)
+    iPad Pro (10.5-inch) (CA8D3A1C-01F3-42A6-B75F-150B834B1C8E) (Shutdown)
+-- iOS 11.0 --
+    iPhone 5s (CA37075E-1A35-4004-9BA1-1699014D5539) (Shutdown)
+    iPhone 6 (A7E081FF-DF01-4B38-AF33-238B78D60EB0) (Shutdown)
+    iPhone 6 Plus (595F4914-8EBF-42E4-AB0A-646828186683) (Shutdown)
+    iPhone 6s (755DFFC3-9C59-42F8-96E5-A06811E3AF34) (Shutdown)
+    iPhone 6s Plus (89B103B2-8A1D-4346-AA7A-BA486199D9D8) (Shutdown)
+    iPhone 7 (E30BFFDC-BF8D-452A-B84A-EFD47A24E666) (Shutdown)
+    iPhone 7 Plus (DC4BFCF6-9A7A-4C3F-AD22-1D79D8187205) (Shutdown)
+    iPhone 8 (6C280E8A-F201-4C8A-A9DD-FF6AAF1C3929) (Shutdown)
+    iPhone 8 Plus (6F00BFFA-A910-41E8-AD57-3F5FF7CE087F) (Shutdown)
+    iPhone SE (1ED0C422-5515-4DCF-A489-0619E41988E0) (Shutdown)
+    iPhone X (6A06193C-A7B7-4B1C-B0F5-BB64EA407C45) (Shutdown)
+    iPad Air (E89E3DBD-B726-4CA4-B721-BD88E5075C89) (Shutdown)
+    iPad Air 2 (D6BADE58-764A-42FA-B843-EF7ED4A0BE74) (Shutdown)
+    iPad (5th generation) (67F5C85B-FCC6-4BC8-BDFE-88A504FD044A) (Shutdown)
+    iPad Pro (9.7-inch) (1C320FE5-104A-4063-81AD-90E0015E8558) (Shutdown)
+    iPad Pro (12.9-inch) (75098CA6-4479-4C61-A446-3B3EB079CC8E) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (548F3C3A-3494-4ADA-97B8-C4F0569FB887) (Shutdown)
+    iPad Pro (10.5-inch) (0E672864-12DC-415E-B832-419F06478FD1) (Shutdown)
+-- iOS 11.1 --
+    iPhone 5s (C096E2F3-AD67-4B02-95FE-D281FB5901E1) (Shutdown)
+    iPhone 6 (181C36C6-EAFA-4D64-8DF9-293F7EADB2D7) (Shutdown)
+    iPhone 6 Plus (64BFAE14-FFFF-4CB7-9253-9E7B27529B35) (Shutdown)
+    iPhone 6s (628367C6-AF04-42C8-9900-A81178F2F352) (Shutdown)
+    iPhone 6s Plus (F416D582-D6A0-4611-BB69-153F90CE423C) (Shutdown)
+    iPhone 7 (9AC74482-9863-41FD-BE3D-38E6623EFDFB) (Shutdown)
+    iPhone 7 Plus (17475554-73D2-489F-94ED-63433C6944C0) (Shutdown)
+    iPhone 8 (F326BFEC-6113-48CD-819A-EC3E93B26ECD) (Shutdown)
+    iPhone 8 Plus (74B5438D-E7CF-4255-BDA0-A963BA08937A) (Shutdown)
+    iPhone SE (2ED9CDD0-5382-4A5A-AC84-EF3598D4E62F) (Shutdown)
+    iPhone X (D52832BA-57AD-491D-8A57-8608B494E64D) (Shutdown)
+    iPad Air (AE6E7168-0446-4C87-BBCE-7AD4AE734BF1) (Shutdown)
+    iPad Air 2 (655CE97A-4280-4B01-ACE6-D1C712DD3516) (Shutdown)
+    iPad (5th generation) (92EB3616-8FB1-4D0A-B7F2-C7B036477411) (Shutdown)
+    iPad Pro (9.7-inch) (3187EBB9-0DF5-45CC-87B9-4082E3FE310C) (Shutdown)
+    iPad Pro (12.9-inch) (9391F6A0-FF13-483F-ABF9-A04BDC0B764F) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (217EC1BD-DF10-453F-995A-F87FDDCCE5E8) (Shutdown)
+    iPad Pro (10.5-inch) (107D1E89-E697-47FA-A3F5-2FF9562408D6) (Shutdown)
+-- iOS 11.2 --
+    iPhone 5s (B9CE6312-8608-44EA-9E64-B56A757C9B8A) (Shutdown)
+    iPhone 6 (3A858194-BA14-4EE4-8F9B-906481B03C47) (Shutdown)
+    iPhone 6 Plus (88D5193B-4F6D-472B-B2D4-3A6DCCB887DC) (Shutdown)
+    iPhone 6s (43D36EA0-64EC-43D4-8855-5D45463E6BF9) (Shutdown)
+    iPhone 6s Plus (1DBCAF8C-1B02-4B8E-B1D5-9B5679DD8366) (Shutdown)
+    iPhone 7 (923DC3DE-D21D-4559-9421-AEE939F2624B) (Shutdown)
+    iPhone 7 Plus (F3CBA6E7-35CA-4439-84DB-F45E82B5FABD) (Shutdown)
+    iPhone 8 (83BC51BB-5B95-4B2D-8236-A61C971B1782) (Shutdown)
+    iPhone 8 Plus (9DE97618-778A-49CE-B7A6-AF2C986DDBF7) (Shutdown)
+    iPhone SE (F15240F3-7815-45A7-BE14-A9E0BA8A5AC1) (Shutdown)
+    iPhone X (9ADA386D-B982-49F5-A73D-8AD0B6615893) (Shutdown)
+    iPad Air (F916600C-A450-432F-A38C-F4E796E8249D) (Shutdown)
+    iPad Air 2 (72440411-B297-42B9-B7EF-F6ACA6886892) (Shutdown)
+    iPad (5th generation) (2264889A-2A5B-48CE-B727-8DCDE999E945) (Shutdown)
+    iPad Pro (9.7-inch) (BE28FA47-F3A9-41C5-A2E0-BFAF81B86DAF) (Shutdown)
+    iPad Pro (12.9-inch) (CF6FDD42-2E85-4611-A652-01EDB8E00ED1) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (5360F1C7-5CB3-400C-BE04-BBABFE336007) (Shutdown)
+    iPad Pro (10.5-inch) (662F3325-64D6-433D-9A8C-FEDDFB8A8972) (Shutdown)
+-- iOS 11.3 --
+    iPhone 5s (7EC35771-F846-444D-9B50-C5DC7A961A9A) (Shutdown)
+    iPhone 6 (FB845F0D-B8FA-4BEF-93DF-F404ED056584) (Shutdown)
+    iPhone 6 Plus (A3A23119-876A-4C6A-9528-90E3480C527A) (Shutdown)
+    iPhone 6s (1E94ACEE-70F6-476D-BC1A-936F2A5B9F56) (Shutdown)
+    iPhone 6s Plus (FD1F8AC7-449A-48A4-84AF-02669B8CD10A) (Shutdown)
+    iPhone 7 (9FEEED2B-0CF6-4D04-AF53-9B26634C2964) (Shutdown)
+    iPhone 7 Plus (21CA6087-CA2E-46CF-9EE3-F71A53D108ED) (Shutdown)
+    iPhone 8 (F9310BC9-DA96-47E4-BCD7-33FAF9C3D50D) (Shutdown)
+    iPhone 8 Plus (B10354A2-F470-4F98-A914-1A09F0AA2980) (Shutdown)
+    iPhone SE (6705666C-53A0-475E-A208-C33BBD6D7FD5) (Shutdown)
+    iPhone X (D18EED3E-1D5F-4CB8-A88F-79DE3893EBDB) (Shutdown)
+    iPad Air (0F08A38C-A927-4B9A-BFBF-57B4759049B2) (Shutdown)
+    iPad Air 2 (B0900495-3EE4-4B1E-BF31-701AF4419581) (Shutdown)
+    iPad (5th generation) (AD35E924-3768-42A3-AE68-B94157DE1625) (Shutdown)
+    iPad Pro (9.7-inch) (75C9CA83-2FAC-4F04-9C80-B5502AA57062) (Shutdown)
+    iPad Pro (12.9-inch) (22C79D33-DB4D-4B67-8D02-87F5A07BF086) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (EA8EEE71-9636-4E44-B482-BF1E8BD2A283) (Shutdown)
+    iPad Pro (10.5-inch) (838DD1E7-E403-4930-868D-4E557F323511) (Shutdown)
+-- iOS 11.4 --
+    iPhone 5s (0702AFE5-C0FA-493E-8A5B-3860A9BCEDB4) (Shutdown)
+    iPhone 6 (9F1CE63E-694B-44E0-8B0A-10E101A388F9) (Shutdown)
+    iPhone 6 Plus (A2A415B5-50B5-49AD-9E2D-166F679C25AE) (Shutdown)
+    iPhone 6s (91E9B76A-3407-4CD1-B83A-4D9A2F8B5A10) (Shutdown)
+    iPhone 6s Plus (56C11870-7103-4A42-8ECF-0C2A3225A5F6) (Shutdown)
+    iPhone 7 (1A201D82-0514-4CEB-A9FC-EAAFD5E6B89D) (Shutdown)
+    iPhone 7 Plus (8C2DF4AF-AD0A-4960-B04C-CA59E30AFD54) (Shutdown)
+    iPhone 8 (FB0908FB-89D5-46C0-9231-10C1B336FF04) (Shutdown)
+    iPhone 8 Plus (58CAE2C0-E539-40AC-8288-42669BD85BE8) (Shutdown)
+    iPhone SE (7FC0BCB1-EAB7-4804-9A20-7B490D5C88DA) (Shutdown)
+    iPhone X (C0BD112C-A78A-491A-A827-DB464992E80E) (Shutdown)
+    iPad Air (CBD474FA-FC28-403A-9523-AD3D37C5EE2D) (Shutdown)
+    iPad Air 2 (DCB031C4-7856-4AFA-9662-056322A93B5D) (Shutdown)
+    iPad (5th generation) (DF8272DD-48AB-48E7-8EF5-929BAF18A219) (Shutdown)
+    iPad Pro (9.7-inch) (2F0A090B-647C-4C56-93FF-E761ED75EC1F) (Shutdown)
+    iPad Pro (12.9-inch) (A1DC71AF-156D-4CCE-A018-3F763C524548) (Shutdown)
+    iPad Pro (12.9-inch) (2nd generation) (7457C8F4-DAFC-40C2-A6B5-17E918E09313) (Shutdown)
+    iPad Pro (10.5-inch) (6CCEB16B-D67C-4DF8-9059-DCC418184D7C) (Shutdown)
+-- tvOS 9.0 --
+    Apple TV 1080p (6C8A0E93-F8D9-460A-8EA0-B56079D5657F) (Shutdown)
+-- tvOS 9.1 --
+    Apple TV 1080p (6E23A581-CDE1-423F-800F-C944D1249564) (Shutdown)
+-- tvOS 9.2 --
+    Apple TV 1080p (2A99DB46-869A-4D34-BB8C-65EEC84EB1AE) (Shutdown)
+-- tvOS 10.0 --
+    Apple TV 1080p (50A72879-D9C3-418A-8218-DEA6D97BA777) (Shutdown)
+-- tvOS 10.1 --
+    Apple TV 1080p (3E7D6147-2F8A-4817-B59C-478E41287BE3) (Shutdown)
+-- tvOS 10.2 --
+    Apple TV 1080p (56359155-D407-4D32-90CB-497C160BB71C) (Shutdown)
+-- tvOS 11.0 --
+    Apple TV (09768897-1A89-4557-A18A-5D3373174A5C) (Shutdown)
+    Apple TV 4K (1E60D206-E7DA-4684-B82E-355C5C8F6352) (Shutdown)
+    Apple TV 4K (at 1080p) (A9CC27D8-7013-4E5F-9F7E-B2954632BA08) (Shutdown)
+-- tvOS 11.1 --
+    Apple TV (1E846B56-645E-4861-8B37-C47780CFEA4E) (Shutdown)
+    Apple TV 4K (C70B68DB-4B98-47A4-AD7A-377CFFEE1A32) (Shutdown)
+    Apple TV 4K (at 1080p) (3BF9C274-36E6-4A05-845F-04E609F6C3B4) (Shutdown)
+-- tvOS 11.2 --
+    Apple TV (BC5A24BB-FCF3-47FB-A688-E9EA56C1079D) (Shutdown)
+    Apple TV 4K (3D04D9A7-390B-4DC7-A595-7D448AB27637) (Shutdown)
+    Apple TV 4K (at 1080p) (8E0635C8-250E-4B9C-87E1-0694D30ED9CA) (Shutdown)
+-- tvOS 11.3 --
+    Apple TV (65710B2D-7191-44BF-81EB-54F12594FAC5) (Shutdown)
+    Apple TV 4K (10F4C4DE-C831-4725-835F-8479648046B6) (Shutdown)
+    Apple TV 4K (at 1080p) (054A3841-A39E-4C1B-9672-24CF72F6E04E) (Shutdown)
+-- tvOS 11.4 --
+    Apple TV (6592A7F6-6CE0-495A-ABFE-156C158E5565) (Shutdown)
+    Apple TV 4K (EA00D3B6-330D-4F68-8580-915B3CC53C76) (Shutdown)
+    Apple TV 4K (at 1080p) (3CBF7475-0544-4DEB-A659-061BC3ADF08C) (Shutdown)
+-- watchOS 2.0 --
+    Apple Watch - 38mm (531F30EC-B704-4720-9566-B8BF3995473C) (Shutdown)
+    Apple Watch - 42mm (1628BFDF-675F-4ACD-A18A-13736E121AE6) (Shutdown)
+-- watchOS 2.1 --
+    Apple Watch - 38mm (E6FA1053-726D-4A54-991E-0A2086B75D37) (Shutdown)
+    Apple Watch - 42mm (0BF35CA0-5060-4FD6-8036-208E14CB7578) (Shutdown)
+-- watchOS 2.2 --
+    Apple Watch - 38mm (96820A44-1F43-4475-A27B-F5B26E48CE62) (Shutdown)
+    Apple Watch - 42mm (1847FBC9-3610-4149-BA36-A5B4F923BDA3) (Shutdown)
+-- watchOS 3.1 --
+    Apple Watch - 38mm (78E08BF7-C2A3-479A-9880-4CBD56431101) (Shutdown)
+    Apple Watch - 42mm (4A60FDF1-C46A-4600-BCF4-42F659AFFB3C) (Shutdown)
+    Apple Watch Series 2 - 38mm (0E06B956-9E21-4CFE-A11D-0730876AB74C) (Shutdown)
+    Apple Watch Series 2 - 42mm (362B36EC-9185-42A2-A11A-289124D6CFE1) (Shutdown)
+-- watchOS 3.2 --
+    Apple Watch - 38mm (69DD03AD-62E3-4232-9DDF-ECCE9363C548) (Shutdown)
+    Apple Watch - 42mm (7E387DA9-4652-4F00-AF89-03850A669B5C) (Shutdown)
+    Apple Watch Series 2 - 38mm (04D6D7ED-3807-4418-B130-F4325EB98AD2) (Shutdown)
+    Apple Watch Series 2 - 42mm (0722B6CA-F882-4420-A3C8-0F1E473BD068) (Shutdown)
+-- watchOS 4.0 --
+    Apple Watch - 38mm (1854FBF9-BCD3-45C6-AC67-8837664CCA66) (Shutdown)
+    Apple Watch - 42mm (ABDCC81A-FE87-4C4C-AF16-13979651FB60) (Shutdown)
+    Apple Watch Series 2 - 38mm (5DA14630-821D-4553-BCF5-93426D9C8418) (Shutdown)
+    Apple Watch Series 2 - 42mm (F3166DF6-0F2A-4BA8-94FB-FED723B0225C) (Shutdown)
+    Apple Watch Series 3 - 38mm (C77DBF28-C6C3-4163-8307-F780CCCF309E) (Shutdown)
+    Apple Watch Series 3 - 42mm (CF52CC43-11C3-408C-85B1-1D1B843BC557) (Shutdown)
+-- watchOS 4.1 --
+    Apple Watch - 38mm (D81339B6-1A30-4CB1-9095-1460ADFA6B11) (Shutdown)
+    Apple Watch - 42mm (E2EE1F5E-1B1E-4CCC-BA49-B4F799F4FF24) (Shutdown)
+    Apple Watch Series 2 - 38mm (48CF5CE7-3190-4985-9B3A-213349F1ACCE) (Shutdown)
+    Apple Watch Series 2 - 42mm (942287DE-1BAE-47B0-8810-7AD017088D05) (Shutdown)
+    Apple Watch Series 3 - 38mm (B00E56B6-A5AD-44A4-ADC3-0BA95E4CFB5C) (Shutdown)
+    Apple Watch Series 3 - 42mm (972C9466-FA7A-47BB-BA96-421A77F52657) (Shutdown)
+-- watchOS 4.2 --
+    Apple Watch - 38mm (5BBC6E75-7E96-40DB-9B71-8FDEE10F8075) (Shutdown)
+    Apple Watch - 42mm (E0A9C184-F6C2-4C98-9A73-C9517ADDC9C3) (Shutdown)
+    Apple Watch Series 2 - 38mm (52231B97-46D9-4279-86CC-B55CB558D71A) (Shutdown)
+    Apple Watch Series 2 - 42mm (B785E0D3-53C8-4089-8307-AB2D869A547C) (Shutdown)
+    Apple Watch Series 3 - 38mm (D93908A8-2E22-4527-912E-4EE1DD8E35F3) (Shutdown)
+    Apple Watch Series 3 - 42mm (D39BE00B-296A-41B7-8F57-C690E3BA0329) (Shutdown)
+-- watchOS 4.3 --
+    Apple Watch - 38mm (6A30F901-C516-4A7D-9C06-8C762F640F20) (Shutdown)
+    Apple Watch - 42mm (38CDCD7F-29F2-4513-BA46-7AE23FD5A309) (Shutdown)
+    Apple Watch Series 2 - 38mm (70D78D48-8ADD-4DC7-BFBD-23B9526B960F) (Shutdown)
+    Apple Watch Series 2 - 42mm (82C3FE7E-3BE0-40B5-927B-C37FD3C7F0AE) (Shutdown)
+    Apple Watch Series 3 - 38mm (0E174E72-D036-40FC-A254-899A29773085) (Shutdown)
+    Apple Watch Series 3 - 42mm (3A4B13EE-E668-4EEA-8383-7E84FFC11FD2) (Shutdown)
+== Device Pairs ==
+70035676-89D1-4F52-A30F-F2EEBBE35BA0 (active, disconnected)
+    Watch: Apple Watch Series 2 - 38mm (70D78D48-8ADD-4DC7-BFBD-23B9526B960F) (Shutdown)
+    Phone: iPhone 7 (1A201D82-0514-4CEB-A9FC-EAAFD5E6B89D) (Shutdown)
+92D58324-2E09-4DFD-AA66-A2D3C8347DC4 (active, disconnected)
+    Watch: Apple Watch Series 2 - 42mm (82C3FE7E-3BE0-40B5-927B-C37FD3C7F0AE) (Shutdown)
+    Phone: iPhone 7 Plus (8C2DF4AF-AD0A-4960-B04C-CA59E30AFD54) (Shutdown)
+673E9665-DCF1-4B42-986A-CF4429AA66D7 (active, disconnected)
+    Watch: Apple Watch Series 3 - 38mm (0E174E72-D036-40FC-A254-899A29773085) (Shutdown)
+    Phone: iPhone 8 (FB0908FB-89D5-46C0-9231-10C1B336FF04) (Shutdown)
+32A10EB6-D4E7-4A5B-A9A8-093BFBE7E3FE (active, disconnected)
+    Watch: Apple Watch Series 3 - 42mm (3A4B13EE-E668-4EEA-8383-7E84FFC11FD2) (Shutdown)
+    Phone: iPhone 8 Plus (58CAE2C0-E539-40AC-8288-42669BD85BE8) (Shutdown)
+travis_fold:end:announce[0KNo Gemfile found, skipping bundle install
+travis_time:start:2f2c9c20[0K$ set -o pipefail
+
+travis_time:end:2f2c9c20:start=1537606668506678000,finish=1537606668514774000,duration=8096000[0K
+[32;1mThe command "set -o pipefail" exited with 0.[0m
+travis_time:start:0c5fe117[0K$ travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON iOS" -destination "platform=iOS Simulator,name=iPhone 6" build-for-testing test | xcpretty
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON iOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mProcessing[0m Info-iOS.plist
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 08:57:58.421 xcodebuild[2105:5871] [MT] IDETestOperationsObserverDebug: (2B0A53EC-F4AB-4398-8E92-BE0646D0A624) Beginning test session SwiftyJSON iOS Tests-2B0A53EC-F4AB-4398-8E92-BE0646D0A624 at 2018-09-22 08:57:58.420 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7f7f64988a10> {
+		SimDevice: iPhone 6 (9F1CE63E-694B-44E0-8B0A-10E101A388F9, iOS 11.4, Booted)
+} (11.4 (15F79))
+2018-09-22 08:57:58.450 xcodebuild[2105:5873]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-C8FB85A2-A1CC-4C0B-B15B-1C1F17633F8C/SwiftyJSON iOS Tests-DC366A07-1E01-49F5-BC22-F3FADB0267E0/Session-SwiftyJSON iOS Tests-2018-09-22_085758-PFUPBn.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON iOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 08:58:11.692 xcodebuild[2105:5871] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-C8FB85A2-A1CC-4C0B-B15B-1C1F17633F8C/SwiftyJSON iOS Tests-DC366A07-1E01-49F5-BC22-F3FADB0267E0/Session-SwiftyJSON iOS Tests-2018-09-22_085758-PFUPBn.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-C8FB85A2-A1CC-4C0B-B15B-1C1F17633F8C/SwiftyJSON iOS Tests-DC366A07-1E01-49F5-BC22-F3FADB0267E0/Session-SwiftyJSON iOS Tests-2018-09-22_085758-PFUPBn.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON iOS -destination platform=iOS Simulator,name=iPhone 6 build-for-testing test" failed. Retrying, 2 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON iOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 08:58:22.254 xcodebuild[2186:6644] [MT] IDETestOperationsObserverDebug: (2B8FD2DA-4752-44B5-9655-AE08135B086C) Beginning test session SwiftyJSON iOS Tests-2B8FD2DA-4752-44B5-9655-AE08135B086C at 2018-09-22 08:58:22.253 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7f8da3145280> {
+		SimDevice: iPhone 6 (9F1CE63E-694B-44E0-8B0A-10E101A388F9, iOS 11.4, Booted)
+} (11.4 (15F79))
+2018-09-22 08:58:22.541 xcodebuild[2186:6824]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-B7016724-D7D3-48E5-9983-59EB1024C0CC/SwiftyJSON iOS Tests-43B8BBCE-8FFA-48B5-8506-2F3AE9798054/Session-SwiftyJSON iOS Tests-2018-09-22_085822-EmbMiu.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON iOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 08:58:29.819 xcodebuild[2186:6644] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-B7016724-D7D3-48E5-9983-59EB1024C0CC/SwiftyJSON iOS Tests-43B8BBCE-8FFA-48B5-8506-2F3AE9798054/Session-SwiftyJSON iOS Tests-2018-09-22_085822-EmbMiu.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-B7016724-D7D3-48E5-9983-59EB1024C0CC/SwiftyJSON iOS Tests-43B8BBCE-8FFA-48B5-8506-2F3AE9798054/Session-SwiftyJSON iOS Tests-2018-09-22_085822-EmbMiu.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON iOS -destination platform=iOS Simulator,name=iPhone 6 build-for-testing test" failed. Retrying, 3 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON iOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 08:58:44.073 xcodebuild[2273:7412] [MT] IDETestOperationsObserverDebug: (F634D868-6C59-4625-A923-80CFE3CECE23) Beginning test session SwiftyJSON iOS Tests-F634D868-6C59-4625-A923-80CFE3CECE23 at 2018-09-22 08:58:44.072 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7fec7d188970> {
+		SimDevice: iPhone 6 (9F1CE63E-694B-44E0-8B0A-10E101A388F9, iOS 11.4, Booted)
+} (11.4 (15F79))
+2018-09-22 08:58:44.077 xcodebuild[2273:7486]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-98A0B4F1-5383-47BC-9E76-62AF256579A9/SwiftyJSON iOS Tests-614EE5FB-623E-4095-9114-BBDAC8028BEE/Session-SwiftyJSON iOS Tests-2018-09-22_085844-wIfuet.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON iOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 08:58:51.205 xcodebuild[2273:7412] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-98A0B4F1-5383-47BC-9E76-62AF256579A9/SwiftyJSON iOS Tests-614EE5FB-623E-4095-9114-BBDAC8028BEE/Session-SwiftyJSON iOS Tests-2018-09-22_085844-wIfuet.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-98A0B4F1-5383-47BC-9E76-62AF256579A9/SwiftyJSON iOS Tests-614EE5FB-623E-4095-9114-BBDAC8028BEE/Session-SwiftyJSON iOS Tests-2018-09-22_085844-wIfuet.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON iOS -destination platform=iOS Simulator,name=iPhone 6 build-for-testing test" failed 3 times.[0m
+
+
+travis_time:end:0c5fe117:start=1537606668527930000,finish=1537606742480850000,duration=73952920000[0K
+[31;1mThe command "travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON iOS" -destination "platform=iOS Simulator,name=iPhone 6" build-for-testing test | xcpretty" exited with 65.[0m
+travis_time:start:10631700[0K$ travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON macOS" build-for-testing test | xcpretty
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mProcessing[0m Info-macOS.plist
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 08:59:11.905 xcodebuild[2359:8177]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-EFE6C2AF-A2AB-4A36-BB99-951318BCBC07/SwiftyJSON macOS Tests-CB6E21F1-8731-4537-87DA-5758E61E4436/Session-SwiftyJSON macOS Tests-2018-09-22_085911-ZW5a25.log
+2018-09-22 08:59:11.905 xcodebuild[2359:8126] [MT] IDETestOperationsObserverDebug: (DC9326D0-426F-438E-A0E9-8002EEF3D970) Beginning test session SwiftyJSON macOS Tests-DC9326D0-426F-438E-A0E9-8002EEF3D970 at 2018-09-22 08:59:11.905 with Xcode 9F2000 on target <DVTLocalComputer: 0x7f8f5dd17e70 (My Mac | x86_64)> (10.13.3 (17D102))
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 08:59:12.803 xcodebuild[2359:8126] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-EFE6C2AF-A2AB-4A36-BB99-951318BCBC07/SwiftyJSON macOS Tests-CB6E21F1-8731-4537-87DA-5758E61E4436/Session-SwiftyJSON macOS Tests-2018-09-22_085911-ZW5a25.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-EFE6C2AF-A2AB-4A36-BB99-951318BCBC07/SwiftyJSON macOS Tests-CB6E21F1-8731-4537-87DA-5758E61E4436/Session-SwiftyJSON macOS Tests-2018-09-22_085911-ZW5a25.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON macOS build-for-testing test" failed. Retrying, 2 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 08:59:16.502 xcodebuild[2375:8285]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-51517A0F-C743-4BC7-BB94-97785FED1B8C/SwiftyJSON macOS Tests-DFC54754-E733-4D47-A4F7-0AF8BA63BCF2/Session-SwiftyJSON macOS Tests-2018-09-22_085916-AbkIAf.log
+2018-09-22 08:59:16.502 xcodebuild[2375:8282] [MT] IDETestOperationsObserverDebug: (73437ACC-F8B3-4C3B-86DC-D79DA2801999) Beginning test session SwiftyJSON macOS Tests-73437ACC-F8B3-4C3B-86DC-D79DA2801999 at 2018-09-22 08:59:16.502 with Xcode 9F2000 on target <DVTLocalComputer: 0x7fa35b4a4050 (My Mac | x86_64)> (10.13.3 (17D102))
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 08:59:17.342 xcodebuild[2375:8282] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-51517A0F-C743-4BC7-BB94-97785FED1B8C/SwiftyJSON macOS Tests-DFC54754-E733-4D47-A4F7-0AF8BA63BCF2/Session-SwiftyJSON macOS Tests-2018-09-22_085916-AbkIAf.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-51517A0F-C743-4BC7-BB94-97785FED1B8C/SwiftyJSON macOS Tests-DFC54754-E733-4D47-A4F7-0AF8BA63BCF2/Session-SwiftyJSON macOS Tests-2018-09-22_085916-AbkIAf.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON macOS build-for-testing test" failed. Retrying, 3 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 08:59:21.005 xcodebuild[2390:8372]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-67196BCE-C235-4545-868A-3A66AC25E8BF/SwiftyJSON macOS Tests-FC64F20B-3759-4097-84B0-6451EB58E140/Session-SwiftyJSON macOS Tests-2018-09-22_085921-BTBlj8.log
+2018-09-22 08:59:21.005 xcodebuild[2390:8371] [MT] IDETestOperationsObserverDebug: (4E467FD1-A997-4274-BA17-339ED5844E4F) Beginning test session SwiftyJSON macOS Tests-4E467FD1-A997-4274-BA17-339ED5844E4F at 2018-09-22 08:59:21.005 with Xcode 9F2000 on target <DVTLocalComputer: 0x7fa6bce5b370 (My Mac | x86_64)> (10.13.3 (17D102))
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON macOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 08:59:21.826 xcodebuild[2390:8371] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-67196BCE-C235-4545-868A-3A66AC25E8BF/SwiftyJSON macOS Tests-FC64F20B-3759-4097-84B0-6451EB58E140/Session-SwiftyJSON macOS Tests-2018-09-22_085921-BTBlj8.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-67196BCE-C235-4545-868A-3A66AC25E8BF/SwiftyJSON macOS Tests-FC64F20B-3759-4097-84B0-6451EB58E140/Session-SwiftyJSON macOS Tests-2018-09-22_085921-BTBlj8.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON macOS build-for-testing test" failed 3 times.[0m
+
+
+travis_time:end:10631700:start=1537606742494795000,finish=1537606762855324000,duration=20360529000[0K
+[31;1mThe command "travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON macOS" build-for-testing test | xcpretty" exited with 65.[0m
+travis_time:start:07b7d52c[0K$ travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON tvOS" -destination "platform=tvOS Simulator,name=Apple TV" build-for-testing test | xcpretty
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mProcessing[0m Info-tvOS.plist
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 08:59:29.643 xcodebuild[2412:8458] [MT] IDETestOperationsObserverDebug: (38BFBA54-883B-47FB-9493-F9254918247C) Beginning test session SwiftyJSON tvOS Tests-38BFBA54-883B-47FB-9493-F9254918247C at 2018-09-22 08:59:29.643 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7ff8e025cf90> {
+		SimDevice: Apple TV (6592A7F6-6CE0-495A-ABFE-156C158E5565, tvOS 11.4, Booted)
+} (11.4 (15L576))
+2018-09-22 08:59:29.674 xcodebuild[2412:8491]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-7323278D-6464-4C79-B58A-347C201757F7/SwiftyJSON tvOS Tests-0B77CCD3-7D48-4685-9A08-112AED7684B7/Session-SwiftyJSON tvOS Tests-2018-09-22_085929-omADTR.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 08:59:39.021 xcodebuild[2412:8458] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-7323278D-6464-4C79-B58A-347C201757F7/SwiftyJSON tvOS Tests-0B77CCD3-7D48-4685-9A08-112AED7684B7/Session-SwiftyJSON tvOS Tests-2018-09-22_085929-omADTR.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-7323278D-6464-4C79-B58A-347C201757F7/SwiftyJSON tvOS Tests-0B77CCD3-7D48-4685-9A08-112AED7684B7/Session-SwiftyJSON tvOS Tests-2018-09-22_085929-omADTR.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON tvOS -destination platform=tvOS Simulator,name=Apple TV build-for-testing test" failed. Retrying, 2 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 08:59:48.558 xcodebuild[2477:9010] [MT] IDETestOperationsObserverDebug: (CD194322-BECC-4903-B6BF-B0278FBE81B2) Beginning test session SwiftyJSON tvOS Tests-CD194322-BECC-4903-B6BF-B0278FBE81B2 at 2018-09-22 08:59:48.558 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7feedc1e7660> {
+		SimDevice: Apple TV (6592A7F6-6CE0-495A-ABFE-156C158E5565, tvOS 11.4, Booted)
+} (11.4 (15L576))
+2018-09-22 08:59:48.563 xcodebuild[2477:9065]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-41C53518-47EF-46EA-BCBB-4AA920CA096E/SwiftyJSON tvOS Tests-8A02366D-E60C-4F8E-B8E4-A0DFA004B7BF/Session-SwiftyJSON tvOS Tests-2018-09-22_085948-0ROG4M.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 08:59:53.791 xcodebuild[2477:9010] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-41C53518-47EF-46EA-BCBB-4AA920CA096E/SwiftyJSON tvOS Tests-8A02366D-E60C-4F8E-B8E4-A0DFA004B7BF/Session-SwiftyJSON tvOS Tests-2018-09-22_085948-0ROG4M.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-41C53518-47EF-46EA-BCBB-4AA920CA096E/SwiftyJSON tvOS Tests-8A02366D-E60C-4F8E-B8E4-A0DFA004B7BF/Session-SwiftyJSON tvOS Tests-2018-09-22_085948-0ROG4M.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON tvOS -destination platform=tvOS Simulator,name=Apple TV build-for-testing test" failed. Retrying, 3 of 3.[0m
+
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+2018-09-22 09:00:08.165 xcodebuild[2538:9494] [MT] IDETestOperationsObserverDebug: (C756F28C-E3E9-43AD-923D-44AC83202260) Beginning test session SwiftyJSON tvOS Tests-C756F28C-E3E9-43AD-923D-44AC83202260 at 2018-09-22 09:00:08.164 with Xcode 9F2000 on target <DVTiPhoneSimulator: 0x7fb18e1e7ee0> {
+		SimDevice: Apple TV (6592A7F6-6CE0-495A-ABFE-156C158E5565, tvOS 11.4, Booted)
+} (11.4 (15L576))
+2018-09-22 09:00:08.167 xcodebuild[2538:9495]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-7FA68171-D63B-49CB-834A-C4A0951D3F84/SwiftyJSON tvOS Tests-9A3CEF2A-F37C-4C33-A43D-904AAAFC1FAC/Session-SwiftyJSON tvOS Tests-2018-09-22_090008-2BBq13.log
+[33m▸[0m [39;1mBuilding[0m SwiftyJSON/SwiftyJSON tvOS [Debug]
+[33m▸[0m [39;1mCheck Dependencies[0m
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+
+[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+
+@dynamicMemberLookup
+[36m ^[0m
+
+
+2018-09-22 09:00:13.280 xcodebuild[2538:9494] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-7FA68171-D63B-49CB-834A-C4A0951D3F84/SwiftyJSON tvOS Tests-9A3CEF2A-F37C-4C33-A43D-904AAAFC1FAC/Session-SwiftyJSON tvOS Tests-2018-09-22_090008-2BBq13.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-7FA68171-D63B-49CB-834A-C4A0951D3F84/SwiftyJSON tvOS Tests-9A3CEF2A-F37C-4C33-A43D-904AAAFC1FAC/Session-SwiftyJSON tvOS Tests-2018-09-22_090008-2BBq13.log}
+
+Testing failed:
+	Unknown attribute 'dynamicMemberLookup'
+** TEST FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+(2 failures)
+
+[31;1mThe command "xcodebuild -workspace SwiftyJSON.xcworkspace -scheme SwiftyJSON tvOS -destination platform=tvOS Simulator,name=Apple TV build-for-testing test" failed 3 times.[0m
+
+
+travis_time:end:07b7d52c:start=1537606762871018000,finish=1537606824448493000,duration=61577475000[0K
+[31;1mThe command "travis_retry xcodebuild -workspace SwiftyJSON.xcworkspace -scheme "SwiftyJSON tvOS" -destination "platform=tvOS Simulator,name=Apple TV" build-for-testing test | xcpretty" exited with 65.[0m
+
+Done. Your build exited with 1.

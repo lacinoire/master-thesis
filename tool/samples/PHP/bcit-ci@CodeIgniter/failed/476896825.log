@@ -1,0 +1,271 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: f3726cb0-fd90-4864-8193-2c29cbdcbfe9@1.production-1-worker-org-gce-s0dh
+version: v6.1.0 https://github.com/travis-ci/worker/tree/a6071dd64658ecf13ec3190bfb9e9ca3c8f3e10d
+instance: travis-job-c1ca0482-e3ac-4313-9da3-61af708c4197 precise-php-stable-alternative (via amqp)
+startup: 6.247575135s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: php
+Build group: stable
+Build dist: precise
+Build id: 476896825
+Job id: 476896826
+Runtime kernel version: 3.13.0-115-generic
+travis-build version: 21328df31
+[34m[1mBuild image provisioning date and time[0m
+Tue Apr 11 21:48:56 UTC 2017
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-115-generic
+[34m[1mCookbooks Version[0m
+cc4eb5e https://github.com/travis-ci/travis-cookbooks/tree/cc4eb5e
+[34m[1mGit version[0m
+git version 1.8.5.6
+[34m[1mbash version[0m
+GNU bash, version 4.2.25(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2011 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.2.6
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.7.4
+[34m[1mmysql --version[0m
+mysql  Ver 14.14 Distrib 5.5.54, for debian-linux-gnu (x86_64) using readline 6.2
+[34m[1mPre-installed PostgreSQL versions[0m
+9.1.24
+9.2.20
+9.3.16
+9.4.11
+9.5.6
+[34m[1mRedis version[0m
+redis-server 3.0.7
+[34m[1mriak version[0m
+2.0.2
+[34m[1mmemcached version[0m
+1.4.13
+[34m[1mMongoDB version[0m
+MongoDB 2.4.14
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 38.4.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_80, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "3.13.0-115-generic", arch: "amd64", family: "unix"
+[34m[1mphpenv versions[0m
+* system (set by /home/travis/.phpenv/version)
+  5.3.29
+  5.3.3
+  5.4
+  5.4.45
+  5.5.29
+  5.5.9
+  5.6.13
+travis_fold:end:system_info[0K
+
+travis_fold:start:git.checkout[0Ktravis_time:start:2c5d0efe[0K$ git clone --depth=50 --branch=feature/travis https://github.com/bcit-ci/CodeIgniter.git bcit-ci/CodeIgniter
+Cloning into 'bcit-ci/CodeIgniter'...
+remote: Enumerating objects: 1155, done.[K
+remote: Counting objects:   0% (1/1155)   [Kremote: Counting objects:   1% (12/1155)   [Kremote: Counting objects:   2% (24/1155)   [Kremote: Counting objects:   3% (35/1155)   [Kremote: Counting objects:   4% (47/1155)   [Kremote: Counting objects:   5% (58/1155)   [Kremote: Counting objects:   6% (70/1155)   [Kremote: Counting objects:   7% (81/1155)   [Kremote: Counting objects:   8% (93/1155)   [Kremote: Counting objects:   9% (104/1155)   [Kremote: Counting objects:  10% (116/1155)   [Kremote: Counting objects:  11% (128/1155)   [Kremote: Counting objects:  12% (139/1155)   [Kremote: Counting objects:  13% (151/1155)   [Kremote: Counting objects:  14% (162/1155)   [Kremote: Counting objects:  15% (174/1155)   [Kremote: Counting objects:  16% (185/1155)   [Kremote: Counting objects:  17% (197/1155)   [Kremote: Counting objects:  18% (208/1155)   [Kremote: Counting objects:  19% (220/1155)   [Kremote: Counting objects:  20% (231/1155)   [Kremote: Counting objects:  21% (243/1155)   [Kremote: Counting objects:  22% (255/1155)   [Kremote: Counting objects:  23% (266/1155)   [Kremote: Counting objects:  24% (278/1155)   [Kremote: Counting objects:  25% (289/1155)   [Kremote: Counting objects:  26% (301/1155)   [Kremote: Counting objects:  27% (312/1155)   [Kremote: Counting objects:  28% (324/1155)   [Kremote: Counting objects:  29% (335/1155)   [Kremote: Counting objects:  30% (347/1155)   [Kremote: Counting objects:  31% (359/1155)   [Kremote: Counting objects:  32% (370/1155)   [Kremote: Counting objects:  33% (382/1155)   [Kremote: Counting objects:  34% (393/1155)   [Kremote: Counting objects:  35% (405/1155)   [Kremote: Counting objects:  36% (416/1155)   [Kremote: Counting objects:  37% (428/1155)   [Kremote: Counting objects:  38% (439/1155)   [Kremote: Counting objects:  39% (451/1155)   [Kremote: Counting objects:  40% (462/1155)   [Kremote: Counting objects:  41% (474/1155)   [Kremote: Counting objects:  42% (486/1155)   [Kremote: Counting objects:  43% (497/1155)   [Kremote: Counting objects:  44% (509/1155)   [Kremote: Counting objects:  45% (520/1155)   [Kremote: Counting objects:  46% (532/1155)   [Kremote: Counting objects:  47% (543/1155)   [Kremote: Counting objects:  48% (555/1155)   [Kremote: Counting objects:  49% (566/1155)   [Kremote: Counting objects:  50% (578/1155)   [Kremote: Counting objects:  51% (590/1155)   [Kremote: Counting objects:  52% (601/1155)   [Kremote: Counting objects:  53% (613/1155)   [Kremote: Counting objects:  54% (624/1155)   [Kremote: Counting objects:  55% (636/1155)   [Kremote: Counting objects:  56% (647/1155)   [Kremote: Counting objects:  57% (659/1155)   [Kremote: Counting objects:  58% (670/1155)   [Kremote: Counting objects:  59% (682/1155)   [Kremote: Counting objects:  60% (693/1155)   [Kremote: Counting objects:  61% (705/1155)   [Kremote: Counting objects:  62% (717/1155)   [Kremote: Counting objects:  63% (728/1155)   [Kremote: Counting objects:  64% (740/1155)   [Kremote: Counting objects:  65% (751/1155)   [Kremote: Counting objects:  66% (763/1155)   [Kremote: Counting objects:  67% (774/1155)   [Kremote: Counting objects:  68% (786/1155)   [Kremote: Counting objects:  69% (797/1155)   [Kremote: Counting objects:  70% (809/1155)   [Kremote: Counting objects:  71% (821/1155)   [Kremote: Counting objects:  72% (832/1155)   [Kremote: Counting objects:  73% (844/1155)   [Kremote: Counting objects:  74% (855/1155)   [Kremote: Counting objects:  75% (867/1155)   [Kremote: Counting objects:  76% (878/1155)   [Kremote: Counting objects:  77% (890/1155)   [Kremote: Counting objects:  78% (901/1155)   [Kremote: Counting objects:  79% (913/1155)   [Kremote: Counting objects:  80% (924/1155)   [Kremote: Counting objects:  81% (936/1155)   [Kremote: Counting objects:  82% (948/1155)   [Kremote: Counting objects:  83% (959/1155)   [Kremote: Counting objects:  84% (971/1155)   [Kremote: Counting objects:  85% (982/1155)   [Kremote: Counting objects:  86% (994/1155)   [Kremote: Counting objects:  87% (1005/1155)   [Kremote: Counting objects:  88% (1017/1155)   [Kremote: Counting objects:  89% (1028/1155)   [Kremote: Counting objects:  90% (1040/1155)   [Kremote: Counting objects:  91% (1052/1155)   [Kremote: Counting objects:  92% (1063/1155)   [Kremote: Counting objects:  93% (1075/1155)   [Kremote: Counting objects:  94% (1086/1155)   [Kremote: Counting objects:  95% (1098/1155)   [Kremote: Counting objects:  96% (1109/1155)   [Kremote: Counting objects:  97% (1121/1155)   [Kremote: Counting objects:  98% (1132/1155)   [Kremote: Counting objects:  99% (1144/1155)   [Kremote: Counting objects: 100% (1155/1155)   [Kremote: Counting objects: 100% (1155/1155), done.[K
+remote: Compressing objects:   0% (1/724)   [Kremote: Compressing objects:   1% (8/724)   [Kremote: Compressing objects:   2% (15/724)   [Kremote: Compressing objects:   3% (22/724)   [Kremote: Compressing objects:   4% (29/724)   [Kremote: Compressing objects:   5% (37/724)   [Kremote: Compressing objects:   6% (44/724)   [Kremote: Compressing objects:   7% (51/724)   [Kremote: Compressing objects:   8% (58/724)   [Kremote: Compressing objects:   9% (66/724)   [Kremote: Compressing objects:  10% (73/724)   [Kremote: Compressing objects:  11% (80/724)   [Kremote: Compressing objects:  12% (87/724)   [Kremote: Compressing objects:  13% (95/724)   [Kremote: Compressing objects:  14% (102/724)   [Kremote: Compressing objects:  15% (109/724)   [Kremote: Compressing objects:  16% (116/724)   [Kremote: Compressing objects:  17% (124/724)   [Kremote: Compressing objects:  18% (131/724)   [Kremote: Compressing objects:  19% (138/724)   [Kremote: Compressing objects:  20% (145/724)   [Kremote: Compressing objects:  21% (153/724)   [Kremote: Compressing objects:  22% (160/724)   [Kremote: Compressing objects:  23% (167/724)   [Kremote: Compressing objects:  24% (174/724)   [Kremote: Compressing objects:  25% (181/724)   [Kremote: Compressing objects:  26% (189/724)   [Kremote: Compressing objects:  27% (196/724)   [Kremote: Compressing objects:  28% (203/724)   [Kremote: Compressing objects:  29% (210/724)   [Kremote: Compressing objects:  30% (218/724)   [Kremote: Compressing objects:  31% (225/724)   [Kremote: Compressing objects:  32% (232/724)   [Kremote: Compressing objects:  33% (239/724)   [Kremote: Compressing objects:  34% (247/724)   [Kremote: Compressing objects:  35% (254/724)   [Kremote: Compressing objects:  36% (261/724)   [Kremote: Compressing objects:  37% (268/724)   [Kremote: Compressing objects:  38% (276/724)   [Kremote: Compressing objects:  39% (283/724)   [Kremote: Compressing objects:  40% (290/724)   [Kremote: Compressing objects:  41% (297/724)   [Kremote: Compressing objects:  42% (305/724)   [Kremote: Compressing objects:  43% (312/724)   [Kremote: Compressing objects:  44% (319/724)   [Kremote: Compressing objects:  45% (326/724)   [Kremote: Compressing objects:  46% (334/724)   [Kremote: Compressing objects:  47% (341/724)   [Kremote: Compressing objects:  48% (348/724)   [Kremote: Compressing objects:  49% (355/724)   [Kremote: Compressing objects:  50% (362/724)   [Kremote: Compressing objects:  51% (370/724)   [Kremote: Compressing objects:  52% (377/724)   [Kremote: Compressing objects:  53% (384/724)   [Kremote: Compressing objects:  54% (391/724)   [Kremote: Compressing objects:  55% (399/724)   [Kremote: Compressing objects:  56% (406/724)   [Kremote: Compressing objects:  57% (413/724)   [Kremote: Compressing objects:  58% (420/724)   [Kremote: Compressing objects:  59% (428/724)   [Kremote: Compressing objects:  60% (435/724)   [Kremote: Compressing objects:  61% (442/724)   [Kremote: Compressing objects:  62% (449/724)   [Kremote: Compressing objects:  63% (457/724)   [Kremote: Compressing objects:  64% (464/724)   [Kremote: Compressing objects:  65% (471/724)   [Kremote: Compressing objects:  66% (478/724)   [Kremote: Compressing objects:  67% (486/724)   [Kremote: Compressing objects:  68% (493/724)   [Kremote: Compressing objects:  69% (500/724)   [Kremote: Compressing objects:  70% (507/724)   [Kremote: Compressing objects:  71% (515/724)   [Kremote: Compressing objects:  72% (522/724)   [Kremote: Compressing objects:  73% (529/724)   [Kremote: Compressing objects:  74% (536/724)   [Kremote: Compressing objects:  75% (543/724)   [Kremote: Compressing objects:  76% (551/724)   [Kremote: Compressing objects:  77% (558/724)   [Kremote: Compressing objects:  78% (565/724)   [Kremote: Compressing objects:  79% (572/724)   [Kremote: Compressing objects:  80% (580/724)   [Kremote: Compressing objects:  81% (587/724)   [Kremote: Compressing objects:  82% (594/724)   [Kremote: Compressing objects:  83% (601/724)   [Kremote: Compressing objects:  84% (609/724)   [Kremote: Compressing objects:  85% (616/724)   [Kremote: Compressing objects:  86% (623/724)   [Kremote: Compressing objects:  87% (630/724)   [Kremote: Compressing objects:  88% (638/724)   [Kremote: Compressing objects:  89% (645/724)   [Kremote: Compressing objects:  90% (652/724)   [Kremote: Compressing objects:  91% (659/724)   [Kremote: Compressing objects:  92% (667/724)   [Kremote: Compressing objects:  93% (674/724)   [Kremote: Compressing objects:  94% (681/724)   [Kremote: Compressing objects:  95% (688/724)   [Kremote: Compressing objects:  96% (696/724)   [Kremote: Compressing objects:  97% (703/724)   [Kremote: Compressing objects:  98% (710/724)   [Kremote: Compressing objects:  99% (717/724)   [Kremote: Compressing objects: 100% (724/724)   [Kremote: Compressing objects: 100% (724/724), done.[K
+Receiving objects:   0% (1/1155)   Receiving objects:   1% (12/1155)   Receiving objects:   2% (24/1155)   Receiving objects:   3% (35/1155)   Receiving objects:   4% (47/1155)   Receiving objects:   5% (58/1155)   Receiving objects:   6% (70/1155)   Receiving objects:   7% (81/1155)   Receiving objects:   8% (93/1155)   Receiving objects:   9% (104/1155)   Receiving objects:  10% (116/1155)   Receiving objects:  11% (128/1155)   Receiving objects:  12% (139/1155)   Receiving objects:  13% (151/1155)   Receiving objects:  14% (162/1155)   Receiving objects:  15% (174/1155)   Receiving objects:  16% (185/1155)   Receiving objects:  17% (197/1155)   Receiving objects:  18% (208/1155)   Receiving objects:  19% (220/1155)   Receiving objects:  20% (231/1155)   Receiving objects:  21% (243/1155)   Receiving objects:  22% (255/1155)   Receiving objects:  23% (266/1155)   Receiving objects:  24% (278/1155)   Receiving objects:  25% (289/1155)   Receiving objects:  26% (301/1155)   Receiving objects:  27% (312/1155)   Receiving objects:  28% (324/1155)   Receiving objects:  29% (335/1155)   Receiving objects:  30% (347/1155)   Receiving objects:  31% (359/1155)   Receiving objects:  32% (370/1155)   Receiving objects:  33% (382/1155)   Receiving objects:  34% (393/1155)   Receiving objects:  35% (405/1155)   Receiving objects:  36% (416/1155)   Receiving objects:  37% (428/1155)   Receiving objects:  38% (439/1155)   Receiving objects:  39% (451/1155)   Receiving objects:  40% (462/1155)   Receiving objects:  41% (474/1155)   Receiving objects:  42% (486/1155)   Receiving objects:  43% (497/1155)   Receiving objects:  44% (509/1155)   Receiving objects:  45% (520/1155)   Receiving objects:  46% (532/1155)   Receiving objects:  47% (543/1155)   Receiving objects:  48% (555/1155)   Receiving objects:  49% (566/1155)   Receiving objects:  50% (578/1155)   Receiving objects:  51% (590/1155)   Receiving objects:  52% (601/1155)   Receiving objects:  53% (613/1155)   Receiving objects:  54% (624/1155)   Receiving objects:  55% (636/1155)   Receiving objects:  56% (647/1155)   Receiving objects:  57% (659/1155)   Receiving objects:  58% (670/1155)   Receiving objects:  59% (682/1155)   Receiving objects:  60% (693/1155)   Receiving objects:  61% (705/1155)   Receiving objects:  62% (717/1155)   Receiving objects:  63% (728/1155)   Receiving objects:  64% (740/1155)   Receiving objects:  65% (751/1155)   Receiving objects:  66% (763/1155)   Receiving objects:  67% (774/1155)   Receiving objects:  68% (786/1155)   Receiving objects:  69% (797/1155)   Receiving objects:  70% (809/1155)   Receiving objects:  71% (821/1155)   Receiving objects:  72% (832/1155)   Receiving objects:  73% (844/1155)   Receiving objects:  74% (855/1155)   Receiving objects:  75% (867/1155)   Receiving objects:  76% (878/1155)   Receiving objects:  77% (890/1155)   Receiving objects:  78% (901/1155)   Receiving objects:  79% (913/1155)   Receiving objects:  80% (924/1155)   Receiving objects:  81% (936/1155)   Receiving objects:  82% (948/1155)   Receiving objects:  83% (959/1155)   Receiving objects:  84% (971/1155)   Receiving objects:  85% (982/1155)   remote: Total 1155 (delta 625), reused 642 (delta 423), pack-reused 0[K
+Receiving objects:  86% (994/1155)   Receiving objects:  87% (1005/1155)   Receiving objects:  88% (1017/1155)   Receiving objects:  89% (1028/1155)   Receiving objects:  90% (1040/1155)   Receiving objects:  91% (1052/1155)   Receiving objects:  92% (1063/1155)   Receiving objects:  93% (1075/1155)   Receiving objects:  94% (1086/1155)   Receiving objects:  95% (1098/1155)   Receiving objects:  96% (1109/1155)   Receiving objects:  97% (1121/1155)   Receiving objects:  98% (1132/1155)   Receiving objects:  99% (1144/1155)   Receiving objects: 100% (1155/1155)   Receiving objects: 100% (1155/1155), 1.32 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/625)   Resolving deltas:   1% (7/625)   Resolving deltas:   2% (14/625)   Resolving deltas:   3% (21/625)   Resolving deltas:   4% (26/625)   Resolving deltas:   5% (33/625)   Resolving deltas:   6% (38/625)   Resolving deltas:   7% (49/625)   Resolving deltas:   9% (62/625)   Resolving deltas:  10% (67/625)   Resolving deltas:  11% (70/625)   Resolving deltas:  12% (76/625)   Resolving deltas:  13% (82/625)   Resolving deltas:  14% (90/625)   Resolving deltas:  15% (95/625)   Resolving deltas:  16% (101/625)   Resolving deltas:  17% (108/625)   Resolving deltas:  18% (116/625)   Resolving deltas:  20% (126/625)   Resolving deltas:  21% (135/625)   Resolving deltas:  23% (149/625)   Resolving deltas:  24% (151/625)   Resolving deltas:  25% (160/625)   Resolving deltas:  39% (247/625)   Resolving deltas:  40% (250/625)   Resolving deltas:  43% (269/625)   Resolving deltas:  44% (281/625)   Resolving deltas:  45% (284/625)   Resolving deltas:  46% (290/625)   Resolving deltas:  47% (294/625)   Resolving deltas:  48% (301/625)   Resolving deltas:  49% (308/625)   Resolving deltas:  50% (313/625)   Resolving deltas:  52% (325/625)   Resolving deltas:  53% (335/625)   Resolving deltas:  54% (339/625)   Resolving deltas:  55% (348/625)   Resolving deltas:  56% (351/625)   Resolving deltas:  57% (357/625)   Resolving deltas:  58% (368/625)   Resolving deltas:  59% (373/625)   Resolving deltas:  61% (382/625)   Resolving deltas:  62% (388/625)   Resolving deltas:  63% (395/625)   Resolving deltas:  64% (401/625)   Resolving deltas:  65% (408/625)   Resolving deltas:  66% (416/625)   Resolving deltas:  67% (419/625)   Resolving deltas:  68% (427/625)   Resolving deltas:  69% (437/625)   Resolving deltas:  74% (464/625)   Resolving deltas:  78% (492/625)   Resolving deltas:  79% (495/625)   Resolving deltas:  80% (503/625)   Resolving deltas:  82% (514/625)   Resolving deltas:  83% (522/625)   Resolving deltas:  84% (526/625)   Resolving deltas:  85% (532/625)   Resolving deltas:  86% (538/625)   Resolving deltas:  89% (562/625)   Resolving deltas:  90% (564/625)   Resolving deltas:  91% (574/625)   Resolving deltas:  92% (578/625)   Resolving deltas:  93% (583/625)   Resolving deltas:  94% (590/625)   Resolving deltas:  95% (599/625)   Resolving deltas:  96% (600/625)   Resolving deltas: 100% (625/625)   Resolving deltas: 100% (625/625), done.
+Checking connectivity... done.
+travis_time:end:2c5d0efe:start=1546961277720856821,finish=1546961279418497643,duration=1697640822[0K$ cd bcit-ci/CodeIgniter
+$ git checkout -qf a17b88c13d564bb7a9b5bec37836658e267e5f4e
+travis_fold:end:git.checkout[0K
+
+[33;1mSetting environment variables from .travis.yml[0m
+$ export DB=mysqli
+
+travis_time:start:22bd4d99[0K$ phpenv global 7.3 2>/dev/null
+travis_time:end:22bd4d99:start=1546961279462762658,finish=1546961279484952158,duration=22189500[0K[33;1m7.3 is not pre-installed; installing[0m
+[33;1mDownloading archive: https://s3.amazonaws.com/travis-php-archives/binaries/ubuntu/12.04/x86_64/php-7.3.tar.bz2[0m
+travis_time:start:0287d331[0K$ curl -s -o archive.tar.bz2 $archive_url && tar xjf archive.tar.bz2 --directory /
+travis_time:end:0287d331:start=1546961279540773168,finish=1546961433591486231,duration=154050713063[0Ktravis_time:start:018288a8[0Ktravis_time:end:018288a8:start=1546961433595741511,finish=1546961433610331515,duration=14590004[0Ktravis_time:start:081a0af6[0K$ phpenv global 7.3
+travis_time:end:081a0af6:start=1546961433613497906,finish=1546961433631852223,duration=18354317[0Ktravis_time:start:040eb321[0K$ composer self-update
+[32mYou are already using composer version 1.8.0 (stable channel).[39m
+travis_time:end:040eb321:start=1546961433940562931,finish=1546961434276537192,duration=335974261[0K$ php --version
+PHP 7.3.0 (cli) (built: Jan  3 2019 03:39:59) ( ZTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.0-dev, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.3.0, Copyright (c) 1999-2018, by Zend Technologies
+    with Xdebug v2.7.0beta2-dev, Copyright (c) 2002-2018, by Derick Rethans
+$ composer --version
+[32mComposer[39m version [33m1.8.0[39m 2018-12-03 10:31:16
+[0m
+travis_fold:start:before_script.1[0Ktravis_time:start:1bd0f034[0K$ sh -c "composer install --dev --no-progress"
+[30;43mYou are using the deprecated option "dev". Dev packages are installed by default now.[39;49m
+[32mLoading composer repositories with package information[39m
+[32mUpdating dependencies (including require-dev)[39m
+[32mPackage operations: 27 installs, 0 updates, 0 removals[39m
+  - Installing [32mmikey179/vfsstream[39m ([33mv1.1.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msymfony/polyfill-ctype[39m ([33mv1.10.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msymfony/yaml[39m ([33mv4.2.2[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/version[39m ([33m2.0.1[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/resource-operations[39m ([33m1.0.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/recursion-context[39m ([33m2.0.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/object-enumerator[39m ([33m2.0.1[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/global-state[39m ([33m1.1.1[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/exporter[39m ([33m2.0.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/environment[39m ([33m2.0.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/diff[39m ([33m1.4.3[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/comparator[39m ([33m1.2.4[39m): Downloading ([33m100%[39m)
+  - Installing [32mdoctrine/instantiator[39m ([33m1.1.0[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-text-template[39m ([33m1.2.1[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/phpunit-mock-objects[39m ([33m3.4.4[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-timer[39m ([33m1.0.9[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-file-iterator[39m ([33m1.4.5[39m): Downloading ([33m100%[39m)
+  - Installing [32msebastian/code-unit-reverse-lookup[39m ([33m1.0.1[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-token-stream[39m ([33m2.0.2[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/php-code-coverage[39m ([33m4.0.8[39m): Downloading ([33m100%[39m)
+  - Installing [32mwebmozart/assert[39m ([33m1.4.0[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpdocumentor/reflection-common[39m ([33m1.0.1[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpdocumentor/type-resolver[39m ([33m0.4.0[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpdocumentor/reflection-docblock[39m ([33m4.3.0[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpspec/prophecy[39m ([33m1.8.0[39m): Downloading ([33m100%[39m)
+  - Installing [32mmyclabs/deep-copy[39m ([33m1.8.1[39m): Downloading ([33m100%[39m)
+  - Installing [32mphpunit/phpunit[39m ([33m5.7.27[39m): Downloading ([33m100%[39m)
+symfony/yaml suggests installing symfony/console (For validating YAML files using the lint command)
+sebastian/global-state suggests installing ext-uopz (*)
+phpunit/phpunit suggests installing phpunit/php-invoker (~1.1)
+[32mWriting lock file[39m
+[32mGenerating autoload files[39m
+travis_time:end:1bd0f034:start=1546961434489349455,finish=1546961462285011336,duration=27795661881[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:052b0870[0K$ sh -c "if [ '$DB' = 'pgsql' ] || [ '$DB' = 'pdo/pgsql' ]; then psql -c 'DROP DATABASE IF EXISTS ci_test;' -U postgres; fi"
+travis_time:end:052b0870:start=1546961462288452218,finish=1546961462291628486,duration=3176268[0Ktravis_fold:end:before_script.2[0Ktravis_fold:start:before_script.3[0Ktravis_time:start:2566edd4[0K$ sh -c "if [ '$DB' = 'pgsql' ] || [ '$DB' = 'pdo/pgsql' ]; then psql -c 'create database ci_test;' -U postgres; fi"
+travis_time:end:2566edd4:start=1546961462294977618,finish=1546961462297937846,duration=2960228[0Ktravis_fold:end:before_script.3[0Ktravis_fold:start:before_script.4[0Ktravis_time:start:1ce089b2[0K$ sh -c "if [ '$DB' = 'mysql' ] || [ '$DB' = 'mysqli' ] || [ '$DB' = 'pdo/mysql' ]; then mysql -e 'create database IF NOT EXISTS ci_test;'; fi"
+travis_time:end:1ce089b2:start=1546961462301098351,finish=1546961462308430445,duration=7332094[0Ktravis_fold:end:before_script.4[0Ktravis_time:start:00340698[0K$ php -d zend.enable_gc=0 -d date.timezone=UTC -d mbstring.func_overload=7 -d mbstring.internal_encoding=UTF-8 vendor/bin/phpunit --coverage-text --configuration tests/travis/$DB.phpunit.xml
+PHP Deprecated:  The mbstring.func_overload directive is deprecated in Unknown on line 0
+
+Deprecated: The mbstring.func_overload directive is deprecated in Unknown on line 0
+PHPUnit 5.7.27 by Sebastian Bergmann and contributors.
+
+...............................[36;1mS[0m[36;1mS[0m[36;1mS[0m.............................  63 / 412 ( 15%)
+......................................[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m.......... 126 / 412 ( 30%)
+...............................................[36;1mS[0m[36;1mS[0m.[36;1mS[0m............ 189 / 412 ( 45%)
+............[36;1mS[0m.[36;1mS[0m................................[41;37mF[0m............... 252 / 412 ( 61%)
+..........................................[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m....[36;1mS[0m[36;1mS[0m.[36;1mS[0m...... 315 / 412 ( 76%)
+............................................................... 378 / 412 ( 91%)
+.....[36;1mS[0m............................                              412 / 412 (100%)
+
+Time: 11.79 seconds, Memory: 44.00MB
+
+There was 1 failure:
+
+1) Inflector_helper_test::test_plural
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'tellies'
++'telly'
+
+/home/travis/build/bcit-ci/CodeIgniter/tests/codeigniter/helpers/inflector_helper_test.php:43
+/home/travis/build/bcit-ci/CodeIgniter/tests/mocks/ci_testcase.php:351
+
+[37;41mFAILURES![0m
+[37;41mTests: 454[0m[37;41m, Assertions: 1234[0m[37;41m, Failures: 1[0m[37;41m, Skipped: 34[0m[37;41m.[0m
+
+
+[1;37;40mCode Coverage Report:        [0m
+[1;37;40m  2019-01-08 15:31:02        [0m
+[1;37;40m                             [0m
+[1;37;40m Summary:                    [0m
+[37;41m  Classes: 10.71% (3/28)     [0m
+[37;41m  Methods: 42.53% (222/522)  [0m
+[30;43m  Lines:   56.87% (3385/5952)[0m
+
+@CI.DB.query::CI_DB_query_builder
+  [37;41mMethods:  32.50% (26/80)[0m   [30;43mLines:  61.97% (391/631)[0m
+@CI.DB::CI_DB_forge
+  [37;41mMethods:  12.00% ( 3/25)[0m   [37;41mLines:  34.48% ( 90/261)[0m
+@CI.DB::CI_DB_result
+  [37;41mMethods:   4.35% ( 1/23)[0m   [37;41mLines:  18.70% ( 23/123)[0m
+@CodeIgniter.Drivers::CI_DB_driver
+  [37;41mMethods:  15.79% ( 9/57)[0m   [37;41mLines:  32.26% (130/403)[0m
+@CodeIgniter.Drivers::CI_DB_mysqli_driver
+  [37;41mMethods:  26.32% ( 5/19)[0m   [37;41mLines:  25.23% ( 27/107)[0m
+@CodeIgniter.Drivers::CI_DB_mysqli_forge
+  [37;41mMethods:   0.00% ( 0/ 4)[0m   [37;41mLines:  47.06% ( 24/ 51)[0m
+@CodeIgniter.Drivers::CI_DB_mysqli_result
+  [37;41mMethods:  22.22% ( 2/ 9)[0m   [37;41mLines:  13.33% (  4/ 30)[0m
+@CodeIgniter.Libraries::CI_Benchmark
+  [30;42mMethods: 100.00% ( 3/ 3)[0m   [30;42mLines: 100.00% ( 10/ 10)[0m
+@CodeIgniter.Libraries::CI_Calendar
+  [30;43mMethods:  55.56% ( 5/ 9)[0m   [30;43mLines:  76.19% ( 96/126)[0m
+@CodeIgniter.Libraries::CI_Config
+  [30;43mMethods:  55.56% ( 5/ 9)[0m   [30;42mLines:  90.36% ( 75/ 83)[0m
+@CodeIgniter.Libraries::CI_Driver
+  [37;41mMethods:  50.00% ( 2/ 4)[0m   [30;42mLines:  90.91% ( 20/ 22)[0m
+@CodeIgniter.Libraries::CI_Driver_Library
+  [37;41mMethods:   0.00% ( 0/ 2)[0m   [30;42mLines:  95.45% ( 42/ 44)[0m
+@CodeIgniter.Libraries::CI_Encryption
+  [37;41mMethods:  21.05% ( 4/19)[0m   [30;43mLines:  61.63% (151/245)[0m
+@CodeIgniter.Libraries::CI_Form_validation
+  [30;43mMethods:  75.47% (40/53)[0m   [30;43mLines:  83.49% (273/327)[0m
+@CodeIgniter.Libraries::CI_Input
+  [30;43mMethods:  54.55% (12/22)[0m   [30;43mLines:  60.20% (121/201)[0m
+@CodeIgniter.Libraries::CI_Lang
+  [30;43mMethods:  66.67% ( 2/ 3)[0m   [30;43mLines:  82.61% ( 38/ 46)[0m
+@CodeIgniter.Libraries::CI_Loader
+  [30;43mMethods:  62.07% (18/29)[0m   [30;43mLines:  79.09% (295/373)[0m
+@CodeIgniter.Libraries::CI_Log
+  [37;41mMethods:  20.00% ( 1/ 5)[0m   [37;41mLines:  29.31% ( 17/ 58)[0m
+@CodeIgniter.Libraries::CI_Model
+  [30;42mMethods: 100.00% ( 1/ 1)[0m   [30;42mLines: 100.00% (  1/  1)[0m
+@CodeIgniter.Libraries::CI_Output
+  [37;41mMethods:  21.05% ( 4/19)[0m   [37;41mLines:  17.56% ( 36/205)[0m
+@CodeIgniter.Libraries::CI_Parser
+  [30;43mMethods:  57.14% ( 4/ 7)[0m   [30;43mLines:  84.09% ( 37/ 44)[0m
+@CodeIgniter.Libraries::CI_Security
+  [30;43mMethods:  52.38% (11/21)[0m   [30;43mLines:  81.28% (178/219)[0m
+@CodeIgniter.Libraries::CI_Table
+  [30;43mMethods:  85.71% (12/14)[0m   [30;42mLines:  92.38% ( 97/105)[0m
+@CodeIgniter.Libraries::CI_Typography
+  [30;42mMethods: 100.00% ( 5/ 5)[0m   [30;42mLines: 100.00% ( 73/ 73)[0m
+@CodeIgniter.Libraries::CI_URI
+  [30;43mMethods:  59.09% (13/22)[0m   [37;41mLines:  36.22% ( 46/127)[0m
+@CodeIgniter.Libraries::CI_Upload
+  [30;43mMethods:  53.57% (15/28)[0m   [37;41mLines:  49.35% (153/310)[0m
+@CodeIgniter.Libraries::CI_User_agent
+  [30;43mMethods:  72.00% (18/25)[0m   [30;43mLines:  88.80% (111/125)[0m
+@CodeIgniter.Libraries::CI_Utf8
+  [37;41mMethods:  20.00% ( 1/ 5)[0m   [30;43mLines:  60.00% ( 12/ 20)[0m
+travis_time:end:00340698:start=1546961462311839005,finish=1546961475970663673,duration=13658824668[0K[31;1mThe command "php -d zend.enable_gc=0 -d date.timezone=UTC -d mbstring.func_overload=7 -d mbstring.internal_encoding=UTF-8 vendor/bin/phpunit --coverage-text --configuration tests/travis/$DB.phpunit.xml" exited with 1.[0m
+
+
+
+Done. Your build exited with 1.

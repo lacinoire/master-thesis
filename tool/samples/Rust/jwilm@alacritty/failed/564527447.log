@@ -1,0 +1,468 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 7f52b660-3c41-4e4f-a142-9a4a2dafa917@1.worker-org-859d75c9bb-8rdh9.gce-production-2
+version: v6.2.1 https://github.com/travis-ci/worker/tree/4e3246c044eb4915c2378ffacd0b3d3ed0136bba
+instance: travis-job-31b534e2-13f6-4064-8da9-088185ec5f98 travis-ci-onion-1803-containers-1542208204-ad01dca (via amqp)
+startup: 7.115516556s
+travis_fold:end:worker_info[0KSecret environment variables are not obfuscated on Windows, please refer to our documentation: https://docs.travis-ci.com/user/best-practices-security[0m
+
+travis_fold:start:git.checkout[0Ktravis_time:start:1c516dc1[0K$ git clone --depth=1 https://github.com/jwilm/alacritty.git jwilm/alacritty
+Cloning into 'jwilm/alacritty'...
+travis_time:end:1c516dc1:start=1564280602886968600,finish=1564280607040292300,duration=4153323700[0K$ cd jwilm/alacritty
+travis_time:start:1284a68b[0K$ git fetch origin +refs/pull/2681/merge:
+travis_time:end:1284a68b:start=1564280607098447700,finish=1564280608145287500,duration=1046839800[0K$ git checkout -qf FETCH_HEAD
+From https://github.com/jwilm/alacritty
+ * branch            refs/pull/2681/merge -> FETCH_HEAD
+travis_fold:end:git.checkout[0K
+travis_fold:start:rustup-install[0K[33;1mInstalling Rust[0m
+travis_time:start:0b8b3bb2[0K$ curl -sSf https://build.travis-ci.org/files/rustup-init.sh | sh -s -- --default-toolchain=$TRAVIS_RUST_VERSION -y
+info: downloading installer
+info: syncing channel updates for '1.32.0-x86_64-pc-windows-msvc'
+info: latest update on 2019-01-17, rust version 1.32.0 (9fda7c223 2019-01-16)
+info: downloading component 'rustc'
+info: downloading component 'rust-std'
+info: downloading component 'cargo'
+info: downloading component 'rust-docs'
+info: installing component 'rustc'
+info: installing component 'rust-std'
+info: installing component 'cargo'
+info: installing component 'rust-docs'
+Closing 15083 deferred file handles
+
+  1.32.0 installed - rustc 1.32.0 (9fda7c223 2019-01-16)
+
+
+Rust is installed now. Great!
+
+To get started you need Cargo's bin directory (%USERPROFILE%\.cargo\bin) in 
+your PATH environment variable. Future applications will automatically have the
+correct environment, but you may need to restart your current shell.
+travis_time:end:0b8b3bb2:start=1564280611242870400,finish=1564280759860352300,duration=148617481900[0K$ export PATH=${TRAVIS_HOME}/.cargo/bin:$PATH
+travis_fold:end:rustup-install[0K$ rustc --version
+rustc 1.32.0 (9fda7c223 2019-01-16)
+$ rustup --version
+rustup 1.18.3 (435397f48 2019-05-22)
+$ cargo --version
+cargo 1.32.0 (8610973aa 2019-01-02)
+
+travis_fold:start:install[0Ktravis_time:start:074a5e0b[0K$ ci/install.sh
+travis_time:end:074a5e0b:start=1564280760282221100,finish=1564280760378139400,duration=95918300[0Ktravis_fold:end:install[0Ktravis_time:start:3246be1a[0K$ ci/script.sh
+info: default toolchain set to '1.32.0'
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded log v0.4.7
+  Downloaded libc v0.2.60
+  Downloaded rfind_url v0.4.0
+  Downloaded mio-anonymous-pipes v0.1.0
+  Downloaded mio-extras v2.0.5
+  Downloaded mio v0.6.19
+  Downloaded clipboard-win v2.2.0
+  Downloaded url v1.7.2
+  Downloaded foreign-types v0.4.0
+  Downloaded rustc_tools_util v0.2.0
+  Downloaded gl_generator v0.11.0
+  Downloaded embed-resource v1.2.1
+  Downloaded serde v1.0.97
+  Downloaded clap v2.33.0
+  Downloaded serde_yaml v0.8.9
+  Downloaded dirs v1.0.5
+  Downloaded fnv v1.0.6
+  Downloaded winapi v0.3.7
+  Downloaded base64 v0.10.1
+  Downloaded notify v4.0.12
+  Downloaded serde_derive v1.0.97
+  Downloaded miow v0.3.3
+  Downloaded bitflags v1.1.0
+  Downloaded widestring v0.4.0
+  Downloaded mio-named-pipes v0.1.6
+  Downloaded glutin v0.21.0
+  Downloaded dunce v1.0.0
+  Downloaded parking_lot v0.7.1
+  Downloaded terminfo v0.6.1
+  Downloaded unicode-width v0.1.5
+  Downloaded image v0.21.2
+  Downloaded zip v0.5.2
+  Downloaded euclid v0.19.9
+  Downloaded crossbeam-channel v0.3.9
+  Downloaded vte v0.3.3
+  Downloaded time v0.1.42
+  Downloaded static_assertions v0.3.3
+  Downloaded errno v0.2.4
+  Downloaded env_logger v0.6.2
+  Downloaded http_req v0.5.2
+  Downloaded winpty-sys v0.4.3
+  Downloaded dwrote v0.9.0
+  Downloaded named_pipe v0.3.0
+  Downloaded crossbeam-utils v0.6.6
+  Downloaded atty v0.2.13
+  Downloaded humantime v1.2.0
+  Downloaded regex v1.2.0
+  Downloaded miow v0.2.1
+  Downloaded socket2 v0.3.10
+  Downloaded phf v0.7.24
+  Downloaded nom v4.2.3
+  Downloaded walkdir v2.2.9
+  Downloaded libloading v0.5.2
+  Downloaded parking_lot_core v0.4.0
+  Downloaded lazycell v1.2.1
+  Downloaded scoped_threadpool v0.1.9
+  Downloaded num-iter v0.1.39
+  Downloaded syn v0.15.42
+  Downloaded lzw v0.10.0
+  Downloaded spsc-buffer v0.1.1
+  Downloaded cfg-if v0.1.9
+  Downloaded tempfile v3.1.0
+  Downloaded vswhom v0.1.0
+  Downloaded winit v0.19.1
+  Downloaded euclid_macros v0.1.0
+  Downloaded serde_json v1.0.40
+  Downloaded khronos_api v3.1.0
+  Downloaded vec_map v0.8.1
+  Downloaded kernel32-sys v0.2.2
+  Downloaded phf_codegen v0.7.24
+  Downloaded proc-macro2 v0.4.30
+  Downloaded utf8parse v0.1.1
+  Downloaded yaml-rust v0.4.3
+  Downloaded jpeg-decoder v0.1.15
+  Downloaded num-rational v0.2.2
+  Downloaded num-traits v0.2.8
+  Downloaded linked-hash-map v0.5.2
+  Downloaded podio v0.1.6
+  Downloaded unicase v2.4.0
+  Downloaded winreg v0.5.1
+  Downloaded foreign-types-macros v0.1.0
+  Downloaded idna v0.1.5
+  Downloaded xml-rs v0.8.0
+  Downloaded matches v0.1.8
+  Downloaded termcolor v1.0.5
+  Downloaded percent-encoding v1.0.1
+  Downloaded textwrap v0.11.0
+  Downloaded slab v0.4.2
+  Downloaded filetime v0.2.5
+  Downloaded foreign-types-shared v0.2.0
+  Downloaded lock_api v0.1.5
+  Downloaded quote v0.6.13
+  Downloaded byteorder v1.3.2
+  Downloaded glutin_egl_sys v0.1.3
+  Downloaded iovec v0.1.2
+  Downloaded glutin_wgl_sys v0.1.3
+  Downloaded png v0.14.1
+  Downloaded gif v0.10.2
+  Downloaded dtoa v0.4.4
+  Downloaded winapi v0.2.8
+  Downloaded bindgen v0.33.2
+  Downloaded cc v1.0.38
+  Downloaded crc32fast v1.2.0
+  Downloaded native-tls v0.2.3
+  Downloaded libflate v0.1.25
+  Downloaded strsim v0.8.0
+  Downloaded lazy_static v1.3.0
+  Downloaded net2 v0.2.33
+  Downloaded itoa v0.4.4
+  Downloaded utf8-ranges v1.0.3
+  Downloaded memchr v2.2.1
+  Downloaded quick-error v1.2.2
+  Downloaded phf_shared v0.7.24
+  Downloaded same-file v1.0.5
+  Downloaded winapi-util v0.1.2
+  Downloaded rustc_version v0.2.3
+  Downloaded inflate v0.4.5
+  Downloaded num-integer v0.1.41
+  Downloaded which v1.0.5
+  Downloaded env_logger v0.5.13
+  Downloaded deflate v0.7.20
+  Downloaded vswhom-sys v0.1.0
+  Downloaded unicode-normalization v0.1.8
+  Downloaded regex v0.2.11
+  Downloaded wincolor v1.0.1
+  Downloaded phf_generator v0.7.24
+  Downloaded owning_ref v0.4.0
+  Downloaded backtrace v0.3.33
+  Downloaded cexpr v0.2.3
+  Downloaded adler32 v1.0.3
+  Downloaded rand v0.7.0
+  Downloaded ws2_32-sys v0.2.1
+  Downloaded quote v0.3.15
+  Downloaded scopeguard v0.3.3
+  Downloaded color_quant v1.0.1
+  Downloaded unicode-xid v0.1.0
+  Downloaded clang-sys v0.22.0
+  Downloaded take_mut v0.2.2
+  Downloaded rle-decode-fast v1.0.1
+  Downloaded aho-corasick v0.7.4
+  Downloaded peeking_take_while v0.1.2
+  Downloaded schannel v0.1.15
+  Downloaded remove_dir_all v0.5.2
+  Downloaded unicode-bidi v0.3.4
+  Downloaded autocfg v0.1.5
+  Downloaded rayon v1.1.0
+  Downloaded rand v0.6.5
+  Downloaded winapi-build v0.1.1
+  Downloaded thread_local v0.3.6
+  Downloaded smallvec v0.6.10
+  Downloaded version_check v0.1.5
+  Downloaded regex-syntax v0.6.10
+  Downloaded ryu v1.0.0
+  Downloaded siphasher v0.2.3
+  Downloaded rand_os v0.1.3
+  Downloaded rand_xorshift v0.1.1
+  Downloaded rand_hc v0.1.0
+  Downloaded either v1.5.2
+  Downloaded rustc-demangle v0.1.15
+  Downloaded aho-corasick v0.6.10
+  Downloaded rand_chacha v0.2.1
+  Downloaded stable_deref_trait v1.1.1
+  Downloaded backtrace-sys v0.1.31
+  Downloaded rayon-core v1.5.0
+  Downloaded getrandom v0.1.6
+  Downloaded nom v3.2.1
+  Downloaded rand_isaac v0.1.1
+  Downloaded rand_core v0.5.0
+  Downloaded semver v0.9.0
+  Downloaded glob v0.2.11
+  Downloaded rand_pcg v0.1.2
+  Downloaded regex-syntax v0.5.6
+  Downloaded rand_core v0.4.0
+  Downloaded crossbeam-deque v0.6.3
+  Downloaded rand_chacha v0.1.1
+  Downloaded rand_jitter v0.1.4
+  Downloaded spin v0.5.0
+  Downloaded rand_core v0.3.1
+  Downloaded crossbeam-epoch v0.7.2
+  Downloaded num_cpus v1.10.1
+  Downloaded c2-chacha v0.2.2
+  Downloaded memchr v1.0.2
+  Downloaded crossbeam-queue v0.1.2
+  Downloaded semver-parser v0.7.0
+  Downloaded ucd-util v0.1.5
+  Downloaded arrayvec v0.4.11
+  Downloaded ppv-lite86 v0.2.5
+  Downloaded memoffset v0.5.1
+  Downloaded scopeguard v1.0.0
+  Downloaded nodrop v0.1.13
+  Downloaded bzip2 v0.3.3
+  Downloaded tiff v0.2.2
+  Downloaded bzip2-sys v0.1.7
+  Downloaded num-derive v0.2.5
+   Compiling semver-parser v0.7.0
+   Compiling arrayvec v0.4.11
+   Compiling spin v0.5.0
+   Compiling cfg-if v0.1.9
+   Compiling libc v0.2.60
+   Compiling nodrop v0.1.13
+   Compiling scopeguard v1.0.0
+   Compiling rayon-core v1.5.0
+   Compiling either v1.5.2
+   Compiling winapi v0.3.7
+   Compiling memchr v2.2.1
+   Compiling proc-macro2 v0.4.30
+   Compiling autocfg v0.1.5
+   Compiling rand_core v0.4.0
+   Compiling unicode-xid v0.1.0
+   Compiling log v0.4.7
+   Compiling bitflags v1.1.0
+   Compiling ucd-util v0.1.5
+   Compiling glob v0.2.11
+   Compiling unicode-width v0.1.5
+   Compiling syn v0.15.42
+   Compiling byteorder v1.3.2
+   Compiling version_check v0.1.5
+   Compiling utf8-ranges v1.0.3
+   Compiling khronos_api v3.1.0
+   Compiling regex v0.2.11
+   Compiling crc32fast v1.2.0
+   Compiling quick-error v1.2.2
+   Compiling ppv-lite86 v0.2.5
+   Compiling getrandom v0.1.6
+   Compiling bindgen v0.33.2
+   Compiling siphasher v0.2.3
+   Compiling native-tls v0.2.3
+   Compiling winapi-build v0.1.1
+   Compiling num-derive v0.2.5
+   Compiling strsim v0.8.0
+   Compiling vec_map v0.8.1
+   Compiling adler32 v1.0.3
+   Compiling peeking_take_while v0.1.2
+   Compiling take_mut v0.2.2
+   Compiling xml-rs v0.8.0
+   Compiling rle-decode-fast v1.0.1
+   Compiling quote v0.3.15
+   Compiling winapi v0.2.8
+   Compiling lzw v0.10.0
+   Compiling stable_deref_trait v1.1.1
+   Compiling serde v1.0.97
+   Compiling podio v0.1.6
+   Compiling color_quant v1.0.1
+   Compiling scoped_threadpool v0.1.9
+   Compiling matches v0.1.8
+   Compiling smallvec v0.6.10
+   Compiling rustc-demangle v0.1.15
+   Compiling scopeguard v0.3.3
+   Compiling slab v0.4.2
+   Compiling linked-hash-map v0.5.2
+   Compiling foreign-types-shared v0.2.0
+   Compiling ryu v1.0.0
+   Compiling percent-encoding v1.0.1
+   Compiling rustc_tools_util v0.2.0
+   Compiling utf8parse v0.1.1
+   Compiling spsc-buffer v0.1.1
+   Compiling fnv v1.0.6
+   Compiling lazycell v1.2.1
+   Compiling dtoa v0.4.4
+   Compiling widestring v0.4.0
+   Compiling dunce v1.0.0
+   Compiling static_assertions v0.3.3
+   Compiling itoa v0.4.4
+   Compiling rfind_url v0.4.0
+   Compiling semver v0.9.0
+   Compiling lazy_static v1.3.0
+   Compiling filetime v0.2.5
+   Compiling num-traits v0.2.8
+   Compiling rand_pcg v0.1.2
+   Compiling rand_chacha v0.1.1
+   Compiling num-integer v0.1.41
+   Compiling rand v0.6.5
+   Compiling num-iter v0.1.39
+   Compiling num-rational v0.2.2
+   Compiling rand_core v0.3.1
+   Compiling regex-syntax v0.6.10
+   Compiling regex-syntax v0.5.6
+   Compiling textwrap v0.11.0
+   Compiling clang-sys v0.22.0
+   Compiling unicase v2.4.0
+   Compiling nom v4.2.3
+   Compiling humantime v1.2.0
+   Compiling rand_core v0.5.0
+   Compiling phf_shared v0.7.24
+   Compiling kernel32-sys v0.2.2
+   Compiling ws2_32-sys v0.2.1
+   Compiling inflate v0.4.5
+   Compiling owning_ref v0.4.0
+   Compiling gif v0.10.2
+   Compiling unicode-bidi v0.3.4
+   Compiling unicode-normalization v0.1.8
+   Compiling yaml-rust v0.4.3
+   Compiling alacritty v0.3.3 (C:\Users\travis\build\jwilm\alacritty\alacritty)
+   Compiling vte v0.3.3
+   Compiling iovec v0.1.2
+   Compiling crossbeam-utils v0.6.6
+   Compiling thread_local v0.3.6
+   Compiling c2-chacha v0.2.2
+   Compiling rustc_version v0.2.3
+   Compiling rand_hc v0.1.0
+   Compiling rand_isaac v0.1.1
+   Compiling rand_xorshift v0.1.1
+   Compiling phf v0.7.24
+   Compiling lock_api v0.1.5
+   Compiling crossbeam-queue v0.1.2
+   Compiling crossbeam-channel v0.3.9
+   Compiling rand_chacha v0.2.1
+   Compiling memoffset v0.5.1
+   Compiling parking_lot_core v0.4.0
+   Compiling num_cpus v1.10.1
+   Compiling memchr v1.0.2
+   Compiling which v1.0.5
+   Compiling idna v0.1.5
+   Compiling winapi-util v0.1.2
+   Compiling rand_os v0.1.3
+   Compiling rand_jitter v0.1.4
+   Compiling atty v0.2.13
+   Compiling schannel v0.1.15
+   Compiling winreg v0.5.1
+   Compiling remove_dir_all v0.5.2
+   Compiling time v0.1.42
+   Compiling net2 v0.2.33
+   Compiling socket2 v0.3.10
+   Compiling clipboard-win v2.2.0
+   Compiling errno v0.2.4
+   Compiling dirs v1.0.5
+   Compiling aho-corasick v0.7.4
+   Compiling aho-corasick v0.6.10
+   Compiling quote v0.6.13
+   Compiling deflate v0.7.20
+   Compiling base64 v0.10.1
+   Compiling gl_generator v0.11.0
+   Compiling libflate v0.1.25
+   Compiling rand v0.7.0
+   Compiling nom v3.2.1
+   Compiling url v1.7.2
+   Compiling wincolor v1.0.1
+   Compiling same-file v1.0.5
+   Compiling serde_yaml v0.8.9
+   Compiling serde_json v1.0.40
+   Compiling clap v2.33.0
+   Compiling miow v0.3.3
+   Compiling copypasta v0.6.0 (C:\Users\travis\build\jwilm\alacritty\copypasta)
+   Compiling regex v1.2.0
+   Compiling named_pipe v0.3.0
+   Compiling miow v0.2.1
+   Compiling glutin_egl_sys v0.1.3
+   Compiling glutin_wgl_sys v0.1.3
+   Compiling alacritty_terminal v0.3.3 (C:\Users\travis\build\jwilm\alacritty\alacritty_terminal)
+   Compiling tempfile v3.1.0
+   Compiling cexpr v0.2.3
+   Compiling termcolor v1.0.5
+   Compiling walkdir v2.2.9
+   Compiling http_req v0.5.2
+   Compiling phf_generator v0.7.24
+   Compiling euclid_macros v0.1.0
+   Compiling serde_derive v1.0.97
+   Compiling foreign-types-macros v0.1.0
+   Compiling mio v0.6.19
+   Compiling crossbeam-epoch v0.7.2
+   Compiling env_logger v0.5.13
+   Compiling env_logger v0.6.2
+   Compiling notify v4.0.12
+   Compiling phf_codegen v0.7.24
+   Compiling png v0.14.1
+   Compiling parking_lot v0.7.1
+   Compiling euclid v0.19.9
+   Compiling tiff v0.2.2
+   Compiling foreign-types v0.4.0
+   Compiling mio-named-pipes v0.1.6
+   Compiling mio-extras v2.0.5
+   Compiling mio-anonymous-pipes v0.1.0
+   Compiling dwrote v0.9.0
+   Compiling crossbeam-deque v0.6.3
+   Compiling terminfo v0.6.1
+   Compiling font v0.1.0 (C:\Users\travis\build\jwilm\alacritty\font)
+   Compiling rayon v1.1.0
+   Compiling cc v1.0.38
+   Compiling jpeg-decoder v0.1.15
+   Compiling libloading v0.5.2
+   Compiling bzip2-sys v0.1.7
+   Compiling vswhom-sys v0.1.0
+   Compiling backtrace-sys v0.1.31
+   Compiling image v0.21.2
+   Compiling bzip2 v0.3.3
+   Compiling vswhom v0.1.0
+   Compiling backtrace v0.3.33
+error[E0658]: `cfg(target_vendor)` is experimental and subject to change (see issue #29718)
+   --> C:\Users\travis\.cargo\registry\src\github.com-1ecc6299db9ec823\backtrace-0.3.33\src\lib.rs:147:45
+    |
+147 | #[cfg(all(windows, feature = "dbghelp", not(target_vendor = "uwp")))]
+    |                                             ^^^^^^^^^^^^^^^^^^^^^
+
+error[E0658]: `cfg(target_vendor)` is experimental and subject to change (see issue #29718)
+   --> C:\Users\travis\.cargo\registry\src\github.com-1ecc6299db9ec823\backtrace-0.3.33\src\backtrace\mod.rs:140:59
+    |
+140 |     } else if #[cfg(all(windows, feature = "dbghelp", not(target_vendor = "uwp")))] {
+    |                                                           ^^^^^^^^^^^^^^^^^^^^^
+
+error[E0658]: `cfg(target_vendor)` is experimental and subject to change (see issue #29718)
+   --> C:\Users\travis\.cargo\registry\src\github.com-1ecc6299db9ec823\backtrace-0.3.33\src\symbolize\mod.rs:466:52
+    |
+466 |                         any(unix, all(windows, not(target_vendor = "uwp"), target_env = "gnu")),
+    |                                                    ^^^^^^^^^^^^^^^^^^^^^
+
+   Compiling zip v0.5.2
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0658`.
+error: Could not compile `backtrace`.
+warning: build failed, waiting for other jobs to finish...
+travis_time:end:3246be1a:start=1564280760452877000,finish=1564281345029575300,duration=584576698300[0K[31;1mThe command "ci/script.sh" exited with 101.[0m
+
+error: build failed
+
+
+Done. Your build exited with 1.

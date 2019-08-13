@@ -1,0 +1,479 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 47c47452-b4f8-4a91-add4-3874c56fa190@1.production-2-worker-org-gce-0x33
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: travis-job-134ff45a-f89a-4ee3-9913-a73d97c654a2 precise-php-stable-alternative (via amqp)
+startup: 8.727412566s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: php
+Build group: stable
+Build dist: precise
+Build id: 551282890
+Job id: 551282891
+Runtime kernel version: 3.13.0-115-generic
+travis-build version: ea3f37d58
+[34m[1mBuild image provisioning date and time[0m
+Tue Apr 11 21:48:56 UTC 2017
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-115-generic
+[34m[1mCookbooks Version[0m
+cc4eb5e https://github.com/travis-ci/travis-cookbooks/tree/cc4eb5e
+[34m[1mGit version[0m
+git version 1.8.5.6
+[34m[1mbash version[0m
+GNU bash, version 4.2.25(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2011 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.2.6
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.7.4
+[34m[1mmysql --version[0m
+mysql  Ver 14.14 Distrib 5.5.54, for debian-linux-gnu (x86_64) using readline 6.2
+[34m[1mPre-installed PostgreSQL versions[0m
+9.1.24
+9.2.20
+9.3.16
+9.4.11
+9.5.6
+[34m[1mRedis version[0m
+redis-server 3.0.7
+[34m[1mriak version[0m
+2.0.2
+[34m[1mmemcached version[0m
+1.4.13
+[34m[1mMongoDB version[0m
+MongoDB 2.4.14
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 38.4.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_80, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "3.13.0-115-generic", arch: "amd64", family: "unix"
+[34m[1mphpenv versions[0m
+* system (set by /home/travis/.phpenv/version)
+  5.3.29
+  5.3.3
+  5.4
+  5.4.45
+  5.5.29
+  5.5.9
+  5.6.13
+travis_fold:end:system_info[0K
+travis_fold:start:docker_mtu[0Ktee: /etc/docker/daemon.json: No such file or directory
+docker: unrecognized service
+travis_fold:end:docker_mtu[0Ktravis_fold:start:resolvconf[0Kresolvconf stop/waiting
+resolvconf start/running
+travis_fold:end:resolvconf[0Ktravis_fold:start:apt[0K[33;1mInstalling APT Packages[0m
+travis_time:start:240e05ac[0K$ travis_apt_get_update
+travis_time:end:240e05ac:start=1561637598775443565,finish=1561637607745401544,duration=8969957979[0Ktravis_time:start:0b952dc5[0K$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install parallel
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  parallel
+0 upgraded, 1 newly installed, 0 to remove and 35 not upgraded.
+Need to get 161 kB of archives.
+After this operation, 540 kB of additional disk space will be used.
+Get:1 http://us-central1.gce.archive.ubuntu.com/ubuntu precise-backports/universe amd64 parallel all 20121122-0ubuntu1~ubuntu12.04.1 [161 kB]
+Fetched 161 kB in 0s (12.9 MB/s)
+Selecting previously unselected package parallel.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 75907 files and directories currently installed.)
+Unpacking parallel (from .../parallel_20121122-0ubuntu1~ubuntu12.04.1_all.deb) ...
+Adding 'diversion of /usr/bin/parallel to /usr/bin/parallel.moreutils by parallel'
+Adding 'diversion of /usr/share/man/man1/parallel.1.gz to /usr/share/man/man1/parallel.moreutils.1.gz by parallel'
+Processing triggers for man-db ...
+Setting up parallel (20121122-0ubuntu1~ubuntu12.04.1) ...
+travis_time:end:0b952dc5:start=1561637607749552784,finish=1561637610406696382,duration=2657143598[0Ktravis_fold:end:apt[0K
+travis_fold:start:git.checkout[0Ktravis_time:start:075f8360[0K$ git clone --depth=5 --branch=2.0 https://github.com/composer/composer.git composer/composer
+Cloning into 'composer/composer'...
+travis_time:end:075f8360:start=1561637610411611317,finish=1561637612525240699,duration=2113629382[0K$ cd composer/composer
+$ git checkout -qf d2fa1e1319e012c54c3a066a72aa55257339dce0
+travis_fold:end:git.checkout[0K
+
+[33;1mSetting environment variables from repository settings[0m
+$ export GITHUB_TOKEN=[secure]
+
+travis_time:start:0f4fe915[0K$ phpenv global 5.3 2>/dev/null
+travis_time:end:0f4fe915:start=1561637612640257871,finish=1561637612662504180,duration=22246309[0K[33;1m5.3 is not pre-installed; installing[0m
+[33;1mDownloading archive: https://storage.googleapis.com/travis-ci-language-archives/php/binaries/ubuntu/12.04/x86_64/php-5.3.tar.bz2[0m
+travis_time:start:0f644463[0K$ curl -s -o archive.tar.bz2 $archive_url && tar xjf archive.tar.bz2 --directory /
+travis_time:end:0f644463:start=1561637612725231939,finish=1561637617789188119,duration=5063956180[0Ktravis_time:start:1bfa7dd2[0Ktravis_time:end:1bfa7dd2:start=1561637617793465848,finish=1561637617801279830,duration=7813982[0Ktravis_time:start:15316ef2[0K$ phpenv global 5.3
+travis_time:end:15316ef2:start=1561637617805372415,finish=1561637617822584092,duration=17211677[0KYou are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug
+Warning: This development build of composer is over 60 days old. It is recommended to update it by running "/home/travis/.phpenv/versions/5.3/bin/composer self-update" to get the latest version.
+travis_time:start:0d96b526[0K$ composer self-update 1.0.0
+You are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug
+Updating to version 1.0.0.
+    Downloading: Connecting...    Downloading: 100%         
+Use composer self-update --rollback to return to version 2b14f0a047dd4f3545ec82381f65c36ea93a4c81
+travis_time:end:0d96b526:start=1561637618054610208,finish=1561637618852691335,duration=798081127[0Ktravis_time:start:15d78330[0K$ composer self-update
+You are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug
+Updating to version 1.8.6.
+    Downloading: Connecting...    Downloading: 100%         
+Use composer self-update --rollback to return to version 1.0.0
+travis_time:end:15d78330:start=1561637618857023478,finish=1561637620181697085,duration=1324673607[0Ktravis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+travis_time:start:20c8fee4[0K$ Installing caching utilities
+travis_time:end:20c8fee4:start=1561637624999310245,finish=1561637625166013558,duration=166703313[0Ktravis_time:start:0aca49df[0Ktravis_time:end:0aca49df:start=1561637625171777693,finish=1561637625174890872,duration=3113179[0Ktravis_time:start:138cf06a[0Kattempting to download cache archive[0m
+[32;1mfetching 2.0/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--php-5.3.tgz[0m
+[32;1mfound cache[0m
+travis_time:end:138cf06a:start=1561637625179200743,finish=1561637626413762885,duration=1234562142[0Ktravis_time:start:04928fb8[0Ktravis_time:end:04928fb8:start=1561637626418286685,finish=1561637626421482805,duration=3196120[0Ktravis_time:start:0094cf50[0Kadding /home/travis/.composer/cache to cache[0m
+travis_time:end:0094cf50:start=1561637626425896565,finish=1561637627559255675,duration=1133359110[0Ktravis_fold:end:cache.1[0K
+$ php --version
+PHP 5.3.29 (cli) (built: Nov 26 2015 00:52:51) 
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.3.0, Copyright (c) 1998-2014 Zend Technologies
+    with Xdebug v2.2.7, Copyright (c) 2002-2015, by Derick Rethans
+$ composer --version
+You are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug
+Composer version 1.8.6 2019-06-11 15:03:05
+[0m
+travis_fold:start:before_install.1[0Ktravis_time:start:01e9a298[0K$ phpenv config-rm xdebug.ini || echo "xdebug not available"
+File xdebug.ini removed from /home/travis/.phpenv/versions/5.3/etc/conf.d.
+travis_time:end:01e9a298:start=1561637627857411566,finish=1561637627885801404,duration=28389838[0Ktravis_fold:end:before_install.1[0Ktravis_fold:start:before_install.2[0Ktravis_time:start:179d67ae[0K$ export INI=~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+travis_time:end:179d67ae:start=1561637627890983689,finish=1561637627915697320,duration=24713631[0Ktravis_fold:end:before_install.2[0Ktravis_fold:start:before_install.3[0Ktravis_time:start:08533e10[0K$ echo memory_limit = -1 >> $INI
+travis_time:end:08533e10:start=1561637627920856605,finish=1561637627923767875,duration=2911270[0Ktravis_fold:end:before_install.3[0Ktravis_fold:start:before_install.4[0Ktravis_time:start:30123006[0K$ composer validate
+./composer.json is valid
+travis_time:end:30123006:start=1561637627928680378,finish=1561637628191838518,duration=263158140[0Ktravis_fold:end:before_install.4[0Ktravis_fold:start:install.1[0Ktravis_time:start:060a58ee[0K$ flags="--ansi --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
+travis_time:end:060a58ee:start=1561637628197512013,finish=1561637628201035516,duration=3523503[0Ktravis_fold:end:install.1[0Ktravis_fold:start:install.2[0Ktravis_time:start:115ad31e[0K$ if [ "$deps" == "high" ]; then composer config platform.php 7.2.4; composer update $flags; fi
+travis_time:end:115ad31e:start=1561637628206051370,finish=1561637628209443487,duration=3392117[0Ktravis_fold:end:install.2[0Ktravis_fold:start:install.3[0Ktravis_time:start:059283c0[0K$ composer install $flags
+[32mLoading composer repositories with package information[39m
+[32mInstalling dependencies (including require-dev) from lock file[39m
+[32mPackage operations: 34 installs, 0 updates, 0 removals[39m
+  - Installing [32mcomposer/ca-bundle[39m ([33m1.1.4[39m): Loading from cache
+  - Installing [32mcomposer/semver[39m ([33m1.5.0[39m): Loading from cache
+  - Installing [32mcomposer/spdx-licenses[39m ([33m1.5.1[39m): Loading from cache
+  - Installing [32mpsr/log[39m ([33m1.1.0[39m): Loading from cache
+  - Installing [32mcomposer/xdebug-handler[39m ([33m1.3.3[39m): Loading from cache
+  - Installing [32mjustinrainbow/json-schema[39m ([33m5.2.8[39m): Loading from cache
+  - Installing [32mreact/promise[39m ([33mv1.2.1[39m): Loading from cache
+  - Installing [32mseld/jsonlint[39m ([33m1.7.1[39m): Loading from cache
+  - Installing [32mseld/phar-utils[39m ([33m1.0.1[39m): Loading from cache
+  - Installing [32msymfony/polyfill-mbstring[39m ([33mv1.11.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msymfony/debug[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msymfony/console[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msymfony/polyfill-ctype[39m ([33mv1.11.0[39m): Downloading ([33m100%[39m)
+  - Installing [32msymfony/filesystem[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msymfony/finder[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msymfony/process[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32mphpdocumentor/reflection-docblock[39m ([33m2.0.5[39m): Loading from cache
+  - Installing [32mphpunit/php-token-stream[39m ([33m1.4.12[39m): Loading from cache
+  - Installing [32msymfony/yaml[39m ([33mv2.8.50[39m): Loading from cache
+  - Installing [32msebastian/version[39m ([33m1.0.6[39m): Loading from cache
+  - Installing [32msebastian/global-state[39m ([33m1.1.1[39m): Loading from cache
+  - Installing [32msebastian/recursion-context[39m ([33m1.0.5[39m): Loading from cache
+  - Installing [32msebastian/exporter[39m ([33m1.2.2[39m): Loading from cache
+  - Installing [32msebastian/environment[39m ([33m1.3.8[39m): Loading from cache
+  - Installing [32msebastian/diff[39m ([33m1.4.3[39m): Loading from cache
+  - Installing [32msebastian/comparator[39m ([33m1.2.4[39m): Loading from cache
+  - Installing [32mphpunit/php-text-template[39m ([33m1.2.1[39m): Loading from cache
+  - Installing [32mdoctrine/instantiator[39m ([33m1.0.5[39m): Loading from cache
+  - Installing [32mphpunit/phpunit-mock-objects[39m ([33m2.3.8[39m): Loading from cache
+  - Installing [32mphpunit/php-timer[39m ([33m1.0.9[39m): Loading from cache
+  - Installing [32mphpunit/php-file-iterator[39m ([33m1.4.5[39m): Loading from cache
+  - Installing [32mphpunit/php-code-coverage[39m ([33m2.2.4[39m): Loading from cache
+  - Installing [32mphpspec/prophecy[39m ([33m1.8.0[39m): Loading from cache
+  - Installing [32mphpunit/phpunit[39m ([33m4.8.36[39m): Loading from cache
+[32mGenerating optimized autoload files[39m
+travis_time:end:059283c0:start=1561637628214293738,finish=1561637631393885759,duration=3179592021[0Ktravis_fold:end:install.3[0Ktravis_fold:start:install.4[0Ktravis_time:start:04923642[0K$ bin/composer install $flags
+[32mLoading composer repositories with package information[39m
+[32mInstalling dependencies (including require-dev) from lock file[39m
+Nothing to install or update
+[32mGenerating optimized autoload files[39m
+travis_time:end:04923642:start=1561637631399258954,finish=1561637632528051915,duration=1128792961[0Ktravis_fold:end:install.4[0Ktravis_fold:start:before_script.1[0Ktravis_time:start:03b18ac5[0K$ git config --global user.name travis-ci
+travis_time:end:03b18ac5:start=1561637632533737643,finish=1561637632539682387,duration=5944744[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:21db6ed0[0K$ git config --global user.email travis@example.com
+travis_time:end:21db6ed0:start=1561637632548830713,finish=1561637632603137103,duration=54306390[0Ktravis_fold:end:before_script.2[0Ktravis_time:start:135e6aa0[0K$ ls -d tests/Composer/Test/* | grep -v TestCase.php | parallel --gnu --keep-order 'echo "Running {} tests"; ./vendor/bin/phpunit -c tests/complete.phpunit.xml --colors=always {} || (echo -e "\e[41mFAILED\e[0m {}" && exit 1);'
+Running tests/Composer/Test/AllFunctionalTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...
+
+Time: 17.63 seconds, Memory: 8.50MB
+
+[30;42mOK (3 tests, 3 assertions)[0m
+Running tests/Composer/Test/ApplicationTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...
+
+Time: 1.29 seconds, Memory: 26.75MB
+
+[30;42mOK (3 tests, 6 assertions)[0m
+Running tests/Composer/Test/Autoload tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+..............................................
+
+Time: 1.41 seconds, Memory: 19.25MB
+
+[30;42mOK (46 tests, 200 assertions)[0m
+Running tests/Composer/Test/CacheTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...
+
+Time: 710 ms, Memory: 9.75MB
+
+[30;42mOK (3 tests, 12 assertions)[0m
+Running tests/Composer/Test/Command tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+............
+
+Time: 976 ms, Memory: 10.00MB
+
+[30;42mOK (12 tests, 18 assertions)[0m
+Running tests/Composer/Test/ComposerTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.....
+
+Time: 216 ms, Memory: 9.50MB
+
+[30;42mOK (5 tests, 5 assertions)[0m
+Running tests/Composer/Test/Config tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.........................................
+
+Time: 774 ms, Memory: 8.75MB
+
+[30;42mOK (41 tests, 123 assertions)[0m
+Running tests/Composer/Test/ConfigTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+....................................
+
+Time: 1.01 seconds, Memory: 8.00MB
+
+[30;42mOK (36 tests, 45 assertions)[0m
+Running tests/Composer/Test/Console tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.
+
+Time: 212 ms, Memory: 7.25MB
+
+[30;42mOK (1 test, 1 assertion)[0m
+Running tests/Composer/Test/DefaultConfigTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.
+
+Time: 411 ms, Memory: 7.25MB
+
+[30;42mOK (1 test, 1 assertion)[0m
+Running tests/Composer/Test/DependencyResolver tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................................................. 65 / 79 ( 82%)
+..............
+
+Time: 760 ms, Memory: 13.75MB
+
+[30;42mOK (79 tests, 94 assertions)[0m
+Running tests/Composer/Test/Downloader tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...............................................................  63 / 110 ( 57%)
+...............................................
+
+Time: 2.14 seconds, Memory: 21.75MB
+
+[30;42mOK (110 tests, 204 assertions)[0m
+Running tests/Composer/Test/EventDispatcher tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+..............
+
+Time: 568 ms, Memory: 12.50MB
+
+[30;42mOK (14 tests, 32 assertions)[0m
+Running tests/Composer/Test/FactoryTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.
+
+Time: 798 ms, Memory: 9.00MB
+
+[30;42mOK (1 test, 1 assertion)[0m
+Running tests/Composer/Test/Fixtures tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+
+
+Time: 1 second, Memory: 6.50MB
+
+[30;43mNo tests executed![0m
+Running tests/Composer/Test/Installer tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................
+
+Time: 464 ms, Memory: 14.50MB
+
+[30;42mOK (32 tests, 76 assertions)[0m
+Running tests/Composer/Test/InstallerTest.php tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................................................. 65 / 78 ( 83%)
+.............
+
+Time: 6.59 seconds, Memory: 27.25MB
+
+[30;42mOK (78 tests, 197 assertions)[0m
+Running tests/Composer/Test/IO tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+.....................
+
+Time: 361 ms, Memory: 10.25MB
+
+[30;42mOK (21 tests, 32 assertions)[0m
+Running tests/Composer/Test/Json tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+................................................................. 65 / 93 ( 69%)
+............................
+
+Time: 636 ms, Memory: 15.00MB
+
+[30;42mOK (93 tests, 180 assertions)[0m
+Running tests/Composer/Test/Mock tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+
+
+Time: 802 ms, Memory: 6.50MB
+
+[30;43mNo tests executed![0m
+Running tests/Composer/Test/Package tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...............................................................  63 / 198 ( 31%)
+............................................................... 126 / 198 ( 63%)
+............................................................... 189 / 198 ( 95%)
+.........
+
+Time: 2.1 seconds, Memory: 25.00MB
+
+[30;42mOK (198 tests, 345 assertions)[0m
+Running tests/Composer/Test/Plugin tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+......................
+
+Time: 440 ms, Memory: 14.50MB
+
+[30;42mOK (22 tests, 57 assertions)[0m
+Running tests/Composer/Test/Question tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...........
+
+Time: 633 ms, Memory: 8.00MB
+
+[30;42mOK (11 tests, 16 assertions)[0m
+Running tests/Composer/Test/Repository tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+..............[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m.............................[36;1mS[0m[36;1mS[0m.............  63 / 127 ( 49%)
+............................................................... 126 / 127 ( 99%)
+.
+
+Time: 2.03 seconds, Memory: 31.00MB
+
+There were 5 errors:
+
+1) Composer\Test\Repository\ComposerRepositoryTest::testCanonicalizeUrl with data set #0 ('https://example.org/path/to/file', '/path/to/file', 'https://example.org')
+Argument 4 passed to Composer\Repository\ComposerRepository::__construct() must be an instance of Composer\Util\HttpDownloader, none given, called in /home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php on line 231 and defined
+
+/home/travis/build/composer/composer/src/Composer/Repository/ComposerRepository.php:71
+/home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php:231
+
+2) Composer\Test\Repository\ComposerRepositoryTest::testCanonicalizeUrl with data set #1 ('https://example.org/canonic_url', 'https://example.org/canonic_url', 'https://should-not-see-me.test')
+Argument 4 passed to Composer\Repository\ComposerRepository::__construct() must be an instance of Composer\Util\HttpDownloader, none given, called in /home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php on line 231 and defined
+
+/home/travis/build/composer/composer/src/Composer/Repository/ComposerRepository.php:71
+/home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php:231
+
+3) Composer\Test\Repository\ComposerRepositoryTest::testCanonicalizeUrl with data set #2 ('file:///path/to/repository/file', '/path/to/repository/file', 'file:///path/to/repository')
+Argument 4 passed to Composer\Repository\ComposerRepository::__construct() must be an instance of Composer\Util\HttpDownloader, none given, called in /home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php on line 231 and defined
+
+/home/travis/build/composer/composer/src/Composer/Repository/ComposerRepository.php:71
+/home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php:231
+
+4) Composer\Test\Repository\ComposerRepositoryTest::testCanonicalizeUrl with data set #3 ('invalid_repo_url', '/path/to/file', 'invalid_repo_url')
+Argument 4 passed to Composer\Repository\ComposerRepository::__construct() must be an instance of Composer\Util\HttpDownloader, none given, called in /home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php on line 231 and defined
+
+/home/travis/build/composer/composer/src/Composer/Repository/ComposerRepository.php:71
+/home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php:231
+
+5) Composer\Test\Repository\ComposerRepositoryTest::testCanonicalizeUrl with data set #4 ('https://example.org/path/to/u...lename', '/path/to/unusual_$0_filename', 'https://example.org')
+Argument 4 passed to Composer\Repository\ComposerRepository::__construct() must be an instance of Composer\Util\HttpDownloader, none given, called in /home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php on line 231 and defined
+
+/home/travis/build/composer/composer/src/Composer/Repository/ComposerRepository.php:71
+/home/travis/build/composer/composer/tests/Composer/Test/Repository/ComposerRepositoryTest.php:231
+
+[37;41mFAILURES![0m
+[37;41mTests: 127[0m[37;41m, Assertions: 310[0m[37;41m, Errors: 5[0m[37;41m, Skipped: 2[0m[37;41m.[0m
+[41mFAILED[0m tests/Composer/Test/Repository
+Running tests/Composer/Test/Util tests
+PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+
+...............................................................  63 / 242 ( 26%)
+............................................................... 126 / 242 ( 52%)
+............................................................... 189 / 242 ( 78%)
+.....................................................
+
+Time: 3.06 seconds, Memory: 21.25MB
+
+[30;42mOK (242 tests, 421 assertions)[0m
+travis_time:end:135e6aa0:start=1561637632608474907,finish=1561637652277741526,duration=19669266619[0K[31;1mThe command "ls -d tests/Composer/Test/* | grep -v TestCase.php | parallel --gnu --keep-order 'echo "Running {} tests"; ./vendor/bin/phpunit -c tests/complete.phpunit.xml --colors=always {} || (echo -e "[41mFAILED[0m {}" && exit 1);'" exited with 1.[0m
+
+travis_time:start:011d0934[0K$ if [[ $PHPSTAN == "1" ]]; then composer require --dev phpstan/phpstan-shim:^0.11 --ignore-platform-reqs && vendor/bin/phpstan.phar analyse src tests --configuration=phpstan/config.neon --autoload-file=phpstan/autoload.php; fi
+travis_time:end:011d0934:start=1561637652284218529,finish=1561637652287453901,duration=3235372[0K[32;1mThe command "if [[ $PHPSTAN == "1" ]]; then composer require --dev phpstan/phpstan-shim:^0.11 --ignore-platform-reqs && vendor/bin/phpstan.phar analyse src tests --configuration=phpstan/config.neon --autoload-file=phpstan/autoload.php; fi" exited with 0.[0m
+
+travis_fold:start:cache.2[0Kstore build cache
+travis_time:start:1aa0037e[0Ktravis_time:end:1aa0037e:start=1561637652292061385,finish=1561637652295336780,duration=3275395[0Ktravis_time:start:04994c78[0K[32;1mchanges detected (content changed, file is created, or file is deleted):\n/home/travis/.composer/cache/files/symfony/polyfill-ctype/8f6123e97ba0dd7fba0bdea188a7c0cd189e1b23.zip
+/home/travis/.composer/cache/files/symfony/polyfill-mbstring/18eb503e940ca44436b73ea62b6d67378a0373c8.zip\n[0m
+[32;1mchanges detected, packing new archive[0m
+[32;1muploading 2.0/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--php-5.3.tgz[0m
+[32;1mcache uploaded[0m
+travis_time:end:04994c78:start=1561637652299663065,finish=1561637653597421186,duration=1297758121[0Ktravis_fold:end:cache.2[0K
+
+Done. Your build exited with 1.

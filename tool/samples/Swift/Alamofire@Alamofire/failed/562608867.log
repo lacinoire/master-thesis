@@ -1,0 +1,885 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: ffbdcb28-7d4b-45e5-af3f-fdd5298595cf@1.worker-org-7f6cdc984-kkkjp.macstadium-prod-1
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: fbb23f75-f85f-4e9a-9a26-d348391cc36f travis-ci-macos10.14-xcode10.2-1555600204 (via amqp)
+startup: 1m9.027185954s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: ruby
+Build id: 562608867
+Job id: 562608876
+Runtime kernel version: 18.5.0
+travis-build version: 24c88d12b
+[34m[1mBuild image provisioning date and time[0m
+Thu Apr 18 18:47:23 GMT 2019
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.14.4
+BuildVersion:	18E226
+[34m[1mGit version[0m
+git version 2.21.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin18)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.5.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-10.2.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.5.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-10.2.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.5
+[34m[1mPre-installed Node.js versions[0m
+v10.15.0
+v10.15.3
+v4.9.1
+v6.16.0
+v6.17.1
+v8.15.0
+v8.16.0
+[34m[1mmvn -version[0m
+Apache Maven 3.6.1 (d66c9c0b3152b2e69ee9bac180bb8fcc8e6af555; 2019-04-04T19:00:29Z)
+Maven home: /usr/local/Cellar/maven/3.6.1/libexec
+Java version: 12, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/openjdk-12.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.14.4", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+
+
+travis_fold:start:git.checkout[0Ktravis_time:start:086a4f80[0K$ git clone --depth=50 https://github.com/Alamofire/Alamofire.git Alamofire/Alamofire
+Cloning into 'Alamofire/Alamofire'...
+remote: Enumerating objects: 1303, done.[K
+remote: Counting objects:   0% (1/1303)   [Kremote: Counting objects:   1% (14/1303)   [Kremote: Counting objects:   2% (27/1303)   [Kremote: Counting objects:   3% (40/1303)   [Kremote: Counting objects:   4% (53/1303)   [Kremote: Counting objects:   5% (66/1303)   [Kremote: Counting objects:   6% (79/1303)   [Kremote: Counting objects:   7% (92/1303)   [Kremote: Counting objects:   8% (105/1303)   [Kremote: Counting objects:   9% (118/1303)   [Kremote: Counting objects:  10% (131/1303)   [Kremote: Counting objects:  11% (144/1303)   [Kremote: Counting objects:  12% (157/1303)   [Kremote: Counting objects:  13% (170/1303)   [Kremote: Counting objects:  14% (183/1303)   [Kremote: Counting objects:  15% (196/1303)   [Kremote: Counting objects:  16% (209/1303)   [Kremote: Counting objects:  17% (222/1303)   [Kremote: Counting objects:  18% (235/1303)   [Kremote: Counting objects:  19% (248/1303)   [Kremote: Counting objects:  20% (261/1303)   [Kremote: Counting objects:  21% (274/1303)   [Kremote: Counting objects:  22% (287/1303)   [Kremote: Counting objects:  23% (300/1303)   [Kremote: Counting objects:  24% (313/1303)   [Kremote: Counting objects:  25% (326/1303)   [Kremote: Counting objects:  26% (339/1303)   [Kremote: Counting objects:  27% (352/1303)   [Kremote: Counting objects:  28% (365/1303)   [Kremote: Counting objects:  29% (378/1303)   [Kremote: Counting objects:  30% (391/1303)   [Kremote: Counting objects:  31% (404/1303)   [Kremote: Counting objects:  32% (417/1303)   [Kremote: Counting objects:  33% (430/1303)   [Kremote: Counting objects:  34% (444/1303)   [Kremote: Counting objects:  35% (457/1303)   [Kremote: Counting objects:  36% (470/1303)   [Kremote: Counting objects:  37% (483/1303)   [Kremote: Counting objects:  38% (496/1303)   [Kremote: Counting objects:  39% (509/1303)   [Kremote: Counting objects:  40% (522/1303)   [Kremote: Counting objects:  41% (535/1303)   [Kremote: Counting objects:  42% (548/1303)   [Kremote: Counting objects:  43% (561/1303)   [Kremote: Counting objects:  44% (574/1303)   [Kremote: Counting objects:  45% (587/1303)   [Kremote: Counting objects:  46% (600/1303)   [Kremote: Counting objects:  47% (613/1303)   [Kremote: Counting objects:  48% (626/1303)   [Kremote: Counting objects:  49% (639/1303)   [Kremote: Counting objects:  50% (652/1303)   [Kremote: Counting objects:  51% (665/1303)   [Kremote: Counting objects:  52% (678/1303)   [Kremote: Counting objects:  53% (691/1303)   [Kremote: Counting objects:  54% (704/1303)   [Kremote: Counting objects:  55% (717/1303)   [Kremote: Counting objects:  56% (730/1303)   [Kremote: Counting objects:  57% (743/1303)   [Kremote: Counting objects:  58% (756/1303)   [Kremote: Counting objects:  59% (769/1303)   [Kremote: Counting objects:  60% (782/1303)   [Kremote: Counting objects:  61% (795/1303)   [Kremote: Counting objects:  62% (808/1303)   [Kremote: Counting objects:  63% (821/1303)   [Kremote: Counting objects:  64% (834/1303)   [Kremote: Counting objects:  65% (847/1303)   [Kremote: Counting objects:  66% (860/1303)   [Kremote: Counting objects:  67% (874/1303)   [Kremote: Counting objects:  68% (887/1303)   [Kremote: Counting objects:  69% (900/1303)   [Kremote: Counting objects:  70% (913/1303)   [Kremote: Counting objects:  71% (926/1303)   [Kremote: Counting objects:  72% (939/1303)   [Kremote: Counting objects:  73% (952/1303)   [Kremote: Counting objects:  74% (965/1303)   [Kremote: Counting objects:  75% (978/1303)   [Kremote: Counting objects:  76% (991/1303)   [Kremote: Counting objects:  77% (1004/1303)   [Kremote: Counting objects:  78% (1017/1303)   [Kremote: Counting objects:  79% (1030/1303)   [Kremote: Counting objects:  80% (1043/1303)   [Kremote: Counting objects:  81% (1056/1303)   [Kremote: Counting objects:  82% (1069/1303)   [Kremote: Counting objects:  83% (1082/1303)   [Kremote: Counting objects:  84% (1095/1303)   [Kremote: Counting objects:  85% (1108/1303)   [Kremote: Counting objects:  86% (1121/1303)   [Kremote: Counting objects:  87% (1134/1303)   [Kremote: Counting objects:  88% (1147/1303)   [Kremote: Counting objects:  89% (1160/1303)   [Kremote: Counting objects:  90% (1173/1303)   [Kremote: Counting objects:  91% (1186/1303)   [Kremote: Counting objects:  92% (1199/1303)   [Kremote: Counting objects:  93% (1212/1303)   [Kremote: Counting objects:  94% (1225/1303)   [Kremote: Counting objects:  95% (1238/1303)   [Kremote: Counting objects:  96% (1251/1303)   [Kremote: Counting objects:  97% (1264/1303)   [Kremote: Counting objects:  98% (1277/1303)   [Kremote: Counting objects:  99% (1290/1303)   [Kremote: Counting objects: 100% (1303/1303)   [Kremote: Counting objects: 100% (1303/1303), done.[K
+remote: Compressing objects:   0% (1/408)   [Kremote: Compressing objects:   1% (5/408)   [Kremote: Compressing objects:   2% (9/408)   [Kremote: Compressing objects:   3% (13/408)   [Kremote: Compressing objects:   4% (17/408)   [Kremote: Compressing objects:   5% (21/408)   [Kremote: Compressing objects:   6% (25/408)   [Kremote: Compressing objects:   7% (29/408)   [Kremote: Compressing objects:   8% (33/408)   [Kremote: Compressing objects:   9% (37/408)   [Kremote: Compressing objects:  10% (41/408)   [Kremote: Compressing objects:  11% (45/408)   [Kremote: Compressing objects:  12% (49/408)   [Kremote: Compressing objects:  13% (54/408)   [Kremote: Compressing objects:  14% (58/408)   [Kremote: Compressing objects:  15% (62/408)   [Kremote: Compressing objects:  16% (66/408)   [Kremote: Compressing objects:  17% (70/408)   [Kremote: Compressing objects:  18% (74/408)   [Kremote: Compressing objects:  19% (78/408)   [Kremote: Compressing objects:  20% (82/408)   [Kremote: Compressing objects:  21% (86/408)   [Kremote: Compressing objects:  22% (90/408)   [Kremote: Compressing objects:  23% (94/408)   [Kremote: Compressing objects:  24% (98/408)   [Kremote: Compressing objects:  25% (102/408)   [Kremote: Compressing objects:  26% (107/408)   [Kremote: Compressing objects:  27% (111/408)   [Kremote: Compressing objects:  28% (115/408)   [Kremote: Compressing objects:  29% (119/408)   [Kremote: Compressing objects:  30% (123/408)   [Kremote: Compressing objects:  31% (127/408)   [Kremote: Compressing objects:  32% (131/408)   [Kremote: Compressing objects:  33% (135/408)   [Kremote: Compressing objects:  34% (139/408)   [Kremote: Compressing objects:  35% (143/408)   [Kremote: Compressing objects:  36% (147/408)   [Kremote: Compressing objects:  37% (151/408)   [Kremote: Compressing objects:  38% (156/408)   [Kremote: Compressing objects:  39% (160/408)   [Kremote: Compressing objects:  40% (164/408)   [Kremote: Compressing objects:  41% (168/408)   [Kremote: Compressing objects:  42% (172/408)   [Kremote: Compressing objects:  43% (176/408)   [Kremote: Compressing objects:  44% (180/408)   [Kremote: Compressing objects:  45% (184/408)   [Kremote: Compressing objects:  46% (188/408)   [Kremote: Compressing objects:  47% (192/408)   [Kremote: Compressing objects:  48% (196/408)   [Kremote: Compressing objects:  49% (200/408)   [Kremote: Compressing objects:  50% (204/408)   [Kremote: Compressing objects:  51% (209/408)   [Kremote: Compressing objects:  52% (213/408)   [Kremote: Compressing objects:  53% (217/408)   [Kremote: Compressing objects:  54% (221/408)   [Kremote: Compressing objects:  55% (225/408)   [Kremote: Compressing objects:  56% (229/408)   [Kremote: Compressing objects:  57% (233/408)   [Kremote: Compressing objects:  58% (237/408)   [Kremote: Compressing objects:  59% (241/408)   [Kremote: Compressing objects:  60% (245/408)   [Kremote: Compressing objects:  61% (249/408)   [Kremote: Compressing objects:  62% (253/408)   [Kremote: Compressing objects:  63% (258/408)   [Kremote: Compressing objects:  64% (262/408)   [Kremote: Compressing objects:  65% (266/408)   [Kremote: Compressing objects:  66% (270/408)   [Kremote: Compressing objects:  67% (274/408)   [Kremote: Compressing objects:  68% (278/408)   [Kremote: Compressing objects:  69% (282/408)   [Kremote: Compressing objects:  70% (286/408)   [Kremote: Compressing objects:  71% (290/408)   [Kremote: Compressing objects:  72% (294/408)   [Kremote: Compressing objects:  73% (298/408)   [Kremote: Compressing objects:  74% (302/408)   [Kremote: Compressing objects:  75% (306/408)   [Kremote: Compressing objects:  76% (311/408)   [Kremote: Compressing objects:  77% (315/408)   [Kremote: Compressing objects:  78% (319/408)   [Kremote: Compressing objects:  79% (323/408)   [Kremote: Compressing objects:  80% (327/408)   [Kremote: Compressing objects:  81% (331/408)   [Kremote: Compressing objects:  82% (335/408)   [Kremote: Compressing objects:  83% (339/408)   [Kremote: Compressing objects:  84% (343/408)   [Kremote: Compressing objects:  85% (347/408)   [Kremote: Compressing objects:  86% (351/408)   [Kremote: Compressing objects:  87% (355/408)   [Kremote: Compressing objects:  88% (360/408)   [Kremote: Compressing objects:  89% (364/408)   [Kremote: Compressing objects:  90% (368/408)   [Kremote: Compressing objects:  91% (372/408)   [Kremote: Compressing objects:  92% (376/408)   [Kremote: Compressing objects:  93% (380/408)   [Kremote: Compressing objects:  94% (384/408)   [Kremote: Compressing objects:  95% (388/408)   [Kremote: Compressing objects:  96% (392/408)   [Kremote: Compressing objects:  97% (396/408)   [Kremote: Compressing objects:  98% (400/408)   [Kremote: Compressing objects:  99% (404/408)   [Kremote: Compressing objects: 100% (408/408)   [Kremote: Compressing objects: 100% (408/408), done.[K
+Receiving objects:   0% (1/1303)   Receiving objects:   1% (14/1303)   Receiving objects:   2% (27/1303)   Receiving objects:   3% (40/1303)   Receiving objects:   4% (53/1303)   Receiving objects:   5% (66/1303)   Receiving objects:   6% (79/1303)   Receiving objects:   7% (92/1303)   Receiving objects:   8% (105/1303)   Receiving objects:   9% (118/1303)   Receiving objects:  10% (131/1303)   Receiving objects:  11% (144/1303)   Receiving objects:  12% (157/1303)   Receiving objects:  13% (170/1303)   Receiving objects:  14% (183/1303)   Receiving objects:  15% (196/1303)   Receiving objects:  16% (209/1303)   Receiving objects:  17% (222/1303)   Receiving objects:  18% (235/1303)   Receiving objects:  19% (248/1303)   Receiving objects:  20% (261/1303)   Receiving objects:  21% (274/1303)   Receiving objects:  22% (287/1303)   Receiving objects:  23% (300/1303)   Receiving objects:  24% (313/1303)   Receiving objects:  25% (326/1303)   Receiving objects:  26% (339/1303)   Receiving objects:  27% (352/1303)   Receiving objects:  28% (365/1303)   Receiving objects:  29% (378/1303)   Receiving objects:  30% (391/1303)   Receiving objects:  31% (404/1303)   Receiving objects:  32% (417/1303)   Receiving objects:  33% (430/1303)   Receiving objects:  34% (444/1303)   Receiving objects:  35% (457/1303)   Receiving objects:  36% (470/1303)   Receiving objects:  37% (483/1303)   Receiving objects:  38% (496/1303)   Receiving objects:  39% (509/1303)   Receiving objects:  40% (522/1303)   Receiving objects:  41% (535/1303)   Receiving objects:  42% (548/1303)   Receiving objects:  43% (561/1303)   Receiving objects:  44% (574/1303)   Receiving objects:  45% (587/1303)   Receiving objects:  46% (600/1303)   Receiving objects:  47% (613/1303)   Receiving objects:  48% (626/1303)   Receiving objects:  49% (639/1303)   Receiving objects:  50% (652/1303)   Receiving objects:  51% (665/1303)   Receiving objects:  52% (678/1303)   Receiving objects:  53% (691/1303)   Receiving objects:  54% (704/1303)   Receiving objects:  55% (717/1303)   Receiving objects:  56% (730/1303)   Receiving objects:  57% (743/1303)   Receiving objects:  58% (756/1303)   Receiving objects:  59% (769/1303)   Receiving objects:  60% (782/1303)   Receiving objects:  61% (795/1303)   Receiving objects:  62% (808/1303)   Receiving objects:  63% (821/1303)   Receiving objects:  64% (834/1303)   Receiving objects:  65% (847/1303)   Receiving objects:  66% (860/1303)   Receiving objects:  67% (874/1303)   Receiving objects:  68% (887/1303)   Receiving objects:  69% (900/1303)   Receiving objects:  70% (913/1303)   Receiving objects:  71% (926/1303)   Receiving objects:  72% (939/1303)   Receiving objects:  73% (952/1303)   Receiving objects:  74% (965/1303)   Receiving objects:  75% (978/1303)   Receiving objects:  76% (991/1303)   Receiving objects:  77% (1004/1303)   Receiving objects:  78% (1017/1303)   Receiving objects:  79% (1030/1303)   Receiving objects:  80% (1043/1303)   Receiving objects:  81% (1056/1303)   Receiving objects:  82% (1069/1303)   Receiving objects:  83% (1082/1303)   Receiving objects:  84% (1095/1303)   Receiving objects:  85% (1108/1303)   Receiving objects:  86% (1121/1303)   Receiving objects:  87% (1134/1303)   Receiving objects:  88% (1147/1303)   Receiving objects:  89% (1160/1303)   Receiving objects:  90% (1173/1303)   Receiving objects:  91% (1186/1303)   Receiving objects:  92% (1199/1303)   Receiving objects:  93% (1212/1303)   Receiving objects:  94% (1225/1303)   Receiving objects:  95% (1238/1303)   Receiving objects:  96% (1251/1303)   Receiving objects:  97% (1264/1303)   Receiving objects:  98% (1277/1303)   Receiving objects:  99% (1290/1303)   remote: Total 1303 (delta 936), reused 1160 (delta 841), pack-reused 0[K
+Receiving objects: 100% (1303/1303)   Receiving objects: 100% (1303/1303), 2.95 MiB | 14.53 MiB/s, done.
+Resolving deltas:   0% (0/936)   Resolving deltas:   1% (10/936)   Resolving deltas:   3% (31/936)   Resolving deltas:   4% (41/936)   Resolving deltas:   6% (62/936)   Resolving deltas:   8% (77/936)   Resolving deltas:   9% (87/936)   Resolving deltas:  10% (94/936)   Resolving deltas:  11% (111/936)   Resolving deltas:  13% (131/936)   Resolving deltas:  15% (143/936)   Resolving deltas:  16% (157/936)   Resolving deltas:  17% (160/936)   Resolving deltas:  18% (170/936)   Resolving deltas:  19% (178/936)   Resolving deltas:  20% (195/936)   Resolving deltas:  21% (202/936)   Resolving deltas:  22% (207/936)   Resolving deltas:  24% (230/936)   Resolving deltas:  25% (238/936)   Resolving deltas:  26% (246/936)   Resolving deltas:  27% (255/936)   Resolving deltas:  28% (268/936)   Resolving deltas:  29% (275/936)   Resolving deltas:  30% (283/936)   Resolving deltas:  31% (299/936)   Resolving deltas:  32% (302/936)   Resolving deltas:  33% (309/936)   Resolving deltas:  34% (319/936)   Resolving deltas:  35% (330/936)   Resolving deltas:  36% (341/936)   Resolving deltas:  40% (380/936)   Resolving deltas:  41% (385/936)   Resolving deltas:  42% (394/936)   Resolving deltas:  49% (462/936)   Resolving deltas:  91% (855/936)   Resolving deltas:  93% (876/936)   Resolving deltas:  96% (906/936)   Resolving deltas:  97% (914/936)   Resolving deltas:  98% (924/936)   Resolving deltas:  99% (927/936)   Resolving deltas: 100% (936/936)   Resolving deltas: 100% (936/936), done.
+travis_time:end:086a4f80:start=1563891519623394000,finish=1563891520712073000,duration=1088679000[0K$ cd Alamofire/Alamofire
+ruby-2.4.5 - #gemset created /Users/travis/.rvm/gems/ruby-2.4.5@Alamofire
+ruby-2.4.5 - #generating Alamofire wrappers|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|.
+travis_time:start:06b68d28[0K$ git fetch origin +refs/pull/2880/merge:
+remote: Enumerating objects: 17, done.[K
+remote: Counting objects:   7% (1/13)   [Kremote: Counting objects:  15% (2/13)   [Kremote: Counting objects:  23% (3/13)   [Kremote: Counting objects:  30% (4/13)   [Kremote: Counting objects:  38% (5/13)   [Kremote: Counting objects:  46% (6/13)   [Kremote: Counting objects:  53% (7/13)   [Kremote: Counting objects:  61% (8/13)   [Kremote: Counting objects:  69% (9/13)   [Kremote: Counting objects:  76% (10/13)   [Kremote: Counting objects:  84% (11/13)   [Kremote: Counting objects:  92% (12/13)   [Kremote: Counting objects: 100% (13/13)   [Kremote: Counting objects: 100% (13/13), done.[K
+remote: Compressing objects:  50% (1/2)   [Kremote: Compressing objects: 100% (2/2)   [Kremote: Compressing objects: 100% (2/2), done.[K
+remote: Total 5 (delta 3), reused 4 (delta 3), pack-reused 0[K
+Unpacking objects:  20% (1/5)   Unpacking objects:  40% (2/5)   Unpacking objects:  60% (3/5)   Unpacking objects:  80% (4/5)   Unpacking objects: 100% (5/5)   Unpacking objects: 100% (5/5), done.
+From https://github.com/Alamofire/Alamofire
+ * branch            refs/pull/2880/merge -> FETCH_HEAD
+travis_time:end:06b68d28:start=1563891522755180000,finish=1563891523164774000,duration=409594000[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+
+[33;1mSetting environment variables from .travis.yml[0m
+$ export LC_CTYPE=en_US.UTF-8
+$ export LANG=en_US.UTF-8
+$ export WORKSPACE=Alamofire.xcworkspace
+$ export IOS_FRAMEWORK_SCHEME="Alamofire iOS"
+$ export MACOS_FRAMEWORK_SCHEME="Alamofire macOS"
+$ export TVOS_FRAMEWORK_SCHEME="Alamofire tvOS"
+$ export WATCHOS_FRAMEWORK_SCHEME="Alamofire watchOS"
+$ export EXAMPLE_SCHEME="iOS Example"
+$ export DESTINATION="OS=10.2,name=Apple TV 1080p"
+$ export SCHEME="$TVOS_FRAMEWORK_SCHEME"
+$ export RUN_TESTS="YES"
+$ export BUILD_EXAMPLE="NO"
+$ export POD_LINT="NO"
+
+travis_fold:start:rvm[0Ktravis_time:start:020cc4bf[0K$ rvm use $(< .ruby-version) --install --binary --fuzzy
+Using /Users/travis/.rvm/gems/ruby-2.4.5
+travis_time:end:020cc4bf:start=1563891523328297000,finish=1563891525042823000,duration=1714526000[0Ktravis_fold:end:rvm[0K
+$ export BUNDLE_GEMFILE=$PWD/Gemfile
+travis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+travis_time:start:04f9aef7[0K$ Installing caching utilities
+travis_time:end:04f9aef7:start=1563891526988683000,finish=1563891527208536000,duration=219853000[0Ktravis_time:start:0e76bbd2[0Ktravis_time:end:0e76bbd2:start=1563891527223902000,finish=1563891527233892000,duration=9990000[0Ktravis_time:start:163a6acb[0Kattempting to download cache archive[0m
+[32;1mfetching PR.2880/cache-osx-xcode10.2-977021a03900052160ddcb11fd2e6436563532fb0f755c5008fbea985f1e1d33--rvm-default--gemfile-Gemfile.tgz[0m
+[32;1mfetching PR.2880/cache--rvm-default--gemfile-Gemfile.tgz[0m
+[32;1mfetching master/cache-osx-xcode10.2-977021a03900052160ddcb11fd2e6436563532fb0f755c5008fbea985f1e1d33--rvm-default--gemfile-Gemfile.tgz[0m
+[32;1mfound cache[0m
+travis_time:end:163a6acb:start=1563891527246543000,finish=1563891531526884000,duration=4280341000[0Ktravis_fold:end:cache.1[0K
+
+travis_fold:start:cache.bundler[0Ktravis_time:start:0b79bc40[0Ktravis_time:end:0b79bc40:start=1563891531539406000,finish=1563891531549002000,duration=9596000[0Ktravis_time:start:0e87d905[0Kadding /Users/travis/build/Alamofire/Alamofire/vendor/bundle to cache[0m
+creating directory /Users/travis/build/Alamofire/Alamofire/vendor/bundle[0m
+travis_time:end:0e87d905:start=1563891531560565000,finish=1563891536780044000,duration=5219479000[0Ktravis_fold:end:cache.bundler[0Ktravis_fold:start:ruby.versions[0K$ ruby --version
+ruby 2.4.5p335 (2018-10-18 revision 65137) [x86_64-darwin18]
+$ rvm --version
+rvm 1.29.7-next (master) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+$ bundle --version
+Bundler version 1.17.3
+$ gem --version
+3.0.2
+travis_fold:end:ruby.versions[0K
+travis_fold:start:install.bundler[0Ktravis_time:start:01290900[0K$ bundle install --jobs=3 --retry=3 --deployment --path=${BUNDLE_PATH:-vendor/bundle}
+Using CFPropertyList 3.0.0
+Using concurrent-ruby 1.1.5
+Using i18n 0.9.5
+Using minitest 5.11.3
+Using thread_safe 0.3.6
+Using tzinfo 1.2.5
+Using activesupport 4.2.11.1
+Using atomos 0.1.3
+Using bundler 1.17.3
+Using claide 1.0.2
+Using fuzzy_match 2.0.4
+Using nap 1.1.0
+Using cocoapods-core 1.7.2
+Using cocoapods-deintegrate 1.0.4
+Using cocoapods-downloader 1.2.2
+Using cocoapods-plugins 1.0.0
+Using cocoapods-search 1.0.0
+Using cocoapods-stats 1.1.0
+Using netrc 0.11.0
+Using cocoapods-trunk 1.3.1
+Using cocoapods-try 1.1.0
+Using colored2 3.1.2
+Using escape 0.0.4
+Using fourflusher 2.3.1
+Using gh_inspector 1.1.3
+Using molinillo 0.6.6
+Using ruby-macho 1.4.0
+Using nanaimo 0.2.6
+Using xcodeproj 1.10.0
+Using cocoapods 1.7.2
+Using ffi 1.11.1
+Using mustache 1.1.0
+Using open4 1.3.4
+Using redcarpet 3.4.0
+Using rouge 2.0.7
+Using rb-fsevent 0.10.3
+Using rb-inotify 0.10.0
+Using sass-listen 4.0.0
+Using sass 3.7.4
+Using sqlite3 1.4.1
+Using liferaft 0.0.6
+Using xcinvoke 0.3.0
+Using jazzy 0.10.0
+Using xcpretty 0.3.0
+Bundle complete! 3 Gemfile dependencies, 44 gems now installed.
+Bundled gems are installed into `./vendor/bundle`
+travis_time:end:01290900:start=1563891538089315000,finish=1563891539048020000,duration=958705000[0Ktravis_fold:end:install.bundler[0K
+travis_time:start:2636d406[0K$ set -o pipefail
+travis_time:end:2636d406:start=1563891539060484000,finish=1563891539069519000,duration=9035000[0K[32;1mThe command "set -o pipefail" exited with 0.[0m
+
+travis_time:start:07937e86[0K$ xcodebuild -version
+Xcode 10.2.1
+Build version 10E1001
+travis_time:end:07937e86:start=1563891539080448000,finish=1563891539260627000,duration=180179000[0K[32;1mThe command "xcodebuild -version" exited with 0.[0m
+
+travis_time:start:0cc1e0a0[0K$ xcodebuild -showsdks
+iOS SDKs:
+	iOS 12.2                      	-sdk iphoneos12.2
+
+iOS Simulator SDKs:
+	Simulator - iOS 12.2          	-sdk iphonesimulator12.2
+
+macOS SDKs:
+	macOS 10.14                   	-sdk macosx10.14
+
+tvOS SDKs:
+	tvOS 12.2                     	-sdk appletvos12.2
+
+tvOS Simulator SDKs:
+	Simulator - tvOS 12.2         	-sdk appletvsimulator12.2
+
+watchOS SDKs:
+	watchOS 5.2                   	-sdk watchos5.2
+
+watchOS Simulator SDKs:
+	Simulator - watchOS 5.2       	-sdk watchsimulator5.2
+
+travis_time:end:0cc1e0a0:start=1563891539272159000,finish=1563891540180823000,duration=908664000[0K[32;1mThe command "xcodebuild -showsdks" exited with 0.[0m
+
+travis_time:start:0f5bee4c[0K$ if [ $RUN_TESTS == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty; else xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty; fi
+[33m▸[0m [39;1mProcessing[0m Info.plist
+[33m▸[0m [39;1mCompiling[0m Alamofire_vers.c
+[33m▸[0m [39;1mLinking[0m Alamofire
+[33m▸[0m [39;1mCopying[0m Alamofire.h
+[33m▸[0m [39;1mGenerating 'Alamofire.framework.dSYM'[0m
+[33m▸[0m [39;1mTouching[0m Alamofire.framework (in target: Alamofire tvOS)
+[33m▸[0m [39;1mProcessing[0m Info.plist
+[33m▸[0m [39;1mCompiling[0m Alamofire\ tvOS\ Tests_vers.c
+[33m▸[0m [39;1mLinking[0m Alamofire\
+[33m▸[0m [39;1mGenerating 'Alamofire\ tvOS\ Tests.xctest.dSYM'[0m
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Responses/String/utf8_string.txt
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Responses/String/utf32_string.txt
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Responses/String/empty_string.txt
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Responses/JSON/valid_data.json
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Responses/JSON/invalid_data.json
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Responses/JSON/empty_data.json
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Images/rainbow.jpg
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/selfSignedAndMalformedCerts/randomGibberish.crt
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/selfSignedAndMalformedCerts/keyDER.der
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/selfSignedAndMalformedCerts/certPEM.crt
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/selfSignedAndMalformedCerts/certPEM.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/selfSignedAndMalformedCerts/certDER.der
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/selfSignedAndMalformedCerts/certDER.crt
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/selfSignedAndMalformedCerts/certDER.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/expired.badssl.com/expired.badssl.com-root-ca.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/expired.badssl.com/expired.badssl.com-leaf.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/expired.badssl.com/expired.badssl.com-intermediate-ca-2.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/expired.badssl.com/expired.badssl.com-intermediate-ca-1.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/wildcard.alamofire.org.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/valid-uri.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/valid-dns-name.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/test.alamofire.org.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/signed-by-ca2.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/signed-by-ca1.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/multiple-dns-names.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/missing-dns-name-and-uri.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/expired.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/alamofire-signing-ca2.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/alamofire-signing-ca1.cer
+[33m▸[0m [39;1mCopying[0m /Users/travis/build/Alamofire/Alamofire/Tests/Resources/Certificates/alamofire.org/alamofire-root-ca.cer
+[33m▸[0m [39;1mTouching[0m Alamofire\ tvOS\ Tests.xctest (in target: Alamofire tvOS Tests)
+2019-07-23 14:20:37.112 xcodebuild[3111:7633]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/Users/travis/Library/Developer/Xcode/DerivedData/Alamofire-cluwyoqdwcygxscxntjkvgncyhpi/Logs/Test/Test-Alamofire tvOS-2019.07.23_14-19-04-+0000.xcresult/1_Test/Diagnostics/Alamofire tvOS Tests-3453F750-CFB3-45CE-9371-8487B97D670B/Alamofire tvOS Tests-ED9BF638-571A-496D-9FAF-A3CB60F55EBD/Session-Alamofire tvOS Tests-2019-07-23_142037-xIaphT.log
+2019-07-23 14:20:37.113 xcodebuild[3111:7195] [MT] IDETestOperationsObserverDebug: (0BA8F945-0E95-432D-966D-692DFC016BD6) Beginning test session Alamofire tvOS Tests-0BA8F945-0E95-432D-966D-692DFC016BD6 at 2019-07-23 14:20:37.113 with Xcode 10E1001 on target <DVTiPhoneSimulator: 0x7f81285e7c00> {
+		SimDevice: Apple TV 1080p (456EC0CF-C098-4EC1-890E-4DE0BD3C4527, tvOS 10.2, Shutdown)
+} (10.2 (14W260))
+2019-07-23 14:20:53.540 xcodebuild[3111:7195] [MT] IDETestOperationsObserverDebug: (0BA8F945-0E95-432D-966D-692DFC016BD6) Finished requesting crash reports. Continuing with testing.
+[39;1mAll tests[0m
+Test Suite [39;1mAlamofire tvOS Tests.xctest[0m started
+[39;1mAdapterTestCase[0m
+    [32;1m✓[0m testThatAdapterCallsAdaptHandler (0.011 seconds)
+    [32;1m✓[0m testThatAdapterCallsRequestRetrierDefaultImplementationInProtocolExtension (0.004 seconds)
+    [32;1m✓[0m testThatAdapterCanBeImplementedAsynchronously (0.005 seconds)
+[39;1mAutomaticValidationTestCase[0m
+    [32;1m✓[0m testThatValidationForRequestWithAcceptableComplexContentTypeResponseSucceeds ([31m0.200[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithAcceptableStatusCodeAndContentTypeResponseSucceeds ([33m0.047[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithAcceptableWildcardContentTypeResponseSucceeds ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithUnacceptableContentTypeResponseFails ([33m0.055[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithUnacceptableStatusCodeResponseFails ([33m0.046[0m seconds)
+[39;1mBasicAuthenticationTestCase[0m
+    [32;1m✓[0m testHiddenHTTPBasicAuthentication ([33m0.078[0m seconds)
+    [32;1m✓[0m testHTTPBasicAuthenticationWithInvalidCredentials ([31m0.231[0m seconds)
+    [32;1m✓[0m testHTTPBasicAuthenticationWithValidCredentials ([31m0.196[0m seconds)
+[39;1mCacheTestCase[0m
+    [32;1m✓[0m testDefaultCachePolicy ([31m1.581[0m seconds)
+    [32;1m✓[0m testIgnoreLocalCacheDataPolicy ([31m1.540[0m seconds)
+    [32;1m✓[0m testURLCacheContainsCachedResponsesForAllRequests ([31m1.338[0m seconds)
+    [32;1m✓[0m testUseLocalCacheDataAndDontLoadFromNetworkPolicy ([31m1.351[0m seconds)
+    [32;1m✓[0m testUseLocalCacheDataIfExistsOtherwiseLoadFromNetworkPolicy ([31m1.354[0m seconds)
+[39;1mConnectionLostRetryPolicyTestCase[0m
+    [32;1m✓[0m testThatConnectionLostRetryPolicyCanBeInitializedWithCustomValues (0.002 seconds)
+    [32;1m✓[0m testThatConnectionLostRetryPolicyCanBeInitializedWithDefaultValues (0.003 seconds)
+[39;1mContentTypeValidationTestCase[0m
+    [32;1m✓[0m testThatValidationForRequestWithAcceptableContentTypeResponseSucceeds ([33m0.057[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithAcceptableWildcardContentTypeResponseSucceeds ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithAcceptableWildcardContentTypeResponseSucceedsWhenResponseIsNil ([31m0.162[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithNoAcceptableContentTypeResponseFails ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithNoAcceptableContentTypeResponseSucceedsWhenNoDataIsReturned ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithUnacceptableContentTypeResponseFails ([33m0.047[0m seconds)
+[39;1mCustomResponseSerializerTestCases[0m
+    [32;1m✓[0m testThatCustomResponseSerializersCanBeWrittenWithoutCompilerIssues ([33m0.044[0m seconds)
+[39;1mCustomValidationTestCase[0m
+    [32;1m✓[0m testThatCustomValidationCanThrowCustomError ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatCustomValidationClosureHasAccessToServerResponseData ([33m0.047[0m seconds)
+    [32;1m✓[0m testThatValidationExtensionCanThrowCustomError ([33m0.046[0m seconds)
+    [32;1m✓[0m testThatValidationExtensionHasAccessToServerResponseData ([33m0.047[0m seconds)
+[39;1mDataResponseSerializationTestCase[0m
+    [32;1m✓[0m testThatDataResponseSerializerFailsWhenDataIsNil (0.002 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerFailsWhenDataIsNilWithNonEmptyResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerFailsWhenErrorIsNotNil (0.003 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerSucceedsWhenDataIsNilWithGETRequestAnd204ResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerSucceedsWhenDataIsNilWithGETRequestAnd205ResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerSucceedsWhenDataIsNilWithHEADRequestAnd200ResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerSucceedsWhenDataIsNotNil (0.003 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenDataIsEmpty (0.003 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenDataIsInvalidJSON (0.005 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenDataIsNil (0.003 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenDataIsNilWithNonEmptyResponseStatusCode (0.004 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenErrorIsNotNil (0.002 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerSucceedsWhenDataIsNilWithGETRequestAnd204ResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerSucceedsWhenDataIsNilWithGETRequestAnd205ResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerSucceedsWhenDataIsNilWithHEADRequestAnd200ResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerSucceedsWhenDataIsValidJSON (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenDataIsEmpty (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenDataIsNil (0.004 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenDataIsNilWithNonEmptyResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenErrorIsNotNil (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWithUTF32DataAndUTF8ProvidedEncoding (0.009 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWithUTF32DataAndUTF8ResponseEncoding (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWhenDataIsNilWithGETRequestAnd204ResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWhenDataIsNilWithGETRequestAnd205ResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWhenDataIsNilWithHEADRequestAnd200ResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWithUTF8DataAndNoProvidedEncoding (0.002 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWithUTF8DataAndUTF8ProvidedEncoding (0.002 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWithUTF8DataUsingResponseTextEncodingName (0.003 seconds)
+[39;1mDecodableResponseSerializerTests[0m
+    [32;1m✓[0m testThatDecodableResponseSerializerFailsWhenDataIsEmpty (0.003 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerFailsWhenDataIsInvalidRepresentation (0.003 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerFailsWhenDataIsNil (0.002 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerFailsWhenDataIsNilWithEmptyResponseNonconformingTypeAndEmptyResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerFailsWhenDataIsNilWithNonEmptyResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerFailsWhenErrorIsNotNil (0.002 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerSucceedsWhenDataIsNilWithEmptyResponseConformingTypeAndEmptyResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerSucceedsWhenDataIsNilWithEmptyResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerSucceedsWhenDataIsNilWithEmptyTypeAndEmptyResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerSucceedsWhenDataIsNilWithGETRequestAnd204ResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerSucceedsWhenDataIsNilWithGETRequestAnd205ResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerSucceedsWhenDataIsNilWithHEADRequestAnd200ResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDecodableResponseSerializerSucceedsWhenDataIsValidJSON (0.005 seconds)
+[39;1mDownloadInitializationTestCase[0m
+    [32;1m✓[0m testDownloadClassMethodWithMethodURLAndDestination ([33m0.049[0m seconds)
+    [32;1m✓[0m testDownloadClassMethodWithMethodURLHeadersAndDestination ([33m0.048[0m seconds)
+[39;1mDownloadRequestEventsTestCase[0m
+    [32;1m✓[0m testThatCancelledDownloadRequestTriggersAllAppropriateLifetimeEvents (0.017 seconds)
+    [32;1m✓[0m testThatDownloadRequestTriggersAllAppropriateLifetimeEvents ([31m0.150[0m seconds)
+[39;1mDownloadResponseFlatMapErrorTestCase[0m
+    [32;1m✓[0m testThatFlatMapErrorCatchesTransformationError (0.017 seconds)
+    [32;1m✓[0m testThatFlatMapErrorPreservesSuccessValue ([33m0.046[0m seconds)
+    [32;1m✓[0m testThatFlatMapErrorTransformsError (0.012 seconds)
+[39;1mDownloadResponseFlatMapTestCase[0m
+    [32;1m✓[0m testThatFlatMapCatchesTransformationError ([33m0.049[0m seconds)
+    [32;1m✓[0m testThatFlatMapPreservesFailureError (0.011 seconds)
+    [32;1m✓[0m testThatFlatMapTransformsSuccessValue ([33m0.048[0m seconds)
+[39;1mDownloadResponseMapErrorTestCase[0m
+    [32;1m✓[0m testThatMapErrorPreservesSuccessValue ([33m0.046[0m seconds)
+    [32;1m✓[0m testThatMapErrorTransformsFailureValue (0.012 seconds)
+[39;1mDownloadResponseMapTestCase[0m
+    [32;1m✓[0m testThatMapPreservesFailureError (0.014 seconds)
+    [32;1m✓[0m testThatMapTransformsSuccessValue ([33m0.051[0m seconds)
+[39;1mDownloadResponseSerializationTestCase[0m
+    [32;1m✓[0m testThatDataResponseSerializerFailsWhenErrorIsNotNil (0.002 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerFailsWhenFileDataIsEmpty (0.005 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerFailsWhenFileURLIsInvalid (0.004 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerFailsWhenFileURLIsNil (0.002 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerFailsWhenFileURLIsNilWithNonEmptyResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerSucceedsWhenDataIsNilWithEmptyResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatDataResponseSerializerSucceedsWhenFileDataIsNotNil (0.001 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenDataIsInvalidJSON (0.004 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenDataIsNilWithNonEmptyResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenErrorIsNotNil (0.007 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenFileDataIsEmpty (0.003 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenFileURLIsInvalid (0.006 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerFailsWhenFileURLIsNil (0.003 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerSucceedsWhenDataIsNilWithEmptyResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatJSONResponseSerializerSucceedsWhenDataIsValidJSON (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenDataIsNilWithNonEmptyResponseStatusCode (0.002 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenErrorIsNotNil (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenFileDataIsEmpty (0.002 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenFileURLIsInvalid (0.004 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWhenFileURLIsNil (0.005 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWithUTF32DataAndUTF8ProvidedEncoding (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerFailsWithUTF32DataAndUTF8ResponseEncoding (0.004 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWhenDataIsNilWithEmptyResponseStatusCode (0.003 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWithUTF8DataAndNoProvidedEncoding (0.009 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWithUTF8DataAndUTF8ProvidedEncoding (0.002 seconds)
+    [32;1m✓[0m testThatStringResponseSerializerSucceedsWithUTF8DataUsingResponseTextEncodingName (0.003 seconds)
+[39;1mDownloadResponseTestCase[0m
+    [32;1m✓[0m testCancelledDownloadRequest (0.006 seconds)
+    [32;1m✓[0m testDownloadRequest ([33m0.050[0m seconds)
+    [32;1m✓[0m testDownloadRequestWithHeaders ([33m0.054[0m seconds)
+    [32;1m✓[0m testDownloadRequestWithParameters ([33m0.046[0m seconds)
+    [32;1m✓[0m testDownloadRequestWithProgress ([31m0.249[0m seconds)
+    [32;1m✓[0m testThatDownloadingFileAndMovingToDestinationThatIsOccupiedThrowsError ([31m0.110[0m seconds)
+    [32;1m✓[0m testThatDownloadingFileAndMovingToDirectoryThatDoesNotExistThrowsError ([33m0.053[0m seconds)
+    [32;1m✓[0m testThatDownloadOptionsCanCreateIntermediateDirectoriesPriorToMovingFile ([33m0.046[0m seconds)
+    [32;1m✓[0m testThatDownloadOptionsCanRemovePreviousFilePriorToMovingFile ([33m0.046[0m seconds)
+[39;1mDownloadResumeDataTestCase[0m
+    [32;1m✓[0m testThatCancelledDownloadCanBeResumedWithResumeData ([31m1.321[0m seconds)
+    [32;1m✓[0m testThatCancelledDownloadProducesMatchingResumeData ([31m0.138[0m seconds)
+    [32;1m✓[0m testThatCancelledDownloadRequestDoesNotProduceResumeData ([31m0.138[0m seconds)
+    [32;1m✓[0m testThatCancelledDownloadResponseDataMatchesResumeData ([31m0.142[0m seconds)
+    [32;1m✓[0m testThatCancelledDownloadResumeDataIsAvailableWithJSONResponseSerializer ([31m0.147[0m seconds)
+[39;1mHTTPDigestAuthenticationTestCase[0m
+    [32;1m✓[0m testHTTPDigestAuthenticationWithInvalidCredentials ([31m0.212[0m seconds)
+    [32;1m✓[0m testHTTPDigestAuthenticationWithValidCredentials ([31m0.178[0m seconds)
+[39;1mHTTPHeadersTests[0m
+    [32;1m✓[0m testHeadersAreStoreUniquelyByCaseInsensitiveName (0.003 seconds)
+    [32;1m✓[0m testHeadersCanBeProperlySortedByName (0.003 seconds)
+    [32;1m✓[0m testHeadersCanInsensitivelyGetAndSetThroughSubscript (0.003 seconds)
+    [32;1m✓[0m testHeadersHaveUnsortedDescription (0.003 seconds)
+    [32;1m✓[0m testHeadersPreserveLastFormAndValueOfAName (0.002 seconds)
+    [32;1m✓[0m testHeadersPreserveOrderOfInsertion (0.002 seconds)
+[39;1mInterceptorTestCase[0m
+    [32;1m✓[0m testAdapterAndRetrierDefaultInitializer (0.003 seconds)
+    [32;1m✓[0m testAdaptersAndRetriersDefaultInitializer (0.002 seconds)
+    [32;1m✓[0m testAdaptHandlerAndRetryHandlerDefaultInitializer (0.002 seconds)
+    [32;1m✓[0m testThatInterceptorCanAdaptRequestAsynchronously (0.004 seconds)
+    [32;1m✓[0m testThatInterceptorCanAdaptRequestWithMultipleAdapters (0.002 seconds)
+    [32;1m✓[0m testThatInterceptorCanAdaptRequestWithNoAdapters (0.010 seconds)
+    [32;1m✓[0m testThatInterceptorCanAdaptRequestWithOneAdapter (0.002 seconds)
+    [32;1m✓[0m testThatInterceptorCanRetryRequestAsynchronously (0.004 seconds)
+    [32;1m✓[0m testThatInterceptorCanRetryRequestWithMultipleRetriers (0.002 seconds)
+    [32;1m✓[0m testThatInterceptorCanRetryRequestWithNoRetriers (0.002 seconds)
+    [32;1m✓[0m testThatInterceptorCanRetryRequestWithOneRetrier (0.002 seconds)
+    [32;1m✓[0m testThatInterceptorStopsIteratingThroughPendingRetriersWithDoNotRetryResult (0.002 seconds)
+    [32;1m✓[0m testThatInterceptorStopsIteratingThroughPendingRetriersWithRetryResult (0.002 seconds)
+    [32;1m✓[0m testThatInterceptorStopsIteratingThroughPendingRetriersWithRetryWithDelayResult (0.003 seconds)
+[39;1mJSONParameterEncoderTests[0m
+    [32;1m✓[0m testThatDataIsProperlyEncodedAndProperContentTypeIsSet (0.004 seconds)
+    [32;1m✓[0m testThatDataIsProperlyEncodedButContentTypeIsNotSetIfRequestAlreadyHasAContentType (0.004 seconds)
+    [32;1m✓[0m testThatJSONEncoderCanBeCustomized (0.002 seconds)
+    [32;1m✓[0m testThatJSONEncoderDefaultWorks (0.002 seconds)
+    [32;1m✓[0m testThatJSONEncoderPrettyPrintedPrintsPretty (0.004 seconds)
+[39;1mJSONParameterEncodingTestCase[0m
+    [32;1m✓[0m testJSONParameterEncodeArray (0.003 seconds)
+    [32;1m✓[0m testJSONParameterEncodeComplexParameters (0.004 seconds)
+    [32;1m✓[0m testJSONParameterEncodeNilParameters (0.002 seconds)
+    [32;1m✓[0m testJSONParameterEncodeParametersRetainsCustomContentType (0.002 seconds)
+[39;1mMultipartFormDataEncodingTestCase[0m
+    [32;1m✓[0m testEncodingDataBodyPart (0.009 seconds)
+    [32;1m✓[0m testEncodingFileBodyPart (0.024 seconds)
+    [32;1m✓[0m testEncodingMultipleBodyPartsWithVaryingTypes (0.011 seconds)
+    [32;1m✓[0m testEncodingMultipleDataBodyParts (0.005 seconds)
+    [32;1m✓[0m testEncodingMultipleFileBodyParts (0.011 seconds)
+    [32;1m✓[0m testEncodingMultipleStreamBodyParts (0.006 seconds)
+    [32;1m✓[0m testEncodingStreamBodyPart (0.005 seconds)
+[39;1mMultipartFormDataFailureTestCase[0m
+    [32;1m✓[0m testThatAppendingFileBodyPartThatIsDirectoryReturnsError (0.009 seconds)
+    [32;1m✓[0m testThatAppendingFileBodyPartThatIsNotFileURLReturnsError (0.008 seconds)
+    [32;1m✓[0m testThatAppendingFileBodyPartThatIsNotReachableReturnsError (0.007 seconds)
+    [32;1m✓[0m testThatAppendingFileBodyPartWithInvalidLastPathComponentReturnsError (0.005 seconds)
+    [32;1m✓[0m testThatWritingEncodedDataToBadURLFails (0.006 seconds)
+    [32;1m✓[0m testThatWritingEncodedDataToExistingFileURLFails (0.007 seconds)
+[39;1mMultipartFormDataPropertiesTestCase[0m
+    [32;1m✓[0m testThatContentLengthMatchesTotalBodyPartSize (0.005 seconds)
+    [32;1m✓[0m testThatContentTypeContainsBoundary (0.002 seconds)
+[39;1mMultipartFormDataWriteEncodedDataToDiskTestCase[0m
+    [32;1m✓[0m testWritingEncodedDataBodyPartToDisk (0.007 seconds)
+    [32;1m✓[0m testWritingEncodedFileBodyPartToDisk (0.013 seconds)
+    [32;1m✓[0m testWritingEncodedStreamBodyPartToDisk (0.012 seconds)
+    [32;1m✓[0m testWritingMultipleEncodedBodyPartsWithVaryingTypesToDisk (0.016 seconds)
+    [32;1m✓[0m testWritingMultipleEncodedDataBodyPartsToDisk (0.005 seconds)
+    [32;1m✓[0m testWritingMultipleEncodedFileBodyPartsToDisk (0.021 seconds)
+    [32;1m✓[0m testWritingMultipleEncodedStreamBodyPartsToDisk (0.009 seconds)
+[39;1mMultipleValidationTestCase[0m
+    [32;1m✓[0m testThatValidationForRequestWithAcceptableStatusCodeAndContentTypeResponseSucceeds ([33m0.051[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithUnacceptableStatusCodeAndContentTypeResponseFailsWithContentTypeError ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithUnacceptableStatusCodeAndContentTypeResponseFailsWithStatusCodeError ([33m0.048[0m seconds)
+[39;1mNetworkReachabilityManagerTestCase[0m
+    [32;1m✓[0m testThatAddressManagerCanBeDeinitialized (0.003 seconds)
+    [32;1m✓[0m testThatAddressManagerIsNotifiedWhenStartListeningIsCalled (0.007 seconds)
+    [32;1m✓[0m testThatAddressManagerStartsWithReachableStatus (0.006 seconds)
+    [32;1m✓[0m testThatHostManagerCanBeDeinitialized (0.003 seconds)
+    [32;1m✓[0m testThatHostManagerIsNotifiedWhenStartListeningIsCalled (0.008 seconds)
+    [32;1m✓[0m testThatHostManagerIsReachableOnWiFi (0.006 seconds)
+    [32;1m✓[0m testThatHostManagerStartsWithReachableStatus (0.007 seconds)
+    [32;1m✓[0m testThatManagerCanBeInitializedFromAddress (0.004 seconds)
+    [32;1m✓[0m testThatManagerCanBeInitializedFromHost (0.003 seconds)
+    [32;1m✓[0m testThatManagerReturnsNotReachableStatusWhenConnectionIsRequired (0.003 seconds)
+    [32;1m✓[0m testThatManagerReturnsNotReachableStatusWhenInterventionIsRequired (0.004 seconds)
+    [32;1m✓[0m testThatManagerReturnsNotReachableStatusWhenReachableFlagIsAbsent (0.004 seconds)
+    [32;1m✓[0m testThatManagerReturnsReachableOnWiFiStatusWhenConnectionIsNotRequired (0.005 seconds)
+    [32;1m✓[0m testThatManagerReturnsReachableOnWiFiStatusWhenConnectionIsOnDemand (0.004 seconds)
+    [32;1m✓[0m testThatManagerReturnsReachableOnWiFiStatusWhenConnectionIsOnTraffic (0.003 seconds)
+[39;1mRedirectHandlerTestCase[0m
+    [32;1m✓[0m testThatRequestRedirectHandlerCanFollowRedirects ([31m0.190[0m seconds)
+    [32;1m✓[0m testThatRequestRedirectHandlerCanModifyRedirects ([31m0.305[0m seconds)
+    [32;1m✓[0m testThatRequestRedirectHandlerCanNotFollowRedirects ([31m0.150[0m seconds)
+    [32;1m✓[0m testThatRequestRedirectHandlerIsPrioritizedOverSessionRedirectHandler ([31m0.248[0m seconds)
+    [32;1m✓[0m testThatSessionRedirectHandlerCanFollowRedirects ([31m0.202[0m seconds)
+    [32;1m✓[0m testThatSessionRedirectHandlerCanModifyRedirects ([31m0.323[0m seconds)
+    [32;1m✓[0m testThatSessionRedirectHandlerCanNotFollowRedirects ([31m0.146[0m seconds)
+[39;1mRequestCURLDescriptionTestCase[0m
+    [32;1m✓[0m testGETRequestCURLDescription (0.005 seconds)
+    [32;1m✓[0m testGETRequestCURLDescriptionCanBeRequestedManyTimes (0.013 seconds)
+2019-07-23 14:21:34.571 xcodebuild[3111:8516]  IDETestOperationsObserverDebug: Writing diagnostic log for test session to:
+/Users/travis/Library/Developer/Xcode/DerivedData/Alamofire-cluwyoqdwcygxscxntjkvgncyhpi/Logs/Test/Test-Alamofire tvOS-2019.07.23_14-19-04-+0000.xcresult/1_Test/Diagnostics/Alamofire tvOS Tests-3453F750-CFB3-45CE-9371-8487B97D670B/Alamofire tvOS Tests-ED9BF638-571A-496D-9FAF-A3CB60F55EBD/Session-Alamofire tvOS Tests-2019-07-23_142134-SbJ3ll.log
+2019-07-23 14:21:34.571 xcodebuild[3111:7195] [MT] IDETestOperationsObserverDebug: (351B9941-B174-4A38-8A4C-50C60B770796) Beginning test session Alamofire tvOS Tests-351B9941-B174-4A38-8A4C-50C60B770796 at 2019-07-23 14:21:34.571 with Xcode 10E1001 on target <DVTiPhoneSimulator: 0x7f81285e7c00> {
+		SimDevice: Apple TV 1080p (456EC0CF-C098-4EC1-890E-4DE0BD3C4527, tvOS 10.2, Booted)
+} (10.2 (14W260))
+2019-07-23 14:21:34.580 xcodebuild[3111:7195] [MT] IDETestOperationsObserverDebug: (351B9941-B174-4A38-8A4C-50C60B770796) Finished requesting crash reports. Continuing with testing.
+    [31m✗[0m testGETRequestCURLDescriptionSynchronous, Test crashed
+[39;1mSelected tests[0m
+Test Suite [39;1mAlamofire tvOS Tests.xctest[0m started
+[39;1mRequestCURLDescriptionTestCase[0m
+    [32;1m✓[0m testGETRequestWithCustomHeaderCURLDescription ([33m0.032[0m seconds)
+    [32;1m✓[0m testGETRequestWithDuplicateHeadersDebugDescription (0.022 seconds)
+    [32;1m✓[0m testMultipartFormDataRequestWithDuplicateHeadersCURLDescriptionHasOneContentTypeHeader (0.013 seconds)
+    [32;1m✓[0m testPOSTRequestCURLDescription (0.008 seconds)
+    [32;1m✓[0m testPOSTRequestWithCookieCURLDescription (0.014 seconds)
+    [32;1m✓[0m testPOSTRequestWithCookiesDisabledCURLDescriptionHasNoCookies (0.010 seconds)
+    [32;1m✓[0m testPOSTRequestWithJSONParametersCURLDescription (0.015 seconds)
+    [32;1m✓[0m testThatRequestWithInvalidURLDebugDescription (0.007 seconds)
+[39;1mRequestDescriptionTestCase[0m
+    [32;1m✓[0m testRequestDescription ([31m0.173[0m seconds)
+[39;1mRequestResponseTestCase[0m
+    [32;1m✓[0m testPOSTRequestWithBase64EncodedImages ([31m0.546[0m seconds)
+    [32;1m✓[0m testPOSTRequestWithUnicodeParameters ([33m0.053[0m seconds)
+    [32;1m✓[0m testRequestResponse ([33m0.047[0m seconds)
+    [32;1m✓[0m testRequestResponseWithProgress ([31m0.178[0m seconds)
+    [32;1m✓[0m testThatAppendingResponseSerializerToCancelledRequestCallsCompletion (0.006 seconds)
+    [32;1m✓[0m testThatAppendingResponseSerializerToCompletedRequestInsideCompletionResumesRequest ([31m0.154[0m seconds)
+    [32;1m✓[0m testThatAppendingResponseSerializerToCompletedRequestOutsideCompletionResumesRequest ([31m0.164[0m seconds)
+    [32;1m✓[0m testThatAutomaticallyAndManuallyResumedRequestReceivesAppropriateLifetimeEvents ([31m0.140[0m seconds)
+    [32;1m✓[0m testThatAutomaticallyResumedRequestReceivesAppropriateLifetimeEvents ([31m0.146[0m seconds)
+    [32;1m✓[0m testThatCancelledRequestTriggersAllAppropriateLifetimeEvents (0.019 seconds)
+    [32;1m✓[0m testThatManuallyResumedRequestReceivesAppropriateLifetimeEvents ([31m0.258[0m seconds)
+    [32;1m✓[0m testThatRequestManuallyCancelledManyTimesAfterAutomaticResumeOnlyReceivesAppropriateLifetimeEvents (0.014 seconds)
+    [32;1m✓[0m testThatRequestManuallyCancelledManyTimesOnlyReceivesAppropriateLifetimeEvents (0.011 seconds)
+    [32;1m✓[0m testThatRequestManuallyCancelledManyTimesOnManyQueuesOnlyReceivesAppropriateLifetimeEvents (0.017 seconds)
+    [32;1m✓[0m testThatRequestManuallyResumedManyTimesOnlyReceivesAppropriateLifetimeEvents ([31m0.162[0m seconds)
+    [32;1m✓[0m testThatRequestManuallySuspendedManyTimesAfterAutomaticResumeOnlyReceivesAppropriateLifetimeEvents (0.009 seconds)
+    [32;1m✓[0m testThatRequestManuallySuspendedManyTimesOnlyReceivesAppropriateLifetimeEvents (0.007 seconds)
+    [32;1m✓[0m testThatRequestsCanPassEncodableParametersAsAURLQuery ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatRequestsCanPassEncodableParametersAsJSONBodyData ([33m0.046[0m seconds)
+    [32;1m✓[0m testThatRequestsCanPassEncodableParametersAsURLEncodedBodyData ([33m0.046[0m seconds)
+    [32;1m✓[0m testThatRequestTriggersAllAppropriateLifetimeEvents ([31m0.155[0m seconds)
+    [32;1m✓[0m testThatResponseSerializationWorksWithSerializationQueue ([31m0.161[0m seconds)
+[39;1mResponseDataTestCase[0m
+    [32;1m✓[0m testThatResponseDataReturnsFailureResultWithOptionalDataAndError (0.016 seconds)
+    [32;1m✓[0m testThatResponseDataReturnsSuccessResultWithValidData ([33m0.050[0m seconds)
+[39;1mResponseFlatMapErrorTestCase[0m
+    [32;1m✓[0m testThatFlatMapErrorCatchesTransformationError (0.015 seconds)
+    [32;1m✓[0m testThatFlatMapErrorPreservesSuccessValue ([33m0.049[0m seconds)
+    [32;1m✓[0m testThatFlatMapErrorTransformsError (0.013 seconds)
+[39;1mResponseFlatMapTestCase[0m
+    [32;1m✓[0m testThatFlatMapCatchesTransformationError ([33m0.051[0m seconds)
+    [32;1m✓[0m testThatFlatMapPreservesFailureError (0.014 seconds)
+    [32;1m✓[0m testThatFlatMapTransformsSuccessValue ([33m0.053[0m seconds)
+[39;1mResponseJSONDecodableTestCase[0m
+    [32;1m✓[0m testThatResponseDecodableReturnsSuccessResultWithValidJSON ([33m0.055[0m seconds)
+    [32;1m✓[0m testThatResponseDecodableWithPassedTypeReturnsSuccessResultWithValidJSON ([33m0.049[0m seconds)
+    [32;1m✓[0m testThatResponseStringReturnsFailureResultWithOptionalDataAndError (0.009 seconds)
+[39;1mResponseJSONTestCase[0m
+    [32;1m✓[0m testThatResponseJSONReturnsSuccessResultForGETRequest ([33m0.045[0m seconds)
+    [32;1m✓[0m testThatResponseJSONReturnsSuccessResultForPOSTRequest ([33m0.049[0m seconds)
+    [32;1m✓[0m testThatResponseJSONReturnsSuccessResultWithValidJSON ([33m0.045[0m seconds)
+    [32;1m✓[0m testThatResponseStringReturnsFailureResultWithOptionalDataAndError (0.011 seconds)
+[39;1mResponseMapErrorTestCase[0m
+    [32;1m✓[0m testThatMapErrorPreservesSuccessValue ([33m0.045[0m seconds)
+    [32;1m✓[0m testThatMapErrorTransformsFailureValue (0.010 seconds)
+[39;1mResponseMapTestCase[0m
+    [32;1m✓[0m testThatMapPreservesFailureError (0.010 seconds)
+    [32;1m✓[0m testThatMapTransformsSuccessValue ([33m0.049[0m seconds)
+[39;1mResponseStringTestCase[0m
+    [32;1m✓[0m testThatResponseStringReturnsFailureResultWithOptionalDataAndError (0.009 seconds)
+    [32;1m✓[0m testThatResponseStringReturnsSuccessResultWithValidString ([33m0.046[0m seconds)
+[39;1mResponseTestCase[0m
+    [32;1m✓[0m testThatResponseReturnsFailureResultWithOptionalDataAndError (0.010 seconds)
+    [32;1m✓[0m testThatResponseReturnsSuccessResultWithValidData ([33m0.047[0m seconds)
+[39;1mRetrierTestCase[0m
+    [32;1m✓[0m testThatRetrierCallsRequestAdapterDefaultImplementationInProtocolExtension (0.003 seconds)
+    [32;1m✓[0m testThatRetrierCallsRetryHandler (0.003 seconds)
+    [32;1m✓[0m testThatRetrierCanBeImplementedAsynchronously (0.005 seconds)
+[39;1mRetryPolicyTestCase[0m
+    [32;1m✓[0m testThatRetryPolicyDoesNotRetryErrorsThatAreNotURLErrors (0.007 seconds)
+    [32;1m✓[0m testThatRetryPolicyRetriesIdempotentRequests (0.025 seconds)
+    [32;1m✓[0m testThatRetryPolicyRetriesRequestsBelowRetryLimit (0.010 seconds)
+    [32;1m✓[0m testThatRetryPolicyRetriesRequestsWithRetryableErrors ([31m0.107[0m seconds)
+    [32;1m✓[0m testThatRetryPolicyRetriesRequestsWithRetryableStatusCodes ([31m1.114[0m seconds)
+    [32;1m✓[0m testThatRetryPolicyTimeDelayBacksOffExponentially (0.010 seconds)
+[39;1mRetryResultTestCase[0m
+    [32;1m✓[0m testDelayProperty (0.005 seconds)
+    [32;1m✓[0m testErrorProperty (0.004 seconds)
+    [32;1m✓[0m testRetryRequiredProperty (0.003 seconds)
+[39;1mServerTrustPolicyCertificatesInBundleTestCase[0m
+    [32;1m✓[0m testOnlyValidCertificatesAreDetected (0.024 seconds)
+[39;1mServerTrustPolicyCompositeTestCase[0m
+    [32;1m✓[0m testThatExpiredLeafCertificateFailsDefaultAndRevocationComposite (0.011 seconds)
+    [32;1m✓[0m testThatNonAnchoredRootCertificateChainFailsEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatValidCertificateChainPassesDefaultAndRevocationCompositeChecks (0.008 seconds)
+[39;1mServerTrustPolicyDisableEvaluationTestCase[0m
+    [32;1m✓[0m testThatCertificateChainMissingIntermediateCertificatePassesEvaluation (0.003 seconds)
+    [32;1m✓[0m testThatExpiredLeafCertificatePassesEvaluation (0.003 seconds)
+[39;1mServerTrustPolicyExplorationBasicX509PolicyValidationTestCase[0m
+    [32;1m✓[0m testThatAnchoredRootCertificatePassesBasicX509ValidationWithoutRootInTrust (0.006 seconds)
+    [32;1m✓[0m testThatAnchoredRootCertificatePassesBasicX509ValidationWithRootInTrust (0.008 seconds)
+    [32;1m✓[0m testThatCertificateMissingDNSNamePassesBasicX509Validation (0.006 seconds)
+    [32;1m✓[0m testThatExpiredCertificateFailsBasicX509Validation (0.007 seconds)
+[39;1mServerTrustPolicyExplorationSSLPolicyValidationTestCase[0m
+    [32;1m✓[0m testThatAnchoredRootCertificatePassesSSLValidationWithoutRootInTrust (0.006 seconds)
+    [32;1m✓[0m testThatAnchoredRootCertificatePassesSSLValidationWithRootInTrust (0.004 seconds)
+    [32;1m✓[0m testThatCertificateMissingDNSNameFailsSSLValidation (0.006 seconds)
+    [32;1m✓[0m testThatDNSNameCertificatePassesSSLValidation (0.006 seconds)
+    [32;1m✓[0m testThatExpiredCertificateFailsSSLValidation (0.006 seconds)
+    [32;1m✓[0m testThatMultipleDNSNamesCertificatePassesSSLValidationForAllEntries (0.007 seconds)
+    [32;1m✓[0m testThatPassingNilForHostParameterAllowsCertificateMissingDNSNameToPassSSLValidation (0.004 seconds)
+    [32;1m✓[0m testThatURICertificateFailsSSLValidation (0.006 seconds)
+    [32;1m✓[0m testThatWildcardCertificatePassesSSLValidation (0.008 seconds)
+[39;1mServerTrustPolicyPerformDefaultEvaluationTestCase[0m
+    [32;1m✓[0m testThatExpiredCertificateChainFailsEvaluationWithHostValidation (0.008 seconds)
+    [32;1m✓[0m testThatExpiredCertificateChainFailsEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatMissingDNSNameLeafCertificateFailsEvaluationWithHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatMissingDNSNameLeafCertificatePassesEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatMissingIntermediateCertificateInChainFailsEvaluationWithHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatMissingIntermediateCertificateInChainFailsEvaluationWithoutHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatNonAnchoredRootCertificateChainFailsEvaluationWithHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatNonAnchoredRootCertificateChainFailsEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatValidCertificateChainPassesEvaluationWithHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatValidCertificateChainPassesEvaluationWithoutHostValidation (0.003 seconds)
+    [32;1m✓[0m testThatWildcardedLeafCertificateChainPassesEvaluationWithHostValidation (0.006 seconds)
+[39;1mServerTrustPolicyPerformRevokedEvaluationTestCase[0m
+    [32;1m✓[0m testThatExpiredCertificateChainFailsEvaluationWithHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatExpiredCertificateChainFailsEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatMissingDNSNameLeafCertificateFailsEvaluationWithHostValidation (0.007 seconds)
+    [32;1m✓[0m testThatMissingDNSNameLeafCertificatePassesEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatMissingIntermediateCertificateInChainFailsEvaluationWithHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatMissingIntermediateCertificateInChainFailsEvaluationWithoutHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatNonAnchoredRootCertificateChainFailsEvaluationWithHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatNonAnchoredRootCertificateChainFailsEvaluationWithoutHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatValidCertificateChainPassesEvaluationWithHostValidation (0.007 seconds)
+    [32;1m✓[0m testThatValidCertificateChainPassesEvaluationWithoutHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatWildcardedLeafCertificateChainPassesEvaluationWithHostValidation (0.007 seconds)
+[39;1mServerTrustPolicyPinCertificatesTestCase[0m
+    [32;1m✓[0m testThatPinnedIntermediateCertificatePassesEvaluationWithoutHostValidation (0.007 seconds)
+    [32;1m✓[0m testThatPinnedIntermediateCertificatePassesEvaluationWithSelfSignedSupportAndHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinnedIntermediateCertificateWithoutCertificateChainValidationPassesEvaluation (0.006 seconds)
+    [32;1m✓[0m testThatPinnedLeafCertificatePassesEvaluationWithoutHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinnedLeafCertificatePassesEvaluationWithSelfSignedSupportAndHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatPinnedLeafCertificateWithoutCertificateChainValidationPassesEvaluation (0.006 seconds)
+    [32;1m✓[0m testThatPinnedRootCertificatePassesEvaluationWithoutHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinnedRootCertificatePassesEvaluationWithSelfSignedSupportAndHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinnedRootCertificateWithoutCertificateChainValidationPassesEvaluation (0.006 seconds)
+    [32;1m✓[0m testThatPinningExpiredLeafCertificateFailsEvaluationWithHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinningExpiredLeafCertificateFailsEvaluationWithoutHostValidation (0.007 seconds)
+    [32;1m✓[0m testThatPinningExpiredLeafCertificateWithoutCertificateChainValidationPassesEvaluation (0.007 seconds)
+    [32;1m✓[0m testThatPinningIntermediateCertificateNotInCertificateChainFailsEvaluationWithHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinningIntermediateCertificateNotInCertificateChainFailsEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatPinningIntermediateCertificateNotInCertificateChainWithoutCertificateChainValidationFailsEvaluation (0.006 seconds)
+    [32;1m✓[0m testThatPinningIntermediateCertificateWithExpiredLeafCertificateFailsEvaluationWithHostValidation (0.007 seconds)
+    [32;1m✓[0m testThatPinningIntermediateCertificateWithExpiredLeafCertificateFailsEvaluationWithoutHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinningIntermediateCertificateWithExpiredLeafCertificateWithoutCertificateChainValidationPassesEvaluation (0.006 seconds)
+    [32;1m✓[0m testThatPinningLeafCertificateNotInCertificateChainFailsEvaluationWithHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatPinningLeafCertificateNotInCertificateChainFailsEvaluationWithoutHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinningLeafCertificateNotInCertificateChainWithoutCertificateChainValidationFailsEvaluation (0.005 seconds)
+    [32;1m✓[0m testThatPinningMultipleCertificatesWithoutCertificateChainValidationPassesEvaluation (0.007 seconds)
+    [32;1m✓[0m testThatPinningRootCertificateWithExpiredLeafCertificateWithoutCertificateChainValidationPassesEvaluation (0.006 seconds)
+[39;1mServerTrustPolicyPinPublicKeysTestCase[0m
+    [32;1m✓[0m testThatPinningBackupKeyPassesEvaluationWithHostValidation (0.007 seconds)
+    [32;1m✓[0m testThatPinningBackupKeyPassesEvaluationWithoutHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatPinningIntermediateKeyPassesEvaluationWithHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinningIntermediateKeyPassesEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatPinningIntermediateKeyWithoutCertificateChainValidationPassesEvaluationWithExpiredLeafCertificate (0.006 seconds)
+    [32;1m✓[0m testThatPinningKeyNotInCertificateChainFailsEvaluationWithHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinningKeyNotInCertificateChainFailsEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatPinningLeafKeyPassesEvaluationWithHostValidation (0.006 seconds)
+    [32;1m✓[0m testThatPinningLeafKeyPassesEvaluationWithoutHostValidation (0.004 seconds)
+    [32;1m✓[0m testThatPinningLeafKeyWithoutCertificateChainValidationPassesEvaluationWithExpiredLeafCertificate (0.006 seconds)
+    [32;1m✓[0m testThatPinningLeafKeyWithoutCertificateChainValidationPassesEvaluationWithIncorrectIntermediateCertificate (0.006 seconds)
+    [32;1m✓[0m testThatPinningLeafKeyWithoutCertificateChainValidationPassesEvaluationWithMissingIntermediateCertificate (0.005 seconds)
+    [32;1m✓[0m testThatPinningRootKeyPassesEvaluationWithHostValidation (0.007 seconds)
+    [32;1m✓[0m testThatPinningRootKeyPassesEvaluationWithoutHostValidation (0.005 seconds)
+    [32;1m✓[0m testThatPinningRootKeyWithoutCertificateChainValidationFailsEvaluationWithMissingIntermediateCertificate (0.005 seconds)
+    [32;1m✓[0m testThatPinningRootKeyWithoutCertificateChainValidationPassesEvaluationWithExpiredLeafCertificate (0.008 seconds)
+[39;1mSessionDelegateTestCase[0m
+    [32;1m✓[0m testThatAppropriateNotificationsAreCalledWithRequestForDataRequest ([31m0.149[0m seconds)
+    [32;1m✓[0m testThatDidCompleteNotificationIsCalledWithRequestForDownloadRequests ([31m0.188[0m seconds)
+    [32;1m✓[0m testThatRequestWillPerformHTTPRedirectionByDefault ([31m0.221[0m seconds)
+    [32;1m✓[0m testThatRequestWillPerformRedirectionMultipleTimesByDefault ([31m0.352[0m seconds)
+[39;1mSessionManagerConfigurationHeadersTestCase[0m
+    [32;1m✓[0m testThatDefaultConfigurationHeadersAreSentWithRequest ([31m0.142[0m seconds)
+    [32;1m✓[0m testThatEphemeralConfigurationHeadersAreSentWithRequest ([31m0.163[0m seconds)
+[39;1mSessionTestCase[0m
+    [32;1m✓[0m testDefaultAcceptEncodingSupportsAppropriateEncodingsOnAppropriateSystems ([31m0.136[0m seconds)
+    [32;1m✓[0m testDefaultUserAgentHeader (0.002 seconds)
+    [32;1m✓[0m testInitializerWithDefaultArguments (0.005 seconds)
+    [32;1m✓[0m testInitializerWithSpecifiedArguments (0.004 seconds)
+    [32;1m✓[0m testReleasingManagerWithPendingCanceledRequestDeinitializesSuccessfully (0.004 seconds)
+    [32;1m✓[0m testReleasingManagerWithPendingRequestDeinitializesSuccessfully (0.010 seconds)
+    [32;1m✓[0m testSetStartRequestsImmediatelyToFalseAndCancelledCallsResponseHandlers (0.005 seconds)
+    [32;1m✓[0m testSetStartRequestsImmediatelyToFalseAndCancelThenResumeRequestDoesntCreateTaskAndStaysCancelled (0.006 seconds)
+    [32;1m✓[0m testSetStartRequestsImmediatelyToFalseAndResumeRequest ([31m0.157[0m seconds)
+    [32;1m✓[0m testSetStartRequestsImmediatelyToFalseAndResumeThenCancelRequestHasCorrectOutput (0.009 seconds)
+    [32;1m✓[0m testThatDataRequestWithInvalidURLStringThrowsResponseHandlerError (0.006 seconds)
+    [32;1m✓[0m testThatDownloadRequestWithInvalidURLStringThrowsResponseHandlerError (0.005 seconds)
+    [32;1m✓[0m testThatSessionCallsAdapterWhenRequestIsRetried ([31m0.226[0m seconds)
+    [32;1m✓[0m testThatSessionCallsRequestAdaptersWhenCreatingDataRequest (0.018 seconds)
+    [32;1m✓[0m testThatSessionCallsRequestAdaptersWhenCreatingDownloadRequest (0.009 seconds)
+    [32;1m✓[0m testThatSessionCallsRequestAdaptersWhenCreatingUploadRequestWithData (0.011 seconds)
+    [32;1m✓[0m testThatSessionCallsRequestAdaptersWhenCreatingUploadRequestWithFile (0.009 seconds)
+    [32;1m✓[0m testThatSessionCallsRequestAdaptersWhenCreatingUploadRequestWithInputStream (0.010 seconds)
+    [32;1m✓[0m testThatSessionCallsRequestRetrierForAllResponseSerializersThatThrowError ([31m0.197[0m seconds)
+    [32;1m✓[0m testThatSessionCallsRequestRetrierThenSessionRetrierWhenRequestEncountersError ([31m0.328[0m seconds)
+    [32;1m✓[0m testThatSessionCallsRequestRetrierWhenDownloadInitiallyEncountersAdaptError ([31m0.172[0m seconds)
+    [32;1m✓[0m testThatSessionCallsRequestRetrierWhenRequestEncountersError ([31m0.259[0m seconds)
+    [32;1m✓[0m testThatSessionCallsRequestRetrierWhenRequestInitiallyEncountersAdaptError ([31m0.163[0m seconds)
+    [32;1m✓[0m testThatSessionCallsRequestRetrierWhenResponseSerializerThrowsError ([31m0.203[0m seconds)
+    [32;1m✓[0m testThatSessionCallsRequestRetrierWhenUploadInitiallyEncountersAdaptError ([31m0.167[0m seconds)
+    [32;1m✓[0m testThatSessionCallsResponseSerializerCompletionsWhenAdapterThrowsErrorDuringRetry ([31m0.206[0m seconds)
+    [32;1m✓[0m testThatSessionCallsResponseSerializerCompletionsWhenAdapterThrowsErrorDuringRetryForDownloads ([31m0.180[0m seconds)
+    [32;1m✓[0m testThatSessionInitializerSucceedsWithDefaultArguments (0.002 seconds)
+    [32;1m✓[0m testThatSessionInitializerSucceedsWithSpecifiedArguments (0.002 seconds)
+    [32;1m✓[0m testThatSessionIsInvalidatedAndAllRequestsCompleteWhenSessionIsDeinitialized (0.009 seconds)
+    [32;1m✓[0m testThatSessionOnlyCallsResponseSerializerCompletionWhenCancellingInsideCompletion ([31m0.160[0m seconds)
+    [32;1m✓[0m testThatSessionRetriesRequestImmediatelyWhenResponseSerializerRequestsRetry ([31m0.230[0m seconds)
+    [32;1m✓[0m testThatSessionRetriesRequestWithDelayWhenRetryResultContainsDelay ([31m0.215[0m seconds)
+    [32;1m✓[0m testThatSessionReturnsRequestAdaptationErrorWhenRequestAdapterThrowsError (0.011 seconds)
+    [32;1m✓[0m testThatSessionReturnsRequestAdaptationErrorWhenRequestIsRetried ([31m0.203[0m seconds)
+    [32;1m✓[0m testThatSessionReturnsRequestRetryErrorWhenRequestRetrierThrowsError ([31m0.183[0m seconds)
+    [32;1m✓[0m testThatSessionSetsRequestStateWhenStartRequestsImmediatelyIsTrue ([31m0.156[0m seconds)
+    [32;1m✓[0m testThatUploadDataRequestWithInvalidURLStringThrowsResponseHandlerError (0.005 seconds)
+    [32;1m✓[0m testThatUploadFileRequestWithInvalidURLStringThrowsResponseHandlerError (0.004 seconds)
+    [32;1m✓[0m testThatUploadStreamRequestWithInvalidURLStringThrowsResponseHandlerError (0.004 seconds)
+[39;1mSortedKeysJSONParameterEncoderTests[0m
+    [32;1m✓[0m testTestJSONEncoderSortedKeysHasSortedKeys (0.002 seconds)
+[39;1mStatusCodeValidationTestCase[0m
+    [32;1m✓[0m testThatValidationForRequestWithAcceptableStatusCodeResponseSucceeds ([31m0.120[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithNoAcceptableStatusCodesFails ([33m0.046[0m seconds)
+    [32;1m✓[0m testThatValidationForRequestWithUnacceptableStatusCodeResponseFails ([33m0.047[0m seconds)
+[39;1mTLSEvaluationExpiredLeafCertificateTestCase[0m
+    [32;1m✓[0m testThatExpiredCertificateRequestFailsWhenPinningAllCertificatesWithCertificateChainValidation ([31m0.213[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestFailsWhenPinningLeafCertificateWithCertificateChainValidation ([33m0.075[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestFailsWhenPinningLeafPublicKeyWithCertificateChainValidation ([33m0.068[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestFailsWithDefaultServerTrustPolicy ([33m0.075[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestFailsWithNoServerTrustPolicy ([33m0.085[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestFailsWithRevokedServerTrustPolicy ([33m0.096[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestSucceedsWhenDisablingEvaluation ([31m0.143[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestSucceedsWhenPinningIntermediateCACertificateWithoutCertificateChainOrHostValidation ([31m0.134[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestSucceedsWhenPinningIntermediateCAPublicKeyWithoutCertificateChainOrHostValidation ([31m0.134[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestSucceedsWhenPinningLeafCertificateWithoutCertificateChainOrHostValidation ([31m0.137[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestSucceedsWhenPinningLeafPublicKeyWithoutCertificateChainOrHostValidation ([31m0.133[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestSucceedsWhenPinningRootCACertificateWithoutCertificateChainValidation ([33m0.072[0m seconds)
+    [32;1m✓[0m testThatExpiredCertificateRequestSucceedsWhenPinningRootCAPublicKeyWithoutCertificateChainValidation ([33m0.076[0m seconds)
+    [32;1m✓[0m testThatRevokedCertificateRequestFailsWithRevokedServerTrustPolicy ([31m0.147[0m seconds)
+[39;1mURLEncodedFormEncoderTests[0m
+    [32;1m✓[0m testEncoderCanEncodeDictionary (0.002 seconds)
+    [32;1m✓[0m testEncoderCanEncodeDouble (0.002 seconds)
+    [32;1m✓[0m testEncoderCanEncodeFloat (0.003 seconds)
+    [32;1m✓[0m testEncoderCanEncodeInt16 (0.002 seconds)
+    [32;1m✓[0m testEncoderCanEncodeInt32 (0.002 seconds)
+    [32;1m✓[0m testEncoderCanEncodeInt64 (0.002 seconds)
+    [32;1m✓[0m testEncoderCanEncodeInt8 (0.003 seconds)
+    [32;1m✓[0m testEncoderCanEncodeUInt (0.002 seconds)
+    [32;1m✓[0m testEncoderCanEncodeUInt16 (0.002 seconds)
+    [32;1m✓[0m testEncoderCanEncodeUInt32 (0.002 seconds)
+    [32;1m✓[0m testEncoderCanEncodeUInt64 (0.003 seconds)
+    [32;1m✓[0m testEncoderCanEncodeUInt8 (0.003 seconds)
+    [32;1m✓[0m testEncoderThrowsErrorWhenAttemptingToEncodeNilInKeyedContainer (0.003 seconds)
+    [32;1m✓[0m testEncoderThrowsErrorWhenAttemptingToEncodeNilInUnkeyedContainer (0.002 seconds)
+    [32;1m✓[0m testEncoderThrowsErrorWhenCustomDateEncodingFails (0.002 seconds)
+    [32;1m✓[0m testStringWithThousandsOfChineseCharactersIsPercentEscaped (0.013 seconds)
+    [32;1m✓[0m testThatAmpersandsInKeysAndValuesArePercentEscaped (0.002 seconds)
+    [32;1m✓[0m testThatARootArrayCannotBeEncoded (0.004 seconds)
+    [32;1m✓[0m testThatARootValueCannotBeEncoded (0.003 seconds)
+    [32;1m✓[0m testThatArraysCanBeEncodedWithoutBrackets (0.003 seconds)
+    [32;1m✓[0m testThatBoolsCanBeLiteralEncoded (0.003 seconds)
+    [32;1m✓[0m testThatCustomDataEncodingFailsWhenErrorIsThrown (0.002 seconds)
+    [32;1m✓[0m testThatDataCanBeEncoded (0.002 seconds)
+    [32;1m✓[0m testThatDatesCanBeEncoded (0.002 seconds)
+    [32;1m✓[0m testThatDatesCanBeEncodedAsCustomFormatted (0.004 seconds)
+    [32;1m✓[0m testThatDatesCanBeEncodedAsFormatted (0.010 seconds)
+    [32;1m✓[0m testThatDatesCanBeEncodedAsISO8601Formatted (0.010 seconds)
+    [32;1m✓[0m testThatDatesCanBeEncodedAsMillisecondsSince1970 (0.006 seconds)
+    [32;1m✓[0m testThatDatesCanBeEncodedAsSecondsSince1970 (0.002 seconds)
+    [32;1m✓[0m testThatEncodableClassWithNoInheritanceCanBeEncoded (0.003 seconds)
+    [32;1m✓[0m testThatEncodableStructCanBeEncoded (0.004 seconds)
+    [32;1m✓[0m testThatEncodableSubclassCanBeEncoded (0.003 seconds)
+    [32;1m✓[0m testThatEscapedCharactersCanBeCustomized (0.002 seconds)
+    [32;1m✓[0m testThatIllegalASCIICharactersArePercentEscaped (0.002 seconds)
+    [32;1m✓[0m testThatKeysCanBeCustomEncoded (0.002 seconds)
+    [32;1m✓[0m testThatKeysCanBeEncodedIntoACapitalizedString (0.002 seconds)
+    [32;1m✓[0m testThatKeysCanBeEncodedIntoALowercasedString (0.002 seconds)
+    [32;1m✓[0m testThatKeysCanBeEncodedIntoAnUppercasedString (0.001 seconds)
+    [32;1m✓[0m testThatKeysCanBeEncodedIntoKebabCase (0.003 seconds)
+    [32;1m✓[0m testThatKeysCanBeEncodedIntoSnakeCase (0.005 seconds)
+    [32;1m✓[0m testThatManuallyEncodableStructCanBeEncoded (0.004 seconds)
+    [32;1m✓[0m testThatManuallyEncodableSubclassCanBeEncoded (0.004 seconds)
+    [32;1m✓[0m testThatNestedDictionariesHaveBracketedKeys (0.003 seconds)
+    [32;1m✓[0m testThatNonLatinCharactersArePercentEscaped (0.002 seconds)
+    [32;1m✓[0m testThatOptionalValuesCannotBeEncoded (0.004 seconds)
+    [32;1m✓[0m testThatPercentsInKeysAndValuesArePercentEscaped (0.003 seconds)
+    [32;1m✓[0m testThatPlusesInKeysAndValuesArePercentEscaped (0.004 seconds)
+    [32;1m✓[0m testThatQuestionMarksInKeysAndValuesAreNotPercentEscaped (0.004 seconds)
+    [32;1m✓[0m testThatReseredCharactersArePercentEscaped (0.004 seconds)
+    [32;1m✓[0m testThatSlashesInKeysAndValuesAreNotPercentEscaped (0.004 seconds)
+    [32;1m✓[0m testThatSpacesCanBeEncodedAsPluses (0.002 seconds)
+    [32;1m✓[0m testThatSpacesInKeysAndValuesArePercentEscaped (0.003 seconds)
+    [32;1m✓[0m testThatUnreservedCharactersAreNotPercentEscaped (0.002 seconds)
+[39;1mURLEncodedFormParameterEncoderTests[0m
+    [32;1m✓[0m testThatEncoderCanBeCustomized (0.005 seconds)
+    [32;1m✓[0m testThatQueryIsBodyEncodedAndProperContentTypeIsSetForPOSTRequest (0.002 seconds)
+    [32;1m✓[0m testThatQueryIsBodyEncodedButContentTypeIsNotSetWhenRequestAlreadyHasContentType (0.002 seconds)
+    [32;1m✓[0m testThatQueryIsInURLWhenDestinationIsURLAndMethodIsPOST (0.004 seconds)
+    [32;1m✓[0m testThatQueryIsNilWhenEncodableResultsInAnEmptyString (0.001 seconds)
+[39;1mURLParameterEncodingTestCase[0m
+    [32;1m✓[0m testThatIllegalASCIICharactersArePercentEscaped (0.003 seconds)
+    [32;1m✓[0m testThatReservedCharactersArePercentEscapedMinusQuestionMarkAndForwardSlash (0.004 seconds)
+    [32;1m✓[0m testThatReservedCharactersQuestionMarkAndForwardSlashAreNotPercentEscaped (0.003 seconds)
+    [32;1m✓[0m testThatUnreservedLowercaseCharactersAreNotPercentEscaped (0.003 seconds)
+    [32;1m✓[0m testThatUnreservedNumericCharactersAreNotPercentEscaped (0.002 seconds)
+    [32;1m✓[0m testThatUnreservedUppercaseCharactersAreNotPercentEscaped (0.004 seconds)
+    [32;1m✓[0m testThatURLEncodedInURLParameterEncodingEncodesPOSTParametersInURL (0.005 seconds)
+    [32;1m✓[0m testThatURLParameterEncodingEncodesGETParametersInURL (0.002 seconds)
+    [32;1m✓[0m testThatURLParameterEncodingEncodesPOSTParametersInHTTPBody (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeEmptyDictionaryParameter (0.001 seconds)
+    [32;1m✓[0m testURLParameterEncodeNilParameters (0.003 seconds)
+    [32;1m✓[0m testURLParameterEncodeOneStringKeyStringValueParameter (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeOneStringKeyStringValueParameterAppendedToQuery (0.003 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringForRequestWithPrecomposedQuery (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyArrayValueParameter (0.009 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyArrayValueParameterWithoutBrackets (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyBoolValueParameter (0.005 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyDictionaryValueParameter (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyDoubleValueParameter (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyIntegerValueParameter (0.004 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyNestedDictionaryArrayValueParameter (0.004 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyNestedDictionaryArrayValueParameterWithoutBrackets (0.003 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyNestedDictionaryValueParameter (0.004 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyNonLatinStringValueParameter (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyNSNumberBoolValueParameter (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyNSNumberIntegerValueParameter (0.001 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringKeyPercentEncodedStringValueParameter (0.004 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringWithAmpersandKeyStringWithAmpersandValueParameter (0.004 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringWithPlusKeyStringWithPlusValueParameter (0.003 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringWithPlusKeyStringWithPlusValueParameterForRequestWithPrecomposedQuery (0.003 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringWithQuestionMarkKeyStringWithQuestionMarkValueParameter (0.001 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringWithSlashKeyStringWithQuestionMarkValueParameter (0.002 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringWithSpaceKeyStringWithSpaceValueParameter (0.006 seconds)
+    [32;1m✓[0m testURLParameterEncodeStringWithThousandsOfChineseCharacters (0.012 seconds)
+    [32;1m✓[0m testURLParameterEncodeTwoStringKeyStringValueParameters (0.003 seconds)
+    [32;1m✓[0m testURLParameterLiteralBoolEncodingWorksAndDoesNotAffectNumbers (0.006 seconds)
+[39;1mURLProtocolTestCase[0m
+    [32;1m✓[0m testThatURLProtocolReceivesRequestHeadersAndSessionConfigurationHeaders ([31m0.177[0m seconds)
+[39;1mUploadDataInitializationTestCase[0m
+    [32;1m✓[0m testUploadClassMethodWithMethodURLAndData ([33m0.050[0m seconds)
+    [32;1m✓[0m testUploadClassMethodWithMethodURLHeadersAndData ([33m0.046[0m seconds)
+[39;1mUploadDataTestCase[0m
+    [32;1m✓[0m testUploadDataRequest ([33m0.051[0m seconds)
+    [32;1m✓[0m testUploadDataRequestWithProgress ([33m0.051[0m seconds)
+[39;1mUploadFileInitializationTestCase[0m
+    [32;1m✓[0m testUploadClassMethodWithMethodURLAndFile ([33m0.092[0m seconds)
+    [32;1m✓[0m testUploadClassMethodWithMethodURLHeadersAndFile ([33m0.052[0m seconds)
+[39;1mUploadMultipartFormDataTestCase[0m
+    [32;1m✓[0m testThatCustomBoundaryCanBeSetWhenUploadingMultipartFormData ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatUploadingMultipartFormDataAboveMemoryThresholdSetsContentTypeHeader ([33m0.084[0m seconds)
+    [32;1m✓[0m testThatUploadingMultipartFormDataAboveMemoryThresholdStreamsFromDisk ([33m0.047[0m seconds)
+    [32;1m✓[0m testThatUploadingMultipartFormDataBelowMemoryThresholdSetsContentTypeHeader ([33m0.047[0m seconds)
+    [32;1m✓[0m testThatUploadingMultipartFormDataBelowMemoryThresholdStreamsFromMemory ([33m0.045[0m seconds)
+    [32;1m✓[0m testThatUploadingMultipartFormDataSetsContentTypeHeader ([33m0.047[0m seconds)
+    [32;1m✓[0m testThatUploadingMultipartFormDataSucceedsWithDefaultParameters ([33m0.047[0m seconds)
+    [32;1m✓[0m testThatUploadingMultipartFormDataWhileStreamingFromDiskMonitorsProgress ([33m0.048[0m seconds)
+    [32;1m✓[0m testThatUploadingMultipartFormDataWhileStreamingFromMemoryMonitorsProgress ([33m0.047[0m seconds)
+[39;1mUploadRequestEventsTestCase[0m
+    [32;1m✓[0m testThatCancelledUploadRequestTriggersAllAppropriateLifetimeEvents (0.014 seconds)
+    [32;1m✓[0m testThatUploadRequestTriggersAllAppropriateLifetimeEvents ([31m0.153[0m seconds)
+[39;1mUploadStreamInitializationTestCase[0m
+    [32;1m✓[0m testUploadClassMethodWithMethodURLAndStream ([33m0.055[0m seconds)
+    [32;1m✓[0m testUploadClassMethodWithMethodURLHeadersAndStream ([33m0.051[0m seconds)
+
+
+[32;1m	 Executed 529 tests, with 1 failure (0 unexpected) in 13.478 (14.084) seconds
+[0m
+2019-07-23 14:21:51.959 xcodebuild[3111:7871]  IDETestOperationsObserverDebug: Failure collecting logarchive: Test daemon protocol version 22 is too old to support log archive collection (minimum 26)
+2019-07-23 14:21:51.964 xcodebuild[3111:7195] [MT] IDETestOperationsObserverDebug: 74.894 elapsed -- Testing started completed.
+2019-07-23 14:21:51.964 xcodebuild[3111:7195] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2019-07-23 14:21:51.964 xcodebuild[3111:7195] [MT] IDETestOperationsObserverDebug: 74.894 sec, +74.894 sec -- end
+
+Failing tests:
+	Alamofire tvOS Tests:
+		RequestCURLDescriptionTestCase.testGETRequestCURLDescriptionSynchronous()
+
+Test session results and logs:
+	/Users/travis/Library/Developer/Xcode/DerivedData/Alamofire-cluwyoqdwcygxscxntjkvgncyhpi/Logs/Test/Test-Alamofire tvOS-2019.07.23_14-19-04-+0000.xcresult
+
+** TEST FAILED **
+
+travis_time:end:0f5bee4c:start=1563891540193736000,finish=1563891719121068000,duration=178927332000[0K[31;1mThe command "if [ $RUN_TESTS == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty; else xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty; fi" exited with 65.[0m
+
+travis_time:start:0cbfc092[0K$ if [ $BUILD_EXAMPLE == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty; fi
+travis_time:end:0cbfc092:start=1563891719134721000,finish=1563891719144008000,duration=9287000[0K[32;1mThe command "if [ $BUILD_EXAMPLE == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty; fi" exited with 0.[0m
+
+travis_time:start:00072de4[0K$ if [ $POD_LINT == "YES" ]; then pod lib lint; fi
+travis_time:end:00072de4:start=1563891719155709000,finish=1563891719164408000,duration=8699000[0K[32;1mThe command "if [ $POD_LINT == "YES" ]; then pod lib lint; fi" exited with 0.[0m
+
+travis_fold:start:cache.2[0Kstore build cache
+$ bundle clean
+travis_time:start:010d3116[0Ktravis_time:end:010d3116:start=1563891719878159000,finish=1563891719887683000,duration=9524000[0Ktravis_time:start:211e5329[0K[32;1mnothing changed[0m
+travis_time:end:211e5329:start=1563891719899749000,finish=1563891723513171000,duration=3613422000[0Ktravis_fold:end:cache.2[0K
+
+Done. Your build exited with 1.

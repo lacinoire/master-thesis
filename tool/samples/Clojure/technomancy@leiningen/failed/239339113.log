@@ -1,0 +1,333 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: i-0a26118-precise-production-2-worker-org-docker.travisci.net:9c3cedad-9dd9-4866-918a-960d92cecfa9
+version: v2.5.0 https://github.com/travis-ci/worker/tree/da3a43228dffc0fcca5a46569ca786b22991979f
+instance: 10dcd73:travis:clojure
+startup: 471.16914ms
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: clojure
+Build group: stable
+Build dist: precise
+Build id: 239339113
+Job id: 239339114
+travis-build version: 53940dac2
+[34m[1mBuild image provisioning date and time[0m
+Thu Feb  5 15:09:33 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-29-generic
+[34m[1mCookbooks Version[0m
+a68419e https://github.com/travis-ci/travis-cookbooks/tree/a68419e
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-1.9.3-p551
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.1
+[34m[1mRedis version[0m
+redis-server 2.8.19
+[34m[1mriak version[0m
+2.0.2
+[34m[1mMongoDB version[0m
+MongoDB 2.4.12
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mRabbitMQ Version[0m
+3.4.3
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 31.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "3.13.0-29-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+travis_fold:start:fix.CVE-2015-7547[0K$ export DEBIAN_FRONTEND=noninteractive
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libc-bin libc-dev-bin libc6-dev
+Suggested packages:
+  glibc-doc
+The following packages will be upgraded:
+  libc-bin libc-dev-bin libc6 libc6-dev
+4 upgraded, 0 newly installed, 0 to remove and 278 not upgraded.
+Need to get 8,856 kB of archives.
+After this operation, 13.3 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6-dev amd64 2.15-0ubuntu10.18 [2,948 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-dev-bin amd64 2.15-0ubuntu10.18 [84.5 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-bin amd64 2.15-0ubuntu10.18 [1,178 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6 amd64 2.15-0ubuntu10.18 [4,646 kB]
+Fetched 8,856 kB in 0s (26.2 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72019 files and directories currently installed.)
+Preparing to replace libc6-dev 2.15-0ubuntu10.10 (using .../libc6-dev_2.15-0ubuntu10.18_amd64.deb) ...
+Unpacking replacement libc6-dev ...
+Preparing to replace libc-dev-bin 2.15-0ubuntu10.10 (using .../libc-dev-bin_2.15-0ubuntu10.18_amd64.deb) ...
+Unpacking replacement libc-dev-bin ...
+Preparing to replace libc-bin 2.15-0ubuntu10.10 (using .../libc-bin_2.15-0ubuntu10.18_amd64.deb) ...
+Unpacking replacement libc-bin ...
+Processing triggers for man-db ...
+Setting up libc-bin (2.15-0ubuntu10.18) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72018 files and directories currently installed.)
+Preparing to replace libc6 2.15-0ubuntu10.10 (using .../libc6_2.15-0ubuntu10.18_amd64.deb) ...
+Unpacking replacement libc6 ...
+Setting up libc6 (2.15-0ubuntu10.18) ...
+Setting up libc-dev-bin (2.15-0ubuntu10.18) ...
+Setting up libc6-dev (2.15-0ubuntu10.18) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:fix.CVE-2015-7547[0Ktravis_fold:start:update_libssl1.0.0[0K$ sudo apt-get install libssl1.0.0
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 10%Reading package lists... 10%Reading package lists... 11%Reading package lists... 11%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 47%Reading package lists... 47%Reading package lists... 58%Reading package lists... 58%Reading package lists... 58%Reading package lists... 58%Reading package lists... 94%Reading package lists... 94%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 97%Reading package lists... 97%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following extra packages will be installed:
+  libssl-dev
+The following packages will be upgraded:
+  libssl-dev libssl1.0.0
+2 upgraded, 0 newly installed, 0 to remove and 276 not upgraded.
+Need to get 2,634 kB of archives.
+After this operation, 29.7 kB of additional disk space will be used.
+0% [Working]            Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libssl-dev amd64 1.0.1-4ubuntu5.39 [1,580 kB]
+            1% [1 libssl-dev 14.1 kB/1,580 kB 1%]                                     Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libssl1.0.0 amd64 1.0.1-4ubuntu5.39 [1,054 kB]
+                                     62% [2 libssl1.0.0 57.7 kB/1,054 kB 5%]                                       100% [Working]              Fetched 2,634 kB in 0s (16.5 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72018 files and directories currently installed.)
+Preparing to replace libssl-dev 1.0.1-4ubuntu5.21 (using .../libssl-dev_1.0.1-4ubuntu5.39_amd64.deb) ...
+Unpacking replacement libssl-dev ...
+Preparing to replace libssl1.0.0 1.0.1-4ubuntu5.21 (using .../libssl1.0.0_1.0.1-4ubuntu5.39_amd64.deb) ...
+Unpacking replacement libssl1.0.0 ...
+Setting up libssl1.0.0 (1.0.1-4ubuntu5.39) ...
+Setting up libssl-dev (1.0.1-4ubuntu5.39) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:update_libssl1.0.0[0K$ jdk_switcher use openjdk7
+Switching to OpenJDK7 (java-1.7.0-openjdk-amd64), JAVA_HOME will be set to /usr/lib/jvm/java-7-openjdk-amd64
+travis_fold:start:git.checkout[0Ktravis_time:start:064dc17a[0K$ git clone --depth=50 --branch=master https://github.com/technomancy/leiningen.git technomancy/leiningen
+Cloning into 'technomancy/leiningen'...
+remote: Counting objects: 1037, done.[K
+remote: Compressing objects:   0% (1/494)   [Kremote: Compressing objects:   1% (5/494)   [Kremote: Compressing objects:   2% (10/494)   [Kremote: Compressing objects:   3% (15/494)   [Kremote: Compressing objects:   4% (20/494)   [Kremote: Compressing objects:   5% (25/494)   [Kremote: Compressing objects:   6% (30/494)   [Kremote: Compressing objects:   7% (35/494)   [Kremote: Compressing objects:   8% (40/494)   [Kremote: Compressing objects:   9% (45/494)   [Kremote: Compressing objects:  10% (50/494)   [Kremote: Compressing objects:  11% (55/494)   [Kremote: Compressing objects:  12% (60/494)   [Kremote: Compressing objects:  13% (65/494)   [Kremote: Compressing objects:  14% (70/494)   [Kremote: Compressing objects:  15% (75/494)   [Kremote: Compressing objects:  16% (80/494)   [Kremote: Compressing objects:  17% (84/494)   [Kremote: Compressing objects:  18% (89/494)   [Kremote: Compressing objects:  19% (94/494)   [Kremote: Compressing objects:  20% (99/494)   [Kremote: Compressing objects:  21% (104/494)   [Kremote: Compressing objects:  22% (109/494)   [Kremote: Compressing objects:  23% (114/494)   [Kremote: Compressing objects:  24% (119/494)   [Kremote: Compressing objects:  25% (124/494)   [Kremote: Compressing objects:  26% (129/494)   [Kremote: Compressing objects:  27% (134/494)   [Kremote: Compressing objects:  28% (139/494)   [Kremote: Compressing objects:  29% (144/494)   [Kremote: Compressing objects:  30% (149/494)   [Kremote: Compressing objects:  31% (154/494)   [Kremote: Compressing objects:  32% (159/494)   [Kremote: Compressing objects:  33% (164/494)   [Kremote: Compressing objects:  34% (168/494)   [Kremote: Compressing objects:  35% (173/494)   [Kremote: Compressing objects:  36% (178/494)   [Kremote: Compressing objects:  37% (183/494)   [Kremote: Compressing objects:  38% (188/494)   [Kremote: Compressing objects:  39% (193/494)   [Kremote: Compressing objects:  40% (198/494)   [Kremote: Compressing objects:  41% (203/494)   [Kremote: Compressing objects:  42% (208/494)   [Kremote: Compressing objects:  43% (213/494)   [Kremote: Compressing objects:  44% (218/494)   [Kremote: Compressing objects:  45% (223/494)   [Kremote: Compressing objects:  46% (228/494)   [Kremote: Compressing objects:  47% (233/494)   [Kremote: Compressing objects:  48% (238/494)   [Kremote: Compressing objects:  49% (243/494)   [Kremote: Compressing objects:  50% (247/494)   [Kremote: Compressing objects:  51% (252/494)   [Kremote: Compressing objects:  52% (257/494)   [Kremote: Compressing objects:  53% (262/494)   [Kremote: Compressing objects:  54% (267/494)   [Kremote: Compressing objects:  55% (272/494)   [Kremote: Compressing objects:  56% (277/494)   [Kremote: Compressing objects:  57% (282/494)   [Kremote: Compressing objects:  58% (287/494)   [Kremote: Compressing objects:  59% (292/494)   [Kremote: Compressing objects:  60% (297/494)   [Kremote: Compressing objects:  61% (302/494)   [Kremote: Compressing objects:  62% (307/494)   [Kremote: Compressing objects:  63% (312/494)   [Kremote: Compressing objects:  64% (317/494)   [Kremote: Compressing objects:  65% (322/494)   [Kremote: Compressing objects:  66% (327/494)   [Kremote: Compressing objects:  67% (331/494)   [Kremote: Compressing objects:  68% (336/494)   [Kremote: Compressing objects:  69% (341/494)   [Kremote: Compressing objects:  70% (346/494)   [Kremote: Compressing objects:  71% (351/494)   [Kremote: Compressing objects:  72% (356/494)   [Kremote: Compressing objects:  73% (361/494)   [Kremote: Compressing objects:  74% (366/494)   [Kremote: Compressing objects:  75% (371/494)   [Kremote: Compressing objects:  76% (376/494)   [Kremote: Compressing objects:  77% (381/494)   [Kremote: Compressing objects:  78% (386/494)   [Kremote: Compressing objects:  79% (391/494)   [Kremote: Compressing objects:  80% (396/494)   [Kremote: Compressing objects:  81% (401/494)   [Kremote: Compressing objects:  82% (406/494)   [Kremote: Compressing objects:  83% (411/494)   [Kremote: Compressing objects:  84% (415/494)   [Kremote: Compressing objects:  85% (420/494)   [Kremote: Compressing objects:  86% (425/494)   [Kremote: Compressing objects:  87% (430/494)   [Kremote: Compressing objects:  88% (435/494)   [Kremote: Compressing objects:  89% (440/494)   [Kremote: Compressing objects:  90% (445/494)   [Kremote: Compressing objects:  91% (450/494)   [Kremote: Compressing objects:  92% (455/494)   [Kremote: Compressing objects:  93% (460/494)   [Kremote: Compressing objects:  94% (465/494)   [Kremote: Compressing objects:  95% (470/494)   [Kremote: Compressing objects:  96% (475/494)   [Kremote: Compressing objects:  97% (480/494)   [Kremote: Compressing objects:  98% (485/494)   [Kremote: Compressing objects:  99% (490/494)   [Kremote: Compressing objects: 100% (494/494)   [Kremote: Compressing objects: 100% (494/494), done.[K
+Receiving objects:   0% (1/1037)   Receiving objects:   1% (11/1037)   Receiving objects:   2% (21/1037)   Receiving objects:   3% (32/1037)   Receiving objects:   4% (42/1037)   Receiving objects:   5% (52/1037)   Receiving objects:   6% (63/1037)   Receiving objects:   7% (73/1037)   Receiving objects:   8% (83/1037)   Receiving objects:   9% (94/1037)   Receiving objects:  10% (104/1037)   Receiving objects:  11% (115/1037)   Receiving objects:  12% (125/1037)   Receiving objects:  13% (135/1037)   Receiving objects:  14% (146/1037)   Receiving objects:  15% (156/1037)   Receiving objects:  16% (166/1037)   Receiving objects:  17% (177/1037)   Receiving objects:  18% (187/1037)   Receiving objects:  19% (198/1037)   Receiving objects:  20% (208/1037)   Receiving objects:  21% (218/1037)   Receiving objects:  22% (229/1037)   Receiving objects:  23% (239/1037)   Receiving objects:  24% (249/1037)   Receiving objects:  25% (260/1037)   Receiving objects:  26% (270/1037)   Receiving objects:  27% (280/1037)   Receiving objects:  28% (291/1037)   Receiving objects:  29% (301/1037)   Receiving objects:  30% (312/1037)   Receiving objects:  31% (322/1037)   Receiving objects:  32% (332/1037)   Receiving objects:  33% (343/1037)   Receiving objects:  34% (353/1037)   Receiving objects:  35% (363/1037)   Receiving objects:  36% (374/1037)   Receiving objects:  37% (384/1037)   Receiving objects:  38% (395/1037)   Receiving objects:  39% (405/1037)   Receiving objects:  40% (415/1037)   Receiving objects:  41% (426/1037)   Receiving objects:  42% (436/1037)   Receiving objects:  43% (446/1037)   Receiving objects:  44% (457/1037)   Receiving objects:  45% (467/1037)   Receiving objects:  46% (478/1037)   Receiving objects:  47% (488/1037)   Receiving objects:  48% (498/1037)   Receiving objects:  49% (509/1037)   Receiving objects:  50% (519/1037)   Receiving objects:  51% (529/1037)   Receiving objects:  52% (540/1037)   Receiving objects:  53% (550/1037)   Receiving objects:  54% (560/1037)   Receiving objects:  55% (571/1037)   Receiving objects:  56% (581/1037)   Receiving objects:  57% (592/1037)   Receiving objects:  58% (602/1037)   Receiving objects:  59% (612/1037)   Receiving objects:  60% (623/1037)   Receiving objects:  61% (633/1037)   Receiving objects:  62% (643/1037)   Receiving objects:  63% (654/1037)   Receiving objects:  64% (664/1037)   Receiving objects:  65% (675/1037)   Receiving objects:  66% (685/1037)   Receiving objects:  67% (695/1037)   Receiving objects:  68% (706/1037)   Receiving objects:  69% (716/1037)   Receiving objects:  70% (726/1037)   Receiving objects:  71% (737/1037)   Receiving objects:  72% (747/1037)   Receiving objects:  73% (758/1037)   Receiving objects:  74% (768/1037)   Receiving objects:  75% (778/1037)   Receiving objects:  76% (789/1037)   Receiving objects:  77% (799/1037)   Receiving objects:  78% (809/1037)   Receiving objects:  79% (820/1037)   Receiving objects:  80% (830/1037)   Receiving objects:  81% (840/1037)   Receiving objects:  82% (851/1037)   Receiving objects:  83% (861/1037)   Receiving objects:  84% (872/1037)   Receiving objects:  85% (882/1037)   Receiving objects:  86% (892/1037)   Receiving objects:  87% (903/1037)   Receiving objects:  88% (913/1037)   Receiving objects:  89% (923/1037)   Receiving objects:  90% (934/1037)   Receiving objects:  91% (944/1037)   Receiving objects:  92% (955/1037)   Receiving objects:  93% (965/1037)   Receiving objects:  94% (975/1037)   remote: Total 1037 (delta 455), reused 813 (delta 354), pack-reused 0[K
+Receiving objects:  95% (986/1037)   Receiving objects:  96% (996/1037)   Receiving objects:  97% (1006/1037)   Receiving objects:  98% (1017/1037)   Receiving objects:  99% (1027/1037)   Receiving objects: 100% (1037/1037)   Receiving objects: 100% (1037/1037), 833.67 KiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/455)   Resolving deltas:   3% (14/455)   Resolving deltas:   5% (25/455)   Resolving deltas:   7% (34/455)   Resolving deltas:  10% (46/455)   Resolving deltas:  13% (62/455)   Resolving deltas:  14% (65/455)   Resolving deltas:  16% (73/455)   Resolving deltas:  17% (79/455)   Resolving deltas:  18% (85/455)   Resolving deltas:  19% (88/455)   Resolving deltas:  20% (94/455)   Resolving deltas:  22% (104/455)   Resolving deltas:  24% (112/455)   Resolving deltas:  29% (134/455)   Resolving deltas:  30% (141/455)   Resolving deltas:  31% (143/455)   Resolving deltas:  32% (149/455)   Resolving deltas:  35% (161/455)   Resolving deltas:  40% (184/455)   Resolving deltas:  42% (194/455)   Resolving deltas:  45% (205/455)   Resolving deltas:  46% (211/455)   Resolving deltas:  48% (220/455)   Resolving deltas:  49% (224/455)   Resolving deltas:  50% (230/455)   Resolving deltas:  57% (260/455)   Resolving deltas:  60% (277/455)   Resolving deltas:  62% (286/455)   Resolving deltas:  64% (294/455)   Resolving deltas:  65% (298/455)   Resolving deltas:  66% (301/455)   Resolving deltas:  67% (305/455)   Resolving deltas:  68% (310/455)   Resolving deltas:  69% (314/455)   Resolving deltas:  70% (319/455)   Resolving deltas:  73% (333/455)   Resolving deltas:  74% (337/455)   Resolving deltas:  75% (342/455)   Resolving deltas:  76% (346/455)   Resolving deltas:  78% (355/455)   Resolving deltas:  79% (360/455)   Resolving deltas:  82% (376/455)   Resolving deltas:  83% (380/455)   Resolving deltas:  85% (388/455)   Resolving deltas:  86% (392/455)   Resolving deltas:  87% (396/455)   Resolving deltas:  88% (404/455)   Resolving deltas:  89% (405/455)   Resolving deltas:  90% (412/455)   Resolving deltas:  91% (415/455)   Resolving deltas:  92% (419/455)   Resolving deltas:  93% (424/455)   Resolving deltas:  94% (428/455)   Resolving deltas:  95% (433/455)   Resolving deltas:  96% (437/455)   Resolving deltas:  97% (442/455)   Resolving deltas:  98% (447/455)   Resolving deltas:  99% (452/455)   Resolving deltas: 100% (455/455)   Resolving deltas: 100% (455/455), done.
+Checking connectivity... done.
+
+travis_time:end:064dc17a:start=1496594448835201726,finish=1496594449555290575,duration=720088849[0K$ cd technomancy/leiningen
+$ git checkout -qf 63305fcccdd5535e884f046c16f1a5c284b7146f
+travis_fold:end:git.checkout[0K$ java -Xmx32m -version
+java version "1.7.0_75"
+OpenJDK Runtime Environment (IcedTea 2.5.4) (7u75-2.5.4-1~precise1)
+OpenJDK 64-Bit Server VM (build 24.75-b04, mixed mode)
+$ javac -J-Xmx32m -version
+javac 1.7.0_75
+$ lein version
+Retrieving org/clojure/data.xml/0.0.8/data.xml-0.0.8.pom from central
+Retrieving org/clojure/pom.contrib/0.1.2/pom.contrib-0.1.2.pom from central
+Retrieving org/sonatype/oss/oss-parent/7/oss-parent-7.pom from central
+Retrieving org/clojure/clojure/1.4.0/clojure-1.4.0.pom from central
+Retrieving org/sonatype/oss/oss-parent/5/oss-parent-5.pom from central
+Retrieving bultitude/bultitude/0.2.8/bultitude-0.2.8.pom from clojars
+Retrieving org/clojure/clojure/1.7.0/clojure-1.7.0.pom from central
+Retrieving org/tcrawley/dynapath/0.2.3/dynapath-0.2.3.pom from central
+Retrieving stencil/stencil/0.5.0/stencil-0.5.0.pom from clojars
+Retrieving org/clojure/clojure/1.6.0/clojure-1.6.0.pom from central
+Retrieving scout/scout/0.1.0/scout-0.1.0.pom from clojars
+Retrieving org/clojure/clojure/1.3.0/clojure-1.3.0.pom from central
+Retrieving quoin/quoin/0.1.2/quoin-0.1.2.pom from clojars
+Retrieving commons-lang/commons-lang/2.6/commons-lang-2.6.pom from central
+Retrieving org/apache/commons/commons-parent/17/commons-parent-17.pom from central
+Retrieving org/apache/apache/7/apache-7.pom from central
+Retrieving org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.pom from central
+Retrieving org/clojure/clojure/1.2.0/clojure-1.2.0.pom from central
+Retrieving net/cgrand/sjacket/0.1.1/sjacket-0.1.1.pom from clojars
+Retrieving net/cgrand/regex/1.1.0/regex-1.1.0.pom from clojars
+Retrieving net/cgrand/parsley/0.9.2/parsley-0.9.2.pom from clojars
+Retrieving net/cgrand/parsley/0.9.3/parsley-0.9.3.pom from clojars
+Retrieving scout/scout/0.1.1/scout-0.1.1.pom from clojars
+Retrieving commons-io/commons-io/2.5/commons-io-2.5.pom from central
+Retrieving org/apache/commons/commons-parent/39/commons-parent-39.pom from central
+Retrieving org/apache/apache/16/apache-16.pom from central
+Retrieving org/clojure/data.xml/0.0.8/data.xml-0.0.8.jar from central
+Retrieving commons-lang/commons-lang/2.6/commons-lang-2.6.jar from central
+Retrieving org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar from central
+Retrieving org/tcrawley/dynapath/0.2.3/dynapath-0.2.3.jar from central
+Retrieving org/clojure/clojure/1.4.0/clojure-1.4.0.jar from central
+Retrieving commons-io/commons-io/2.5/commons-io-2.5.jar from central
+Retrieving bultitude/bultitude/0.2.8/bultitude-0.2.8.jar from clojars
+Retrieving stencil/stencil/0.5.0/stencil-0.5.0.jar from clojars
+Retrieving net/cgrand/regex/1.1.0/regex-1.1.0.jar from clojars
+Retrieving net/cgrand/sjacket/0.1.1/sjacket-0.1.1.jar from clojars
+Retrieving quoin/quoin/0.1.2/quoin-0.1.2.jar from clojars
+Retrieving net/cgrand/parsley/0.9.3/parsley-0.9.3.jar from clojars
+Retrieving scout/scout/0.1.1/scout-0.1.1.jar from clojars
+Could not find artifact leiningen-core:leiningen-core:jar:2.7.2-SNAPSHOT in clojars (https://clojars.org/repo/)
+This could be due to a typo in :dependencies or network issues.
+If you are behind a proxy, try setting the 'http_proxy' environment variable.
+travis_fold:start:install[0Ktravis_time:start:0374d318[0K$ cd leiningen-core; lein install; lein classpath | tail -n 1 > .lein-bootstrap; cd ..
+Retrieving org/clojure/clojure/1.8.0/clojure-1.8.0.pom from central
+Retrieving org/flatland/classlojure/0.7.1/classlojure-0.7.1.pom from clojars
+Retrieving org/clojure/clojure/1.5.0/clojure-1.5.0.pom from central
+Retrieving robert/hooke/1.3.0/hooke-1.3.0.pom from clojars
+Retrieving com/cemerick/pomegranate/0.4.0-alpha1/pomegranate-0.4.0-alpha1.pom from central
+Retrieving org/clojure/pom.contrib/0.0.20/pom.contrib-0.0.20.pom from central
+Retrieving org/apache/maven/maven-resolver-provider/3.5.0/maven-resolver-provider-3.5.0.pom from central
+Retrieving org/apache/maven/maven/3.5.0/maven-3.5.0.pom from central
+Retrieving org/apache/maven/maven-parent/27/maven-parent-27.pom from central
+Retrieving org/apache/apache/17/apache-17.pom from central
+Retrieving org/apache/maven/maven-model/3.5.0/maven-model-3.5.0.pom from central
+Retrieving org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.pom from central
+Retrieving org/apache/commons/commons-parent/41/commons-parent-41.pom from central
+Retrieving org/apache/apache/18/apache-18.pom from central
+Retrieving org/apache/maven/maven-model-builder/3.5.0/maven-model-builder-3.5.0.pom from central
+Retrieving org/codehaus/plexus/plexus-interpolation/1.24/plexus-interpolation-1.24.pom from central
+Retrieving org/codehaus/plexus/plexus/4.0/plexus-4.0.pom from central
+Retrieving org/sonatype/forge/forge-parent/10/forge-parent-10.pom from central
+Retrieving org/codehaus/plexus/plexus-component-annotations/1.7.1/plexus-component-annotations-1.7.1.pom from central
+Retrieving org/codehaus/plexus/plexus-containers/1.7.1/plexus-containers-1.7.1.pom from central
+Retrieving org/apache/maven/maven-artifact/3.5.0/maven-artifact-3.5.0.pom from central
+Retrieving org/apache/maven/maven-builder-support/3.5.0/maven-builder-support-3.5.0.pom from central
+Retrieving com/google/guava/guava/20.0/guava-20.0.pom from central
+Retrieving com/google/guava/guava-parent/20.0/guava-parent-20.0.pom from central
+Retrieving org/apache/maven/maven-repository-metadata/3.5.0/maven-repository-metadata-3.5.0.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver-api/1.0.3/maven-resolver-api-1.0.3.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver/1.0.3/maven-resolver-1.0.3.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver-spi/1.0.3/maven-resolver-spi-1.0.3.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver-util/1.0.3/maven-resolver-util-1.0.3.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver-impl/1.0.3/maven-resolver-impl-1.0.3.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver-transport-file/1.0.3/maven-resolver-transport-file-1.0.3.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver-transport-http/1.0.3/maven-resolver-transport-http-1.0.3.pom from central
+Retrieving org/apache/httpcomponents/httpclient/4.2.6/httpclient-4.2.6.pom from central
+Retrieving org/apache/httpcomponents/httpcomponents-client/4.2.6/httpcomponents-client-4.2.6.pom from central
+Retrieving org/apache/httpcomponents/project/7/project-7.pom from central
+Retrieving org/apache/apache/13/apache-13.pom from central
+Retrieving org/apache/httpcomponents/httpcore/4.2.5/httpcore-4.2.5.pom from central
+Retrieving org/apache/httpcomponents/httpcomponents-core/4.2.5/httpcomponents-core-4.2.5.pom from central
+Retrieving commons-codec/commons-codec/1.6/commons-codec-1.6.pom from central
+Retrieving org/apache/commons/commons-parent/22/commons-parent-22.pom from central
+Retrieving org/apache/apache/9/apache-9.pom from central
+Retrieving org/slf4j/jcl-over-slf4j/1.6.2/jcl-over-slf4j-1.6.2.pom from central
+Retrieving org/slf4j/slf4j-parent/1.6.2/slf4j-parent-1.6.2.pom from central
+Retrieving org/slf4j/slf4j-api/1.6.2/slf4j-api-1.6.2.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver-transport-wagon/1.0.3/maven-resolver-transport-wagon-1.0.3.pom from central
+Retrieving org/apache/maven/wagon/wagon-provider-api/1.0/wagon-provider-api-1.0.pom from central
+Retrieving org/apache/maven/wagon/wagon/1.0/wagon-1.0.pom from central
+Retrieving org/apache/maven/maven-parent/20/maven-parent-20.pom from central
+Retrieving org/apache/maven/resolver/maven-resolver-connector-basic/1.0.3/maven-resolver-connector-basic-1.0.3.pom from central
+Retrieving org/apache/maven/wagon/wagon-provider-api/2.12/wagon-provider-api-2.12.pom from central
+Retrieving org/apache/maven/wagon/wagon/2.12/wagon-2.12.pom from central
+Retrieving org/apache/maven/wagon/wagon-http/2.12/wagon-http-2.12.pom from central
+Retrieving org/apache/maven/wagon/wagon-providers/2.12/wagon-providers-2.12.pom from central
+Retrieving org/apache/maven/wagon/wagon-http-shared/2.12/wagon-http-shared-2.12.pom from central
+Retrieving org/jsoup/jsoup/1.7.2/jsoup-1.7.2.pom from central
+Retrieving org/slf4j/slf4j-api/1.7.22/slf4j-api-1.7.22.pom from central
+Retrieving org/slf4j/slf4j-parent/1.7.22/slf4j-parent-1.7.22.pom from central
+Retrieving org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.pom from central
+Retrieving org/apache/httpcomponents/httpcomponents-client/4.5.2/httpcomponents-client-4.5.2.pom from central
+Retrieving org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.pom from central
+Retrieving org/apache/httpcomponents/httpcomponents-core/4.4.4/httpcomponents-core-4.4.4.pom from central
+Retrieving commons-codec/commons-codec/1.9/commons-codec-1.9.pom from central
+Retrieving org/apache/commons/commons-parent/32/commons-parent-32.pom from central
+Retrieving org/slf4j/jcl-over-slf4j/1.7.22/jcl-over-slf4j-1.7.22.pom from central
+Retrieving org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3.pom from central
+Retrieving org/apache/httpcomponents/httpcomponents-client/4.5.3/httpcomponents-client-4.5.3.pom from central
+Retrieving org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6.pom from central
+Retrieving org/apache/httpcomponents/httpcomponents-core/4.4.6/httpcomponents-core-4.4.6.pom from central
+Retrieving commons-logging/commons-logging/1.2/commons-logging-1.2.pom from central
+Retrieving org/apache/commons/commons-parent/34/commons-parent-34.pom from central
+Retrieving org/tcrawley/dynapath/0.2.5/dynapath-0.2.5.pom from central
+Retrieving org/codehaus/plexus/plexus-utils/3.0.24/plexus-utils-3.0.24.pom from central
+Retrieving com/hypirion/io/0.3.1/io-0.3.1.pom from clojars
+Retrieving org/slf4j/slf4j-nop/1.7.22/slf4j-nop-1.7.22.pom from central
+Retrieving org/clojure/tools.macro/0.1.5/tools.macro-0.1.5.pom from central
+Retrieving org/apache/maven/maven-resolver-provider/3.5.0/maven-resolver-provider-3.5.0.jar from central
+Retrieving com/cemerick/pomegranate/0.4.0-alpha1/pomegranate-0.4.0-alpha1.jar from central
+Retrieving org/clojure/clojure/1.8.0/clojure-1.8.0.jar from central
+Retrieving org/apache/maven/maven-model-builder/3.5.0/maven-model-builder-3.5.0.jar from central
+Retrieving org/codehaus/plexus/plexus-interpolation/1.24/plexus-interpolation-1.24.jar from central
+Retrieving org/apache/maven/maven-model/3.5.0/maven-model-3.5.0.jar from central
+Retrieving org/apache/maven/maven-builder-support/3.5.0/maven-builder-support-3.5.0.jar from central
+Retrieving com/google/guava/guava/20.0/guava-20.0.jar from central
+Retrieving org/apache/maven/maven-repository-metadata/3.5.0/maven-repository-metadata-3.5.0.jar from central
+Retrieving org/apache/maven/resolver/maven-resolver-api/1.0.3/maven-resolver-api-1.0.3.jar from central
+Retrieving org/apache/maven/resolver/maven-resolver-spi/1.0.3/maven-resolver-spi-1.0.3.jar from central
+Retrieving org/apache/maven/maven-artifact/3.5.0/maven-artifact-3.5.0.jar from central
+Retrieving org/apache/maven/resolver/maven-resolver-util/1.0.3/maven-resolver-util-1.0.3.jar from central
+Retrieving org/apache/maven/resolver/maven-resolver-impl/1.0.3/maven-resolver-impl-1.0.3.jar from central
+Retrieving org/codehaus/plexus/plexus-component-annotations/1.7.1/plexus-component-annotations-1.7.1.jar from central
+Retrieving org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar from central
+Retrieving org/apache/maven/resolver/maven-resolver-transport-file/1.0.3/maven-resolver-transport-file-1.0.3.jar from central
+Retrieving org/apache/maven/resolver/maven-resolver-transport-http/1.0.3/maven-resolver-transport-http-1.0.3.jar from central
+Retrieving org/apache/maven/resolver/maven-resolver-connector-basic/1.0.3/maven-resolver-connector-basic-1.0.3.jar from central
+Retrieving org/apache/maven/resolver/maven-resolver-transport-wagon/1.0.3/maven-resolver-transport-wagon-1.0.3.jar from central
+Retrieving org/apache/maven/wagon/wagon-provider-api/2.12/wagon-provider-api-2.12.jar from central
+Retrieving org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3.jar from central
+Retrieving commons-logging/commons-logging/1.2/commons-logging-1.2.jar from central
+Retrieving commons-codec/commons-codec/1.9/commons-codec-1.9.jar from central
+Retrieving org/tcrawley/dynapath/0.2.5/dynapath-0.2.5.jar from central
+Retrieving org/apache/maven/wagon/wagon-http/2.12/wagon-http-2.12.jar from central
+Retrieving org/apache/maven/wagon/wagon-http-shared/2.12/wagon-http-shared-2.12.jar from central
+Retrieving org/jsoup/jsoup/1.7.2/jsoup-1.7.2.jar from central
+Retrieving org/slf4j/jcl-over-slf4j/1.7.22/jcl-over-slf4j-1.7.22.jar from central
+Retrieving org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar from central
+Retrieving org/codehaus/plexus/plexus-utils/3.0.24/plexus-utils-3.0.24.jar from central
+Retrieving org/slf4j/slf4j-api/1.7.22/slf4j-api-1.7.22.jar from central
+Retrieving org/clojure/tools.macro/0.1.5/tools.macro-0.1.5.jar from central
+Retrieving org/slf4j/slf4j-nop/1.7.22/slf4j-nop-1.7.22.jar from central
+Retrieving org/flatland/classlojure/0.7.1/classlojure-0.7.1.jar from clojars
+Retrieving robert/hooke/1.3.0/hooke-1.3.0.jar from clojars
+Retrieving com/hypirion/io/0.3.1/io-0.3.1.jar from clojars
+Created /home/travis/build/technomancy/leiningen/leiningen-core/target/leiningen-core-2.7.2-SNAPSHOT.jar
+Wrote /home/travis/build/technomancy/leiningen/leiningen-core/pom.xml
+Installed jar and pom into local repo.
+Retrieving org/clojure/tools.nrepl/0.2.6/tools.nrepl-0.2.6.pom from central
+Retrieving clojure-complete/clojure-complete/0.2.3/clojure-complete-0.2.3.pom from clojars
+Retrieving org/clojure/tools.nrepl/0.2.6/tools.nrepl-0.2.6.jar from central
+Retrieving clojure-complete/clojure-complete/0.2.3/clojure-complete-0.2.3.jar from clojars
+
+travis_time:end:0374d318:start=1496594457817664553,finish=1496594465794269148,duration=7976604595[0Ktravis_fold:end:install[0Ktravis_time:start:10824fed[0K$ bin/lein test
+Recalculating Leiningen's classpath.
+Could not find artifact clojure-complete:clojure-complete:jar:0.2.4 in central (https://repo1.maven.org/maven2/)
+Could not transfer artifact clojure-complete:clojure-complete:jar:0.2.4 from/to clojars (https://repo.clojars.org/): Received fatal alert: protocol_version
+Could not transfer artifact clojure-complete:clojure-complete:pom:0.2.4 from/to clojars (https://repo.clojars.org/): Received fatal alert: protocol_version
+This could be due to a typo in :dependencies, file system permissions, or network issues.
+If you are behind a proxy, try setting the 'http_proxy' environment variable.
+Could not find artifact clojure-complete:clojure-complete:jar:0.2.4 in central (https://repo1.maven.org/maven2/)
+Could not transfer artifact clojure-complete:clojure-complete:jar:0.2.4 from/to clojars (https://repo.clojars.org/): Received fatal alert: protocol_version
+Could not transfer artifact clojure-complete:clojure-complete:pom:0.2.4 from/to clojars (https://repo.clojars.org/): Received fatal alert: protocol_version
+This could be due to a typo in :dependencies, file system permissions, or network issues.
+If you are behind a proxy, try setting the 'http_proxy' environment variable.
+
+travis_time:end:10824fed:start=1496594465801653611,finish=1496594473158991080,duration=7357337469[0K
+[31;1mThe command "bin/lein test" exited with 1.[0m
+
+Done. Your build exited with 1.

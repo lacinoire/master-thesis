@@ -1,0 +1,461 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 0f7f8335-c0c9-40ee-a3f0-87deb1ba1aa7@1.worker-org-7f6cdc984-9n2h8.macstadium-prod-1
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: db52ca16-4fc4-443f-a361-e6811cc21c19 travis-ci-macos-10.13-xcode9.4.1-1529955246 (via amqp)
+startup: 1m1.141105283s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: rust
+Build id: 564267025
+Job id: 564267028
+Runtime kernel version: 17.4.0
+travis-build version: 24c88d12b
+[34m[1mBuild image provisioning date and time[0m
+Mon Jun 25 21:55:14 GMT 2018
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.13.3
+BuildVersion:	17D102
+[34m[1mGit version[0m
+git version 2.18.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.3
+[34m[1mPre-installed Node.js versions[0m
+v4.9.1
+v5.12.0
+v6.14.3
+v8.11.3
+[34m[1mmvn -version[0m
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T18:33:14Z)
+Maven home: /usr/local/Cellar/maven/3.5.4/libexec
+Java version: 10.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+Uninstalled oclint to prevent interference with other packages.
+If you need oclint, you must explicitly install it.
+
+[31;1mServices are not supported on osx[0m
+
+travis_fold:start:git.checkout[0Ktravis_time:start:06e1f8d0[0K$ git clone --depth=1 https://github.com/jwilm/alacritty.git jwilm/alacritty
+Cloning into 'jwilm/alacritty'...
+remote: Enumerating objects: 274, done.[K
+remote: Counting objects:   0% (1/274)   [Kremote: Counting objects:   1% (3/274)   [Kremote: Counting objects:   2% (6/274)   [Kremote: Counting objects:   3% (9/274)   [Kremote: Counting objects:   4% (11/274)   [Kremote: Counting objects:   5% (14/274)   [Kremote: Counting objects:   6% (17/274)   [Kremote: Counting objects:   7% (20/274)   [Kremote: Counting objects:   8% (22/274)   [Kremote: Counting objects:   9% (25/274)   [Kremote: Counting objects:  10% (28/274)   [Kremote: Counting objects:  11% (31/274)   [Kremote: Counting objects:  12% (33/274)   [Kremote: Counting objects:  13% (36/274)   [Kremote: Counting objects:  14% (39/274)   [Kremote: Counting objects:  15% (42/274)   [Kremote: Counting objects:  16% (44/274)   [Kremote: Counting objects:  17% (47/274)   [Kremote: Counting objects:  18% (50/274)   [Kremote: Counting objects:  19% (53/274)   [Kremote: Counting objects:  20% (55/274)   [Kremote: Counting objects:  21% (58/274)   [Kremote: Counting objects:  22% (61/274)   [Kremote: Counting objects:  23% (64/274)   [Kremote: Counting objects:  24% (66/274)   [Kremote: Counting objects:  25% (69/274)   [Kremote: Counting objects:  26% (72/274)   [Kremote: Counting objects:  27% (74/274)   [Kremote: Counting objects:  28% (77/274)   [Kremote: Counting objects:  29% (80/274)   [Kremote: Counting objects:  30% (83/274)   [Kremote: Counting objects:  31% (85/274)   [Kremote: Counting objects:  32% (88/274)   [Kremote: Counting objects:  33% (91/274)   [Kremote: Counting objects:  34% (94/274)   [Kremote: Counting objects:  35% (96/274)   [Kremote: Counting objects:  36% (99/274)   [Kremote: Counting objects:  37% (102/274)   [Kremote: Counting objects:  38% (105/274)   [Kremote: Counting objects:  39% (107/274)   [Kremote: Counting objects:  40% (110/274)   [Kremote: Counting objects:  41% (113/274)   [Kremote: Counting objects:  42% (116/274)   [Kremote: Counting objects:  43% (118/274)   [Kremote: Counting objects:  44% (121/274)   [Kremote: Counting objects:  45% (124/274)   [Kremote: Counting objects:  46% (127/274)   [Kremote: Counting objects:  47% (129/274)   [Kremote: Counting objects:  48% (132/274)   [Kremote: Counting objects:  49% (135/274)   [Kremote: Counting objects:  50% (137/274)   [Kremote: Counting objects:  51% (140/274)   [Kremote: Counting objects:  52% (143/274)   [Kremote: Counting objects:  53% (146/274)   [Kremote: Counting objects:  54% (148/274)   [Kremote: Counting objects:  55% (151/274)   [Kremote: Counting objects:  56% (154/274)   [Kremote: Counting objects:  57% (157/274)   [Kremote: Counting objects:  58% (159/274)   [Kremote: Counting objects:  59% (162/274)   [Kremote: Counting objects:  60% (165/274)   [Kremote: Counting objects:  61% (168/274)   [Kremote: Counting objects:  62% (170/274)   [Kremote: Counting objects:  63% (173/274)   [Kremote: Counting objects:  64% (176/274)   [Kremote: Counting objects:  65% (179/274)   [Kremote: Counting objects:  66% (181/274)   [Kremote: Counting objects:  67% (184/274)   [Kremote: Counting objects:  68% (187/274)   [Kremote: Counting objects:  69% (190/274)   [Kremote: Counting objects:  70% (192/274)   [Kremote: Counting objects:  71% (195/274)   [Kremote: Counting objects:  72% (198/274)   [Kremote: Counting objects:  73% (201/274)   [Kremote: Counting objects:  74% (203/274)   [Kremote: Counting objects:  75% (206/274)   [Kremote: Counting objects:  76% (209/274)   [Kremote: Counting objects:  77% (211/274)   [Kremote: Counting objects:  78% (214/274)   [Kremote: Counting objects:  79% (217/274)   [Kremote: Counting objects:  80% (220/274)   [Kremote: Counting objects:  81% (222/274)   [Kremote: Counting objects:  82% (225/274)   [Kremote: Counting objects:  83% (228/274)   [Kremote: Counting objects:  84% (231/274)   [Kremote: Counting objects:  85% (233/274)   [Kremote: Counting objects:  86% (236/274)   [Kremote: Counting objects:  87% (239/274)   [Kremote: Counting objects:  88% (242/274)   [Kremote: Counting objects:  89% (244/274)   [Kremote: Counting objects:  90% (247/274)   [Kremote: Counting objects:  91% (250/274)   [Kremote: Counting objects:  92% (253/274)   [Kremote: Counting objects:  93% (255/274)   [Kremote: Counting objects:  94% (258/274)   [Kremote: Counting objects:  95% (261/274)   [Kremote: Counting objects:  96% (264/274)   [Kremote: Counting objects:  97% (266/274)   [Kremote: Counting objects:  98% (269/274)   [Kremote: Counting objects:  99% (272/274)   [Kremote: Counting objects: 100% (274/274)   [Kremote: Counting objects: 100% (274/274), done.[K
+remote: Compressing objects:   0% (1/245)   [Kremote: Compressing objects:   1% (3/245)   [Kremote: Compressing objects:   2% (5/245)   [Kremote: Compressing objects:   3% (8/245)   [Kremote: Compressing objects:   4% (10/245)   [Kremote: Compressing objects:   5% (13/245)   [Kremote: Compressing objects:   6% (15/245)   [Kremote: Compressing objects:   7% (18/245)   [Kremote: Compressing objects:   8% (20/245)   [Kremote: Compressing objects:   9% (23/245)   [Kremote: Compressing objects:  10% (25/245)   [Kremote: Compressing objects:  11% (27/245)   [Kremote: Compressing objects:  12% (30/245)   [Kremote: Compressing objects:  13% (32/245)   [Kremote: Compressing objects:  14% (35/245)   [Kremote: Compressing objects:  15% (37/245)   [Kremote: Compressing objects:  16% (40/245)   [Kremote: Compressing objects:  17% (42/245)   [Kremote: Compressing objects:  18% (45/245)   [Kremote: Compressing objects:  19% (47/245)   [Kremote: Compressing objects:  20% (49/245)   [Kremote: Compressing objects:  21% (52/245)   [Kremote: Compressing objects:  22% (54/245)   [Kremote: Compressing objects:  23% (57/245)   [Kremote: Compressing objects:  24% (59/245)   [Kremote: Compressing objects:  25% (62/245)   [Kremote: Compressing objects:  26% (64/245)   [Kremote: Compressing objects:  27% (67/245)   [Kremote: Compressing objects:  28% (69/245)   [Kremote: Compressing objects:  29% (72/245)   [Kremote: Compressing objects:  30% (74/245)   [Kremote: Compressing objects:  31% (76/245)   [Kremote: Compressing objects:  32% (79/245)   [Kremote: Compressing objects:  33% (81/245)   [Kremote: Compressing objects:  34% (84/245)   [Kremote: Compressing objects:  35% (86/245)   [Kremote: Compressing objects:  36% (89/245)   [Kremote: Compressing objects:  37% (91/245)   [Kremote: Compressing objects:  38% (94/245)   [Kremote: Compressing objects:  39% (96/245)   [Kremote: Compressing objects:  40% (98/245)   [Kremote: Compressing objects:  41% (101/245)   [Kremote: Compressing objects:  42% (103/245)   [Kremote: Compressing objects:  43% (106/245)   [Kremote: Compressing objects:  44% (108/245)   [Kremote: Compressing objects:  45% (111/245)   [Kremote: Compressing objects:  46% (113/245)   [Kremote: Compressing objects:  47% (116/245)   [Kremote: Compressing objects:  48% (118/245)   [Kremote: Compressing objects:  49% (121/245)   [Kremote: Compressing objects:  50% (123/245)   [Kremote: Compressing objects:  51% (125/245)   [Kremote: Compressing objects:  52% (128/245)   [Kremote: Compressing objects:  53% (130/245)   [Kremote: Compressing objects:  54% (133/245)   [Kremote: Compressing objects:  55% (135/245)   [Kremote: Compressing objects:  56% (138/245)   [Kremote: Compressing objects:  57% (140/245)   [Kremote: Compressing objects:  58% (143/245)   [Kremote: Compressing objects:  59% (145/245)   [Kremote: Compressing objects:  60% (147/245)   [Kremote: Compressing objects:  61% (150/245)   [Kremote: Compressing objects:  62% (152/245)   [Kremote: Compressing objects:  63% (155/245)   [Kremote: Compressing objects:  64% (157/245)   [Kremote: Compressing objects:  65% (160/245)   [Kremote: Compressing objects:  66% (162/245)   [Kremote: Compressing objects:  67% (165/245)   [Kremote: Compressing objects:  68% (167/245)   [Kremote: Compressing objects:  69% (170/245)   [Kremote: Compressing objects:  70% (172/245)   [Kremote: Compressing objects:  71% (174/245)   [Kremote: Compressing objects:  72% (177/245)   [Kremote: Compressing objects:  73% (179/245)   [Kremote: Compressing objects:  74% (182/245)   [Kremote: Compressing objects:  75% (184/245)   [Kremote: Compressing objects:  76% (187/245)   [Kremote: Compressing objects:  77% (189/245)   [Kremote: Compressing objects:  78% (192/245)   [Kremote: Compressing objects:  79% (194/245)   [Kremote: Compressing objects:  80% (196/245)   [Kremote: Compressing objects:  81% (199/245)   [Kremote: Compressing objects:  82% (201/245)   [Kremote: Compressing objects:  83% (204/245)   [Kremote: Compressing objects:  84% (206/245)   [Kremote: Compressing objects:  85% (209/245)   [Kremote: Compressing objects:  86% (211/245)   [Kremote: Compressing objects:  87% (214/245)   [Kremote: Compressing objects:  88% (216/245)   [Kremote: Compressing objects:  89% (219/245)   [Kremote: Compressing objects:  90% (221/245)   [Kremote: Compressing objects:  91% (223/245)   [Kremote: Compressing objects:  92% (226/245)   [Kremote: Compressing objects:  93% (228/245)   [Kremote: Compressing objects:  94% (231/245)   [Kremote: Compressing objects:  95% (233/245)   [Kremote: Compressing objects:  96% (236/245)   [Kremote: Compressing objects:  97% (238/245)   [Kremote: Compressing objects:  98% (241/245)   [Kremote: Compressing objects:  99% (243/245)   [Kremote: Compressing objects: 100% (245/245)   [Kremote: Compressing objects: 100% (245/245), done.[K
+Receiving objects:   0% (1/274)   Receiving objects:   1% (3/274)   Receiving objects:   2% (6/274)   Receiving objects:   3% (9/274)   Receiving objects:   4% (11/274)   Receiving objects:   5% (14/274)   Receiving objects:   6% (17/274)   Receiving objects:   7% (20/274)   Receiving objects:   8% (22/274)   Receiving objects:   9% (25/274)   Receiving objects:  10% (28/274)   Receiving objects:  11% (31/274)   Receiving objects:  12% (33/274)   Receiving objects:  13% (36/274)   Receiving objects:  14% (39/274)   Receiving objects:  15% (42/274)   Receiving objects:  16% (44/274)   Receiving objects:  17% (47/274)   Receiving objects:  18% (50/274)   Receiving objects:  19% (53/274)   Receiving objects:  20% (55/274)   Receiving objects:  21% (58/274)   Receiving objects:  22% (61/274)   Receiving objects:  23% (64/274)   Receiving objects:  24% (66/274)   Receiving objects:  25% (69/274)   Receiving objects:  26% (72/274)   Receiving objects:  27% (74/274)   Receiving objects:  28% (77/274)   Receiving objects:  29% (80/274)   Receiving objects:  30% (83/274)   Receiving objects:  31% (85/274)   Receiving objects:  32% (88/274)   Receiving objects:  33% (91/274)   Receiving objects:  34% (94/274)   Receiving objects:  35% (96/274)   Receiving objects:  36% (99/274)   Receiving objects:  37% (102/274)   Receiving objects:  38% (105/274)   Receiving objects:  39% (107/274)   Receiving objects:  40% (110/274)   Receiving objects:  41% (113/274)   Receiving objects:  42% (116/274)   Receiving objects:  43% (118/274)   Receiving objects:  44% (121/274)   Receiving objects:  45% (124/274)   Receiving objects:  46% (127/274)   Receiving objects:  47% (129/274)   Receiving objects:  48% (132/274)   Receiving objects:  49% (135/274)   Receiving objects:  50% (137/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  51% (140/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  52% (143/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  53% (146/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  54% (148/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  55% (151/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  56% (154/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  57% (157/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  58% (159/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  59% (162/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  60% (165/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  61% (168/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  62% (170/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  63% (173/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  64% (176/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  65% (179/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  66% (181/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  67% (184/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  68% (187/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  69% (190/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  70% (192/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  71% (195/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  72% (198/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  73% (201/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  74% (203/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  75% (206/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  76% (209/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  77% (211/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  78% (214/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  79% (217/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  80% (220/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  81% (222/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  82% (225/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  83% (228/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  84% (231/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  85% (233/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  86% (236/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  87% (239/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  88% (242/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  89% (244/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  90% (247/274), 316.00 KiB | 614.00 KiB/s   remote: Total 274 (delta 41), reused 143 (delta 12), pack-reused 0[K
+Receiving objects:  91% (250/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  92% (253/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  93% (255/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  94% (258/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  95% (261/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  96% (264/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  97% (266/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  98% (269/274), 316.00 KiB | 614.00 KiB/s   Receiving objects:  99% (272/274), 316.00 KiB | 614.00 KiB/s   Receiving objects: 100% (274/274), 316.00 KiB | 614.00 KiB/s   Receiving objects: 100% (274/274), 1.26 MiB | 1.90 MiB/s, done.
+Resolving deltas:   0% (0/41)   Resolving deltas:   2% (1/41)   Resolving deltas:   4% (2/41)   Resolving deltas:   7% (3/41)   Resolving deltas:   9% (4/41)   Resolving deltas:  12% (5/41)   Resolving deltas:  14% (6/41)   Resolving deltas:  17% (7/41)   Resolving deltas:  19% (8/41)   Resolving deltas:  46% (19/41)   Resolving deltas:  48% (20/41)   Resolving deltas:  58% (24/41)   Resolving deltas:  60% (25/41)   Resolving deltas:  63% (26/41)   Resolving deltas:  65% (27/41)   Resolving deltas:  68% (28/41)   Resolving deltas:  73% (30/41)   Resolving deltas:  75% (31/41)   Resolving deltas:  78% (32/41)   Resolving deltas:  85% (35/41)   Resolving deltas: 100% (41/41)   Resolving deltas: 100% (41/41), done.
+travis_time:end:06e1f8d0:start=1564191321401115000,finish=1564191323735825000,duration=2334710000[0K$ cd jwilm/alacritty
+travis_time:start:1d647b9c[0K$ git fetch origin +refs/pull/2677/merge:
+remote: Enumerating objects: 8696, done.[K
+remote: Counting objects:   0% (1/8696)   [Kremote: Counting objects:   1% (87/8696)   [Kremote: Counting objects:   2% (174/8696)   [Kremote: Counting objects:   3% (261/8696)   [Kremote: Counting objects:   4% (348/8696)   [Kremote: Counting objects:   5% (435/8696)   [Kremote: Counting objects:   6% (522/8696)   [Kremote: Counting objects:   7% (609/8696)   [Kremote: Counting objects:   8% (696/8696)   [Kremote: Counting objects:   9% (783/8696)   [Kremote: Counting objects:  10% (870/8696)   [Kremote: Counting objects:  11% (957/8696)   [Kremote: Counting objects:  12% (1044/8696)   [Kremote: Counting objects:  13% (1131/8696)   [Kremote: Counting objects:  14% (1218/8696)   [Kremote: Counting objects:  15% (1305/8696)   [Kremote: Counting objects:  16% (1392/8696)   [Kremote: Counting objects:  17% (1479/8696)   [Kremote: Counting objects:  18% (1566/8696)   [Kremote: Counting objects:  19% (1653/8696)   [Kremote: Counting objects:  20% (1740/8696)   [Kremote: Counting objects:  21% (1827/8696)   [Kremote: Counting objects:  22% (1914/8696)   [Kremote: Counting objects:  23% (2001/8696)   [Kremote: Counting objects:  24% (2088/8696)   [Kremote: Counting objects:  25% (2174/8696)   [Kremote: Counting objects:  26% (2261/8696)   [Kremote: Counting objects:  27% (2348/8696)   [Kremote: Counting objects:  28% (2435/8696)   [Kremote: Counting objects:  29% (2522/8696)   [Kremote: Counting objects:  30% (2609/8696)   [Kremote: Counting objects:  31% (2696/8696)   [Kremote: Counting objects:  32% (2783/8696)   [Kremote: Counting objects:  33% (2870/8696)   [Kremote: Counting objects:  34% (2957/8696)   [Kremote: Counting objects:  35% (3044/8696)   [Kremote: Counting objects:  36% (3131/8696)   [Kremote: Counting objects:  37% (3218/8696)   [Kremote: Counting objects:  38% (3305/8696)   [Kremote: Counting objects:  39% (3392/8696)   [Kremote: Counting objects:  40% (3479/8696)   [Kremote: Counting objects:  41% (3566/8696)   [Kremote: Counting objects:  42% (3653/8696)   [Kremote: Counting objects:  43% (3740/8696)   [Kremote: Counting objects:  44% (3827/8696)   [Kremote: Counting objects:  45% (3914/8696)   [Kremote: Counting objects:  46% (4001/8696)   [Kremote: Counting objects:  47% (4088/8696)   [Kremote: Counting objects:  48% (4175/8696)   [Kremote: Counting objects:  49% (4262/8696)   [Kremote: Counting objects:  50% (4348/8696)   [Kremote: Counting objects:  51% (4435/8696)   [Kremote: Counting objects:  52% (4522/8696)   [Kremote: Counting objects:  53% (4609/8696)   [Kremote: Counting objects:  54% (4696/8696)   [Kremote: Counting objects:  55% (4783/8696)   [Kremote: Counting objects:  56% (4870/8696)   [Kremote: Counting objects:  57% (4957/8696)   [Kremote: Counting objects:  58% (5044/8696)   [Kremote: Counting objects:  59% (5131/8696)   [Kremote: Counting objects:  60% (5218/8696)   [Kremote: Counting objects:  61% (5305/8696)   [Kremote: Counting objects:  62% (5392/8696)   [Kremote: Counting objects:  63% (5479/8696)   [Kremote: Counting objects:  64% (5566/8696)   [Kremote: Counting objects:  65% (5653/8696)   [Kremote: Counting objects:  66% (5740/8696)   [Kremote: Counting objects:  67% (5827/8696)   [Kremote: Counting objects:  68% (5914/8696)   [Kremote: Counting objects:  69% (6001/8696)   [Kremote: Counting objects:  70% (6088/8696)   [Kremote: Counting objects:  71% (6175/8696)   [Kremote: Counting objects:  72% (6262/8696)   [Kremote: Counting objects:  73% (6349/8696)   [Kremote: Counting objects:  74% (6436/8696)   [Kremote: Counting objects:  75% (6522/8696)   [Kremote: Counting objects:  76% (6609/8696)   [Kremote: Counting objects:  77% (6696/8696)   [Kremote: Counting objects:  78% (6783/8696)   [Kremote: Counting objects:  79% (6870/8696)   [Kremote: Counting objects:  80% (6957/8696)   [Kremote: Counting objects:  81% (7044/8696)   [Kremote: Counting objects:  82% (7131/8696)   [Kremote: Counting objects:  83% (7218/8696)   [Kremote: Counting objects:  84% (7305/8696)   [Kremote: Counting objects:  85% (7392/8696)   [Kremote: Counting objects:  86% (7479/8696)   [Kremote: Counting objects:  87% (7566/8696)   [Kremote: Counting objects:  88% (7653/8696)   [Kremote: Counting objects:  89% (7740/8696)   [Kremote: Counting objects:  90% (7827/8696)   [Kremote: Counting objects:  91% (7914/8696)   [Kremote: Counting objects:  92% (8001/8696)   [Kremote: Counting objects:  93% (8088/8696)   [Kremote: Counting objects:  94% (8175/8696)   [Kremote: Counting objects:  95% (8262/8696)   [Kremote: Counting objects:  96% (8349/8696)   [Kremote: Counting objects:  97% (8436/8696)   [Kremote: Counting objects:  98% (8523/8696)   [Kremote: Counting objects:  99% (8610/8696)   [Kremote: Counting objects: 100% (8696/8696)   [Kremote: Counting objects: 100% (8696/8696), done.[K
+remote: Compressing objects:   0% (1/2661)   [Kremote: Compressing objects:   1% (27/2661)   [Kremote: Compressing objects:   2% (54/2661)   [Kremote: Compressing objects:   3% (80/2661)   [Kremote: Compressing objects:   4% (107/2661)   [Kremote: Compressing objects:   5% (134/2661)   [Kremote: Compressing objects:   6% (160/2661)   [Kremote: Compressing objects:   7% (187/2661)   [Kremote: Compressing objects:   8% (213/2661)   [Kremote: Compressing objects:   9% (240/2661)   [Kremote: Compressing objects:  10% (267/2661)   [Kremote: Compressing objects:  11% (293/2661)   [Kremote: Compressing objects:  12% (320/2661)   [Kremote: Compressing objects:  13% (346/2661)   [Kremote: Compressing objects:  14% (373/2661)   [Kremote: Compressing objects:  15% (400/2661)   [Kremote: Compressing objects:  16% (426/2661)   [Kremote: Compressing objects:  17% (453/2661)   [Kremote: Compressing objects:  18% (479/2661)   [Kremote: Compressing objects:  19% (506/2661)   [Kremote: Compressing objects:  20% (533/2661)   [Kremote: Compressing objects:  21% (559/2661)   [Kremote: Compressing objects:  22% (586/2661)   [Kremote: Compressing objects:  23% (613/2661)   [Kremote: Compressing objects:  24% (639/2661)   [Kremote: Compressing objects:  25% (666/2661)   [Kremote: Compressing objects:  26% (692/2661)   [Kremote: Compressing objects:  27% (719/2661)   [Kremote: Compressing objects:  28% (746/2661)   [Kremote: Compressing objects:  29% (772/2661)   [Kremote: Compressing objects:  30% (799/2661)   [Kremote: Compressing objects:  31% (825/2661)   [Kremote: Compressing objects:  32% (852/2661)   [Kremote: Compressing objects:  33% (879/2661)   [Kremote: Compressing objects:  34% (905/2661)   [Kremote: Compressing objects:  35% (932/2661)   [Kremote: Compressing objects:  36% (958/2661)   [Kremote: Compressing objects:  37% (985/2661)   [Kremote: Compressing objects:  38% (1012/2661)   [Kremote: Compressing objects:  39% (1038/2661)   [Kremote: Compressing objects:  40% (1065/2661)   [Kremote: Compressing objects:  41% (1092/2661)   [Kremote: Compressing objects:  42% (1118/2661)   [Kremote: Compressing objects:  43% (1145/2661)   [Kremote: Compressing objects:  44% (1171/2661)   [Kremote: Compressing objects:  45% (1198/2661)   [Kremote: Compressing objects:  46% (1225/2661)   [Kremote: Compressing objects:  47% (1251/2661)   [Kremote: Compressing objects:  48% (1278/2661)   [Kremote: Compressing objects:  49% (1304/2661)   [Kremote: Compressing objects:  50% (1331/2661)   [Kremote: Compressing objects:  51% (1358/2661)   [Kremote: Compressing objects:  52% (1384/2661)   [Kremote: Compressing objects:  53% (1411/2661)   [Kremote: Compressing objects:  54% (1437/2661)   [Kremote: Compressing objects:  55% (1464/2661)   [Kremote: Compressing objects:  56% (1491/2661)   [Kremote: Compressing objects:  57% (1517/2661)   [Kremote: Compressing objects:  58% (1544/2661)   [Kremote: Compressing objects:  59% (1570/2661)   [Kremote: Compressing objects:  60% (1597/2661)   [Kremote: Compressing objects:  61% (1624/2661)   [Kremote: Compressing objects:  62% (1650/2661)   [Kremote: Compressing objects:  63% (1677/2661)   [Kremote: Compressing objects:  64% (1704/2661)   [Kremote: Compressing objects:  65% (1730/2661)   [Kremote: Compressing objects:  66% (1757/2661)   [Kremote: Compressing objects:  67% (1783/2661)   [Kremote: Compressing objects:  68% (1810/2661)   [Kremote: Compressing objects:  69% (1837/2661)   [Kremote: Compressing objects:  70% (1863/2661)   [Kremote: Compressing objects:  71% (1890/2661)   [Kremote: Compressing objects:  72% (1916/2661)   [Kremote: Compressing objects:  73% (1943/2661)   [Kremote: Compressing objects:  74% (1970/2661)   [Kremote: Compressing objects:  75% (1996/2661)   [Kremote: Compressing objects:  76% (2023/2661)   [Kremote: Compressing objects:  77% (2049/2661)   [Kremote: Compressing objects:  78% (2076/2661)   [Kremote: Compressing objects:  79% (2103/2661)   [Kremote: Compressing objects:  80% (2129/2661)   [Kremote: Compressing objects:  81% (2156/2661)   [Kremote: Compressing objects:  82% (2183/2661)   [Kremote: Compressing objects:  83% (2209/2661)   [Kremote: Compressing objects:  84% (2236/2661)   [Kremote: Compressing objects:  85% (2262/2661)   [Kremote: Compressing objects:  86% (2289/2661)   [Kremote: Compressing objects:  87% (2316/2661)   [Kremote: Compressing objects:  88% (2342/2661)   [Kremote: Compressing objects:  89% (2369/2661)   [Kremote: Compressing objects:  90% (2395/2661)   [Kremote: Compressing objects:  91% (2422/2661)   [Kremote: Compressing objects:  92% (2449/2661)   [Kremote: Compressing objects:  93% (2475/2661)   [Kremote: Compressing objects:  94% (2502/2661)   [Kremote: Compressing objects:  95% (2528/2661)   [Kremote: Compressing objects:  96% (2555/2661)   [Kremote: Compressing objects:  97% (2582/2661)   [Kremote: Compressing objects:  98% (2608/2661)   [Kremote: Compressing objects:  99% (2635/2661)   [Kremote: Compressing objects: 100% (2661/2661)   [Kremote: Compressing objects: 100% (2661/2661), done.[K
+Receiving objects:   0% (1/8562)   Receiving objects:   1% (86/8562)   Receiving objects:   2% (172/8562)   Receiving objects:   3% (257/8562)   Receiving objects:   4% (343/8562)   Receiving objects:   5% (429/8562)   Receiving objects:   6% (514/8562)   Receiving objects:   7% (600/8562)   Receiving objects:   8% (685/8562)   Receiving objects:   9% (771/8562)   Receiving objects:  10% (857/8562)   Receiving objects:  11% (942/8562)   Receiving objects:  12% (1028/8562)   Receiving objects:  13% (1114/8562)   Receiving objects:  14% (1199/8562)   Receiving objects:  15% (1285/8562)   Receiving objects:  16% (1370/8562)   Receiving objects:  17% (1456/8562)   Receiving objects:  18% (1542/8562)   Receiving objects:  19% (1627/8562)   Receiving objects:  20% (1713/8562)   Receiving objects:  21% (1799/8562)   Receiving objects:  22% (1884/8562)   Receiving objects:  23% (1970/8562)   Receiving objects:  24% (2055/8562)   Receiving objects:  25% (2141/8562)   Receiving objects:  26% (2227/8562)   Receiving objects:  27% (2312/8562)   Receiving objects:  28% (2398/8562)   Receiving objects:  29% (2483/8562)   Receiving objects:  30% (2569/8562)   Receiving objects:  31% (2655/8562)   Receiving objects:  32% (2740/8562)   Receiving objects:  33% (2826/8562)   Receiving objects:  34% (2912/8562)   Receiving objects:  35% (2997/8562)   Receiving objects:  36% (3083/8562)   Receiving objects:  37% (3168/8562)   Receiving objects:  38% (3254/8562)   Receiving objects:  39% (3340/8562)   Receiving objects:  40% (3425/8562)   Receiving objects:  41% (3511/8562)   Receiving objects:  42% (3597/8562)   Receiving objects:  43% (3682/8562)   Receiving objects:  44% (3768/8562)   Receiving objects:  45% (3853/8562)   Receiving objects:  46% (3939/8562)   Receiving objects:  47% (4025/8562)   Receiving objects:  48% (4110/8562)   Receiving objects:  49% (4196/8562)   Receiving objects:  50% (4281/8562)   Receiving objects:  51% (4367/8562)   Receiving objects:  52% (4453/8562)   Receiving objects:  53% (4538/8562)   Receiving objects:  54% (4624/8562)   Receiving objects:  55% (4710/8562)   Receiving objects:  56% (4795/8562)   Receiving objects:  57% (4881/8562)   Receiving objects:  58% (4966/8562)   Receiving objects:  59% (5052/8562)   Receiving objects:  60% (5138/8562)   Receiving objects:  61% (5223/8562)   Receiving objects:  62% (5309/8562)   Receiving objects:  63% (5395/8562)   Receiving objects:  64% (5480/8562)   Receiving objects:  65% (5566/8562)   Receiving objects:  66% (5651/8562)   Receiving objects:  67% (5737/8562)   Receiving objects:  68% (5823/8562)   Receiving objects:  69% (5908/8562)   Receiving objects:  70% (5994/8562)   Receiving objects:  71% (6080/8562)   Receiving objects:  72% (6165/8562)   Receiving objects:  73% (6251/8562)   Receiving objects:  74% (6336/8562)   Receiving objects:  75% (6422/8562)   Receiving objects:  76% (6508/8562)   Receiving objects:  77% (6593/8562)   Receiving objects:  78% (6679/8562)   Receiving objects:  79% (6764/8562)   Receiving objects:  80% (6850/8562)   Receiving objects:  81% (6936/8562)   Receiving objects:  82% (7021/8562)   Receiving objects:  83% (7107/8562)   Receiving objects:  84% (7193/8562)   Receiving objects:  85% (7278/8562)   Receiving objects:  86% (7364/8562)   Receiving objects:  87% (7449/8562)   Receiving objects:  88% (7535/8562)   Receiving objects:  89% (7621/8562)   Receiving objects:  90% (7706/8562)   Receiving objects:  91% (7792/8562)   Receiving objects:  92% (7878/8562)   Receiving objects:  93% (7963/8562)   Receiving objects:  94% (8049/8562)   Receiving objects:  95% (8134/8562)   remote: Total 8562 (delta 5869), reused 8333 (delta 5644), pack-reused 0[K
+Receiving objects:  96% (8220/8562)   Receiving objects:  97% (8306/8562)   Receiving objects:  98% (8391/8562)   Receiving objects:  99% (8477/8562)   Receiving objects: 100% (8562/8562)   Receiving objects: 100% (8562/8562), 5.02 MiB | 14.77 MiB/s, done.
+Resolving deltas:   0% (0/5869)   Resolving deltas:   1% (67/5869)   Resolving deltas:   2% (136/5869)   Resolving deltas:   3% (192/5869)   Resolving deltas:   4% (240/5869)   Resolving deltas:   5% (306/5869)   Resolving deltas:   6% (366/5869)   Resolving deltas:   7% (412/5869)   Resolving deltas:   8% (472/5869)   Resolving deltas:   9% (551/5869)   Resolving deltas:  10% (589/5869)   Resolving deltas:  11% (646/5869)   Resolving deltas:  12% (705/5869)   Resolving deltas:  13% (780/5869)   Resolving deltas:  14% (823/5869)   Resolving deltas:  16% (948/5869)   Resolving deltas:  17% (1003/5869)   Resolving deltas:  18% (1084/5869)   Resolving deltas:  19% (1128/5869)   Resolving deltas:  20% (1184/5869)   Resolving deltas:  21% (1247/5869)   Resolving deltas:  22% (1294/5869)   Resolving deltas:  23% (1356/5869)   Resolving deltas:  24% (1415/5869)   Resolving deltas:  25% (1486/5869)   Resolving deltas:  26% (1541/5869)   Resolving deltas:  27% (1593/5869)   Resolving deltas:  28% (1658/5869)   Resolving deltas:  29% (1722/5869)   Resolving deltas:  30% (1797/5869)   Resolving deltas:  31% (1842/5869)   Resolving deltas:  32% (1903/5869)   Resolving deltas:  33% (1970/5869)   Resolving deltas:  34% (2026/5869)   Resolving deltas:  37% (2188/5869)   Resolving deltas:  38% (2263/5869)   Resolving deltas:  39% (2291/5869)   Resolving deltas:  41% (2411/5869)   Resolving deltas:  42% (2495/5869)   Resolving deltas:  43% (2535/5869)   Resolving deltas:  44% (2586/5869)   Resolving deltas:  45% (2663/5869)   Resolving deltas:  46% (2706/5869)   Resolving deltas:  47% (2759/5869)   Resolving deltas:  49% (2883/5869)   Resolving deltas:  51% (3016/5869)   Resolving deltas:  52% (3070/5869)   Resolving deltas:  53% (3116/5869)   Resolving deltas:  54% (3215/5869)   Resolving deltas:  55% (3238/5869)   Resolving deltas:  56% (3310/5869)   Resolving deltas:  58% (3433/5869)   Resolving deltas:  59% (3485/5869)   Resolving deltas:  60% (3535/5869)   Resolving deltas:  62% (3661/5869)   Resolving deltas:  63% (3699/5869)   Resolving deltas:  66% (3898/5869)   Resolving deltas:  68% (4022/5869)   Resolving deltas:  70% (4159/5869)   Resolving deltas:  74% (4370/5869)   Resolving deltas:  75% (4455/5869)   Resolving deltas:  76% (4509/5869)   Resolving deltas:  80% (4700/5869)   Resolving deltas:  83% (4901/5869)   Resolving deltas:  84% (4949/5869)   Resolving deltas:  85% (5001/5869)   Resolving deltas:  86% (5105/5869)   Resolving deltas:  87% (5139/5869)   Resolving deltas:  89% (5239/5869)   Resolving deltas:  90% (5334/5869)   Resolving deltas:  92% (5421/5869)   Resolving deltas:  94% (5517/5869)   Resolving deltas:  95% (5579/5869)   Resolving deltas:  96% (5638/5869)   Resolving deltas:  97% (5705/5869)   Resolving deltas:  98% (5753/5869)   Resolving deltas:  99% (5813/5869)   Resolving deltas: 100% (5869/5869)   Resolving deltas: 100% (5869/5869), completed with 90 local objects.
+From https://github.com/jwilm/alacritty
+ * branch            refs/pull/2677/merge -> FETCH_HEAD
+travis_time:end:1d647b9c:start=1564191323779373000,finish=1564191325132685000,duration=1353312000[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+travis_fold:start:rustup-install[0K[33;1mInstalling Rust[0m
+travis_time:start:0351c32f[0K$ curl -sSf https://build.travis-ci.org/files/rustup-init.sh | sh -s -- --default-toolchain=$TRAVIS_RUST_VERSION -y
+[1minfo:[0m downloading installer
+[1minfo: (B[msyncing channel updates for '1.32.0-x86_64-apple-darwin'
+[1minfo: (B[mlatest update on 2019-01-17, rust version 1.32.0 (9fda7c223 2019-01-16)
+[1minfo: (B[mdownloading component 'rustc'
+ 48.3 MiB /  64.5 MiB ( 75 %)   0 B/s in  1s ETA: Unknown                                                          64.5 MiB /  64.5 MiB (100 %)  48.3 MiB/s in  1s ETA:  0s
+[1minfo: (B[mdownloading component 'rust-std'
+[1minfo: (B[mdownloading component 'cargo'
+[1minfo: (B[mdownloading component 'rust-docs'
+[1minfo: (B[minstalling component 'rustc'
+ 15.2 MiB /  64.5 MiB ( 24 %)   0 B/s in  1s ETA: Unknown                                                          25.7 MiB /  64.5 MiB ( 40 %)  15.2 MiB/s in  2s ETA:  2s                                                          35.0 MiB /  64.5 MiB ( 54 %)  12.9 MiB/s in  3s ETA:  2s                                                          47.4 MiB /  64.5 MiB ( 74 %)  11.7 MiB/s in  4s ETA:  1s                                                          56.5 MiB /  64.5 MiB ( 88 %)  11.8 MiB/s in  5s ETA:  0s                                                          64.5 MiB /  64.5 MiB (100 %)  11.3 MiB/s in  5s ETA:  0s
+[1minfo: (B[minstalling component 'rust-std'
+ 12.1 MiB /  49.2 MiB ( 25 %)   0 B/s in  1s ETA: Unknown                                                          24.6 MiB /  49.2 MiB ( 50 %)  12.1 MiB/s in  2s ETA:  2s                                                          38.8 MiB /  49.2 MiB ( 79 %)  12.3 MiB/s in  3s ETA:  0s                                                          49.2 MiB /  49.2 MiB (100 %)  12.9 MiB/s in  3s ETA:  0s
+[1minfo: (B[minstalling component 'cargo'
+[1minfo: (B[minstalling component 'rust-docs'
+  1.9 MiB /   8.5 MiB ( 22 %)   0 B/s in  1s ETA: Unknown                                                           3.6 MiB /   8.5 MiB ( 42 %)   1.9 MiB/s in  2s ETA:  2s                                                           5.5 MiB /   8.5 MiB ( 64 %)   1.8 MiB/s in  3s ETA:  1s                                                           6.4 MiB /   8.5 MiB ( 75 %)   1.8 MiB/s in  4s ETA:  1s                                                           8.5 MiB /   8.5 MiB (100 %)   1.6 MiB/s in  5s ETA:  0s                                                           8.5 MiB /   8.5 MiB (100 %)   1.7 MiB/s in  5s ETA:  0s
+[1minfo: (B[mdefault toolchain set to '1.32.0'
+
+  [1m[32m1.32.0 installed(B[m - rustc 1.32.0 (9fda7c223 2019-01-16)
+
+[1m
+Rust is installed now. Great!
+(B[m
+To get started you need Cargo's bin directory ($HOME/.cargo/bin) in your [1mPATH(B[m 
+environment variable. Next time you log in this will be done automatically.
+
+To configure your current shell run [1msource $HOME/.cargo/env(B[m
+travis_time:end:0351c32f:start=1564191325393992000,finish=1564191345905241000,duration=20511249000[0K$ export PATH=${TRAVIS_HOME}/.cargo/bin:$PATH
+travis_fold:end:rustup-install[0K$ rustc --version
+rustc 1.32.0 (9fda7c223 2019-01-16)
+$ rustup --version
+rustup 1.18.3 (435397f48 2019-05-22)
+$ cargo --version
+cargo 1.32.0 (8610973aa 2019-01-02)
+
+travis_fold:start:install[0Ktravis_time:start:04e63e25[0K$ ci/install.sh
+travis_time:end:04e63e25:start=1564191346005401000,finish=1564191346016530000,duration=11129000[0Ktravis_fold:end:install[0Ktravis_time:start:0b986950[0K$ ci/script.sh
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m Downloading[0m crates ...
+[0m[0m[1m[32m  Downloaded[0m objc v0.2.6
+[0m[0m[1m[32m  Downloaded[0m objc_id v0.1.1
+[0m[0m[1m[32m  Downloaded[0m unicode-width v0.1.5
+[0m[0m[1m[32m  Downloaded[0m base64 v0.10.1
+[0m[0m[1m[32m  Downloaded[0m objc-foundation v0.1.1
+[0m[0m[1m[32m  Downloaded[0m errno v0.2.4
+[0m[0m[1m[32m  Downloaded[0m serde_json v1.0.40
+[0m[0m[1m[32m  Downloaded[0m serde_yaml v0.8.9
+[0m[0m[1m[32m  Downloaded[0m serde_derive v1.0.94
+[0m[0m[1m[32m  Downloaded[0m notify v4.0.12
+[0m[0m[1m[32m  Downloaded[0m libc v0.2.60
+[0m[0m[1m[32m  Downloaded[0m log v0.4.7
+[0m[0m[1m[32m  Downloaded[0m nix v0.14.1
+[0m[0m[1m[32m  Downloaded[0m bitflags v1.1.0
+[0m[0m[1m[32m  Downloaded[0m serde v1.0.94
+[0m[0m[1m[32m  Downloaded[0m vte v0.3.3
+[0m[0m[1m[32m  Downloaded[0m signal-hook v0.1.10
+[0m[0m[1m[32m  Downloaded[0m glutin v0.21.0
+[0m[0m[1m[32m  Downloaded[0m crossbeam-channel v0.3.8
+[0m[0m[1m[32m  Downloaded[0m mio v0.6.19
+[0m[0m[1m[32m  Downloaded[0m fnv v1.0.6
+[0m[0m[1m[32m  Downloaded[0m url v1.7.2
+[0m[0m[1m[32m  Downloaded[0m mio-extras v2.0.5
+[0m[0m[1m[32m  Downloaded[0m core-foundation-sys v0.6.2
+[0m[0m[1m[32m  Downloaded[0m parking_lot v0.7.1
+[0m[0m[1m[32m  Downloaded[0m core-graphics v0.17.3
+[0m[0m[1m[32m  Downloaded[0m core-foundation v0.6.4
+[0m[0m[1m[32m  Downloaded[0m static_assertions v0.3.3
+[0m[0m[1m[32m  Downloaded[0m gl_generator v0.11.0
+[0m[0m[1m[32m  Downloaded[0m time v0.1.42
+[0m[0m[1m[32m  Downloaded[0m env_logger v0.6.2
+[0m[0m[1m[32m  Downloaded[0m dirs v1.0.5
+[0m[0m[1m[32m  Downloaded[0m terminfo v0.6.1
+[0m[0m[1m[32m  Downloaded[0m clap v2.33.0
+[0m[0m[1m[32m  Downloaded[0m rustc_tools_util v0.2.0
+[0m[0m[1m[32m  Downloaded[0m foreign-types v0.4.0
+[0m[0m[1m[32m  Downloaded[0m core-text v13.2.0
+[0m[0m[1m[32m  Downloaded[0m euclid v0.19.9
+[0m[0m[1m[32m  Downloaded[0m malloc_buf v0.0.6
+[0m[0m[1m[32m  Downloaded[0m block v0.1.6
+[0m[0m[1m[32m  Downloaded[0m byteorder v1.3.2
+[0m[0m[1m[32m  Downloaded[0m utf8parse v0.1.1
+[0m[0m[1m[32m  Downloaded[0m harfbuzz_rs v1.0.0
+[0m[0m[1m[32m  Downloaded[0m itoa v0.4.4
+[0m[0m[1m[32m  Downloaded[0m xdg v2.2.0
+[0m[0m[1m[32m  Downloaded[0m ryu v1.0.0
+[0m[0m[1m[32m  Downloaded[0m linked-hash-map v0.5.2
+[0m[0m[1m[32m  Downloaded[0m yaml-rust v0.4.3
+[0m[0m[1m[32m  Downloaded[0m dtoa v0.4.4
+[0m[0m[1m[32m  Downloaded[0m proc-macro2 v0.4.30
+[0m[0m[1m[32m  Downloaded[0m quote v0.6.13
+[0m[0m[1m[32m  Downloaded[0m syn v0.15.39
+[0m[0m[1m[32m  Downloaded[0m walkdir v2.2.8
+[0m[0m[1m[32m  Downloaded[0m filetime v0.2.5
+[0m[0m[1m[32m  Downloaded[0m void v1.0.2
+[0m[0m[1m[32m  Downloaded[0m cfg-if v0.1.9
+[0m[0m[1m[32m  Downloaded[0m fsevent v0.4.0
+[0m[0m[1m[32m  Downloaded[0m foreign-types v0.3.2
+[0m[0m[1m[32m  Downloaded[0m fsevent-sys v2.0.1
+[0m[0m[1m[32m  Downloaded[0m lazy_static v1.3.0
+[0m[0m[1m[32m  Downloaded[0m glutin_gles2_sys v0.1.3
+[0m[0m[1m[32m  Downloaded[0m cgl v0.2.3
+[0m[0m[1m[32m  Downloaded[0m foreign-types-macros v0.1.0
+[0m[0m[1m[32m  Downloaded[0m foreign-types-shared v0.2.0
+[0m[0m[1m[32m  Downloaded[0m cocoa v0.18.4
+[0m[0m[1m[32m  Downloaded[0m signal-hook-registry v1.0.1
+[0m[0m[1m[32m  Downloaded[0m slab v0.4.2
+[0m[0m[1m[32m  Downloaded[0m net2 v0.2.33
+[0m[0m[1m[32m  Downloaded[0m winit v0.19.1
+[0m[0m[1m[32m  Downloaded[0m iovec v0.1.2
+[0m[0m[1m[32m  Downloaded[0m crossbeam-utils v0.6.5
+[0m[0m[1m[32m  Downloaded[0m percent-encoding v1.0.1
+[0m[0m[1m[32m  Downloaded[0m smallvec v0.6.10
+[0m[0m[1m[32m  Downloaded[0m matches v0.1.8
+[0m[0m[1m[32m  Downloaded[0m idna v0.1.5
+[0m[0m[1m[32m  Downloaded[0m phf v0.7.24
+[0m[0m[1m[32m  Downloaded[0m lazycell v1.2.1
+[0m[0m[1m[32m  Downloaded[0m phf_codegen v0.7.24
+[0m[0m[1m[32m  Downloaded[0m nom v4.2.3
+[0m[0m[1m[32m  Downloaded[0m lock_api v0.1.5
+[0m[0m[1m[32m  Downloaded[0m parking_lot_core v0.4.0
+[0m[0m[1m[32m  Downloaded[0m khronos_api v3.1.0
+[0m[0m[1m[32m  Downloaded[0m atty v0.2.13
+[0m[0m[1m[32m  Downloaded[0m xml-rs v0.8.0
+[0m[0m[1m[32m  Downloaded[0m regex v1.1.9
+[0m[0m[1m[32m  Downloaded[0m humantime v1.2.0
+[0m[0m[1m[32m  Downloaded[0m textwrap v0.11.0
+[0m[0m[1m[32m  Downloaded[0m termcolor v1.0.5
+[0m[0m[1m[32m  Downloaded[0m strsim v0.8.0
+[0m[0m[1m[32m  Downloaded[0m vec_map v0.8.1
+[0m[0m[1m[32m  Downloaded[0m ansi_term v0.11.0
+[0m[0m[1m[32m  Downloaded[0m unicode-xid v0.1.0
+[0m[0m[1m[32m  Downloaded[0m same-file v1.0.5
+[0m[0m[1m[32m  Downloaded[0m foreign-types-shared v0.1.1
+[0m[0m[1m[32m  Downloaded[0m num-traits v0.2.8
+[0m[0m[1m[32m  Downloaded[0m spin v0.5.0
+[0m[0m[1m[32m  Downloaded[0m gleam v0.6.18
+[0m[0m[1m[32m  Downloaded[0m euclid_macros v0.1.0
+[0m[0m[1m[32m  Downloaded[0m image v0.21.2
+[0m[0m[1m[32m  Downloaded[0m arc-swap v0.3.11
+[0m[0m[1m[32m  Downloaded[0m unicode-normalization v0.1.8
+[0m[0m[1m[32m  Downloaded[0m unicode-bidi v0.3.4
+[0m[0m[1m[32m  Downloaded[0m phf_shared v0.7.24
+[0m[0m[1m[32m  Downloaded[0m memchr v2.2.1
+[0m[0m[1m[32m  Downloaded[0m phf_generator v0.7.24
+[0m[0m[1m[32m  Downloaded[0m version_check v0.1.5
+[0m[0m[1m[32m  Downloaded[0m rand v0.6.5
+[0m[0m[1m[32m  Downloaded[0m rustc_version v0.2.3
+[0m[0m[1m[32m  Downloaded[0m scopeguard v0.3.3
+[0m[0m[1m[32m  Downloaded[0m owning_ref v0.4.0
+[0m[0m[1m[32m  Downloaded[0m quick-error v1.2.2
+[0m[0m[1m[32m  Downloaded[0m regex-syntax v0.6.8
+[0m[0m[1m[32m  Downloaded[0m thread_local v0.3.6
+[0m[0m[1m[32m  Downloaded[0m utf8-ranges v1.0.3
+[0m[0m[1m[32m  Downloaded[0m autocfg v0.1.4
+[0m[0m[1m[32m  Downloaded[0m harfbuzz-sys v0.3.2
+[0m[0m[1m[32m  Downloaded[0m aho-corasick v0.7.4
+[0m[0m[1m[32m  Downloaded[0m num-rational v0.2.2
+[0m[0m[1m[32m  Downloaded[0m png v0.14.1
+[0m[0m[1m[32m  Downloaded[0m scoped_threadpool v0.1.9
+[0m[0m[1m[32m  Downloaded[0m gif v0.10.2
+[0m[0m[1m[32m  Downloaded[0m num-iter v0.1.39
+[0m[0m[1m[32m  Downloaded[0m lzw v0.10.0
+[0m[0m[1m[32m  Downloaded[0m jpeg-decoder v0.1.15
+[0m[0m[1m[32m  Downloaded[0m siphasher v0.2.3
+[0m[0m[1m[32m  Downloaded[0m tiff v0.2.2
+[0m[0m[1m[32m  Downloaded[0m rand_pcg v0.1.2
+[0m[0m[1m[32m  Downloaded[0m rand_hc v0.1.0
+[0m[0m[1m[32m  Downloaded[0m rand_core v0.4.0
+[0m[0m[1m[32m  Downloaded[0m rand_isaac v0.1.1
+[0m[0m[1m[32m  Downloaded[0m rand_xorshift v0.1.1
+[0m[0m[1m[32m  Downloaded[0m rand_os v0.1.3
+[0m[0m[1m[32m  Downloaded[0m rand_jitter v0.1.4
+[0m[0m[1m[32m  Downloaded[0m rand_chacha v0.1.1
+[0m[0m[1m[32m  Downloaded[0m semver v0.9.0
+[0m[0m[1m[32m  Downloaded[0m stable_deref_trait v1.1.1
+[0m[0m[1m[32m  Downloaded[0m ucd-util v0.1.3
+[0m[0m[1m[32m  Downloaded[0m cmake v0.1.40
+[0m[0m[1m[32m  Downloaded[0m pkg-config v0.3.14
+[0m[0m[1m[32m  Downloaded[0m color_quant v1.0.1
+[0m[0m[1m[32m  Downloaded[0m num-integer v0.1.41
+[0m[0m[1m[32m  Downloaded[0m inflate v0.4.5
+[0m[0m[1m[32m  Downloaded[0m deflate v0.7.20
+[0m[0m[1m[32m  Downloaded[0m rayon v1.1.0
+[0m[0m[1m[32m  Downloaded[0m rand_core v0.3.1
+[0m[0m[1m[32m  Downloaded[0m num-derive v0.2.5
+[0m[0m[1m[32m  Downloaded[0m adler32 v1.0.3
+[0m[0m[1m[32m  Downloaded[0m cc v1.0.37
+[0m[0m[1m[32m  Downloaded[0m semver-parser v0.7.0
+[0m[0m[1m[32m  Downloaded[0m crossbeam-deque v0.6.3
+[0m[0m[1m[32m  Downloaded[0m either v1.5.2
+[0m[0m[1m[32m  Downloaded[0m rayon-core v1.5.0
+[0m[0m[1m[32m  Downloaded[0m crossbeam-epoch v0.7.1
+[0m[0m[1m[32m  Downloaded[0m crossbeam-queue v0.1.2
+[0m[0m[1m[32m  Downloaded[0m num_cpus v1.10.1
+[0m[0m[1m[32m  Downloaded[0m memoffset v0.2.1
+[0m[0m[1m[32m  Downloaded[0m arrayvec v0.4.11
+[0m[0m[1m[32m  Downloaded[0m nodrop v0.1.13
+[0m[0m[1m[32m   Compiling[0m arrayvec v0.4.11
+[0m[0m[1m[32m   Compiling[0m spin v0.5.0
+[0m[0m[1m[32m   Compiling[0m cfg-if v0.1.9
+[0m[0m[1m[32m   Compiling[0m nodrop v0.1.13
+[0m[0m[1m[32m   Compiling[0m libc v0.2.60
+[0m[0m[1m[32m   Compiling[0m memoffset v0.2.1
+[0m[0m[1m[32m   Compiling[0m scopeguard v0.3.3
+[0m[0m[1m[32m   Compiling[0m rayon-core v1.5.0
+[0m[0m[1m[32m   Compiling[0m proc-macro2 v0.4.30
+[0m[0m[1m[32m   Compiling[0m autocfg v0.1.4
+[0m[0m[1m[32m   Compiling[0m core-foundation-sys v0.6.2
+[0m[0m[1m[32m   Compiling[0m rand_core v0.4.0
+[0m[0m[1m[32m   Compiling[0m log v0.4.7
+[0m[0m[1m[32m   Compiling[0m unicode-xid v0.1.0
+[0m[0m[1m[32m   Compiling[0m khronos_api v3.1.0
+[0m[0m[1m[32m   Compiling[0m either v1.5.2
+[0m[0m[1m[32m   Compiling[0m syn v0.15.39
+[0m[0m[1m[32m   Compiling[0m byteorder v1.3.2
+[0m[0m[1m[32m   Compiling[0m bitflags v1.1.0
+[0m[0m[1m[32m   Compiling[0m semver-parser v0.7.0
+[0m[0m[1m[32m   Compiling[0m xml-rs v0.8.0
+[0m[0m[1m[32m   Compiling[0m foreign-types-shared v0.1.1
+[0m[0m[1m[32m   Compiling[0m num-derive v0.2.5
+[0m[0m[1m[32m   Compiling[0m siphasher v0.2.3
+[0m[0m[1m[32m   Compiling[0m pkg-config v0.3.14
+[0m[0m[1m[32m   Compiling[0m adler32 v1.0.3
+[0m[0m[1m[32m   Compiling[0m lzw v0.10.0
+[0m[0m[1m[32m   Compiling[0m memchr v2.2.1
+[0m[0m[1m[32m   Compiling[0m version_check v0.1.5
+[0m[0m[1m[32m   Compiling[0m color_quant v1.0.1
+[0m[0m[1m[32m   Compiling[0m block v0.1.6
+[0m[0m[1m[32m   Compiling[0m scoped_threadpool v0.1.9
+[0m[0m[1m[32m   Compiling[0m serde v1.0.94
+[0m[0m[1m[32m   Compiling[0m stable_deref_trait v1.1.1
+[0m[0m[1m[32m   Compiling[0m smallvec v0.6.10
+[0m[0m[1m[32m   Compiling[0m matches v0.1.8
+[0m[0m[1m[32m   Compiling[0m nix v0.14.1
+[0m[0m[1m[32m   Compiling[0m arc-swap v0.3.11
+[0m[0m[1m[32m   Compiling[0m slab v0.4.2
+[0m[0m[1m[32m   Compiling[0m linked-hash-map v0.5.2
+[0m[0m[1m[32m   Compiling[0m foreign-types-shared v0.2.0
+[0m[0m[1m[32m   Compiling[0m ryu v1.0.0
+[0m[0m[1m[32m   Compiling[0m ucd-util v0.1.3
+[0m[0m[1m[32m   Compiling[0m same-file v1.0.5
+[0m[0m[1m[32m   Compiling[0m regex v1.1.9
+[0m[0m[1m[32m   Compiling[0m percent-encoding v1.0.1
+[0m[0m[1m[32m   Compiling[0m fnv v1.0.6
+[0m[0m[1m[32m   Compiling[0m dtoa v0.4.4
+[0m[0m[1m[32m   Compiling[0m quick-error v1.2.2
+[0m[0m[1m[32m   Compiling[0m utf8-ranges v1.0.3
+[0m[0m[1m[32m   Compiling[0m unicode-width v0.1.5
+[0m[0m[1m[32m   Compiling[0m winpty v0.1.0 (/Users/travis/build/jwilm/alacritty/winpty)
+[0m[0m[1m[32m   Compiling[0m utf8parse v0.1.1
+[0m[0m[1m[32m   Compiling[0m void v1.0.2
+[0m[0m[1m[32m   Compiling[0m rustc_tools_util v0.2.0
+[0m[0m[1m[32m   Compiling[0m lazycell v1.2.1
+[0m[0m[1m[32m   Compiling[0m ansi_term v0.11.0
+[0m[0m[1m[32m   Compiling[0m vec_map v0.8.1
+[0m[0m[1m[32m   Compiling[0m strsim v0.8.0
+[0m[0m[1m[32m   Compiling[0m static_assertions v0.3.3
+[0m[0m[1m[32m   Compiling[0m itoa v0.4.4
+[0m[0m[1m[32m   Compiling[0m termcolor v1.0.5
+[0m[0m[1m[32m   Compiling[0m xdg v2.2.0
+[0m[0m[1m[32m   Compiling[0m lazy_static v1.3.0
+[0m[0m[1m[32m   Compiling[0m num-traits v0.2.8
+[0m[0m[1m[32m   Compiling[0m rand_chacha v0.1.1
+[0m[0m[1m[32m   Compiling[0m rand_pcg v0.1.2
+[0m[0m[1m[32m   Compiling[0m rand v0.6.5
+[0m[0m[1m[32m   Compiling[0m num-integer v0.1.41
+[0m[0m[1m[32m   Compiling[0m num-iter v0.1.39
+[0m[0m[1m[32m   Compiling[0m num-rational v0.2.2
+[0m[0m[1m[32m   Compiling[0m rand_core v0.3.1
+[0m[0m[1m[32m   Compiling[0m semver v0.9.0
+[0m[0m[1m[32m   Compiling[0m foreign-types v0.3.2
+[0m[0m[1m[32m   Compiling[0m phf_shared v0.7.24
+[0m[0m[1m[32m   Compiling[0m inflate v0.4.5
+[0m[0m[1m[32m   Compiling[0m nom v4.2.3
+[0m[0m[1m[32m   Compiling[0m gif v0.10.2
+[0m[0m[1m[32m   Compiling[0m owning_ref v0.4.0
+[0m[0m[1m[32m   Compiling[0m unicode-bidi v0.3.4
+[0m[0m[1m[32m   Compiling[0m unicode-normalization v0.1.8
+[0m[0m[1m[32m   Compiling[0m yaml-rust v0.4.3
+[0m[0m[1m[32m   Compiling[0m regex-syntax v0.6.8
+[0m[0m[1m[32m   Compiling[0m walkdir v2.2.8
+[0m[0m[1m[32m   Compiling[0m humantime v1.2.0
+[0m[0m[1m[32m   Compiling[0m textwrap v0.11.0
+[0m[0m[1m[32m   Compiling[0m vte v0.3.3
+[0m[0m[1m[32m   Compiling[0m alacritty v0.3.3 (/Users/travis/build/jwilm/alacritty/alacritty)
+[0m[0m[1m[32m   Compiling[0m crossbeam-utils v0.6.5
+[0m[0m[1m[32m   Compiling[0m thread_local v0.3.6
+[0m[0m[1m[32m   Compiling[0m rand_hc v0.1.0
+[0m[0m[1m[32m   Compiling[0m rand_xorshift v0.1.1
+[0m[0m[1m[32m   Compiling[0m rand_isaac v0.1.1
+[0m[0m[1m[32m   Compiling[0m phf v0.7.24
+[0m[0m[1m[32m   Compiling[0m rustc_version v0.2.3
+[0m[0m[1m[32m   Compiling[0m lock_api v0.1.5
+[0m[0m[1m[32m   Compiling[0m crossbeam-queue v0.1.2
+[0m[0m[1m[32m   Compiling[0m crossbeam-channel v0.3.8
+[0m[0m[1m[32m   Compiling[0m num_cpus v1.10.1
+[0m[0m[1m[32m   Compiling[0m rand_os v0.1.3
+[0m[0m[1m[32m   Compiling[0m rand_jitter v0.1.4
+[0m[0m[1m[32m   Compiling[0m malloc_buf v0.0.6
+[0m[0m[1m[32m   Compiling[0m iovec v0.1.2
+[0m[0m[1m[32m   Compiling[0m fsevent-sys v2.0.1
+[0m[0m[1m[32m   Compiling[0m net2 v0.2.33
+[0m[0m[1m[32m   Compiling[0m filetime v0.2.5
+[0m[0m[1m[32m   Compiling[0m signal-hook-registry v1.0.1
+[0m[0m[1m[32m   Compiling[0m atty v0.2.13
+[0m[0m[1m[32m   Compiling[0m errno v0.2.4
+[0m[0m[1m[32m   Compiling[0m dirs v1.0.5
+[0m[0m[1m[32m   Compiling[0m time v0.1.42
+[0m[0m[1m[32m   Compiling[0m idna v0.1.5
+[0m[0m[1m[32m   Compiling[0m crossbeam-epoch v0.7.1
+[0m[0m[1m[32m   Compiling[0m quote v0.6.13
+[0m[0m[1m[32m   Compiling[0m core-foundation v0.6.4
+[0m[0m[1m[32m   Compiling[0m gl_generator v0.11.0
+[0m[0m[1m[32m   Compiling[0m deflate v0.7.20
+[0m[0m[1m[32m   Compiling[0m base64 v0.10.1
+[0m[0m[1m[32m   Compiling[0m parking_lot_core v0.4.0
+[0m[0m[1m[32m   Compiling[0m aho-corasick v0.7.4
+[0m[0m[1m[32m   Compiling[0m objc v0.2.6
+[0m[0m[1m[32m   Compiling[0m fsevent v0.4.0
+[0m[0m[1m[32m   Compiling[0m mio v0.6.19
+[0m[0m[1m[32m   Compiling[0m clap v2.33.0
+[0m[0m[1m[32m   Compiling[0m serde_yaml v0.8.9
+[0m[0m[1m[32m   Compiling[0m serde_json v1.0.40
+[0m[0m[1m[32m   Compiling[0m crossbeam-deque v0.6.3
+[0m[0m[1m[32m   Compiling[0m url v1.7.2
+[0m[0m[1m[32m   Compiling[0m core-graphics v0.17.3
+[0m[0m[1m[32m   Compiling[0m gleam v0.6.18
+[0m[0m[1m[32m   Compiling[0m glutin_gles2_sys v0.1.3
+[0m[0m[1m[32m   Compiling[0m alacritty_terminal v0.3.3 (/Users/travis/build/jwilm/alacritty/alacritty_terminal)
+[0m[0m[1m[32m   Compiling[0m objc_id v0.1.1
+[0m[0m[1m[32m   Compiling[0m notify v4.0.12
+[0m[0m[1m[32m   Compiling[0m mio-extras v2.0.5
+[0m[0m[1m[32m   Compiling[0m signal-hook v0.1.10
+[0m[0m[1m[32m   Compiling[0m phf_generator v0.7.24
+[0m[0m[1m[32m   Compiling[0m core-text v13.2.0
+[0m[0m[1m[32m   Compiling[0m cocoa v0.18.4
+[0m[0m[1m[32m   Compiling[0m foreign-types-macros v0.1.0
+[0m[0m[1m[32m   Compiling[0m euclid_macros v0.1.0
+[0m[0m[1m[32m   Compiling[0m serde_derive v1.0.94
+[0m[0m[1m[32m   Compiling[0m env_logger v0.6.2
+[0m[0m[1m[32m   Compiling[0m objc-foundation v0.1.1
+[0m[0m[1m[32m   Compiling[0m phf_codegen v0.7.24
+[0m[0m[1m[32m   Compiling[0m rayon v1.1.0
+[0m[0m[1m[32m   Compiling[0m png v0.14.1
+[0m[0m[1m[32m   Compiling[0m parking_lot v0.7.1
+[0m[0m[1m[32m   Compiling[0m foreign-types v0.4.0
+[0m[0m[1m[32m   Compiling[0m tiff v0.2.2
+[0m[0m[1m[32m   Compiling[0m euclid v0.19.9
+[0m[0m[1m[32m   Compiling[0m copypasta v0.6.0 (/Users/travis/build/jwilm/alacritty/copypasta)
+[0m[0m[1m[32m   Compiling[0m terminfo v0.6.1
+[0m[0m[1m[32m   Compiling[0m cc v1.0.37
+[0m[0m[1m[32m   Compiling[0m jpeg-decoder v0.1.15
+[0m[0m[1m[32m   Compiling[0m cgl v0.2.3
+[0m[0m[1m[32m   Compiling[0m cmake v0.1.40
+[0m[0m[1m[32m   Compiling[0m image v0.21.2
+[0m[0m[1m[32m   Compiling[0m harfbuzz-sys v0.3.2
+[0m[0m[1m[32m   Compiling[0m winit v0.19.1
+[0m[0m[1m[32m   Compiling[0m glutin v0.21.0
+[0m[0m[1m[32m   Compiling[0m harfbuzz_rs v1.0.0
+[0m[0m[1m[32m   Compiling[0m font v0.1.0 (/Users/travis/build/jwilm/alacritty/font)
+[0m[1m[38;5;9merror[E0463][0m[0m[1m: can't find crate for `fontconfig`[0m
+[0m  [0m[0m[1m[38;5;12m--> [0m[0mfont/src/lib.rs:28:1[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m[1m[38;5;12m28[0m[0m [0m[0m[1m[38;5;12m| [0m[0mextern crate fontconfig;[0m
+[0m   [0m[0m[1m[38;5;12m| [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mcan't find crate[0m
+
+[0m[1m[38;5;9merror[0m[0m[1m: aborting due to previous error[0m
+[0m[1m[38;5;9merror[E0463][0m[0m[1m: can't find crate for `fontconfig`[0m
+[0m  [0m[0m[1m[38;5;12m--> [0m[0mfont/src/lib.rs:28:1[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m[1m[38;5;12m28[0m[0m [0m[0m[1m[38;5;12m| [0m[0mextern crate fontconfig;[0m
+[0m   [0m[0m[1m[38;5;12m| [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mcan't find crate[0m
+
+
+[0m[1mFor more information about this error, try `rustc --explain E0463`.[0m
+[0m[1m[38;5;9merror[0m[0m[1m: aborting due to previous error[0m
+
+[0m[1mFor more information about this error, try `rustc --explain E0463`.[0m
+[0m[0m[1m[31merror:[0m Could not compile `font`.
+[0m[0m[1m[33mwarning:[0m build failed, waiting for other jobs to finish...
+[0m[0m[1m[31merror:[0m Could not compile `font`.
+
+To learn more, run the command again with --verbose.
+travis_time:end:0b986950:start=1564191346025887000,finish=1564191685192976000,duration=339167089000[0K[31;1mThe command "ci/script.sh" exited with 101.[0m
+
+
+
+Done. Your build exited with 1.

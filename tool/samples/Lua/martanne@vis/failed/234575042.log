@@ -1,0 +1,1127 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: i-03b8b4a-precise-production-2-worker-org-docker.travisci.net:0d596eb2-cef2-4fbd-bcfc-a181f1f2e46d
+version: v2.5.0 https://github.com/travis-ci/worker/tree/da3a43228dffc0fcca5a46569ca786b22991979f
+instance: 9d35f7e:travis:default
+startup: 479.692014ms
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: c
+Build group: stable
+Build dist: precise
+Build id: 234575042
+Job id: 234575043
+travis-build version: 97c7efd0c
+[34m[1mBuild image provisioning date and time[0m
+Thu Feb  5 15:09:33 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-29-generic
+[34m[1mCookbooks Version[0m
+a68419e https://github.com/travis-ci/travis-cookbooks/tree/a68419e
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-1.9.3-p551
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.1
+[34m[1mRedis version[0m
+redis-server 2.8.19
+[34m[1mriak version[0m
+2.0.2
+[34m[1mMongoDB version[0m
+MongoDB 2.4.12
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mRabbitMQ Version[0m
+3.4.3
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 31.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "3.13.0-29-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+travis_fold:start:fix.CVE-2015-7547[0K$ export DEBIAN_FRONTEND=noninteractive
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libc-bin libc-dev-bin libc6-dev
+Suggested packages:
+  glibc-doc
+The following packages will be upgraded:
+  libc-bin libc-dev-bin libc6 libc6-dev
+4 upgraded, 0 newly installed, 0 to remove and 277 not upgraded.
+Need to get 8,856 kB of archives.
+After this operation, 13.3 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6-dev amd64 2.15-0ubuntu10.18 [2,948 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-dev-bin amd64 2.15-0ubuntu10.18 [84.5 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-bin amd64 2.15-0ubuntu10.18 [1,178 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6 amd64 2.15-0ubuntu10.18 [4,646 kB]
+Fetched 8,856 kB in 0s (33.3 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71420 files and directories currently installed.)
+Preparing to replace libc6-dev 2.15-0ubuntu10.10 (using .../libc6-dev_2.15-0ubuntu10.18_amd64.deb) ...
+Unpacking replacement libc6-dev ...
+Preparing to replace libc-dev-bin 2.15-0ubuntu10.10 (using .../libc-dev-bin_2.15-0ubuntu10.18_amd64.deb) ...
+Unpacking replacement libc-dev-bin ...
+Preparing to replace libc-bin 2.15-0ubuntu10.10 (using .../libc-bin_2.15-0ubuntu10.18_amd64.deb) ...
+Unpacking replacement libc-bin ...
+Processing triggers for man-db ...
+Setting up libc-bin (2.15-0ubuntu10.18) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71419 files and directories currently installed.)
+Preparing to replace libc6 2.15-0ubuntu10.10 (using .../libc6_2.15-0ubuntu10.18_amd64.deb) ...
+Unpacking replacement libc6 ...
+Setting up libc6 (2.15-0ubuntu10.18) ...
+Setting up libc-dev-bin (2.15-0ubuntu10.18) ...
+Setting up libc6-dev (2.15-0ubuntu10.18) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:fix.CVE-2015-7547[0Ktravis_fold:start:update_libssl1.0.0[0K$ sudo apt-get install libssl1.0.0
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 10%Reading package lists... 10%Reading package lists... 11%Reading package lists... 11%Reading package lists... 44%Reading package lists... 46%Reading package lists... 46%Reading package lists... 47%Reading package lists... 47%Reading package lists... 58%Reading package lists... 58%Reading package lists... 58%Reading package lists... 58%Reading package lists... 94%Reading package lists... 94%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 95%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 97%Reading package lists... 97%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 82%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following extra packages will be installed:
+  libssl-dev
+The following packages will be upgraded:
+  libssl-dev libssl1.0.0
+2 upgraded, 0 newly installed, 0 to remove and 275 not upgraded.
+Need to get 2,634 kB of archives.
+After this operation, 29.7 kB of additional disk space will be used.
+0% [Working]            Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libssl-dev amd64 1.0.1-4ubuntu5.39 [1,580 kB]
+            1% [1 libssl-dev 14.1 kB/1,580 kB 1%]                                     60% [Waiting for headers]                         Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libssl1.0.0 amd64 1.0.1-4ubuntu5.39 [1,054 kB]
+                         62% [2 libssl1.0.0 57.7 kB/1,054 kB 5%]                                       100% [Working]              Fetched 2,634 kB in 0s (17.4 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71419 files and directories currently installed.)
+Preparing to replace libssl-dev 1.0.1-4ubuntu5.21 (using .../libssl-dev_1.0.1-4ubuntu5.39_amd64.deb) ...
+Unpacking replacement libssl-dev ...
+Preparing to replace libssl1.0.0 1.0.1-4ubuntu5.21 (using .../libssl1.0.0_1.0.1-4ubuntu5.39_amd64.deb) ...
+Unpacking replacement libssl1.0.0 ...
+Setting up libssl1.0.0 (1.0.1-4ubuntu5.39) ...
+Setting up libssl-dev (1.0.1-4ubuntu5.39) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:update_libssl1.0.0[0Ktravis_fold:start:git.checkout[0Ktravis_time:start:107e52be[0K$ git clone --depth=50 https://github.com/martanne/vis.git martanne/vis
+Cloning into 'martanne/vis'...
+remote: Counting objects: 447, done.[K
+remote: Compressing objects:   0% (1/321)   [Kremote: Compressing objects:   1% (4/321)   [Kremote: Compressing objects:   2% (7/321)   [Kremote: Compressing objects:   3% (10/321)   [Kremote: Compressing objects:   4% (13/321)   [Kremote: Compressing objects:   5% (17/321)   [Kremote: Compressing objects:   6% (20/321)   [Kremote: Compressing objects:   7% (23/321)   [Kremote: Compressing objects:   8% (26/321)   [Kremote: Compressing objects:   9% (29/321)   [Kremote: Compressing objects:  10% (33/321)   [Kremote: Compressing objects:  11% (36/321)   [Kremote: Compressing objects:  12% (39/321)   [Kremote: Compressing objects:  13% (42/321)   [Kremote: Compressing objects:  14% (45/321)   [Kremote: Compressing objects:  15% (49/321)   [Kremote: Compressing objects:  16% (52/321)   [Kremote: Compressing objects:  17% (55/321)   [Kremote: Compressing objects:  18% (58/321)   [Kremote: Compressing objects:  19% (61/321)   [Kremote: Compressing objects:  20% (65/321)   [Kremote: Compressing objects:  21% (68/321)   [Kremote: Compressing objects:  22% (71/321)   [Kremote: Compressing objects:  23% (74/321)   [Kremote: Compressing objects:  24% (78/321)   [Kremote: Compressing objects:  25% (81/321)   [Kremote: Compressing objects:  26% (84/321)   [Kremote: Compressing objects:  27% (87/321)   [Kremote: Compressing objects:  28% (90/321)   [Kremote: Compressing objects:  29% (94/321)   [Kremote: Compressing objects:  30% (97/321)   [Kremote: Compressing objects:  31% (100/321)   [Kremote: Compressing objects:  32% (103/321)   [Kremote: Compressing objects:  33% (106/321)   [Kremote: Compressing objects:  34% (110/321)   [Kremote: Compressing objects:  35% (113/321)   [Kremote: Compressing objects:  36% (116/321)   [Kremote: Compressing objects:  37% (119/321)   [Kremote: Compressing objects:  38% (122/321)   [Kremote: Compressing objects:  39% (126/321)   [Kremote: Compressing objects:  40% (129/321)   [Kremote: Compressing objects:  41% (132/321)   [Kremote: Compressing objects:  42% (135/321)   [Kremote: Compressing objects:  43% (139/321)   [Kremote: Compressing objects:  44% (142/321)   [Kremote: Compressing objects:  45% (145/321)   [Kremote: Compressing objects:  46% (148/321)   [Kremote: Compressing objects:  47% (151/321)   [Kremote: Compressing objects:  48% (155/321)   [Kremote: Compressing objects:  49% (158/321)   [Kremote: Compressing objects:  50% (161/321)   [Kremote: Compressing objects:  51% (164/321)   [Kremote: Compressing objects:  52% (167/321)   [Kremote: Compressing objects:  53% (171/321)   [Kremote: Compressing objects:  54% (174/321)   [Kremote: Compressing objects:  55% (177/321)   [Kremote: Compressing objects:  56% (180/321)   [Kremote: Compressing objects:  57% (183/321)   [Kremote: Compressing objects:  58% (187/321)   [Kremote: Compressing objects:  59% (190/321)   [Kremote: Compressing objects:  60% (193/321)   [Kremote: Compressing objects:  61% (196/321)   [Kremote: Compressing objects:  62% (200/321)   [Kremote: Compressing objects:  63% (203/321)   [Kremote: Compressing objects:  64% (206/321)   [Kremote: Compressing objects:  65% (209/321)   [Kremote: Compressing objects:  66% (212/321)   [Kremote: Compressing objects:  67% (216/321)   [Kremote: Compressing objects:  68% (219/321)   [Kremote: Compressing objects:  69% (222/321)   [Kremote: Compressing objects:  70% (225/321)   [Kremote: Compressing objects:  71% (228/321)   [Kremote: Compressing objects:  72% (232/321)   [Kremote: Compressing objects:  73% (235/321)   [Kremote: Compressing objects:  74% (238/321)   [Kremote: Compressing objects:  75% (241/321)   [Kremote: Compressing objects:  76% (244/321)   [Kremote: Compressing objects:  77% (248/321)   [Kremote: Compressing objects:  78% (251/321)   [Kremote: Compressing objects:  79% (254/321)   [Kremote: Compressing objects:  80% (257/321)   [Kremote: Compressing objects:  81% (261/321)   [Kremote: Compressing objects:  82% (264/321)   [Kremote: Compressing objects:  83% (267/321)   [Kremote: Compressing objects:  84% (270/321)   [Kremote: Compressing objects:  85% (273/321)   [Kremote: Compressing objects:  86% (277/321)   [Kremote: Compressing objects:  87% (280/321)   [Kremote: Compressing objects:  88% (283/321)   [Kremote: Compressing objects:  89% (286/321)   [Kremote: Compressing objects:  90% (289/321)   [Kremote: Compressing objects:  91% (293/321)   [Kremote: Compressing objects:  92% (296/321)   [Kremote: Compressing objects:  93% (299/321)   [Kremote: Compressing objects:  94% (302/321)   [Kremote: Compressing objects:  95% (305/321)   [Kremote: Compressing objects:  96% (309/321)   [Kremote: Compressing objects:  97% (312/321)   [Kremote: Compressing objects:  98% (315/321)   [Kremote: Compressing objects:  99% (318/321)   [Kremote: Compressing objects: 100% (321/321)   [Kremote: Compressing objects: 100% (321/321), done.[K
+Receiving objects:   0% (1/447)   Receiving objects:   1% (5/447)   Receiving objects:   2% (9/447)   Receiving objects:   3% (14/447)   Receiving objects:   4% (18/447)   Receiving objects:   5% (23/447)   Receiving objects:   6% (27/447)   Receiving objects:   7% (32/447)   Receiving objects:   8% (36/447)   Receiving objects:   9% (41/447)   Receiving objects:  10% (45/447)   Receiving objects:  11% (50/447)   Receiving objects:  12% (54/447)   Receiving objects:  13% (59/447)   Receiving objects:  14% (63/447)   Receiving objects:  15% (68/447)   Receiving objects:  16% (72/447)   Receiving objects:  17% (76/447)   Receiving objects:  18% (81/447)   Receiving objects:  19% (85/447)   Receiving objects:  20% (90/447)   Receiving objects:  21% (94/447)   Receiving objects:  22% (99/447)   Receiving objects:  23% (103/447)   Receiving objects:  24% (108/447)   Receiving objects:  25% (112/447)   Receiving objects:  26% (117/447)   Receiving objects:  27% (121/447)   Receiving objects:  28% (126/447)   Receiving objects:  29% (130/447)   Receiving objects:  30% (135/447)   Receiving objects:  31% (139/447)   Receiving objects:  32% (144/447)   Receiving objects:  33% (148/447)   Receiving objects:  34% (152/447)   Receiving objects:  35% (157/447)   Receiving objects:  36% (161/447)   Receiving objects:  37% (166/447)   Receiving objects:  38% (170/447)   Receiving objects:  39% (175/447)   Receiving objects:  40% (179/447)   Receiving objects:  41% (184/447)   Receiving objects:  42% (188/447)   Receiving objects:  43% (193/447)   Receiving objects:  44% (197/447)   Receiving objects:  45% (202/447)   Receiving objects:  46% (206/447)   Receiving objects:  47% (211/447)   Receiving objects:  48% (215/447)   Receiving objects:  49% (220/447)   Receiving objects:  50% (224/447)   Receiving objects:  51% (228/447)   Receiving objects:  52% (233/447)   Receiving objects:  53% (237/447)   Receiving objects:  54% (242/447)   Receiving objects:  55% (246/447)   Receiving objects:  56% (251/447)   Receiving objects:  57% (255/447)   Receiving objects:  58% (260/447)   Receiving objects:  59% (264/447)   Receiving objects:  60% (269/447)   Receiving objects:  61% (273/447)   Receiving objects:  62% (278/447)   Receiving objects:  63% (282/447)   Receiving objects:  64% (287/447)   Receiving objects:  65% (291/447)   Receiving objects:  66% (296/447)   Receiving objects:  67% (300/447)   Receiving objects:  68% (304/447)   Receiving objects:  69% (309/447)   Receiving objects:  70% (313/447)   Receiving objects:  71% (318/447)   Receiving objects:  72% (322/447)   Receiving objects:  73% (327/447)   Receiving objects:  74% (331/447)   Receiving objects:  75% (336/447)   Receiving objects:  76% (340/447)   Receiving objects:  77% (345/447)   Receiving objects:  78% (349/447)   Receiving objects:  79% (354/447)   Receiving objects:  80% (358/447)   Receiving objects:  81% (363/447)   Receiving objects:  82% (367/447)   Receiving objects:  83% (372/447)   Receiving objects:  84% (376/447)   Receiving objects:  85% (380/447)   Receiving objects:  86% (385/447)   Receiving objects:  87% (389/447)   remote: Total 447 (delta 185), reused 224 (delta 116), pack-reused 0[K
+Receiving objects:  88% (394/447)   Receiving objects:  89% (398/447)   Receiving objects:  90% (403/447)   Receiving objects:  91% (407/447)   Receiving objects:  92% (412/447)   Receiving objects:  93% (416/447)   Receiving objects:  94% (421/447)   Receiving objects:  95% (425/447)   Receiving objects:  96% (430/447)   Receiving objects:  97% (434/447)   Receiving objects:  98% (439/447)   Receiving objects:  99% (443/447)   Receiving objects: 100% (447/447)   Receiving objects: 100% (447/447), 484.41 KiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/185)   Resolving deltas:   2% (5/185)   Resolving deltas:   3% (6/185)   Resolving deltas:   4% (9/185)   Resolving deltas:   7% (13/185)   Resolving deltas:  12% (23/185)   Resolving deltas:  15% (28/185)   Resolving deltas:  26% (49/185)   Resolving deltas:  28% (52/185)   Resolving deltas:  30% (56/185)   Resolving deltas:  31% (58/185)   Resolving deltas:  34% (63/185)   Resolving deltas:  35% (66/185)   Resolving deltas:  36% (68/185)   Resolving deltas:  38% (71/185)   Resolving deltas:  39% (73/185)   Resolving deltas:  40% (75/185)   Resolving deltas:  42% (79/185)   Resolving deltas:  44% (83/185)   Resolving deltas:  45% (85/185)   Resolving deltas:  47% (87/185)   Resolving deltas:  49% (91/185)   Resolving deltas:  50% (93/185)   Resolving deltas:  51% (95/185)   Resolving deltas:  52% (97/185)   Resolving deltas:  53% (99/185)   Resolving deltas:  54% (101/185)   Resolving deltas:  55% (103/185)   Resolving deltas:  56% (104/185)   Resolving deltas:  57% (106/185)   Resolving deltas:  59% (110/185)   Resolving deltas:  60% (111/185)   Resolving deltas:  62% (115/185)   Resolving deltas:  63% (117/185)   Resolving deltas:  69% (129/185)   Resolving deltas:  70% (130/185)   Resolving deltas:  71% (133/185)   Resolving deltas:  72% (134/185)   Resolving deltas:  74% (137/185)   Resolving deltas:  77% (143/185)   Resolving deltas:  78% (146/185)   Resolving deltas:  80% (148/185)   Resolving deltas:  83% (155/185)   Resolving deltas:  84% (156/185)   Resolving deltas:  85% (158/185)   Resolving deltas:  87% (161/185)   Resolving deltas:  88% (164/185)   Resolving deltas:  89% (166/185)   Resolving deltas:  93% (173/185)   Resolving deltas: 100% (185/185)   Resolving deltas: 100% (185/185), done.
+Checking connectivity... done.
+
+travis_time:end:107e52be:start=1495387309252574402,finish=1495387309799462735,duration=546888333[0K$ cd martanne/vis
+travis_time:start:16950c5a[0K$ git fetch origin +refs/pull/558/merge:
+remote: Counting objects: 10, done.[K
+remote: Compressing objects:  33% (1/3)   [Kremote: Compressing objects:  66% (2/3)   [Kremote: Compressing objects: 100% (3/3)   [Kremote: Compressing objects: 100% (3/3), done.[K
+remote: Total 10 (delta 7), reused 9 (delta 7), pack-reused 0[K
+Unpacking objects:  10% (1/10)   Unpacking objects:  20% (2/10)   Unpacking objects:  30% (3/10)   Unpacking objects:  40% (4/10)   Unpacking objects:  50% (5/10)   Unpacking objects:  60% (6/10)   Unpacking objects:  70% (7/10)   Unpacking objects:  80% (8/10)   Unpacking objects:  90% (9/10)   Unpacking objects: 100% (10/10)   Unpacking objects: 100% (10/10), done.
+From https://github.com/martanne/vis
+ * branch            refs/pull/558/merge -> FETCH_HEAD
+
+travis_time:end:16950c5a:start=1495387309805490474,finish=1495387310131907062,duration=326416588[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0Ktravis_fold:start:git.submodule[0Ktravis_time:start:06811410[0K$ git submodule update --init --recursive
+Submodule 'test' (https://github.com/martanne/vis-test) registered for path 'test'
+Cloning into 'test'...
+remote: Counting objects: 1188, done.[K
+Receiving objects:   0% (1/1188)   Receiving objects:   1% (12/1188)   Receiving objects:   2% (24/1188)   Receiving objects:   3% (36/1188)   Receiving objects:   4% (48/1188)   Receiving objects:   5% (60/1188)   Receiving objects:   6% (72/1188)   Receiving objects:   7% (84/1188)   Receiving objects:   8% (96/1188)   Receiving objects:   9% (107/1188)   Receiving objects:  10% (119/1188)   Receiving objects:  11% (131/1188)   Receiving objects:  12% (143/1188)   Receiving objects:  13% (155/1188)   Receiving objects:  14% (167/1188)   Receiving objects:  15% (179/1188)   Receiving objects:  16% (191/1188)   Receiving objects:  17% (202/1188)   Receiving objects:  18% (214/1188)   Receiving objects:  19% (226/1188)   Receiving objects:  20% (238/1188)   Receiving objects:  21% (250/1188)   Receiving objects:  22% (262/1188)   Receiving objects:  23% (274/1188)   Receiving objects:  24% (286/1188)   Receiving objects:  25% (297/1188)   Receiving objects:  26% (309/1188)   Receiving objects:  27% (321/1188)   Receiving objects:  28% (333/1188)   Receiving objects:  29% (345/1188)   Receiving objects:  30% (357/1188)   Receiving objects:  31% (369/1188)   Receiving objects:  32% (381/1188)   Receiving objects:  33% (393/1188)   Receiving objects:  34% (404/1188)   Receiving objects:  35% (416/1188)   Receiving objects:  36% (428/1188)   Receiving objects:  37% (440/1188)   Receiving objects:  38% (452/1188)   Receiving objects:  39% (464/1188)   Receiving objects:  40% (476/1188)   Receiving objects:  41% (488/1188)   Receiving objects:  42% (499/1188)   remote: Total 1188 (delta 0), reused 0 (delta 0), pack-reused 1188[K
+Receiving objects:  43% (511/1188)   Receiving objects:  44% (523/1188)   Receiving objects:  45% (535/1188)   Receiving objects:  46% (547/1188)   Receiving objects:  47% (559/1188)   Receiving objects:  48% (571/1188)   Receiving objects:  49% (583/1188)   Receiving objects:  50% (594/1188)   Receiving objects:  51% (606/1188)   Receiving objects:  52% (618/1188)   Receiving objects:  53% (630/1188)   Receiving objects:  54% (642/1188)   Receiving objects:  55% (654/1188)   Receiving objects:  56% (666/1188)   Receiving objects:  57% (678/1188)   Receiving objects:  58% (690/1188)   Receiving objects:  59% (701/1188)   Receiving objects:  60% (713/1188)   Receiving objects:  61% (725/1188)   Receiving objects:  62% (737/1188)   Receiving objects:  63% (749/1188)   Receiving objects:  64% (761/1188)   Receiving objects:  65% (773/1188)   Receiving objects:  66% (785/1188)   Receiving objects:  67% (796/1188)   Receiving objects:  68% (808/1188)   Receiving objects:  69% (820/1188)   Receiving objects:  70% (832/1188)   Receiving objects:  71% (844/1188)   Receiving objects:  72% (856/1188)   Receiving objects:  73% (868/1188)   Receiving objects:  74% (880/1188)   Receiving objects:  75% (891/1188)   Receiving objects:  76% (903/1188)   Receiving objects:  77% (915/1188)   Receiving objects:  78% (927/1188)   Receiving objects:  79% (939/1188)   Receiving objects:  80% (951/1188)   Receiving objects:  81% (963/1188)   Receiving objects:  82% (975/1188)   Receiving objects:  83% (987/1188)   Receiving objects:  84% (998/1188)   Receiving objects:  85% (1010/1188)   Receiving objects:  86% (1022/1188)   Receiving objects:  87% (1034/1188)   Receiving objects:  88% (1046/1188)   Receiving objects:  89% (1058/1188)   Receiving objects:  90% (1070/1188)   Receiving objects:  91% (1082/1188)   Receiving objects:  92% (1093/1188)   Receiving objects:  93% (1105/1188)   Receiving objects:  94% (1117/1188)   Receiving objects:  95% (1129/1188)   Receiving objects:  96% (1141/1188)   Receiving objects:  97% (1153/1188)   Receiving objects:  98% (1165/1188)   Receiving objects:  99% (1177/1188)   Receiving objects: 100% (1188/1188)   Receiving objects: 100% (1188/1188), 196.72 KiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/476)   Resolving deltas:   2% (11/476)   Resolving deltas:   3% (16/476)   Resolving deltas:   5% (25/476)   Resolving deltas:   6% (33/476)   Resolving deltas:   7% (35/476)   Resolving deltas:  11% (55/476)   Resolving deltas:  13% (62/476)   Resolving deltas:  14% (67/476)   Resolving deltas:  15% (73/476)   Resolving deltas:  16% (77/476)   Resolving deltas:  17% (85/476)   Resolving deltas:  18% (86/476)   Resolving deltas:  20% (96/476)   Resolving deltas:  21% (100/476)   Resolving deltas:  22% (105/476)   Resolving deltas:  23% (111/476)   Resolving deltas:  24% (118/476)   Resolving deltas:  25% (120/476)   Resolving deltas:  26% (125/476)   Resolving deltas:  27% (130/476)   Resolving deltas:  28% (134/476)   Resolving deltas:  29% (139/476)   Resolving deltas:  30% (143/476)   Resolving deltas:  31% (152/476)   Resolving deltas:  32% (155/476)   Resolving deltas:  34% (162/476)   Resolving deltas:  35% (167/476)   Resolving deltas:  36% (172/476)   Resolving deltas:  37% (180/476)   Resolving deltas:  39% (188/476)   Resolving deltas:  41% (198/476)   Resolving deltas:  43% (205/476)   Resolving deltas:  45% (218/476)   Resolving deltas:  46% (219/476)   Resolving deltas:  47% (224/476)   Resolving deltas:  48% (229/476)   Resolving deltas:  49% (235/476)   Resolving deltas:  50% (239/476)   Resolving deltas:  51% (243/476)   Resolving deltas:  52% (252/476)   Resolving deltas:  53% (253/476)   Resolving deltas:  54% (259/476)   Resolving deltas:  55% (262/476)   Resolving deltas:  63% (300/476)   Resolving deltas:  64% (305/476)   Resolving deltas:  66% (316/476)   Resolving deltas:  69% (330/476)   Resolving deltas:  81% (388/476)   Resolving deltas:  83% (399/476)   Resolving deltas:  84% (403/476)   Resolving deltas:  85% (406/476)   Resolving deltas:  86% (410/476)   Resolving deltas:  92% (442/476)   Resolving deltas:  93% (444/476)   Resolving deltas: 100% (476/476)   Resolving deltas: 100% (476/476), done.
+Checking connectivity... done.
+Submodule path 'test': checked out '462ac8a78d8b5c21ecb4ec00dff2316d9f85d6ea'
+
+travis_time:end:06811410:start=1495387310155704624,finish=1495387310887042255,duration=731337631[0Ktravis_fold:end:git.submodule[0Ktravis_fold:start:apt[0K[33;1mInstalling APT Packages (BETA)[0m
+$ export DEBIAN_FRONTEND=noninteractive
+travis_time:start:0758762d[0K$ sudo -E apt-get -yq update &>> ~/apt-get-update.log
+
+travis_time:end:0758762d:start=1495387310893149239,finish=1495387315525179413,duration=4632030174[0Ktravis_time:start:0cda733d[0K$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install 9base libacl1-dev libtre-dev
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libattr1-dev libtre5
+Suggested packages:
+  wmii2 tre-agrep
+The following NEW packages will be installed:
+  9base libacl1-dev libattr1-dev libtre-dev libtre5
+0 upgraded, 5 newly installed, 0 to remove and 275 not upgraded.
+Need to get 2,098 kB of archives.
+After this operation, 5,021 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise/universe 9base amd64 1:6-5 [1,887 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise/universe libtre5 amd64 0.8.0-2 [61.8 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise/universe libtre-dev amd64 0.8.0-2 [37.4 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise/main libattr1-dev amd64 1:2.4.46-5ubuntu1 [33.6 kB]
+Get:5 http://us.archive.ubuntu.com/ubuntu/ precise/main libacl1-dev amd64 2.2.51-5ubuntu1 [79.1 kB]
+Fetched 2,098 kB in 0s (15.0 MB/s)
+Selecting previously unselected package 9base.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 71419 files and directories currently installed.)
+Unpacking 9base (from .../9base_1%3a6-5_amd64.deb) ...
+Selecting previously unselected package libtre5.
+Unpacking libtre5 (from .../libtre5_0.8.0-2_amd64.deb) ...
+Selecting previously unselected package libtre-dev.
+Unpacking libtre-dev (from .../libtre-dev_0.8.0-2_amd64.deb) ...
+Selecting previously unselected package libattr1-dev.
+Unpacking libattr1-dev (from .../libattr1-dev_1%3a2.4.46-5ubuntu1_amd64.deb) ...
+Selecting previously unselected package libacl1-dev.
+Unpacking libacl1-dev (from .../libacl1-dev_2.2.51-5ubuntu1_amd64.deb) ...
+Processing triggers for man-db ...
+Setting up 9base (1:6-5) ...
+Setting up libtre5 (0.8.0-2) ...
+Setting up libtre-dev (0.8.0-2) ...
+Setting up libattr1-dev (1:2.4.46-5ubuntu1) ...
+Setting up libacl1-dev (2.2.51-5ubuntu1) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+
+travis_time:end:0cda733d:start=1495387315530413643,finish=1495387335273512697,duration=19743099054[0Ktravis_fold:end:apt[0K$ export CC=gcc
+travis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=$HOME/.casher
+travis_time:start:062ac141[0K$ Installing caching utilities
+
+travis_time:end:062ac141:start=1495387359104019326,finish=1495387359137763637,duration=33744311[0Ktravis_time:start:1a966d74[0K
+travis_time:end:1a966d74:start=1495387359144114321,finish=1495387359148420094,duration=4305773[0Ktravis_time:start:01bb7e5e[0K[32;1mattempting to download cache archive[0m
+[32;1mfetching PR.558/cache-linux-precise-2725feceb8db5809931a50c9d57b35ec6b3f7deffa56d2c35d4e4ba4aa4b701d--compiler-gcc.tgz[0m
+[32;1mfetching PR.558/cache--compiler-gcc.tgz[0m
+[32;1mfetching master/cache-linux-precise-2725feceb8db5809931a50c9d57b35ec6b3f7deffa56d2c35d4e4ba4aa4b701d--compiler-gcc.tgz[0m
+[32;1mfound cache[0m
+
+travis_time:end:01bb7e5e:start=1495387359153277523,finish=1495387360187009229,duration=1033731706[0Ktravis_time:start:049905e6[0K
+travis_time:end:049905e6:start=1495387360192088063,finish=1495387360196381922,duration=4293859[0Ktravis_time:start:1c9e9562[0K[32;1madding /home/travis/.cache/vis to cache[0m
+[32;1mcreating directory /home/travis/.cache/vis[0m
+
+travis_time:end:1c9e9562:start=1495387360201406688,finish=1495387361720206725,duration=1518800037[0Ktravis_fold:end:cache.1[0K$ gcc --version
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+travis_fold:start:before_install[0Ktravis_time:start:19fc4fa0[0K$ mkdir -p "$HOME/.cache/vis/sources" && mkdir dependency && ln -s "$HOME/.cache/vis/sources" dependency/sources
+
+travis_time:end:19fc4fa0:start=1495387361769240556,finish=1495387361799709006,duration=30468450[0Ktravis_fold:end:before_install[0Ktravis_fold:start:install[0Ktravis_time:start:01391d20[0K$ if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update && brew install libtermkey lua tre plan9port && luarocks install lpeg && luarocks install busted; fi
+
+travis_time:end:01391d20:start=1495387361805301462,finish=1495387361809578369,duration=4276907[0Ktravis_fold:end:install[0Ktravis_time:start:06cdb9cc[0K$ id
+uid=1000(travis) gid=1000(travis) groups=1000(travis)
+
+travis_time:end:06cdb9cc:start=1495387361815704581,finish=1495387361821939915,duration=6235334[0K
+[32;1mThe command "id" exited with 0.[0m
+travis_time:start:05c34fd8[0K$ env
+MANPATH=/home/travis/.nvm/v0.10.36/share/man:/usr/local/clang-3.4/share/man:/usr/local/man:/usr/local/share/man:/usr/share/man
+NVM_IOJS_ORG_VERSION_LISTING=https://iojs.org/dist/index.tab
+rvm_bin_path=/home/travis/.rvm/bin
+HOSTNAME=testing-docker-9c606d09-139e-4079-a962-0164aea4516a
+HAS_JOSH_K_SEAL_OF_APPROVAL=true
+GEM_HOME=/home/travis/.rvm/gems/ruby-1.9.3-p551
+TRAVIS_TEST_RESULT=0
+TERM=xterm
+SHELL=/bin/bash
+IRBRC=/home/travis/.rvm/rubies/ruby-1.9.3-p551/.irbrc
+TRAVIS_COMMIT=105fad633fe6c7333053fc4819ddb8ba95663d53
+NVM_PATH=/home/travis/.nvm/v0.10.36/lib/node
+TRAVIS_OS_NAME=linux
+CASHER_DIR=/home/travis/.casher
+OLDPWD=/home/travis/build
+MY_RUBY_HOME=/home/travis/.rvm/rubies/ruby-1.9.3-p551
+rvm_autoupdate_flag=0
+USER=travis
+NVM_DIR=/home/travis/.nvm
+_system_type=Linux
+TRAVIS_LANGUAGE=c
+rvm_path=/home/travis/.rvm
+TRAVIS=true
+TRAVIS_REPO_SLUG=martanne/vis
+HAS_ANTARES_THREE_LITTLE_FRONZIES_BADGE=true
+TRAVIS_COMMIT_MESSAGE=Merge ef4ee877a33250a3277ba4669431ed9b2a623e45 into 4a736a3eca287b208306d82c8a926999e61f99f6
+TRAVIS_PULL_REQUEST=558
+PAGER=cat
+RACK_ENV=test
+rvm_prefix=/home/travis
+PATH=/home/travis/.rvm/gems/ruby-1.9.3-p551/bin:/home/travis/.rvm/gems/ruby-1.9.3-p551@global/bin:/home/travis/.rvm/rubies/ruby-1.9.3-p551/bin:/home/travis/.rvm/bin:/home/travis/bin:/home/travis/.local/bin:/usr/local/phantomjs/bin:/home/travis/.nvm/v0.10.36/bin:./node_modules/.bin:/usr/local/maven-3.2.5/bin:/usr/local/clang-3.4/bin:/home/travis/.gimme/versions/go1.4.1.linux.amd64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+TRAVIS_PULL_REQUEST_SHA=ef4ee877a33250a3277ba4669431ed9b2a623e45
+NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist
+PWD=/home/travis/build/martanne/vis
+CONTINUOUS_INTEGRATION=true
+JAVA_HOME=/usr/lib/jvm/java-7-oracle
+LANG=en_US.UTF-8
+MERB_ENV=test
+_system_arch=x86_64
+_system_version=12.04
+TRAVIS_SUDO=false
+TRAVIS_TAG=
+TRAVIS_ALLOW_FAILURE=false
+rvm_version=1.26.10 (latest-minor)
+TRAVIS_JOB_NUMBER=856.1
+TRAVIS_EVENT_TYPE=pull_request
+SHLVL=1
+PS4=+
+HOME=/home/travis
+GOROOT=/home/travis/.gimme/versions/go1.4.1.linux.amd64
+RAILS_ENV=test
+CI=true
+TRAVIS_BUILD_ID=234575042
+TRAVIS_PULL_REQUEST_SLUG=Shugyousha/vis
+COMPOSER_NO_INTERACTION=1
+GEM_PATH=/home/travis/.rvm/gems/ruby-1.9.3-p551:/home/travis/.rvm/gems/ruby-1.9.3-p551@global
+TRAVIS_SECURE_ENV_VARS=false
+DEBIAN_FRONTEND=noninteractive
+NVM_BIN=/home/travis/.nvm/v0.10.36/bin
+NVM_IOJS_ORG_MIRROR=https://iojs.org/dist
+GIT_ASKPASS=echo
+CC=gcc
+TRAVIS_BRANCH=master
+TRAVIS_COMMIT_RANGE=4a736a3eca287b208306d82c8a926999e61f99f6...ef4ee877a33250a3277ba4669431ed9b2a623e45
+JRUBY_OPTS=--client -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -Xcext.enabled=false -J-Xss2m -Xcompile.invokedynamic=false
+TRAVIS_PULL_REQUEST_BRANCH=luagfv2
+TRAVIS_JOB_ID=234575043
+RUBY_VERSION=ruby-1.9.3-p551
+container=docker
+_system_name=Ubuntu
+TRAVIS_BUILD_DIR=/home/travis/build/martanne/vis
+TRAVIS_BUILD_NUMBER=856
+rvm_silence_path_mismatch_check_flag=1
+_=/usr/bin/env
+
+travis_time:end:05c34fd8:start=1495387361827051082,finish=1495387361837182147,duration=10131065[0K
+[32;1mThe command "env" exited with 0.[0m
+travis_time:start:20144621[0K$ locale
+LANG=en_US.UTF-8
+LANGUAGE=
+LC_CTYPE="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_PAPER="en_US.UTF-8"
+LC_NAME="en_US.UTF-8"
+LC_ADDRESS="en_US.UTF-8"
+LC_TELEPHONE="en_US.UTF-8"
+LC_MEASUREMENT="en_US.UTF-8"
+LC_IDENTIFICATION="en_US.UTF-8"
+LC_ALL=
+
+travis_time:end:20144621:start=1495387361844560072,finish=1495387361849832744,duration=5272672[0K
+[32;1mThe command "locale" exited with 0.[0m
+travis_time:start:08740962[0K$ tty || true
+not a tty
+
+travis_time:end:08740962:start=1495387361855186269,finish=1495387361866492075,duration=11305806[0K
+[32;1mThe command "tty || true" exited with 0.[0m
+travis_time:start:1d6a5e17[0K$ if [ "$TRAVIS_OS_NAME" = "linux" ]; then make local && make clean; fi
+cleaning
+./configure --environment-only
+checking for C compiler... gcc
+checking whether C compiler works... yes
+checking whether compiler accepts -Werror=unknown-warning-option... no
+checking whether compiler accepts -Werror=unused-command-line-argument... no
+checking whether linker accepts -Werror=unknown-warning-option... no
+checking whether linker accepts -Werror=unused-command-line-argument... no
+checking whether compiler accepts -pipe... yes
+checking whether compiler accepts -Os... yes
+checking whether compiler accepts -ffunction-sections... yes
+checking whether compiler accepts -fdata-sections... yes
+checking whether linker accepts -Wl,--gc-sections... yes
+checking whether compiler accepts -fPIE... yes
+checking whether compiler accepts -fstack-protector-all... yes
+checking whether linker accepts -Wl,-z,now... yes
+checking whether linker accepts -Wl,-z,relro... yes
+checking whether linker accepts -pie... yes
+creating config.mk... done
+make dependencies-local
+make[1]: Entering directory `/home/travis/build/martanne/vis'
+[ ! -e dependency/build/standalone ] || make dependencies-clean
+mkdir -p dependency/build
+[ -e dependency/build/libncurses-install ] || touch \
+		dependency/build/libncurses-extract \
+		dependency/build/libncurses-configure \
+		dependency/build/libncurses-build \
+		dependency/build/libncurses-install
+make dependency/build/local
+make[2]: Entering directory `/home/travis/build/martanne/vis'
+tar xzf dependency/sources/libtermkey-0.20.tar.gz -C dependency/build/
+touch dependency/build/libtermkey-extract
+# TODO no sane way to avoid pkg-config and specify LDFLAGS?
+sed -i 's/LDFLAGS+=-lncurses$/LDFLAGS+=-lncursesw/g' dependency/build//libtermkey-0.20/Makefile
+make -C dependency/build//libtermkey-0.20 PREFIX=/usr termkey.h libtermkey.la
+make[3]: Entering directory `/home/travis/build/martanne/vis/dependency/build/libtermkey-0.20'
+make[3]: Nothing to be done for `termkey.h'.
+libtool --quiet --mode=compile --tag=CC gcc -Wall -std=c99   -o termkey.lo -c termkey.c
+libtool --quiet --mode=compile --tag=CC gcc -Wall -std=c99   -o driver-csi.lo -c driver-csi.c
+libtool --quiet --mode=compile --tag=CC gcc -Wall -std=c99   -o driver-ti.lo -c driver-ti.c
+libtool --quiet --mode=link --tag=CC gcc -rpath /usr/lib -version-info 15:0:14 -ltinfo   -o libtermkey.la termkey.lo driver-csi.lo driver-ti.lo
+make[3]: Leaving directory `/home/travis/build/martanne/vis/dependency/build/libtermkey-0.20'
+touch dependency/build/libtermkey-build
+make -C dependency/build//libtermkey-0.20 PREFIX=/usr DESTDIR=/home/travis/build/martanne/vis/dependency/install install-inc install-lib
+make[3]: Entering directory `/home/travis/build/martanne/vis/dependency/build/libtermkey-0.20'
+install -d /home/travis/build/martanne/vis/dependency/install/usr/include
+install -m644 termkey.h /home/travis/build/martanne/vis/dependency/install/usr/include
+install -d /home/travis/build/martanne/vis/dependency/install/usr/lib/pkgconfig
+sed "s,@LIBDIR@,/usr/lib,;s,@INCDIR@,/usr/include," <termkey.pc.in >/home/travis/build/martanne/vis/dependency/install/usr/lib/pkgconfig/termkey.pc
+install -d /home/travis/build/martanne/vis/dependency/install/usr/lib
+libtool --quiet --mode=install install libtermkey.la /home/travis/build/martanne/vis/dependency/install/usr/lib/libtermkey.la
+libtool: install: warning: remember to run `libtool --finish /usr/lib'
+make[3]: Leaving directory `/home/travis/build/martanne/vis/dependency/build/libtermkey-0.20'
+touch dependency/build/libtermkey-install
+tar xzf dependency/sources/lua-5.3.4.tar.gz -C dependency/build/
+touch dependency/build/liblua-extract
+make -C dependency/build//lua-5.3.4/src all CC=gcc MYCFLAGS="-DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC" MYLIBS="-Wl,-E -ldl -lm"
+make[3]: Entering directory `/home/travis/build/martanne/vis/dependency/build/lua-5.3.4/src'
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lapi.o lapi.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lcode.o lcode.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lctype.o lctype.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o ldebug.o ldebug.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o ldo.o ldo.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o ldump.o ldump.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lfunc.o lfunc.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lgc.o lgc.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o llex.o llex.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lmem.o lmem.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lobject.o lobject.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lopcodes.o lopcodes.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lparser.o lparser.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lstate.o lstate.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lstring.o lstring.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o ltable.o ltable.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o ltm.o ltm.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lundump.o lundump.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lvm.o lvm.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lzio.o lzio.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lauxlib.o lauxlib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lbaselib.o lbaselib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lbitlib.o lbitlib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lcorolib.o lcorolib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o ldblib.o ldblib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o liolib.o liolib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lmathlib.o lmathlib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o loslib.o loslib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lstrlib.o lstrlib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o ltablib.o ltablib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lutf8lib.o lutf8lib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o loadlib.o loadlib.c
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o linit.o linit.c
+ar rcu liblua.a lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o lauxlib.o lbaselib.o lbitlib.o lcorolib.o ldblib.o liolib.o lmathlib.o loslib.o lstrlib.o ltablib.o lutf8lib.o loadlib.o linit.o 
+ranlib liblua.a
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o lua.o lua.c
+gcc -o lua   lua.o liblua.a -lm  -Wl,-E -ldl -lm
+gcc -O2 -Wall -Wextra -DLUA_COMPAT_5_2  -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL -DLUA_USE_POSIX -DLUA_USE_DLOPEN -fPIC   -c -o luac.o luac.c
+gcc -o luac   luac.o liblua.a -lm  -Wl,-E -ldl -lm
+make[3]: Leaving directory `/home/travis/build/martanne/vis/dependency/build/lua-5.3.4/src'
+#make -C dependency/build//lua-5.3.4 posix CC=gcc
+touch dependency/build/liblua-build
+make -C dependency/build//lua-5.3.4 INSTALL_TOP=/home/travis/build/martanne/vis/dependency/install/usr install
+make[3]: Entering directory `/home/travis/build/martanne/vis/dependency/build/lua-5.3.4'
+cd src && mkdir -p /home/travis/build/martanne/vis/dependency/install/usr/bin /home/travis/build/martanne/vis/dependency/install/usr/include /home/travis/build/martanne/vis/dependency/install/usr/lib /home/travis/build/martanne/vis/dependency/install/usr/man/man1 /home/travis/build/martanne/vis/dependency/install/usr/share/lua/5.3 /home/travis/build/martanne/vis/dependency/install/usr/lib/lua/5.3
+cd src && install -p -m 0755 lua luac /home/travis/build/martanne/vis/dependency/install/usr/bin
+cd src && install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h lua.hpp /home/travis/build/martanne/vis/dependency/install/usr/include
+cd src && install -p -m 0644 liblua.a /home/travis/build/martanne/vis/dependency/install/usr/lib
+cd doc && install -p -m 0644 lua.1 luac.1 /home/travis/build/martanne/vis/dependency/install/usr/man/man1
+make[3]: Leaving directory `/home/travis/build/martanne/vis/dependency/build/lua-5.3.4'
+touch dependency/build/liblua-install
+tar xzf dependency/sources/lpeg-1.0.1.tar.gz -C dependency/build/
+touch dependency/build/liblpeg-extract
+# creating a shared object fails in Cygwin, we do not need it thus ignore the error
+cd dependency/build//lpeg-1.0.1 && make LUADIR="../lua-5.3.4/src" || true
+make[3]: Entering directory `/home/travis/build/martanne/vis/dependency/build/lpeg-1.0.1'
+make lpeg.so "DLLFLAGS = -shared -fPIC"
+make[4]: Entering directory `/home/travis/build/martanne/vis/dependency/build/lpeg-1.0.1'
+gcc -Wall -Wextra -pedantic -Waggregate-return -Wcast-align -Wcast-qual -Wdisabled-optimization -Wpointer-arith -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wbad-function-cast -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes  -O2 -std=c99 -I../lua-5.3.4/src -fPIC   -c -o lpvm.o lpvm.c
+gcc -Wall -Wextra -pedantic -Waggregate-return -Wcast-align -Wcast-qual -Wdisabled-optimization -Wpointer-arith -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wbad-function-cast -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes  -O2 -std=c99 -I../lua-5.3.4/src -fPIC   -c -o lpcap.o lpcap.c
+gcc -Wall -Wextra -pedantic -Waggregate-return -Wcast-align -Wcast-qual -Wdisabled-optimization -Wpointer-arith -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wbad-function-cast -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes  -O2 -std=c99 -I../lua-5.3.4/src -fPIC   -c -o lptree.o lptree.c
+gcc -Wall -Wextra -pedantic -Waggregate-return -Wcast-align -Wcast-qual -Wdisabled-optimization -Wpointer-arith -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wbad-function-cast -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes  -O2 -std=c99 -I../lua-5.3.4/src -fPIC   -c -o lpcode.o lpcode.c
+gcc -Wall -Wextra -pedantic -Waggregate-return -Wcast-align -Wcast-qual -Wdisabled-optimization -Wpointer-arith -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wbad-function-cast -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes  -O2 -std=c99 -I../lua-5.3.4/src -fPIC   -c -o lpprint.o lpprint.c
+env gcc -shared -fPIC lpvm.o lpcap.o lptree.o lpcode.o lpprint.o -o lpeg.so
+make[4]: Leaving directory `/home/travis/build/martanne/vis/dependency/build/lpeg-1.0.1'
+make[3]: Leaving directory `/home/travis/build/martanne/vis/dependency/build/lpeg-1.0.1'
+cd dependency/build//lpeg-1.0.1 && ar rcu liblpeg.a lpvm.o lpcap.o lptree.o lpcode.o lpprint.o && ranlib liblpeg.a
+touch dependency/build/liblpeg-build
+cd dependency/build//lpeg-1.0.1 && cp liblpeg.a /home/travis/build/martanne/vis/dependency/install/usr/lib
+touch dependency/build/liblpeg-install
+touch dependency/build/local
+make[2]: Leaving directory `/home/travis/build/martanne/vis'
+make[1]: Leaving directory `/home/travis/build/martanne/vis'
+./configure CFLAGS="-I/home/travis/build/martanne/vis/dependency/install/usr/include" LDFLAGS="-L/home/travis/build/martanne/vis/dependency/install/usr/lib" LD_LIBRARY_PATH="/home/travis/build/martanne/vis/dependency/install/usr/lib"
+checking for C compiler... gcc
+checking whether C compiler works... yes
+checking whether compiler accepts -Werror=unknown-warning-option... no
+checking whether compiler accepts -Werror=unused-command-line-argument... no
+checking whether linker accepts -Werror=unknown-warning-option... no
+checking whether linker accepts -Werror=unused-command-line-argument... no
+checking whether compiler accepts -pipe... yes
+checking whether compiler accepts -Os... yes
+checking whether compiler accepts -ffunction-sections... yes
+checking whether compiler accepts -fdata-sections... yes
+checking whether linker accepts -Wl,--gc-sections... yes
+checking whether compiler accepts -fPIE... yes
+checking whether compiler accepts -fstack-protector-all... yes
+checking whether linker accepts -Wl,-z,now... yes
+checking whether linker accepts -Wl,-z,relro... yes
+checking whether linker accepts -pie... yes
+creating config.mk... done
+checking for pkg-config... yes
+checking for libcurses...
+ checking for ncursesw... yes
+checking for libtermkey... yes
+checking for libtre... yes
+checking for liblua >= 5.2 ...
+ checking for lua... yes
+checking for statically linked liblpeg ... yes
+checking for libacl... yes
+checking for libselinux... no
+checking for memrchr... yes
+completing config.mk... done
+make
+make[1]: Entering directory `/home/travis/build/martanne/vis'
+cp config.def.h config.h
+gcc -I/home/travis/build/martanne/vis/dependency/install/usr/include -pipe -Os -ffunction-sections -fdata-sections -fPIE -fstack-protector-all  -I/usr/include/ncursesw      -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL  -std=c99 -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DNDEBUG -D_FORTIFY_SOURCE=2 -DVERSION=\"105fad6\" -DHAVE_MEMRCHR=1 -DVIS_PATH=\"/usr/local/share/vis\" -DCONFIG_HELP=1 -DCONFIG_CURSES=1 -DCONFIG_LUA=1 -DCONFIG_LPEG=1 -DCONFIG_TRE=1 -DCONFIG_SELINUX=0 -DCONFIG_ACL=1  array.c buffer.c libutf.c main.c map.c ring-buffer.c sam.c text.c text-motions.c text-objects.c text-util.c ui-terminal.c view.c vis.c vis-lua.c vis-modes.c vis-motions.c vis-operators.c vis-registers.c vis-prompt.c vis-text-objects.c text-regex-tre.c -L/home/travis/build/martanne/vis/dependency/install/usr/lib -Wl,-z,now -Wl,-z,relro -Wl,--gc-sections -pie -ltermkey -lncursesw -lncursesw -ltinfo   -lacl  -Wl,-Bsymbolic-functions -ltre   -llua -lm -ldl -llpeg -lc -o vis
+vis.c: In function ‘vis_pipe’:
+vis.c:1755:9: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+gcc -I/home/travis/build/martanne/vis/dependency/install/usr/include -pipe -Os -ffunction-sections -fdata-sections -fPIE -fstack-protector-all -std=c99 -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DNDEBUG -D_FORTIFY_SOURCE=2 -DVERSION=\"105fad6\"  vis-menu.c -L/home/travis/build/martanne/vis/dependency/install/usr/lib -Wl,-z,now -Wl,-z,relro -lc -Wl,--gc-sections -pie -o vis-menu
+gcc -I/home/travis/build/martanne/vis/dependency/install/usr/include -pipe -Os -ffunction-sections -fdata-sections -fPIE -fstack-protector-all -std=c99 -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DNDEBUG -D_FORTIFY_SOURCE=2 -DVERSION=\"105fad6\"  vis-digraph.c -L/home/travis/build/martanne/vis/dependency/install/usr/lib -Wl,-z,now -Wl,-z,relro -lc -Wl,--gc-sections -pie -o vis-digraph
+make[1]: Leaving directory `/home/travis/build/martanne/vis'
+Run with: LD_LIBRARY_PATH=/home/travis/build/martanne/vis/dependency/install/usr/lib ./vis
+cleaning
+
+travis_time:end:1d6a5e17:start=1495387361872159625,finish=1495387377581739131,duration=15709579506[0K
+[32;1mThe command "if [ "$TRAVIS_OS_NAME" = "linux" ]; then make local && make clean; fi" exited with 0.[0m
+travis_time:start:192ea59c[0K$ ./configure CFLAGS="-I$(pwd)/dependency/install/usr/include" LDFLAGS="-L$(pwd)/dependency/install/usr/lib" $CONFIG
+checking for C compiler... gcc
+checking whether C compiler works... yes
+checking whether compiler accepts -Werror=unknown-warning-option... no
+checking whether compiler accepts -Werror=unused-command-line-argument... no
+checking whether linker accepts -Werror=unknown-warning-option... no
+checking whether linker accepts -Werror=unused-command-line-argument... no
+checking whether compiler accepts -pipe... yes
+checking whether compiler accepts -Os... yes
+checking whether compiler accepts -ffunction-sections... yes
+checking whether compiler accepts -fdata-sections... yes
+checking whether linker accepts -Wl,--gc-sections... yes
+checking whether compiler accepts -fPIE... yes
+checking whether compiler accepts -fstack-protector-all... yes
+checking whether linker accepts -Wl,-z,now... yes
+checking whether linker accepts -Wl,-z,relro... yes
+checking whether linker accepts -pie... yes
+creating config.mk... done
+checking for pkg-config... yes
+checking for libcurses...
+ checking for ncursesw... yes
+checking for libtermkey... yes
+checking for libtre... yes
+checking for liblua >= 5.2 ...
+ checking for lua... yes
+checking for statically linked liblpeg ... yes
+checking for libacl... yes
+checking for libselinux... no
+checking for memrchr... yes
+completing config.mk... done
+
+travis_time:end:192ea59c:start=1495387377588262463,finish=1495387378076866283,duration=488603820[0K
+[32;1mThe command "./configure CFLAGS="-I$(pwd)/dependency/install/usr/include" LDFLAGS="-L$(pwd)/dependency/install/usr/lib" $CONFIG" exited with 0.[0m
+travis_time:start:0103ff60[0K$ make CFLAGS_EXTRA=--coverage $TARGET
+gcc -I/home/travis/build/martanne/vis/dependency/install/usr/include -pipe -Os -ffunction-sections -fdata-sections -fPIE -fstack-protector-all  -I/usr/include/ncursesw      -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -DLUA_COMPAT_ALL  -std=c99 -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DNDEBUG -D_FORTIFY_SOURCE=2 -DVERSION=\"105fad6\" -DHAVE_MEMRCHR=1 -DVIS_PATH=\"/usr/local/share/vis\" -DCONFIG_HELP=1 -DCONFIG_CURSES=1 -DCONFIG_LUA=1 -DCONFIG_LPEG=1 -DCONFIG_TRE=1 -DCONFIG_SELINUX=0 -DCONFIG_ACL=1 --coverage array.c buffer.c libutf.c main.c map.c ring-buffer.c sam.c text.c text-motions.c text-objects.c text-util.c ui-terminal.c view.c vis.c vis-lua.c vis-modes.c vis-motions.c vis-operators.c vis-registers.c vis-prompt.c vis-text-objects.c text-regex-tre.c -L/home/travis/build/martanne/vis/dependency/install/usr/lib -Wl,-z,now -Wl,-z,relro -Wl,--gc-sections -pie -ltermkey -lncursesw -lncursesw -ltinfo   -lacl  -Wl,-Bsymbolic-functions -ltre   -llua -lm -ldl -llpeg -lc -o vis
+vis.c: In function ‘vis_pipe’:
+vis.c:1755:9: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+gcc -I/home/travis/build/martanne/vis/dependency/install/usr/include -pipe -Os -ffunction-sections -fdata-sections -fPIE -fstack-protector-all -std=c99 -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DNDEBUG -D_FORTIFY_SOURCE=2 -DVERSION=\"105fad6\" --coverage vis-menu.c -L/home/travis/build/martanne/vis/dependency/install/usr/lib -Wl,-z,now -Wl,-z,relro -lc -Wl,--gc-sections -pie -o vis-menu
+gcc -I/home/travis/build/martanne/vis/dependency/install/usr/include -pipe -Os -ffunction-sections -fdata-sections -fPIE -fstack-protector-all -std=c99 -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DNDEBUG -D_FORTIFY_SOURCE=2 -DVERSION=\"105fad6\" --coverage vis-digraph.c -L/home/travis/build/martanne/vis/dependency/install/usr/lib -Wl,-z,now -Wl,-z,relro -lc -Wl,--gc-sections -pie -o vis-digraph
+
+travis_time:end:0103ff60:start=1495387378082389748,finish=1495387384740389550,duration=6657999802[0K
+[32;1mThe command "make CFLAGS_EXTRA=--coverage $TARGET" exited with 0.[0m
+travis_time:start:07d03a9d[0K$ if [ -e vis ]; then LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" ./vis -v; file vis; size vis; if [ "$TRAVIS_OS_NAME" = "osx" ]; then otool -L vis; else ldd vis; fi fi
+vis 105fad6 +curses +lua +lpeg +tre +acl
+vis: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=0x119ca939207c439db7a2230ef515fe9d4fbe7fb6, not stripped
+   text	   data	    bss	    dec	    hex	filename
+ 571158	  35256	  68744	 675158	  a4d56	vis
+	linux-vdso.so.1 =>  (0x00007ffc11d62000)
+	libtermkey.so.1 => not found
+	libncursesw.so.5 => /lib/x86_64-linux-gnu/libncursesw.so.5 (0x00007f5789527000)
+	libtinfo.so.5 => /lib/x86_64-linux-gnu/libtinfo.so.5 (0x00007f57892ff000)
+	libacl.so.1 => /lib/x86_64-linux-gnu/libacl.so.1 (0x00007f57890f7000)
+	libtre.so.5 => /usr/lib/libtre.so.5 (0x00007f5788ee7000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f5788bea000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f57889e6000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f5788625000)
+	libattr.so.1 => /lib/x86_64-linux-gnu/libattr.so.1 (0x00007f578841f000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000559634d23000)
+
+travis_time:end:07d03a9d:start=1495387384746574288,finish=1495387384783961672,duration=37387384[0K
+[32;1mThe command "if [ -e vis ]; then LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" ./vis -v; file vis; size vis; if [ "$TRAVIS_OS_NAME" = "osx" ]; then otool -L vis; else ldd vis; fi fi" exited with 0.[0m
+travis_time:start:2f053960[0K$ make -C test/core coverage
+make: Entering directory `/home/travis/build/martanne/vis/test/core'
+cleaning
+make CFLAGS_EXTRA='--coverage'
+make[1]: Entering directory `/home/travis/build/martanne/vis/test/core'
+Generating ccan configuration header
+Compiling buffer-test binary
+Compiling map-test binary
+Compiling array-test binary
+Compiling text-test binary
+ok 1 - Initialization
+ok 2 - Insert zero length data
+ok 3 - Insert string at invalid position
+ok 4 - Insert empty string
+ok 5 - Insert string at start
+ok 6 - Insert string in middle
+ok 7 - Insert string at end
+ok 8 - Put empty string
+ok 9 - Put string
+ok 10 - Prepend string
+ok 11 - Append string
+ok 12 - Release
+ok 13 - Insert zero length data
+ok 14 - Insert data at start
+ok 15 - Insert data in middle
+ok 16 - Insert data at end
+ok 17 - Clear
+ok 18 - Put zero length data
+ok 19 - Put data
+ok 20 - Prepend data
+ok 21 - Append data
+ok 22 - Grow
+ok 23 - Move
+ok 24 - Modify after move
+ok 25 - Set formatted
+ok 26 - Set formatted overwrite
+ok 27 - Set formatted empty string
+ok 28 - Append formatted
+ok 29 - Append formatted empty string
+1..29
+ok 1 - Creation
+ok 2 - First on empty map
+ok 3 - Empty prefix map
+ok 4 - Get non-existing key
+ok 5 - Contains non-existing key
+ok 6 - Closest non-existing key
+ok 7 - Put NULL value
+ok 8 - Put 1
+ok 9 - First on map with 1 value
+ok 10 - First on prefix map
+ok 11 - Contains existing key
+ok 12 - Closest match existing key
+ok 13 - Put duplicate
+ok 14 - Put 2
+ok 15 - Put 3
+ok 16 - First on prefix map with multiple suffixes
+ok 17 - Copy
+ok 18 - Not empty after copying
+ok 19 - Compare map content
+ok 20 - Compare map content
+ok 21 - Compare map content
+ok 22 - Compare map content
+ok 23 - Compare map content
+ok 24 - Compare map content
+ok 25 - Iterate stop condition
+ok 26 - Closest ambigious
+ok 27 - Iterate map
+ok 28 - Ordered iteration
+ok 29 - Iterate sub map
+ok 30 - Ordered sub map iteration
+ok 31 - Empty map for non-existing prefix
+ok 32 - Delete non-existing key
+ok 33 - Delete existing key
+ok 34 - Closest unambigious
+ok 35 - Put 3 again
+ok 36 - Empty after clean
+1..36
+ok 1 - Initialization
+ok 2 - Set with invalid index
+ok 3 - Get with invalid index
+ok 4 - Add integer: 0 = 2
+ok 5 - Get integer: 0 = 2
+ok 6 - Add integer: 1 = 3
+ok 7 - Get integer: 1 = 3
+ok 8 - Add integer: 2 = 5
+ok 9 - Get integer: 2 = 5
+ok 10 - Add integer: 3 = 7
+ok 11 - Get integer: 3 = 7
+ok 12 - Add integer: 4 = 11
+ok 13 - Get integer: 4 = 11
+ok 14 - Set array element: 0 = 11
+ok 15 - Set array element: 1 = 7
+ok 16 - Set array element: 2 = 5
+ok 17 - Set array element: 3 = 3
+ok 18 - Set array element: 4 = 2
+ok 19 - Get array element: 0 = 11
+ok 20 - Get array element: 1 = 7
+ok 21 - Get array element: 2 = 5
+ok 22 - Get array element: 3 = 3
+ok 23 - Get array element: 4 = 2
+ok 24 - Clear
+ok 25 - Re-add integer: 0 = 2
+ok 26 - Re-add integer: 1 = 3
+ok 27 - Re-add integer: 2 = 5
+ok 28 - Re-add integer: 3 = 7
+ok 29 - Re-add integer: 4 = 11
+ok 30 - Set array element NULL
+ok 31 - Get past end of array
+ok 32 - Get past end of array
+ok 33 - Remove past end of array
+ok 34 - Remove element 2
+ok 35 - Remove first element
+ok 36 - Remove last element
+ok 37 - Initialization
+ok 38 - Add item: 0 = { 'key: 0' = 2 }
+ok 39 - Get item: 0 = { 'key: 0' = 2 }
+ok 40 - Add item: 1 = { 'key: 1' = 3 }
+ok 41 - Get item: 1 = { 'key: 1' = 3 }
+ok 42 - Add item: 2 = { 'key: 2' = 5 }
+ok 43 - Get item: 2 = { 'key: 2' = 5 }
+ok 44 - Add item: 3 = { 'key: 3' = 7 }
+ok 45 - Get item: 3 = { 'key: 3' = 7 }
+ok 46 - Add item: 4 = { 'key: 4' = 11 }
+ok 47 - Get item: 4 = { 'key: 4' = 11 }
+ok 48 - Set array element: 0 = { 'key: 4' = 11 }
+ok 49 - Set array element: 1 = { 'key: 3' = 7 }
+ok 50 - Set array element: 2 = { 'key: 2' = 5 }
+ok 51 - Set array element: 3 = { 'key: 1' = 3 }
+ok 52 - Set array element: 4 = { 'key: 0' = 2 }
+ok 53 - Get item: 0 = { 'key: 4' = 11 }
+ok 54 - Get item: 1 = { 'key: 3' = 7 }
+ok 55 - Get item: 2 = { 'key: 2' = 5 }
+ok 56 - Get item: 3 = { 'key: 1' = 3 }
+ok 57 - Get item: 4 = { 'key: 0' = 2 }
+ok 58 - Adding pointer to non pointer array
+ok 59 - Setting pointer in non pointer array
+ok 60 - Clear
+ok 61 - Initialization with size 1
+ok 62 - Add pointer to non-pointer array
+ok 63 - Add byte element
+ok 64 - Get pointer from non-pointer array
+ok 65 - Initialization
+ok 66 - Add item: 0 = 0x163e030
+ok 67 - Get item: 0 = 0x163e030
+ok 68 - Add item: 1 = 0x163e080
+ok 69 - Get item: 1 = 0x163e080
+ok 70 - Add item: 2 = 0x163e0d0
+ok 71 - Get item: 2 = 0x163e0d0
+ok 72 - Add item: 3 = 0x163e120
+ok 73 - Get item: 3 = 0x163e120
+ok 74 - Add item: 4 = 0x163e170
+ok 75 - Get item: 4 = 0x163e170
+ok 76 - Set item: 0 = 0x163e170
+ok 77 - Set item: 1 = 0x163e120
+ok 78 - Set item: 2 = 0x163e0d0
+ok 79 - Set item: 3 = 0x163e080
+ok 80 - Set item: 4 = 0x163e030
+ok 81 - Get item: 0 = 0x163e170
+ok 82 - Get item: 1 = 0x163e120
+ok 83 - Get item: 2 = 0x163e0d0
+ok 84 - Get item: 3 = 0x163e080
+ok 85 - Get item: 4 = 0x163e030
+ok 86 - Set pointer NULL
+ok 87 - Set pointer past end of array
+ok 88 - Get pointer past end of array
+ok 89 - Clear
+ok 90 - Re-add item: 0 = 0x163e030
+ok 91 - Re-add item: 1 = 0x163e080
+ok 92 - Re-add item: 2 = 0x163e0d0
+ok 93 - Re-add item: 3 = 0x163e120
+ok 94 - Re-add item: 4 = 0x163e170
+1..94
+ok 1 - Opening directory
+ok 2 - Opening file without sufficient permissions
+ok 3 - Opening empty file
+ok 4 - Iterator on empty file
+ok 5 - Read EOF from iterator of empty file
+ok 6 - Moving iterator beyond start of file
+ok 7 - Access iterator beyond start of file
+ok 8 - Moving iterator back from beyond start of file
+ok 9 - Accessing iterator after moving back from beyond start of file
+ok 10 - Moving iterator beyond end of file
+ok 11 - Accessing iterator beyond end of file
+ok 12 - Moving iterator back from beyond end of file
+ok 13 - Accessing iterator after moving back from beyond start of file
+ok 14 - Inserting new lines
+ok 15 - Iterator find byte next at current position
+ok 16 - Iterator find byte next at current position
+ok 17 - Iterator find byte next at current position
+ok 18 - Iterator find byte next at current position
+ok 19 - Iterator find byte next at current position
+ok 20 - Iterator find byte next at current position
+ok 21 - Iterator find byte next at EOF
+ok 22 - Iterator find byte prev at current position
+ok 23 - Iterator find byte prev at current position
+ok 24 - Iterator find byte prev at current position
+ok 25 - Iterator find byte prev at current position
+ok 26 - Iterator find byte prev at current position
+ok 27 - Iterator find byte prev at current position
+ok 28 - Iterator find byte prev at BOF
+ok 29 - Iterator byte find next (start: 0, match: 0)
+ok 30 - Iterator byte find next (start: 0, match: 2)
+ok 31 - Iterator byte find next (start: 0, match: 4)
+ok 32 - Iterator byte find next (start: 0, match: 18446744073709551615)
+ok 33 - Iterator byte find prev (start: 6, match: 0)
+ok 34 - Iterator byte find prev (start: 6, match: 2)
+ok 35 - Iterator byte find prev (start: 6, match: 4)
+ok 36 - Iterator byte find prev (start: 6, match: 18446744073709551615)
+ok 37 - Undo to empty document 1
+ok 38 - Inserting empty data
+ok 39 - Inserting with invalid offset
+ok 40 - Inserting into empty document (cached)
+ok 41 - Inserting at begin (cached)
+ok 42 - Inserting in middle (cached)
+ok 43 - Inserting at end (cached)
+ok 44 - Deleting empty range
+ok 45 - Deleting invalid offset
+ok 46 - Deleting invalid range
+ok 47 - Reverting to empty document
+ok 48 - Restoring previsous content
+ok 49 - Deleting at end (cached)
+ok 50 - Deleting in middle (cached)
+ok 51 - Deleting at begin (cached)
+ok 52 - Deleting to empty document (cached)
+ok 53 - Inserting into empty document
+ok 54 - Inserting at begin
+ok 55 - Inserting in between
+ok 56 - Inserting at end
+ok 57 - Inserting in middle
+ok 58 - Inserting at end
+ok 59 - Inserting at end
+ok 60 - Undo 1
+ok 61 - Undo 2
+ok 62 - Undo 3
+ok 63 - Undo 3
+ok 64 - Undo 5
+ok 65 - Undo 6
+ok 66 - Undo 6
+ok 67 - Redo 1
+ok 68 - Redo 2
+ok 69 - Redo 3
+ok 70 - Redo 4
+ok 71 - Redo 5
+ok 72 - Redo 6
+ok 73 - Redo 7
+ok 74 - Deleting midway start
+ok 75 - Deleting midway end
+ok 76 - Deleting midway both same piece
+ok 77 - Deleting at begin
+ok 78 - Deleting at end
+ok 79 - Mark invalid 1
+ok 80 - Mark invalid 2
+ok 81 - Mark at beginning of file
+ok 82 - Mark in the middle
+ok 83 - Mark at end of file
+ok 84 - Insert before mark
+ok 85 - Mark at beginning adjusted 1
+ok 86 - Mark in the middle adjusted 1
+ok 87 - Mark at end adjusted 1
+ok 88 - Insert after mark
+ok 89 - Mark at beginning adjusted 2
+ok 90 - Mark in the middle adjusted 2
+ok 91 - Mark at end adjusted 2
+ok 92 - Deleting mark
+ok 93 - Mark in the middle deleted
+ok 94 - Mark restored
+ok 95 - Mark at beginning of file
+ok 96 - Mark in the middle
+ok 97 - Mark at end of file
+ok 98 - Insert before mark
+ok 99 - Mark at beginning adjusted 1
+ok 100 - Mark in the middle adjusted 1
+ok 101 - Mark at end adjusted 1
+ok 102 - Insert after mark
+ok 103 - Mark at beginning adjusted 2
+ok 104 - Mark in the middle adjusted 2
+ok 105 - Mark at end adjusted 2
+ok 106 - Deleting mark
+ok 107 - Mark in the middle deleted
+ok 108 - Mark restored
+ok 109 - Mark at beginning of file
+ok 110 - Mark in the middle
+ok 111 - Mark at end of file
+ok 112 - Insert before mark
+ok 113 - Mark at beginning adjusted 1
+ok 114 - Mark in the middle adjusted 1
+ok 115 - Mark at end adjusted 1
+ok 116 - Insert after mark
+ok 117 - Mark at beginning adjusted 2
+ok 118 - Mark in the middle adjusted 2
+ok 119 - Mark at end adjusted 2
+ok 120 - Deleting mark
+ok 121 - Mark in the middle deleted
+ok 122 - Mark restored
+ok 123 - Mark at beginning of file
+ok 124 - Mark in the middle
+ok 125 - Mark at end of file
+ok 126 - Insert before mark
+ok 127 - Mark at beginning adjusted 1
+ok 128 - Mark in the middle adjusted 1
+ok 129 - Mark at end adjusted 1
+ok 130 - Insert after mark
+ok 131 - Mark at beginning adjusted 2
+ok 132 - Mark in the middle adjusted 2
+ok 133 - Mark at end adjusted 2
+ok 134 - Deleting mark
+ok 135 - Mark in the middle deleted
+ok 136 - Mark restored
+1..136
+make[1]: Leaving directory `/home/travis/build/martanne/vis/test/core'
+make: Leaving directory `/home/travis/build/martanne/vis/test/core'
+
+travis_time:end:2f053960:start=1495387384789616346,finish=1495387390656671790,duration=5867055444[0K
+[32;1mThe command "make -C test/core coverage" exited with 0.[0m
+travis_time:start:0a63561c[0K$ test ! -e vis || LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" make -C test/lua
+make: Entering directory `/home/travis/build/martanne/vis/test/lua'
+vis 105fad6 +curses +lua +lpeg +tre +acl
+busted(1) not found, skipping tests
+make: Leaving directory `/home/travis/build/martanne/vis/test/lua'
+
+travis_time:end:0a63561c:start=1495387390666513554,finish=1495387390691443671,duration=24930117[0K
+[32;1mThe command "test ! -e vis || LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" make -C test/lua" exited with 0.[0m
+travis_time:start:2debc437[0K$ test ! -e vis || LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" make -C test/vis
+make: Entering directory `/home/travis/build/martanne/vis/test/vis'
+cleaning
+vis 105fad6 +curses +lua +lpeg +tre +acl
+ Lua paths used to load runtime files (? will be replaced by filename):
+
+  ../../lua/?.lua
+  ./?.lua
+  /home/travis/build/martanne/vis/lua/?.lua
+  /home/travis/.config/vis/?.lua
+  /etc/vis/?.lua
+  /usr/local/share/vis/?.lua
+  /usr/local/share/lua/5.3/?.lua
+  /usr/local/share/lua/5.3/?/init.lua
+  /usr/local/lib/lua/5.3/?.lua
+  /usr/local/lib/lua/5.3/?/init.lua
+
+ Lua paths used to load C libraries (? will be replaced by filename):
+
+  /usr/local/lib/lua/5.3/?.so
+  /usr/local/lib/lua/5.3/loadall.so
+
+ Compile time configuration
+
+  Curses support:                 	yes
+  Lua support:                    	yes
+  Lua LPeg statically built-in:   	yes
+  TRE based regex support:        	yes
+  POSIX ACL support:              	yes
+  SELinux support:                	no
+[?1h=[?1l>insert-mode/autoindent                            ERROR
+[?1h=[?1l>insert-mode/digraph                               ERROR
+[?1h=[?1l>insert-mode/verbatim                              ERROR
+[?1h=[?1l>mappings/insert-mode                              ERROR
+[?1h=[?1l>motions/line-begin                                ERROR
+[?1h=[?1l>motions/line-char-first                           ERROR
+[?1h=[?1l>motions/line-char-last                            ERROR
+[?1h=[?1l>motions/line-end                                  ERROR
+[?1h=[?1l>motions/next-end-of-bigword                       ERROR
+[?1h=[?1l>motions/next-end-of-word                          ERROR
+[?1h=[?1l>motions/next-start-of-bigword                     ERROR
+[?1h=[?1l>motions/next-start-of-word                        ERROR
+[?1h=[?1l>motions/percent                                   ERROR
+[?1h=[?1l>motions/prev-end-of-bigword                       ERROR
+[?1h=[?1l>motions/prev-end-of-word                          ERROR
+[?1h=[?1l>motions/prev-start-of-bigword                     ERROR
+[?1h=[?1l>motions/prev-start-of-word                        ERROR
+[?1h=[?1l>motions/till-left                                 ERROR
+[?1h=[?1l>motions/till-right                                ERROR
+[?1h=[?1l>motions/to-left                                   ERROR
+[?1h=[?1l>motions/to-right                                  ERROR
+[?1h=[?1l>multiple-cursors/align-indent-columns             ERROR
+[?1h=[?1l>multiple-cursors/align-indent                     ERROR
+[?1h=[?1l>multiple-cursors/align                            ERROR
+[?1h=[?1l>multiple-cursors/new-above-first-below-last       ERROR
+[?1h=[?1l>multiple-cursors/new-below-above                  ERROR
+[?1h=[?1l>multiple-cursors/new-end-of-line                  ERROR
+[?1h=[?1l>multiple-cursors/new-start-of-line                ERROR
+[?1h=[?1l>multiple-cursors/normal-mode-wq                   ERROR
+[?1h=[?1l>multiple-cursors/remove-column                    ERROR
+[?1h=[?1l>multiple-cursors/select-match                     ERROR
+[?1h=[?1l>multiple-cursors/selections-rotate                ERROR
+[?1h=[?1l>multiple-cursors/selections-trim                  ERROR
+[?1h=[?1l>prompt/history                                    ERROR
+[?1h=[?1l>structural-regex/addresses/marks                  ERROR
+[?1h=[?1l>structural-regex/addresses/round-down             ERROR
+[?1h=[?1l>structural-regex/addresses/round-up               ERROR
+[?1h=[?1l>structural-regex/commands/filter-and-edit         ERROR
+[?1h=[?1l>text-objects/entire                               ERROR
+[?1h=[?1l>text-objects/indentation                          ERROR
+[?1h=[?1l>text-objects/lexer                                ERROR
+[?1h=[?1l>text-objects/line                                 ERROR
+[?1h=[?1l>text-objects/search-result                        ERROR
+[?1h=[?1l>visual-mode/orientation                           ERROR
+Tests ok 0/44
+make: *** [test] Error 1
+make: Leaving directory `/home/travis/build/martanne/vis/test/vis'
+
+travis_time:end:2debc437:start=1495387390697972122,finish=1495387391681381876,duration=983409754[0K
+[31;1mThe command "test ! -e vis || LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" make -C test/vis" exited with 2.[0m
+travis_time:start:1fddcbec[0K$ test ! -e vis || LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" make -C test/sam
+make: Entering directory `/home/travis/build/martanne/vis/test/sam'
+/usr/lib/plan9/bin/sam
+vis 105fad6 +curses +lua +lpeg +tre +acl
+Running test ./addresses/columns with sam ... OK
+[?1h=[?1l>Running test ./addresses/columns with vis ... OK
+Running test ./addresses/first-last with sam ... OK
+[?1h=[?1l>Running test ./addresses/first-last with vis ... OK
+Running test ./addresses/lines with sam ... OK
+[?1h=[?1l>Running test ./addresses/lines with vis ... OK
+Running test ./addresses/second with sam ... OK
+[?1h=[?1l>Running test ./addresses/second with vis ... OK
+Running test ./commands/filter-capitalize with sam ... OK
+[?1h=[?1l>[?1h=[?1l>[?1h=[?1l>Running test ./commands/filter-capitalize with vis ... OK
+Running test ./commands/group with sam ... OK
+[?1h=[?1l>Running test ./commands/group with vis ... OK
+Running test ./commands/long-text with sam ... OK
+[?1h=[?1l>Running test ./commands/long-text with vis ... OK
+Running test ./commands/loop-lines1 with sam ... OK
+[?1h=[?1l>Running test ./commands/loop-lines1 with vis ... OK
+Running test ./commands/loop-lines2 with sam ... OK
+[?1h=[?1l>Running test ./commands/loop-lines2 with vis ... OK
+Running test ./commands/loop-lines3 with sam ... OK
+[?1h=[?1l>Running test ./commands/loop-lines3 with vis ... OK
+Running test ./commands/loop-lines4 with sam ... OK
+[?1h=[?1l>Running test ./commands/loop-lines4 with vis ... OK
+Running test ./commands/loop-lines5 with sam ... OK
+[?1h=[?1l>Running test ./commands/loop-lines5 with vis ... OK
+Running test ./commands/loop-lines6 with sam ... OK
+[?1h=[?1l>Running test ./commands/loop-lines6 with vis ... OK
+Running test ./commands/loop-lines7 with sam ... OK
+[?1h=[?1l>Running test ./commands/loop-lines7 with vis ... OK
+Running test ./commands/loop-lines8 with sam ... OK
+[?1h=[?1l>Running test ./commands/loop-lines8 with vis ... OK
+Running test ./commands/pipe-in with sam ... OK
+[?1h=[?1l>[?1h=[?1l>[?1h=[?1l>[?1h=[?1l>Running test ./commands/pipe-in with vis ... OK
+Running test ./commands/pipe-out with sam ... OK
+[?1h=[?1l>[?1h=[?1l>[?1h=[?1l>[?1h=[?1l>[?1h=[?1l>[?1h=[?1l>Running test ./commands/pipe-out with vis ... OK
+Running test ./commands/repeated-shell with sam ... OK
+[?1h=[?1l>[?1h=[?1l>[?1h=[?1l>Running test ./commands/repeated-shell with vis ... OK
+Running test ./errors/conflict with sam ... OK
+[?1h=[?1l>Running test ./errors/conflict with vis ... OK
+Running test ./errors/filter with sam ... FAIL
+[?1h=[?1l>[?1h=[?1l>Running test ./errors/filter with vis ... OK
+Running test ./errors/pipe-in with sam ... FAIL
+[?1h=[?1l>[?1h=[?1l>Running test ./errors/pipe-in with vis ... OK
+Running test ./errors/read with sam ... OK
+[?1h=[?1l>[?1h=[?1l>Running test ./errors/read with vis ... OK
+Running test ./errors/unbalanced-group with sam ... OK
+[?1h=[?1l>Running test ./errors/unbalanced-group with vis ... OK
+Running test ./examples/comment-functions with sam ... OK
+[?1h=[?1l>Running test ./examples/comment-functions with vis ... OK
+Running test ./examples/swap-words with sam ... OK
+[?1h=[?1l>Running test ./examples/swap-words with vis ... OK
+Tests ok 25/25
+make: Leaving directory `/home/travis/build/martanne/vis/test/sam'
+
+travis_time:end:1fddcbec:start=1495387391689508423,finish=1495387392467659922,duration=778151499[0K
+[32;1mThe command "test ! -e vis || LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" make -C test/sam" exited with 0.[0m
+travis_time:start:2f40f780[0K$ test ! -e vis || LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" make -C test/vim
+make: Entering directory `/home/travis/build/martanne/vis/test/vim'
+make[1]: Entering directory `/home/travis/build/martanne/vis/test/util'
+Compiling keys utility
+gcc -I/home/travis/build/martanne/vis/dependency/install/usr/include -pipe -Os -ffunction-sections -fdata-sections -fPIE  keys.c -L/home/travis/build/martanne/vis/dependency/install/usr/lib -Wl,-z,now -Wl,-z,relro -ltermkey -lncursesw -lncursesw -ltinfo   -o keys
+make[1]: Leaving directory `/home/travis/build/martanne/vis/test/util'
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled May  4 2012 04:25:35)
+vis 105fad6 +curses +lua +lpeg +tre +acl
+Running test ./golf/4d1a34ccfa85f32065000004/1 with vim ... OK
+Running test ./golf/4d1a34ccfa85f32065000004/1 with vis ... OK
+Running test ./golf/4d1ac1800a045132c0000011/1 with vim ... OK
+Running test ./golf/4d1ac1800a045132c0000011/1 with vis ... OK
+Running test ./golf/4ddbd92898957e0001000016/1 with vim ... OK
+Running test ./golf/4ddbd92898957e0001000016/1 with vis ... OK
+Running test ./golf/4ef209ef78702b0001000019/1 with vim ... OK
+Running test ./golf/4ef209ef78702b0001000019/1 with vis ... OK
+Running test ./golf/4fbf8e303be58b0001000024/1 with vim ... OK
+Running test ./golf/4fbf8e303be58b0001000024/1 with vis ... OK
+Running test ./golf/50ad2cb165b8db0002000029/1 with vim ... OK
+Running test ./golf/50ad2cb165b8db0002000029/1 with vis ... OK
+Running test ./golf/50ae009b65b8db0002000047/1 with vim ... OK
+Running test ./golf/50ae009b65b8db0002000047/1 with vis ... OK
+Running test ./motions/goto with vim ... OK
+Running test ./motions/goto with vis ... OK
+Running test ./operators/case/case with vim ... OK
+Running test ./operators/case/case with vis ... OK
+Running test ./operators/change/change with vim ... OK
+Running test ./operators/change/change with vis ... OK
+Running test ./operators/delete/delete with vim ... OK
+Running test ./operators/delete/delete with vis ... OK
+Running test ./operators/insert/append with vim ... OK
+Running test ./operators/insert/append with vis ... OK
+Running test ./operators/insert/insert with vim ... OK
+Running test ./operators/insert/insert with vis ... OK
+Running test ./operators/join/count with vim ... OK
+Running test ./operators/join/count with vis ... OK
+Running test ./operators/join/empty with vim ... OK
+Running test ./operators/join/empty with vis ... OK
+Running test ./operators/join/visual-line with vim ... OK
+Running test ./operators/join/visual-line with vis ... OK
+Running test ./operators/join/visual with vim ... OK
+Running test ./operators/join/visual with vis ... OK
+Running test ./operators/join/whitespace with vim ... OK
+Running test ./operators/join/whitespace with vis ... OK
+Running test ./operators/openline/openline with vim ... OK
+Running test ./operators/openline/openline with vis ... OK
+Running test ./operators/put/put with vim ... OK
+Running test ./operators/put/put with vis ... OK
+Running test ./operators/put/visual with vim ... OK
+Running test ./operators/put/visual with vis ... OK
+Running test ./operators/replace/replace with vim ... OK
+Running test ./operators/replace/replace with vis ... OK
+Running test ./operators/shift/shift with vim ... OK
+Running test ./operators/shift/shift with vis ... OK
+Running test ./operators/swap/swap with vim ... OK
+Running test ./operators/swap/swap with vis ... OK
+Running test ./operators/yank/yank with vim ... OK
+Running test ./operators/yank/yank with vis ... OK
+Running test ./registers/black-hole with vim ... OK
+Running test ./registers/black-hole with vis ... OK
+Running test ./registers/command with vim ... OK
+Running test ./registers/command with vis ... OK
+Running test ./registers/named with vim ... OK
+Running test ./registers/named with vis ... OK
+Running test ./registers/search with vim ... OK
+Running test ./registers/search with vis ... OK
+Running test ./registers/zero with vim ... OK
+Running test ./registers/zero with vis ... OK
+Running test ./special-files/combining with vim ... OK
+Running test ./special-files/combining with vis ... OK
+Running test ./special-files/mmap with vim ... OK
+Running test ./special-files/mmap with vis ... OK
+Running test ./special-files/search-binary with vim ... OK
+Running test ./special-files/search-binary with vis ... OK
+Running test ./text-objects/braces-count-linewise with vim ... OK
+Running test ./text-objects/braces-count-linewise with vis ... OK
+Running test ./text-objects/words-count with vim ... OK
+Running test ./text-objects/words-count with vis ... OK
+Running test ./text-objects/words-eol with vim ... OK
+Running test ./text-objects/words-eol with vis ... OK
+Tests ok 36/36, skipped 0
+make: Leaving directory `/home/travis/build/martanne/vis/test/vim'
+
+travis_time:end:2f40f780:start=1495387392476380946,finish=1495387502846122102,duration=110369741156[0K
+[32;1mThe command "test ! -e vis || LD_LIBRARY_PATH="$(pwd)/dependency/install/usr/lib" make -C test/vim" exited with 0.[0m
+travis_fold:start:cache.2[0Kstore build cache
+travis_time:start:24fd02e0[0K
+travis_time:end:24fd02e0:start=1495387502853407545,finish=1495387502858591998,duration=5184453[0Ktravis_time:start:0c9c6cdb[0K[32;1mnothing changed, not updating cache[0m
+
+travis_time:end:0c9c6cdb:start=1495387502864648383,finish=1495387503395556689,duration=530908306[0Ktravis_fold:end:cache.2[0K
+Done. Your build exited with 1.
