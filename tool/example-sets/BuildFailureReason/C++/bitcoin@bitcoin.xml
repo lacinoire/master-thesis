@@ -1,36 +1,310 @@
-<?xml version=1.0 encoding=utf-8?>
-<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd=http://www.w3.org/2001/XMLSchema 
-xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance>
-<SaveName>BuildFailureReason/C++/bitcoin@bitcoin</SaveName>
-<LearningData>
-<InputPaths>
-<string>C++/bitcoin@bitcoin/failed/567118690.log</string>
-<string>C++/bitcoin@bitcoin/failed/567119401.log</string>
-<string>C++/bitcoin@bitcoin/failed/567143552.log</string>
-<string>C++/bitcoin@bitcoin/failed/567144565.log</string>
-<string>C++/bitcoin@bitcoin/failed/567190249.log</string>
-<string>C++/bitcoin@bitcoin/failed/567191495.log</string>
-<string>C++/bitcoin@bitcoin/failed/567199364.log</string>
-<string>C++/bitcoin@bitcoin/failed/567200607.log</string>
-<string>C++/bitcoin@bitcoin/failed/567200724.log</string>
-<string>C++/bitcoin@bitcoin/failed/567204447.log</string>
-</InputPaths>
-<Examples>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567118690.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567119401.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567143552.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567144565.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567190249.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567191495.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567199364.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567200607.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567200724.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>C++/bitcoin@bitcoin/failed/567204447.log</InputPath><Output></Output></ExampleDataOfString>
-</Examples>
-</LearningData>
-<LogKind>
-<Language>java</Language>
-<BuildTool>android</BuildTool>
-</LogKind>
-<Target>BuildFailureReason</Target>
+<?xml version= 1.0 encoding= utf-8 ?>
+<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd= http: www.w3.org 2001 XMLSchema xmlns:xsi= http: www.w3.org 2001 XMLSchema-instance>
+  <SaveName>BuildFailureReason/C++/bitcoin@bitcoin</SaveName>
+  <LearningData>
+    <InputPaths>
+      <string>C++/bitcoin@bitcoin/failed/567118690.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567119401.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567143552.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567144565.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567190249.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567191495.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567199364.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567200607.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567200724.log</string>
+      <string>C++/bitcoin@bitcoin/failed/567204447.log</string>
+    </InputPaths>
+    <Examples>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567118690.log</InputPath>
+        <Output>src/test/test_framework/util.h seems to be missing the expected include guard:
+          #ifndef BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
+          #define BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
+          ...
+          #endif // BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
+        
+        ^---- failure generated from test/lint/lint-include-guards.sh</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567119401.log</InputPath>
+        <Output>diff --git a/src/wallet/rpcwallet.cpp b/src/wallet/rpcwallet.cpp
+          @@ -3281,2 +3281,2 @@ static UniValue bumpfee(const JSONRPCRequest& request)
+          +                "The user can specify a confirmation target for estimatesmartfee.\n"
+          @@ -3338,4 +3342,5 @@ static UniValue bumpfee(const JSONRPCRequest& request)
+          +            true, true);
+          ^---- failure generated from test/lint/lint-whitespace.sh</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567143552.log</InputPath>
+        <Output>diff --git a/src/wallet/rpcwallet.cpp b/src/wallet/rpcwallet.cpp
+          @@ -3338,4 +3342,5 @@ static UniValue bumpfee(const JSONRPCRequest& request)
+          +            true, true);
+          ^---- failure generated from test/lint/lint-whitespace.sh</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567144565.log</InputPath>
+        <Output>==30799==ERROR: AddressSanitizer: heap-use-after-free on address 0x61b000080607 at pc 0x555888669d4c bp 0x7f3822083810 sp 0x7f3822083808
+          READ of size 1 at 0x61b000080607 thread T2 (bitcoin-schedul)
+              #0 0x555888669d4b in CConnman::GetExtraOutboundCount() /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/net.cpp:1636:25
+              #1 0x555888745612 in PeerLogicValidation::EvictExtraOutboundPeers(long) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/net_processing.cpp:3427:32
+              #2 0x5558887188ba in PeerLogicValidation::CheckForStaleTipAndEvictPeers(Consensus::Params const&) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/net_processing.cpp:3489:5
+              #3 0x555888824dce in void std::__invoke_impl<void, void (PeerLogicValidation::*&)(Consensus::Params const&), PeerLogicValidation*&, Consensus::Params&>(std::__invoke_memfun_deref, void (PeerLogicValidation::*&)(Consensus::Params const&), PeerLogicValidation*&, Consensus::Params&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/invoke.h:73:14
+              #4 0x555888824a1a in std::__invoke_result<void (PeerLogicValidation::*&)(Consensus::Params const&), PeerLogicValidation*&, Consensus::Params&>::type std::__invoke<void (PeerLogicValidation::*&)(Consensus::Params const&), PeerLogicValidation*&, Consensus::Params&>(void (PeerLogicValidation::*&)(Consensus::Params const&), PeerLogicValidation*&, Consensus::Params&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/invoke.h:95:14
+              #5 0x555888824898 in void std::_Bind<void (PeerLogicValidation::*(PeerLogicValidation*, Consensus::Params))(Consensus::Params const&)>::__call<void, , 0ul, 1ul>(std::tuple<>&&, std::_Index_tuple<0ul, 1ul>) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/functional:467:11
+              #6 0x555888823ca4 in void std::_Bind<void (PeerLogicValidation::*(PeerLogicValidation*, Consensus::Params))(Consensus::Params const&)>::operator()<, void>() /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/functional:549:17
+              #7 0x555888823ca4 in std::_Function_handler<void (), std::_Bind<void (PeerLogicValidation::*(PeerLogicValidation*, Consensus::Params))(Consensus::Params const&)> >::_M_invoke(std::_Any_data const&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/std_function.h:316
+              #8 0x555888622504 in std::function<void ()>::operator()() const /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/std_function.h:706:14
+              #9 0x5558894b210b in Repeat(CScheduler*, std::function<void ()>, long) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/scheduler.cpp:121:5
+              #10 0x5558894bab75 in void std::__invoke_impl<void, void (*&)(CScheduler*, std::function<void ()>, long), CScheduler*&, std::function<void ()>&, long&>(std::__invoke_other, void (*&)(CScheduler*, std::function<void ()>, long), CScheduler*&, std::function<void ()>&, long&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/invoke.h:60:14
+              #11 0x5558894ba668 in std::__invoke_result<void (*&)(CScheduler*, std::function<void ()>, long), CScheduler*&, std::function<void ()>&, long&>::type std::__invoke<void (*&)(CScheduler*, std::function<void ()>, long), CScheduler*&, std::function<void ()>&, long&>(void (*&)(CScheduler*, std::function<void ()>, long), CScheduler*&, std::function<void ()>&, long&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/invoke.h:95:14
+              #12 0x5558894ba46d in void std::_Bind<void (*(CScheduler*, std::function<void ()>, long))(CScheduler*, std::function<void ()>, long)>::__call<void, , 0ul, 1ul, 2ul>(std::tuple<>&&, std::_Index_tuple<0ul, 1ul, 2ul>) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/functional:467:11
+              #13 0x5558894b9624 in void std::_Bind<void (*(CScheduler*, std::function<void ()>, long))(CScheduler*, std::function<void ()>, long)>::operator()<, void>() /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/functional:549:17
+              #14 0x5558894b9624 in std::_Function_handler<void (), std::_Bind<void (*(CScheduler*, std::function<void ()>, long))(CScheduler*, std::function<void ()>, long)> >::_M_invoke(std::_Any_data const&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/std_function.h:316
+              #15 0x555888622504 in std::function<void ()>::operator()() const /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/std_function.h:706:14
+              #16 0x5558894b0f45 in CScheduler::serviceQueue() /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/scheduler.cpp:82:17
+              #17 0x555888621751 in void std::__invoke_impl<void, void (CScheduler::*&)(), CScheduler*&>(std::__invoke_memfun_deref, void (CScheduler::*&)(), CScheduler*&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/invoke.h:73:14
+              #18 0x555888621524 in std::__invoke_result<void (CScheduler::*&)(), CScheduler*&>::type std::__invoke<void (CScheduler::*&)(), CScheduler*&>(void (CScheduler::*&)(), CScheduler*&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/invoke.h:95:14
+              #19 0x555888621437 in void std::_Bind<void (CScheduler::*(CScheduler*))()>::__call<void, , 0ul>(std::tuple<>&&, std::_Index_tuple<0ul>) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/functional:467:11
+              #20 0x555888620ab4 in void std::_Bind<void (CScheduler::*(CScheduler*))()>::operator()<, void>() /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/functional:549:17
+              #21 0x555888620ab4 in std::_Function_handler<void (), std::_Bind<void (CScheduler::*(CScheduler*))()> >::_M_invoke(std::_Any_data const&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/std_function.h:316
+              #22 0x555888622504 in std::function<void ()>::operator()() const /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/std_function.h:706:14
+              #23 0x5558885c658b in void TraceThread<std::function<void ()> >(char const*, std::function<void ()>) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/./util/system.h:344:9
+              #24 0x555888623bdc in void std::__invoke_impl<void, void (*&)(char const*, std::function<void ()>), char const*&, std::function<void ()>&>(std::__invoke_other, void (*&)(char const*, std::function<void ()>), char const*&, std::function<void ()>&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/invoke.h:60:14
+              #25 0x55588862381a in std::__invoke_result<void (*&)(char const*, std::function<void ()>), char const*&, std::function<void ()>&>::type std::__invoke<void (*&)(char const*, std::function<void ()>), char const*&, std::function<void ()>&>(void (*&)(char const*, std::function<void ()>), char const*&, std::function<void ()>&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/invoke.h:95:14
+              #26 0x555888623698 in void std::_Bind<void (*(char const*, std::function<void ()>))(char const*, std::function<void ()>)>::__call<void, , 0ul, 1ul>(std::tuple<>&&, std::_Index_tuple<0ul, 1ul>) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/functional:467:11
+              #27 0x5558886230e2 in void std::_Bind<void (*(char const*, std::function<void ()>))(char const*, std::function<void ()>)>::operator()<, void>() /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/functional:549:17
+              #28 0x5558886230e2 in boost::detail::thread_data<std::_Bind<void (*(char const*, std::function<void ()>))(char const*, std::function<void ()>)> >::run() /usr/include/boost/thread/detail/thread.hpp:116
+              #29 0x7f382aa8ebcc  (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.65.1+0x11bcc)
+              #30 0x555888532a8e in __asan::AsanThread::ThreadStart(unsigned long, __sanitizer::atomic_uintptr_t*) (/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/bitcoind+0x1ab4a8e)
+              #31 0x7f3828e2d6da in start_thread (/lib/x86_64-linux-gnu/libpthread.so.0+0x76da)
+              #32 0x7f382853288e in clone (/lib/x86_64-linux-gnu/libc.so.6+0x12188e)
+          
+          0x61b000080607 is located 647 bytes inside of 1592-byte region [0x61b000080380,0x61b0000809b8)
+          freed by thread T0 (bitcoin-shutoff) here:
+              #0 0x55588855e188 in operator delete(void*) (/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/bitcoind+0x1ae0188)
+              #1 0x55588865e806 in CConnman::DeleteNode(CNode*) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/net.cpp:2353:5
+              #2 0x5558886767c0 in CConnman::Stop() /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/net.cpp:2333:9
+              #3 0x55588858573e in Shutdown(InitInterfaces&) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/init.cpp:201:31
+              #4 0x555888562ca5 in AppInit(int, char**) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/bitcoind.cpp:179:5
+              #5 0x555888561830 in main /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/bitcoind.cpp:195:13
+          
+          previously allocated by thread T5 (bitcoin-httpwor) here:
+              #0 0x55588855d410 in operator new(unsigned long) (/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/bitcoind+0x1adf410)
+              #1 0x5558886524c6 in CConnman::ConnectNode(CAddress, char const*, bool, bool) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/net.cpp:445:20
+              #2 0x555888668a85 in CConnman::OpenNetworkConnection(CAddress const&, bool, CSemaphoreGrant*, char const*, bool, bool, bool) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/net.cpp:1912:20
+              #3 0x55588898f121 in addnode(JSONRPCRequest const&) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/rpc/net.cpp:235:20
+              #4 0x55588891c029 in CRPCCommand::CRPCCommand(char const*, char const*, UniValue (*)(JSONRPCRequest const&), std::initializer_list<char const*>)::{lambda(JSONRPCRequest const&, UniValue&, bool)#1}::operator()(JSONRPCRequest const&, UniValue&, bool) const /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/./rpc/server.h:106:94
+              #5 0x55588891b978 in std::_Function_handler<bool (JSONRPCRequest const&, UniValue&, bool), CRPCCommand::CRPCCommand(char const*, char const*, UniValue (*)(JSONRPCRequest const&), std::initializer_list<char const*>)::{lambda(JSONRPCRequest const&, UniValue&, bool)#1}>::_M_invoke(std::_Any_data const&, JSONRPCRequest const&, UniValue&, bool&&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/std_function.h:301:9
+              #6 0x555888a234a9 in ExecuteCommand(CRPCCommand const&, JSONRPCRequest const&, UniValue&, bool) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/rpc/server.cpp:451:20
+              #7 0x555888a22d70 in CRPCTable::execute(JSONRPCRequest const&) const /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/rpc/server.cpp:434:17
+              #8 0x555888f242f6 in HTTPReq_JSONRPC(HTTPRequest*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/httprpc.cpp:192:40
+              #9 0x5558888c3bd0 in std::_Function_handler<bool (HTTPRequest*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&), bool (*)(HTTPRequest*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)>::_M_invoke(std::_Any_data const&, HTTPRequest*&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/std_function.h:301:9
+              #10 0x555888f3c22b in HTTPWorkItem::operator()() /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/httpserver.cpp:55:9
+          
+          Thread T2 (bitcoin-schedul) created by T0 (bitcoin-shutoff) here:
+              #0 0x55588847e030 in pthread_create (/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/bitcoind+0x1a00030)
+              #1 0x7f382aa8db09 in boost::thread::start_thread_noexcept() (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.65.1+0x10b09)
+          
+          Thread T5 (bitcoin-httpwor) created by T0 (bitcoin-shutoff) here:
+              #0 0x55588847e030 in pthread_create (/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/bitcoind+0x1a00030)
+              #1 0x7f38294a0924 in std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (/usr/lib/x86_64-linux-gnu/libstdc++.so.6+0xbd924)
+              #2 0x555888f4a998 in void __gnu_cxx::new_allocator<std::thread>::construct<std::thread, void (&)(WorkQueue<HTTPClosure>*, int), WorkQueue<HTTPClosure>*&, int&>(std::thread*, void (&)(WorkQueue<HTTPClosure>*, int), WorkQueue<HTTPClosure>*&, int&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/ext/new_allocator.h:136:23
+              #3 0x555888f374de in void std::vector<std::thread, std::allocator<std::thread> >::emplace_back<void (&)(WorkQueue<HTTPClosure>*, int), WorkQueue<HTTPClosure>*&, int&>(void (&)(WorkQueue<HTTPClosure>*, int), WorkQueue<HTTPClosure>*&, int&) /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0/../../../../include/c++/7.4.0/bits/vector.tcc:105:4
+          LLVMSymbolizer: error reading file: No such file or directory
+              #4 0x7ffed0526d7f  ([stack]+0x1ad7f)
+          
+          SUMMARY: AddressSanitizer: heap-use-after-free /home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/src/net.cpp:1636:25 in CConnman::GetExtraOutboundCount()
+          Shadow bytes around the buggy address:
+            0x0c3680008070: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c3680008080: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c3680008090: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c36800080a0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c36800080b0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+          =>0x0c36800080c0:[fd]fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c36800080d0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c36800080e0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c36800080f0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c3680008100: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+            0x0c3680008110: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+          Shadow byte legend (one shadow byte represents 8 application bytes):
+            Addressable:           00
+            Partially addressable: 01 02 03 04 05 06 07 
+            Heap left redzone:       fa
+            Freed heap region:       fd
+            Stack left redzone:      f1
+            Stack mid redzone:       f2
+            Stack right redzone:     f3
+            Stack after return:      f5
+            Stack use after scope:   f8
+            Global redzone:          f9
+            Global init order:       f6
+            Poisoned by user:        f7
+            Container overflow:      fc
+            Array cookie:            ac
+            Intra object redzone:    bb
+            ASan internal:           fe
+            Left alloca redzone:     ca
+            Right alloca redzone:    cb</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567190249.log</InputPath>
+        <Output>TestFramework (ERROR): Unexpected exception caught during testing [0m
+          [0;36m                                   Traceback (most recent call last):[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/authproxy.py", line 107, in _request[0m
+          [0;36m                                       return self._get_response()[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/authproxy.py", line 163, in _get_response[0m
+          [0;36m                                       http_response = self.__conn.getresponse()[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1331, in getresponse[0m
+          [0;36m                                       response.begin()[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 297, in begin[0m
+          [0;36m                                       version, status, reason = self._read_status()[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 266, in _read_status[0m
+          [0;36m                                       raise RemoteDisconnected("Remote end closed connection without"[0m
+          [0;36m                                   http.client.RemoteDisconnected: Remote end closed connection without response[0m
+          [0;36m                                   During handling of the above exception, another exception occurred:[0m
+          [0;36m                                   Traceback (most recent call last):[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/test_framework.py", line 193, in main[0m
+          [0;36m                                       self.run_test()[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/feature_shutdown.py", line 31, in run_test[0m
+          [0;36m                                       self.stop_node(0, wait=1000)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/test_framework.py", line 390, in stop_node[0m
+          [0;36m                                       self.nodes[i].stop_node(expected_stderr, wait=wait)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/test_node.py", line 264, in stop_node[0m
+          [0;36m                                       self.stop(wait=wait)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/coverage.py", line 47, in __call__[0m
+          [0;36m                                       return_val = self.auth_service_proxy_instance.__call__(*args, **kwargs)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/authproxy.py", line 139, in __call__[0m
+          [0;36m                                       response, status = self._request('POST', self.__url.path, postdata.encode('utf-8'))[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/authproxy.py", line 111, in _request[0m
+          [0;36m                                       self.__conn.request(method, path, postdata, headers)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1239, in request[0m
+          [0;36m                                       self._send_request(method, url, body, headers, encode_chunked)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1285, in _send_request[0m
+          [0;36m                                       self.endheaders(body, encode_chunked=encode_chunked)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1234, in endheaders[0m
+          [0;36m                                       self._send_output(message_body, encode_chunked=encode_chunked)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1026, in _send_output[0m
+          [0;36m                                       self.send(msg)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 964, in send[0m
+          [0;36m                                       self.connect()[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 936, in connect[0m
+          [0;36m                                       (self.host,self.port), self.timeout, self.source_address)[0m
+          [0;36m                                     File "/usr/lib/python3.6/socket.py", line 724, in create_connection[0m
+          [0;36m                                       raise err[0m
+          [0;36m                                     File "/usr/lib/python3.6/socket.py", line 713, in create_connection[0m
+          [0;36m                                       sock.connect(sa)[0m
+          [0;36m                                   ConnectionRefusedError: [Errno 111] Connection refused</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567191495.log</InputPath>
+        <Output>TestFramework (ERROR): Unexpected exception caught during testing [0m
+          [0;36m                                   Traceback (most recent call last):[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/authproxy.py", line 107, in _request[0m
+          [0;36m                                       return self._get_response()[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/authproxy.py", line 163, in _get_response[0m
+          [0;36m                                       http_response = self.__conn.getresponse()[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1331, in getresponse[0m
+          [0;36m                                       response.begin()[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 297, in begin[0m
+          [0;36m                                       version, status, reason = self._read_status()[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 266, in _read_status[0m
+          [0;36m                                       raise RemoteDisconnected("Remote end closed connection without"[0m
+          [0;36m                                   http.client.RemoteDisconnected: Remote end closed connection without response[0m
+          [0;36m                                   During handling of the above exception, another exception occurred:[0m
+          [0;36m                                   Traceback (most recent call last):[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/test_framework.py", line 193, in main[0m
+          [0;36m                                       self.run_test()[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/feature_shutdown.py", line 31, in run_test[0m
+          [0;36m                                       self.stop_node(0, wait=1000)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/test_framework.py", line 390, in stop_node[0m
+          [0;36m                                       self.nodes[i].stop_node(expected_stderr, wait=wait)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/test_node.py", line 264, in stop_node[0m
+          [0;36m                                       self.stop(wait=wait)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/coverage.py", line 47, in __call__[0m
+          [0;36m                                       return_val = self.auth_service_proxy_instance.__call__(*args, **kwargs)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/authproxy.py", line 139, in __call__[0m
+          [0;36m                                       response, status = self._request('POST', self.__url.path, postdata.encode('utf-8'))[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/authproxy.py", line 111, in _request[0m
+          [0;36m                                       self.__conn.request(method, path, postdata, headers)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1239, in request[0m
+          [0;36m                                       self._send_request(method, url, body, headers, encode_chunked)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1285, in _send_request[0m
+          [0;36m                                       self.endheaders(body, encode_chunked=encode_chunked)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1234, in endheaders[0m
+          [0;36m                                       self._send_output(message_body, encode_chunked=encode_chunked)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 1026, in _send_output[0m
+          [0;36m                                       self.send(msg)[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 964, in send[0m
+          [0;36m                                       self.connect()[0m
+          [0;36m                                     File "/usr/lib/python3.6/http/client.py", line 936, in connect[0m
+          [0;36m                                       (self.host,self.port), self.timeout, self.source_address)[0m
+          [0;36m                                     File "/usr/lib/python3.6/socket.py", line 724, in create_connection[0m
+          [0;36m                                       raise err[0m
+          [0;36m                                     File "/usr/lib/python3.6/socket.py", line 713, in create_connection[0m
+          [0;36m                                       sock.connect(sa)[0m
+          [0;36m                                   ConnectionRefusedError: [Errno 111] Connection refused</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567199364.log</InputPath>
+        <Output>The locale dependent function fprintf(...) appears to be used:
+          src/bitcoin-cli.cpp:                fprintf(stderr, "RPC password> ");
+          src/bitcoin-cli.cpp:                fprintf(stderr, "Wallet passphrase> ");
+          
+          Unnecessary locale dependence can cause bugs that are very
+          tricky to isolate and fix. Please avoid using locale dependent
+          functions if possible.
+          
+          Advice not applicable in this specific case? Add an exception
+          by updating the ignore list in test/lint/lint-locale-dependence.sh
+          ^---- failure generated from test/lint/lint-locale-dependence.sh</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567200607.log</InputPath>
+        <Output>The locale dependent function fprintf(...) appears to be used:
+          src/bitcoin-cli.cpp:                fprintf(stderr, "RPC password> ");
+          src/bitcoin-cli.cpp:                fprintf(stderr, "Wallet passphrase> ");
+          
+          Unnecessary locale dependence can cause bugs that are very
+          tricky to isolate and fix. Please avoid using locale dependent
+          functions if possible.
+          
+          Advice not applicable in this specific case? Add an exception
+          by updating the ignore list in test/lint/lint-locale-dependence.sh
+          ^---- failure generated from test/lint/lint-locale-dependence.sh</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567200724.log</InputPath>
+        <Output>The locale dependent function fprintf(...) appears to be used:
+          src/bitcoin-cli.cpp:                fprintf(stderr, "RPC password> ");
+          src/bitcoin-cli.cpp:                fprintf(stderr, "Wallet passphrase> ");
+          
+          Unnecessary locale dependence can cause bugs that are very
+          tricky to isolate and fix. Please avoid using locale dependent
+          functions if possible.
+          
+          Advice not applicable in this specific case? Add an exception
+          by updating the ignore list in test/lint/lint-locale-dependence.sh
+          ^---- failure generated from test/lint/lint-locale-dependence.sh</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>C++/bitcoin@bitcoin/failed/567204447.log</InputPath>
+        <Output>TestFramework (ERROR): JSONRPC error [0m
+          [0;36m                                   Traceback (most recent call last):[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/test_framework.py", line 193, in main[0m
+          [0;36m                                       self.run_test()[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/feature_segwit.py", line 243, in run_test[0m
+          [0;36m                                       txid3 = self.nodes[0].sendrawtransaction(ToHex(tx))[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/coverage.py", line 47, in __call__[0m
+          [0;36m                                       return_val = self.auth_service_proxy_instance.__call__(*args, **kwargs)[0m
+          [0;36m                                     File "/home/travis/build/bitcoin/bitcoin/build/bitcoin-i686-pc-linux-gnu/test/functional/test_framework/authproxy.py", line 141, in __call__[0m
+          [0;36m                                       raise JSONRPCException(response['error'], status)[0m
+          [0;36m                                   test_framework.authproxy.JSONRPCException: absurdly-high-fee, 4000000 > 910000 (code 256) (-26)</Output>
+      </ExampleDataOfString>
+    </Examples>
+  </LearningData>
+  <LogKind>
+    <Language>java</Language>
+    <BuildTool>android</BuildTool>
+  </LogKind>
+  <Target>BuildFailureReason</Target>
 </AnalysisProgramOfRegionAnalysisSessionString>
