@@ -46,7 +46,7 @@ Common options:
 #### Information Retrieval
 
 ``` shell
-ruby run-extraction.rb -a analyze -t ir -e android-failure-with-dependencies -p connectbot@connectbot/779.log
+ruby run-extraction.rb -a analyze -t ir -e android-failure-with-dependencies -p misc/connectbot@connectbot/779.log
 ```
 
 <details>
@@ -72,7 +72,7 @@ Execution failed for task ':app:testDebugUnitTest'.
 Caution! this will take about 20 minutes to run
 
 ``` shell
-ruby run-extraction.rb -a analyze -t pbe -e android-failure-with-dependencies -p connectbot@connectbot/779.log
+ruby run-extraction.rb -a analyze -t pbe -e android-failure-with-dependencies -p misc/connectbot@connectbot/779.log
 ```
 
 <details>
@@ -88,7 +88,7 @@ There were failing tests. See the report at: file:///home/travis/build/connectbo
 #### Keyword
 
 ``` shell
-ruby run-extraction.rb -a analyze -t keyword -k failed -p connectbot@connectbot/779.log
+ruby run-extraction.rb -a analyze -t keyword -k failed -p misc/connectbot@connectbot/779.log
 ```
 
 <details>
@@ -109,7 +109,7 @@ Execution failed for task ':app:testDebugUnitTest'.
 #### Regex
 
 ``` shell
-ruby run-extraction.rb -a analyze -t regex -r "(?<=wrong:\n).*?(?=\n\n)" -p connectbot@connectbot/779.log
+ruby run-extraction.rb -a analyze -t regex -r "(?<=wrong:\n).*?(?=\n\n)" -p misc/connectbot@connectbot/779.log
 ```
 
 <details>
@@ -125,7 +125,7 @@ Execution failed for task ':app:testDebugUnitTest'.
 #### Random
 
 ``` shell
-ruby run-extraction.rb -a analyze -t random -e android-failure-with-dependencies -p connectbot@connectbot/779.log
+ruby run-extraction.rb -a analyze -t random -e android-failure-with-dependencies -p misc/connectbot@connectbot/779.log
 ```
 
 <details>
@@ -145,7 +145,7 @@ Receiving objects:  90% (2358/2619)
 #### Information Retrieval
 
 ``` shell
-ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+ruby run-extraction.rb -a analyze -t ir -e travis-worker-short -p misc/facebookgo@rocks-strata/166107245.log
 ```
 
 <details>
@@ -163,7 +163,7 @@ GOOS="linux"
 #### Programming by Example
 
 ``` shell
-ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+ruby run-extraction.rb -a analyze -t pbe -e travis-worker-short -p misc/facebookgo@rocks-strata/166107245.log
 ```
 
 <details> 
@@ -178,7 +178,7 @@ worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 #### Keyword
 
 ``` shell
-ruby run-extraction.rb -a analyze -t keyword -k worker -p facebookgo@rocks-strata/166107245.log
+ruby run-extraction.rb -a analyze -t keyword -k worker -p misc/facebookgo@rocks-strata/166107245.log
 ```
 
 <details> 
@@ -194,7 +194,7 @@ Using worker: worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 #### Regex
 
 ``` shell
-ruby run-extraction.rb -a analyze -t regex -r "(?<=worker: ).*?(?=\n)" -p facebookgo@rocks-strata/166107245.log
+ruby run-extraction.rb -a analyze -t regex -r "(?<=worker: ).*?(?=\n)" -p misc/facebookgo@rocks-strata/166107245.log
 ```
 
 <details> 
@@ -209,7 +209,7 @@ worker-linux-docker-273f60df.prod.travis-ci.org:travis-linux-11
 #### Random
 
 ``` shell
-ruby run-extraction.rb -a analyze -t random -e travis-worker-short -p facebookgo@rocks-strata/166107245.log
+ruby run-extraction.rb -a analyze -t random -e travis-worker-short -p misc/facebookgo@rocks-strata/166107245.log
 ```
 
 <details>
