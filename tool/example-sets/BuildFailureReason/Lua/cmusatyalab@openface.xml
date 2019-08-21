@@ -1,36 +1,732 @@
-<?xml version=1.0 encoding=utf-8?>
-<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd=http://www.w3.org/2001/XMLSchema 
-xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance>
-<SaveName>BuildFailureReason/Lua/cmusatyalab@openface</SaveName>
-<LearningData>
-<InputPaths>
-<string>Lua/cmusatyalab@openface/failed/196472359.log</string>
-<string>Lua/cmusatyalab@openface/failed/199278645.log</string>
-<string>Lua/cmusatyalab@openface/failed/199281591.log</string>
-<string>Lua/cmusatyalab@openface/failed/199282796.log</string>
-<string>Lua/cmusatyalab@openface/failed/199292219.log</string>
-<string>Lua/cmusatyalab@openface/failed/204083712.log</string>
-<string>Lua/cmusatyalab@openface/failed/204084152.log</string>
-<string>Lua/cmusatyalab@openface/failed/204084833.log</string>
-<string>Lua/cmusatyalab@openface/failed/204085173.log</string>
-<string>Lua/cmusatyalab@openface/failed/225393266.log</string>
-</InputPaths>
-<Examples>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/196472359.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/199278645.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/199281591.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/199282796.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/199292219.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/204083712.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/204084152.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/204084833.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/204085173.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Lua/cmusatyalab@openface/failed/225393266.log</InputPath><Output></Output></ExampleDataOfString>
-</Examples>
-</LearningData>
-<LogKind>
-<Language>java</Language>
-<BuildTool>android</BuildTool>
-</LogKind>
-<Target>BuildFailureReason</Target>
+<?xml version= 1.0 encoding= utf-8 ?>
+<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd= http: www.w3.org 2001 XMLSchema xmlns:xsi= http: www.w3.org 2001 XMLSchema-instance>
+  <SaveName>BuildFailureReason/Lua/cmusatyalab@openface</SaveName>
+  <LearningData>
+    <InputPaths>
+      <string>Lua/cmusatyalab@openface/failed/196472359.log</string>
+      <string>Lua/cmusatyalab@openface/failed/199278645.log</string>
+      <string>Lua/cmusatyalab@openface/failed/199281591.log</string>
+      <string>Lua/cmusatyalab@openface/failed/199282796.log</string>
+      <string>Lua/cmusatyalab@openface/failed/199292219.log</string>
+      <string>Lua/cmusatyalab@openface/failed/204083712.log</string>
+      <string>Lua/cmusatyalab@openface/failed/204084152.log</string>
+      <string>Lua/cmusatyalab@openface/failed/204084833.log</string>
+      <string>Lua/cmusatyalab@openface/failed/204085173.log</string>
+      <string>Lua/cmusatyalab@openface/failed/225393266.log</string>
+    </InputPaths>
+    <Examples>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/196472359.log</InputPath>
+        <Output>FAIL: tests.openface_batch_represent_tests.test_batch_represent
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_batch_represent_tests.py", line 50, in test_batch_represent
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_compare_demo
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 38, in test_compare_demo
+              assert '0.763' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/compare.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 51, in test_classification_demo_pretrained
+              assert 'Predict SteveCarell with 0.97 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained_multi
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 64, in test_classification_demo_pretrained_multi
+              assert 'Predict EvaLongoria @ x=91 with 0.99 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 80, in test_classification_demo_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_neural_net_training_tests.test_dnn_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_neural_net_training_tests.py", line 47, in test_dnn_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/199278645.log</InputPath>
+        <Output>ERROR: no certificate subject alternative name matches
+          requested host name 'openface-models.storage.cmusatyalab.org'.
+        To connect to openface-models.storage.cmusatyalab.org insecurely, use `--no-check-certificate'.
+        + nn4.small2.v1.t7: Error in wget.
+        ERROR: no certificate subject alternative name matches
+          requested host name 'openface-models.storage.cmusatyalab.org'.
+        To connect to openface-models.storage.cmusatyalab.org insecurely, use `--no-check-certificate'.
+        + celeb-classifier.nn4.small2.v1.pkl: Error in wget.</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/199281591.log</InputPath>
+        <Output>ERROR: no certificate subject alternative name matches
+          requested host name 'openface-models.storage.cmusatyalab.org'.
+        To connect to openface-models.storage.cmusatyalab.org insecurely, use `--no-check-certificate'.
+        + nn4.small2.v1.t7: Error in wget.
+        ERROR: no certificate subject alternative name matches
+          requested host name 'openface-models.storage.cmusatyalab.org'.
+        To connect to openface-models.storage.cmusatyalab.org insecurely, use `--no-check-certificate'.
+        + celeb-classifier.nn4.small2.v1.pkl: Error in wget.</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/199282796.log</InputPath>
+        <Output>+ ERROR! openface/celeb-classifier.nn4.small2.v1.pkl md5sum did not match.
+          + Expected: 199a2c0d32fd0f22f14ad2d248280475
+          + Actual: 390264772e075a0aa5c907e4ed0c2561
+          + Please manually delete this file and try re-running this script.</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/199292219.log</InputPath>
+        <Output>ERROR: no certificate subject alternative name matches
+          requested host name 'openface-models.storage.cmusatyalab.org'.
+        To connect to openface-models.storage.cmusatyalab.org insecurely, use `--no-check-certificate'.</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/204083712.log</InputPath>
+        <Output>FAIL: tests.openface_batch_represent_tests.test_batch_represent
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_batch_represent_tests.py", line 50, in test_batch_represent
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_compare_demo
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 38, in test_compare_demo
+              assert '0.763' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/compare.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 51, in test_classification_demo_pretrained
+              assert 'Predict SteveCarell with 0.97 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained_multi
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 64, in test_classification_demo_pretrained_multi
+              assert 'Predict EvaLongoria @ x=91 with 0.99 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 80, in test_classification_demo_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_neural_net_training_tests.test_dnn_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_neural_net_training_tests.py", line 47, in test_dnn_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/204084152.log</InputPath>
+        <Output>FAIL: tests.openface_batch_represent_tests.test_batch_represent
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_batch_represent_tests.py", line 50, in test_batch_represent
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_compare_demo
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 38, in test_compare_demo
+              assert '0.763' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/compare.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 51, in test_classification_demo_pretrained
+              assert 'Predict SteveCarell with 0.97 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained_multi
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 64, in test_classification_demo_pretrained_multi
+              assert 'Predict EvaLongoria @ x=91 with 0.99 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 80, in test_classification_demo_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_neural_net_training_tests.test_dnn_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_neural_net_training_tests.py", line 47, in test_dnn_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/204084833.log</InputPath>
+        <Output>FAIL: tests.openface_batch_represent_tests.test_batch_represent
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_batch_represent_tests.py", line 50, in test_batch_represent
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_compare_demo
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 38, in test_compare_demo
+              assert '0.763' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/compare.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 51, in test_classification_demo_pretrained
+              assert 'Predict SteveCarell with 0.97 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained_multi
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 64, in test_classification_demo_pretrained_multi
+              assert 'Predict EvaLongoria @ x=91 with 0.99 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 80, in test_classification_demo_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_neural_net_training_tests.test_dnn_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_neural_net_training_tests.py", line 47, in test_dnn_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/204085173.log</InputPath>
+        <Output>FAIL: tests.openface_batch_represent_tests.test_batch_represent
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_batch_represent_tests.py", line 50, in test_batch_represent
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_compare_demo
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 38, in test_compare_demo
+              assert '0.763' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/compare.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 51, in test_classification_demo_pretrained
+              assert 'Predict SteveCarell with 0.97 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained_multi
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 64, in test_classification_demo_pretrained_multi
+              assert 'Predict EvaLongoria @ x=91 with 0.99 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 80, in test_classification_demo_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_neural_net_training_tests.test_dnn_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_neural_net_training_tests.py", line 47, in test_dnn_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lua/cmusatyalab@openface/failed/225393266.log</InputPath>
+        <Output>FAIL: tests.openface_batch_represent_tests.test_batch_represent
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_batch_represent_tests.py", line 50, in test_batch_represent
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_compare_demo
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 38, in test_compare_demo
+              assert '0.763' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/compare.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 51, in test_classification_demo_pretrained
+              assert 'Predict SteveCarell with 0.97 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_pretrained_multi
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 64, in test_classification_demo_pretrained_multi
+              assert 'Predict EvaLongoria @ x=91 with 0.99 confidence.' in out
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/demos/classifier.py", line 26, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_demo_tests.test_classification_demo_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_demo_tests.py", line 80, in test_classification_demo_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'
+          
+          
+          --------------------- >> end captured stdout << ----------------------
+          
+          ======================================================================
+          FAIL: tests.openface_neural_net_training_tests.test_dnn_training
+          ----------------------------------------------------------------------
+          Traceback (most recent call last):
+            File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+              self.test(*self.arg)
+            File "/root/src/openface/tests/openface_neural_net_training_tests.py", line 47, in test_dnn_training
+              assert p.returncode == 0
+          AssertionError: 
+          -------------------- >> begin captured stdout << ---------------------
+          
+          Traceback (most recent call last):
+            File "/root/src/openface/util/align-dlib.py", line 18, in <module>
+              import cv2
+          ImportError: No module named 'cv2'</Output>
+      </ExampleDataOfString>
+    </Examples>
+  </LearningData>
+  <LogKind>
+    <Language>java</Language>
+    <BuildTool>android</BuildTool>
+  </LogKind>
+  <Target>BuildFailureReason</Target>
 </AnalysisProgramOfRegionAnalysisSessionString>
