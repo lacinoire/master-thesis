@@ -119,14 +119,18 @@ sys_timing_to_time <- function(start, end) {
 read_build_log_from_file <- function(file_name, base_path) {
   setwd(base_path)
   file_content <- readChar(file_name, file.info(file_name)$size)
-  file_content <-
-    gsub(rawToChar(as.raw(0x1b)), "",
-         gsub("\r", "\n",
-              gsub(
-                "\r\n", "\n",
-                gsub("\n\r", "\n", file_content)
-              )))
+  file_content <- escape_special_characters_buildlog(file_content)
+
   return(file_content)
+}
+
+escape_special_characters_buildlog <- function(text) {
+  return(#gsub("[^\U0009\U000a\U000d\U0020-\UD7FF\UE000-\UFFFD]+", "", 
+        gsub(rawToChar(as.raw(0x1b)), "",
+        gsub("\r", "\n",
+        gsub("\r\n", "\n",
+        gsub("\n\r", "\n", text)
+        ))))#)
 }
 
 ## creates an empty data frame for evaluation results

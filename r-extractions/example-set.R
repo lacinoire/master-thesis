@@ -1,5 +1,8 @@
 ## loading the exampleset data
 
+## load other modules
+source(paste(main_path, "/r-extractions/utilities.R", sep = ""))
+
 ## parse the analysis programs xml files
 get_exampleset <- function(program) {
   setwd(
@@ -11,7 +14,12 @@ get_exampleset <- function(program) {
   )
   path <- paste(program, ".xml", sep = "")
   
-  xml <- xmlTreeParse(file = path)
+  file_content <- read_build_log_from_file(path, paste(
+      main_path,
+      "/tool/example-sets",
+      sep = ""
+    ))
+  xml <- xmlTreeParse(file = file_content, asText = TRUE)
   
   examples <-
     data.frame(
@@ -23,12 +31,13 @@ get_exampleset <- function(program) {
     xml[["doc"]]$children$AnalysisProgramOfRegionAnalysisSessionString[["LearningData"]][["Examples"]]
   for (i in seq_along(1:length(exampleset))) {
     example <- exampleset[[i]]
+    output <- xmlValue(example[["Output"]][[1]])
     examples <-
       rbind(
         examples,
         data.frame(
           input_path = xmlValue(example[["InputPath"]][[1]]),
-          output = xmlValue(example[["Output"]][[1]]),
+          output = output,
           stringsAsFactors = FALSE
         )
       )
