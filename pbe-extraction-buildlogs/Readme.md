@@ -1,6 +1,6 @@
 # Exploratory Tool to extract Bulidlog Information using Programming by Example
 
-bulid in this folder with:
+Bulid in this folder with:
 
 ``` shell
 msbuild /v:m /p:Configuration=Debug
@@ -20,4 +20,4 @@ mono pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe analyze -f 
 
 execute without arguments for help text 🙂
 
-Find the predefined examplesets in the [program folder](ressources/analysis-programs/). The buildlogs used for the examples are inside the [samples folder](samples/).
+Find the predefined examplesets in the [example set folder](../tool/example-sets/). The buildlogs used for the examples are inside the [samples folder](../tool/samples/).

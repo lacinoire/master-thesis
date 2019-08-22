@@ -6,6 +6,6 @@ main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
 source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 
 data <-
-  getDataFrameForResultsFile("android-failure-with-dependencies_ManualSelection.xml")
+  getDataFrameForPBEResultsFile("android-failure-with-dependencies_ManualSelection.xml")
 
 result <- plot_evaluation_result(data, "android-failure-with-dependencies", "manual")
