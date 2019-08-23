@@ -69,7 +69,7 @@ run_evaluation <-
       results <- rbind(results, step_results)
     }
     
-    results <- plot_evaluation_result(results, program, selection)
+    results <- plot_evaluation_result(results, program, "ir", selection)
 
     setwd(paste(main_path, "/tool/results/ir", sep = ""))
     results_file_name <- paste0(evaluation_identification("ir", program, selection, test_count, learning_step_count), ".txt")
