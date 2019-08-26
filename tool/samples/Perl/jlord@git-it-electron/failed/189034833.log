@@ -1,1 +1,572 @@
-access denied
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: ip-10-12-2-45:f79fb2fc-4ac2-4cd6-9d11-4cf334c50f4b
+version: v2.5.0-8-g19ea9c2 https://github.com/travis-ci/worker/tree/19ea9c20425c78100500c7cc935892b47024922c
+instance: 36b054c:travis:node_js
+startup: 673.473606ms
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: node_js
+Build group: stable
+Build dist: precise
+Build id: 189034833
+Job id: 189034834
+travis-build version: 8720fc090
+[34m[1mBuild image provisioning date and time[0m
+Thu Feb  5 15:09:33 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-29-generic
+[34m[1mCookbooks Version[0m
+a68419e https://github.com/travis-ci/travis-cookbooks/tree/a68419e
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-1.9.3-p551
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.1
+[34m[1mRedis version[0m
+redis-server 2.8.19
+[34m[1mriak version[0m
+2.0.2
+[34m[1mMongoDB version[0m
+MongoDB 2.4.12
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mRabbitMQ Version[0m
+3.4.3
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 31.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "3.13.0-29-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+travis_fold:start:fix.CVE-2015-7547[0K$ export DEBIAN_FRONTEND=noninteractive
+W: Size of file /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_precise-updates_restricted_binary-amd64_Packages.gz is not what the server reported 19576 20785
+W: Size of file /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_precise-updates_restricted_binary-i386_Packages.gz is not what the server reported 19521 20707
+W: Size of file /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_precise-backports_multiverse_source_Sources.gz is not what the server reported 5886 5888
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_travis-ci_zero-mq_ubuntu_dists_precise_main_binary-amd64_Packages.gz is not what the server reported 832 1195
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-amd64_Packages.gz is not what the server reported 33653 36677
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-i386_Packages.gz is not what the server reported 33699 36733
+W: Size of file /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_precise-security_restricted_binary-amd64_Packages.gz is not what the server reported 13782 14904
+W: Size of file /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_precise-security_restricted_binary-i386_Packages.gz is not what the server reported 13751 14885
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libc-bin libc-dev-bin libc6-dev
+Suggested packages:
+  glibc-doc
+The following packages will be upgraded:
+  libc-bin libc-dev-bin libc6 libc6-dev
+4 upgraded, 0 newly installed, 0 to remove and 250 not upgraded.
+Need to get 8,840 kB of archives.
+After this operation, 14.3 kB disk space will be freed.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6-dev amd64 2.15-0ubuntu10.15 [2,943 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-dev-bin amd64 2.15-0ubuntu10.15 [84.7 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-bin amd64 2.15-0ubuntu10.15 [1,177 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6 amd64 2.15-0ubuntu10.15 [4,636 kB]
+Fetched 8,840 kB in 0s (35.4 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 69991 files and directories currently installed.)
+Preparing to replace libc6-dev 2.15-0ubuntu10.10 (using .../libc6-dev_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc6-dev ...
+Preparing to replace libc-dev-bin 2.15-0ubuntu10.10 (using .../libc-dev-bin_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc-dev-bin ...
+Preparing to replace libc-bin 2.15-0ubuntu10.10 (using .../libc-bin_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc-bin ...
+Processing triggers for man-db ...
+Setting up libc-bin (2.15-0ubuntu10.15) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 69990 files and directories currently installed.)
+Preparing to replace libc6 2.15-0ubuntu10.10 (using .../libc6_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc6 ...
+Setting up libc6 (2.15-0ubuntu10.15) ...
+Setting up libc-dev-bin (2.15-0ubuntu10.15) ...
+Setting up libc6-dev (2.15-0ubuntu10.15) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:fix.CVE-2015-7547[0Ktravis_fold:start:git.checkout[0Ktravis_time:start:1f330ea8[0K$ git clone --depth=50 https://github.com/jlord/git-it-electron.git jlord/git-it-electron
+Cloning into 'jlord/git-it-electron'...
+remote: Counting objects: 6923, done.[K
+remote: Compressing objects:   0% (1/4826)   [Kremote: Compressing objects:   1% (49/4826)   [Kremote: Compressing objects:   2% (97/4826)   [Kremote: Compressing objects:   3% (145/4826)   [Kremote: Compressing objects:   4% (194/4826)   [Kremote: Compressing objects:   5% (242/4826)   [Kremote: Compressing objects:   6% (290/4826)   [Kremote: Compressing objects:   7% (338/4826)   [Kremote: Compressing objects:   8% (387/4826)   [Kremote: Compressing objects:   9% (435/4826)   [Kremote: Compressing objects:  10% (483/4826)   [Kremote: Compressing objects:  11% (531/4826)   [Kremote: Compressing objects:  12% (580/4826)   [Kremote: Compressing objects:  13% (628/4826)   [Kremote: Compressing objects:  14% (676/4826)   [Kremote: Compressing objects:  15% (724/4826)   [Kremote: Compressing objects:  16% (773/4826)   [Kremote: Compressing objects:  17% (821/4826)   [Kremote: Compressing objects:  18% (869/4826)   [Kremote: Compressing objects:  19% (917/4826)   [Kremote: Compressing objects:  20% (966/4826)   [Kremote: Compressing objects:  21% (1014/4826)   [Kremote: Compressing objects:  22% (1062/4826)   [Kremote: Compressing objects:  23% (1110/4826)   [Kremote: Compressing objects:  24% (1159/4826)   [Kremote: Compressing objects:  25% (1207/4826)   [Kremote: Compressing objects:  26% (1255/4826)   [Kremote: Compressing objects:  27% (1304/4826)   [Kremote: Compressing objects:  28% (1352/4826)   [Kremote: Compressing objects:  29% (1400/4826)   [Kremote: Compressing objects:  30% (1448/4826)   [Kremote: Compressing objects:  31% (1497/4826)   [Kremote: Compressing objects:  32% (1545/4826)   [Kremote: Compressing objects:  33% (1593/4826)   [Kremote: Compressing objects:  34% (1641/4826)   [Kremote: Compressing objects:  35% (1690/4826)   [Kremote: Compressing objects:  36% (1738/4826)   [Kremote: Compressing objects:  37% (1786/4826)   [Kremote: Compressing objects:  38% (1834/4826)   [Kremote: Compressing objects:  39% (1883/4826)   [Kremote: Compressing objects:  40% (1931/4826)   [Kremote: Compressing objects:  41% (1979/4826)   [Kremote: Compressing objects:  42% (2027/4826)   [Kremote: Compressing objects:  43% (2076/4826)   [Kremote: Compressing objects:  44% (2124/4826)   [Kremote: Compressing objects:  45% (2172/4826)   [Kremote: Compressing objects:  46% (2220/4826)   [Kremote: Compressing objects:  47% (2269/4826)   [Kremote: Compressing objects:  48% (2317/4826)   [Kremote: Compressing objects:  49% (2365/4826)   [Kremote: Compressing objects:  50% (2413/4826)   [Kremote: Compressing objects:  51% (2462/4826)   [Kremote: Compressing objects:  52% (2510/4826)   [Kremote: Compressing objects:  53% (2558/4826)   [Kremote: Compressing objects:  54% (2607/4826)   [Kremote: Compressing objects:  55% (2655/4826)   [Kremote: Compressing objects:  56% (2703/4826)   [Kremote: Compressing objects:  57% (2751/4826)   [Kremote: Compressing objects:  58% (2800/4826)   [Kremote: Compressing objects:  59% (2848/4826)   [Kremote: Compressing objects:  60% (2896/4826)   [Kremote: Compressing objects:  61% (2944/4826)   [Kremote: Compressing objects:  62% (2993/4826)   [Kremote: Compressing objects:  63% (3041/4826)   [Kremote: Compressing objects:  64% (3089/4826)   [Kremote: Compressing objects:  65% (3137/4826)   [Kremote: Compressing objects:  66% (3186/4826)   [Kremote: Compressing objects:  67% (3234/4826)   [Kremote: Compressing objects:  68% (3282/4826)   [Kremote: Compressing objects:  69% (3330/4826)   [Kremote: Compressing objects:  70% (3379/4826)   [Kremote: Compressing objects:  71% (3427/4826)   [Kremote: Compressing objects:  72% (3475/4826)   [Kremote: Compressing objects:  73% (3523/4826)   [Kremote: Compressing objects:  74% (3572/4826)   [Kremote: Compressing objects:  75% (3620/4826)   [Kremote: Compressing objects:  76% (3668/4826)   [Kremote: Compressing objects:  77% (3717/4826)   [Kremote: Compressing objects:  78% (3765/4826)   [Kremote: Compressing objects:  79% (3813/4826)   [Kremote: Compressing objects:  80% (3861/4826)   [Kremote: Compressing objects:  81% (3910/4826)   [Kremote: Compressing objects:  82% (3958/4826)   [Kremote: Compressing objects:  83% (4006/4826)   [Kremote: Compressing objects:  84% (4054/4826)   [Kremote: Compressing objects:  85% (4103/4826)   [Kremote: Compressing objects:  86% (4151/4826)   [Kremote: Compressing objects:  87% (4199/4826)   [Kremote: Compressing objects:  88% (4247/4826)   [Kremote: Compressing objects:  89% (4296/4826)   [Kremote: Compressing objects:  90% (4344/4826)   [Kremote: Compressing objects:  91% (4392/4826)   [Kremote: Compressing objects:  92% (4440/4826)   [Kremote: Compressing objects:  93% (4489/4826)   [Kremote: Compressing objects:  94% (4537/4826)   [Kremote: Compressing objects:  95% (4585/4826)   [Kremote: Compressing objects:  96% (4633/4826)   [Kremote: Compressing objects:  97% (4682/4826)   [Kremote: Compressing objects:  98% (4730/4826)   [Kremote: Compressing objects:  99% (4778/4826)   [Kremote: Compressing objects: 100% (4826/4826)   [Kremote: Compressing objects: 100% (4826/4826), done.[K
+Receiving objects:   0% (1/6923)   Receiving objects:   1% (70/6923)   Receiving objects:   2% (139/6923)   Receiving objects:   3% (208/6923)   Receiving objects:   4% (277/6923)   Receiving objects:   5% (347/6923)   Receiving objects:   6% (416/6923)   Receiving objects:   7% (485/6923)   Receiving objects:   8% (554/6923)   Receiving objects:   9% (624/6923)   Receiving objects:  10% (693/6923)   Receiving objects:  11% (762/6923)   Receiving objects:  12% (831/6923)   Receiving objects:  13% (900/6923)   Receiving objects:  14% (970/6923)   Receiving objects:  15% (1039/6923)   Receiving objects:  16% (1108/6923)   Receiving objects:  17% (1177/6923)   Receiving objects:  18% (1247/6923)   Receiving objects:  19% (1316/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  20% (1385/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  21% (1454/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  22% (1524/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  23% (1593/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  24% (1662/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  25% (1731/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  26% (1800/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  27% (1870/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  28% (1939/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  29% (2008/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  30% (2077/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  31% (2147/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  32% (2216/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  33% (2285/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  34% (2354/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  35% (2424/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  36% (2493/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  37% (2562/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  38% (2631/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  38% (2698/6923), 10.00 MiB | 19.95 MiB/s   Receiving objects:  39% (2700/6923), 22.30 MiB | 22.25 MiB/s   Receiving objects:  40% (2770/6923), 22.30 MiB | 22.25 MiB/s   Receiving objects:  41% (2839/6923), 22.30 MiB | 22.25 MiB/s   Receiving objects:  42% (2908/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  43% (2977/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  44% (3047/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  45% (3116/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  46% (3185/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  47% (3254/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  48% (3324/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  49% (3393/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  50% (3462/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  51% (3531/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  52% (3600/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  53% (3670/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  54% (3739/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  55% (3808/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  56% (3877/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  57% (3947/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  58% (4016/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  59% (4085/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  60% (4154/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  61% (4224/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  62% (4293/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  63% (4362/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  64% (4431/6923), 33.77 MiB | 22.47 MiB/s   Receiving objects:  64% (4437/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  65% (4500/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  66% (4570/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  67% (4639/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  68% (4708/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  69% (4777/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  70% (4847/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  71% (4916/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  72% (4985/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  73% (5054/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  74% (5124/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  75% (5193/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  76% (5262/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  77% (5331/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  78% (5400/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  79% (5470/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  80% (5539/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  81% (5608/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  82% (5677/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  83% (5747/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  84% (5816/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  85% (5885/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  86% (5954/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  87% (6024/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  88% (6093/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  89% (6162/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  90% (6231/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  91% (6300/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  92% (6370/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  93% (6439/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  94% (6508/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  95% (6577/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  96% (6647/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  97% (6716/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  98% (6785/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects:  99% (6854/6923), 44.86 MiB | 22.38 MiB/s   remote: Total 6923 (delta 2071), reused 6620 (delta 1820), pack-reused 0[K
+Receiving objects: 100% (6923/6923), 44.86 MiB | 22.38 MiB/s   Receiving objects: 100% (6923/6923), 54.04 MiB | 22.38 MiB/s, done.
+Resolving deltas:   0% (0/2071)   Resolving deltas:   1% (30/2071)   Resolving deltas:   2% (45/2071)   Resolving deltas:   3% (66/2071)   Resolving deltas:   4% (83/2071)   Resolving deltas:   6% (125/2071)   Resolving deltas:   9% (196/2071)   Resolving deltas:  10% (208/2071)   Resolving deltas:  11% (248/2071)   Resolving deltas:  12% (249/2071)   Resolving deltas:  13% (275/2071)   Resolving deltas:  14% (290/2071)   Resolving deltas:  15% (319/2071)   Resolving deltas:  16% (337/2071)   Resolving deltas:  17% (354/2071)   Resolving deltas:  18% (391/2071)   Resolving deltas:  19% (406/2071)   Resolving deltas:  20% (420/2071)   Resolving deltas:  21% (437/2071)   Resolving deltas:  22% (456/2071)   Resolving deltas:  23% (478/2071)   Resolving deltas:  24% (498/2071)   Resolving deltas:  25% (518/2071)   Resolving deltas:  26% (539/2071)   Resolving deltas:  28% (582/2071)   Resolving deltas:  30% (633/2071)   Resolving deltas:  31% (654/2071)   Resolving deltas:  33% (694/2071)   Resolving deltas:  34% (719/2071)   Resolving deltas:  35% (725/2071)   Resolving deltas:  36% (748/2071)   Resolving deltas:  37% (767/2071)   Resolving deltas:  38% (791/2071)   Resolving deltas:  39% (819/2071)   Resolving deltas:  40% (835/2071)   Resolving deltas:  41% (851/2071)   Resolving deltas:  42% (870/2071)   Resolving deltas:  43% (891/2071)   Resolving deltas:  44% (912/2071)   Resolving deltas:  45% (933/2071)   Resolving deltas:  46% (953/2071)   Resolving deltas:  47% (975/2071)   Resolving deltas:  48% (997/2071)   Resolving deltas:  49% (1015/2071)   Resolving deltas:  50% (1037/2071)   Resolving deltas:  51% (1060/2071)   Resolving deltas:  52% (1078/2071)   Resolving deltas:  53% (1099/2071)   Resolving deltas:  54% (1119/2071)   Resolving deltas:  55% (1142/2071)   Resolving deltas:  56% (1170/2071)   Resolving deltas:  57% (1186/2071)   Resolving deltas:  58% (1204/2071)   Resolving deltas:  59% (1236/2071)   Resolving deltas:  60% (1248/2071)   Resolving deltas:  61% (1268/2071)   Resolving deltas:  62% (1285/2071)   Resolving deltas:  63% (1305/2071)   Resolving deltas:  64% (1326/2071)   Resolving deltas:  65% (1347/2071)   Resolving deltas:  66% (1367/2071)   Resolving deltas:  67% (1388/2071)   Resolving deltas:  68% (1415/2071)   Resolving deltas:  69% (1429/2071)   Resolving deltas:  70% (1453/2071)   Resolving deltas:  71% (1478/2071)   Resolving deltas:  72% (1503/2071)   Resolving deltas:  74% (1544/2071)   Resolving deltas:  75% (1558/2071)   Resolving deltas:  78% (1630/2071)   Resolving deltas:  79% (1637/2071)   Resolving deltas:  80% (1658/2071)   Resolving deltas:  81% (1678/2071)   Resolving deltas:  82% (1699/2071)   Resolving deltas:  83% (1720/2071)   Resolving deltas:  84% (1746/2071)   Resolving deltas:  85% (1776/2071)   Resolving deltas:  86% (1792/2071)   Resolving deltas:  87% (1820/2071)   Resolving deltas:  88% (1829/2071)   Resolving deltas:  89% (1862/2071)   Resolving deltas:  91% (1886/2071)   Resolving deltas:  92% (1906/2071)   Resolving deltas:  93% (1931/2071)   Resolving deltas:  94% (1947/2071)   Resolving deltas:  95% (1968/2071)   Resolving deltas:  96% (2003/2071)   Resolving deltas:  97% (2020/2071)   Resolving deltas:  98% (2031/2071)   Resolving deltas:  99% (2065/2071)   Resolving deltas: 100% (2071/2071)   Resolving deltas: 100% (2071/2071), done.
+Checking connectivity... done.
+
+travis_time:end:1f330ea8:start=1483576032136055745,finish=1483576036558094592,duration=4422038847[0K$ cd jlord/git-it-electron
+travis_time:start:0e89e5d7[0K$ git fetch origin +refs/pull/178/merge:
+remote: Counting objects: 133, done.[K
+remote: Compressing objects:   1% (1/73)   [Kremote: Compressing objects:   2% (2/73)   [Kremote: Compressing objects:   4% (3/73)   [Kremote: Compressing objects:   5% (4/73)   [Kremote: Compressing objects:   6% (5/73)   [Kremote: Compressing objects:   8% (6/73)   [Kremote: Compressing objects:   9% (7/73)   [Kremote: Compressing objects:  10% (8/73)   [Kremote: Compressing objects:  12% (9/73)   [Kremote: Compressing objects:  13% (10/73)   [Kremote: Compressing objects:  15% (11/73)   [Kremote: Compressing objects:  16% (12/73)   [Kremote: Compressing objects:  17% (13/73)   [Kremote: Compressing objects:  19% (14/73)   [Kremote: Compressing objects:  20% (15/73)   [Kremote: Compressing objects:  21% (16/73)   [Kremote: Compressing objects:  23% (17/73)   [Kremote: Compressing objects:  24% (18/73)   [Kremote: Compressing objects:  26% (19/73)   [Kremote: Compressing objects:  27% (20/73)   [Kremote: Compressing objects:  28% (21/73)   [Kremote: Compressing objects:  30% (22/73)   [Kremote: Compressing objects:  31% (23/73)   [Kremote: Compressing objects:  32% (24/73)   [Kremote: Compressing objects:  34% (25/73)   [Kremote: Compressing objects:  35% (26/73)   [Kremote: Compressing objects:  36% (27/73)   [Kremote: Compressing objects:  38% (28/73)   [Kremote: Compressing objects:  39% (29/73)   [Kremote: Compressing objects:  41% (30/73)   [Kremote: Compressing objects:  42% (31/73)   [Kremote: Compressing objects:  43% (32/73)   [Kremote: Compressing objects:  45% (33/73)   [Kremote: Compressing objects:  46% (34/73)   [Kremote: Compressing objects:  47% (35/73)   [Kremote: Compressing objects:  49% (36/73)   [Kremote: Compressing objects:  50% (37/73)   [Kremote: Compressing objects:  52% (38/73)   [Kremote: Compressing objects:  53% (39/73)   [Kremote: Compressing objects:  54% (40/73)   [Kremote: Compressing objects:  56% (41/73)   [Kremote: Compressing objects:  57% (42/73)   [Kremote: Compressing objects:  58% (43/73)   [Kremote: Compressing objects:  60% (44/73)   [Kremote: Compressing objects:  61% (45/73)   [Kremote: Compressing objects:  63% (46/73)   [Kremote: Compressing objects:  64% (47/73)   [Kremote: Compressing objects:  65% (48/73)   [Kremote: Compressing objects:  67% (49/73)   [Kremote: Compressing objects:  68% (50/73)   [Kremote: Compressing objects:  69% (51/73)   [Kremote: Compressing objects:  71% (52/73)   [Kremote: Compressing objects:  72% (53/73)   [Kremote: Compressing objects:  73% (54/73)   [Kremote: Compressing objects:  75% (55/73)   [Kremote: Compressing objects:  76% (56/73)   [Kremote: Compressing objects:  78% (57/73)   [Kremote: Compressing objects:  79% (58/73)   [Kremote: Compressing objects:  80% (59/73)   [Kremote: Compressing objects:  82% (60/73)   [Kremote: Compressing objects:  83% (61/73)   [Kremote: Compressing objects:  84% (62/73)   [Kremote: Compressing objects:  86% (63/73)   [Kremote: Compressing objects:  87% (64/73)   [Kremote: Compressing objects:  89% (65/73)   [Kremote: Compressing objects:  90% (66/73)   [Kremote: Compressing objects:  91% (67/73)   [Kremote: Compressing objects:  93% (68/73)   [Kremote: Compressing objects:  94% (69/73)   [Kremote: Compressing objects:  95% (70/73)   [Kremote: Compressing objects:  97% (71/73)   [Kremote: Compressing objects:  98% (72/73)   [Kremote: Compressing objects: 100% (73/73)   [Kremote: Compressing objects: 100% (73/73), done.[K
+remote: Total 133 (delta 93), reused 93 (delta 55), pack-reused 0[K
+Receiving objects:   0% (1/133)   Receiving objects:   1% (2/133)   Receiving objects:   2% (3/133)   Receiving objects:   3% (4/133)   Receiving objects:   4% (6/133)   Receiving objects:   5% (7/133)   Receiving objects:   6% (8/133)   Receiving objects:   7% (10/133)   Receiving objects:   8% (11/133)   Receiving objects:   9% (12/133)   Receiving objects:  10% (14/133)   Receiving objects:  11% (15/133)   Receiving objects:  12% (16/133)   Receiving objects:  13% (18/133)   Receiving objects:  14% (19/133)   Receiving objects:  15% (20/133)   Receiving objects:  16% (22/133)   Receiving objects:  17% (23/133)   Receiving objects:  18% (24/133)   Receiving objects:  19% (26/133)   Receiving objects:  20% (27/133)   Receiving objects:  21% (28/133)   Receiving objects:  22% (30/133)   Receiving objects:  23% (31/133)   Receiving objects:  24% (32/133)   Receiving objects:  25% (34/133)   Receiving objects:  26% (35/133)   Receiving objects:  27% (36/133)   Receiving objects:  28% (38/133)   Receiving objects:  29% (39/133)   Receiving objects:  30% (40/133)   Receiving objects:  31% (42/133)   Receiving objects:  32% (43/133)   Receiving objects:  33% (44/133)   Receiving objects:  34% (46/133)   Receiving objects:  35% (47/133)   Receiving objects:  36% (48/133)   Receiving objects:  37% (50/133)   Receiving objects:  38% (51/133)   Receiving objects:  39% (52/133)   Receiving objects:  40% (54/133)   Receiving objects:  41% (55/133)   Receiving objects:  42% (56/133)   Receiving objects:  43% (58/133)   Receiving objects:  44% (59/133)   Receiving objects:  45% (60/133)   Receiving objects:  46% (62/133)   Receiving objects:  47% (63/133)   Receiving objects:  48% (64/133)   Receiving objects:  49% (66/133)   Receiving objects:  50% (67/133)   Receiving objects:  51% (68/133)   Receiving objects:  52% (70/133)   Receiving objects:  53% (71/133)   Receiving objects:  54% (72/133)   Receiving objects:  55% (74/133)   Receiving objects:  56% (75/133)   Receiving objects:  57% (76/133)   Receiving objects:  58% (78/133)   Receiving objects:  59% (79/133)   Receiving objects:  60% (80/133)   Receiving objects:  61% (82/133)   Receiving objects:  62% (83/133)   Receiving objects:  63% (84/133)   Receiving objects:  64% (86/133)   Receiving objects:  65% (87/133)   Receiving objects:  66% (88/133)   Receiving objects:  67% (90/133)   Receiving objects:  68% (91/133)   Receiving objects:  69% (92/133)   Receiving objects:  70% (94/133)   Receiving objects:  71% (95/133)   Receiving objects:  72% (96/133)   Receiving objects:  73% (98/133)   Receiving objects:  74% (99/133)   Receiving objects:  75% (100/133)   Receiving objects:  76% (102/133)   Receiving objects:  77% (103/133)   Receiving objects:  78% (104/133)   Receiving objects:  79% (106/133)   Receiving objects:  80% (107/133)   Receiving objects:  81% (108/133)   Receiving objects:  82% (110/133)   Receiving objects:  83% (111/133)   Receiving objects:  84% (112/133)   Receiving objects:  85% (114/133)   Receiving objects:  86% (115/133)   Receiving objects:  87% (116/133)   Receiving objects:  88% (118/133)   Receiving objects:  89% (119/133)   Receiving objects:  90% (120/133)   Receiving objects:  91% (122/133)   Receiving objects:  92% (123/133)   Receiving objects:  93% (124/133)   Receiving objects:  94% (126/133)   Receiving objects:  95% (127/133)   Receiving objects:  96% (128/133)   Receiving objects:  97% (130/133)   Receiving objects:  98% (131/133)   Receiving objects:  99% (132/133)   Receiving objects: 100% (133/133)   Receiving objects: 100% (133/133), 17.05 KiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/93)   Resolving deltas:   1% (1/93)   Resolving deltas:   4% (4/93)   Resolving deltas:   6% (6/93)   Resolving deltas:   7% (7/93)   Resolving deltas:   9% (9/93)   Resolving deltas:  10% (10/93)   Resolving deltas:  13% (13/93)   Resolving deltas:  40% (38/93)   Resolving deltas:  53% (50/93)   Resolving deltas:  55% (52/93)   Resolving deltas:  60% (56/93)   Resolving deltas:  65% (61/93)   Resolving deltas:  69% (65/93)   Resolving deltas:  74% (69/93)   Resolving deltas:  80% (75/93)   Resolving deltas:  86% (80/93)   Resolving deltas:  87% (81/93)   Resolving deltas:  89% (83/93)   Resolving deltas:  91% (85/93)   Resolving deltas:  93% (87/93)   Resolving deltas:  94% (88/93)   Resolving deltas:  95% (89/93)   Resolving deltas: 100% (93/93)   Resolving deltas: 100% (93/93), completed with 16 local objects.
+From https://github.com/jlord/git-it-electron
+ * branch            refs/pull/178/merge -> FETCH_HEAD
+
+travis_time:end:0e89e5d7:start=1483576036563101127,finish=1483576036942549884,duration=379448757[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+[33;1mThis job is running on container-based infrastructure, which does not allow use of 'sudo', setuid and setguid executables.[0m
+[33;1mIf you require sudo, add 'sudo: required' to your .travis.yml[0m
+[33;1mSee https://docs.travis-ci.com/user/workers/container-based-infrastructure/ for details.[0m
+[33;1mUpdating nvm to v0.32.0[0m
+travis_time:start:007c6140[0K$ nvm install 0.12
+                                                                           0.0%                                                                           0.0%                                                                           0.1%                                                                           0.1%                                                                           0.1%                                                                           0.1%                                                                           0.1%                                                                           0.2%                                                                           0.2%                                                                           0.2%                                                                           0.2%                                                                           0.2%                                                                           0.2%                                                                           0.3%                                                                           0.3%                                                                           0.3%                                                                           0.3%                                                                           0.3%                                                                           0.4%                                                                           0.4%                                                                           0.4%                                                                           0.4%                                                                           0.4%                                                                           0.5%                                                                           0.5%                                                                           0.5%                                                                           0.5%                                                                           0.5%                                                                           0.6%                                                                           0.6%                                                                           0.6%                                                                           0.6%                                                                           0.6%                                                                           0.7%                                                                           0.7%                                                                           0.7%                                                                           0.7%                                                                           0.7%                                                                           0.8%                                                                           0.8%                                                                           0.8%                                                                           0.9%                                                                           0.9%                                                                           1.0%                                                                           1.0%                                                                           1.1%                                                                           1.1%                                                                           1.2%                                                                           1.3%                                                                           1.3%                                                                           1.4%#                                                                          1.4%#                                                                          1.5%#                                                                          1.6%#                                                                          1.6%#                                                                          1.7%#                                                                          1.7%#                                                                          1.8%#                                                                          1.9%#                                                                          1.9%#                                                                          2.0%#                                                                          2.0%#                                                                          2.1%#                                                                          2.2%#                                                                          2.2%#                                                                          2.3%#                                                                          2.3%#                                                                          2.4%#                                                                          2.5%#                                                                          2.5%#                                                                          2.6%#                                                                          2.6%#                                                                          2.7%#                                                                          2.8%##                                                                         2.8%##                                                                         2.9%##                                                                         2.9%##                                                                         3.0%##                                                                         3.1%##                                                                         3.1%##                                                                         3.2%##                                                                         3.4%##                                                                         3.6%##                                                                         3.8%##                                                                         4.1%###                                                                        4.3%###                                                                        4.6%###                                                                        4.8%###                                                                        5.1%###                                                                        5.3%###                                                                        5.5%####                                                                       5.8%####                                                                       6.0%####                                                                       6.3%####                                                                       6.5%####                                                                       6.7%#####                                                                      7.0%#####                                                                      7.2%#####                                                                      7.5%#####                                                                      7.7%#####                                                                      7.9%#####                                                                      8.2%#####                                                                      8.2%######                                                                     8.4%######                                                                     8.7%######                                                                     8.9%######                                                                     8.9%######                                                                     9.1%######                                                                     9.1%######                                                                     9.1%######                                                                     9.4%######                                                                     9.6%######                                                                     9.6%######                                                                     9.6%#######                                                                    9.9%#######                                                                    9.9%#######                                                                   10.1%#######                                                                   10.1%#######                                                                   10.3%#######                                                                   10.3%#######                                                                   10.6%#######                                                                   10.8%#######                                                                   10.8%#######                                                                   11.1%#######                                                                   11.1%########                                                                  11.3%########                                                                  11.3%########                                                                  11.5%########                                                                  11.8%########                                                                  12.0%########                                                                  12.3%########                                                                  12.3%########                                                                  12.3%#########                                                                 12.5%#########                                                                 12.8%#########                                                                 13.0%#########                                                                 13.0%#########                                                                 13.0%#########                                                                 13.2%#########                                                                 13.5%#########                                                                 13.7%##########                                                                14.0%##########                                                                14.2%##########                                                                14.4%##########                                                                14.7%##########                                                                14.9%##########                                                                15.2%###########                                                               15.4%###########                                                               15.6%###########                                                               15.9%###########                                                               16.1%###########                                                               16.4%###########                                                               16.6%############                                                              16.8%############                                                              17.1%############                                                              17.3%############                                                              17.6%############                                                              17.8%############                                                              18.0%#############                                                             18.3%#############                                                             18.3%#############                                                             18.5%#############                                                             18.8%#############                                                             19.0%#############                                                             19.2%#############                                                             19.2%##############                                                            19.5%##############                                                            19.7%##############                                                            19.7%##############                                                            20.0%##############                                                            20.2%##############                                                            20.5%##############                                                            20.7%###############                                                           20.9%###############                                                           20.9%###############                                                           21.2%###############                                                           21.4%###############                                                           21.7%###############                                                           21.9%###############                                                           22.1%###############                                                           22.1%###############                                                           22.1%################                                                          22.4%################                                                          22.6%################                                                          22.9%################                                                          23.1%################                                                          23.3%################                                                          23.6%#################                                                         23.8%#################                                                         24.1%#################                                                         24.3%#################                                                         24.5%#################                                                         24.8%##################                                                        25.0%##################                                                        25.0%##################                                                        25.3%##################                                                        25.5%##################                                                        25.7%##################                                                        25.7%##################                                                        25.7%##################                                                        26.0%##################                                                        26.2%###################                                                       26.5%###################                                                       26.5%###################                                                       26.7%###################                                                       26.9%###################                                                       26.9%###################                                                       27.2%###################                                                       27.4%###################                                                       27.7%###################                                                       27.7%####################                                                      27.9%####################                                                      28.2%####################                                                      28.2%####################                                                      28.4%####################                                                      28.6%####################                                                      28.6%####################                                                      28.9%####################                                                      29.1%#####################                                                     29.4%#####################                                                     29.6%#####################                                                     29.8%#####################                                                     30.1%#####################                                                     30.3%######################                                                    30.6%######################                                                    30.8%######################                                                    31.0%######################                                                    31.3%######################                                                    31.5%######################                                                    31.8%#######################                                                   32.0%#######################                                                   32.2%#######################                                                   32.5%#######################                                                   32.7%#######################                                                   33.0%#######################                                                   33.2%########################                                                  33.4%########################                                                  33.7%########################                                                  33.9%########################                                                  34.2%########################                                                  34.4%########################                                                  34.7%#########################                                                 34.9%#########################                                                 35.1%#########################                                                 35.4%#########################                                                 35.6%#########################                                                 35.9%#########################                                                 36.1%##########################                                                36.3%##########################                                                36.6%##########################                                                36.8%##########################                                                37.1%##########################                                                37.3%###########################                                               37.5%###########################                                               37.8%###########################                                               38.0%###########################                                               38.3%###########################                                               38.5%###########################                                               38.7%############################                                              39.0%############################                                              39.2%############################                                              39.5%############################                                              39.7%############################                                              39.9%############################                                              40.2%#############################                                             40.4%#############################                                             40.7%#############################                                             40.9%#############################                                             41.1%#############################                                             41.4%#############################                                             41.6%##############################                                            41.9%##############################                                            42.1%##############################                                            42.4%##############################                                            42.6%##############################                                            42.8%###############################                                           43.1%###############################                                           43.3%###############################                                           43.6%###############################                                           43.8%###############################                                           44.0%###############################                                           44.3%################################                                          44.5%################################                                          44.8%################################                                          45.0%################################                                          45.2%################################                                          45.5%################################                                          45.7%#################################                                         46.0%#################################                                         46.2%#################################                                         46.4%#################################                                         46.7%#################################                                         46.9%#################################                                         47.2%##################################                                        47.4%##################################                                        47.6%##################################                                        47.9%##################################                                        48.1%##################################                                        48.4%##################################                                        48.6%###################################                                       48.8%###################################                                       49.1%###################################                                       49.3%###################################                                       49.6%###################################                                       49.8%####################################                                      50.1%####################################                                      50.3%####################################                                      50.5%####################################                                      50.8%####################################                                      51.0%####################################                                      51.3%#####################################                                     51.5%#####################################                                     51.7%#####################################                                     52.0%#####################################                                     52.2%#####################################                                     52.5%#####################################                                     52.7%######################################                                    52.9%######################################                                    53.2%######################################                                    53.4%######################################                                    53.7%######################################                                    53.9%######################################                                    54.1%#######################################                                   54.4%#######################################                                   54.6%#######################################                                   54.9%#######################################                                   55.1%#######################################                                   55.3%########################################                                  55.6%########################################                                  55.8%########################################                                  56.1%########################################                                  56.3%########################################                                  56.5%########################################                                  56.8%#########################################                                 57.0%#########################################                                 57.3%#########################################                                 57.5%#########################################                                 57.8%#########################################                                 58.0%#########################################                                 58.2%##########################################                                58.5%##########################################                                58.7%##########################################                                59.0%##########################################                                59.2%##########################################                                59.4%##########################################                                59.7%###########################################                               59.9%###########################################                               60.2%###########################################                               60.4%###########################################                               60.6%###########################################                               60.9%############################################                              61.1%############################################                              61.4%############################################                              61.6%############################################                              61.8%############################################                              62.1%############################################                              62.3%#############################################                             62.6%#############################################                             62.8%#############################################                             63.0%#############################################                             63.3%#############################################                             63.5%#############################################                             63.8%##############################################                            64.0%##############################################                            64.3%##############################################                            64.5%##############################################                            64.7%##############################################                            65.0%##############################################                            65.2%###############################################                           65.5%###############################################                           65.7%###############################################                           65.9%###############################################                           66.2%###############################################                           66.4%###############################################                           66.7%################################################                          66.9%################################################                          67.1%################################################                          67.4%################################################                          67.6%################################################                          67.9%#################################################                         68.1%#################################################                         68.3%#################################################                         68.6%#################################################                         68.8%#################################################                         69.1%#################################################                         69.3%##################################################                        69.5%##################################################                        69.8%##################################################                        70.0%##################################################                        70.3%##################################################                        70.5%##################################################                        70.7%###################################################                       71.0%###################################################                       71.2%###################################################                       71.5%###################################################                       71.7%###################################################                       72.0%###################################################                       72.2%####################################################                      72.4%####################################################                      72.7%####################################################                      72.9%####################################################                      73.2%####################################################                      73.4%#####################################################                     73.6%#####################################################                     73.9%#####################################################                     74.1%#####################################################                     74.4%#####################################################                     74.6%#####################################################                     74.8%######################################################                    75.1%######################################################                    75.3%######################################################                    75.6%######################################################                    75.8%######################################################                    76.0%######################################################                    76.3%#######################################################                   76.5%#######################################################                   76.8%#######################################################                   77.0%#######################################################                   77.2%#######################################################                   77.5%#######################################################                   77.7%########################################################                  78.0%########################################################                  78.2%########################################################                  78.4%########################################################                  78.7%########################################################                  78.9%#########################################################                 79.2%#########################################################                 79.4%#########################################################                 79.7%#########################################################                 79.9%#########################################################                 80.1%#########################################################                 80.4%##########################################################                80.6%##########################################################                80.9%##########################################################                81.1%##########################################################                81.3%##########################################################                81.6%##########################################################                81.8%###########################################################               82.1%###########################################################               82.3%###########################################################               82.5%###########################################################               82.8%###########################################################               83.0%###########################################################               83.3%############################################################              83.5%############################################################              83.7%############################################################              84.0%############################################################              84.2%############################################################              84.5%############################################################              84.7%#############################################################             84.9%#############################################################             85.2%#############################################################             85.4%#############################################################             85.7%#############################################################             85.9%##############################################################            86.1%##############################################################            86.4%##############################################################            86.6%##############################################################            86.9%##############################################################            87.1%##############################################################            87.4%###############################################################           87.6%###############################################################           87.8%###############################################################           88.1%###############################################################           88.3%###############################################################           88.6%###############################################################           88.8%################################################################          89.0%################################################################          89.3%################################################################          89.5%################################################################          89.8%################################################################          90.0%################################################################          90.2%#################################################################         90.5%#################################################################         90.7%#################################################################         91.0%#################################################################         91.2%#################################################################         91.4%##################################################################        91.7%##################################################################        91.9%##################################################################        92.2%##################################################################        92.4%##################################################################        92.6%##################################################################        92.9%###################################################################       93.1%###################################################################       93.4%###################################################################       93.6%###################################################################       93.9%###################################################################       94.1%###################################################################       94.3%####################################################################      94.6%####################################################################      94.8%####################################################################      95.1%####################################################################      95.3%####################################################################      95.5%####################################################################      95.8%#####################################################################     96.0%#####################################################################     96.3%#####################################################################     96.5%#####################################################################     96.7%#####################################################################     97.0%#####################################################################     97.2%######################################################################    97.5%######################################################################    97.7%######################################################################    97.9%######################################################################    98.2%######################################################################    98.4%#######################################################################   98.7%#######################################################################   98.9%#######################################################################   99.1%#######################################################################   99.4%#######################################################################   99.6%#######################################################################   99.9%######################################################################## 100.0%######################################################################## 100.0%######################################################################## 100.0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v0.12.18 (npm v2.15.11)
+
+travis_time:end:007c6140:start=1483576042023042391,finish=1483576044305520202,duration=2282477811[0Ktravis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=$HOME/.casher
+travis_time:start:056dcb44[0K$ Installing caching utilities
+
+travis_time:end:056dcb44:start=1483576045624035826,finish=1483576045647703159,duration=23667333[0Ktravis_time:start:2d72d931[0K
+travis_time:end:2d72d931:start=1483576045653522200,finish=1483576045657504145,duration=3981945[0Ktravis_time:start:20df0b00[0K[32;1mattempting to download cache archive[0m
+[32;1mfetching PR.178/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--node-0.12.tgz[0m
+[32;1mfetching PR.178/cache--node-0.12.tgz[0m
+[32;1mfetching master/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--node-0.12.tgz[0m
+[32;1mfetching master/cache--node-0.12.tgz[0m
+[31;1mcould not download cache[0m
+
+travis_time:end:20df0b00:start=1483576045662646431,finish=1483576046355094817,duration=692448386[0Ktravis_time:start:394a2e54[0K
+travis_time:end:394a2e54:start=1483576046359656830,finish=1483576046363569210,duration=3912380[0Ktravis_time:start:3beb5c4a[0K[32;1madding /home/travis/build/jlord/git-it-electron/node_modules to cache[0m
+[32;1mcreating directory /home/travis/build/jlord/git-it-electron/node_modules[0m
+[32;1madding /home/travis/.electron to cache[0m
+[32;1mcreating directory /home/travis/.electron[0m
+
+travis_time:end:3beb5c4a:start=1483576046367865063,finish=1483576046773741742,duration=405876679[0Ktravis_fold:end:cache.1[0K$ node --version
+v0.12.18
+$ npm --version
+2.15.11
+$ nvm --version
+0.32.0
+travis_fold:start:install[0Ktravis_time:start:0b6b030a[0K$ npm install 
+[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m babel-eslint@7.1.1: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m electron-compilers@5.2.2: wanted: {"node":">= 5.0"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m request@2.79.0: wanted: {"node":">= 4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m electron-compile@5.1.2: wanted: {"node":">= 5.0"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m electron-packager@8.4.0: wanted: {"node":">= 4.0"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m eslint@3.12.2: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mdeprecated[0m standard-format@1.6.10: standard-format is deprecated in favor of a built-in autofixer in 'standard'. Usage: standard --fix
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mdeprecated[0m jade@1.11.0: Jade has been renamed to pug, please install the latest version of pug instead of jade
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m get-package-info@1.0.0: wanted: {"node":">= 4.0"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m read-pkg-up@2.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35moptional dep failed, continuing[0m fsevents@1.0.17
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m read-pkg@2.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m find-up@2.1.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m load-json-file@2.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m path-type@2.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m locate-path@2.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m
+> electron@1.4.13 postinstall /home/travis/build/jlord/git-it-electron/node_modules/electron
+> node install.js
+
+[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m strip-bom@3.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m path-exists@3.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m p-locate@2.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m p-limit@1.1.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mdeprecated[0m node-uuid@1.4.7: use uuid module instead
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m xmlbuilder@8.2.2: wanted: {"node":">=4.0"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m
+> spawn-sync@1.0.15 postinstall /home/travis/build/jlord/git-it-electron/node_modules/standard/node_modules/standard-format/node_modules/esformatter/node_modules/npm-run/node_modules/spawn-sync
+> node postinstall
+
+[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m normalize-url@1.8.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mdeprecated[0m transformers@2.1.0: Deprecated, use jstransformer
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m strip-bom@3.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m string-width@2.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m is-fullwidth-code-point@2.0.0: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mdeprecated[0m minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+[0m[37m[40mnpm[0m [0m[30m[43mWARN[0m [0m[35mengine[0m esprima@3.1.3: wanted: {"node":">=4"} (current: {"node":"0.12.18","npm":"2.15.11"})
+[0mglob@5.0.15 node_modules/glob
+├── path-is-absolute@1.0.1
+├── inherits@2.0.3
+├── inflight@1.0.6 (wrappy@1.0.2)
+├── once@1.4.0 (wrappy@1.0.2)
+└── minimatch@3.0.3 (brace-expansion@1.1.6)
+
+rimraf@2.5.4 node_modules/rimraf
+└── glob@7.1.1 (path-is-absolute@1.0.1, inherits@2.0.3, fs.realpath@1.0.0, once@1.4.0, inflight@1.0.6, minimatch@3.0.3)
+
+request@2.79.0 node_modules/request
+├── is-typedarray@1.0.0
+├── aws-sign2@0.6.0
+├── oauth-sign@0.8.2
+├── forever-agent@0.6.1
+├── tunnel-agent@0.4.3
+├── caseless@0.11.0
+├── stringstream@0.0.5
+├── isstream@0.1.2
+├── json-stringify-safe@5.0.1
+├── extend@3.0.0
+├── aws4@1.5.0
+├── uuid@3.0.1
+├── combined-stream@1.0.5 (delayed-stream@1.0.0)
+├── qs@6.3.0
+├── form-data@2.1.2 (asynckit@0.4.0)
+├── mime-types@2.1.13 (mime-db@1.25.0)
+├── tough-cookie@2.3.2 (punycode@1.4.1)
+├── har-validator@2.0.6 (pinkie-promise@2.0.1, commander@2.9.0, chalk@1.1.3, is-my-json-valid@2.15.0)
+├── hawk@3.1.3 (cryptiles@2.0.5, sntp@1.0.9, boom@2.10.1, hoek@2.16.3)
+└── http-signature@1.1.1 (assert-plus@0.2.0, jsprim@1.3.1, sshpk@1.10.1)
+
+electron@1.4.13 node_modules/electron
+├── extract-zip@1.6.0 (debug@0.7.4, mkdirp@0.5.0, yauzl@2.4.1, concat-stream@1.5.0)
+└── electron-download@3.2.0 (home-path@1.0.3, semver@5.3.0, minimist@1.2.0, rc@1.1.6, debug@2.6.0, path-exists@2.1.0, fs-extra@0.30.0, sumchecker@1.3.0, nugget@2.0.1)
+
+handlebars@3.0.3 node_modules/handlebars
+├── optimist@0.6.1 (wordwrap@0.0.3, minimist@0.0.10)
+├── source-map@0.1.43 (amdefine@1.0.1)
+└── uglify-js@2.3.6 (async@0.2.10, optimist@0.3.7)
+
+electron-packager@8.4.0 node_modules/electron-packager
+├── semver@5.3.0
+├── minimist@1.2.0
+├── run-series@1.1.4
+├── debug@2.6.0 (ms@0.7.2)
+├── sanitize-filename@1.6.1 (truncate-utf8-bytes@1.0.2)
+├── resolve@1.2.0
+├── fs-extra@1.0.0 (klaw@1.3.1, jsonfile@2.4.0, graceful-fs@4.1.11)
+├── extract-zip@1.6.0 (debug@0.7.4, mkdirp@0.5.0, yauzl@2.4.1, concat-stream@1.5.0)
+├── plist@2.0.1 (base64-js@1.1.2, xmldom@0.1.27, xmlbuilder@8.2.2)
+├── electron-download@3.2.0 (home-path@1.0.3, path-exists@2.1.0, rc@1.1.6, fs-extra@0.30.0, sumchecker@1.3.0, nugget@2.0.1)
+├── rcedit@0.7.0
+├── get-package-info@1.0.0 (lodash.get@4.4.2, read-pkg-up@2.0.0, bluebird@3.4.7)
+├── electron-osx-sign@0.4.2 (compare-version@0.1.2, isbinaryfile@3.0.2, tempfile@1.1.1, bluebird@3.4.7)
+└── asar@0.12.4 (chromium-pickle-js@0.2.0, commander@2.9.0, minimatch@3.0.3, tmp@0.0.28, glob@6.0.4, mkdirp@0.5.1, cuint@0.2.2, mksnapshot@0.3.0)
+
+cheerio@0.19.0 node_modules/cheerio
+├── dom-serializer@0.1.0 (domelementtype@1.1.3)
+├── entities@1.1.1
+├── css-select@1.0.0 (boolbase@1.0.0, css-what@1.0.0, nth-check@1.0.1, domutils@1.4.3)
+├── htmlparser2@3.8.3 (domelementtype@1.3.0, domutils@1.5.1, entities@1.0.0, domhandler@2.3.0, readable-stream@1.1.14)
+└── lodash@3.10.1
+
+eslint-plugin-flowtype@2.29.2 node_modules/eslint-plugin-flowtype
+└── lodash@4.17.4
+
+babel-plugin-transform-flow-strip-types@6.21.0 node_modules/babel-plugin-transform-flow-strip-types
+├── babel-plugin-syntax-flow@6.18.0
+└── babel-runtime@6.20.0 (regenerator-runtime@0.10.1, core-js@2.4.1)
+
+babel-cli@6.18.0 node_modules/babel-cli
+├── slash@1.0.0
+├── path-is-absolute@1.0.1
+├── fs-readdir-recursive@1.0.0
+├── convert-source-map@1.3.0
+├── v8flags@2.0.11 (user-home@1.1.1)
+├── commander@2.9.0 (graceful-readlink@1.0.1)
+├── output-file-sync@1.1.2 (object-assign@4.1.0, graceful-fs@4.1.11, mkdirp@0.5.1)
+├── babel-core@6.21.0 (babel-template@6.16.0, babel-messages@6.8.0, private@0.1.6, babel-helpers@6.16.0, json5@0.5.1, debug@2.6.0, minimatch@3.0.3, babel-code-frame@6.20.0, babylon@6.14.1, babel-types@6.21.0, babel-generator@6.21.0, babel-traverse@6.21.0)
+├── source-map@0.5.6
+├── chokidar@1.6.1 (inherits@2.0.3, async-each@1.0.1, glob-parent@2.0.0, is-binary-path@1.0.1, is-glob@2.0.1, readdirp@2.1.0, anymatch@1.3.0)
+├── lodash@4.17.4
+├── babel-register@6.18.0 (home-or-tmp@2.0.0, source-map-support@0.4.8, mkdirp@0.5.1, core-js@2.4.1)
+├── babel-polyfill@6.20.0 (regenerator-runtime@0.10.1, core-js@2.4.1)
+└── babel-runtime@6.20.0 (regenerator-runtime@0.10.1, core-js@2.4.1)
+
+eslint@3.12.2 node_modules/eslint
+├── path-is-inside@1.0.2
+├── strip-bom@3.0.0
+├── natural-compare@1.4.0
+├── imurmurhash@0.1.4
+├── strip-json-comments@1.0.4
+├── ignore@3.2.0
+├── pluralize@1.2.1
+├── progress@1.1.8
+├── globals@9.14.0
+├── estraverse@4.2.0
+├── text-table@0.2.0
+├── esutils@2.0.2
+├── is-resolvable@1.0.0 (tryit@1.0.3)
+├── user-home@2.0.0 (os-homedir@1.0.2)
+├── babel-code-frame@6.20.0 (js-tokens@2.0.0)
+├── chalk@1.1.3 (escape-string-regexp@1.0.5, supports-color@2.0.0, ansi-styles@2.2.1, strip-ansi@3.0.1, has-ansi@2.0.0)
+├── json-stable-stringify@1.0.1 (jsonify@0.0.0)
+├── debug@2.6.0 (ms@0.7.2)
+├── levn@0.3.0 (type-check@0.3.2, prelude-ls@1.1.2)
+├── require-uncached@1.0.3 (resolve-from@1.0.1, caller-path@0.1.0)
+├── doctrine@1.5.0 (isarray@1.0.0)
+├── optionator@0.8.2 (fast-levenshtein@2.0.6, type-check@0.3.2, deep-is@0.1.3, prelude-ls@1.1.2, wordwrap@1.0.0)
+├── mkdirp@0.5.1 (minimist@0.0.8)
+├── concat-stream@1.6.0 (inherits@2.0.3, typedarray@0.0.6, readable-stream@2.2.2)
+├── glob@7.1.1 (path-is-absolute@1.0.1, inherits@2.0.3, fs.realpath@1.0.0, inflight@1.0.6, once@1.4.0, minimatch@3.0.3)
+├── file-entry-cache@2.0.0 (object-assign@4.1.0, flat-cache@1.2.2)
+├── is-my-json-valid@2.15.0 (jsonpointer@4.0.1, generate-function@2.0.0, xtend@4.0.1, generate-object-property@1.2.0)
+├── inquirer@0.12.0 (strip-ansi@3.0.1, ansi-regex@2.0.0, ansi-escapes@1.4.0, through@2.3.8, figures@1.7.0, cli-width@2.1.0, cli-cursor@1.0.2, readline2@1.0.1, string-width@1.0.2, run-async@0.1.0, rx-lite@3.1.2)
+├── shelljs@0.7.5 (interpret@1.0.1, rechoir@0.6.2)
+├── js-yaml@3.7.0 (esprima@2.7.3, argparse@1.0.9)
+├── espree@3.3.2 (acorn@4.0.4, acorn-jsx@3.0.1)
+├── table@3.8.3 (slice-ansi@0.0.4, ajv-keywords@1.5.0, string-width@2.0.0, ajv@4.10.3)
+├── escope@3.6.0 (esrecurse@4.1.0, es6-weak-map@2.0.1, es6-map@0.1.4)
+└── lodash@4.17.4
+
+babel-eslint@7.1.1 node_modules/babel-eslint
+├── lodash.pickby@4.6.0
+├── babylon@6.14.1
+├── babel-code-frame@6.20.0 (js-tokens@2.0.0, esutils@2.0.2, chalk@1.1.3)
+├── babel-types@6.21.0 (to-fast-properties@1.0.2, esutils@2.0.2, lodash@4.17.4, babel-runtime@6.20.0)
+└── babel-traverse@6.21.0 (babel-messages@6.8.0, globals@9.14.0, debug@2.6.0, invariant@2.2.2, lodash@4.17.4, babel-runtime@6.20.0)
+
+electron-compile@5.1.2 node_modules/electron-compile
+├── pify@2.3.0
+├── btoa@1.1.2
+├── @paulcbetts/mime-types@2.1.10 (@paulcbetts/mime-db@1.22.4)
+├── lru-cache@4.0.2 (pseudomap@1.0.2, yallist@2.0.0)
+├── debug@2.6.0 (ms@0.7.2)
+├── mkdirp@0.5.1 (minimist@0.0.8)
+├── yargs@4.8.1 (decamelize@1.2.0, get-caller-file@1.0.2, which-module@1.0.0, set-blocking@2.0.0, y18n@3.2.1, window-size@0.2.0, require-main-filename@1.0.1, lodash.assign@4.2.0, require-directory@2.1.1, string-width@1.0.2, yargs-parser@2.4.1, cliui@3.2.0, os-locale@1.4.0, read-pkg-up@1.0.1)
+└── spawn-rx@2.0.8 (rxjs@5.0.2)
+
+babel-preset-env@1.1.5 node_modules/babel-preset-env
+├── babel-plugin-syntax-trailing-function-commas@6.20.0
+├── babel-plugin-check-es2015-constants@6.8.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-block-scoped-functions@6.8.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-arrow-functions@6.8.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-literals@6.8.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-shorthand-properties@6.18.0 (babel-types@6.21.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-typeof-symbol@6.18.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-template-literals@6.8.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-spread@6.8.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-duplicate-keys@6.8.0 (babel-types@6.21.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-for-of@6.18.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-destructuring@6.19.0 (babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-sticky-regex@6.8.0 (babel-helper-regex@6.18.0, babel-types@6.21.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-unicode-regex@6.11.0 (regexpu-core@2.0.0, babel-helper-regex@6.18.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-function-name@6.9.0 (babel-types@6.21.0, babel-helper-function-name@6.18.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-async-to-generator@6.16.0 (babel-plugin-syntax-async-functions@6.13.0, babel-helper-remap-async-to-generator@6.20.3, babel-runtime@6.20.0)
+├── babel-plugin-transform-exponentiation-operator@6.8.0 (babel-plugin-syntax-exponentiation-operator@6.13.0, babel-helper-builder-binary-assignment-operator-visitor@6.18.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-modules-amd@6.18.0 (babel-template@6.16.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-object-super@6.8.0 (babel-helper-replace-supers@6.18.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-modules-umd@6.18.0 (babel-template@6.16.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-computed-properties@6.8.0 (babel-template@6.16.0, babel-helper-define-map@6.18.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-modules-systemjs@6.19.0 (babel-template@6.16.0, babel-helper-hoist-variables@6.18.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-modules-commonjs@6.18.0 (babel-plugin-transform-strict-mode@6.18.0, babel-template@6.16.0, babel-types@6.21.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-parameters@6.21.0 (babel-helper-get-function-arity@6.18.0, babel-helper-call-delegate@6.18.0, babel-template@6.16.0, babel-types@6.21.0, babel-traverse@6.21.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-classes@6.18.0 (babel-helper-replace-supers@6.18.0, babel-helper-optimise-call-expression@6.18.0, babel-messages@6.8.0, babel-helper-function-name@6.18.0, babel-template@6.16.0, babel-helper-define-map@6.18.0, babel-types@6.21.0, babel-traverse@6.21.0, babel-runtime@6.20.0)
+├── babel-plugin-transform-es2015-block-scoping@6.21.0 (babel-types@6.21.0, babel-template@6.16.0, babel-traverse@6.21.0, lodash@4.17.4, babel-runtime@6.20.0)
+├── babel-plugin-transform-regenerator@6.21.0 (regenerator-transform@0.9.8)
+└── browserslist@1.5.1 (caniuse-db@1.0.30000604)
+
+standard@5.4.1 node_modules/standard
+├── eslint-config-standard-react@1.2.1
+├── eslint-config-standard@4.4.0
+├── eslint-plugin-standard@1.3.3
+├── eslint-plugin-react@3.16.1
+├── standard-engine@2.2.5 (get-stdin@4.0.1, find-root@0.1.2, xtend@4.0.1, minimist@1.2.0, pkg-config@1.1.1, multiline@1.0.2, defaults@1.0.3, dezalgo@1.0.3, deglob@1.1.2, eslint@1.9.0)
+└── standard-format@1.6.10 (esformatter-spaced-lined-comment@2.0.1, stdin@0.0.1, esformatter-quotes@1.1.0, minimist@1.2.0, esformatter-eol-last@1.0.0, deglob@1.1.2, esformatter-literal-notation@1.0.1, esformatter@0.8.2, esformatter-semicolon-first@1.2.0, esformatter-jsx@2.3.11)
+
+flow-bin@0.37.4 node_modules/flow-bin
+
+electron-compilers@5.2.2 node_modules/electron-compilers
+├── btoa@1.1.2
+├── @paulcbetts/mime-types@2.1.10 (@paulcbetts/mime-db@1.22.4)
+├── debug@2.6.0 (ms@0.7.2)
+├── toutsuite@0.6.0 (synchronous-promise@1.0.7)
+├── mkdirp@0.5.1 (minimist@0.0.8)
+├── @paulcbetts/typescript-simple@6.0.0
+├── nib@1.1.2
+├── coffee-script@1.12.2
+├── cson@3.0.2 (cson-parser@1.3.5, requirefresh@2.1.0, safefs@4.1.0, extract-opts@3.3.1)
+├── stylus@0.54.5 (css-parse@1.7.0, glob@7.0.6, source-map@0.1.43, sax@0.5.8)
+├── jade@1.11.0 (character-parser@1.2.1, void-elements@2.0.1, commander@2.6.0, jstransformer@0.0.2, constantinople@3.0.2, with@4.0.3, clean-css@3.4.23, transformers@2.1.0, uglify-js@2.7.5)
+├── cheerio@0.20.0 (dom-serializer@0.1.0, entities@1.1.1, css-select@1.2.0, htmlparser2@3.8.3, jsdom@7.2.2, lodash@4.17.4)
+├── less@2.7.1 (graceful-fs@4.1.11, mime@1.3.4, image-size@0.5.1, errno@0.1.4, promise@7.1.1, source-map@0.5.6)
+├── sass.js@0.10.2
+├── babel-core@6.21.0 (slash@1.0.0, path-is-absolute@1.0.1, babel-template@6.16.0, babel-messages@6.8.0, babel-helpers@6.16.0, private@0.1.6, json5@0.5.1, convert-source-map@1.3.0, minimatch@3.0.3, babel-code-frame@6.20.0, babylon@6.14.1, babel-types@6.21.0, babel-generator@6.21.0, babel-traverse@6.21.0, source-map@0.5.6, lodash@4.17.4, babel-register@6.18.0, babel-runtime@6.20.0)
+├── babel-preset-es2015@6.18.0 (babel-plugin-transform-es2015-function-name@6.9.0, babel-plugin-transform-es2015-unicode-regex@6.11.0, babel-plugin-transform-es2015-sticky-regex@6.8.0, babel-plugin-check-es2015-constants@6.8.0, babel-plugin-transform-es2015-arrow-functions@6.8.0, babel-plugin-transform-es2015-modules-amd@6.18.0, babel-plugin-transform-es2015-modules-umd@6.18.0, babel-plugin-transform-es2015-literals@6.8.0, babel-plugin-transform-es2015-spread@6.8.0, babel-plugin-transform-es2015-block-scoped-functions@6.8.0, babel-plugin-transform-es2015-duplicate-keys@6.8.0, babel-plugin-transform-es2015-typeof-symbol@6.18.0, babel-plugin-transform-es2015-object-super@6.8.0, babel-plugin-transform-es2015-shorthand-properties@6.18.0, babel-plugin-transform-es2015-for-of@6.18.0, babel-plugin-transform-es2015-template-literals@6.8.0, babel-plugin-transform-es2015-destructuring@6.19.0, babel-plugin-transform-es2015-computed-properties@6.8.0, babel-plugin-transform-es2015-modules-systemjs@6.19.0, babel-plugin-transform-es2015-modules-commonjs@6.18.0, babel-plugin-transform-es2015-block-scoping@6.21.0, babel-plugin-transform-es2015-parameters@6.21.0, babel-plugin-transform-es2015-classes@6.18.0, babel-plugin-transform-regenerator@6.21.0)
+├── @paulcbetts/vueify@9.4.3 (object-assign@4.1.0, vue-hot-reload-api@2.0.7, hash-sum@1.0.2, through@2.3.8, convert-source-map@1.3.0, lru-cache@4.0.2, chalk@1.1.3, vue-template-compiler@2.1.8, vue-template-es2015-compiler@1.4.2, source-map@0.5.6, cssnano@3.10.0)
+└── typescript@2.1.4
+
+travis_time:end:0b6b030a:start=1483576047081809478,finish=1483576301628495949,duration=254546686471[0Ktravis_fold:end:install[0Ktravis_time:start:28d7b8f8[0K$ npm test
+
+> git-it-electron@4.2.2 test /home/travis/build/jlord/git-it-electron
+> npm run test-flow && npm run test-style
+
+
+> git-it-electron@4.2.2 test-flow /home/travis/build/jlord/git-it-electron
+> flow
+
+flow is still initializing; this can take some time. [processing] -[0KLaunching Flow server for /home/travis/build/jlord/git-it-electron
+Spawned flow server (pid=2435)
+Logs will go to /tmp/flow/zShomezStraviszSbuildzSjlordzSgit-it-electron.log
+Started a new flow server: \[0Kflow is still initializing; this can take some time. [parsing] |[0Kflow is still initializing; this can take some time. [parsing] /[0Kflow is still initializing; this can take some time. [parsing] -[0Kflow is still initializing; this can take some time. [parsing] \[0Kflow is still initializing; this can take some time. [processing] |[0Kflow is still initializing; this can take some time. [local inference] /[0Kflow is still initializing; this can take some time. [local inference] -[0Kflow is still initializing; this can take some time. [local inference] \[0Kflow is still initializing; this can take some time. [local inference] |[0Kflow is still initializing; this can take some time. [local inference] /[0Kflow is still initializing; this can take some time. [local inference] -[0KNo errors!
+
+> git-it-electron@4.2.2 test-style /home/travis/build/jlord/git-it-electron
+> standard lib/*.js lib/verify/*.js menus/*.js main.js
+
+standard: Use JavaScript Standard Style (https://github.com/feross/standard) 
+  /home/travis/build/jlord/git-it-electron/lib/build-challenges.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/build-pages.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/challenge-completed.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/challenge.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/challenges-completed.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/handle-external-links.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/helpers.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/languages.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/locale.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/spawn-git.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/translate-locale.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/user-data.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/branches_arent_just_for_birds.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/commit_to_it.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/forks_and_clones.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/get_git.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/githubbin.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/its_a_small_world.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/merge_tada.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/pull_never_out_of_date.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/remote_control.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/repository.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/lib/verify/requesting_you_pull_please.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/main.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/menus/darwin-menu.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+  /home/travis/build/jlord/git-it-electron/menus/other-menu.js:0:0: /home/travis/build/jlord/git-it-electron/node_modules/babel-eslint/babylon-to-espree/toToken.js:56
+    token.value = `/${value.pattern}/${value.flags}`;
+                  ^
+Unexpected token ILLEGAL
+
+[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m Linux 4.8.12-040812-generic
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m [0m[35margv[0m "/home/travis/.nvm/versions/node/v0.12.18/bin/node" "/home/travis/.nvm/versions/node/v0.12.18/bin/npm" "run" "test-style"
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m [0m[35mnode[0m v0.12.18
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m [0m[35mnpm [0m v2.15.11
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m [0m[35mcode[0m ELIFECYCLE
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m git-it-electron@4.2.2 test-style: `standard lib/*.js lib/verify/*.js menus/*.js main.js`
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m Exit status 1
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m 
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m Failed at the git-it-electron@4.2.2 test-style script 'standard lib/*.js lib/verify/*.js menus/*.js main.js'.
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m This is most likely a problem with the git-it-electron package,
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m not with npm itself.
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m Tell the author that this fails on your system:
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m     standard lib/*.js lib/verify/*.js menus/*.js main.js
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m You can get information on how to open an issue for this project with:
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m     npm bugs git-it-electron
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m Or if that isn't available, you can get their info via:
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m 
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m     npm owner ls git-it-electron
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m There is likely additional logging output above.
+[0m
+[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m Please include the following file with any support request:
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m     /home/travis/build/jlord/git-it-electron/npm-debug.log
+[0m[37m[40mnpm[0m [0m[31m[40mERR![0m[35m[0m Test failed.  See above for more details.
+[0m
+travis_time:end:28d7b8f8:start=1483576301633213354,finish=1483576317107866548,duration=15474653194[0K
+[31;1mThe command "npm test" exited with 1.[0m
+travis_fold:start:cache.2[0Kstore build cache
+travis_time:start:00a63698[0K
+travis_time:end:00a63698:start=1483576317113040946,finish=1483576317116846701,duration=3805755[0Ktravis_time:start:04ca606c[0K[32;1mchanges detected, packing new archive[0m
+.
+.
+.
+.
+.
+.
+[32;1muploading archive[0m
+
+travis_time:end:04ca606c:start=1483576317121206759,finish=1483576356111748218,duration=38990541459[0Ktravis_fold:end:cache.2[0K
+Done. Your build exited with 1.

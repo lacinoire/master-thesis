@@ -1,1 +1,593 @@
-access denied
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: c4e3793a-1b9e-4ea4-8131-c42e10effa97@1.i-0387aa2-production-2-worker-org-ec2.travisci.net
+version: v3.6.0 https://github.com/travis-ci/worker/tree/170b2a0bb43234479fd1911ba9e4dbcc36dadfad
+instance: 775fe16 travisci/ci-amethyst:packer-1512508255-986baf0 (via amqp)
+startup: 432.618822ms
+travis_fold:end:worker_info[0Kmode of ‘/usr/local/clang-5.0.0/bin’ changed from 0777 (rwxrwxrwx) to 0775 (rwxrwxr-x)
+travis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: perl
+Build group: stable
+Build dist: trusty
+Build id: 369927984
+Job id: 369927985
+Runtime kernel version: 4.14.12-041412-generic
+travis-build version: e0f4abce4
+[34m[1mBuild image provisioning date and time[0m
+Tue Dec  5 21:48:10 UTC 2017
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 14.04.5 LTS
+Release:	14.04
+Codename:	trusty
+[34m[1mCookbooks Version[0m
+7c2c6a6 https://github.com/travis-ci/travis-cookbooks/tree/7c2c6a6
+[34m[1mgit version[0m
+git version 2.15.1
+[34m[1mbash version[0m
+GNU bash, version 4.3.11(1)-release (x86_64-pc-linux-gnu)
+[34m[1mgcc version[0m
+gcc (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4
+Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mdocker version[0m
+Client:
+ Version:      17.09.0-ce
+ API version:  1.32
+ Go version:   go1.8.3
+ Git commit:   afdb6d4
+ Built:        Tue Sep 26 22:39:28 2017
+ OS/Arch:      linux/amd64
+[34m[1mclang version[0m
+clang version 5.0.0 (tags/RELEASE_500/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/local/clang-5.0.0/bin
+[34m[1mjq version[0m
+jq-1.5
+[34m[1mbats version[0m
+Bats 0.4.0
+[34m[1mshellcheck version[0m
+0.4.6
+[34m[1mshfmt version[0m
+v2.0.0
+[34m[1mccache version[0m
+ccache version 3.1.9
+
+Copyright (C) 2002-2007 Andrew Tridgell
+Copyright (C) 2009-2011 Joel Rosdahl
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 3 of the License, or (at your option) any later
+version.
+[34m[1mcmake version[0m
+cmake version 3.9.2
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+[34m[1mheroku version[0m
+heroku-cli/6.14.39-addc925 (linux-x64) node-v9.2.0
+[34m[1mimagemagick version[0m
+Version: ImageMagick 6.7.7-10 2017-07-31 Q16 http://www.imagemagick.org
+[34m[1mmd5deep version[0m
+4.2
+[34m[1mmercurial version[0m
+Mercurial Distributed SCM (version 4.2.2)
+(see https://mercurial-scm.org for more information)
+
+Copyright (C) 2005-2017 Matt Mackall and others
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+[34m[1mmysql version[0m
+mysql  Ver 14.14 Distrib 5.6.33, for debian-linux-gnu (x86_64) using  EditLine wrapper
+[34m[1mopenssl version[0m
+OpenSSL 1.0.1f 6 Jan 2014
+[34m[1mpacker version[0m
+Packer v1.0.2
+
+Your version of Packer is out of date! The latest version
+is 1.1.2. You can update by downloading from www.packer.io
+[34m[1mpostgresql client version[0m
+psql (PostgreSQL) 9.6.6
+[34m[1mragel version[0m
+Ragel State Machine Compiler version 6.8 Feb 2013
+Copyright (c) 2001-2009 by Adrian Thurston
+[34m[1msubversion version[0m
+svn, version 1.8.8 (r1568071)
+   compiled Aug 10 2017, 17:20:39 on x86_64-pc-linux-gnu
+
+Copyright (C) 2013 The Apache Software Foundation.
+This software consists of contributions made by many people;
+see the NOTICE file for more information.
+Subversion is open source software, see http://subversion.apache.org/
+
+The following repository access (RA) modules are available:
+
+* ra_svn : Module for accessing a repository using the svn network protocol.
+  - with Cyrus SASL authentication
+  - handles 'svn' scheme
+* ra_local : Module for accessing a repository on local disk.
+  - handles 'file' scheme
+* ra_serf : Module for accessing a repository via WebDAV protocol using serf.
+  - using serf 1.3.3
+  - handles 'http' scheme
+  - handles 'https' scheme
+
+[34m[1msudo version[0m
+Sudo version 1.8.9p5
+Configure options: --prefix=/usr -v --with-all-insults --with-pam --with-fqdn --with-logging=syslog --with-logfac=authpriv --with-env-editor --with-editor=/usr/bin/editor --with-timeout=15 --with-password-timeout=0 --with-passprompt=[sudo] password for %p:  --without-lecture --with-tty-tickets --disable-root-mailer --enable-admin-flag --with-sendmail=/usr/sbin/sendmail --with-timedir=/var/lib/sudo --mandir=/usr/share/man --libexecdir=/usr/lib/sudo --with-sssd --with-sssd-lib=/usr/lib/x86_64-linux-gnu --with-selinux
+Sudoers policy plugin version 1.8.9p5
+Sudoers file grammar version 43
+
+Sudoers path: /etc/sudoers
+Authentication methods: 'pam'
+Syslog facility if syslog is being used for logging: authpriv
+Syslog priority to use when user authenticates successfully: notice
+Syslog priority to use when user authenticates unsuccessfully: alert
+Send mail if the user is not in sudoers
+Use a separate timestamp for each user/tty combo
+Lecture user the first time they run sudo
+Root may run sudo
+Allow some information gathering to give useful error messages
+Require fully-qualified hostnames in the sudoers file
+Visudo will honor the EDITOR environment variable
+Set the LOGNAME and USER environment variables
+Length at which to wrap log file lines (0 for no wrap): 80
+Authentication timestamp timeout: 15.0 minutes
+Password prompt timeout: 0.0 minutes
+Number of tries to enter a password: 3
+Umask to use or 0777 to use user's: 022
+Path to mail program: /usr/sbin/sendmail
+Flags for mail program: -t
+Address to send mail to: root
+Subject line for mail messages: *** SECURITY information for %h ***
+Incorrect password message: Sorry, try again.
+Path to authentication timestamp dir: /var/lib/sudo
+Default password prompt: [sudo] password for %p: 
+Default user to run commands as: root
+Value to override user's $PATH with: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+Path to the editor for use by visudo: /usr/bin/editor
+When to require a password for 'list' pseudocommand: any
+When to require a password for 'verify' pseudocommand: all
+File descriptors >= 3 will be closed before executing a command
+Environment variables to check for sanity:
+	TZ
+	TERM
+	LINGUAS
+	LC_*
+	LANGUAGE
+	LANG
+	COLORTERM
+Environment variables to remove:
+	RUBYOPT
+	RUBYLIB
+	PYTHONUSERBASE
+	PYTHONINSPECT
+	PYTHONPATH
+	PYTHONHOME
+	TMPPREFIX
+	ZDOTDIR
+	READNULLCMD
+	NULLCMD
+	FPATH
+	PERL5DB
+	PERL5OPT
+	PERL5LIB
+	PERLLIB
+	PERLIO_DEBUG 
+	JAVA_TOOL_OPTIONS
+	SHELLOPTS
+	GLOBIGNORE
+	PS4
+	BASH_ENV
+	ENV
+	TERMCAP
+	TERMPATH
+	TERMINFO_DIRS
+	TERMINFO
+	_RLD*
+	LD_*
+	PATH_LOCALE
+	NLSPATH
+	HOSTALIASES
+	RES_OPTIONS
+	LOCALDOMAIN
+	CDPATH
+	IFS
+Environment variables to preserve:
+	JAVA_HOME
+	TRAVIS
+	CI
+	DEBIAN_FRONTEND
+	XAUTHORIZATION
+	XAUTHORITY
+	PS2
+	PS1
+	PATH
+	LS_COLORS
+	KRB5CCNAME
+	HOSTNAME
+	HOME
+	DISPLAY
+	COLORS
+Locale to use while parsing sudoers: C
+Directory in which to store input/output logs: /var/log/sudo-io
+File in which to store the input/output log: %{seq}
+Add an entry to the utmp/utmpx file when allocating a pty
+PAM service name to use
+PAM service name to use for login shells
+Create a new PAM session for the command to run in
+Maximum I/O log sequence number: 0
+
+Local IP address and netmask pairs:
+	172.17.0.2/255.255.0.0
+
+Sudoers I/O plugin version 1.8.9p5
+[34m[1mgzip version[0m
+gzip 1.6
+Copyright (C) 2007, 2010, 2011 Free Software Foundation, Inc.
+Copyright (C) 1993 Jean-loup Gailly.
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Jean-loup Gailly.
+[34m[1mzip version[0m
+Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+This is Zip 3.0 (July 5th 2008), by Info-ZIP.
+Currently maintained by E. Gordon.  Please send bug reports to
+the authors using the web page at www.info-zip.org; see README for details.
+
+Latest sources and executables are at ftp://ftp.info-zip.org/pub/infozip,
+as of above date; see http://www.info-zip.org/ for other sites.
+
+Compiled with gcc 4.8.2 for Unix (Linux ELF) on Oct 21 2013.
+
+Zip special compilation options:
+	USE_EF_UT_TIME       (store Universal Time)
+	BZIP2_SUPPORT        (bzip2 library version 1.0.6, 6-Sept-2010)
+	    bzip2 code and library copyright (c) Julian R Seward
+	    (See the bzip2 license for terms of use)
+	SYMLINK_SUPPORT      (symbolic links supported)
+	LARGE_FILE_SUPPORT   (can read and write large files on file system)
+	ZIP64_SUPPORT        (use Zip64 to store large files in archives)
+	UNICODE_SUPPORT      (store and read UTF-8 Unicode paths)
+	STORE_UNIX_UIDs_GIDs (store UID/GID sizes/values using new extra field)
+	UIDGID_NOT_16BIT     (old Unix 16-bit UID/GID extra field not used)
+	[encryption, version 2.91 of 05 Jan 2007] (modified for Zip 3)
+
+Encryption notice:
+	The encryption code of this program is not copyrighted and is
+	put in the public domain.  It was originally written in Europe
+	and, to the best of our knowledge, can be freely distributed
+	in both source and object forms from any country, including
+	the USA under License Exception TSU of the U.S. Export
+	Administration Regulations (section 740.13(e)) of 6 June 2002.
+
+Zip environment options:
+             ZIP:  [none]
+          ZIPOPT:  [none]
+[34m[1mvim version[0m
+VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Nov 24 2016 16:43:18)
+Included patches: 1-52
+Extra patches: 8.0.0056
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by buildd@
+Huge version without GUI.  Features included (+) or not (-):
++acl             +farsi           +mouse_netterm   +syntax
++arabic          +file_in_path    +mouse_sgr       +tag_binary
++autocmd         +find_in_path    -mouse_sysmouse  +tag_old_static
+-balloon_eval    +float           +mouse_urxvt     -tag_any_white
+-browse          +folding         +mouse_xterm     -tcl
+++builtin_terms  -footer          +multi_byte      +terminfo
++byte_offset     +fork()          +multi_lang      +termresponse
++cindent         +gettext         -mzscheme        +textobjects
+-clientserver    -hangul_input    +netbeans_intg   +title
+-clipboard       +iconv           +path_extra      -toolbar
++cmdline_compl   +insert_expand   -perl            +user_commands
++cmdline_hist    +jumplist        +persistent_undo +vertsplit
++cmdline_info    +keymap          +postscript      +virtualedit
++comments        +langmap         +printer         +visual
++conceal         +libcall         +profile         +visualextra
++cryptv          +linebreak       +python          +viminfo
++cscope          +lispindent      -python3         +vreplace
++cursorbind      +listcmds        +quickfix        +wildignore
++cursorshape     +localmap        +reltime         +wildmenu
++dialog_con      -lua             +rightleft       +windows
++diff            +menu            -ruby            +writebackup
++digraphs        +mksession       +scrollbind      -X11
+-dnd             +modify_fname    +signs           -xfontset
+-ebcdic          +mouse           +smartindent     -xim
++emacs_tags      -mouseshape      -sniff           -xsmp
++eval            +mouse_dec       +startuptime     -xterm_clipboard
++ex_extra        +mouse_gpm       +statusline      -xterm_save
++extra_search    -mouse_jsbterm   -sun_workshop    -xpm
+   system vimrc file: "$VIM/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+  fall-back for $VIM: "/usr/share/vim"
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
+Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed -o vim        -lm -ltinfo -lnsl  -lselinux  -lacl -lattr -lgpm -ldl    -L/usr/lib/python2.7/config-x86_64-linux-gnu -lpython2.7 -lpthread -ldl -lutil -lm -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions      
+[34m[1miptables version[0m
+iptables v1.4.21
+[34m[1mcurl version[0m
+curl 7.35.0 (x86_64-pc-linux-gnu) libcurl/7.35.0 OpenSSL/1.0.1f zlib/1.2.8 libidn/1.28 librtmp/2.3
+[34m[1mwget version[0m
+GNU Wget 1.15 built on linux-gnu.
+[34m[1mrsync version[0m
+rsync  version 3.1.0  protocol version 31
+[34m[1mgimme version[0m
+v1.2.0
+[34m[1mnvm version[0m
+0.33.6
+[34m[1mperlbrew version[0m
+/home/travis/perl5/perlbrew/bin/perlbrew  - App::perlbrew/0.80
+[34m[1mphpenv version[0m
+rbenv 1.1.1-25-g6aa70b6
+[34m[1mrvm version[0m
+rvm 1.29.3 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+[34m[1mdefault ruby version[0m
+ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mElasticSearch version[0m
+5.5.0
+[34m[1mInstalled Firefox version[0m
+firefox 56.0.2
+[34m[1mMongoDB version[0m
+MongoDB 3.4.10
+[34m[1mPhantomJS version[0m
+2.1.1
+[34m[1mPre-installed PostgreSQL versions[0m
+9.2.24
+9.3.20
+9.4.15
+9.5.10
+9.6.6
+[34m[1mRabbitMQ Version[0m
+3.6.14
+[34m[1mRedis version[0m
+redis-server 4.0.6
+[34m[1mriak version[0m
+2.2.3
+[34m[1mkerl list installations[0m
+19.0
+18.3
+[34m[1mkiex list[0m
+
+kiex elixirs
+
+   elixir-1.2.6
+=* elixir-1.3.2
+
+# => - current
+# =* - current && default
+#  * - default
+
+[34m[1mrebar --version[0m
+rebar 2.6.4 17 20160831_145136 git 2.6.4-dirty
+[34m[1mperlbrew list[0m
+  5.22 (5.22.0)
+  5.22.0
+  5.22-extras (5.22.4)
+  5.22-shrplib (5.22.4)
+  5.22.4
+  5.24 (5.24.0)
+  5.24.0
+  5.24-extras (5.24.3)
+  5.24-shrplib (5.24.3)
+  5.24.3
+travis_fold:end:system_info[0K
+removed ‘/etc/apt/sources.list.d/basho_riak.list’
+[32;1mNetwork availability confirmed.[0m
+127.0.0.1	localhost
+::1	 ip6-localhost ip6-loopback
+fe00::0	ip6-localnet
+ff00::0	ip6-mcastprefix
+ff02::1	ip6-allnodes
+ff02::2	ip6-allrouters
+172.17.0.17	travis-job-sjdy521-mojo-webqq-369927985.travisci.net travis-job-sjdy521-mojo-webqq-369927985
+W: http://ppa.launchpad.net/couchdb/stable/ubuntu/dists/trusty/Release.gpg: Signature by key 15866BAFD9BCC4F3C1E0DFC7D69548E1C17EAB57 uses weak digest algorithm (SHA1)
+[33;1m5.10 is not installed; attempting download[0m
+[33;1mDownloading archive: https://s3.amazonaws.com/travis-perl-archives/binaries/ubuntu/14.04/x86_64/perl-5.10.tar.bz2[0m
+$ sudo tar xjf perl-5.10.tar.bz2 --directory /
+travis_fold:start:git.checkout[0Ktravis_time:start:1a0db6b8[0K$ git clone --depth=50 --branch=master https://github.com/sjdy521/Mojo-Webqq.git sjdy521/Mojo-Webqq
+Cloning into 'sjdy521/Mojo-Webqq'...
+remote: Counting objects: 513, done.[K
+remote: Compressing objects:   0% (1/294)   [Kremote: Compressing objects:   1% (3/294)   [Kremote: Compressing objects:   2% (6/294)   [Kremote: Compressing objects:   3% (9/294)   [Kremote: Compressing objects:   4% (12/294)   [Kremote: Compressing objects:   5% (15/294)   [Kremote: Compressing objects:   6% (18/294)   [Kremote: Compressing objects:   7% (21/294)   [Kremote: Compressing objects:   8% (24/294)   [Kremote: Compressing objects:   9% (27/294)   [Kremote: Compressing objects:  10% (30/294)   [Kremote: Compressing objects:  11% (33/294)   [Kremote: Compressing objects:  12% (36/294)   [Kremote: Compressing objects:  13% (39/294)   [Kremote: Compressing objects:  14% (42/294)   [Kremote: Compressing objects:  15% (45/294)   [Kremote: Compressing objects:  16% (48/294)   [Kremote: Compressing objects:  17% (50/294)   [Kremote: Compressing objects:  18% (53/294)   [Kremote: Compressing objects:  19% (56/294)   [Kremote: Compressing objects:  20% (59/294)   [Kremote: Compressing objects:  21% (62/294)   [Kremote: Compressing objects:  22% (65/294)   [Kremote: Compressing objects:  23% (68/294)   [Kremote: Compressing objects:  24% (71/294)   [Kremote: Compressing objects:  25% (74/294)   [Kremote: Compressing objects:  26% (77/294)   [Kremote: Compressing objects:  27% (80/294)   [Kremote: Compressing objects:  28% (83/294)   [Kremote: Compressing objects:  29% (86/294)   [Kremote: Compressing objects:  30% (89/294)   [Kremote: Compressing objects:  31% (92/294)   [Kremote: Compressing objects:  32% (95/294)   [Kremote: Compressing objects:  33% (98/294)   [Kremote: Compressing objects:  34% (100/294)   [Kremote: Compressing objects:  35% (103/294)   [Kremote: Compressing objects:  36% (106/294)   [Kremote: Compressing objects:  37% (109/294)   [Kremote: Compressing objects:  38% (112/294)   [Kremote: Compressing objects:  39% (115/294)   [Kremote: Compressing objects:  40% (118/294)   [Kremote: Compressing objects:  41% (121/294)   [Kremote: Compressing objects:  42% (124/294)   [Kremote: Compressing objects:  43% (127/294)   [Kremote: Compressing objects:  44% (130/294)   [Kremote: Compressing objects:  45% (133/294)   [Kremote: Compressing objects:  46% (136/294)   [Kremote: Compressing objects:  47% (139/294)   [Kremote: Compressing objects:  48% (142/294)   [Kremote: Compressing objects:  49% (145/294)   [Kremote: Compressing objects:  50% (147/294)   [Kremote: Compressing objects:  51% (150/294)   [Kremote: Compressing objects:  52% (153/294)   [Kremote: Compressing objects:  53% (156/294)   [Kremote: Compressing objects:  54% (159/294)   [Kremote: Compressing objects:  55% (162/294)   [Kremote: Compressing objects:  56% (165/294)   [Kremote: Compressing objects:  57% (168/294)   [Kremote: Compressing objects:  58% (171/294)   [Kremote: Compressing objects:  59% (174/294)   [Kremote: Compressing objects:  60% (177/294)   [Kremote: Compressing objects:  61% (180/294)   [Kremote: Compressing objects:  62% (183/294)   [Kremote: Compressing objects:  63% (186/294)   [Kremote: Compressing objects:  64% (189/294)   [Kremote: Compressing objects:  65% (192/294)   [Kremote: Compressing objects:  66% (195/294)   [Kremote: Compressing objects:  67% (197/294)   [Kremote: Compressing objects:  68% (200/294)   [Kremote: Compressing objects:  69% (203/294)   [Kremote: Compressing objects:  70% (206/294)   [Kremote: Compressing objects:  71% (209/294)   [Kremote: Compressing objects:  72% (212/294)   [Kremote: Compressing objects:  73% (215/294)   [Kremote: Compressing objects:  74% (218/294)   [Kremote: Compressing objects:  75% (221/294)   [Kremote: Compressing objects:  76% (224/294)   [Kremote: Compressing objects:  77% (227/294)   [Kremote: Compressing objects:  78% (230/294)   [Kremote: Compressing objects:  79% (233/294)   [Kremote: Compressing objects:  80% (236/294)   [Kremote: Compressing objects:  81% (239/294)   [Kremote: Compressing objects:  82% (242/294)   [Kremote: Compressing objects:  83% (245/294)   [Kremote: Compressing objects:  84% (247/294)   [Kremote: Compressing objects:  85% (250/294)   [Kremote: Compressing objects:  86% (253/294)   [Kremote: Compressing objects:  87% (256/294)   [Kremote: Compressing objects:  88% (259/294)   [Kremote: Compressing objects:  89% (262/294)   [Kremote: Compressing objects:  90% (265/294)   [Kremote: Compressing objects:  91% (268/294)   [Kremote: Compressing objects:  92% (271/294)   [Kremote: Compressing objects:  93% (274/294)   [Kremote: Compressing objects:  94% (277/294)   [Kremote: Compressing objects:  95% (280/294)   [Kremote: Compressing objects:  96% (283/294)   [Kremote: Compressing objects:  97% (286/294)   [Kremote: Compressing objects:  98% (289/294)   [Kremote: Compressing objects:  99% (292/294)   [Kremote: Compressing objects: 100% (294/294)   [Kremote: Compressing objects: 100% (294/294), done.[K
+Receiving objects:   0% (1/513)   Receiving objects:   1% (6/513)   Receiving objects:   2% (11/513)   Receiving objects:   3% (16/513)   Receiving objects:   4% (21/513)   Receiving objects:   5% (26/513)   Receiving objects:   6% (31/513)   Receiving objects:   7% (36/513)   Receiving objects:   8% (42/513)   Receiving objects:   9% (47/513)   Receiving objects:  10% (52/513)   Receiving objects:  11% (57/513)   Receiving objects:  12% (62/513)   Receiving objects:  13% (67/513)   Receiving objects:  14% (72/513)   Receiving objects:  15% (77/513)   Receiving objects:  16% (83/513)   Receiving objects:  17% (88/513)   Receiving objects:  18% (93/513)   Receiving objects:  19% (98/513)   Receiving objects:  20% (103/513)   Receiving objects:  21% (108/513)   Receiving objects:  22% (113/513)   Receiving objects:  23% (118/513)   Receiving objects:  24% (124/513)   Receiving objects:  25% (129/513)   Receiving objects:  26% (134/513)   Receiving objects:  27% (139/513)   Receiving objects:  28% (144/513)   Receiving objects:  29% (149/513)   Receiving objects:  30% (154/513)   Receiving objects:  31% (160/513)   Receiving objects:  32% (165/513)   Receiving objects:  33% (170/513)   Receiving objects:  34% (175/513)   Receiving objects:  35% (180/513)   Receiving objects:  36% (185/513)   Receiving objects:  37% (190/513)   Receiving objects:  38% (195/513)   Receiving objects:  39% (201/513)   Receiving objects:  40% (206/513)   Receiving objects:  41% (211/513)   Receiving objects:  42% (216/513)   Receiving objects:  43% (221/513)   Receiving objects:  44% (226/513)   Receiving objects:  45% (231/513)   Receiving objects:  46% (236/513)   Receiving objects:  47% (242/513)   Receiving objects:  48% (247/513)   Receiving objects:  49% (252/513)   Receiving objects:  50% (257/513)   Receiving objects:  51% (262/513)   Receiving objects:  52% (267/513)   Receiving objects:  53% (272/513)   Receiving objects:  54% (278/513)   Receiving objects:  55% (283/513)   Receiving objects:  56% (288/513)   Receiving objects:  57% (293/513)   Receiving objects:  58% (298/513)   Receiving objects:  59% (303/513)   Receiving objects:  60% (308/513)   Receiving objects:  61% (313/513)   Receiving objects:  62% (319/513)   Receiving objects:  63% (324/513)   Receiving objects:  64% (329/513)   Receiving objects:  65% (334/513)   Receiving objects:  66% (339/513)   Receiving objects:  67% (344/513)   Receiving objects:  68% (349/513)   Receiving objects:  69% (354/513)   Receiving objects:  70% (360/513)   Receiving objects:  71% (365/513)   Receiving objects:  72% (370/513)   Receiving objects:  73% (375/513)   Receiving objects:  74% (380/513)   Receiving objects:  75% (385/513)   Receiving objects:  76% (390/513)   Receiving objects:  77% (396/513)   Receiving objects:  78% (401/513)   Receiving objects:  79% (406/513)   Receiving objects:  80% (411/513)   Receiving objects:  81% (416/513)   Receiving objects:  82% (421/513)   Receiving objects:  83% (426/513)   Receiving objects:  84% (431/513)   Receiving objects:  85% (437/513)   Receiving objects:  86% (442/513)   Receiving objects:  87% (447/513)   Receiving objects:  88% (452/513)   Receiving objects:  89% (457/513)   Receiving objects:  90% (462/513)   Receiving objects:  91% (467/513)   Receiving objects:  92% (472/513)   Receiving objects:  93% (478/513)   Receiving objects:  94% (483/513)   Receiving objects:  95% (488/513)   Receiving objects:  96% (493/513)   remote: Total 513 (delta 238), reused 337 (delta 164), pack-reused 0[K
+Receiving objects:  97% (498/513)   Receiving objects:  98% (503/513)   Receiving objects:  99% (508/513)   Receiving objects: 100% (513/513)   Receiving objects: 100% (513/513), 509.11 KiB | 13.40 MiB/s, done.
+Resolving deltas:   0% (0/238)   Resolving deltas:  24% (58/238)   Resolving deltas:  25% (61/238)   Resolving deltas:  35% (84/238)   Resolving deltas:  41% (98/238)   Resolving deltas:  42% (102/238)   Resolving deltas:  44% (107/238)   Resolving deltas:  45% (108/238)   Resolving deltas:  46% (110/238)   Resolving deltas:  47% (113/238)   Resolving deltas:  49% (117/238)   Resolving deltas:  50% (120/238)   Resolving deltas:  51% (123/238)   Resolving deltas:  53% (127/238)   Resolving deltas:  61% (147/238)   Resolving deltas:  63% (150/238)   Resolving deltas:  68% (162/238)   Resolving deltas:  70% (168/238)   Resolving deltas:  71% (171/238)   Resolving deltas:  72% (172/238)   Resolving deltas:  73% (174/238)   Resolving deltas:  74% (177/238)   Resolving deltas:  75% (179/238)   Resolving deltas:  76% (181/238)   Resolving deltas:  77% (184/238)   Resolving deltas:  79% (190/238)   Resolving deltas:  80% (191/238)   Resolving deltas:  81% (193/238)   Resolving deltas:  82% (196/238)   Resolving deltas:  84% (200/238)   Resolving deltas:  85% (203/238)   Resolving deltas:  86% (205/238)   Resolving deltas:  87% (208/238)   Resolving deltas:  89% (213/238)   Resolving deltas:  90% (215/238)   Resolving deltas:  91% (218/238)   Resolving deltas:  92% (220/238)   Resolving deltas:  94% (225/238)   Resolving deltas:  95% (228/238)   Resolving deltas:  96% (229/238)   Resolving deltas:  97% (231/238)   Resolving deltas:  98% (234/238)   Resolving deltas: 100% (238/238)   Resolving deltas: 100% (238/238), done.
+
+travis_time:end:1a0db6b8:start=1524455231655343218,finish=1524455232155206069,duration=499862851[0K$ cd sjdy521/Mojo-Webqq
+$ git checkout -qf 56dc99e3faa1786c24e19ee16f1455ecd3125546
+travis_fold:end:git.checkout[0Ktravis_time:start:01a031ae[0K$ perlbrew use 5.10
+
+travis_time:end:01a031ae:start=1524455239120635463,finish=1524455239184699103,duration=64063640[0K$ perl --version
+
+This is perl, v5.10.1 (*) built for x86_64-linux
+(with 1 registered patch, see perl -V for more detail)
+
+Copyright 1987-2009, Larry Wall
+
+Perl may be copied only under the terms of either the Artistic License or the
+GNU General Public License, which may be found in the Perl 5 source kit.
+
+Complete documentation for Perl, including FAQ lists, should be found on
+this system using "man perl" or "perldoc perl".  If you have access to the
+Internet, point your browser at http://www.perl.org/, the Perl Home Page.
+
+$ cpanm --version
+cpanm (App::cpanminus) version 1.7043 (/home/travis/perl5/perlbrew/bin/cpanm)
+perl version 5.010001 (/home/travis/perl5/perlbrew/perls/5.10/bin/perl)
+
+  %Config:
+    archname=x86_64-linux
+    installsitelib=/home/travis/perl5/perlbrew/perls/5.10/lib/site_perl/5.10.1
+    installsitebin=/home/travis/perl5/perlbrew/perls/5.10/bin
+    installman1dir=/home/travis/perl5/perlbrew/perls/5.10/man/man1
+    installman3dir=/home/travis/perl5/perlbrew/perls/5.10/man/man3
+    sitearchexp=/home/travis/perl5/perlbrew/perls/5.10/lib/site_perl/5.10.1/x86_64-linux
+    sitelibexp=/home/travis/perl5/perlbrew/perls/5.10/lib/site_perl/5.10.1
+    archlibexp=/home/travis/perl5/perlbrew/perls/5.10/lib/5.10.1/x86_64-linux
+    privlibexp=/home/travis/perl5/perlbrew/perls/5.10/lib/5.10.1
+  %ENV:
+    PERLBREW_BASHRC_VERSION=0.80
+    PERLBREW_HOME=/home/travis/.perlbrew
+    PERLBREW_MANPATH=/home/travis/perl5/perlbrew/perls/5.10/man
+    PERLBREW_PATH=/home/travis/perl5/perlbrew/bin:/home/travis/perl5/perlbrew/perls/5.10/bin
+    PERLBREW_PERL=5.10
+    PERLBREW_ROOT=/home/travis/perl5/perlbrew
+    PERLBREW_VERSION=0.80
+  @INC:
+    FatPacked::11532496=HASH(0xaff8d0)
+    /home/travis/perl5/perlbrew/perls/5.10/lib/5.10.1/x86_64-linux
+    /home/travis/perl5/perlbrew/perls/5.10/lib/5.10.1
+    /home/travis/perl5/perlbrew/perls/5.10/lib/site_perl/5.10.1/x86_64-linux
+    /home/travis/perl5/perlbrew/perls/5.10/lib/site_perl/5.10.1
+    .
+travis_fold:start:install[0Ktravis_time:start:34a43f6f[0K$ cpanm --quiet --installdeps --notest .
+Successfully installed ExtUtils-Constant-0.25 (upgraded from 0.22)
+Successfully installed Socket-2.027 (upgraded from 1.82)
+Successfully installed IO-Socket-IP-0.39
+Successfully installed Pod-Simple-3.35 (upgraded from 3.07)
+Successfully installed Time-Local-1.25 (upgraded from 1.1901)
+Successfully installed Mojolicious-7.75
+6 distributions installed
+
+travis_time:end:34a43f6f:start=1524455239338835864,finish=1524455250638164942,duration=11299329078[0Ktravis_fold:end:install[0Ktravis_time:start:099c4609[0K$ perl Makefile.PL && make test
+Generating a Unix-style Makefile
+Writing Makefile for Mojo::Webqq
+Writing MYMETA.yml and MYMETA.json
+cp lib/Mojo/Webqq/Client/Remote/_get_group_pic.pm blib/lib/Mojo/Webqq/Client/Remote/_get_group_pic.pm
+cp lib/Mojo/Webqq/Client/Remote/_relink.pm blib/lib/Mojo/Webqq/Client/Remote/_relink.pm
+cp lib/Mojo/Webqq/Log.pm blib/lib/Mojo/Webqq/Log.pm
+cp lib/Mojo/Webqq/Base.pm blib/lib/Mojo/Webqq/Base.pm
+cp lib/Mojo/Webqq/Client/Remote/_get_vfwebqq.pm blib/lib/Mojo/Webqq/Client/Remote/_get_vfwebqq.pm
+cp lib/Mojo/Webqq/Friend.pm blib/lib/Mojo/Webqq/Friend.pm
+cp lib/Mojo/Webqq/Client/Remote/_recv_message.pm blib/lib/Mojo/Webqq/Client/Remote/_recv_message.pm
+cp lib/Mojo/Webqq/Counter.pm blib/lib/Mojo/Webqq/Counter.pm
+cp lib/Mojo/Webqq/Client/Remote/_login2.pm blib/lib/Mojo/Webqq/Client/Remote/_login2.pm
+cp lib/Mojo/Webqq/Client/Remote/_get_offpic.pm blib/lib/Mojo/Webqq/Client/Remote/_get_offpic.pm
+cp lib/Mojo/Webqq/Discuss/Member.pm blib/lib/Mojo/Webqq/Discuss/Member.pm
+cp lib/Mojo/Webqq/Client/Cron.pm blib/lib/Mojo/Webqq/Client/Cron.pm
+cp lib/Mojo/Webqq/Client/Remote/_check_login.pm blib/lib/Mojo/Webqq/Client/Remote/_check_login.pm
+cp lib/Mojo/Webqq/List.pm blib/lib/Mojo/Webqq/List.pm
+cp lib/Mojo/Webqq/Discuss.pm blib/lib/Mojo/Webqq/Discuss.pm
+cp lib/Mojo/Webqq/Client/Remote/change_state.pm blib/lib/Mojo/Webqq/Client/Remote/change_state.pm
+cp lib/Mojo/Webqq/Group/Member.pm blib/lib/Mojo/Webqq/Group/Member.pm
+cp lib/Mojo/Webqq/Client/Remote/logout.pm blib/lib/Mojo/Webqq/Client/Remote/logout.pm
+cp lib/Mojo/Webqq.pm blib/lib/Mojo/Webqq.pm
+cp lib/Mojo/Webqq/Client/Remote/_get_qrlogin_pic.pm blib/lib/Mojo/Webqq/Client/Remote/_get_qrlogin_pic.pm
+cp lib/Mojo/Webqq/Client/Remote/_check_sig.pm blib/lib/Mojo/Webqq/Client/Remote/_check_sig.pm
+cp lib/Mojo/Webqq/Message.pm blib/lib/Mojo/Webqq/Message.pm
+cp lib/Mojo/Webqq/Client/Remote/_get_img_verify_code.pm blib/lib/Mojo/Webqq/Client/Remote/_get_img_verify_code.pm
+cp lib/Mojo/Webqq.pod blib/lib/Mojo/Webqq.pod
+cp lib/Mojo/Webqq/Message/Base.pm blib/lib/Mojo/Webqq/Message/Base.pm
+cp lib/Mojo/Webqq/Message/Emoji.pm blib/lib/Mojo/Webqq/Message/Emoji.pm
+cp lib/Mojo/Webqq/Controller.pm blib/lib/Mojo/Webqq/Controller.pm
+cp lib/Mojo/Webqq/Client/Remote/_login1.pm blib/lib/Mojo/Webqq/Client/Remote/_login1.pm
+cp lib/Mojo/Webqq/Client/Remote/_check_verify_code.pm blib/lib/Mojo/Webqq/Client/Remote/_check_verify_code.pm
+cp lib/Mojo/Webqq/Group.pm blib/lib/Mojo/Webqq/Group.pm
+cp lib/Mojo/Webqq/Client/Remote/_prepare_for_login.pm blib/lib/Mojo/Webqq/Client/Remote/_prepare_for_login.pm
+cp lib/Mojo/Webqq/Client/Remote/_cookie_proxy.pm blib/lib/Mojo/Webqq/Client/Remote/_cookie_proxy.pm
+cp lib/Mojo/Webqq/Client.pm blib/lib/Mojo/Webqq/Client.pm
+cp lib/Mojo/Webqq/Cache.pm blib/lib/Mojo/Webqq/Cache.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_group_info.pm blib/lib/Mojo/Webqq/Model/Remote/_get_group_info.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_group_list_info.pm blib/lib/Mojo/Webqq/Model/Remote/_get_group_list_info.pm
+cp lib/Mojo/Webqq/Message/Handle.pm blib/lib/Mojo/Webqq/Message/Handle.pm
+cp lib/Mojo/Webqq/Model/Ext.pm blib/lib/Mojo/Webqq/Model/Ext.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_discuss_list_info.pm blib/lib/Mojo/Webqq/Model/Remote/_get_discuss_list_info.pm
+cp lib/Mojo/Webqq/Message/Remote/_send_sess_message.pm blib/lib/Mojo/Webqq/Message/Remote/_send_sess_message.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_user_friends_ext.pm blib/lib/Mojo/Webqq/Model/Remote/_get_user_friends_ext.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_user_friends.pm blib/lib/Mojo/Webqq/Model/Remote/_get_user_friends.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_friend_info.pm blib/lib/Mojo/Webqq/Model/Remote/_get_friend_info.pm
+cp lib/Mojo/Webqq/Message/Face.pm blib/lib/Mojo/Webqq/Message/Face.pm
+cp lib/Mojo/Webqq/Message/Remote/_send_discuss_message.pm blib/lib/Mojo/Webqq/Message/Remote/_send_discuss_message.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_user_info.pm blib/lib/Mojo/Webqq/Model/Remote/_get_user_info.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_group_list_info_ext.pm blib/lib/Mojo/Webqq/Model/Remote/_get_group_list_info_ext.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_group_info_ext.pm blib/lib/Mojo/Webqq/Model/Remote/_get_group_info_ext.pm
+cp lib/Mojo/Webqq/Model/Remote/_invite_friend.pm blib/lib/Mojo/Webqq/Model/Remote/_invite_friend.pm
+cp lib/Mojo/Webqq/Model/Base.pm blib/lib/Mojo/Webqq/Model/Base.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_group_info_ext2.pm blib/lib/Mojo/Webqq/Model/Remote/_get_group_info_ext2.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_discuss_info.pm blib/lib/Mojo/Webqq/Model/Remote/_get_discuss_info.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_friends_state.pm blib/lib/Mojo/Webqq/Model/Remote/_get_friends_state.pm
+cp lib/Mojo/Webqq/Message/Queue.pm blib/lib/Mojo/Webqq/Message/Queue.pm
+cp lib/Mojo/Webqq/Model/Remote/_get_recent_info.pm blib/lib/Mojo/Webqq/Model/Remote/_get_recent_info.pm
+cp lib/Mojo/Webqq/Message/XMLescape.pm blib/lib/Mojo/Webqq/Message/XMLescape.pm
+cp lib/Mojo/Webqq/Model/Remote/_kick_group_member.pm blib/lib/Mojo/Webqq/Model/Remote/_kick_group_member.pm
+cp lib/Mojo/Webqq/Message/Remote/_send_group_message.pm blib/lib/Mojo/Webqq/Message/Remote/_send_group_message.pm
+cp lib/Mojo/Webqq/Model.pm blib/lib/Mojo/Webqq/Model.pm
+cp lib/Mojo/Webqq/Message/Remote/_send_friend_message.pm blib/lib/Mojo/Webqq/Message/Remote/_send_friend_message.pm
+cp lib/Mojo/Webqq/Message/Remote/_get_sess_sig.pm blib/lib/Mojo/Webqq/Message/Remote/_get_sess_sig.pm
+cp lib/Mojo/Webqq/Plugin/IRCShell.pm blib/lib/Mojo/Webqq/Plugin/IRCShell.pm
+cp lib/Mojo/Webqq/Plugin/GasPrice.pm blib/lib/Mojo/Webqq/Plugin/GasPrice.pm
+cp lib/Mojo/Webqq/Model/Remote/_set_group_member_card.pm blib/lib/Mojo/Webqq/Model/Remote/_set_group_member_card.pm
+cp lib/Mojo/Webqq/Plugin/PostQRcode.pm blib/lib/Mojo/Webqq/Plugin/PostQRcode.pm
+cp lib/Mojo/Webqq/Plugin/RikkaGCM.pm blib/lib/Mojo/Webqq/Plugin/RikkaGCM.pm
+cp lib/Mojo/Webqq/Plugin/MobileInfo.pm blib/lib/Mojo/Webqq/Plugin/MobileInfo.pm
+cp lib/Mojo/Webqq/Plugin/FuckAndroid.pm blib/lib/Mojo/Webqq/Plugin/FuckAndroid.pm
+cp lib/Mojo/Webqq/Model/Remote/get_qq_from_id.pm blib/lib/Mojo/Webqq/Model/Remote/get_qq_from_id.pm
+cp lib/Mojo/Webqq/Plugin/Perldoc.pm blib/lib/Mojo/Webqq/Plugin/Perldoc.pm
+cp lib/Mojo/Webqq/Plugin/Riddle.pm blib/lib/Mojo/Webqq/Plugin/Riddle.pm
+cp lib/Mojo/Webqq/Plugin/ProgramCode.pm blib/lib/Mojo/Webqq/Plugin/ProgramCode.pm
+cp lib/Mojo/Webqq/Plugin/Qiandao.pm blib/lib/Mojo/Webqq/Plugin/Qiandao.pm
+cp lib/Mojo/Webqq/Plugin/Pu.pm blib/lib/Mojo/Webqq/Plugin/Pu.pm
+cp lib/Mojo/Webqq/Plugin/Openqq.pm blib/lib/Mojo/Webqq/Plugin/Openqq.pm
+cp lib/Mojo/Webqq/Plugin/HwPush.pm blib/lib/Mojo/Webqq/Plugin/HwPush.pm
+cp lib/Mojo/Webqq/Plugin/Perlcode.pm blib/lib/Mojo/Webqq/Plugin/Perlcode.pm
+cp lib/Mojo/Webqq/Model/Remote/get_single_long_nick.pm blib/lib/Mojo/Webqq/Model/Remote/get_single_long_nick.pm
+cp lib/Mojo/Webqq/Plugin/GroupManage.pm blib/lib/Mojo/Webqq/Plugin/GroupManage.pm
+cp lib/Mojo/Webqq/Plugin/PostQRcodeToTelegram.pm blib/lib/Mojo/Webqq/Plugin/PostQRcodeToTelegram.pm
+cp lib/Mojo/Webqq/Plugin/IPwhere.pm blib/lib/Mojo/Webqq/Plugin/IPwhere.pm
+cp lib/Mojo/Webqq/Plugin/KnowledgeBase.pm blib/lib/Mojo/Webqq/Plugin/KnowledgeBase.pm
+cp lib/Mojo/Webqq/Plugin/GCM.pm blib/lib/Mojo/Webqq/Plugin/GCM.pm
+cp lib/Mojo/Webqq/Model/Remote/_shutup_group_member.pm blib/lib/Mojo/Webqq/Model/Remote/_shutup_group_member.pm
+cp lib/Mojo/Webqq/Plugin/FmPush.pm blib/lib/Mojo/Webqq/Plugin/FmPush.pm
+cp lib/Mojo/Webqq/Plugin/PostImgVerifycode.pm blib/lib/Mojo/Webqq/Plugin/PostImgVerifycode.pm
+cp lib/Mojo/Webqq/Plugin/LCMD.pm blib/lib/Mojo/Webqq/Plugin/LCMD.pm
+cp lib/Mojo/Webqq/Plugin.pm blib/lib/Mojo/Webqq/Plugin.pm
+cp lib/Mojo/Webqq/Model/Remote/_qiandao.pm blib/lib/Mojo/Webqq/Model/Remote/_qiandao.pm
+cp lib/Mojo/Webqq/Model/Remote/_remove_group_admin.pm blib/lib/Mojo/Webqq/Model/Remote/_remove_group_admin.pm
+cp lib/Mojo/Webqq/Plugin/FuckDaShen.pm blib/lib/Mojo/Webqq/Plugin/FuckDaShen.pm
+cp lib/Mojo/Webqq/Model/Remote/_set_group_admin.pm blib/lib/Mojo/Webqq/Model/Remote/_set_group_admin.pm
+cp lib/Mojo/Webqq/Plugin/MiPush.pm blib/lib/Mojo/Webqq/Plugin/MiPush.pm
+cp lib/Mojo/Webqq/Plugin/StockInfo.pm blib/lib/Mojo/Webqq/Plugin/StockInfo.pm
+cp lib/Mojo/Webqq/Plugin/UploadQRcode.pm blib/lib/Mojo/Webqq/Plugin/UploadQRcode.pm
+cp lib/Mojo/Webqq/Run.pm blib/lib/Mojo/Webqq/Run.pm
+cp lib/Mojo/Webqq/User.pm blib/lib/Mojo/Webqq/User.pm
+cp lib/Mojo/Webqq/Recent/Group.pm blib/lib/Mojo/Webqq/Recent/Group.pm
+cp lib/Mojo/Webqq/Server.pm blib/lib/Mojo/Webqq/Server.pm
+cp lib/Mojo/Webqq/Plugin/Translation.pm blib/lib/Mojo/Webqq/Plugin/Translation.pm
+cp lib/Mojo/Webqq/Plugin/SmartReply.pm blib/lib/Mojo/Webqq/Plugin/SmartReply.pm
+cp lib/Mojo/Webqq/Recent/Friend.pm blib/lib/Mojo/Webqq/Recent/Friend.pm
+cp lib/Mojo/Webqq/Plugin/UploadQRcode2.pm blib/lib/Mojo/Webqq/Plugin/UploadQRcode2.pm
+cp lib/Mojo/Webqq/Plugin/ShowQRcode.pm blib/lib/Mojo/Webqq/Plugin/ShowQRcode.pm
+cp lib/Mojo/Webqq/Plugin/ShowMsg.pm blib/lib/Mojo/Webqq/Plugin/ShowMsg.pm
+cp lib/Mojo/Webqq/Recent/Discuss.pm blib/lib/Mojo/Webqq/Recent/Discuss.pm
+cp lib/Mojo/Webqq/Request.pm blib/lib/Mojo/Webqq/Request.pm
+cp lib/Mojo/Webqq/Util.pm blib/lib/Mojo/Webqq/Util.pm
+cp lib/Mojo/Webqq/Plugin/ZiYue.pm blib/lib/Mojo/Webqq/Plugin/ZiYue.pm
+PERL_DL_NONLAZY=1 "/home/travis/perl5/perlbrew/perls/5.10/bin/perl" "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+t/https.t ........ Connection error: Connect timeout at t/https.t line 17.
+# Looks like your test exited with 115 before it could output anything.
+                        t/https.t ........ Dubious, test returned 115 (wstat 29440, 0x7300)
+Failed 1/1 subtests 
+t/load_module.t .. t/load_module.t .. 1/1                         t/load_module.t .. ok
+
+Test Summary Report
+-------------------
+t/https.t      (Wstat: 29440 Tests: 0 Failed: 0)
+  Non-zero exit status: 115
+  Parse errors: Bad plan.  You planned 1 tests but ran 0.
+Files=2, Tests=1, 10 wallclock secs ( 0.02 usr  0.01 sys +  0.34 cusr  0.03 csys =  0.40 CPU)
+Result: FAIL
+Failed 1/2 test programs. 0/1 subtests failed.
+make: *** [test_dynamic] Error 255
+
+travis_time:end:099c4609:start=1524455250644823752,finish=1524455261687392027,duration=11042568275[0K
+[31;1mThe command "perl Makefile.PL && make test" exited with 2.[0m
+
+Done. Your build exited with 1.

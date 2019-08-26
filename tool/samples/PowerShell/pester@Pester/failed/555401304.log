@@ -1,1 +1,1036 @@
-access denied
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: b8743d3f-4e85-481e-944c-3552a1f2df7a@1.worker-org-6bc68c5dcd-bm4dk.macstadium-prod-2
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: becd649d-a2f2-4b0c-bef7-78211e6c1d41 travis-ci-macos10.12-xcode9.1-1509557921 (via amqp)
+startup: 1m0.834709932s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: generic
+Build id: 555401304
+Job id: 555401305
+Runtime kernel version: 16.7.0
+travis-build version: 7b7f39e22
+[34m[1mBuild image provisioning date and time[0m
+Mon Nov  6 16:56:31 GMT 2017
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.12.6
+BuildVersion:	16G29
+[34m[1mDarwin Version[0m
+16.7.0
+[34m[1mGit version[0m
+git version 2.15.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin16)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.0.0 (clang-900.0.38)
+Target: x86_64-apple-darwin16.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.0.0 (clang-900.0.38)
+Target: x86_64-apple-darwin16.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.2
+[34m[1mPre-installed Node.js versions[0m
+iojs-v3.3
+iojs-v3.3.1
+v0.10.48
+v0.12.17
+v0.12.18
+v0.8.28
+v4.8.3
+v4.8.4
+v4.8.5
+v5.12.0
+v6.11.0
+v6.11.3
+v6.11.5
+v6.9.1
+[34m[1mmvn -version[0m
+Apache Maven 3.5.2 (138edd61fd100ec658bfa2d307c43b76940a5d7d; 2017-10-18T07:58:13Z)
+Maven home: /usr/local/Cellar/maven/3.5.2/libexec
+Java version: 1.8.0_112, vendor: Oracle Corporation
+Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.12.6", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+Uninstalled oclint to prevent interference with other packages.
+If you need oclint, you must explicitly install it.
+
+
+travis_fold:start:git.checkout[0Ktravis_time:start:083ad1a0[0K$ git clone --depth=50 --branch=simple-interface https://github.com/pester/Pester.git pester/Pester
+Cloning into 'pester/Pester'...
+remote: Enumerating objects: 976, done.[K
+remote: Counting objects:   0% (1/976)   [Kremote: Counting objects:   1% (10/976)   [Kremote: Counting objects:   2% (20/976)   [Kremote: Counting objects:   3% (30/976)   [Kremote: Counting objects:   4% (40/976)   [Kremote: Counting objects:   5% (49/976)   [Kremote: Counting objects:   6% (59/976)   [Kremote: Counting objects:   7% (69/976)   [Kremote: Counting objects:   8% (79/976)   [Kremote: Counting objects:   9% (88/976)   [Kremote: Counting objects:  10% (98/976)   [Kremote: Counting objects:  11% (108/976)   [Kremote: Counting objects:  12% (118/976)   [Kremote: Counting objects:  13% (127/976)   [Kremote: Counting objects:  14% (137/976)   [Kremote: Counting objects:  15% (147/976)   [Kremote: Counting objects:  16% (157/976)   [Kremote: Counting objects:  17% (166/976)   [Kremote: Counting objects:  18% (176/976)   [Kremote: Counting objects:  19% (186/976)   [Kremote: Counting objects:  20% (196/976)   [Kremote: Counting objects:  21% (205/976)   [Kremote: Counting objects:  22% (215/976)   [Kremote: Counting objects:  23% (225/976)   [Kremote: Counting objects:  24% (235/976)   [Kremote: Counting objects:  25% (244/976)   [Kremote: Counting objects:  26% (254/976)   [Kremote: Counting objects:  27% (264/976)   [Kremote: Counting objects:  28% (274/976)   [Kremote: Counting objects:  29% (284/976)   [Kremote: Counting objects:  30% (293/976)   [Kremote: Counting objects:  31% (303/976)   [Kremote: Counting objects:  32% (313/976)   [Kremote: Counting objects:  33% (323/976)   [Kremote: Counting objects:  34% (332/976)   [Kremote: Counting objects:  35% (342/976)   [Kremote: Counting objects:  36% (352/976)   [Kremote: Counting objects:  37% (362/976)   [Kremote: Counting objects:  38% (371/976)   [Kremote: Counting objects:  39% (381/976)   [Kremote: Counting objects:  40% (391/976)   [Kremote: Counting objects:  41% (401/976)   [Kremote: Counting objects:  42% (410/976)   [Kremote: Counting objects:  43% (420/976)   [Kremote: Counting objects:  44% (430/976)   [Kremote: Counting objects:  45% (440/976)   [Kremote: Counting objects:  46% (449/976)   [Kremote: Counting objects:  47% (459/976)   [Kremote: Counting objects:  48% (469/976)   [Kremote: Counting objects:  49% (479/976)   [Kremote: Counting objects:  50% (488/976)   [Kremote: Counting objects:  51% (498/976)   [Kremote: Counting objects:  52% (508/976)   [Kremote: Counting objects:  53% (518/976)   [Kremote: Counting objects:  54% (528/976)   [Kremote: Counting objects:  55% (537/976)   [Kremote: Counting objects:  56% (547/976)   [Kremote: Counting objects:  57% (557/976)   [Kremote: Counting objects:  58% (567/976)   [Kremote: Counting objects:  59% (576/976)   [Kremote: Counting objects:  60% (586/976)   [Kremote: Counting objects:  61% (596/976)   [Kremote: Counting objects:  62% (606/976)   [Kremote: Counting objects:  63% (615/976)   [Kremote: Counting objects:  64% (625/976)   [Kremote: Counting objects:  65% (635/976)   [Kremote: Counting objects:  66% (645/976)   [Kremote: Counting objects:  67% (654/976)   [Kremote: Counting objects:  68% (664/976)   [Kremote: Counting objects:  69% (674/976)   [Kremote: Counting objects:  70% (684/976)   [Kremote: Counting objects:  71% (693/976)   [Kremote: Counting objects:  72% (703/976)   [Kremote: Counting objects:  73% (713/976)   [Kremote: Counting objects:  74% (723/976)   [Kremote: Counting objects:  75% (732/976)   [Kremote: Counting objects:  76% (742/976)   [Kremote: Counting objects:  77% (752/976)   [Kremote: Counting objects:  78% (762/976)   [Kremote: Counting objects:  79% (772/976)   [Kremote: Counting objects:  80% (781/976)   [Kremote: Counting objects:  81% (791/976)   [Kremote: Counting objects:  82% (801/976)   [Kremote: Counting objects:  83% (811/976)   [Kremote: Counting objects:  84% (820/976)   [Kremote: Counting objects:  85% (830/976)   [Kremote: Counting objects:  86% (840/976)   [Kremote: Counting objects:  87% (850/976)   [Kremote: Counting objects:  88% (859/976)   [Kremote: Counting objects:  89% (869/976)   [Kremote: Counting objects:  90% (879/976)   [Kremote: Counting objects:  91% (889/976)   [Kremote: Counting objects:  92% (898/976)   [Kremote: Counting objects:  93% (908/976)   [Kremote: Counting objects:  94% (918/976)   [Kremote: Counting objects:  95% (928/976)   [Kremote: Counting objects:  96% (937/976)   [Kremote: Counting objects:  97% (947/976)   [Kremote: Counting objects:  98% (957/976)   [Kremote: Counting objects:  99% (967/976)   [Kremote: Counting objects: 100% (976/976)   [Kremote: Counting objects: 100% (976/976), done.[K
+remote: Compressing objects:   0% (1/552)   [Kremote: Compressing objects:   1% (6/552)   [Kremote: Compressing objects:   2% (12/552)   [Kremote: Compressing objects:   3% (17/552)   [Kremote: Compressing objects:   4% (23/552)   [Kremote: Compressing objects:   5% (28/552)   [Kremote: Compressing objects:   6% (34/552)   [Kremote: Compressing objects:   7% (39/552)   [Kremote: Compressing objects:   8% (45/552)   [Kremote: Compressing objects:   9% (50/552)   [Kremote: Compressing objects:  10% (56/552)   [Kremote: Compressing objects:  11% (61/552)   [Kremote: Compressing objects:  12% (67/552)   [Kremote: Compressing objects:  13% (72/552)   [Kremote: Compressing objects:  14% (78/552)   [Kremote: Compressing objects:  15% (83/552)   [Kremote: Compressing objects:  16% (89/552)   [Kremote: Compressing objects:  17% (94/552)   [Kremote: Compressing objects:  18% (100/552)   [Kremote: Compressing objects:  19% (105/552)   [Kremote: Compressing objects:  20% (111/552)   [Kremote: Compressing objects:  21% (116/552)   [Kremote: Compressing objects:  22% (122/552)   [Kremote: Compressing objects:  23% (127/552)   [Kremote: Compressing objects:  24% (133/552)   [Kremote: Compressing objects:  25% (138/552)   [Kremote: Compressing objects:  26% (144/552)   [Kremote: Compressing objects:  27% (150/552)   [Kremote: Compressing objects:  28% (155/552)   [Kremote: Compressing objects:  29% (161/552)   [Kremote: Compressing objects:  30% (166/552)   [Kremote: Compressing objects:  31% (172/552)   [Kremote: Compressing objects:  32% (177/552)   [Kremote: Compressing objects:  33% (183/552)   [Kremote: Compressing objects:  34% (188/552)   [Kremote: Compressing objects:  35% (194/552)   [Kremote: Compressing objects:  36% (199/552)   [Kremote: Compressing objects:  37% (205/552)   [Kremote: Compressing objects:  38% (210/552)   [Kremote: Compressing objects:  39% (216/552)   [Kremote: Compressing objects:  40% (221/552)   [Kremote: Compressing objects:  41% (227/552)   [Kremote: Compressing objects:  42% (232/552)   [Kremote: Compressing objects:  43% (238/552)   [Kremote: Compressing objects:  44% (243/552)   [Kremote: Compressing objects:  45% (249/552)   [Kremote: Compressing objects:  46% (254/552)   [Kremote: Compressing objects:  47% (260/552)   [Kremote: Compressing objects:  48% (265/552)   [Kremote: Compressing objects:  49% (271/552)   [Kremote: Compressing objects:  50% (276/552)   [Kremote: Compressing objects:  51% (282/552)   [Kremote: Compressing objects:  52% (288/552)   [Kremote: Compressing objects:  53% (293/552)   [Kremote: Compressing objects:  54% (299/552)   [Kremote: Compressing objects:  55% (304/552)   [Kremote: Compressing objects:  56% (310/552)   [Kremote: Compressing objects:  57% (315/552)   [Kremote: Compressing objects:  58% (321/552)   [Kremote: Compressing objects:  59% (326/552)   [Kremote: Compressing objects:  60% (332/552)   [Kremote: Compressing objects:  61% (337/552)   [Kremote: Compressing objects:  62% (343/552)   [Kremote: Compressing objects:  63% (348/552)   [Kremote: Compressing objects:  64% (354/552)   [Kremote: Compressing objects:  65% (359/552)   [Kremote: Compressing objects:  66% (365/552)   [Kremote: Compressing objects:  67% (370/552)   [Kremote: Compressing objects:  68% (376/552)   [Kremote: Compressing objects:  69% (381/552)   [Kremote: Compressing objects:  70% (387/552)   [Kremote: Compressing objects:  71% (392/552)   [Kremote: Compressing objects:  72% (398/552)   [Kremote: Compressing objects:  73% (403/552)   [Kremote: Compressing objects:  74% (409/552)   [Kremote: Compressing objects:  75% (414/552)   [Kremote: Compressing objects:  76% (420/552)   [Kremote: Compressing objects:  77% (426/552)   [Kremote: Compressing objects:  78% (431/552)   [Kremote: Compressing objects:  79% (437/552)   [Kremote: Compressing objects:  80% (442/552)   [Kremote: Compressing objects:  81% (448/552)   [Kremote: Compressing objects:  82% (453/552)   [Kremote: Compressing objects:  83% (459/552)   [Kremote: Compressing objects:  84% (464/552)   [Kremote: Compressing objects:  85% (470/552)   [Kremote: Compressing objects:  86% (475/552)   [Kremote: Compressing objects:  87% (481/552)   [Kremote: Compressing objects:  88% (486/552)   [Kremote: Compressing objects:  89% (492/552)   [Kremote: Compressing objects:  90% (497/552)   [Kremote: Compressing objects:  91% (503/552)   [Kremote: Compressing objects:  92% (508/552)   [Kremote: Compressing objects:  93% (514/552)   [Kremote: Compressing objects:  94% (519/552)   [Kremote: Compressing objects:  95% (525/552)   [Kremote: Compressing objects:  96% (530/552)   [Kremote: Compressing objects:  97% (536/552)   [Kremote: Compressing objects:  98% (541/552)   [Kremote: Compressing objects:  99% (547/552)   [Kremote: Compressing objects: 100% (552/552)   [Kremote: Compressing objects: 100% (552/552), done.[K
+Receiving objects:   0% (1/976)   Receiving objects:   1% (10/976)   Receiving objects:   2% (20/976)   Receiving objects:   3% (30/976)   Receiving objects:   4% (40/976)   Receiving objects:   5% (49/976)   Receiving objects:   6% (59/976)   Receiving objects:   7% (69/976)   Receiving objects:   8% (79/976)   Receiving objects:   9% (88/976)   Receiving objects:  10% (98/976)   Receiving objects:  11% (108/976)   Receiving objects:  12% (118/976)   Receiving objects:  13% (127/976)   Receiving objects:  14% (137/976)   Receiving objects:  15% (147/976)   Receiving objects:  16% (157/976)   Receiving objects:  17% (166/976)   Receiving objects:  18% (176/976)   Receiving objects:  19% (186/976)   Receiving objects:  20% (196/976)   Receiving objects:  21% (205/976)   Receiving objects:  22% (215/976)   Receiving objects:  23% (225/976)   Receiving objects:  24% (235/976)   Receiving objects:  25% (244/976)   Receiving objects:  26% (254/976)   Receiving objects:  27% (264/976)   Receiving objects:  28% (274/976)   Receiving objects:  29% (284/976)   Receiving objects:  30% (293/976)   Receiving objects:  31% (303/976)   Receiving objects:  32% (313/976)   Receiving objects:  33% (323/976)   Receiving objects:  34% (332/976)   Receiving objects:  35% (342/976)   Receiving objects:  36% (352/976)   Receiving objects:  37% (362/976)   Receiving objects:  38% (371/976)   Receiving objects:  39% (381/976)   Receiving objects:  40% (391/976)   Receiving objects:  41% (401/976)   Receiving objects:  42% (410/976)   Receiving objects:  43% (420/976)   Receiving objects:  44% (430/976)   Receiving objects:  45% (440/976)   Receiving objects:  46% (449/976)   Receiving objects:  47% (459/976)   Receiving objects:  48% (469/976)   Receiving objects:  49% (479/976)   Receiving objects:  50% (488/976)   Receiving objects:  51% (498/976)   Receiving objects:  52% (508/976)   Receiving objects:  53% (518/976)   Receiving objects:  54% (528/976)   Receiving objects:  55% (537/976)   Receiving objects:  56% (547/976)   Receiving objects:  57% (557/976)   Receiving objects:  58% (567/976)   Receiving objects:  59% (576/976)   Receiving objects:  60% (586/976)   Receiving objects:  61% (596/976)   Receiving objects:  62% (606/976)   Receiving objects:  63% (615/976)   Receiving objects:  64% (625/976)   Receiving objects:  65% (635/976)   Receiving objects:  66% (645/976)   Receiving objects:  67% (654/976)   Receiving objects:  68% (664/976)   Receiving objects:  69% (674/976)   Receiving objects:  70% (684/976)   Receiving objects:  71% (693/976)   Receiving objects:  72% (703/976)   Receiving objects:  73% (713/976)   Receiving objects:  74% (723/976)   Receiving objects:  75% (732/976)   Receiving objects:  76% (742/976)   Receiving objects:  77% (752/976)   Receiving objects:  78% (762/976)   Receiving objects:  79% (772/976)   Receiving objects:  80% (781/976)   Receiving objects:  81% (791/976)   Receiving objects:  82% (801/976)   Receiving objects:  83% (811/976)   Receiving objects:  84% (820/976)   Receiving objects:  85% (830/976)   Receiving objects:  86% (840/976)   Receiving objects:  87% (850/976)   Receiving objects:  88% (859/976)   Receiving objects:  89% (869/976)   Receiving objects:  90% (879/976)   remote: Total 976 (delta 579), reused 662 (delta 410), pack-reused 0[K
+Receiving objects:  91% (889/976)   Receiving objects:  92% (898/976)   Receiving objects:  93% (908/976)   Receiving objects:  94% (918/976)   Receiving objects:  95% (928/976)   Receiving objects:  96% (937/976)   Receiving objects:  97% (947/976)   Receiving objects:  98% (957/976)   Receiving objects:  99% (967/976)   Receiving objects: 100% (976/976)   Receiving objects: 100% (976/976), 4.39 MiB | 23.08 MiB/s, done.
+Resolving deltas:   0% (0/579)   Resolving deltas:  11% (67/579)   Resolving deltas:  14% (86/579)   Resolving deltas:  15% (87/579)   Resolving deltas:  19% (115/579)   Resolving deltas:  21% (122/579)   Resolving deltas:  29% (168/579)   Resolving deltas:  30% (174/579)   Resolving deltas:  31% (180/579)   Resolving deltas:  32% (189/579)   Resolving deltas:  33% (194/579)   Resolving deltas:  34% (197/579)   Resolving deltas:  35% (203/579)   Resolving deltas:  36% (209/579)   Resolving deltas:  37% (217/579)   Resolving deltas:  38% (221/579)   Resolving deltas:  39% (226/579)   Resolving deltas:  40% (232/579)   Resolving deltas:  41% (239/579)   Resolving deltas:  42% (245/579)   Resolving deltas:  43% (250/579)   Resolving deltas:  44% (256/579)   Resolving deltas:  45% (262/579)   Resolving deltas:  46% (269/579)   Resolving deltas:  49% (285/579)   Resolving deltas:  50% (291/579)   Resolving deltas:  51% (300/579)   Resolving deltas:  52% (302/579)   Resolving deltas:  53% (308/579)   Resolving deltas:  54% (314/579)   Resolving deltas:  55% (319/579)   Resolving deltas:  56% (326/579)   Resolving deltas:  62% (361/579)   Resolving deltas:  63% (369/579)   Resolving deltas:  64% (371/579)   Resolving deltas:  66% (385/579)   Resolving deltas:  67% (393/579)   Resolving deltas:  68% (394/579)   Resolving deltas:  69% (400/579)   Resolving deltas:  70% (406/579)   Resolving deltas:  71% (413/579)   Resolving deltas:  72% (418/579)   Resolving deltas:  73% (423/579)   Resolving deltas:  76% (443/579)   Resolving deltas:  77% (448/579)   Resolving deltas:  78% (453/579)   Resolving deltas:  79% (459/579)   Resolving deltas:  80% (465/579)   Resolving deltas:  82% (479/579)   Resolving deltas:  83% (485/579)   Resolving deltas:  84% (487/579)   Resolving deltas:  88% (515/579)   Resolving deltas:  89% (519/579)   Resolving deltas:  91% (531/579)   Resolving deltas:  92% (533/579)   Resolving deltas:  93% (539/579)   Resolving deltas:  96% (560/579)   Resolving deltas:  97% (564/579)   Resolving deltas:  98% (570/579)   Resolving deltas:  99% (574/579)   Resolving deltas: 100% (579/579)   Resolving deltas: 100% (579/579), done.
+travis_time:end:083ad1a0:start=1562521085583406000,finish=1562521086539549000,duration=956143000[0K$ cd pester/Pester
+$ git checkout -qf 2f6c6d279d51b38f0a30cde29a40c1e76eeeb198
+travis_fold:end:git.checkout[0K
+$ bash -c 'echo $BASH_VERSION'
+3.2.57(1)-release
+
+travis_fold:start:before_install[0Ktravis_time:start:00c186b7[0K$ brew cask install powershell
+[34m==>[0m [1mCaveats[0m
+A OpenSSL-backed libcurl is required for custom handling of certificates.
+This is rarely needed, but you can install it with
+  brew install curl --with-openssl
+See https://github.com/PowerShell/PowerShell/issues/2211
+
+[34m==>[0m [1mSatisfying dependencies[0m
+All Formula dependencies satisfied.
+[34m==>[0m [1mDownloading https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-beta.9/powershell-6.0.0-beta.9-osx.10.12-x64.pkg[0m
+[34m==>[0m [1mVerifying checksum for Cask powershell[0m
+[32m==>[0m [1mInstalling Cask powershell[0m
+[34m==>[0m [1mRunning installer for powershell; your password may be necessary.[0m
+[34m==>[0m [1mPackage installers may write to any location; options such as --appdir are ignored.[0m
+[34m==>[0m [1minstaller: Package name is powershell-6.0.0-beta.9-osx.10.12-x64[0m
+[34m==>[0m [1minstaller: Installing at base path /[0m
+[34m==>[0m [1minstaller: The install was successful.[0m
+🍺  powershell was successfully installed!
+travis_time:end:00c186b7:start=1562521086849296000,finish=1562521096804149000,duration=9954853000[0Ktravis_fold:end:before_install[0Ktravis_time:start:2d45d133[0K$ pwsh -c 'Set-StrictMode -Version Latest; $r = Get-ChildItem *.ts.ps1 -Recurse | foreach { & $_.FullName -PassThru } ; if ([bool]($r | Where-Object { $_.Failed -gt 0 })) { exit 1 }; $global:PesterDebugPreference_ShowFullErrors = $true ;Import-Module ./Pester.psd1; Invoke-Pester -ExcludeTag VersionChecks, StyleRules, Help -ExcludePath '*/demo/*' -CI'
+[?1h=[39;49m[36m[39;49m[36m| - basic mocking in RSpec Pester[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    It 'i1' {
+                        Mock f { "mock" }
+                        f
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 1 tests. 193ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 342ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 529ms (484ms|45ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - running a single mock in one It[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    It 'i1' {
+                        Mock f { "mock" }
+                        f
+                    }
+
+                    It 'i2' {
+                        f
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 24ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 85ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 76ms (56ms|21ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 11ms (3ms|8ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mock does not leak into the subsequent It[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    It 'i1' {
+                        f
+                    }
+
+                    It 'i2' {
+                        f
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 29ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 54ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 50ms (42ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 41ms (32ms|9ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mock defined in beforeall is used in every it[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    It 'i1' {
+                        f
+                        Should -Invoke f -Times 1 -Exactly
+                    }
+
+                    It 'i2' {
+                        f
+                        Should -Invoke f -Times 1 -Exactly
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 25ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 44ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 301ms (292ms|9ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 120ms (105ms|15ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mock defined in beforeall is counted independently[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    It 'i1' {
+                        f
+                        Should -Invoke f -Times 1 -Exactly
+                    }
+
+                    It 'i2' {
+                        f
+                        Should -Invoke f -Times 2 -Exactly -Scope Describe
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 23ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 115ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 76ms (69ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 82ms (75ms|7ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mock defined in before all can be counted from all tests with -Describe[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    It 'i1' {
+                        f
+                    }
+
+                    It 'i2' {
+                        f
+                    }
+
+                    AfterAll {
+                        Should -Invoke f -Times 2 -Exactly
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 28ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 44ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 41ms (34ms|7ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 36ms (29ms|7ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mock defined in before all can and counted from after all automatically counts all calls in the current block[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - taking mocks from all scopes[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    Describe 'd2' {
+                        Describe 'd3' {
+                            It 'i1' {
+                                f
+                            }
+                        }
+                    }
+
+                    AfterAll {
+                        Should -Invoke f -Times 1 -Exactly
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 1 tests. 47ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 71ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+
+[39;49m[32m[39;49m[32m  Describing d2[39;49m[39;49m
+
+[39;49m[32m[39;49m[32m    Describing d3[39;49m[39;49m
+[39;49m[32m[39;49m[32m        [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 106ms (97ms|9ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mocks defined in the parent scope can still be used[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - mock filters[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock Get-Variable { "filtered" } -ParameterFilter {
+                            $Name -eq 'PSVersionTable' -and $ValueOnly
+                        }
+
+                        Mock Get-Variable { "default" }
+                    }
+
+                    It 'makes a call to the filtered mock' {
+                        Get-Variable -Name PSVersionTable -ValueOnly | Should -Be "filtered"
+                    }
+
+                    It 'makes a call to the default mock' {
+                        Get-Variable -Name PSVersionTable | Should -Be "default"
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 47ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 64ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] makes a call to the filtered mock[39;49m[39;49m[39;49m[30m[39;49m[30m 165ms (157ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] makes a call to the default mock[39;49m[39;49m[39;49m[30m[39;49m[30m 42ms (35ms|7ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - calling filtered and default mock chooses the correct mock to call[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - named mock scopes[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function a { } }
+                Describe 'd-2' {
+                    # scope 4
+                    Describe "d-1" {
+                        # scope 3
+                        Describe 'd1' {
+                            # scope 2
+                            BeforeAll {
+                                Mock a {}
+                            }
+
+                            It 'i1' {
+                                a # call 1
+                            }
+
+                            Context "c1" {
+                                # scope 1
+                                It 'i2' {
+                                    a # call 2
+                                }
+
+                                It 'i1' {
+                                    # scope 0
+                                    Should -Invoke a -Exactly 0 -Scope 0
+                                    Should -Invoke a -Exactly 0 -Scope It
+                                    Should -Invoke a -Exactly 1 -Scope 1
+                                    Should -Invoke a -Exactly 1 -Scope Context
+                                    Should -Invoke a -Exactly 2 -Scope 2
+                                    Should -Invoke a -Exactly 2 -Scope Describe
+                                    Should -Invoke a -Exactly 2 -Scope 3
+                                    Should -Invoke a -Exactly 2 -Scope 4
+                                }
+                            }
+                        }
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 3 tests. 76ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 135ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d-2[39;49m[39;49m
+
+[39;49m[32m[39;49m[32m  Describing d-1[39;49m[39;49m
+
+[39;49m[32m[39;49m[32m    Describing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m        [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 67ms (55ms|11ms)[39;49m[39;49m
+
+[39;49m[36m[39;49m[36m      Context c1[39;49m[39;49m
+[39;49m[32m[39;49m[32m          [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 35ms (27ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m          [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 196ms (182ms|14ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 3, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - asserting in scope describe finds all mocks in the nearest describe[39;49m[39;49m
+[39;49m[32m[39;49m[32m
+passed 9, [39;49m[39;49m[39;49m[31m[39;49m[31mfailed 0, [39;49m[39;49m[39;49m[37m[39;49m[37mtotal 9[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[36m[39;49m[36m| - Write nunit test results[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - should write a successful test result[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - should write a failed test result[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - should write the test summary[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - should write the test-suite information[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - should write two test-suite elements for two describes[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - should write the environment information[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - Should validate test results against the nunit 2.5 schema[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - handles special characters in block descriptions well -!@#$%^&*()_+1234567890[];'',./"- [39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Exporting Parameterized Tests (Newer format)[39;49m[39;49m
+[?1h=[?1h=[?1h=[?1h=[39;49m[32m[39;49m[32m[+] - should write parameterized test results correctly[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Should validate test results against the nunit 2.5 schema[39;49m[39;49m
+[39;49m[32m[39;49m[32m
+passed 10, [39;49m[39;49m[39;49m[31m[39;49m[31mfailed 0, [39;49m[39;49m[39;49m[37m[39;49m[37mtotal 10[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Running generated tests[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "it${id}" { $true } -AutomationId $id
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[31m[39;49m[31mParameterBindingException: A parameter cannot be found that matches parameter name 'AutomationId'.[39;49m[39;49m
+[39;49m[31m[39;49m[31mat <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:22[39;49m[39;49m
+[39;49m[31m[39;49m[31mat New-Block, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.psm1:243[39;49m[39;49m
+[39;49m[31m[39;49m[31mERROR: - generating simple tests from foreach with external Id -> The property 'Blocks' cannot be found on this object. Verify that the property 
+exists.
+At /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:27 
+char:13
++             $result.Blocks[0].ErrorRecord | Verify-Null
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], PropertyNotFoundException
+    + FullyQualifiedErrorId : PropertyNotFoundStrict
+ 
+
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:27
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:18
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:17
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:16
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "it$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        } -AutomationId $id
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[31m[39;49m[31mParameterBindingException: A parameter cannot be found that matches parameter name 'AutomationId'.[39;49m[39;49m
+[39;49m[31m[39;49m[31mat <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:39[39;49m[39;49m
+[39;49m[31m[39;49m[31mat New-Block, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.psm1:243[39;49m[39;49m
+[39;49m[31m[39;49m[31mERROR: - generating parametrized tests from foreach with external id -> The property 'Blocks' cannot be found on this object. Verify that the property 
+exists.
+At /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:47 
+char:13
++             $result.Blocks[0].ErrorRecord | Verify-Null
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], PropertyNotFoundException
+    + FullyQualifiedErrorId : PropertyNotFoundStrict
+ 
+
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:47
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:32
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:17
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:16
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "it$id" { $true }
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 10 tests. 47ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 83ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it1[39;49m[39;49m[39;49m[30m[39;49m[30m 9ms (2ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it2[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it3[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it4[39;49m[39;49m[39;49m[30m[39;49m[30m 10ms (1ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it5[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it6[39;49m[39;49m[39;49m[30m[39;49m[30m 9ms (1ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it7[39;49m[39;49m[39;49m[30m[39;49m[30m 13ms (1ms|11ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it8[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it9[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it10[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 10, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating simple tests from foreach without external Id[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        }
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 30 tests. 114ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 168ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 10ms (3ms|7ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 10ms (1ms|9ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 11ms (1ms|10ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 10ms (3ms|7ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (1ms|13ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 8ms (1ms|7ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (2ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 11ms (1ms|10ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (2ms|6ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 30, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating parametrized tests from foreach without external id[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "first-it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        }
+
+                        It "second-it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        }
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 60 tests. 252ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 348ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (2ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 9ms (1ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (2ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 9ms (1ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 11ms (1ms|10ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 9ms (1ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 10ms (1ms|9ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 8ms (1ms|7ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 9ms (1ms|8ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 12ms (1ms|11ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 60, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating multiple parametrized tests from foreach without external id[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "first-it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        } -AutomationId $Id
+
+                        It "second-it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        } -AutomationId $id
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[31m[39;49m[31mParameterBindingException: A parameter cannot be found that matches parameter name 'AutomationId'.[39;49m[39;49m
+[39;49m[31m[39;49m[31mat <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:121[39;49m[39;49m
+[39;49m[31m[39;49m[31mat New-Block, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.psm1:243[39;49m[39;49m
+[39;49m[31m[39;49m[31mERROR: - generating multiple parametrized tests from foreach with external id -> The property 'Blocks' cannot be found on this object. Verify that the property 
+exists.
+At /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:137 
+char:13
++             $result.Blocks[0].ErrorRecord | Verify-Null
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], PropertyNotFoundException
+    + FullyQualifiedErrorId : PropertyNotFoundStrict
+ 
+
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:137
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:114
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:17
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:16
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - BeforeAll paths[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                $container.InScript = $PSScriptRoot
+                BeforeAll {
+                    $container.InBeforeAll = $PSScriptRoot
+                }
+
+                Describe "a" {
+                    It "b" {
+                        # otherwise the container would not run
+                        $true
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 1 tests. 22ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 40ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing a[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] b[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|5ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - $PSScriptRoot in BeforeAll has the same value as in the script that calls it[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Invoke-Pester parameters[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 2 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in file1.Tests.ps1.[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 22ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in file2.Tests.ps1.[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 16ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 66ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mRunning tests from 'file1.Tests.ps1'[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 12ms (2ms|10ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|5ms)[39;49m[39;49m
+[39;49m[35m[39;49m[35mRunning tests from 'file2.Tests.ps1'[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 181ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 4, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - Running without any params runs all files from the local folder -> Expected and actual values differ!
+Expected: '/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1'
+Actual  : 'file1.Tests.ps1'
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:184
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:179
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:167
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:16
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 2 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in /var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1.[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 20ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in /var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file2.Tests.ps1.[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 18ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 74ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mRunning tests from '/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1'[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[35m[39;49m[35mRunning tests from '/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file2.Tests.ps1'[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 209ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 4, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Running tests from Paths runs them[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in /var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1.[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 17ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 34ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mRunning tests from '/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1'[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 6ms (1ms|5ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 8ms (1ms|7ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[31m[39;49m[31mERROR: - Exluding full path excludes it tests from Paths runs them -> The property 'Count' cannot be found on this object. Verify that the property 
+exists.
+At /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:199 
+char:17
++                 $result.Count | Verify-Equal 1
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], PropertyNotFoundException
+    + FullyQualifiedErrorId : PropertyNotFoundStrict
+ 
+
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:199
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:196
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:167
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.RSpec.ts.ps1:16
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in /var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1.[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 19ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 32ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mRunning tests from '/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1'[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|5ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[33m[39;49m[33mSkipped: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Including tag runs just the test with that tag[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in /var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1.[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 25ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 38ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mRunning tests from '/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1'[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 10ms (1ms|9ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[33m[39;49m[33mSkipped: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Excluding tag skips the test with that tag[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in  Describe "d1" { It "i1" { $true }} .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 1 tests. 13ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 24ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 9ms (2ms|7ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Scriptblock invokes inlined test[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in /var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1.[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 53ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 97ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mRunning tests from '/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dir/file1.Tests.ps1'[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 8ms (1ms|6ms)[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 7ms (1ms|6ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Result object is output by default[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - CI generates code coverage and xml output[39;49m[39;49m
+[39;49m[32m[39;49m[32m
+passed 10, [39;49m[39;49m[39;49m[31m[39;49m[31mfailed 5, [39;49m[39;49m[39;49m[37m[39;49m[37mtotal 15[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Counting tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Passed and counts are correct for non nested blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Passed and counts are correct nested blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Passed and counts are correct on blocks that fail in setup or teardown blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Passed and counts are correct container that fails in top-level BeforeAll[39;49m[39;49m
+[39;49m[32m[39;49m[32m
+passed 4, [39;49m[39;49m[39;49m[31m[39;49m[31mfailed 0, [39;49m[39;49m[39;49m[37m[39;49m[37mtotal 4[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - tryGetProperty[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given null it returns null[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given an object that has the property it return the correct value[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - or[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a non-null value it returns it[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given null it returns the default value[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - combineNonNull[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - combines values from multiple arrays, skipping nulls and empty arrays, but keeping nulls in the arrays[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - any[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a non-null value it returns true[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given null it returns false[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given empty array it returns false[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given null in array it returns false[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given array with value it returns true[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given array with multiple values it returns true[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Basic[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a scriptblock with 1 test in it, it finds 1 test[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given scriptblock with 2 tests in it it finds 2 tests[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - block[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given 0 tests it returns block containing no tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given 0 tests it returns block containing 0 tests[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Find common setup for each test[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given block that has test setup for each test it finds it[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Finding setup for all tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Find setup to run before all tests in the block[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Finding blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Find tests in block that is explicitly specified[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Find tests in blocks that are next to each other[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Find tests in blocks that are inside of each other[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Executing tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Executes 1 test[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Executes 2 tests next to each other[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Executes 2 tests in blocks next to each other[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Executes 2 tests deeper in blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Executes container only if it contains anything that should run[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - filtering[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given null filter and a tagged test it includes it[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with tag it excludes it when it matches the exclude filter[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test without tags it includes it when it does not match exclude filter [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with tags it includes it when it does not match exclude filter [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with tag it includes it when it matches the tag filter[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test without tags it excludes it when it does not match any other filter[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test without tags it include it when it matches path filter[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with path it includes it when it matches path filter [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with path it maybes it when it does not match path filter [39;49m[39;49m
+[39;49m[36m[39;49m[36m| - discover and execute tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - discovers and executes one test[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - discovers and executes one failing test[39;49m[39;49m
+[39;49m[39;49m
+
+
+[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - re-runs failing tests[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - executing each setup & teardown on test[39;49m[39;49m
+[39;49m[39;49meach test teardown[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a test with setups and teardowns they run in correct scopes[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a test with teardown it executes the teardown right before after the test and has the variables avaliable from the test[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - executing all test and teardown[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a test with one time setup it executes the setup inside of the block and does not bleed variables to the next block[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a test with each time setup it executes the setup inside of the test and does not affect the whole block[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - setups and teardowns don't run if there are no tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - one time setups&teardowns run one time and each time setups&teardowns run for every test[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - error in one container during Run phase does not prevent the next container from running[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Skipping tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - tests can be skipped based on tags[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - blocks can be excluded based on tags[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Block teardown and setup[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - setups&teardowns run only once[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - block setups&teardowns run only when there are some tests to run in the block[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - plugins[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a plugin it is used in the run[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Plugin has access to test info[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Plugin has access to block info[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - test data[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - test can access data provided in -Data as variables[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - test can access data provided in -Data as parameters[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - test result contains data provided in -Data[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - tests do not share data[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - New-ParametrizedTest[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - New-ParameterizedTest takes data and generates as many tests as there are hashtables[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - Each parametrized test has unique id and they both successfully execute and have the correct data -> Expected and actual values differ!
+Expected: '0'
+Actual  : '1047'
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1054
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1038
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1018
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - running from files[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a path to file with tests it can execute it[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a path to multiple files with tests it can execute it[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - running parent each setups and teardowns[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - adding each test setup runs it before each test in that block and in any child blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - adding multiple each test setups runs them in parent first, child last order [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - adding each test teardown runs it after each test in that block and in any child blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - adding multiple each test teardowns runs them in child first, parent last order [39;49m[39;49m
+[39;49m[36m[39;49m[36m| - failing one time block test setups and teardowns[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - failing in onetime setup will fail the block and everything below[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - failing in onetime block teardown will fail the block[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - focus[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - focusing one test in group will run only it[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - focusing one block in group will run only tests in it[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - generating tests[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - generating tests without external id -> Expected and actual values differ!
+Expected: '2'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1399
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1385
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1384
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - generating paremetrized tests without external id -> Expected and actual values differ!
+Expected: '2'
+Actual  : '1410'
+Expected length: 1
+Actual length: 4
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1417
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1404
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1384
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - generating multiple tests from one foreach without external id -> Expected and actual values differ!
+Expected: '1'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1438
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1422
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1384
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating tests with external id[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - generating blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating blocks without external id[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating multiple blocks from one foreach without external id[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating blocks with external id[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - expandable variables in names[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - can run tests that have expandable variable in their name[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - can run tests that have expandable variable in their name that changes values between discovery and run[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - can run blocks that have expandable variable in their name[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - can run blocks that have expandable variable in their name that changes value between discovery and run[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - expanding values in names of parametrized tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - strings expand in the name[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - timing[39;49m[39;49m
+[39;49m[39;49mReported test duration 12.402[39;49m[39;49m
+[39;49m[39;49mReported test overhead 8.83[39;49m[39;49m
+[39;49m[39;49mReported test total 21.232[39;49m[39;49m
+[39;49m[39;49mReported block duration 13.017[39;49m[39;49m
+[39;49m[39;49mReported block overhead 20.111[39;49m[39;49m
+[39;49m[39;49mReported block total 33.128[39;49m[39;49m
+[39;49m[39;49mReported total duration 13.017[39;49m[39;49m
+[39;49m[39;49mReported total overhead 26.062[39;49m[39;49m
+[39;49m[39;49mReported total 50.805[39;49m[39;49m
+[39;49m[39;49mMeasured total 56.097[39;49m[39;49m
+[39;49m[39;49mTotal difference 5.292[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - total time is roughly the same as time measured externally[39;49m[39;49m
+[39;49m[39;49mReported test duration 0[39;49m[39;49m
+[39;49m[39;49mReported test overhead 2.067[39;49m[39;49m
+[39;49m[39;49mReported test total 2.067[39;49m[39;49m
+[39;49m[39;49mReported block duration 0 ms[39;49m[39;49m
+[39;49m[39;49mReported block overhead 0 ms[39;49m[39;49m
+[39;49m[39;49mReported block total 0 ms[39;49m[39;49m
+[39;49m[39;49mReported total duration 0 ms[39;49m[39;49m
+[39;49m[39;49mReported total overhead 9.286 ms[39;49m[39;49m
+[39;49m[39;49mReported total 31.65 ms[39;49m[39;49m
+[39;49m[39;49mMeasured total 35.788 ms[39;49m[39;49m
+[39;49m[39;49mTotal difference 4.138 ms[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - total time is roughly the same as time measured externally (measured on a second test)[39;49m[39;49m
+[39;49m[39;49mTest count 100[39;49m[39;49m
+[39;49m[39;49mPer test 14 ms[39;49m[39;49m
+[39;49m[39;49mPer test without discovery 11 ms[39;49m[39;49m
+[39;49m[39;49mReported discovery duration 347.659 ms[39;49m[39;49m
+[39;49m[39;49mReported total duration 137.769 ms[39;49m[39;49m
+[39;49m[39;49mReported total overhead 917.991 ms[39;49m[39;49m
+[39;49m[39;49mReported total 1403.419 ms[39;49m[39;49m
+[39;49m[39;49mMeasured total 1421.613 ms[39;49m[39;49m
+[39;49m[39;49mTotal difference 18.194 ms[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - total time is roughly the same as time measured externally (on many tests)[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Setup and Teardown on root block[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - OneTimeTestSetup is invoked when placed in the script root[39;49m[39;49m
+[39;49m[32m[39;49m[32m
+passed 79, [39;49m[39;49m[39;49m[31m[39;49m[31mfailed 4, [39;49m[39;49m[39;49m[37m[39;49m[37mtotal 83[39;49m[39;49m
+travis_time:end:2d45d133:start=1562521096853282000,finish=1562521123062276000,duration=26208994000[0K[31;1mThe command "pwsh -c 'Set-StrictMode -Version Latest; $r = Get-ChildItem *.ts.ps1 -Recurse | foreach { & $_.FullName -PassThru } ; if ([bool]($r | Where-Object { $_.Failed -gt 0 })) { exit 1 }; $global:PesterDebugPreference_ShowFullErrors = $true ;Import-Module ./Pester.psd1; Invoke-Pester -ExcludeTag VersionChecks, StyleRules, Help -ExcludePath '*/demo/*' -CI'" exited with 1.[0m
+
+
+
+Done. Your build exited with 1.

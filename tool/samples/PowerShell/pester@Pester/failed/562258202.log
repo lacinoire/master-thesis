@@ -1,1 +1,1390 @@
-access denied
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 8700fc53-3302-489d-bc38-72532296dad8@1.worker-org-6bc68c5dcd-bm4dk.macstadium-prod-2
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: e7386ef0-423b-40ff-bf80-76b6c96aa0f5 travis-ci-macos10.12-xcode9.1-1509557921 (via amqp)
+startup: 1m46.955664668s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: generic
+Build id: 562258202
+Job id: 562258203
+Runtime kernel version: 16.7.0
+travis-build version: 24c88d12b
+[34m[1mBuild image provisioning date and time[0m
+Mon Nov  6 16:56:31 GMT 2017
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.12.6
+BuildVersion:	16G29
+[34m[1mDarwin Version[0m
+16.7.0
+[34m[1mGit version[0m
+git version 2.15.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin16)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.0.0 (clang-900.0.38)
+Target: x86_64-apple-darwin16.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.0.0 (clang-900.0.38)
+Target: x86_64-apple-darwin16.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.2
+[34m[1mPre-installed Node.js versions[0m
+iojs-v3.3
+iojs-v3.3.1
+v0.10.48
+v0.12.17
+v0.12.18
+v0.8.28
+v4.8.3
+v4.8.4
+v4.8.5
+v5.12.0
+v6.11.0
+v6.11.3
+v6.11.5
+v6.9.1
+[34m[1mmvn -version[0m
+Apache Maven 3.5.2 (138edd61fd100ec658bfa2d307c43b76940a5d7d; 2017-10-18T07:58:13Z)
+Maven home: /usr/local/Cellar/maven/3.5.2/libexec
+Java version: 1.8.0_112, vendor: Oracle Corporation
+Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.12.6", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+Uninstalled oclint to prevent interference with other packages.
+If you need oclint, you must explicitly install it.
+
+
+travis_fold:start:git.checkout[0Ktravis_time:start:2b55db65[0K$ git clone --depth=50 https://github.com/pester/Pester.git pester/Pester
+Cloning into 'pester/Pester'...
+remote: Enumerating objects: 677, done.[K
+remote: Counting objects:   0% (1/677)   [Kremote: Counting objects:   1% (7/677)   [Kremote: Counting objects:   2% (14/677)   [Kremote: Counting objects:   3% (21/677)   [Kremote: Counting objects:   4% (28/677)   [Kremote: Counting objects:   5% (34/677)   [Kremote: Counting objects:   6% (41/677)   [Kremote: Counting objects:   7% (48/677)   [Kremote: Counting objects:   8% (55/677)   [Kremote: Counting objects:   9% (61/677)   [Kremote: Counting objects:  10% (68/677)   [Kremote: Counting objects:  11% (75/677)   [Kremote: Counting objects:  12% (82/677)   [Kremote: Counting objects:  13% (89/677)   [Kremote: Counting objects:  14% (95/677)   [Kremote: Counting objects:  15% (102/677)   [Kremote: Counting objects:  16% (109/677)   [Kremote: Counting objects:  17% (116/677)   [Kremote: Counting objects:  18% (122/677)   [Kremote: Counting objects:  19% (129/677)   [Kremote: Counting objects:  20% (136/677)   [Kremote: Counting objects:  21% (143/677)   [Kremote: Counting objects:  22% (149/677)   [Kremote: Counting objects:  23% (156/677)   [Kremote: Counting objects:  24% (163/677)   [Kremote: Counting objects:  25% (170/677)   [Kremote: Counting objects:  26% (177/677)   [Kremote: Counting objects:  27% (183/677)   [Kremote: Counting objects:  28% (190/677)   [Kremote: Counting objects:  29% (197/677)   [Kremote: Counting objects:  30% (204/677)   [Kremote: Counting objects:  31% (210/677)   [Kremote: Counting objects:  32% (217/677)   [Kremote: Counting objects:  33% (224/677)   [Kremote: Counting objects:  34% (231/677)   [Kremote: Counting objects:  35% (237/677)   [Kremote: Counting objects:  36% (244/677)   [Kremote: Counting objects:  37% (251/677)   [Kremote: Counting objects:  38% (258/677)   [Kremote: Counting objects:  39% (265/677)   [Kremote: Counting objects:  40% (271/677)   [Kremote: Counting objects:  41% (278/677)   [Kremote: Counting objects:  42% (285/677)   [Kremote: Counting objects:  43% (292/677)   [Kremote: Counting objects:  44% (298/677)   [Kremote: Counting objects:  45% (305/677)   [Kremote: Counting objects:  46% (312/677)   [Kremote: Counting objects:  47% (319/677)   [Kremote: Counting objects:  48% (325/677)   [Kremote: Counting objects:  49% (332/677)   [Kremote: Counting objects:  50% (339/677)   [Kremote: Counting objects:  51% (346/677)   [Kremote: Counting objects:  52% (353/677)   [Kremote: Counting objects:  53% (359/677)   [Kremote: Counting objects:  54% (366/677)   [Kremote: Counting objects:  55% (373/677)   [Kremote: Counting objects:  56% (380/677)   [Kremote: Counting objects:  57% (386/677)   [Kremote: Counting objects:  58% (393/677)   [Kremote: Counting objects:  59% (400/677)   [Kremote: Counting objects:  60% (407/677)   [Kremote: Counting objects:  61% (413/677)   [Kremote: Counting objects:  62% (420/677)   [Kremote: Counting objects:  63% (427/677)   [Kremote: Counting objects:  64% (434/677)   [Kremote: Counting objects:  65% (441/677)   [Kremote: Counting objects:  66% (447/677)   [Kremote: Counting objects:  67% (454/677)   [Kremote: Counting objects:  68% (461/677)   [Kremote: Counting objects:  69% (468/677)   [Kremote: Counting objects:  70% (474/677)   [Kremote: Counting objects:  71% (481/677)   [Kremote: Counting objects:  72% (488/677)   [Kremote: Counting objects:  73% (495/677)   [Kremote: Counting objects:  74% (501/677)   [Kremote: Counting objects:  75% (508/677)   [Kremote: Counting objects:  76% (515/677)   [Kremote: Counting objects:  77% (522/677)   [Kremote: Counting objects:  78% (529/677)   [Kremote: Counting objects:  79% (535/677)   [Kremote: Counting objects:  80% (542/677)   [Kremote: Counting objects:  81% (549/677)   [Kremote: Counting objects:  82% (556/677)   [Kremote: Counting objects:  83% (562/677)   [Kremote: Counting objects:  84% (569/677)   [Kremote: Counting objects:  85% (576/677)   [Kremote: Counting objects:  86% (583/677)   [Kremote: Counting objects:  87% (589/677)   [Kremote: Counting objects:  88% (596/677)   [Kremote: Counting objects:  89% (603/677)   [Kremote: Counting objects:  90% (610/677)   [Kremote: Counting objects:  91% (617/677)   [Kremote: Counting objects:  92% (623/677)   [Kremote: Counting objects:  93% (630/677)   [Kremote: Counting objects:  94% (637/677)   [Kremote: Counting objects:  95% (644/677)   [Kremote: Counting objects:  96% (650/677)   [Kremote: Counting objects:  97% (657/677)   [Kremote: Counting objects:  98% (664/677)   [Kremote: Counting objects:  99% (671/677)   [Kremote: Counting objects: 100% (677/677)   [Kremote: Counting objects: 100% (677/677), done.[K
+remote: Compressing objects:   0% (1/370)   [Kremote: Compressing objects:   1% (4/370)   [Kremote: Compressing objects:   2% (8/370)   [Kremote: Compressing objects:   3% (12/370)   [Kremote: Compressing objects:   4% (15/370)   [Kremote: Compressing objects:   5% (19/370)   [Kremote: Compressing objects:   6% (23/370)   [Kremote: Compressing objects:   7% (26/370)   [Kremote: Compressing objects:   8% (30/370)   [Kremote: Compressing objects:   9% (34/370)   [Kremote: Compressing objects:  10% (37/370)   [Kremote: Compressing objects:  11% (41/370)   [Kremote: Compressing objects:  12% (45/370)   [Kremote: Compressing objects:  13% (49/370)   [Kremote: Compressing objects:  14% (52/370)   [Kremote: Compressing objects:  15% (56/370)   [Kremote: Compressing objects:  16% (60/370)   [Kremote: Compressing objects:  17% (63/370)   [Kremote: Compressing objects:  18% (67/370)   [Kremote: Compressing objects:  19% (71/370)   [Kremote: Compressing objects:  20% (74/370)   [Kremote: Compressing objects:  21% (78/370)   [Kremote: Compressing objects:  22% (82/370)   [Kremote: Compressing objects:  23% (86/370)   [Kremote: Compressing objects:  24% (89/370)   [Kremote: Compressing objects:  25% (93/370)   [Kremote: Compressing objects:  26% (97/370)   [Kremote: Compressing objects:  27% (100/370)   [Kremote: Compressing objects:  28% (104/370)   [Kremote: Compressing objects:  29% (108/370)   [Kremote: Compressing objects:  30% (111/370)   [Kremote: Compressing objects:  31% (115/370)   [Kremote: Compressing objects:  32% (119/370)   [Kremote: Compressing objects:  33% (123/370)   [Kremote: Compressing objects:  34% (126/370)   [Kremote: Compressing objects:  35% (130/370)   [Kremote: Compressing objects:  36% (134/370)   [Kremote: Compressing objects:  37% (137/370)   [Kremote: Compressing objects:  38% (141/370)   [Kremote: Compressing objects:  39% (145/370)   [Kremote: Compressing objects:  40% (148/370)   [Kremote: Compressing objects:  41% (152/370)   [Kremote: Compressing objects:  42% (156/370)   [Kremote: Compressing objects:  43% (160/370)   [Kremote: Compressing objects:  44% (163/370)   [Kremote: Compressing objects:  45% (167/370)   [Kremote: Compressing objects:  46% (171/370)   [Kremote: Compressing objects:  47% (174/370)   [Kremote: Compressing objects:  48% (178/370)   [Kremote: Compressing objects:  49% (182/370)   [Kremote: Compressing objects:  50% (185/370)   [Kremote: Compressing objects:  51% (189/370)   [Kremote: Compressing objects:  52% (193/370)   [Kremote: Compressing objects:  53% (197/370)   [Kremote: Compressing objects:  54% (200/370)   [Kremote: Compressing objects:  55% (204/370)   [Kremote: Compressing objects:  56% (208/370)   [Kremote: Compressing objects:  57% (211/370)   [Kremote: Compressing objects:  58% (215/370)   [Kremote: Compressing objects:  59% (219/370)   [Kremote: Compressing objects:  60% (222/370)   [Kremote: Compressing objects:  61% (226/370)   [Kremote: Compressing objects:  62% (230/370)   [Kremote: Compressing objects:  63% (234/370)   [Kremote: Compressing objects:  64% (237/370)   [Kremote: Compressing objects:  65% (241/370)   [Kremote: Compressing objects:  66% (245/370)   [Kremote: Compressing objects:  67% (248/370)   [Kremote: Compressing objects:  68% (252/370)   [Kremote: Compressing objects:  69% (256/370)   [Kremote: Compressing objects:  70% (259/370)   [Kremote: Compressing objects:  71% (263/370)   [Kremote: Compressing objects:  72% (267/370)   [Kremote: Compressing objects:  73% (271/370)   [Kremote: Compressing objects:  74% (274/370)   [Kremote: Compressing objects:  75% (278/370)   [Kremote: Compressing objects:  76% (282/370)   [Kremote: Compressing objects:  77% (285/370)   [Kremote: Compressing objects:  78% (289/370)   [Kremote: Compressing objects:  79% (293/370)   [Kremote: Compressing objects:  80% (296/370)   [Kremote: Compressing objects:  81% (300/370)   [Kremote: Compressing objects:  82% (304/370)   [Kremote: Compressing objects:  83% (308/370)   [Kremote: Compressing objects:  84% (311/370)   [Kremote: Compressing objects:  85% (315/370)   [Kremote: Compressing objects:  86% (319/370)   [Kremote: Compressing objects:  87% (322/370)   [Kremote: Compressing objects:  88% (326/370)   [Kremote: Compressing objects:  89% (330/370)   [Kremote: Compressing objects:  90% (333/370)   [Kremote: Compressing objects:  91% (337/370)   [Kremote: Compressing objects:  92% (341/370)   [Kremote: Compressing objects:  93% (345/370)   [Kremote: Compressing objects:  94% (348/370)   [Kremote: Compressing objects:  95% (352/370)   [Kremote: Compressing objects:  96% (356/370)   [Kremote: Compressing objects:  97% (359/370)   [Kremote: Compressing objects:  98% (363/370)   [Kremote: Compressing objects:  99% (367/370)   [Kremote: Compressing objects: 100% (370/370)   [Kremote: Compressing objects: 100% (370/370), done.[K
+Receiving objects:   0% (1/677)   Receiving objects:   1% (7/677)   Receiving objects:   2% (14/677)   Receiving objects:   3% (21/677)   Receiving objects:   4% (28/677)   Receiving objects:   5% (34/677)   Receiving objects:   6% (41/677)   Receiving objects:   7% (48/677)   Receiving objects:   8% (55/677)   Receiving objects:   9% (61/677)   Receiving objects:  10% (68/677)   Receiving objects:  11% (75/677)   Receiving objects:  12% (82/677)   Receiving objects:  13% (89/677)   Receiving objects:  14% (95/677)   Receiving objects:  15% (102/677)   Receiving objects:  16% (109/677)   Receiving objects:  17% (116/677)   Receiving objects:  18% (122/677)   Receiving objects:  19% (129/677)   Receiving objects:  20% (136/677)   Receiving objects:  21% (143/677)   Receiving objects:  22% (149/677)   Receiving objects:  23% (156/677)   Receiving objects:  24% (163/677)   Receiving objects:  25% (170/677)   Receiving objects:  26% (177/677)   Receiving objects:  27% (183/677)   Receiving objects:  28% (190/677)   Receiving objects:  29% (197/677)   Receiving objects:  30% (204/677)   Receiving objects:  31% (210/677)   Receiving objects:  32% (217/677)   Receiving objects:  33% (224/677)   Receiving objects:  34% (231/677)   Receiving objects:  35% (237/677)   Receiving objects:  36% (244/677)   Receiving objects:  37% (251/677)   Receiving objects:  38% (258/677)   Receiving objects:  39% (265/677)   Receiving objects:  40% (271/677)   Receiving objects:  41% (278/677)   Receiving objects:  42% (285/677)   Receiving objects:  43% (292/677)   Receiving objects:  44% (298/677)   Receiving objects:  45% (305/677)   Receiving objects:  46% (312/677)   Receiving objects:  47% (319/677)   Receiving objects:  48% (325/677)   Receiving objects:  49% (332/677)   Receiving objects:  50% (339/677)   Receiving objects:  51% (346/677)   Receiving objects:  52% (353/677)   Receiving objects:  53% (359/677)   Receiving objects:  54% (366/677)   Receiving objects:  55% (373/677)   Receiving objects:  56% (380/677)   Receiving objects:  57% (386/677)   Receiving objects:  58% (393/677)   Receiving objects:  59% (400/677)   Receiving objects:  60% (407/677)   Receiving objects:  61% (413/677)   Receiving objects:  62% (420/677)   Receiving objects:  63% (427/677)   Receiving objects:  64% (434/677)   Receiving objects:  65% (441/677)   Receiving objects:  66% (447/677)   Receiving objects:  67% (454/677)   Receiving objects:  68% (461/677)   Receiving objects:  69% (468/677)   Receiving objects:  70% (474/677)   Receiving objects:  71% (481/677)   Receiving objects:  72% (488/677)   Receiving objects:  73% (495/677)   Receiving objects:  74% (501/677)   Receiving objects:  75% (508/677)   Receiving objects:  76% (515/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  77% (522/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  78% (529/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  79% (535/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  80% (542/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  81% (549/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  82% (556/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  83% (562/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  84% (569/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  85% (576/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  86% (583/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  87% (589/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  88% (596/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  89% (603/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  90% (610/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  91% (617/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  92% (623/677), 2.16 MiB | 4.32 MiB/s   remote: Total 677 (delta 372), reused 491 (delta 298), pack-reused 0[K
+Receiving objects:  93% (630/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  94% (637/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  95% (644/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  96% (650/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  97% (657/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  98% (664/677), 2.16 MiB | 4.32 MiB/s   Receiving objects:  99% (671/677), 2.16 MiB | 4.32 MiB/s   Receiving objects: 100% (677/677), 2.16 MiB | 4.32 MiB/s   Receiving objects: 100% (677/677), 4.21 MiB | 6.15 MiB/s, done.
+Resolving deltas:   0% (0/372)   Resolving deltas:  22% (82/372)   Resolving deltas:  24% (91/372)   Resolving deltas:  25% (93/372)   Resolving deltas:  26% (97/372)   Resolving deltas:  27% (101/372)   Resolving deltas:  29% (109/372)   Resolving deltas:  31% (118/372)   Resolving deltas:  32% (120/372)   Resolving deltas:  33% (123/372)   Resolving deltas:  34% (127/372)   Resolving deltas:  35% (132/372)   Resolving deltas:  37% (139/372)   Resolving deltas:  38% (142/372)   Resolving deltas:  39% (148/372)   Resolving deltas:  40% (150/372)   Resolving deltas:  41% (153/372)   Resolving deltas:  42% (157/372)   Resolving deltas:  43% (161/372)   Resolving deltas:  44% (165/372)   Resolving deltas:  45% (168/372)   Resolving deltas:  46% (172/372)   Resolving deltas:  47% (176/372)   Resolving deltas:  48% (179/372)   Resolving deltas:  50% (186/372)   Resolving deltas:  51% (193/372)   Resolving deltas:  52% (197/372)   Resolving deltas:  53% (198/372)   Resolving deltas:  54% (201/372)   Resolving deltas:  55% (205/372)   Resolving deltas:  56% (209/372)   Resolving deltas:  57% (213/372)   Resolving deltas:  58% (216/372)   Resolving deltas:  59% (222/372)   Resolving deltas:  65% (242/372)   Resolving deltas:  66% (246/372)   Resolving deltas:  68% (256/372)   Resolving deltas:  69% (259/372)   Resolving deltas:  70% (261/372)   Resolving deltas:  71% (265/372)   Resolving deltas:  72% (269/372)   Resolving deltas:  73% (274/372)   Resolving deltas:  74% (277/372)   Resolving deltas:  75% (279/372)   Resolving deltas:  76% (286/372)   Resolving deltas:  79% (296/372)   Resolving deltas:  80% (299/372)   Resolving deltas:  89% (333/372)   Resolving deltas:  90% (336/372)   Resolving deltas:  91% (340/372)   Resolving deltas:  92% (343/372)   Resolving deltas:  93% (347/372)   Resolving deltas:  94% (350/372)   Resolving deltas:  95% (354/372)   Resolving deltas:  96% (358/372)   Resolving deltas:  97% (362/372)   Resolving deltas:  98% (365/372)   Resolving deltas:  99% (369/372)   Resolving deltas: 100% (372/372)   Resolving deltas: 100% (372/372), done.
+travis_time:end:2b55db65:start=1563825214976383000,finish=1563825218575680000,duration=3599297000[0K$ cd pester/Pester
+travis_time:start:28f43109[0K$ git fetch origin +refs/pull/1335/merge:
+remote: Enumerating objects: 1874, done.[K
+remote: Counting objects:   0% (1/1072)   [Kremote: Counting objects:   1% (11/1072)   [Kremote: Counting objects:   2% (22/1072)   [Kremote: Counting objects:   3% (33/1072)   [Kremote: Counting objects:   4% (43/1072)   [Kremote: Counting objects:   5% (54/1072)   [Kremote: Counting objects:   6% (65/1072)   [Kremote: Counting objects:   7% (76/1072)   [Kremote: Counting objects:   8% (86/1072)   [Kremote: Counting objects:   9% (97/1072)   [Kremote: Counting objects:  10% (108/1072)   [Kremote: Counting objects:  11% (118/1072)   [Kremote: Counting objects:  12% (129/1072)   [Kremote: Counting objects:  13% (140/1072)   [Kremote: Counting objects:  14% (151/1072)   [Kremote: Counting objects:  15% (161/1072)   [Kremote: Counting objects:  16% (172/1072)   [Kremote: Counting objects:  17% (183/1072)   [Kremote: Counting objects:  18% (193/1072)   [Kremote: Counting objects:  19% (204/1072)   [Kremote: Counting objects:  20% (215/1072)   [Kremote: Counting objects:  21% (226/1072)   [Kremote: Counting objects:  22% (236/1072)   [Kremote: Counting objects:  23% (247/1072)   [Kremote: Counting objects:  24% (258/1072)   [Kremote: Counting objects:  25% (268/1072)   [Kremote: Counting objects:  26% (279/1072)   [Kremote: Counting objects:  27% (290/1072)   [Kremote: Counting objects:  28% (301/1072)   [Kremote: Counting objects:  29% (311/1072)   [Kremote: Counting objects:  30% (322/1072)   [Kremote: Counting objects:  31% (333/1072)   [Kremote: Counting objects:  32% (344/1072)   [Kremote: Counting objects:  33% (354/1072)   [Kremote: Counting objects:  34% (365/1072)   [Kremote: Counting objects:  35% (376/1072)   [Kremote: Counting objects:  36% (386/1072)   [Kremote: Counting objects:  37% (397/1072)   [Kremote: Counting objects:  38% (408/1072)   [Kremote: Counting objects:  39% (419/1072)   [Kremote: Counting objects:  40% (429/1072)   [Kremote: Counting objects:  41% (440/1072)   [Kremote: Counting objects:  42% (451/1072)   [Kremote: Counting objects:  43% (461/1072)   [Kremote: Counting objects:  44% (472/1072)   [Kremote: Counting objects:  45% (483/1072)   [Kremote: Counting objects:  46% (494/1072)   [Kremote: Counting objects:  47% (504/1072)   [Kremote: Counting objects:  48% (515/1072)   [Kremote: Counting objects:  49% (526/1072)   [Kremote: Counting objects:  50% (536/1072)   [Kremote: Counting objects:  51% (547/1072)   [Kremote: Counting objects:  52% (558/1072)   [Kremote: Counting objects:  53% (569/1072)   [Kremote: Counting objects:  54% (579/1072)   [Kremote: Counting objects:  55% (590/1072)   [Kremote: Counting objects:  56% (601/1072)   [Kremote: Counting objects:  57% (612/1072)   [Kremote: Counting objects:  58% (622/1072)   [Kremote: Counting objects:  59% (633/1072)   [Kremote: Counting objects:  60% (644/1072)   [Kremote: Counting objects:  61% (654/1072)   [Kremote: Counting objects:  62% (665/1072)   [Kremote: Counting objects:  63% (676/1072)   [Kremote: Counting objects:  64% (687/1072)   [Kremote: Counting objects:  65% (697/1072)   [Kremote: Counting objects:  66% (708/1072)   [Kremote: Counting objects:  67% (719/1072)   [Kremote: Counting objects:  68% (729/1072)   [Kremote: Counting objects:  69% (740/1072)   [Kremote: Counting objects:  70% (751/1072)   [Kremote: Counting objects:  71% (762/1072)   [Kremote: Counting objects:  72% (772/1072)   [Kremote: Counting objects:  73% (783/1072)   [Kremote: Counting objects:  74% (794/1072)   [Kremote: Counting objects:  75% (804/1072)   [Kremote: Counting objects:  76% (815/1072)   [Kremote: Counting objects:  77% (826/1072)   [Kremote: Counting objects:  78% (837/1072)   [Kremote: Counting objects:  79% (847/1072)   [Kremote: Counting objects:  80% (858/1072)   [Kremote: Counting objects:  81% (869/1072)   [Kremote: Counting objects:  82% (880/1072)   [Kremote: Counting objects:  83% (890/1072)   [Kremote: Counting objects:  84% (901/1072)   [Kremote: Counting objects:  85% (912/1072)   [Kremote: Counting objects:  86% (922/1072)   [Kremote: Counting objects:  87% (933/1072)   [Kremote: Counting objects:  88% (944/1072)   [Kremote: Counting objects:  89% (955/1072)   [Kremote: Counting objects:  90% (965/1072)   [Kremote: Counting objects:  91% (976/1072)   [Kremote: Counting objects:  92% (987/1072)   [Kremote: Counting objects:  93% (997/1072)   [Kremote: Counting objects:  94% (1008/1072)   [Kremote: Counting objects:  95% (1019/1072)   [Kremote: Counting objects:  96% (1030/1072)   [Kremote: Counting objects:  97% (1040/1072)   [Kremote: Counting objects:  98% (1051/1072)   [Kremote: Counting objects:  99% (1062/1072)   [Kremote: Counting objects: 100% (1072/1072)   [Kremote: Counting objects: 100% (1072/1072), done.[K
+remote: Compressing objects:   0% (1/313)   [Kremote: Compressing objects:   1% (4/313)   [Kremote: Compressing objects:   2% (7/313)   [Kremote: Compressing objects:   3% (10/313)   [Kremote: Compressing objects:   4% (13/313)   [Kremote: Compressing objects:   5% (16/313)   [Kremote: Compressing objects:   6% (19/313)   [Kremote: Compressing objects:   7% (22/313)   [Kremote: Compressing objects:   8% (26/313)   [Kremote: Compressing objects:   9% (29/313)   [Kremote: Compressing objects:  10% (32/313)   [Kremote: Compressing objects:  11% (35/313)   [Kremote: Compressing objects:  12% (38/313)   [Kremote: Compressing objects:  13% (41/313)   [Kremote: Compressing objects:  14% (44/313)   [Kremote: Compressing objects:  15% (47/313)   [Kremote: Compressing objects:  16% (51/313)   [Kremote: Compressing objects:  17% (54/313)   [Kremote: Compressing objects:  18% (57/313)   [Kremote: Compressing objects:  19% (60/313)   [Kremote: Compressing objects:  20% (63/313)   [Kremote: Compressing objects:  21% (66/313)   [Kremote: Compressing objects:  22% (69/313)   [Kremote: Compressing objects:  23% (72/313)   [Kremote: Compressing objects:  24% (76/313)   [Kremote: Compressing objects:  25% (79/313)   [Kremote: Compressing objects:  26% (82/313)   [Kremote: Compressing objects:  27% (85/313)   [Kremote: Compressing objects:  28% (88/313)   [Kremote: Compressing objects:  29% (91/313)   [Kremote: Compressing objects:  30% (94/313)   [Kremote: Compressing objects:  31% (98/313)   [Kremote: Compressing objects:  32% (101/313)   [Kremote: Compressing objects:  33% (104/313)   [Kremote: Compressing objects:  34% (107/313)   [Kremote: Compressing objects:  35% (110/313)   [Kremote: Compressing objects:  36% (113/313)   [Kremote: Compressing objects:  37% (116/313)   [Kremote: Compressing objects:  38% (119/313)   [Kremote: Compressing objects:  39% (123/313)   [Kremote: Compressing objects:  40% (126/313)   [Kremote: Compressing objects:  41% (129/313)   [Kremote: Compressing objects:  42% (132/313)   [Kremote: Compressing objects:  43% (135/313)   [Kremote: Compressing objects:  44% (138/313)   [Kremote: Compressing objects:  45% (141/313)   [Kremote: Compressing objects:  46% (144/313)   [Kremote: Compressing objects:  47% (148/313)   [Kremote: Compressing objects:  48% (151/313)   [Kremote: Compressing objects:  49% (154/313)   [Kremote: Compressing objects:  50% (157/313)   [Kremote: Compressing objects:  51% (160/313)   [Kremote: Compressing objects:  52% (163/313)   [Kremote: Compressing objects:  53% (166/313)   [Kremote: Compressing objects:  54% (170/313)   [Kremote: Compressing objects:  55% (173/313)   [Kremote: Compressing objects:  56% (176/313)   [Kremote: Compressing objects:  57% (179/313)   [Kremote: Compressing objects:  58% (182/313)   [Kremote: Compressing objects:  59% (185/313)   [Kremote: Compressing objects:  60% (188/313)   [Kremote: Compressing objects:  61% (191/313)   [Kremote: Compressing objects:  62% (195/313)   [Kremote: Compressing objects:  63% (198/313)   [Kremote: Compressing objects:  64% (201/313)   [Kremote: Compressing objects:  65% (204/313)   [Kremote: Compressing objects:  66% (207/313)   [Kremote: Compressing objects:  67% (210/313)   [Kremote: Compressing objects:  68% (213/313)   [Kremote: Compressing objects:  69% (216/313)   [Kremote: Compressing objects:  70% (220/313)   [Kremote: Compressing objects:  71% (223/313)   [Kremote: Compressing objects:  72% (226/313)   [Kremote: Compressing objects:  73% (229/313)   [Kremote: Compressing objects:  74% (232/313)   [Kremote: Compressing objects:  75% (235/313)   [Kremote: Compressing objects:  76% (238/313)   [Kremote: Compressing objects:  77% (242/313)   [Kremote: Compressing objects:  78% (245/313)   [Kremote: Compressing objects:  79% (248/313)   [Kremote: Compressing objects:  80% (251/313)   [Kremote: Compressing objects:  81% (254/313)   [Kremote: Compressing objects:  82% (257/313)   [Kremote: Compressing objects:  83% (260/313)   [Kremote: Compressing objects:  84% (263/313)   [Kremote: Compressing objects:  85% (267/313)   [Kremote: Compressing objects:  86% (270/313)   [Kremote: Compressing objects:  87% (273/313)   [Kremote: Compressing objects:  88% (276/313)   [Kremote: Compressing objects:  89% (279/313)   [Kremote: Compressing objects:  90% (282/313)   [Kremote: Compressing objects:  91% (285/313)   [Kremote: Compressing objects:  92% (288/313)   [Kremote: Compressing objects:  93% (292/313)   [Kremote: Compressing objects:  94% (295/313)   [Kremote: Compressing objects:  95% (298/313)   [Kremote: Compressing objects:  96% (301/313)   [Kremote: Compressing objects:  97% (304/313)   [Kremote: Compressing objects:  98% (307/313)   [Kremote: Compressing objects:  99% (310/313)   [Kremote: Compressing objects: 100% (313/313)   [Kremote: Compressing objects: 100% (313/313), done.[K
+Receiving objects:   0% (1/884)   Receiving objects:   1% (9/884)   Receiving objects:   2% (18/884)   Receiving objects:   3% (27/884)   Receiving objects:   4% (36/884)   Receiving objects:   5% (45/884)   Receiving objects:   6% (54/884)   Receiving objects:   7% (62/884)   Receiving objects:   8% (71/884)   Receiving objects:   9% (80/884)   Receiving objects:  10% (89/884)   Receiving objects:  11% (98/884)   Receiving objects:  12% (107/884)   Receiving objects:  13% (115/884)   Receiving objects:  14% (124/884)   Receiving objects:  15% (133/884)   Receiving objects:  16% (142/884)   Receiving objects:  17% (151/884)   Receiving objects:  18% (160/884)   Receiving objects:  19% (168/884)   Receiving objects:  20% (177/884)   Receiving objects:  21% (186/884)   Receiving objects:  22% (195/884)   Receiving objects:  23% (204/884)   Receiving objects:  24% (213/884)   Receiving objects:  25% (221/884)   Receiving objects:  26% (230/884)   Receiving objects:  27% (239/884)   Receiving objects:  28% (248/884)   Receiving objects:  29% (257/884)   Receiving objects:  30% (266/884)   Receiving objects:  31% (275/884)   Receiving objects:  32% (283/884)   Receiving objects:  33% (292/884)   Receiving objects:  34% (301/884)   Receiving objects:  35% (310/884)   Receiving objects:  36% (319/884)   Receiving objects:  37% (328/884)   Receiving objects:  38% (336/884)   Receiving objects:  39% (345/884)   Receiving objects:  40% (354/884)   Receiving objects:  41% (363/884)   Receiving objects:  42% (372/884)   Receiving objects:  43% (381/884)   Receiving objects:  44% (389/884)   Receiving objects:  45% (398/884)   Receiving objects:  46% (407/884)   Receiving objects:  47% (416/884)   Receiving objects:  48% (425/884)   Receiving objects:  49% (434/884)   Receiving objects:  50% (442/884)   Receiving objects:  51% (451/884)   Receiving objects:  52% (460/884)   Receiving objects:  53% (469/884)   Receiving objects:  54% (478/884)   Receiving objects:  55% (487/884)   Receiving objects:  56% (496/884)   Receiving objects:  57% (504/884)   Receiving objects:  58% (513/884)   Receiving objects:  59% (522/884)   Receiving objects:  60% (531/884)   Receiving objects:  61% (540/884)   Receiving objects:  62% (549/884)   Receiving objects:  63% (557/884)   Receiving objects:  64% (566/884)   Receiving objects:  65% (575/884)   Receiving objects:  66% (584/884)   Receiving objects:  67% (593/884)   Receiving objects:  68% (602/884)   Receiving objects:  69% (610/884)   Receiving objects:  70% (619/884)   Receiving objects:  71% (628/884)   Receiving objects:  72% (637/884)   Receiving objects:  73% (646/884)   Receiving objects:  74% (655/884)   Receiving objects:  75% (663/884)   Receiving objects:  76% (672/884)   Receiving objects:  77% (681/884)   Receiving objects:  78% (690/884)   Receiving objects:  79% (699/884)   remote: Total 884 (delta 691), reused 748 (delta 563), pack-reused 0[K
+Receiving objects:  80% (708/884)   Receiving objects:  81% (717/884)   Receiving objects:  82% (725/884)   Receiving objects:  83% (734/884)   Receiving objects:  84% (743/884)   Receiving objects:  85% (752/884)   Receiving objects:  86% (761/884)   Receiving objects:  87% (770/884)   Receiving objects:  88% (778/884)   Receiving objects:  89% (787/884)   Receiving objects:  90% (796/884)   Receiving objects:  91% (805/884)   Receiving objects:  92% (814/884)   Receiving objects:  93% (823/884)   Receiving objects:  94% (831/884)   Receiving objects:  95% (840/884)   Receiving objects:  96% (849/884)   Receiving objects:  97% (858/884)   Receiving objects:  98% (867/884)   Receiving objects:  99% (876/884)   Receiving objects: 100% (884/884)   Receiving objects: 100% (884/884), 530.77 KiB | 4.58 MiB/s, done.
+Resolving deltas:   0% (0/691)   Resolving deltas:   2% (16/691)   Resolving deltas:   3% (26/691)   Resolving deltas:   6% (46/691)   Resolving deltas:   9% (64/691)   Resolving deltas:  10% (70/691)   Resolving deltas:  13% (95/691)   Resolving deltas:  14% (99/691)   Resolving deltas:  15% (104/691)   Resolving deltas:  16% (111/691)   Resolving deltas:  17% (119/691)   Resolving deltas:  18% (126/691)   Resolving deltas:  19% (132/691)   Resolving deltas:  20% (141/691)   Resolving deltas:  21% (148/691)   Resolving deltas:  23% (159/691)   Resolving deltas:  29% (202/691)   Resolving deltas:  30% (208/691)   Resolving deltas:  31% (218/691)   Resolving deltas:  32% (224/691)   Resolving deltas:  34% (241/691)   Resolving deltas:  35% (242/691)   Resolving deltas:  46% (324/691)   Resolving deltas:  48% (334/691)   Resolving deltas:  49% (340/691)   Resolving deltas:  50% (346/691)   Resolving deltas:  51% (353/691)   Resolving deltas:  52% (361/691)   Resolving deltas:  53% (367/691)   Resolving deltas:  54% (374/691)   Resolving deltas:  55% (383/691)   Resolving deltas:  56% (387/691)   Resolving deltas:  57% (396/691)   Resolving deltas:  58% (401/691)   Resolving deltas:  59% (408/691)   Resolving deltas:  60% (416/691)   Resolving deltas:  61% (422/691)   Resolving deltas:  62% (429/691)   Resolving deltas:  63% (437/691)   Resolving deltas:  64% (443/691)   Resolving deltas:  65% (456/691)   Resolving deltas:  66% (457/691)   Resolving deltas:  67% (463/691)   Resolving deltas:  68% (471/691)   Resolving deltas:  69% (479/691)   Resolving deltas:  70% (489/691)   Resolving deltas:  72% (503/691)   Resolving deltas:  73% (507/691)   Resolving deltas:  75% (522/691)   Resolving deltas:  79% (546/691)   Resolving deltas:  80% (554/691)   Resolving deltas:  82% (569/691)   Resolving deltas:  83% (574/691)   Resolving deltas:  84% (583/691)   Resolving deltas:  86% (596/691)   Resolving deltas:  87% (602/691)   Resolving deltas:  89% (616/691)   Resolving deltas:  90% (628/691)   Resolving deltas:  91% (634/691)   Resolving deltas:  92% (639/691)   Resolving deltas:  93% (647/691)   Resolving deltas:  94% (651/691)   Resolving deltas:  95% (657/691)   Resolving deltas:  96% (665/691)   Resolving deltas: 100% (691/691)   Resolving deltas: 100% (691/691), completed with 118 local objects.
+From https://github.com/pester/Pester
+ * branch            refs/pull/1335/merge -> FETCH_HEAD
+travis_time:end:28f43109:start=1563825219078574000,finish=1563825220877964000,duration=1799390000[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+$ bash -c 'echo $BASH_VERSION'
+3.2.57(1)-release
+
+travis_fold:start:before_install[0Ktravis_time:start:01626bdf[0K$ brew cask install powershell
+[34m==>[0m [1mCaveats[0m
+A OpenSSL-backed libcurl is required for custom handling of certificates.
+This is rarely needed, but you can install it with
+  brew install curl --with-openssl
+See https://github.com/PowerShell/PowerShell/issues/2211
+
+[34m==>[0m [1mSatisfying dependencies[0m
+All Formula dependencies satisfied.
+[34m==>[0m [1mDownloading https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-beta.9/powershell-6.0.0-beta.9-osx.10.12-x64.pkg[0m
+[34m==>[0m [1mVerifying checksum for Cask powershell[0m
+[32m==>[0m [1mInstalling Cask powershell[0m
+[34m==>[0m [1mRunning installer for powershell; your password may be necessary.[0m
+[34m==>[0m [1mPackage installers may write to any location; options such as --appdir are ignored.[0m
+[34m==>[0m [1minstaller: Package name is powershell-6.0.0-beta.9-osx.10.12-x64[0m
+[34m==>[0m [1minstaller: Installing at base path /[0m
+[34m==>[0m [1minstaller: The install was successful.[0m
+🍺  powershell was successfully installed!
+travis_time:end:01626bdf:start=1563825222313031000,finish=1563825255587600000,duration=33274569000[0Ktravis_fold:end:before_install[0Ktravis_time:start:0cd94652[0K$ pwsh -c 'Set-StrictMode -Version Latest; $r = Get-ChildItem *.ts.ps1 -Recurse | foreach { & $_.FullName -PassThru } ; if ([bool]($r | Where-Object { $_.Failed -gt 0 })) { exit 1 }; $global:PesterDebugPreference_ShowFullErrors = $true ;Import-Module ./Pester.psd1; Invoke-Pester -ExcludeTag VersionChecks, StyleRules, Help -ExcludePath '*/demo/*' -CI'
+[?1h=[39;49m[36m[39;49m[36m| - basic mocking in RSpec Pester[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    It 'i1' {
+                        Mock f { "mock" }
+                        f
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 1 tests. 3s[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 5s[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 8.96s (8.24s|716ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - running a single mock in one It -> Expected and actual values differ!
+Expected: 'mock'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:30
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:19
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:18
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:17
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    It 'i1' {
+                        Mock f { "mock" }
+                        f
+                    }
+
+                    It 'i2' {
+                        f
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 3s[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 3s[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 874ms (723ms|151ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: real[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 58ms (33ms|25ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - mock does not leak into the subsequent It -> Expected and actual values differ!
+Expected: 'mock'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:48
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:33
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:18
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:17
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    It 'i1' {
+                        f
+                    }
+
+                    It 'i2' {
+                        f
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 165ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 446ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 229ms (199ms|30ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 244ms (199ms|46ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - mock defined in beforeall is used in every it -> Expected and actual values differ!
+Expected: 'mock'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:70
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:52
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:18
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:17
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    It 'i1' {
+                        f
+                        Should -Invoke f -Times 1 -Exactly
+                    }
+
+                    It 'i2' {
+                        f
+                        Should -Invoke f -Times 1 -Exactly
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 276ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 382ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 5.26s (5.2s|68ms)[39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 3.69s (3.41s|275ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mock defined in beforeall is counted independently[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    It 'i1' {
+                        f
+                        Should -Invoke f -Times 1 -Exactly
+                    }
+
+                    It 'i2' {
+                        f
+                        Should -Invoke f -Times 2 -Exactly -Scope Describe
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 2s[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 3s[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 3.6s (3.28s|323ms)[39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 2.25s (2.18s|70ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mock defined in before all can be counted from all tests with -Describe[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    It 'i1' {
+                        f
+                    }
+
+                    It 'i2' {
+                        f
+                    }
+
+                    AfterAll {
+                        Should -Invoke f -Times 2 -Exactly
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 623ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 739ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 604ms (457ms|146ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 704ms (641ms|63ms)[39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - mock defined in before all can and counted from after all automatically counts all calls in the current block[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - taking mocks from all scopes[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock f { "mock" }
+                    }
+
+                    Describe 'd2' {
+                        Describe 'd3' {
+                            It 'i1' {
+                                f
+                            }
+                        }
+                    }
+
+                    AfterAll {
+                        Should -Invoke f -Times 1 -Exactly
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 1 tests. 199ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 400ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+
+[39;49m[32m[39;49m[32m  Describing d2[39;49m[39;49m
+
+[39;49m[32m[39;49m[32m    Describing d3[39;49m[39;49m
+[39;49m[39;49mTest Result is: mock[39;49m[39;49m
+[39;49m[32m[39;49m[32m        [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 428ms (373ms|56ms)[39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - mocks defined in the parent scope can still be used -> Expected and actual values differ!
+Expected: 'mock'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:173
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:151
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:150
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Mock.RSpec.ts.ps1:17
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - mock filters[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function f { "real" } }
+                Describe 'd1' {
+                    BeforeAll {
+                        Mock Get-Variable { "filtered" } -ParameterFilter {
+                            $Name -eq 'PSVersionTable' -and $ValueOnly
+                        }
+
+                        Mock Get-Variable { "default" }
+                    }
+
+                    It 'makes a call to the filtered mock' {
+                        Get-Variable -Name PSVersionTable -ValueOnly | Should -Be "filtered"
+                    }
+
+                    It 'makes a call to the default mock' {
+                        Get-Variable -Name PSVersionTable | Should -Be "default"
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 2 tests. 110ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 470ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mActual Value in process: filtered[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] makes a call to the filtered mock[39;49m[39;49m[39;49m[30m[39;49m[30m 1.63s (1.6s|33ms)[39;49m[39;49m
+[39;49m[39;49mActual Value in process: default[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] makes a call to the default mock[39;49m[39;49m[39;49m[30m[39;49m[30m 366ms (342ms|25ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 2, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - calling filtered and default mock chooses the correct mock to call[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - named mock scopes[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                BeforeAll { function a { } }
+                Describe 'd-2' {
+                    # scope 4
+                    Describe "d-1" {
+                        # scope 3
+                        Describe 'd1' {
+                            # scope 2
+                            BeforeAll {
+                                Mock a {}
+                            }
+
+                            It 'i1' {
+                                a # call 1
+                            }
+
+                            Context "c1" {
+                                # scope 1
+                                It 'i2' {
+                                    a # call 2
+                                }
+
+                                It 'i1' {
+                                    # scope 0
+                                    Should -Invoke a -Exactly 0 -Scope 0
+                                    Should -Invoke a -Exactly 0 -Scope It
+                                    Should -Invoke a -Exactly 1 -Scope 1
+                                    Should -Invoke a -Exactly 1 -Scope Context
+                                    Should -Invoke a -Exactly 2 -Scope 2
+                                    Should -Invoke a -Exactly 2 -Scope Describe
+                                    Should -Invoke a -Exactly 2 -Scope 3
+                                    Should -Invoke a -Exactly 2 -Scope 4
+                                }
+                            }
+                        }
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 3 tests. 780ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 1s[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d-2[39;49m[39;49m
+
+[39;49m[32m[39;49m[32m  Describing d-1[39;49m[39;49m
+
+[39;49m[32m[39;49m[32m    Describing d1[39;49m[39;49m
+[39;49m[32m[39;49m[32m        [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 562ms (495ms|67ms)[39;49m[39;49m
+
+[39;49m[36m[39;49m[36m      Context c1[39;49m[39;49m
+[39;49m[32m[39;49m[32m          [+] i2[39;49m[39;49m[39;49m[30m[39;49m[30m 119ms (94ms|25ms)[39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[39;49mActual Value in process: [39;49m[39;49m
+[39;49m[32m[39;49m[32m          [+] i1[39;49m[39;49m[39;49m[30m[39;49m[30m 1.42s (1.25s|166ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 3, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - asserting in scope describe finds all mocks in the nearest describe[39;49m[39;49m
+[39;49m[32m[39;49m[32m
+passed 5, [39;49m[39;49m[39;49m[31m[39;49m[31mfailed 4, [39;49m[39;49m[39;49m[37m[39;49m[37mtotal 9[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Running generated tests[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "it${id}" { $true } -AutomationId $id
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 10 tests. 288ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 539ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it1[39;49m[39;49m[39;49m[30m[39;49m[30m 125ms (47ms|78ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it2[39;49m[39;49m[39;49m[30m[39;49m[30m 32ms (8ms|24ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it3[39;49m[39;49m[39;49m[30m[39;49m[30m 36ms (8ms|28ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it4[39;49m[39;49m[39;49m[30m[39;49m[30m 48ms (11ms|37ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it5[39;49m[39;49m[39;49m[30m[39;49m[30m 29ms (9ms|20ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it6[39;49m[39;49m[39;49m[30m[39;49m[30m 110ms (9ms|101ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it7[39;49m[39;49m[39;49m[30m[39;49m[30m 24ms (8ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it8[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (4ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it9[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (4ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it10[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (5ms|13ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 10, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating simple tests from foreach with external Id[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "it$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        } -AutomationId $id
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 30 tests. 1s[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 2s[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 360ms (187ms|173ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 323ms (257ms|66ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 30ms (8ms|22ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 74ms (44ms|29ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 26ms (7ms|20ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 429ms (22ms|407ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 368ms (120ms|248ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 738ms (448ms|290ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 587ms (43ms|544ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 576ms (176ms|400ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 516ms (167ms|349ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 639ms (255ms|385ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 707ms (105ms|602ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 1.06s (120ms|937ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 357ms (109ms|248ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (7ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 29ms (9ms|20ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 37ms (9ms|27ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 84ms (7ms|76ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 32ms (8ms|24ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 56ms (7ms|49ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 28ms (11ms|17ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (4ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 33ms (8ms|25ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (5ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 24ms (10ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 23ms (7ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 96ms (8ms|87ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 30, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating parametrized tests from foreach with external id[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "it$id" { $true }
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 10 tests. 282ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 372ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it1[39;49m[39;49m[39;49m[30m[39;49m[30m 126ms (28ms|98ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it2[39;49m[39;49m[39;49m[30m[39;49m[30m 34ms (16ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it3[39;49m[39;49m[39;49m[30m[39;49m[30m 22ms (6ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it4[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (8ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it5[39;49m[39;49m[39;49m[30m[39;49m[30m 44ms (7ms|37ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it6[39;49m[39;49m[39;49m[30m[39;49m[30m 25ms (6ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it7[39;49m[39;49m[39;49m[30m[39;49m[30m 97ms (17ms|80ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it8[39;49m[39;49m[39;49m[30m[39;49m[30m 38ms (14ms|24ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it9[39;49m[39;49m[39;49m[30m[39;49m[30m 90ms (25ms|65ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it10[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (6ms|13ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 10, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating simple tests from foreach without external Id[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        }
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 30 tests. 539ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 681ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 60ms (25ms|34ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 25ms (8ms|18ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 22ms (8ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (6ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (5ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (10ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 40ms (11ms|29ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 25ms (7ms|18ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (4ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (5ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (5ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (4ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 70ms (41ms|29ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 47ms (21ms|26ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 23ms (7ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 34ms (6ms|28ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (5ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 19ms (8ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 13ms (3ms|9ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 19ms (6ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|9ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (8ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 28ms (10ms|18ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 64ms (17ms|46ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 36ms (15ms|21ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 19ms (6ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 46ms (8ms|38ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (4ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (5ms|9ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] it-10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 23ms (10ms|13ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 30, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating parametrized tests from foreach without external id[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "first-it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        }
+
+                        It "second-it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        }
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 60 tests. 842ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 1s[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 266ms (51ms|215ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 32ms (13ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 25ms (9ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 105ms (79ms|26ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 46ms (14ms|31ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 103ms (26ms|77ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 109ms (69ms|39ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 29ms (13ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 130ms (15ms|115ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 51ms (17ms|34ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 124ms (28ms|96ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 22ms (7ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 67ms (28ms|40ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (4ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 234ms (21ms|212ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 67ms (11ms|56ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 194ms (65ms|129ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 31ms (13ms|18ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 109ms (80ms|28ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 75ms (14ms|61ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (7ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 122ms (16ms|106ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 57ms (10ms|47ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 144ms (98ms|46ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 226ms (208ms|18ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 35ms (8ms|27ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (5ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (5ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 78ms (14ms|63ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 146ms (38ms|108ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 29ms (8ms|20ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 98ms (35ms|63ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 181ms (20ms|161ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 25ms (9ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 86ms (43ms|43ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 56ms (31ms|25ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 25ms (12ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (5ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (9ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 22ms (6ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (6ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 18ms (6ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 22ms (7ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 23ms (6ms|17ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 142ms (9ms|133ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 38ms (16ms|22ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 27ms (8ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 22ms (6ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 33ms (11ms|22ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 38ms (10ms|27ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (7ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 56ms (13ms|43ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 28ms (9ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 26ms (9ms|17ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (6ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 23ms (9ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 30ms (11ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (3ms|12ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 60, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating multiple parametrized tests from foreach without external id[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                Describe "d1" {
+                    foreach ($id in 1..10) {
+                        It "first-it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        } -AutomationId $Id
+
+                        It "second-it-$id-<value>" -TestCases @(
+                            @{ Value = 1}
+                            @{ Value = 2}
+                            @{ Value = 3}
+                        ) {
+                            $true
+                        } -AutomationId $id
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 60 tests. 586ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 816ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing d1[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 72ms (51ms|21ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (4ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 12ms (4ms|8ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-1[39;49m[39;49m[39;49m[30m[39;49m[30m 31ms (15ms|17ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-2[39;49m[39;49m[39;49m[30m[39;49m[30m 25ms (7ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-1-3[39;49m[39;49m[39;49m[30m[39;49m[30m 28ms (7ms|21ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 13ms (3ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 10ms (2ms|7ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 36ms (25ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-1[39;49m[39;49m[39;49m[30m[39;49m[30m 23ms (6ms|17ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-2[39;49m[39;49m[39;49m[30m[39;49m[30m 22ms (4ms|18ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-2-3[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (5ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 22ms (7ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (7ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 29ms (6ms|22ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-1[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-2[39;49m[39;49m[39;49m[30m[39;49m[30m 29ms (8ms|22ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-3-3[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 13ms (5ms|8ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 18ms (6ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 23ms (9ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-1[39;49m[39;49m[39;49m[30m[39;49m[30m 28ms (9ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-2[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-4-3[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (10ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (4ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 18ms (4ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (7ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-1[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (5ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-2[39;49m[39;49m[39;49m[30m[39;49m[30m 19ms (9ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-5-3[39;49m[39;49m[39;49m[30m[39;49m[30m 19ms (8ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (6ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (6ms|15ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-1[39;49m[39;49m[39;49m[30m[39;49m[30m 23ms (7ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-2[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (6ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-6-3[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 13ms (3ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (5ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-1[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (5ms|12ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-2[39;49m[39;49m[39;49m[30m[39;49m[30m 21ms (7ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-7-3[39;49m[39;49m[39;49m[30m[39;49m[30m 39ms (9ms|30ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 39ms (11ms|28ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 20ms (6ms|13ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 24ms (7ms|18ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-1[39;49m[39;49m[39;49m[30m[39;49m[30m 28ms (9ms|19ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-2[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (4ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-8-3[39;49m[39;49m[39;49m[30m[39;49m[30m 13ms (4ms|9ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 14ms (5ms|9ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 52ms (8ms|44ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 19ms (5ms|14ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-1[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (8ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-2[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (7ms|9ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-9-3[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (6ms|10ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 16ms (4ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 34ms (18ms|16ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] first-it-10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 24ms (6ms|18ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-1[39;49m[39;49m[39;49m[30m[39;49m[30m 39ms (6ms|33ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-2[39;49m[39;49m[39;49m[30m[39;49m[30m 15ms (4ms|11ms)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] second-it-10-3[39;49m[39;49m[39;49m[30m[39;49m[30m 17ms (5ms|12ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 60, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating multiple parametrized tests from foreach with external id[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - BeforeAll paths[39;49m[39;49m
+[39;49m[35m[39;49m[35mStarting test discovery in 1 files.[39;49m[39;49m
+[39;49m[35m[39;49m[35mDiscovering tests in 
+                $container.InScript = $PSScriptRoot
+                BeforeAll {
+                    $container.InBeforeAll = $PSScriptRoot
+                }
+
+                Describe "a" {
+                    It "b" {
+                        # otherwise the container would not run
+                        $true
+                    }
+                }
+            .[39;49m[39;49m
+[39;49m[35m[39;49m[35mFound 1 tests. 56ms[39;49m[39;49m
+[39;49m[35m[39;49m[35mTest discovery finished. 79ms[39;49m[39;49m
+
+[39;49m[32m[39;49m[32mDescribing a[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m    [+] b[39;49m[39;49m[39;49m[30m[39;49m[30m 55ms (37ms|18ms)[39;49m[39;49m
+[39;49m[37m[39;49m[37mTests completed in 0ms[39;49m[39;49m
+[39;49m[32m[39;49m[32mTests Passed: 1, [39;49m[39;49m[39;49m[30m[39;49m[30mFailed: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mSkipped: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mPending: 0, [39;49m[39;49m[39;49m[30m[39;49m[30mInconclusive: 0 [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - $PSScriptRoot in BeforeAll has the same value as in the script that calls it[39;49m[39;49m
+[39;49m[32m[39;49m[32m
+passed 7, [39;49m[39;49m[39;49m[31m[39;49m[31mfailed 0, [39;49m[39;49m[39;49m[37m[39;49m[37mtotal 7[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - tryGetProperty[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given null it returns null[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given an object that has the property it return the correct value[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - or[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a non-null value it returns it[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given null it returns the default value[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - combineNonNull[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - combines values from multiple arrays, skipping nulls and empty arrays, but keeping nulls in the arrays[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - any[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a non-null value it returns true[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given null it returns false[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given empty array it returns false[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given null in array it returns false[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given array with value it returns true[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given array with multiple values it returns true[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Basic[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a scriptblock with 1 test in it, it finds 1 test[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given scriptblock with 2 tests in it it finds 2 tests[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - block[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given 0 tests it returns block containing no tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given 0 tests it returns block containing 0 tests[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Find common setup for each test[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given block that has test setup for each test it finds it[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Finding setup for all tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Find setup to run before all tests in the block[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Finding blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Find tests in block that is explicitly specified[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Find tests in blocks that are next to each other[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Find tests in blocks that are inside of each other[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Executing tests[39;49m[39;49m
+[39;49m[39;49mTest Result is: a[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - Executes 1 test -> Expected and actual values differ!
+Expected: 'a'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:252
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:243
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:242
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:57
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[39;49mTest Result is: a[39;49m[39;49m
+[39;49m[39;49mTest Result is: b[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - Executes 2 tests next to each other -> Expected and actual values differ!
+Expected: 'a'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:265
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:255
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:242
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:57
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[39;49mTest Result is: a[39;49m[39;49m
+[39;49m[39;49mTest Result is: b[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - Executes 2 tests in blocks next to each other -> Expected and actual values differ!
+Expected: 'a'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:288
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:273
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:242
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:57
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[39;49mTest Result is: a[39;49m[39;49m
+[39;49m[39;49mTest Result is: b[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - Executes 2 tests deeper in blocks -> Expected and actual values differ!
+Expected: 'a'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:312
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:297
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:242
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:57
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[39;49mTest Result is: a[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Executes container only if it contains anything that should run[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - filtering[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given null filter and a tagged test it includes it[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with tag it excludes it when it matches the exclude filter[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test without tags it includes it when it does not match exclude filter [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with tags it includes it when it does not match exclude filter [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with tag it includes it when it matches the tag filter[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test without tags it excludes it when it does not match any other filter[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test without tags it include it when it matches path filter[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with path it includes it when it matches path filter [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a test with path it maybes it when it does not match path filter [39;49m[39;49m
+[39;49m[36m[39;49m[36m| - discover and execute tests[39;49m[39;49m
+[39;49m[39;49mTest Result is: a[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - discovers and executes one test -> Expected and actual values differ!
+Expected: 'a'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:444
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:436
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:435
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - discovers and executes one failing test[39;49m[39;49m
+[39;49m[39;49mTest Result is: a[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - re-runs failing tests -> Expected and actual values differ!
+Expected: 'a'
+Actual  : ''
+at Verify-Equal, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-Equal.ps1:16
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:482
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:457
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:435
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - executing each setup & teardown on test[39;49m[39;49m
+[39;49m[39;49meach test teardown[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a test with setups and teardowns they run in correct scopes[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a test with teardown it executes the teardown right before after the test and has the variables avaliable from the test[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - executing all test and teardown[39;49m[39;49m
+[39;49m[39;49mTest Result is: VariableNotFound,Microsoft.PowerShell.Commands.GetVariableCommand[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a test with one time setup it executes the setup inside of the block and does not bleed variables to the next block[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a test with each time setup it executes the setup inside of the test and does not affect the whole block[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - setups and teardowns don't run if there are no tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - one time setups&teardowns run one time and each time setups&teardowns run for every test[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - error in one container during Run phase does not prevent the next container from running[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Skipping tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - tests can be skipped based on tags[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - blocks can be excluded based on tags[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Block teardown and setup[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - setups&teardowns run only once[39;49m[39;49m
+[39;49m[39;49mTest Result is: here[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - block setups&teardowns run only when there are some tests to run in the block[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - plugins[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Given a plugin it is used in the run[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Plugin has access to test info[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Plugin has access to block info[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - test data[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - test can access data provided in -Data as variables[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - test can access data provided in -Data as parameters[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - test result contains data provided in -Data[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - tests do not share data[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - New-ParametrizedTest[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - New-ParameterizedTest takes data and generates as many tests as there are hashtables[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - Each parametrized test has unique id and they both successfully execute and have the correct data[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - running from files[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a path to file with tests it can execute it[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - given a path to multiple files with tests it can execute it[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - running parent each setups and teardowns[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - adding each test setup runs it before each test in that block and in any child blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - adding multiple each test setups runs them in parent first, child last order [39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - adding each test teardown runs it after each test in that block and in any child blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - adding multiple each test teardowns runs them in child first, parent last order [39;49m[39;49m
+[39;49m[36m[39;49m[36m| - failing one time block test setups and teardowns[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - failing in onetime setup will fail the block and everything below[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - failing in onetime block teardown will fail the block[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - focus[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - focusing one test in group will run only it[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - focusing one block in group will run only tests in it[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - generating tests[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating tests without external id[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating paremetrized tests without external id[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating multiple tests from one foreach without external id[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating tests with external id[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - generating blocks[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating blocks without external id[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating multiple blocks from one foreach without external id[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - generating blocks with external id[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - expandable variables in names[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - can run tests that have expandable variable in their name[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - can run tests that have expandable variable in their name that changes values between discovery and run[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - can run blocks that have expandable variable in their name[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - can run blocks that have expandable variable in their name that changes value between discovery and run[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - expanding values in names of parametrized tests[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - strings expand in the name[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - timing[39;49m[39;49m
+[39;49m[39;49mReported test duration 81.939[39;49m[39;49m
+[39;49m[39;49mReported test overhead 34.935[39;49m[39;49m
+[39;49m[39;49mReported test total 116.874[39;49m[39;49m
+[39;49m[39;49mReported block duration 83.428[39;49m[39;49m
+[39;49m[39;49mReported block overhead 62.665[39;49m[39;49m
+[39;49m[39;49mReported block total 146.093[39;49m[39;49m
+[39;49m[39;49mReported total duration 83.428[39;49m[39;49m
+[39;49m[39;49mReported total overhead 87.435[39;49m[39;49m
+[39;49m[39;49mReported total 244.775[39;49m[39;49m
+[39;49m[39;49mMeasured total 295.09[39;49m[39;49m
+[39;49m[39;49mTotal difference 50.315[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - total time is roughly the same as time measured externally -> Expected $true but got 'False'.
+at Verify-True, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-True.ps1:8
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1674
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1618
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1616
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[39;49mReported test duration 0[39;49m[39;49m
+[39;49m[39;49mReported test overhead 118.735[39;49m[39;49m
+[39;49m[39;49mReported test total 118.735[39;49m[39;49m
+[39;49m[39;49mReported block duration 0 ms[39;49m[39;49m
+[39;49m[39;49mReported block overhead 0 ms[39;49m[39;49m
+[39;49m[39;49mReported block total 0 ms[39;49m[39;49m
+[39;49m[39;49mReported total duration 0 ms[39;49m[39;49m
+[39;49m[39;49mReported total overhead 29.467 ms[39;49m[39;49m
+[39;49m[39;49mReported total 277.153 ms[39;49m[39;49m
+[39;49m[39;49mMeasured total 303.565 ms[39;49m[39;49m
+[39;49m[39;49mTotal difference 26.412 ms[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - total time is roughly the same as time measured externally (measured on a second test)[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest count 100[39;49m[39;49m
+[39;49m[39;49mPer test 41 ms[39;49m[39;49m
+[39;49m[39;49mPer test without discovery 32 ms[39;49m[39;49m
+[39;49m[39;49mReported discovery duration 915.198 ms[39;49m[39;49m
+[39;49m[39;49mReported total duration 740.923 ms[39;49m[39;49m
+[39;49m[39;49mReported total overhead 2426.934 ms[39;49m[39;49m
+[39;49m[39;49mReported total 4083.055 ms[39;49m[39;49m
+[39;49m[39;49mMeasured total 4147.886 ms[39;49m[39;49m
+[39;49m[39;49mTotal difference 64.831 ms[39;49m[39;49m
+[39;49m[31m[39;49m[31m[-] - total time is roughly the same as time measured externally (on many tests) -> Expected $true but got 'False'.
+at Verify-True, /Users/travis/build/pester/Pester/Dependencies/Axiom/Verify-True.ps1:8
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1791
+at t, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:103
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1742
+at b, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:77
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:1616
+at i, /Users/travis/build/pester/Pester/new-runtimepoc/p.psm1:43
+at <ScriptBlock>, /Users/travis/build/pester/Pester/new-runtimepoc/Pester.Runtime.ts.ps1:55
+at <ScriptBlock>, <No file>:1
+at <ScriptBlock>, <No file>:1
+[39;49m[39;49m
+[39;49m[36m[39;49m[36m| - Setup and Teardown on root block[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[39;49mTest Result is: True[39;49m[39;49m
+[39;49m[32m[39;49m[32m[+] - OneTimeTestSetup is invoked when placed in the script root[39;49m[39;49m
+[39;49m[32m[39;49m[32m
+passed 75, [39;49m[39;49m[39;49m[31m[39;49m[31mfailed 8, [39;49m[39;49m[39;49m[37m[39;49m[37mtotal 83[39;49m[39;49m
+travis_time:end:0cd94652:start=1563825255752979000,finish=1563825454395848000,duration=198642869000[0K[31;1mThe command "pwsh -c 'Set-StrictMode -Version Latest; $r = Get-ChildItem *.ts.ps1 -Recurse | foreach { & $_.FullName -PassThru } ; if ([bool]($r | Where-Object { $_.Failed -gt 0 })) { exit 1 }; $global:PesterDebugPreference_ShowFullErrors = $true ;Import-Module ./Pester.psd1; Invoke-Pester -ExcludeTag VersionChecks, StyleRules, Help -ExcludePath '*/demo/*' -CI'" exited with 1.[0m
+
+
+
+Done. Your build exited with 1.
