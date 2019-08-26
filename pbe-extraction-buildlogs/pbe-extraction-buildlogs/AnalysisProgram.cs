@@ -202,9 +202,10 @@ namespace pbeextractionbuildlogs
 		public AnalysisProgram<SessionType, OutputType> Load()
 		{
 			XmlSerializer serializer = new XmlSerializer(GetType());
-			using (StreamReader file = new StreamReader(saveFilePath))
+			string text = Util.NormalizeBuildLogString(File.ReadAllText(saveFilePath));
+			using (TextReader reader = new StringReader(text))
 			{
-				return (AnalysisProgram<SessionType, OutputType>)serializer.Deserialize(file);
+				return (AnalysisProgram<SessionType, OutputType>)serializer.Deserialize(reader);
 			}
 		}
 

@@ -15,27 +15,6 @@ namespace pbeextractionbuildlogs
 {
 
 	/// <summary>
-	///  Invariant: Files do not move or disappear.
-	/// </summary>
-	///
-	public static class AnalysisUtil
-	{
-		private static readonly Dictionary<string, StringRegion> fileCache = new Dictionary<string, StringRegion>();
-
-		public static StringRegion RegionFromFile(string path)
-		{
-			if (fileCache.ContainsKey(path))
-			{
-				return fileCache[path];
-			}
-			string text = File.ReadAllText(path).Replace("\r\n", "\n").Replace("\n\r", "\n").Replace("\r", "\n").Replace(((char)0x1b).ToString(), "");
-			StringRegion region = RegionSession.CreateStringRegion(text);
-			fileCache[path] = region;
-			return region;
-		}
-	}
-
-	/// <summary>
 	/// Wrapper around PROSE Session for text extraction program synthesis
 	/// </summary>
 	/// <typeparam name="OutputType"></typeparam>

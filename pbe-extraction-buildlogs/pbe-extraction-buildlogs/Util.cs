@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Xml.Serialization;
+using Microsoft.ProgramSynthesis.DslLibrary;
+using Microsoft.ProgramSynthesis.Extraction.Text;
 
 namespace pbeextractionbuildlogs
 {
@@ -21,6 +24,32 @@ namespace pbeextractionbuildlogs
 				list[k] = list[n];
 				list[n] = value;
 			}
+		}
+
+		public static string NormalizeBuildLogString(string log)
+		{
+			return log.Replace("\r\n", "\n").Replace("\n\r", "\n").Replace("\r", "\n").Replace(((char)0x1b).ToString(), "");
+		}
+	}
+
+	/// <summary>
+	///  Invariant: Files do not move or disappear.
+	/// </summary>
+	///
+	public static class AnalysisUtil
+	{
+		private static readonly Dictionary<string, StringRegion> fileCache = new Dictionary<string, StringRegion>();
+
+		public static StringRegion RegionFromFile(string path)
+		{
+			if (fileCache.ContainsKey(path))
+			{
+				return fileCache[path];
+			}
+			string text = Util.NormalizeBuildLogString(File.ReadAllText(path));
+			StringRegion region = RegionSession.CreateStringRegion(text);
+			fileCache[path] = region;
+			return region;
 		}
 	}
 
