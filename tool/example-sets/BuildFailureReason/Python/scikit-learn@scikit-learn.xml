@@ -19,508 +19,508 @@
         <InputPath>Python/scikit-learn@scikit-learn/failed/562395304.log</InputPath>
         <Output>PackagesNotFoundError: The following packages are not available from current channels:
 
-          - numpy=1.10.4
-          - python=3.4
-          - scipy=0.16.1
-          - cython=0.25.2
-          - pillow=4.0.0</Output>
+- numpy=1.10.4
+- python=3.4
+- scipy=0.16.1
+- cython=0.25.2
+- pillow=4.0.0</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562396459.log</InputPath>
         <Output>PackagesNotFoundError: The following packages are not available from current channels:
 
-          - python=3.4
-          - scipy=0.16.1
-          - pillow=4.0.0
-          - cython=0.25.2
-          - numpy=1.10.4</Output>
+- python=3.4
+- scipy=0.16.1
+- pillow=4.0.0
+- cython=0.25.2
+- numpy=1.10.4</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562398767.log</InputPath>
         <Output>PackagesNotFoundError: The following packages are not available from current channels:
 
-          - python=3.4
-          - scipy=0.16.1
-          - numpy=1.10.4
-          - cython=0.25.2
-          - pillow=4.0.0</Output>
+- python=3.4
+- scipy=0.16.1
+- numpy=1.10.4
+- cython=0.25.2
+- pillow=4.0.0</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562416451.log</InputPath>
         <Output>PackagesNotFoundError: The following packages are not available from current channels:
 
-          - cython=0.25.2
-          - scipy=0.16.1
-          - python=3.4
-          - numpy=1.10.4
-          - pillow=4.0.0</Output>
+- cython=0.25.2
+- scipy=0.16.1
+- python=3.4
+- numpy=1.10.4
+- pillow=4.0.0</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562417178.log</InputPath>
         <Output>PackagesNotFoundError: The following packages are not available from current channels:
 
-          - cython=0.25.2
-          - pillow=4.0.0
-          - scipy=0.16.1
-          - python=3.4
-          - numpy=1.10.4</Output>
+- cython=0.25.2
+- pillow=4.0.0
+- scipy=0.16.1
+- python=3.4
+- numpy=1.10.4</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562431016.log</InputPath>
         <Output>____________________________ test_unsorted_indices _____________________________[0m
 
-          [1m    def test_unsorted_indices():[0m
-          [1m        # test that the result with sorted and unsorted indices in csr is the same[0m
-          [1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
-          [1m        # show the problem[0m
-          [1m        digits = load_digits()[0m
-          [1m        X, y = digits.data[:50], digits.target[:50][0m
-          [1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
-          [1m    [0m
-          [1m        X_sparse = sparse.csr_matrix(X)[0m
-          [1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
-          [1m                             random_state=0).fit(X, y).coef_[0m
-          [1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
-          [1m                             random_state=0).fit(X_sparse, y)[0m
-          [1m        coef_sorted = sparse_svc.coef_[0m
-          [1m        # make sure dense and sparse SVM give the same result[0m
-          [1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
-          [1m    [0m
-          [1m        # reverse each row's indices[0m
-          [1m        def scramble_indices(X):[0m
-          [1m            new_data = [][0m
-          [1m            new_indices = [][0m
-          [1m            for i in range(1, len(X.indptr)):[0m
-          [1m                row_slice = slice(*X.indptr[i - 1: i + 1])[0m
-          [1m                new_data.extend(X.data[row_slice][::-1])[0m
-          [1m                new_indices.extend(X.indices[row_slice][::-1])[0m
-          [1m            return sparse.csr_matrix((new_data, new_indices, X.indptr),[0m
-          [1m                                     shape=X.shape)[0m
-          [1m    [0m
-          [1m>       X_sparse_unsorted = scramble_indices(X_sparse)[0m
-          
-          X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
-                 [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
-                 [  0.,   0.,   1., ...,   8.,   0.,   0.]])
-          X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 1628 stored elements in Compressed Sparse Row format>
-          X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 1583 stored elements in Compressed Sparse Row format>
-          coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
-                   0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
-                  -0.00393698, -0.00026964]])
-          coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 2045 stored elements in Compressed Sparse Row format>
-          digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
-                  [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
-          scramble_indices = <function scramble_indices at 0x7f716f4711b8>
-          sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
-            decision_function_s..., probability=True, random_state=0,
-            shrinking=True, tol=0.001, verbose=False)
-          y          = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2,
-            ...6, 7, 8, 9, 0, 9, 5, 5, 6, 5, 0, 9, 8, 9, 8, 4, 1, 7, 7, 3,
-                 5, 1, 0, 0])
-          
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:125: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:123: in scramble_indices
-          [1m    shape=X.shape)[0m
-          [1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py[0m:52: in __init__
-          [1m    self.data = np.array(data, copy=copy, dtype=getdtype(dtype, data))[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
-          
-          [1m    def getdtype(dtype, a=None, default=None):[0m
-          [1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
-          [1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
-          [1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
-          [1m        are both None, construct a data type out of the 'default' parameter.[0m
-          [1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
-          [1m        """[0m
-          [1m        #TODO is this really what we want?[0m
-          [1m        canCast = True[0m
-          [1m        if dtype is None:[0m
-          [1m            try:[0m
-          [1m                newdtype = a.dtype[0m
-          [1m            except AttributeError:[0m
-          [1m                if default is not None:[0m
-          [1m                    newdtype = np.dtype(default)[0m
-          [1m                    canCast = False[0m
-          [1m                else:[0m
-          [1m>                   raise TypeError("could not interpret data type")[0m
-          [1m[31mE                   TypeError: could not interpret data type[0m
-          
-          a          = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...]
-          canCast    = True
-          default    = None
-          dtype      = None
-          
-          [1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py[0m:101: TypeError
-          [1m[31m_________________________ test_show_versions_with_blas _________________________[0m
-          
-          args = (), kwargs = {}
-          
-          [1m    @wraps(fn)[0m
-          [1m    def wrapper(*args, **kwargs):[0m
-          [1m        clean_warning_registry()[0m
-          [1m        with warnings.catch_warnings():[0m
-          [1m            warnings.simplefilter("ignore", self.category)[0m
-          [1m>           return fn(*args, **kwargs)[0m
-          [1m[31mE           TypeError: test_show_versions_with_blas() takes exactly 1 argument (0 given)[0m
-          
-          args       = ()
-          fn         = <function test_show_versions_with_blas at 0x7f71702f3d70>
-          kwargs     = {}
-          self       = _IgnoreWarnings(record=True)
-          
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/utils/testing.py[0m:348: TypeError</Output>
+[1m    def test_unsorted_indices():[0m
+[1m        # test that the result with sorted and unsorted indices in csr is the same[0m
+[1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
+[1m        # show the problem[0m
+[1m        digits = load_digits()[0m
+[1m        X, y = digits.data[:50], digits.target[:50][0m
+[1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
+[1m    [0m
+[1m        X_sparse = sparse.csr_matrix(X)[0m
+[1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
+[1m                             random_state=0).fit(X, y).coef_[0m
+[1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
+[1m                             random_state=0).fit(X_sparse, y)[0m
+[1m        coef_sorted = sparse_svc.coef_[0m
+[1m        # make sure dense and sparse SVM give the same result[0m
+[1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
+[1m    [0m
+[1m        # reverse each row's indices[0m
+[1m        def scramble_indices(X):[0m
+[1m            new_data = [][0m
+[1m            new_indices = [][0m
+[1m            for i in range(1, len(X.indptr)):[0m
+[1m                row_slice = slice(*X.indptr[i - 1: i + 1])[0m
+[1m                new_data.extend(X.data[row_slice][::-1])[0m
+[1m                new_indices.extend(X.indices[row_slice][::-1])[0m
+[1m            return sparse.csr_matrix((new_data, new_indices, X.indptr),[0m
+[1m                                     shape=X.shape)[0m
+[1m    [0m
+[1m>       X_sparse_unsorted = scramble_indices(X_sparse)[0m
+
+X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
+       [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
+       [  0.,   0.,   1., ...,   8.,   0.,   0.]])
+X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 1628 stored elements in Compressed Sparse Row format>
+X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 1583 stored elements in Compressed Sparse Row format>
+coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
+         0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
+        -0.00393698, -0.00026964]])
+coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 2045 stored elements in Compressed Sparse Row format>
+digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
+        [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
+scramble_indices = <function scramble_indices at 0x7f716f4711b8>
+sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_s..., probability=True, random_state=0,
+  shrinking=True, tol=0.001, verbose=False)
+y          = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2,
+  ...6, 7, 8, 9, 0, 9, 5, 5, 6, 5, 0, 9, 8, 9, 8, 4, 1, 7, 7, 3,
+       5, 1, 0, 0])
+
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:123: in scramble_indices
+[1m    shape=X.shape)[0m
+[1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py[0m:52: in __init__
+[1m    self.data = np.array(data, copy=copy, dtype=getdtype(dtype, data))[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
+
+[1m    def getdtype(dtype, a=None, default=None):[0m
+[1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
+[1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
+[1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
+[1m        are both None, construct a data type out of the 'default' parameter.[0m
+[1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
+[1m        """[0m
+[1m        #TODO is this really what we want?[0m
+[1m        canCast = True[0m
+[1m        if dtype is None:[0m
+[1m            try:[0m
+[1m                newdtype = a.dtype[0m
+[1m            except AttributeError:[0m
+[1m                if default is not None:[0m
+[1m                    newdtype = np.dtype(default)[0m
+[1m                    canCast = False[0m
+[1m                else:[0m
+[1m>                   raise TypeError("could not interpret data type")[0m
+[1m[31mE                   TypeError: could not interpret data type[0m
+
+a          = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...]
+canCast    = True
+default    = None
+dtype      = None
+
+[1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py[0m:101: TypeError
+[1m[31m_________________________ test_show_versions_with_blas _________________________[0m
+
+args = (), kwargs = {}
+
+[1m    @wraps(fn)[0m
+[1m    def wrapper(*args, **kwargs):[0m
+[1m        clean_warning_registry()[0m
+[1m        with warnings.catch_warnings():[0m
+[1m            warnings.simplefilter("ignore", self.category)[0m
+[1m>           return fn(*args, **kwargs)[0m
+[1m[31mE           TypeError: test_show_versions_with_blas() takes exactly 1 argument (0 given)[0m
+
+args       = ()
+fn         = <function test_show_versions_with_blas at 0x7f71702f3d70>
+kwargs     = {}
+self       = _IgnoreWarnings(record=True)
+
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/utils/testing.py[0m:348: TypeError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562431227.log</InputPath>
         <Output>____________________________ test_unsorted_indices _____________________________[0m
 
-          [1m    def test_unsorted_indices():[0m
-          [1m        # test that the result with sorted and unsorted indices in csr is the same[0m
-          [1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
-          [1m        # show the problem[0m
-          [1m        digits = load_digits()[0m
-          [1m        X, y = digits.data[:50], digits.target[:50][0m
-          [1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
-          [1m    [0m
-          [1m        X_sparse = sparse.csr_matrix(X)[0m
-          [1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
-          [1m                             random_state=0).fit(X, y).coef_[0m
-          [1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
-          [1m                             random_state=0).fit(X_sparse, y)[0m
-          [1m        coef_sorted = sparse_svc.coef_[0m
-          [1m        # make sure dense and sparse SVM give the same result[0m
-          [1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
-          [1m    [0m
-          [1m        # reverse each row's indices[0m
-          [1m        def scramble_indices(X):[0m
-          [1m            new_data = [][0m
-          [1m            new_indices = [][0m
-          [1m            for i in range(1, len(X.indptr)):[0m
-          [1m                row_slice = slice(*X.indptr[i - 1: i + 1])[0m
-          [1m                new_data.extend(X.data[row_slice][::-1])[0m
-          [1m                new_indices.extend(X.indices[row_slice][::-1])[0m
-          [1m            return sparse.csr_matrix((new_data, new_indices, X.indptr),[0m
-          [1m                                     shape=X.shape)[0m
-          [1m    [0m
-          [1m>       X_sparse_unsorted = scramble_indices(X_sparse)[0m
-          
-          X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
-                 [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
-                 [  0.,   0.,   1., ...,   8.,   0.,   0.]])
-          X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 1628 stored elements in Compressed Sparse Row format>
-          X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 1583 stored elements in Compressed Sparse Row format>
-          coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
-                   0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
-                  -0.00393698, -0.00026964]])
-          coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 2045 stored elements in Compressed Sparse Row format>
-          digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
-                  [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
-          scramble_indices = <function scramble_indices at 0x7f8976d69f50>
-          sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
-            decision_function_s..., probability=True, random_state=0,
-            shrinking=True, tol=0.001, verbose=False)
-          y          = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2,
-            ...6, 7, 8, 9, 0, 9, 5, 5, 6, 5, 0, 9, 8, 9, 8, 4, 1, 7, 7, 3,
-                 5, 1, 0, 0])
-          
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:125: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:123: in scramble_indices
-          [1m    shape=X.shape)[0m
-          [1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py[0m:52: in __init__
-          [1m    self.data = np.array(data, copy=copy, dtype=getdtype(dtype, data))[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
-          
-          [1m    def getdtype(dtype, a=None, default=None):[0m
-          [1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
-          [1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
-          [1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
-          [1m        are both None, construct a data type out of the 'default' parameter.[0m
-          [1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
-          [1m        """[0m
-          [1m        #TODO is this really what we want?[0m
-          [1m        canCast = True[0m
-          [1m        if dtype is None:[0m
-          [1m            try:[0m
-          [1m                newdtype = a.dtype[0m
-          [1m            except AttributeError:[0m
-          [1m                if default is not None:[0m
-          [1m                    newdtype = np.dtype(default)[0m
-          [1m                    canCast = False[0m
-          [1m                else:[0m
-          [1m>                   raise TypeError("could not interpret data type")[0m
-          [1m[31mE                   TypeError: could not interpret data type[0m
-          
-          a          = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...]
-          canCast    = True
-          default    = None
-          dtype      = None
-          
-          [1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py[0m:101: TypeError
-          [1m[31m_________________________ test_show_versions_with_blas _________________________[0m
-          
-          args = (), kwargs = {}
-          
-          [1m    @wraps(fn)[0m
-          [1m    def wrapper(*args, **kwargs):[0m
-          [1m        clean_warning_registry()[0m
-          [1m        with warnings.catch_warnings():[0m
-          [1m            warnings.simplefilter("ignore", self.category)[0m
-          [1m>           return fn(*args, **kwargs)[0m
-          [1m[31mE           TypeError: test_show_versions_with_blas() takes exactly 1 argument (0 given)[0m
-          
-          args       = ()
-          fn         = <function test_show_versions_with_blas at 0x7f89779cfd70>
-          kwargs     = {}
-          self       = _IgnoreWarnings(record=True)
-          
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/utils/testing.py[0m:348: TypeError</Output>
+[1m    def test_unsorted_indices():[0m
+[1m        # test that the result with sorted and unsorted indices in csr is the same[0m
+[1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
+[1m        # show the problem[0m
+[1m        digits = load_digits()[0m
+[1m        X, y = digits.data[:50], digits.target[:50][0m
+[1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
+[1m    [0m
+[1m        X_sparse = sparse.csr_matrix(X)[0m
+[1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
+[1m                             random_state=0).fit(X, y).coef_[0m
+[1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
+[1m                             random_state=0).fit(X_sparse, y)[0m
+[1m        coef_sorted = sparse_svc.coef_[0m
+[1m        # make sure dense and sparse SVM give the same result[0m
+[1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
+[1m    [0m
+[1m        # reverse each row's indices[0m
+[1m        def scramble_indices(X):[0m
+[1m            new_data = [][0m
+[1m            new_indices = [][0m
+[1m            for i in range(1, len(X.indptr)):[0m
+[1m                row_slice = slice(*X.indptr[i - 1: i + 1])[0m
+[1m                new_data.extend(X.data[row_slice][::-1])[0m
+[1m                new_indices.extend(X.indices[row_slice][::-1])[0m
+[1m            return sparse.csr_matrix((new_data, new_indices, X.indptr),[0m
+[1m                                     shape=X.shape)[0m
+[1m    [0m
+[1m>       X_sparse_unsorted = scramble_indices(X_sparse)[0m
+
+X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
+       [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
+       [  0.,   0.,   1., ...,   8.,   0.,   0.]])
+X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 1628 stored elements in Compressed Sparse Row format>
+X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 1583 stored elements in Compressed Sparse Row format>
+coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
+         0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
+        -0.00393698, -0.00026964]])
+coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 2045 stored elements in Compressed Sparse Row format>
+digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
+        [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
+scramble_indices = <function scramble_indices at 0x7f8976d69f50>
+sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_s..., probability=True, random_state=0,
+  shrinking=True, tol=0.001, verbose=False)
+y          = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2,
+  ...6, 7, 8, 9, 0, 9, 5, 5, 6, 5, 0, 9, 8, 9, 8, 4, 1, 7, 7, 3,
+       5, 1, 0, 0])
+
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:123: in scramble_indices
+[1m    shape=X.shape)[0m
+[1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py[0m:52: in __init__
+[1m    self.data = np.array(data, copy=copy, dtype=getdtype(dtype, data))[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
+
+[1m    def getdtype(dtype, a=None, default=None):[0m
+[1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
+[1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
+[1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
+[1m        are both None, construct a data type out of the 'default' parameter.[0m
+[1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
+[1m        """[0m
+[1m        #TODO is this really what we want?[0m
+[1m        canCast = True[0m
+[1m        if dtype is None:[0m
+[1m            try:[0m
+[1m                newdtype = a.dtype[0m
+[1m            except AttributeError:[0m
+[1m                if default is not None:[0m
+[1m                    newdtype = np.dtype(default)[0m
+[1m                    canCast = False[0m
+[1m                else:[0m
+[1m>                   raise TypeError("could not interpret data type")[0m
+[1m[31mE                   TypeError: could not interpret data type[0m
+
+a          = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...]
+canCast    = True
+default    = None
+dtype      = None
+
+[1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py[0m:101: TypeError
+[1m[31m_________________________ test_show_versions_with_blas _________________________[0m
+
+args = (), kwargs = {}
+
+[1m    @wraps(fn)[0m
+[1m    def wrapper(*args, **kwargs):[0m
+[1m        clean_warning_registry()[0m
+[1m        with warnings.catch_warnings():[0m
+[1m            warnings.simplefilter("ignore", self.category)[0m
+[1m>           return fn(*args, **kwargs)[0m
+[1m[31mE           TypeError: test_show_versions_with_blas() takes exactly 1 argument (0 given)[0m
+
+args       = ()
+fn         = <function test_show_versions_with_blas at 0x7f89779cfd70>
+kwargs     = {}
+self       = _IgnoreWarnings(record=True)
+
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/utils/testing.py[0m:348: TypeError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562438953.log</InputPath>
         <Output>____________________________ test_unsorted_indices _____________________________[0m
 
-          [1m    def test_unsorted_indices():[0m
-          [1m        # test that the result with sorted and unsorted indices in csr is the same[0m
-          [1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
-          [1m        # show the problem[0m
-          [1m        digits = load_digits()[0m
-          [1m        X, y = digits.data[:50], digits.target[:50][0m
-          [1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
-          [1m    [0m
-          [1m        X_sparse = sparse.csr_matrix(X)[0m
-          [1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
-          [1m                             random_state=0).fit(X, y).coef_[0m
-          [1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
-          [1m                             random_state=0).fit(X_sparse, y)[0m
-          [1m        coef_sorted = sparse_svc.coef_[0m
-          [1m        # make sure dense and sparse SVM give the same result[0m
-          [1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
-          [1m    [0m
-          [1m        # reverse each row's indices[0m
-          [1m        def scramble_indices(X):[0m
-          [1m            new_data = [][0m
-          [1m            new_indices = [][0m
-          [1m            for i in range(1, len(X.indptr)):[0m
-          [1m                row_slice = slice(*X.indptr[i - 1: i + 1])[0m
-          [1m                new_data.extend(X.data[row_slice][::-1])[0m
-          [1m                new_indices.extend(X.indices[row_slice][::-1])[0m
-          [1m            return sparse.csr_matrix((new_data, new_indices, X.indptr),[0m
-          [1m                                     shape=X.shape)[0m
-          [1m    [0m
-          [1m>       X_sparse_unsorted = scramble_indices(X_sparse)[0m
-          
-          X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
-                 [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
-                 [  0.,   0.,   1., ...,   8.,   0.,   0.]])
-          X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 1628 stored elements in Compressed Sparse Row format>
-          X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 1583 stored elements in Compressed Sparse Row format>
-          coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
-                   0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
-                  -0.00393698, -0.00026964]])
-          coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 2045 stored elements in Compressed Sparse Row format>
-          digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
-                  [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
-          scramble_indices = <function scramble_indices at 0x7faca3b88e60>
-          sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
-            decision_function_s..., probability=True, random_state=0,
-            shrinking=True, tol=0.001, verbose=False)
-          y          = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2,
-            ...6, 7, 8, 9, 0, 9, 5, 5, 6, 5, 0, 9, 8, 9, 8, 4, 1, 7, 7, 3,
-                 5, 1, 0, 0])
-          
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:125: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:123: in scramble_indices
-          [1m    shape=X.shape)[0m
-          [1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py[0m:52: in __init__
-          [1m    self.data = np.array(data, copy=copy, dtype=getdtype(dtype, data))[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
-          
-          [1m    def getdtype(dtype, a=None, default=None):[0m
-          [1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
-          [1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
-          [1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
-          [1m        are both None, construct a data type out of the 'default' parameter.[0m
-          [1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
-          [1m        """[0m
-          [1m        #TODO is this really what we want?[0m
-          [1m        canCast = True[0m
-          [1m        if dtype is None:[0m
-          [1m            try:[0m
-          [1m                newdtype = a.dtype[0m
-          [1m            except AttributeError:[0m
-          [1m                if default is not None:[0m
-          [1m                    newdtype = np.dtype(default)[0m
-          [1m                    canCast = False[0m
-          [1m                else:[0m
-          [1m>                   raise TypeError("could not interpret data type")[0m
-          [1m[31mE                   TypeError: could not interpret data type[0m
-          
-          a          = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...]
-          canCast    = True
-          default    = None
-          dtype      = None
-          
-          [1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py[0m:101: TypeError
-          [1m[31m_________________________ test_show_versions_with_blas _________________________[0m
-          
-          args = (), kwargs = {}
-          
-          [1m    @wraps(fn)[0m
-          [1m    def wrapper(*args, **kwargs):[0m
-          [1m        clean_warning_registry()[0m
-          [1m        with warnings.catch_warnings():[0m
-          [1m            warnings.simplefilter("ignore", self.category)[0m
-          [1m>           return fn(*args, **kwargs)[0m
-          [1m[31mE           TypeError: test_show_versions_with_blas() takes exactly 1 argument (0 given)[0m
-          
-          args       = ()
-          fn         = <function test_show_versions_with_blas at 0x7faca4938de8>
-          kwargs     = {}
-          self       = _IgnoreWarnings(record=True)
-          
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/utils/testing.py[0m:348: TypeError</Output>
+[1m    def test_unsorted_indices():[0m
+[1m        # test that the result with sorted and unsorted indices in csr is the same[0m
+[1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
+[1m        # show the problem[0m
+[1m        digits = load_digits()[0m
+[1m        X, y = digits.data[:50], digits.target[:50][0m
+[1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
+[1m    [0m
+[1m        X_sparse = sparse.csr_matrix(X)[0m
+[1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
+[1m                             random_state=0).fit(X, y).coef_[0m
+[1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
+[1m                             random_state=0).fit(X_sparse, y)[0m
+[1m        coef_sorted = sparse_svc.coef_[0m
+[1m        # make sure dense and sparse SVM give the same result[0m
+[1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
+[1m    [0m
+[1m        # reverse each row's indices[0m
+[1m        def scramble_indices(X):[0m
+[1m            new_data = [][0m
+[1m            new_indices = [][0m
+[1m            for i in range(1, len(X.indptr)):[0m
+[1m                row_slice = slice(*X.indptr[i - 1: i + 1])[0m
+[1m                new_data.extend(X.data[row_slice][::-1])[0m
+[1m                new_indices.extend(X.indices[row_slice][::-1])[0m
+[1m            return sparse.csr_matrix((new_data, new_indices, X.indptr),[0m
+[1m                                     shape=X.shape)[0m
+[1m    [0m
+[1m>       X_sparse_unsorted = scramble_indices(X_sparse)[0m
+
+X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
+       [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
+       [  0.,   0.,   1., ...,   8.,   0.,   0.]])
+X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 1628 stored elements in Compressed Sparse Row format>
+X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 1583 stored elements in Compressed Sparse Row format>
+coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
+         0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
+        -0.00393698, -0.00026964]])
+coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 2045 stored elements in Compressed Sparse Row format>
+digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
+        [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
+scramble_indices = <function scramble_indices at 0x7faca3b88e60>
+sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_s..., probability=True, random_state=0,
+  shrinking=True, tol=0.001, verbose=False)
+y          = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2,
+  ...6, 7, 8, 9, 0, 9, 5, 5, 6, 5, 0, 9, 8, 9, 8, 4, 1, 7, 7, 3,
+       5, 1, 0, 0])
+
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:123: in scramble_indices
+[1m    shape=X.shape)[0m
+[1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py[0m:52: in __init__
+[1m    self.data = np.array(data, copy=copy, dtype=getdtype(dtype, data))[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
+
+[1m    def getdtype(dtype, a=None, default=None):[0m
+[1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
+[1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
+[1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
+[1m        are both None, construct a data type out of the 'default' parameter.[0m
+[1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
+[1m        """[0m
+[1m        #TODO is this really what we want?[0m
+[1m        canCast = True[0m
+[1m        if dtype is None:[0m
+[1m            try:[0m
+[1m                newdtype = a.dtype[0m
+[1m            except AttributeError:[0m
+[1m                if default is not None:[0m
+[1m                    newdtype = np.dtype(default)[0m
+[1m                    canCast = False[0m
+[1m                else:[0m
+[1m>                   raise TypeError("could not interpret data type")[0m
+[1m[31mE                   TypeError: could not interpret data type[0m
+
+a          = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...]
+canCast    = True
+default    = None
+dtype      = None
+
+[1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py[0m:101: TypeError
+[1m[31m_________________________ test_show_versions_with_blas _________________________[0m
+
+args = (), kwargs = {}
+
+[1m    @wraps(fn)[0m
+[1m    def wrapper(*args, **kwargs):[0m
+[1m        clean_warning_registry()[0m
+[1m        with warnings.catch_warnings():[0m
+[1m            warnings.simplefilter("ignore", self.category)[0m
+[1m>           return fn(*args, **kwargs)[0m
+[1m[31mE           TypeError: test_show_versions_with_blas() takes exactly 1 argument (0 given)[0m
+
+args       = ()
+fn         = <function test_show_versions_with_blas at 0x7faca4938de8>
+kwargs     = {}
+self       = _IgnoreWarnings(record=True)
+
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/utils/testing.py[0m:348: TypeError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562444501.log</InputPath>
         <Output>____________________________ test_unsorted_indices _____________________________[0m
 
-          [1m    def test_unsorted_indices():[0m
-          [1m        # test that the result with sorted and unsorted indices in csr is the same[0m
-          [1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
-          [1m        # show the problem[0m
-          [1m        digits = load_digits()[0m
-          [1m        X, y = digits.data[:50], digits.target[:50][0m
-          [1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
-          [1m    [0m
-          [1m        X_sparse = sparse.csr_matrix(X)[0m
-          [1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
-          [1m                             random_state=0).fit(X, y).coef_[0m
-          [1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
-          [1m                             random_state=0).fit(X_sparse, y)[0m
-          [1m        coef_sorted = sparse_svc.coef_[0m
-          [1m        # make sure dense and sparse SVM give the same result[0m
-          [1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
-          [1m    [0m
-          [1m        # reverse each row's indices[0m
-          [1m        def scramble_indices(X):[0m
-          [1m            new_data = [][0m
-          [1m            new_indices = [][0m
-          [1m            for i in range(1, len(X.indptr)):[0m
-          [1m                row_slice = slice(*X.indptr[i - 1: i + 1])[0m
-          [1m                new_data.extend(X.data[row_slice][::-1])[0m
-          [1m                new_indices.extend(X.indices[row_slice][::-1])[0m
-          [1m            return sparse.csr_matrix((new_data, new_indices, X.indptr),[0m
-          [1m                                     shape=X.shape)[0m
-          [1m    [0m
-          [1m>       X_sparse_unsorted = scramble_indices(X_sparse)[0m
-          
-          X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
-                 [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
-                 [  0.,   0.,   1., ...,   8.,   0.,   0.]])
-          X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 1628 stored elements in Compressed Sparse Row format>
-          X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 1583 stored elements in Compressed Sparse Row format>
-          coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
-                   0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
-                  -0.00393698, -0.00026964]])
-          coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
-            with 2045 stored elements in Compressed Sparse Row format>
-          digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
-                  [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
-          scramble_indices = <function scramble_indices at 0x7f2a0f80d410>
-          sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
-            decision_function_s..., probability=True, random_state=0,
-            shrinking=True, tol=0.001, verbose=False)
-          y          = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2,
-            ...6, 7, 8, 9, 0, 9, 5, 5, 6, 5, 0, 9, 8, 9, 8, 4, 1, 7, 7, 3,
-                 5, 1, 0, 0])
-          
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:125: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:123: in scramble_indices
-          [1m    shape=X.shape)[0m
-          [1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py[0m:52: in __init__
-          [1m    self.data = np.array(data, copy=copy, dtype=getdtype(dtype, data))[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
-          
-          [1m    def getdtype(dtype, a=None, default=None):[0m
-          [1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
-          [1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
-          [1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
-          [1m        are both None, construct a data type out of the 'default' parameter.[0m
-          [1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
-          [1m        """[0m
-          [1m        #TODO is this really what we want?[0m
-          [1m        canCast = True[0m
-          [1m        if dtype is None:[0m
-          [1m            try:[0m
-          [1m                newdtype = a.dtype[0m
-          [1m            except AttributeError:[0m
-          [1m                if default is not None:[0m
-          [1m                    newdtype = np.dtype(default)[0m
-          [1m                    canCast = False[0m
-          [1m                else:[0m
-          [1m>                   raise TypeError("could not interpret data type")[0m
-          [1m[31mE                   TypeError: could not interpret data type[0m
-          
-          a          = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...]
-          canCast    = True
-          default    = None
-          dtype      = None
-          
-          [1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py[0m:101: TypeError</Output>
+[1m    def test_unsorted_indices():[0m
+[1m        # test that the result with sorted and unsorted indices in csr is the same[0m
+[1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
+[1m        # show the problem[0m
+[1m        digits = load_digits()[0m
+[1m        X, y = digits.data[:50], digits.target[:50][0m
+[1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
+[1m    [0m
+[1m        X_sparse = sparse.csr_matrix(X)[0m
+[1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
+[1m                             random_state=0).fit(X, y).coef_[0m
+[1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
+[1m                             random_state=0).fit(X_sparse, y)[0m
+[1m        coef_sorted = sparse_svc.coef_[0m
+[1m        # make sure dense and sparse SVM give the same result[0m
+[1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
+[1m    [0m
+[1m        # reverse each row's indices[0m
+[1m        def scramble_indices(X):[0m
+[1m            new_data = [][0m
+[1m            new_indices = [][0m
+[1m            for i in range(1, len(X.indptr)):[0m
+[1m                row_slice = slice(*X.indptr[i - 1: i + 1])[0m
+[1m                new_data.extend(X.data[row_slice][::-1])[0m
+[1m                new_indices.extend(X.indices[row_slice][::-1])[0m
+[1m            return sparse.csr_matrix((new_data, new_indices, X.indptr),[0m
+[1m                                     shape=X.shape)[0m
+[1m    [0m
+[1m>       X_sparse_unsorted = scramble_indices(X_sparse)[0m
+
+X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
+       [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
+       [  0.,   0.,   1., ...,   8.,   0.,   0.]])
+X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 1628 stored elements in Compressed Sparse Row format>
+X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 1583 stored elements in Compressed Sparse Row format>
+coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
+         0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
+        -0.00393698, -0.00026964]])
+coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
+  with 2045 stored elements in Compressed Sparse Row format>
+digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
+        [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
+scramble_indices = <function scramble_indices at 0x7f2a0f80d410>
+sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_s..., probability=True, random_state=0,
+  shrinking=True, tol=0.001, verbose=False)
+y          = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2,
+  ...6, 7, 8, 9, 0, 9, 5, 5, 6, 5, 0, 9, 8, 9, 8, 4, 1, 7, 7, 3,
+       5, 1, 0, 0])
+
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/build/scikit-learn/scikit-learn/sklearn/svm/tests/test_sparse.py[0m:123: in scramble_indices
+[1m    shape=X.shape)[0m
+[1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py[0m:52: in __init__
+[1m    self.data = np.array(data, copy=copy, dtype=getdtype(dtype, data))[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
+
+[1m    def getdtype(dtype, a=None, default=None):[0m
+[1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
+[1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
+[1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
+[1m        are both None, construct a data type out of the 'default' parameter.[0m
+[1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
+[1m        """[0m
+[1m        #TODO is this really what we want?[0m
+[1m        canCast = True[0m
+[1m        if dtype is None:[0m
+[1m            try:[0m
+[1m                newdtype = a.dtype[0m
+[1m            except AttributeError:[0m
+[1m                if default is not None:[0m
+[1m                    newdtype = np.dtype(default)[0m
+[1m                    canCast = False[0m
+[1m                else:[0m
+[1m>                   raise TypeError("could not interpret data type")[0m
+[1m[31mE                   TypeError: could not interpret data type[0m
+
+a          = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...]
+canCast    = True
+default    = None
+dtype      = None
+
+[1m[31m/usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py[0m:101: TypeError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/scikit-learn@scikit-learn/failed/562456534.log</InputPath>
         <Output>File "/home/travis/miniconda/envs/testenv/bin/pytest", line 11, in <module>
-          sys.exit(main())
+sys.exit(main())
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/_pytest/config.py", line 52, in main
-          config = _prepareconfig(args, plugins)
+config = _prepareconfig(args, plugins)
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/_pytest/config.py", line 163, in _prepareconfig
-          pluginmanager=pluginmanager, args=args)
+pluginmanager=pluginmanager, args=args)
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/pluggy/__init__.py", line 617, in __call__
-          return self._hookexec(self, self._nonwrappers + self._wrappers, kwargs)
+return self._hookexec(self, self._nonwrappers + self._wrappers, kwargs)
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/pluggy/__init__.py", line 222, in _hookexec
-          return self._inner_hookexec(hook, methods, kwargs)
+return self._inner_hookexec(hook, methods, kwargs)
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/pluggy/__init__.py", line 216, in <lambda>
-          firstresult=hook.spec_opts.get('firstresult'),
+firstresult=hook.spec_opts.get('firstresult'),
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/pluggy/callers.py", line 196, in _multicall
-          gen.send(outcome)
+gen.send(outcome)
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/_pytest/helpconfig.py", line 68, in pytest_cmdline_parse
-          config = outcome.get_result()
+config = outcome.get_result()
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/pluggy/callers.py", line 76, in get_result
-          raise ex[1].with_traceback(ex[2])
+raise ex[1].with_traceback(ex[2])
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/pluggy/callers.py", line 180, in _multicall
-          res = hook_impl.function(*args)
+res = hook_impl.function(*args)
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/_pytest/config.py", line 936, in pytest_cmdline_parse
-          self.parse(args)
+self.parse(args)
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/_pytest/config.py", line 1086, in parse
-          self._preparse(args, addopts=addopts)
+self._preparse(args, addopts=addopts)
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/_pytest/config.py", line 1048, in _preparse
-          self.pluginmanager.load_setuptools_entrypoints('pytest11')
+self.pluginmanager.load_setuptools_entrypoints('pytest11')
         File "/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages/pluggy/__init__.py", line 402, in load_setuptools_entrypoints
-          "Plugin %r could not be loaded: %s!" % (ep.name, e))
+"Plugin %r could not be loaded: %s!" % (ep.name, e))
       pluggy.PluginValidationError: Plugin 'pytest_cov' could not be loaded: (pytest 3.5.0 (/home/travis/miniconda/envs/testenv/lib/python3.4/site-packages), Requirement.parse('pytest>=3.6'))!</Output>
       </ExampleDataOfString>
     </Examples>

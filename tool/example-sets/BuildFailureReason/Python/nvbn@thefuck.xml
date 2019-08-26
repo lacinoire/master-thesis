@@ -19,803 +19,803 @@
         <InputPath>Python/nvbn@thefuck/failed/530361507.log</InputPath>
         <Output>_________________________________ test_readme __________________________________[0m
 
-          source_root = PosixPath('/home/travis/build/nvbn/thefuck')
-          
-          [1m    def test_readme(source_root):[0m
-          [1m        with source_root.joinpath('README.md').open() as f:[0m
-          [1m            readme = f.read()[0m
-          [1m    [0m
-          [1m            bundled = source_root.joinpath('thefuck') \[0m
-          [1m                                 .joinpath('rules') \[0m
-          [1m                                 .glob('*.py')[0m
-          [1m    [0m
-          [1m            for rule in bundled:[0m
-          [1m                if rule.stem != '__init__':[0m
-          [1m>                   assert rule.stem in readme,\[0m
-          [1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
-          [1m[31mE                   AssertionError: Missing rule "shoaib" in README.md[0m
-          [1m[31mE                   assert 'shoaib' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
-          [1m[31mE                    +  where 'shoaib' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/shoaib.py').stem[0m
-          
-          [1m[31mtests/test_readme.py[0m:11: AssertionError</Output>
+source_root = PosixPath('/home/travis/build/nvbn/thefuck')
+
+[1m    def test_readme(source_root):[0m
+[1m        with source_root.joinpath('README.md').open() as f:[0m
+[1m            readme = f.read()[0m
+[1m    [0m
+[1m            bundled = source_root.joinpath('thefuck') \[0m
+[1m                                 .joinpath('rules') \[0m
+[1m                                 .glob('*.py')[0m
+[1m    [0m
+[1m            for rule in bundled:[0m
+[1m                if rule.stem != '__init__':[0m
+[1m>                   assert rule.stem in readme,\[0m
+[1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
+[1m[31mE                   AssertionError: Missing rule "shoaib" in README.md[0m
+[1m[31mE                   assert 'shoaib' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
+[1m[31mE                    +  where 'shoaib' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/shoaib.py').stem[0m
+
+[1m[31mtests/test_readme.py[0m:11: AssertionError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/534333188.log</InputPath>
         <Output>__________________________ TestGeneric.test_app_alias __________________________[0m
 
-          self = <tests.shells.test_generic.TestGeneric object at 0x7f0c5be9cf28>
-          shell = <thefuck.shells.generic.Generic object at 0x7f0c5bea00f0>
-          
-          [1m    def test_app_alias(self, shell):[0m
-          [1m        assert 'alias fuck' in shell.app_alias('fuck')[0m
-          [1m        assert 'alias FUCK' in shell.app_alias('FUCK')[0m
-          [1m        assert 'thefuck' in shell.app_alias('fuck')[0m
-          [1m>       assert 'TF_ALIAS=fuck PYTHONIOENCODING' in shell.app_alias('fuck')[0m
-          [1m[31mE       assert 'TF_ALIAS=fuck PYTHONIOENCODING' in 'alias fuck=\'eval "$(TF_ALIAS=fuck" PYTHONIOENCODING=utf-8 thefuck "$(fc -ln -1))"\''[0m
-          [1m[31mE        +  where 'alias fuck=\'eval "$(TF_ALIAS=fuck" PYTHONIOENCODING=utf-8 thefuck "$(fc -ln -1))"\'' = <bound method Generic.app_alias of <thefuck.shells.generic.Generic object at 0x7f0c5bea00f0>>('fuck')[0m
-          [1m[31mE        +    where <bound method Generic.app_alias of <thefuck.shells.generic.Generic object at 0x7f0c5bea00f0>> = <thefuck.shells.generic.Generic object at 0x7f0c5bea00f0>.app_alias[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/shells/test_generic.py[0m:31: AssertionError</Output>
+self = <tests.shells.test_generic.TestGeneric object at 0x7f0c5be9cf28>
+shell = <thefuck.shells.generic.Generic object at 0x7f0c5bea00f0>
+
+[1m    def test_app_alias(self, shell):[0m
+[1m        assert 'alias fuck' in shell.app_alias('fuck')[0m
+[1m        assert 'alias FUCK' in shell.app_alias('FUCK')[0m
+[1m        assert 'thefuck' in shell.app_alias('fuck')[0m
+[1m>       assert 'TF_ALIAS=fuck PYTHONIOENCODING' in shell.app_alias('fuck')[0m
+[1m[31mE       assert 'TF_ALIAS=fuck PYTHONIOENCODING' in 'alias fuck=\'eval "$(TF_ALIAS=fuck" PYTHONIOENCODING=utf-8 thefuck "$(fc -ln -1))"\''[0m
+[1m[31mE        +  where 'alias fuck=\'eval "$(TF_ALIAS=fuck" PYTHONIOENCODING=utf-8 thefuck "$(fc -ln -1))"\'' = <bound method Generic.app_alias of <thefuck.shells.generic.Generic object at 0x7f0c5bea00f0>>('fuck')[0m
+[1m[31mE        +    where <bound method Generic.app_alias of <thefuck.shells.generic.Generic object at 0x7f0c5bea00f0>> = <thefuck.shells.generic.Generic object at 0x7f0c5bea00f0>.app_alias[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/shells/test_generic.py[0m:31: AssertionError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/537373579.log</InputPath>
         <Output>_______________ ERROR collecting tests/shells/test_powershell.py _______________[0m
-          [1m[31mtests/shells/test_powershell.py[0m:8: in <module>
-          [1m    class TestPowershell(object):[0m
-          [1m[31mtests/shells/test_powershell.py[0m:33: in TestPowershell
-          [1m    ([FileNotFoundError, b'PowerShell 6.1.2\n'], 'PowerShell 6.1.2', 'pwsh')])[0m
-          [1m[31mE   NameError: name 'FileNotFoundError' is not defined[0m</Output>
+[1m[31mtests/shells/test_powershell.py[0m:8: in <module>
+[1m    class TestPowershell(object):[0m
+[1m[31mtests/shells/test_powershell.py[0m:33: in TestPowershell
+[1m    ([FileNotFoundError, b'PowerShell 6.1.2\n'], 'PowerShell 6.1.2', 'pwsh')])[0m
+[1m[31mE   NameError: name 'FileNotFoundError' is not defined[0m</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/537374319.log</InputPath>
         <Output>_______________ ERROR collecting tests/shells/test_powershell.py _______________[0m
-          [1m[31mtests/shells/test_powershell.py[0m:8: in <module>
-          [1m    class TestPowershell(object):[0m
-          [1m[31mtests/shells/test_powershell.py[0m:33: in TestPowershell
-          [1m    ([FileNotFoundError, b'PowerShell 6.1.2\n'], 'PowerShell 6.1.2', 'pwsh')])[0m
-          [1m[31mE   NameError: name 'FileNotFoundError' is not defined[0m</Output>
+[1m[31mtests/shells/test_powershell.py[0m:8: in <module>
+[1m    class TestPowershell(object):[0m
+[1m[31mtests/shells/test_powershell.py[0m:33: in TestPowershell
+[1m    ([FileNotFoundError, b'PowerShell 6.1.2\n'], 'PowerShell 6.1.2', 'pwsh')])[0m
+[1m[31mE   NameError: name 'FileNotFoundError' is not defined[0m</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/540933341.log</InputPath>
         <Output>____ ERROR at setup of test_get_new_command[command0-nix-env -iA nixos.vim] ____[0m
-          file /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py, line 21
-            @pytest.mark.parametrize('command, new_command', [
-                (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),
-                (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])
-            def test_get_new_command(mocker, command, new_command, packages):
-          [31mE       fixture 'packages' not found[0m
-          [31m>       available fixtures: TIMEOUT, benchmark, benchmark_weave, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, doctest_namespace, functional, mock, mocker, monkeypatch, no_cache, no_colors, no_memoize, once_without_docker, os_environ, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, run_without_docker, set_shell, settings, skip_without_docker, source_root, spawnu, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory[0m
-          [31m>       use 'pytest --fixtures [testpath]' for help on them.[0m
-          
-          /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py:21
-          [31m[1m__ ERROR at setup of test_get_new_command[command1-nix-env -iA nixos.pacman] ___[0m
-          file /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py, line 21
-            @pytest.mark.parametrize('command, new_command', [
-                (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),
-                (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])
-            def test_get_new_command(mocker, command, new_command, packages):
-          [31mE       fixture 'packages' not found[0m
-          [31m>       available fixtures: TIMEOUT, benchmark, benchmark_weave, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, doctest_namespace, functional, mock, mocker, monkeypatch, no_cache, no_colors, no_memoize, once_without_docker, os_environ, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, run_without_docker, set_shell, settings, skip_without_docker, source_root, spawnu, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory[0m
-          [31m>       use 'pytest --fixtures [testpath]' for help on them.[0m
-          
-          /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py:21
-          =================================== FAILURES ===================================
-          [31m[1m_________________________________ test_readme __________________________________[0m
-          
-          source_root = PosixPath('/home/travis/build/nvbn/thefuck')
-          
-          [1m    def test_readme(source_root):[0m
-          [1m        with source_root.joinpath('README.md').open() as f:[0m
-          [1m            readme = f.read()[0m
-          [1m    [0m
-          [1m            bundled = source_root.joinpath('thefuck') \[0m
-          [1m                                 .joinpath('rules') \[0m
-          [1m                                 .glob('*.py')[0m
-          [1m    [0m
-          [1m            for rule in bundled:[0m
-          [1m                if rule.stem != '__init__':[0m
-          [1m>                   assert rule.stem in readme,\[0m
-          [1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
-          [1m[31mE                   AssertionError: Missing rule "nixos_cmd_not_found" in README.md[0m
-          [1m[31mE                   assert 'nixos_cmd_not_found' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
-          [1m[31mE                    +  where 'nixos_cmd_not_found' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py').stem[0m
-          
-          [1m[31mtests/test_readme.py[0m:11: AssertionError
-          [31m[1m_____________________________ test_match[command0] _____________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f61e161cb00>
-          command = (Command(script=vim, output=nix-env -iA nixos.vim),)
-          
-          [1m    @pytest.mark.parametrize('command', [[0m
-          [1m        (Command('vim', 'nix-env -iA nixos.vim'),)])[0m
-          [1m    def test_match(mocker, command):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:9: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7f61e15ae898>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
-          [31m[1m________________________ test_not_match[command0-None] _________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f61e17496a0>
-          command = Command(script=vim, output=), which = None
-          
-          [1m    @pytest.mark.parametrize('command, which', [[0m
-          [1m        (Command('vim', ''), None),[0m
-          [1m        (Command('', ''), None)])[0m
-          [1m    def test_not_match(mocker, command, which):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=which)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7f61e1749710>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
-          [31m[1m________________________ test_not_match[command1-None] _________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f61e12fc860>
-          command = Command(script=, output=), which = None
-          
-          [1m    @pytest.mark.parametrize('command, which', [[0m
-          [1m        (Command('vim', ''), None),[0m
-          [1m        (Command('', ''), None)])[0m
-          [1m    def test_not_match(mocker, command, which):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=which)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7f61e12fc8d0>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError</Output>
+file /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py, line 21
+  @pytest.mark.parametrize('command, new_command', [
+      (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),
+      (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])
+  def test_get_new_command(mocker, command, new_command, packages):
+[31mE       fixture 'packages' not found[0m
+[31m>       available fixtures: TIMEOUT, benchmark, benchmark_weave, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, doctest_namespace, functional, mock, mocker, monkeypatch, no_cache, no_colors, no_memoize, once_without_docker, os_environ, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, run_without_docker, set_shell, settings, skip_without_docker, source_root, spawnu, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory[0m
+[31m>       use 'pytest --fixtures [testpath]' for help on them.[0m
+
+/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py:21
+[31m[1m__ ERROR at setup of test_get_new_command[command1-nix-env -iA nixos.pacman] ___[0m
+file /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py, line 21
+  @pytest.mark.parametrize('command, new_command', [
+      (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),
+      (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])
+  def test_get_new_command(mocker, command, new_command, packages):
+[31mE       fixture 'packages' not found[0m
+[31m>       available fixtures: TIMEOUT, benchmark, benchmark_weave, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, doctest_namespace, functional, mock, mocker, monkeypatch, no_cache, no_colors, no_memoize, once_without_docker, os_environ, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, run_without_docker, set_shell, settings, skip_without_docker, source_root, spawnu, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory[0m
+[31m>       use 'pytest --fixtures [testpath]' for help on them.[0m
+
+/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py:21
+=================================== FAILURES ===================================
+[31m[1m_________________________________ test_readme __________________________________[0m
+
+source_root = PosixPath('/home/travis/build/nvbn/thefuck')
+
+[1m    def test_readme(source_root):[0m
+[1m        with source_root.joinpath('README.md').open() as f:[0m
+[1m            readme = f.read()[0m
+[1m    [0m
+[1m            bundled = source_root.joinpath('thefuck') \[0m
+[1m                                 .joinpath('rules') \[0m
+[1m                                 .glob('*.py')[0m
+[1m    [0m
+[1m            for rule in bundled:[0m
+[1m                if rule.stem != '__init__':[0m
+[1m>                   assert rule.stem in readme,\[0m
+[1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
+[1m[31mE                   AssertionError: Missing rule "nixos_cmd_not_found" in README.md[0m
+[1m[31mE                   assert 'nixos_cmd_not_found' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
+[1m[31mE                    +  where 'nixos_cmd_not_found' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py').stem[0m
+
+[1m[31mtests/test_readme.py[0m:11: AssertionError
+[31m[1m_____________________________ test_match[command0] _____________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f61e161cb00>
+command = (Command(script=vim, output=nix-env -iA nixos.vim),)
+
+[1m    @pytest.mark.parametrize('command', [[0m
+[1m        (Command('vim', 'nix-env -iA nixos.vim'),)])[0m
+[1m    def test_match(mocker, command):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7f61e15ae898>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
+[31m[1m________________________ test_not_match[command0-None] _________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f61e17496a0>
+command = Command(script=vim, output=), which = None
+
+[1m    @pytest.mark.parametrize('command, which', [[0m
+[1m        (Command('vim', ''), None),[0m
+[1m        (Command('', ''), None)])[0m
+[1m    def test_not_match(mocker, command, which):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=which)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7f61e1749710>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
+[31m[1m________________________ test_not_match[command1-None] _________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f61e12fc860>
+command = Command(script=, output=), which = None
+
+[1m    @pytest.mark.parametrize('command, which', [[0m
+[1m        (Command('vim', ''), None),[0m
+[1m        (Command('', ''), None)])[0m
+[1m    def test_not_match(mocker, command, which):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=which)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7f61e12fc8d0>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/540934200.log</InputPath>
         <Output>____ ERROR at setup of test_get_new_command[command0-nix-env -iA nixos.vim] ____[0m
-          file /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py, line 21
-            @pytest.mark.parametrize('command, new_command', [
-                (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),
-                (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])
-            def test_get_new_command(mocker, command, new_command, packages):
-          [31mE       fixture 'packages' not found[0m
-          [31m>       available fixtures: TIMEOUT, benchmark, benchmark_weave, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, doctest_namespace, functional, mock, mocker, monkeypatch, no_cache, no_colors, no_memoize, once_without_docker, os_environ, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, run_without_docker, set_shell, settings, skip_without_docker, source_root, spawnu, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory[0m
-          [31m>       use 'pytest --fixtures [testpath]' for help on them.[0m
-          
-          /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py:21
-          [31m[1m__ ERROR at setup of test_get_new_command[command1-nix-env -iA nixos.pacman] ___[0m
-          file /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py, line 21
-            @pytest.mark.parametrize('command, new_command', [
-                (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),
-                (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])
-            def test_get_new_command(mocker, command, new_command, packages):
-          [31mE       fixture 'packages' not found[0m
-          [31m>       available fixtures: TIMEOUT, benchmark, benchmark_weave, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, doctest_namespace, functional, mock, mocker, monkeypatch, no_cache, no_colors, no_memoize, once_without_docker, os_environ, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, run_without_docker, set_shell, settings, skip_without_docker, source_root, spawnu, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory[0m
-          [31m>       use 'pytest --fixtures [testpath]' for help on them.[0m
-          
-          /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py:21
-          =================================== FAILURES ===================================
-          [31m[1m_________________________________ test_readme __________________________________[0m
-          
-          source_root = PosixPath('/home/travis/build/nvbn/thefuck')
-          
-          [1m    def test_readme(source_root):[0m
-          [1m        with source_root.joinpath('README.md').open() as f:[0m
-          [1m            readme = f.read()[0m
-          [1m    [0m
-          [1m            bundled = source_root.joinpath('thefuck') \[0m
-          [1m                                 .joinpath('rules') \[0m
-          [1m                                 .glob('*.py')[0m
-          [1m    [0m
-          [1m            for rule in bundled:[0m
-          [1m                if rule.stem != '__init__':[0m
-          [1m>                   assert rule.stem in readme,\[0m
-          [1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
-          [1m[31mE                   AssertionError: Missing rule "nixos_cmd_not_found" in README.md[0m
-          [1m[31mE                   assert 'nixos_cmd_not_found' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
-          [1m[31mE                    +  where 'nixos_cmd_not_found' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py').stem[0m
-          
-          [1m[31mtests/test_readme.py[0m:11: AssertionError
-          [31m[1m_____________________________ test_match[command0] _____________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7fc3ae625860>
-          command = (Command(script=vim, output=nix-env -iA nixos.vim),)
-          
-          [1m    @pytest.mark.parametrize('command', [[0m
-          [1m        (Command('vim', 'nix-env -iA nixos.vim'),)])[0m
-          [1m    def test_match(mocker, command):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:9: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7fc3ae625908>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
-          [31m[1m________________________ test_not_match[command0-None] _________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7fc3ae76de10>
-          command = Command(script=vim, output=), which = None
-          
-          [1m    @pytest.mark.parametrize('command, which', [[0m
-          [1m        (Command('vim', ''), None),[0m
-          [1m        (Command('', ''), None)])[0m
-          [1m    def test_not_match(mocker, command, which):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=which)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7fc3ae5fabe0>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
-          [31m[1m________________________ test_not_match[command1-None] _________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7fc3ae684d68>
-          command = Command(script=, output=), which = None
-          
-          [1m    @pytest.mark.parametrize('command, which', [[0m
-          [1m        (Command('vim', ''), None),[0m
-          [1m        (Command('', ''), None)])[0m
-          [1m    def test_not_match(mocker, command, which):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=which)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7fc3ae64a278>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError</Output>
+file /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py, line 21
+  @pytest.mark.parametrize('command, new_command', [
+      (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),
+      (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])
+  def test_get_new_command(mocker, command, new_command, packages):
+[31mE       fixture 'packages' not found[0m
+[31m>       available fixtures: TIMEOUT, benchmark, benchmark_weave, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, doctest_namespace, functional, mock, mocker, monkeypatch, no_cache, no_colors, no_memoize, once_without_docker, os_environ, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, run_without_docker, set_shell, settings, skip_without_docker, source_root, spawnu, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory[0m
+[31m>       use 'pytest --fixtures [testpath]' for help on them.[0m
+
+/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py:21
+[31m[1m__ ERROR at setup of test_get_new_command[command1-nix-env -iA nixos.pacman] ___[0m
+file /home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py, line 21
+  @pytest.mark.parametrize('command, new_command', [
+      (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),
+      (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])
+  def test_get_new_command(mocker, command, new_command, packages):
+[31mE       fixture 'packages' not found[0m
+[31m>       available fixtures: TIMEOUT, benchmark, benchmark_weave, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, doctest_namespace, functional, mock, mocker, monkeypatch, no_cache, no_colors, no_memoize, once_without_docker, os_environ, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, run_without_docker, set_shell, settings, skip_without_docker, source_root, spawnu, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory[0m
+[31m>       use 'pytest --fixtures [testpath]' for help on them.[0m
+
+/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py:21
+=================================== FAILURES ===================================
+[31m[1m_________________________________ test_readme __________________________________[0m
+
+source_root = PosixPath('/home/travis/build/nvbn/thefuck')
+
+[1m    def test_readme(source_root):[0m
+[1m        with source_root.joinpath('README.md').open() as f:[0m
+[1m            readme = f.read()[0m
+[1m    [0m
+[1m            bundled = source_root.joinpath('thefuck') \[0m
+[1m                                 .joinpath('rules') \[0m
+[1m                                 .glob('*.py')[0m
+[1m    [0m
+[1m            for rule in bundled:[0m
+[1m                if rule.stem != '__init__':[0m
+[1m>                   assert rule.stem in readme,\[0m
+[1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
+[1m[31mE                   AssertionError: Missing rule "nixos_cmd_not_found" in README.md[0m
+[1m[31mE                   assert 'nixos_cmd_not_found' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
+[1m[31mE                    +  where 'nixos_cmd_not_found' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py').stem[0m
+
+[1m[31mtests/test_readme.py[0m:11: AssertionError
+[31m[1m_____________________________ test_match[command0] _____________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7fc3ae625860>
+command = (Command(script=vim, output=nix-env -iA nixos.vim),)
+
+[1m    @pytest.mark.parametrize('command', [[0m
+[1m        (Command('vim', 'nix-env -iA nixos.vim'),)])[0m
+[1m    def test_match(mocker, command):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7fc3ae625908>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
+[31m[1m________________________ test_not_match[command0-None] _________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7fc3ae76de10>
+command = Command(script=vim, output=), which = None
+
+[1m    @pytest.mark.parametrize('command, which', [[0m
+[1m        (Command('vim', ''), None),[0m
+[1m        (Command('', ''), None)])[0m
+[1m    def test_not_match(mocker, command, which):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=which)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7fc3ae5fabe0>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
+[31m[1m________________________ test_not_match[command1-None] _________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7fc3ae684d68>
+command = Command(script=, output=), which = None
+
+[1m    @pytest.mark.parametrize('command, which', [[0m
+[1m        (Command('vim', ''), None),[0m
+[1m        (Command('', ''), None)])[0m
+[1m    def test_not_match(mocker, command, which):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=which)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7fc3ae64a278>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/540939093.log</InputPath>
         <Output>_________________________________ test_readme __________________________________[0m
 
-          source_root = PosixPath('/home/travis/build/nvbn/thefuck')
-          
-          [1m    def test_readme(source_root):[0m
-          [1m        with source_root.joinpath('README.md').open() as f:[0m
-          [1m            readme = f.read()[0m
-          [1m    [0m
-          [1m            bundled = source_root.joinpath('thefuck') \[0m
-          [1m                                 .joinpath('rules') \[0m
-          [1m                                 .glob('*.py')[0m
-          [1m    [0m
-          [1m            for rule in bundled:[0m
-          [1m                if rule.stem != '__init__':[0m
-          [1m>                   assert rule.stem in readme,\[0m
-          [1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
-          [1m[31mE                   AssertionError: Missing rule "nixos_cmd_not_found" in README.md[0m
-          [1m[31mE                   assert 'nixos_cmd_not_found' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
-          [1m[31mE                    +  where 'nixos_cmd_not_found' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py').stem[0m
-          
-          [1m[31mtests/test_readme.py[0m:11: AssertionError
-          [31m[1m_____________________________ test_match[command0] _____________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f855cd6d0b8>
-          command = (Command(script=vim, output=nix-env -iA nixos.vim),)
-          
-          [1m    @pytest.mark.parametrize('command', [[0m
-          [1m        (Command('vim', 'nix-env -iA nixos.vim'),)])[0m
-          [1m    def test_match(mocker, command):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:9: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7f855cd6d588>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
-          [31m[1m___________________________ test_not_match[command0] ___________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f855c14e208>
-          command = (Command(script=vim, output=),)
-          
-          [1m    @pytest.mark.parametrize('command', [[0m
-          [1m        (Command('vim', ''),),[0m
-          [1m        (Command('', ''),)])[0m
-          [1m    def test_not_match(mocker, command):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7f855c14e1d0>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
-          [31m[1m___________________________ test_not_match[command1] ___________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f855c2e9ac8>
-          command = (Command(script=, output=),)
-          
-          [1m    @pytest.mark.parametrize('command', [[0m
-          [1m        (Command('vim', ''),),[0m
-          [1m        (Command('', ''),)])[0m
-          [1m    def test_not_match(mocker, command):[0m
-          [1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
-          [1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
-          [1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
-          [1m    mocked = p.start()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
-          [1m    result = self.__enter__()[0m
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
-          [1m    original, local = self.get_original()[0m
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          self = <unittest.mock._patch object at 0x7f855c2e9c18>
-          
-          [1m    def get_original(self):[0m
-          [1m        target = self.getter()[0m
-          [1m        name = self.attribute[0m
-          [1m    [0m
-          [1m        original = DEFAULT[0m
-          [1m        local = False[0m
-          [1m    [0m
-          [1m        try:[0m
-          [1m            original = target.__dict__[name][0m
-          [1m        except (AttributeError, KeyError):[0m
-          [1m            original = getattr(target, name, DEFAULT)[0m
-          [1m        else:[0m
-          [1m            local = True[0m
-          [1m    [0m
-          [1m        if name in _builtins and isinstance(target, ModuleType):[0m
-          [1m            self.create = True[0m
-          [1m    [0m
-          [1m        if not self.create and original is DEFAULT:[0m
-          [1m            raise AttributeError([0m
-          [1m>               "%s does not have the attribute %r" % (target, name)[0m
-          [1m            )[0m
-          [1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
-          
-          [1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
-          [31m[1m_____________ test_get_new_command[command0-nix-env -iA nixos.vim] _____________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f855c35f518>
-          command = Command(script=vim, output=nix-env -iA nixos.vim)
-          new_command = 'nix-env -iA nixos.vim'
-          
-          [1m    @pytest.mark.parametrize('command, new_command', [[0m
-          [1m        (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),[0m
-          [1m        (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])[0m
-          [1m    def test_get_new_command(mocker, command, new_command):[0m
-          [1m>       assert get_new_command(command) == new_command[0m
-          [1m[31mE       AssertionError: assert 'nix-env -iA nixos.vim && vim' == 'nix-env -iA nixos.vim'[0m
-          [1m[31mE         - nix-env -iA nixos.vim && vim[0m
-          [1m[31mE         ?                      -------[0m
-          [1m[31mE         + nix-env -iA nixos.vim[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:25: AssertionError
-          [31m[1m___________ test_get_new_command[command1-nix-env -iA nixos.pacman] ____________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f855c3c8630>
-          command = Command(script=pacman, output=nix-env -iA nixos.pacman)
-          new_command = 'nix-env -iA nixos.pacman'
-          
-          [1m    @pytest.mark.parametrize('command, new_command', [[0m
-          [1m        (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),[0m
-          [1m        (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])[0m
-          [1m    def test_get_new_command(mocker, command, new_command):[0m
-          [1m>       assert get_new_command(command) == new_command[0m
-          [1m[31mE       AssertionError: assert 'nix-env -iA ...man && pacman' == 'nix-env -iA nixos.pacman'[0m
-          [1m[31mE         - nix-env -iA nixos.pacman && pacman[0m
-          [1m[31mE         ?                         ----------[0m
-          [1m[31mE         + nix-env -iA nixos.pacman[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:25: AssertionError</Output>
+source_root = PosixPath('/home/travis/build/nvbn/thefuck')
+
+[1m    def test_readme(source_root):[0m
+[1m        with source_root.joinpath('README.md').open() as f:[0m
+[1m            readme = f.read()[0m
+[1m    [0m
+[1m            bundled = source_root.joinpath('thefuck') \[0m
+[1m                                 .joinpath('rules') \[0m
+[1m                                 .glob('*.py')[0m
+[1m    [0m
+[1m            for rule in bundled:[0m
+[1m                if rule.stem != '__init__':[0m
+[1m>                   assert rule.stem in readme,\[0m
+[1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
+[1m[31mE                   AssertionError: Missing rule "nixos_cmd_not_found" in README.md[0m
+[1m[31mE                   assert 'nixos_cmd_not_found' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
+[1m[31mE                    +  where 'nixos_cmd_not_found' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py').stem[0m
+
+[1m[31mtests/test_readme.py[0m:11: AssertionError
+[31m[1m_____________________________ test_match[command0] _____________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f855cd6d0b8>
+command = (Command(script=vim, output=nix-env -iA nixos.vim),)
+
+[1m    @pytest.mark.parametrize('command', [[0m
+[1m        (Command('vim', 'nix-env -iA nixos.vim'),)])[0m
+[1m    def test_match(mocker, command):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7f855cd6d588>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
+[31m[1m___________________________ test_not_match[command0] ___________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f855c14e208>
+command = (Command(script=vim, output=),)
+
+[1m    @pytest.mark.parametrize('command', [[0m
+[1m        (Command('vim', ''),),[0m
+[1m        (Command('', ''),)])[0m
+[1m    def test_not_match(mocker, command):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7f855c14e1d0>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
+[31m[1m___________________________ test_not_match[command1] ___________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f855c2e9ac8>
+command = (Command(script=, output=),)
+
+[1m    @pytest.mark.parametrize('command', [[0m
+[1m        (Command('vim', ''),),[0m
+[1m        (Command('', ''),)])[0m
+[1m    def test_not_match(mocker, command):[0m
+[1m>       mocker.patch('thefuck.rules.nixos_cmd_not_found.which', return_value=None)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:158: in __call__
+[1m    return self._start_patch(self.mock_module.patch, *args, **kwargs)[0m
+[1m[31m/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/pytest_mock.py[0m:138: in _start_patch
+[1m    mocked = p.start()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1386: in start
+[1m    result = self.__enter__()[0m
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1255: in __enter__
+[1m    original, local = self.get_original()[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7f855c2e9c18>
+
+[1m    def get_original(self):[0m
+[1m        target = self.getter()[0m
+[1m        name = self.attribute[0m
+[1m    [0m
+[1m        original = DEFAULT[0m
+[1m        local = False[0m
+[1m    [0m
+[1m        try:[0m
+[1m            original = target.__dict__[name][0m
+[1m        except (AttributeError, KeyError):[0m
+[1m            original = getattr(target, name, DEFAULT)[0m
+[1m        else:[0m
+[1m            local = True[0m
+[1m    [0m
+[1m        if name in _builtins and isinstance(target, ModuleType):[0m
+[1m            self.create = True[0m
+[1m    [0m
+[1m        if not self.create and original is DEFAULT:[0m
+[1m            raise AttributeError([0m
+[1m>               "%s does not have the attribute %r" % (target, name)[0m
+[1m            )[0m
+[1m[31mE           AttributeError: <module 'thefuck.rules.nixos_cmd_not_found' from '/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py'> does not have the attribute 'which'[0m
+
+[1m[31m/opt/python/3.7.1/lib/python3.7/unittest/mock.py[0m:1229: AttributeError
+[31m[1m_____________ test_get_new_command[command0-nix-env -iA nixos.vim] _____________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f855c35f518>
+command = Command(script=vim, output=nix-env -iA nixos.vim)
+new_command = 'nix-env -iA nixos.vim'
+
+[1m    @pytest.mark.parametrize('command, new_command', [[0m
+[1m        (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),[0m
+[1m        (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])[0m
+[1m    def test_get_new_command(mocker, command, new_command):[0m
+[1m>       assert get_new_command(command) == new_command[0m
+[1m[31mE       AssertionError: assert 'nix-env -iA nixos.vim && vim' == 'nix-env -iA nixos.vim'[0m
+[1m[31mE         - nix-env -iA nixos.vim && vim[0m
+[1m[31mE         ?                      -------[0m
+[1m[31mE         + nix-env -iA nixos.vim[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:25: AssertionError
+[31m[1m___________ test_get_new_command[command1-nix-env -iA nixos.pacman] ____________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f855c3c8630>
+command = Command(script=pacman, output=nix-env -iA nixos.pacman)
+new_command = 'nix-env -iA nixos.pacman'
+
+[1m    @pytest.mark.parametrize('command, new_command', [[0m
+[1m        (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),[0m
+[1m        (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])[0m
+[1m    def test_get_new_command(mocker, command, new_command):[0m
+[1m>       assert get_new_command(command) == new_command[0m
+[1m[31mE       AssertionError: assert 'nix-env -iA ...man && pacman' == 'nix-env -iA nixos.pacman'[0m
+[1m[31mE         - nix-env -iA nixos.pacman && pacman[0m
+[1m[31mE         ?                         ----------[0m
+[1m[31mE         + nix-env -iA nixos.pacman[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:25: AssertionError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/540943480.log</InputPath>
         <Output>_________________________________ test_readme __________________________________[0m
 
-          source_root = PosixPath('/home/travis/build/nvbn/thefuck')
-          
-          [1m    def test_readme(source_root):[0m
-          [1m        with source_root.joinpath('README.md').open() as f:[0m
-          [1m            readme = f.read()[0m
-          [1m    [0m
-          [1m            bundled = source_root.joinpath('thefuck') \[0m
-          [1m                                 .joinpath('rules') \[0m
-          [1m                                 .glob('*.py')[0m
-          [1m    [0m
-          [1m            for rule in bundled:[0m
-          [1m                if rule.stem != '__init__':[0m
-          [1m>                   assert rule.stem in readme,\[0m
-          [1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
-          [1m[31mE                   AssertionError: Missing rule "nixos_cmd_not_found" in README.md[0m
-          [1m[31mE                   assert 'nixos_cmd_not_found' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
-          [1m[31mE                    +  where 'nixos_cmd_not_found' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py').stem[0m
-          
-          [1m[31mtests/test_readme.py[0m:11: AssertionError
-          [31m[1m_____________________________ test_match[command0] _____________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f535b2eac50>
-          command = (Command(script=vim, output=nix-env -iA nixos.vim),)
-          
-          [1m    @pytest.mark.parametrize('command', [[0m
-          [1m        (Command('vim', 'nix-env -iA nixos.vim'),)])[0m
-          [1m    def test_match(mocker, command):[0m
-          [1m        mocker.patch('thefuck.rules.nixos_cmd_not_found', return_value=None)[0m
-          [1m>       assert match(command)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:10: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          command = (Command(script=vim, output=nix-env -iA nixos.vim),)
-          
-          [1m    def match(command):[0m
-          [1m>       return regex.findall(command.output)[0m
-          [1m[31mE       AttributeError: 'tuple' object has no attribute 'output'[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py[0m:10: AttributeError
-          [31m[1m___________________________ test_not_match[command0] ___________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f535bc3c9b0>
-          command = (Command(script=vim, output=),)
-          
-          [1m    @pytest.mark.parametrize('command', [[0m
-          [1m        (Command('vim', ''),),[0m
-          [1m        (Command('', ''),)])[0m
-          [1m    def test_not_match(mocker, command):[0m
-          [1m        mocker.patch('thefuck.rules.nixos_cmd_not_found', return_value=None)[0m
-          [1m>       assert not match(command)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:18: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          command = (Command(script=vim, output=),)
-          
-          [1m    def match(command):[0m
-          [1m>       return regex.findall(command.output)[0m
-          [1m[31mE       AttributeError: 'tuple' object has no attribute 'output'[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py[0m:10: AttributeError
-          [31m[1m___________________________ test_not_match[command1] ___________________________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f535b337390>
-          command = (Command(script=, output=),)
-          
-          [1m    @pytest.mark.parametrize('command', [[0m
-          [1m        (Command('vim', ''),),[0m
-          [1m        (Command('', ''),)])[0m
-          [1m    def test_not_match(mocker, command):[0m
-          [1m        mocker.patch('thefuck.rules.nixos_cmd_not_found', return_value=None)[0m
-          [1m>       assert not match(command)[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:18: 
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-          
-          command = (Command(script=, output=),)
-          
-          [1m    def match(command):[0m
-          [1m>       return regex.findall(command.output)[0m
-          [1m[31mE       AttributeError: 'tuple' object has no attribute 'output'[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py[0m:10: AttributeError
-          [31m[1m_____________ test_get_new_command[command0-nix-env -iA nixos.vim] _____________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f535b2abbe0>
-          command = Command(script=vim, output=nix-env -iA nixos.vim)
-          new_command = 'nix-env -iA nixos.vim'
-          
-          [1m    @pytest.mark.parametrize('command, new_command', [[0m
-          [1m        (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),[0m
-          [1m        (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])[0m
-          [1m    def test_get_new_command(mocker, command, new_command):[0m
-          [1m>       assert get_new_command(command) == new_command[0m
-          [1m[31mE       AssertionError: assert 'nix-env -iA nixos.vim && vim' == 'nix-env -iA nixos.vim'[0m
-          [1m[31mE         - nix-env -iA nixos.vim && vim[0m
-          [1m[31mE         ?                      -------[0m
-          [1m[31mE         + nix-env -iA nixos.vim[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:25: AssertionError
-          [31m[1m___________ test_get_new_command[command1-nix-env -iA nixos.pacman] ____________[0m
-          
-          mocker = <pytest_mock.MockFixture object at 0x7f535b3420b8>
-          command = Command(script=pacman, output=nix-env -iA nixos.pacman)
-          new_command = 'nix-env -iA nixos.pacman'
-          
-          [1m    @pytest.mark.parametrize('command, new_command', [[0m
-          [1m        (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),[0m
-          [1m        (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])[0m
-          [1m    def test_get_new_command(mocker, command, new_command):[0m
-          [1m>       assert get_new_command(command) == new_command[0m
-          [1m[31mE       AssertionError: assert 'nix-env -iA ...man && pacman' == 'nix-env -iA nixos.pacman'[0m
-          [1m[31mE         - nix-env -iA nixos.pacman && pacman[0m
-          [1m[31mE         ?                         ----------[0m
-          [1m[31mE         + nix-env -iA nixos.pacman[0m
-          
-          [1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:25: AssertionError</Output>
+source_root = PosixPath('/home/travis/build/nvbn/thefuck')
+
+[1m    def test_readme(source_root):[0m
+[1m        with source_root.joinpath('README.md').open() as f:[0m
+[1m            readme = f.read()[0m
+[1m    [0m
+[1m            bundled = source_root.joinpath('thefuck') \[0m
+[1m                                 .joinpath('rules') \[0m
+[1m                                 .glob('*.py')[0m
+[1m    [0m
+[1m            for rule in bundled:[0m
+[1m                if rule.stem != '__init__':[0m
+[1m>                   assert rule.stem in readme,\[0m
+[1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
+[1m[31mE                   AssertionError: Missing rule "nixos_cmd_not_found" in README.md[0m
+[1m[31mE                   assert 'nixos_cmd_not_found' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
+[1m[31mE                    +  where 'nixos_cmd_not_found' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py').stem[0m
+
+[1m[31mtests/test_readme.py[0m:11: AssertionError
+[31m[1m_____________________________ test_match[command0] _____________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f535b2eac50>
+command = (Command(script=vim, output=nix-env -iA nixos.vim),)
+
+[1m    @pytest.mark.parametrize('command', [[0m
+[1m        (Command('vim', 'nix-env -iA nixos.vim'),)])[0m
+[1m    def test_match(mocker, command):[0m
+[1m        mocker.patch('thefuck.rules.nixos_cmd_not_found', return_value=None)[0m
+[1m>       assert match(command)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+command = (Command(script=vim, output=nix-env -iA nixos.vim),)
+
+[1m    def match(command):[0m
+[1m>       return regex.findall(command.output)[0m
+[1m[31mE       AttributeError: 'tuple' object has no attribute 'output'[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py[0m:10: AttributeError
+[31m[1m___________________________ test_not_match[command0] ___________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f535bc3c9b0>
+command = (Command(script=vim, output=),)
+
+[1m    @pytest.mark.parametrize('command', [[0m
+[1m        (Command('vim', ''),),[0m
+[1m        (Command('', ''),)])[0m
+[1m    def test_not_match(mocker, command):[0m
+[1m        mocker.patch('thefuck.rules.nixos_cmd_not_found', return_value=None)[0m
+[1m>       assert not match(command)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+command = (Command(script=vim, output=),)
+
+[1m    def match(command):[0m
+[1m>       return regex.findall(command.output)[0m
+[1m[31mE       AttributeError: 'tuple' object has no attribute 'output'[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py[0m:10: AttributeError
+[31m[1m___________________________ test_not_match[command1] ___________________________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f535b337390>
+command = (Command(script=, output=),)
+
+[1m    @pytest.mark.parametrize('command', [[0m
+[1m        (Command('vim', ''),),[0m
+[1m        (Command('', ''),)])[0m
+[1m    def test_not_match(mocker, command):[0m
+[1m        mocker.patch('thefuck.rules.nixos_cmd_not_found', return_value=None)[0m
+[1m>       assert not match(command)[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+command = (Command(script=, output=),)
+
+[1m    def match(command):[0m
+[1m>       return regex.findall(command.output)[0m
+[1m[31mE       AttributeError: 'tuple' object has no attribute 'output'[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/thefuck/rules/nixos_cmd_not_found.py[0m:10: AttributeError
+[31m[1m_____________ test_get_new_command[command0-nix-env -iA nixos.vim] _____________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f535b2abbe0>
+command = Command(script=vim, output=nix-env -iA nixos.vim)
+new_command = 'nix-env -iA nixos.vim'
+
+[1m    @pytest.mark.parametrize('command, new_command', [[0m
+[1m        (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),[0m
+[1m        (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])[0m
+[1m    def test_get_new_command(mocker, command, new_command):[0m
+[1m>       assert get_new_command(command) == new_command[0m
+[1m[31mE       AssertionError: assert 'nix-env -iA nixos.vim && vim' == 'nix-env -iA nixos.vim'[0m
+[1m[31mE         - nix-env -iA nixos.vim && vim[0m
+[1m[31mE         ?                      -------[0m
+[1m[31mE         + nix-env -iA nixos.vim[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:25: AssertionError
+[31m[1m___________ test_get_new_command[command1-nix-env -iA nixos.pacman] ____________[0m
+
+mocker = <pytest_mock.MockFixture object at 0x7f535b3420b8>
+command = Command(script=pacman, output=nix-env -iA nixos.pacman)
+new_command = 'nix-env -iA nixos.pacman'
+
+[1m    @pytest.mark.parametrize('command, new_command', [[0m
+[1m        (Command('vim', 'nix-env -iA nixos.vim'), 'nix-env -iA nixos.vim'),[0m
+[1m        (Command('pacman', 'nix-env -iA nixos.pacman'), 'nix-env -iA nixos.pacman')])[0m
+[1m    def test_get_new_command(mocker, command, new_command):[0m
+[1m>       assert get_new_command(command) == new_command[0m
+[1m[31mE       AssertionError: assert 'nix-env -iA ...man && pacman' == 'nix-env -iA nixos.pacman'[0m
+[1m[31mE         - nix-env -iA nixos.pacman && pacman[0m
+[1m[31mE         ?                         ----------[0m
+[1m[31mE         + nix-env -iA nixos.pacman[0m
+
+[1m[31m/home/travis/build/nvbn/thefuck/tests/rules/test_nixos_cmd_not_found.py[0m:25: AssertionError</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/545320732.log</InputPath>
         <Output>./thefuck/rules/terraform_init.py:8:9: E128 continuation line under-indented for visual indent
-          ./thefuck/rules/terraform_init.py:9:5: E124 closing bracket does not match visual indentation</Output>
+./thefuck/rules/terraform_init.py:9:5: E124 closing bracket does not match visual indentation</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Python/nvbn@thefuck/failed/554824331.log</InputPath>
         <Output>_________________________________ test_readme __________________________________[0m
 
-          source_root = PosixPath('/home/travis/build/nvbn/thefuck')
-          
-          [1m    def test_readme(source_root):[0m
-          [1m        with source_root.joinpath('README.md').open() as f:[0m
-          [1m            readme = f.read()[0m
-          [1m    [0m
-          [1m            bundled = source_root.joinpath('thefuck') \[0m
-          [1m                                 .joinpath('rules') \[0m
-          [1m                                 .glob('*.py')[0m
-          [1m    [0m
-          [1m            for rule in bundled:[0m
-          [1m                if rule.stem != '__init__':[0m
-          [1m>                   assert rule.stem in readme,\[0m
-          [1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
-          [1m[31mE                   AssertionError: Missing rule "docker_image_being_used_by_container" in README.md[0m
-          [1m[31mE                   assert 'docker_image_being_used_by_container' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
-          [1m[31mE                    +  where 'docker_image_being_used_by_container' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/docker_image_being_used_by_container.py').stem[0m
-          
-          [1m[31mtests/test_readme.py[0m:11: AssertionError</Output>
+source_root = PosixPath('/home/travis/build/nvbn/thefuck')
+
+[1m    def test_readme(source_root):[0m
+[1m        with source_root.joinpath('README.md').open() as f:[0m
+[1m            readme = f.read()[0m
+[1m    [0m
+[1m            bundled = source_root.joinpath('thefuck') \[0m
+[1m                                 .joinpath('rules') \[0m
+[1m                                 .glob('*.py')[0m
+[1m    [0m
+[1m            for rule in bundled:[0m
+[1m                if rule.stem != '__init__':[0m
+[1m>                   assert rule.stem in readme,\[0m
+[1m                        'Missing rule "{}" in README.md'.format(rule.stem)[0m
+[1m[31mE                   AssertionError: Missing rule "docker_image_being_used_by_container" in README.md[0m
+[1m[31mE                   assert 'docker_image_being_used_by_container' in '# The Fuck [![Version][version-badge]][version-link] [![Build Status][travis-badge]][travis-link] [![Windows Build St...efuck/master/example_instant_mode.gif\n[homebrew]:        https://brew.sh/\n[linuxbrew]:       https://linuxbrew.sh/\n'[0m
+[1m[31mE                    +  where 'docker_image_being_used_by_container' = PosixPath('/home/travis/build/nvbn/thefuck/thefuck/rules/docker_image_being_used_by_container.py').stem[0m
+
+[1m[31mtests/test_readme.py[0m:11: AssertionError</Output>
       </ExampleDataOfString>
     </Examples>
   </LearningData>
