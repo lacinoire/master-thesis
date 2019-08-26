@@ -44,7 +44,7 @@ run_evaluation <-
       examples <-
         examples[order(as.integer(gsub(".*/(.*).log", "\\1", examples[, "input_path"]))), ]
     } else {
-      print("selection has to be either 'manual', 'random' or 'chrononlogical'")
+      print("selection has to be either 'manual', 'random' or 'chronological'")
     }
     
     if (verbose) {
@@ -72,7 +72,7 @@ run_evaluation <-
     results <- plot_evaluation_result(results, program, "ir", selection)
 
     setwd(paste(main_path, "/tool/results/ir", sep = ""))
-    results_file_name <- paste0(evaluation_identification("ir", program, selection, test_count, learning_step_count), ".txt")
+    results_file_name <- paste0(evaluation_identification("ir", gsub("/", "@", program), selection, test_count, learning_step_count), ".txt")
     write.table(results, file = results_file_name)
   }
 

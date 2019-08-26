@@ -19,7 +19,7 @@ get_exampleset <- function(program) {
       "/tool/example-sets",
       sep = ""
     ))
-  xml <- xmlTreeParse(file = file_content, asText = TRUE)
+  xml <- xmlTreeParse(file = file_content, asText = TRUE, options = HUGE)
   
   examples <-
     data.frame(

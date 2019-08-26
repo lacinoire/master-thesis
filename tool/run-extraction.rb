@@ -160,6 +160,7 @@ if $PROGRAM_NAME == __FILE__
       `msbuild ../pbe-extraction-buildlogs /v:m /p:Configuration=Debug`
       puts `mono ../pbe-extraction-buildlogs/pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe #{Optparser.print_pbe_options(options)}`
     when :ir
+      puts "#{Optparser.print_ir_options(options)}"
       puts `Rscript ../r-extractions/information-retrieval.R #{Optparser.print_ir_options(options)}`
     when :keyword
       puts `Rscript ../r-extractions/keyword-search.R #{Optparser.print_keyword_options(options)}`
