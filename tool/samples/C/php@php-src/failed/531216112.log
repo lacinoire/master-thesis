@@ -1,16 +1,16 @@
 travis_fold:start:worker_info[0K[33;1mWorker information[0m
-hostname: 8ab938fc-f31f-464c-8055-dc411a549e92@1.worker-org-b6c9dcb4d-578hs.gce-production-1
-version: v6.2.1 https://github.com/travis-ci/worker/tree/4e3246c044eb4915c2378ffacd0b3d3ed0136bba
-instance: travis-job-6fcebfbc-c417-4753-93e2-80da1bb60b67 travis-ci-garnet-trusty-1512502259-986baf0 (via amqp)
-startup: 6.055017076s
+hostname: ce5d4356-7974-4a45-afc1-4c2b0acad4d9@1.production-1-worker-org-gce-ss4p
+version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
+instance: travis-job-158d9cee-f5db-4036-9e53-20e9582cbfab travis-ci-garnet-trusty-1512502259-986baf0 (via amqp)
+startup: 6.21117932s
 travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
 Build language: c
 Build group: stable
 Build dist: trusty
-Build id: 566477270
-Job id: 566477271
+Build id: 531216112
+Job id: 531216113
 Runtime kernel version: 4.4.0-101-generic
-travis-build version: 65949ed1e
+travis-build version: 3efcde6b1
 [34m[1mBuild image provisioning date and time[0m
 Tue Dec  5 19:58:13 UTC 2017
 [34m[1mOperating System Details[0m
@@ -412,12 +412,10 @@ ruby-2.3.4
 ruby-2.4.1
 travis_fold:end:system_info[0K
 travis_fold:start:docker_mtu[0Kdocker stop/waiting
-docker start/running, process 3706
-travis_fold:end:docker_mtu[0Ktravis_fold:start:resolvconf[0Kresolvconf stop/waiting
-resolvconf start/running
-travis_fold:end:resolvconf[0Ktravis_fold:start:apt[0K[33;1mInstalling APT Packages[0m
-travis_time:start:016fb66c[0K$ travis_apt_get_update
-travis_time:end:016fb66c:start=1564666409400074625,finish=1564666421044067113,duration=11643992488[0Ktravis_time:start:02e00fe0[0K$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install locales language-pack-de re2c libgmp-dev libicu-dev libtidy-dev libenchant-dev libaspell-dev libpspell-dev librecode-dev libsasl2-dev libxpm-dev libt1-dev
+docker start/running, process 3687
+travis_fold:end:docker_mtu[0Ktravis_fold:start:apt[0K[33;1mInstalling APT Packages[0m
+travis_time:start:00bebebe[0K$ travis_apt_get_update
+travis_time:end:00bebebe:start=1557602400264740001,finish=1557602407693924272,duration=7429184271[0Ktravis_time:start:084ee807[0K$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install locales language-pack-de re2c libgmp-dev libicu-dev libtidy-dev libenchant-dev libaspell-dev libpspell-dev librecode-dev libsasl2-dev libxpm-dev libt1-dev
 Reading package lists...
 Building dependency tree...
 Reading state information...
@@ -462,7 +460,7 @@ Get:13 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty/main amd64 libaspel
 Get:14 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty/main amd64 libenchant-dev amd64 1.6.0-10ubuntu1 [51.9 kB]
 Get:15 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty/main amd64 libpspell-dev amd64 0.60.7~20110707-1ubuntu1 [4,360 B]
 Get:16 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty/main amd64 librecode-dev amd64 3.6-21 [782 kB]
-Fetched 20.3 MB in 0s (27.1 MB/s)
+Fetched 20.3 MB in 1s (18.7 MB/s)
 Preconfiguring packages ...
 Selecting previously unselected package language-pack-de-base.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 93695 files and directories currently installed.)
@@ -569,11 +567,10 @@ Generating locales...
   de_LU.UTF-8... done
 Generation complete.
 Processing triggers for libc-bin (2.19-0ubuntu6.13) ...
-travis_time:end:02e00fe0:start=1564666421047732597,finish=1564666433374086765,duration=12326354168[0Ktravis_fold:end:apt[0K
-travis_fold:start:git.checkout[0Ktravis_time:start:2316422e[0K$ git clone --depth=50 --quiet https://github.com/php/php-src.git php/php-src
-travis_time:end:2316422e:start=1564666433378190523,finish=1564666451680930717,duration=18302740194[0K$ cd php/php-src
-travis_time:start:00a22130[0K$ git fetch origin +refs/pull/4466/merge: --quiet
-travis_time:end:00a22130:start=1564666451685064735,finish=1564666453399849070,duration=1714784335[0K$ git checkout -qf FETCH_HEAD
+travis_time:end:084ee807:start=1557602407697701839,finish=1557602420774111603,duration=13076409764[0Ktravis_fold:end:apt[0K
+travis_fold:start:git.checkout[0Ktravis_time:start:1a97bdcc[0K$ git clone --depth=50 --branch=PHP-7.2 --quiet https://github.com/php/php-src.git php/php-src
+travis_time:end:1a97bdcc:start=1557602420778300718,finish=1557602433348311597,duration=12570010879[0K$ cd php/php-src
+$ git checkout -qf cc5c51e7f0732067f105d13c6d355fcab5965c2f
 travis_fold:end:git.checkout[0K
 
 [33;1mSetting environment variables from .travis.yml[0m
@@ -588,25 +585,25 @@ $ export ENABLE_MAINTAINER_ZTS=0
 $ export ENABLE_DEBUG=0
 
 $ export TRAVIS_COMPILER=gcc
-$ export CC=${CC:-gcc}
-$ export CC_FOR_BUILD=${CC_FOR_BUILD:-gcc}
+$ export CC=gcc
+$ export CC_FOR_BUILD=gcc
 $ export PATH=/usr/lib/ccache:$PATH
 travis_fold:start:cache.1[0KSetting up build cache
 $ export CASHER_DIR=${TRAVIS_HOME}/.casher
-travis_time:start:06b6f322[0K$ Installing caching utilities
-travis_time:end:06b6f322:start=1564666459049888161,finish=1564666459237953682,duration=188065521[0Ktravis_time:start:1d7a65f7[0Ktravis_time:end:1d7a65f7:start=1564666459243018816,finish=1564666459245751691,duration=2732875[0Ktravis_time:start:091326f6[0Kattempting to download cache archive[0m
-[32;1mfetching PR.4466/cache-linux-trusty-1995a87b12064438e57eade9c90dd9760616494c680d1e58e16607daa6032bb2--compiler-gcc.tgz[0m
+travis_time:start:0e5b9ca0[0K$ Installing caching utilities
+travis_time:end:0e5b9ca0:start=1557602438078551461,finish=1557602438220070755,duration=141519294[0Ktravis_time:start:0bea0585[0Ktravis_time:end:0bea0585:start=1557602438225353391,finish=1557602438228177843,duration=2824452[0Ktravis_time:start:00e8bb5b[0K[32;1mattempting to download cache archive[0m
+[32;1mfetching PHP-7.2/cache-linux-trusty-1995a87b12064438e57eade9c90dd9760616494c680d1e58e16607daa6032bb2--compiler-gcc.tgz[0m
 [32;1mfound cache[0m
-travis_time:end:091326f6:start=1564666459249337160,finish=1564666461208092460,duration=1958755300[0Ktravis_fold:end:cache.1[0K
+travis_time:end:00e8bb5b:start=1557602438231929368,finish=1557602440253905013,duration=2021975645[0Ktravis_fold:end:cache.1[0K
 travis_fold:start:cache.ccache[0K
-travis_time:start:02501760[0Ktravis_time:end:02501760:start=1564666461212422676,finish=1564666461215250217,duration=2827541[0Ktravis_time:start:2b2f2371[0Kadding /home/travis/.ccache to cache[0m
-travis_time:end:2b2f2371:start=1564666461218735225,finish=1564666467231974991,duration=6013239766[0Ktravis_fold:end:cache.ccache[0K$ gcc --version
+travis_time:start:150ed43c[0Ktravis_time:end:150ed43c:start=1557602440258125864,finish=1557602440261110559,duration=2984695[0Ktravis_time:start:0d279590[0K[32;1madding /home/travis/.ccache to cache[0m
+travis_time:end:0d279590:start=1557602440264779756,finish=1557602447145433898,duration=6880654142[0Ktravis_fold:end:cache.ccache[0K$ gcc --version
 gcc (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4
 Copyright (C) 2013 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-travis_fold:start:before_script.1[0Ktravis_time:start:1149d1cc[0K$ ccache --version
+travis_fold:start:before_script.1[0Ktravis_time:start:178c966b[0K$ ccache --version
 ccache version 3.1.9
 
 Copyright (C) 2002-2007 Andrew Tridgell
@@ -616,11 +613,11 @@ This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
 Foundation; either version 3 of the License, or (at your option) any later
 version.
-travis_time:end:1149d1cc:start=1564666467241515797,finish=1564666467245207099,duration=3691302[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:00292157[0K$ ccache --zero-stats
+travis_time:end:178c966b:start=1557602447156335265,finish=1557602447160385416,duration=4050151[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:01d77220[0K$ ccache --zero-stats
 Statistics cleared
-travis_time:end:00292157:start=1564666467248873578,finish=1564666467254139380,duration=5265802[0Ktravis_fold:end:before_script.2[0Ktravis_fold:start:before_script.3[0Ktravis_time:start:15aaa54c[0K$ export USE_CCACHE=1
-travis_time:end:15aaa54c:start=1564666467257883335,finish=1564666467260399098,duration=2515763[0Ktravis_fold:end:before_script.3[0Ktravis_fold:start:before_script.4[0Ktravis_time:start:35a19e16[0K$ sudo sh -c 'echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6'
-travis_time:end:35a19e16:start=1564666467264278597,finish=1564666467272715491,duration=8436894[0Ktravis_fold:end:before_script.4[0Ktravis_fold:start:before_script.5[0Ktravis_time:start:0eaf7fa4[0K$ ./travis/compile.sh
+travis_time:end:01d77220:start=1557602447164452775,finish=1557602447169650348,duration=5197573[0Ktravis_fold:end:before_script.2[0Ktravis_fold:start:before_script.3[0Ktravis_time:start:0fbd5961[0K$ export USE_CCACHE=1
+travis_time:end:0fbd5961:start=1557602447174024128,finish=1557602447176601470,duration=2577342[0Ktravis_fold:end:before_script.3[0Ktravis_fold:start:before_script.4[0Ktravis_time:start:2c331540[0K$ sudo sh -c 'echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6'
+travis_time:end:2c331540:start=1557602447180603049,finish=1557602447188623837,duration=8020788[0Ktravis_fold:end:before_script.4[0Ktravis_fold:start:before_script.5[0Ktravis_time:start:00588f36[0K$ ./travis/compile.sh
 Forcing buildconf
 Removing configure caches
 buildconf: checking installation...
@@ -648,23 +645,21 @@ creating main/internal_functions_cli.c
 Thank you for using PHP.
 
 /home/travis/build/php/php-src/ext/curl/interface.c: In function ‘_php_curl_setopt’:
-/home/travis/build/php/php-src/ext/curl/interface.c:2801:11220: warning: call to ‘_curl_easy_setopt_err_progress_cb’ declared with attribute warning: curl_easy_setopt expects a curl_progress_callback argument for this option [enabled by default]
+/home/travis/build/php/php-src/ext/curl/interface.c:2803:11220: warning: call to ‘_curl_easy_setopt_err_progress_cb’ declared with attribute warning: curl_easy_setopt expects a curl_progress_callback argument for this option [enabled by default]
     curl_easy_setopt(ch->cp, CURLOPT_PROGRESSFUNCTION, curl_progress);
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
 /home/travis/build/php/php-src/ext/curl/interface.c: In function ‘zif_curl_getinfo’:
-/home/travis/build/php/php-src/ext/curl/interface.c:3192:1610: warning: call to ‘_curl_easy_getinfo_err_curl_slist’ declared with attribute warning: curl_easy_getinfo expects a pointer to struct curl_slist * for this info [enabled by default]
+/home/travis/build/php/php-src/ext/curl/interface.c:3194:1610: warning: call to ‘_curl_easy_getinfo_err_curl_slist’ declared with attribute warning: curl_easy_getinfo expects a pointer to struct curl_slist * for this info [enabled by default]
    if (curl_easy_getinfo(ch->cp, CURLINFO_CERTINFO, &ci) == CURLE_OK) {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^
-/home/travis/build/php/php-src/ext/curl/interface.c:3226:1612: warning: call to ‘_curl_easy_getinfo_err_curl_slist’ declared with attribute warning: curl_easy_getinfo expects a pointer to struct curl_slist * for this info [enabled by default]
+/home/travis/build/php/php-src/ext/curl/interface.c:3228:1612: warning: call to ‘_curl_easy_getinfo_err_curl_slist’ declared with attribute warning: curl_easy_getinfo expects a pointer to struct curl_slist * for this info [enabled by default]
      if (curl_easy_getinfo(ch->cp, CURLINFO_CERTINFO, &ci) == CURLE_OK) {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^
-mkdir: cannot create directory 'ext/hash/sha3/generic64lc/.libs': File exists
-mkdir: cannot create directory 'ext/intl/grapheme/.libs': File exists
-mkdir: cannot create directory 'ext/intl/resourcebundle/.libs': File exists
 /home/travis/build/php/php-src/ext/mbstring/oniguruma/src/regparse.c: In function ‘onig_scan_unsigned_number’:
 /home/travis/build/php/php-src/ext/mbstring/oniguruma/src/regparse.c:1547:125: warning: assignment discards ‘const’ qualifier from pointer target type [enabled by default]
      PFETCH(c);
                                                                                                                              ^
+mkdir: cannot create directory 'ext/readline/.libs': File exists
 /home/travis/build/php/php-src/Zend/zend_execute_API.c: In function ‘zend_timeout_handler’:
 /home/travis/build/php/php-src/Zend/zend_execute_API.c:1194:9: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
     write(2, log_buffer, MIN(output_len, sizeof(log_buffer)));
@@ -708,28 +703,28 @@ Installing man pages:             /home/travis/php-install/php/man/man1/
 /home/travis/build/php/php-src/build/shtool install -c ext/phar/phar.phar /home/travis/php-install/bin
 ln -s -f phar.phar /home/travis/php-install/bin/phar
 Installing PDO headers:           /home/travis/php-install/include/php/ext/pdo/
-travis_time:end:0eaf7fa4:start=1564666467276849911,finish=1564666673598519425,duration=206321669514[0Ktravis_fold:end:before_script.5[0Ktravis_fold:start:before_script.6[0Ktravis_time:start:234158a0[0K$ . ./travis/ext/mysql/setup.sh
-travis_time:end:234158a0:start=1564666673603956447,finish=1564666673612738878,duration=8782431[0Ktravis_fold:end:before_script.6[0Ktravis_fold:start:before_script.7[0Ktravis_time:start:1e2635e0[0K$ . ./travis/ext/mysqli/setup.sh
-travis_time:end:1e2635e0:start=1564666673617264490,finish=1564666673624360064,duration=7095574[0Ktravis_fold:end:before_script.7[0Ktravis_fold:start:before_script.8[0Ktravis_time:start:07794988[0K$ . ./travis/ext/pdo_mysql/setup.sh
-travis_time:end:07794988:start=1564666673629507425,finish=1564666673637384961,duration=7877536[0Ktravis_fold:end:before_script.8[0Ktravis_fold:start:before_script.9[0Ktravis_time:start:018eeee7[0K$ . ./travis/ext/pgsql/setup.sh
+travis_time:end:00588f36:start=1557602447192835110,finish=1557602657131667096,duration=209938831986[0Ktravis_fold:end:before_script.5[0Ktravis_fold:start:before_script.6[0Ktravis_time:start:053ad1e2[0K$ . ./travis/ext/mysql/setup.sh
+travis_time:end:053ad1e2:start=1557602657138679381,finish=1557602657149324014,duration=10644633[0Ktravis_fold:end:before_script.6[0Ktravis_fold:start:before_script.7[0Ktravis_time:start:15b79048[0K$ . ./travis/ext/mysqli/setup.sh
+travis_time:end:15b79048:start=1557602657155987270,finish=1557602657164902465,duration=8915195[0Ktravis_fold:end:before_script.7[0Ktravis_fold:start:before_script.8[0Ktravis_time:start:178457a3[0K$ . ./travis/ext/pdo_mysql/setup.sh
+travis_time:end:178457a3:start=1557602657171989480,finish=1557602657181828449,duration=9838969[0Ktravis_fold:end:before_script.8[0Ktravis_fold:start:before_script.9[0Ktravis_time:start:26b3ff44[0K$ . ./travis/ext/pgsql/setup.sh
 CREATE DATABASE
-travis_time:end:018eeee7:start=1564666673643092277,finish=1564666673904443189,duration=261350912[0Ktravis_fold:end:before_script.9[0Ktravis_fold:start:before_script.10[0Ktravis_time:start:0f934aeb[0K$ . ./travis/ext/pdo_pgsql/setup.sh
-travis_time:end:0f934aeb:start=1564666673910592096,finish=1564666673913895537,duration=3303441[0Ktravis_fold:end:before_script.10[0Ktravis_time:start:1913c4c0[0K$ ./sapi/cli/php run-tests.php -p `pwd`/sapi/cli/php $(if [ $ENABLE_DEBUG == 0 ]; then echo "-d opcache.enable_cli=1 -d zend_extension=`pwd`/modules/opcache.so"; fi) -g "FAIL,XFAIL,BORK,WARN,LEAK,SKIP" --offline --show-diff --show-slow 1000 --set-timeout 120
+travis_time:end:26b3ff44:start=1557602657188481068,finish=1557602657459685114,duration=271204046[0Ktravis_fold:end:before_script.9[0Ktravis_fold:start:before_script.10[0Ktravis_time:start:038384af[0K$ . ./travis/ext/pdo_pgsql/setup.sh
+travis_time:end:038384af:start=1557602657466288786,finish=1557602657470401009,duration=4112223[0Ktravis_fold:end:before_script.10[0Ktravis_time:start:10304f88[0K$ ./sapi/cli/php run-tests.php -p `pwd`/sapi/cli/php $(if [ $ENABLE_DEBUG == 0 ]; then echo "-d opcache.enable_cli=1 -d zend_extension=`pwd`/modules/opcache.so"; fi) -g "FAIL,XFAIL,BORK,WARN,LEAK,SKIP" --offline --show-diff --show-slow 1000 --set-timeout 120
 
 =====================================================================
 PHP         : /home/travis/build/php/php-src/sapi/cli/php 
 PHP_SAPI    : cli
-PHP_VERSION : 7.2.22-dev
+PHP_VERSION : 7.2.19-dev
 ZEND_VERSION: 3.2.0
-PHP_OS      : Linux - Linux travis-job-6fcebfbc-c417-4753-93e2-80da1bb60b67 4.4.0-101-generic #124~14.04.1-Ubuntu SMP Fri Nov 10 19:05:36 UTC 2017 x86_64
+PHP_OS      : Linux - Linux travis-job-158d9cee-f5db-4036-9e53-20e9582cbfab 4.4.0-101-generic #124~14.04.1-Ubuntu SMP Fri Nov 10 19:05:36 UTC 2017 x86_64
 INI actual  : /home/travis/build/php/php-src
 More .INIs  :   
 ---------------------------------------------------------------------
 PHP         : /home/travis/build/php/php-src/sapi/phpdbg/phpdbg 
 PHP_SAPI    : phpdbg
-PHP_VERSION : 7.2.22-dev
+PHP_VERSION : 7.2.19-dev
 ZEND_VERSION: 3.2.0
-PHP_OS      : Linux - Linux travis-job-6fcebfbc-c417-4753-93e2-80da1bb60b67 4.4.0-101-generic #124~14.04.1-Ubuntu SMP Fri Nov 10 19:05:36 UTC 2017 x86_64
+PHP_OS      : Linux - Linux travis-job-158d9cee-f5db-4036-9e53-20e9582cbfab 4.4.0-101-generic #124~14.04.1-Ubuntu SMP Fri Nov 10 19:05:36 UTC 2017 x86_64
 INI actual  : /home/travis/build/php/php-src
 More .INIs  : 
 ---------------------------------------------------------------------
@@ -737,7 +732,7 @@ CWD         : /home/travis/build/php/php-src
 Extra dirs  : 
 VALGRIND    : Not used
 =====================================================================
-TIME START 2019-08-01 13:37:54
+TIME START 2019-05-11 19:24:17
 =====================================================================
 SKIP phpt EXTENSIONS directive with shared module [tests/run-test/bug75042.phpt] reason: openssl is built static
 SKIP Error message handling (without ZendOpcache) [tests/run-test/test008.phpt] reason: Zend Opcache is loaded
@@ -1841,7 +1836,6 @@ SKIP Test iconv_strpos() function : usage variations - pass different data types
 SKIP Translit failure [ext/iconv/tests/translit-failure.phpt] reason: ICONV_IMPL != "libiconv"
 SKIP Translit UTF-8 quotes [ext/iconv/tests/translit-utf8.phpt] reason: ICONV_IMPL != "libiconv"
 SKIP IntlBreakIterator::getLocale(): basic test [ext/intl/tests/breakiter_getLocale_basic2.phpt] reason: for ICU >= 53.1
-SKIP IntlBreakIterator::getLocale(): basic test [ext/intl/tests/breakiter_getLocale_basic3.phpt] reason: for ICU >= 64.0
 SKIP IntlBreakIterator::getPartsIterator(): basic test, ICU >= 58.1 [ext/intl/tests/breakiter_getPartsIterator_basic2.phpt] reason: for ICU >= 58.1
 SKIP IntlBreakIterator::preceding(): basic test, ICU >= 58.1 [ext/intl/tests/breakiter_preceding_basic2.phpt] reason: for ICU >= 58.1
 SKIP Bug #58756: w.r.t MessageFormatter [ext/intl/tests/bug58756_MessageFormatter.phpt] reason: for ICU < 51.2
@@ -1924,7 +1918,6 @@ SKIP locale_get_display_name() icu <= 4.2 [ext/intl/tests/locale_get_display_nam
 SKIP locale_get_display_name() icu >= 4.8 && icu < 50.1.2 [ext/intl/tests/locale_get_display_name2.phpt] reason: for ICU < 50.1.2
 SKIP locale_get_display_name() icu >= 51.2 [ext/intl/tests/locale_get_display_name3.phpt] reason: for ICU >= 51.2 and < 52.1
 SKIP locale_get_display_name() icu >= 53.1 [ext/intl/tests/locale_get_display_name5.phpt] reason: for ICU >= 53.1
-SKIP locale_get_display_name() icu >= 64.0 [ext/intl/tests/locale_get_display_name6.phpt] reason: for ICU >= 64.0
 SKIP locale_get_display_region() icu <= 4.2 [ext/intl/tests/locale_get_display_region.phpt] 
 SKIP locale_get_display_region() icu >= 4.8 && icu < 51.2 [ext/intl/tests/locale_get_display_region2.phpt] reason: for ICU < 50.1.2
 SKIP locale_get_display_script() icu <= 4.2 [ext/intl/tests/locale_get_display_script.phpt] 
@@ -2034,7 +2027,6 @@ SKIP mysqli_stmt_result_metadata() - non SELECT statements [ext/mysqli/tests/mys
 SKIP mysqli_stmt_send_long_data() - exceed packet size, libmysql - bug #26824 [ext/mysqli/tests/mysqli_stmt_send_long_data_packet_size_libmysql.phpt] reason: : test for libmysql
 SKIP Trying to clone mysqli_warning object [ext/mysqli/tests/mysqli_warning_unclonable.phpt] reason: - experimental (= unsupported) feature
 SKIP Blacklist (with glob, quote and comments) [ext/opcache/tests/blacklist-win32.phpt] reason: only for Windows
-SKIP Bug #78189 (file cache strips last character of uname hash) [ext/opcache/tests/bug78189.phpt] reason: this test is for Windows platforms only
 SKIP Bug #65538: SSL context "cafile" disallows URL stream wrappers [ext/openssl/tests/bug65538_002.phpt] reason: online test
 SKIP Check for default OpenSSL config path on Windows [ext/openssl/tests/check_default_conf_path.phpt] reason: windows only test
 SKIP security_level setting to prohibit cert [ext/openssl/tests/stream_security_level.phpt] reason: OpenSSL >= v1.1.0 required
@@ -2308,6 +2300,7 @@ SKIP SPL: Problem with casting to string (no glob version) [ext/spl/tests/dit_00
 SKIP Bug #63921 sqlite3::bindvalue and relative PHP functions aren't using sqlite3_*_int64 API [ext/sqlite3/tests/bug63921-32bit.phpt] 
 SKIP SQLite3::prepare number of rows [ext/sqlite3/tests/sqlite3_11_numrows.phpt] 
 SKIP SQLite3::open error test [ext/sqlite3/tests/sqlite3_15_open_error-win.phpt] reason: windows only test
+SKIP SQLite3 defensive mode ini setting [ext/sqlite3/tests/sqlite3_defensive.phpt] reason: : sqlite3 library version < 3.26: no support for defensive mode
 SKIP Test array_fill() function : usage variations  - unexpected values for 'start_key' argument [ext/standard/tests/array/array_fill_variation1.phpt] reason: this test is for 32bit platform only
 SKIP Test array_keys() function (variation - 2) [ext/standard/tests/array/array_keys_variation_002.phpt] reason: this test is for 32bit platform only
 SKIP Test array_slice() function : usage variations - Pass different data types as $offset arg [ext/standard/tests/array/array_slice_variation2.phpt] reason: this test is for 32bit platform only
@@ -2386,7 +2379,6 @@ SKIP Bug #65272: flock() correctly sets wouldblock out param in windows [ext/sta
 SKIP proc_open with PTY closes incorrect file descriptor [ext/standard/tests/file/bug69442.phpt] reason: PTY pseudo terminals are not supported
 SKIP Bug #72035 php-cgi.exe fails to run scripts relative to drive root [ext/standard/tests/file/bug72035.phpt] reason: windows only test
 SKIP Bug #77552 Unintialized php_stream_statbuf in stat functions [ext/standard/tests/file/bug77552.phpt] reason: windows only test
-SKIP Bug #78241 (touch() does not handle dates after 2038 in PHP 64-bit) [ext/standard/tests/file/bug78241.phpt] reason: this test is for Windows platforms only
 SKIP chmod() basic functionality [ext/standard/tests/file/chmod_basic-win32-mb.phpt] reason: Windows only chmod test
 SKIP chmod() basic functionality [ext/standard/tests/file/chmod_basic-win32.phpt] reason: Windows only chmod test
 SKIP chmod() with various paths [ext/standard/tests/file/chmod_variation2-win32-mb.phpt] reason: Windows only chmod test
@@ -2753,6 +2745,7 @@ SKIP Bug #74090 stream_get_contents maxlength>-1 returns empty string on windows
 SKIP Bug #51800 proc_open on Windows hangs forever [ext/standard/tests/streams/proc_open_bug51800.phpt] reason: expected to fail or take too long
 SKIP stream context tcp_nodelay [ext/standard/tests/streams/stream_context_tcp_nodelay.phpt] reason: online test
 SKIP stream context tcp_nodelay fopen [ext/standard/tests/streams/stream_context_tcp_nodelay_fopen.phpt] reason: online test
+SKIP int stream_socket_sendto ( resource $socket , string $data [, int $flags = 0 [, string $address ]] ); [ext/standard/tests/streams/stream_socket_sendto.phpt] reason: : online test
 SKIP php_strip_whitespace() and output buffer [ext/standard/tests/strings/007-win32.phpt] reason: Windows only test
 SKIP Test basename() function : usage variations with invalid paths [ext/standard/tests/strings/basename_invalid_path_win.phpt] reason: Run only on Windows"
 SKIP Bug #39873 (number_format() breaks with locale & decimal points) [ext/standard/tests/strings/bug39873.phpt] reason: locale needed for this test is not supported on this platform
@@ -2782,7 +2775,6 @@ SKIP 64bit pack()/unpack() tests [ext/standard/tests/strings/pack64_32.phpt] rea
 SKIP Test printf() function (32bit) [ext/standard/tests/strings/printf.phpt] reason: 32bit test only
 SKIP Test printf() function : basic functionality - unsigned format [ext/standard/tests/strings/printf_basic7.phpt] reason: this test is for 32bit platform only
 SKIP Test printf() function : basic functionality - octal format [ext/standard/tests/strings/printf_basic8.phpt] reason: this test is for 32bit platform only
-SKIP Unix locale names are rejected on Windows, except for some special cases [ext/standard/tests/strings/setlocale-win32.phpt] reason: this test is for Windows platforms only
 SKIP Test sprintf() function : basic functionality - unsigned format [ext/standard/tests/strings/sprintf_basic7.phpt] reason: this test is for 32bit platform only
 SKIP Test sprintf() function : basic functionality - octal format [ext/standard/tests/strings/sprintf_basic8.phpt] reason: this test is for 32bit platform only
 SKIP sprintf %f #3 [ext/standard/tests/strings/sprintf_f_3.phpt] reason: icelandic locale not supported
@@ -2859,33 +2851,6 @@ SKIP Test gzencode() function : variation - verify header contents with all enco
 SKIP Test function gzgetc() by calling it with its expected arguments zlib 1.2.5 [ext/zlib/tests/gzgetc_basic.phpt] reason: - only for zlib <= 1.2.5
 SKIP using invalid combinations of cmdline options [sapi/cgi/tests/005-win32.phpt] reason: Windows only
 SKIP Bug #75574 putenv does not work properly if parameter contains non-ASCII unicode character, UTF-8 [sapi/cgi/tests/bug75574_utf8_win.phpt] reason: Valid only on Windows
-
-========DIFF========
-001+ Error in argument 1, char 1: no argument for option -
-003- 
-004- Done 1
-004+   -a               Run interactively
-005+   -b <address:port>|<port> Bind Path for external FASTCGI Server mode
-006+   -C               Do not chdir to the script's directory
-007+   -c <path>|<file> Look for php.ini file in this directory
-008+   -n               No php.ini file will be used
-009+   -d foo[=bar]     Define INI entry foo with value 'bar'
-010+   -e               Generate extended information for debugger/profiler
-011+   -f <file>        Parse <file>.  Implies `-q'
-012+   -h               This help
-013+   -i               PHP information
-014+   -l               Syntax check only (lint)
-015+   -m               Show compiled in modules
-016+   -q               Quiet-mode.  Suppress HTTP Header output.
-017+   -s               Display colour syntax highlighted source.
-018+   -v               Version number
-019+   -w               Display source with stripped comments and whitespace.
-020+   -z <file>        Load Zend extension <file>.
-021+   -T <count>       Measure execution time of script repeated <count> times.
-022+ 
-023+ Done: 1
-========DONE========
-FAIL Bug #78323 Test exit code for invalid parameters [sapi/cgi/tests/bug78323.phpt] 
 SKIP running code with -r [sapi/cli/tests/002-win32.phpt] reason: only for Windows
 SKIP CLI -a and libedit [sapi/cli/tests/017.phpt] reason: need readline support using libedit
 SKIP Test basic argv multibyte API integration [sapi/cli/tests/argv_mb.phpt] reason: only for Windows
@@ -2895,39 +2860,73 @@ SKIP Check cli_process_title support in Windows [sapi/cli/tests/cli_process_titl
 SKIP file upload greater than 2G [sapi/cli/tests/upload_2G.phpt] reason: Fails intermittently on travis
 
 ========DIFF========
-001+ Usage: php-fpm [-n] [-e] [-h] [-i] [-m] [-v] [-t] [-p <prefix>] [-g <pid>] [-c <file>] [-d foo[=bar]] [-y <file>] [-D] [-F [-O]]
-002+   -c <path>|<file> Look for php.ini file in this directory
-003+   -n               No php.ini file will be used
-004+   -d foo[=bar]     Define INI entry foo with value 'bar'
-005+   -e               Generate extended information for debugger/profiler
-006+   -h               This help
-007+   -i               PHP information
-008+   -m               Show compiled in modules
-009+   -v               Version number
-010+   -p, --prefix <dir>
-001- Error in argument 1, char 1: no argument for option -
-003- 
-004- Done: 1
-012+   -g, --pid <file>
-013+                    Specify the PID file location.
-014+   -y, --fpm-config <file>
-015+                    Specify alternative path to FastCGI process manager config file.
-016+   -t, --test       Test FPM configuration and exit
-017+   -D, --daemonize  force to run in background, and ignore daemonize option from config file
-018+   -F, --nodaemonize
-019+                    force to stay in foreground, and ignore daemonize option from config file
-020+   -O, --force-stderr
-021+                    force output to stderr in nodaemonize even if stderr is not a TTY
-022+   -R, --allow-to-run-as-root
-023+                    Allow pool to run as root (disabled by default)
-024+ 
-025+ Done: 64
+001+ ERROR: No terminating lines
 ========DONE========
-FAIL FPM: Bug #78323 Test exit code for invalid parameters [sapi/fpm/tests/bug78323-invalid-parameters-exit-code.phpt] 
+FAIL FPM: bug77934 - php-fpm kill -USR2 not working [sapi/fpm/tests/bug77934-reload-process-control.phpt] 
+
+========DIFF========
+001+ ERROR: The NOTICE does not match expected message:
+002+ - PATTERN: /^\[\d\d-\w\w\w-\d{4} \d\d:\d\d:\d\d\] NOTICE: fpm is running, pid \d+$/
+003+ - MESSAGE: [11-May-2019 19:38:20] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)
+004+ - EXPECT: 'fpm is running, pid \d+'
+005+ - ACTUAL: '2019 19:38:20] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)'
+========DONE========
+FAIL FPM: Function fastcgi_finish_request basic test [sapi/fpm/tests/fastcgi_finish_request_basic.phpt] 
+
+========DIFF========
+001+ ERROR: The NOTICE does not match expected message:
+002+ - PATTERN: /^\[\d\d-\w\w\w-\d{4} \d\d:\d\d:\d\d\] NOTICE: fpm is running, pid \d+$/
+003+ - MESSAGE: [11-May-2019 19:38:20] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)
+004+ - EXPECT: 'fpm is running, pid \d+'
+005+ - ACTUAL: '2019 19:38:20] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)'
+006+ ERROR: The file /home/travis/build/php/php-src/sapi/fpm/tests/main-global-prefix.pid does not exist
+========DONE========
+FAIL FPM: Main invocation with prefix [sapi/fpm/tests/main-global-prefix.phpt] 
 SKIP FPM: AppArmor basic test [sapi/fpm/tests/pool-apparmor-basic.phpt] reason: ERROR:  unknown entry 'apparmor_hat'
+
+========DIFF========
+001+ ERROR: The NOTICE does not match expected message:
+002+ - PATTERN: /^\[\d\d-\w\w\w-\d{4} \d\d:\d\d:\d\d\] NOTICE: fpm is running, pid \d+$/
+003+ - MESSAGE: [11-May-2019 19:38:20] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)
+004+ - EXPECT: 'fpm is running, pid \d+'
+005+ - ACTUAL: '2019 19:38:20] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)'
+006+ ERROR: The file /home/travis/build/php/php-src/sapi/fpm/tests/pool-prefix.pid does not exist
+========DONE========
+FAIL FPM: Pool prefix [sapi/fpm/tests/pool-prefix.phpt] 
+
+========DIFF========
+001+ ERROR: The NOTICE does not match expected message:
+002+ - PATTERN: /^\[\d\d-\w\w\w-\d{4} \d\d:\d\d:\d\d\] NOTICE: fpm is running, pid \d+$/
+003+ - MESSAGE: [11-May-2019 19:38:21] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)
+004+ - EXPECT: 'fpm is running, pid \d+'
+005+ - ACTUAL: '2019 19:38:21] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)'
+========DONE========
+FAIL FPM: Process manager config option pm.start_servers missing [sapi/fpm/tests/proc-no-start-server.phpt] 
+
+========DIFF========
+001+ ERROR: The NOTICE does not match expected message:
+002+ - PATTERN: /^\[\d\d-\w\w\w-\d{4} \d\d:\d\d:\d\d\] NOTICE: fpm is running, pid \d+$/
+003+ - MESSAGE: [11-May-2019 19:38:21] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)
+004+ - EXPECT: 'fpm is running, pid \d+'
+005+ - ACTUAL: '2019 19:38:21] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)'
+========DONE========
+FAIL FPM: Process user setting ignored when FPM is not running as root [sapi/fpm/tests/proc-user-ignored.phpt] 
+
+========DIFF========
+001+ ERROR: The NOTICE does not match expected message:
+002+ - PATTERN: /^\[\d\d-\w\w\w-\d{4} \d\d:\d\d:\d\d\] NOTICE: fpm is running, pid \d+$/
+001- Req: error
+002- Done
+003+ - MESSAGE: [11-May-2019 19:38:21] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)
+004+ - EXPECT: 'fpm is running, pid \d+'
+005+ - ACTUAL: '2019 19:38:21] ERROR: unable to bind listening socket for address '127.0.0.1:9008': Address already in use (98)'
+006+ 
+007+  ** ERROR: process timed out **
+========DONE========
+FAIL FPM: Socket for invalid allowed client only [sapi/fpm/tests/socket-invalid-allowed-clients.phpt] 
 SKIP FPM: Unix Domain Socket with Posix ACL [sapi/fpm/tests/socket-uds-acl.phpt] reason: File /usr/bin/getfacl does not exist
 =====================================================================
-TIME END 2019-08-01 13:52:02
+TIME END 2019-05-11 19:40:25
 
 =====================================================================
 TEST RESULT SUMMARY
@@ -2936,95 +2935,97 @@ Exts skipped    :   16
 Exts tested     :   60
 ---------------------------------------------------------------------
 
-Number of tests : 16097             14269
-Tests skipped   : 1828 ( 11.4%) --------
+Number of tests : 16064             14239
+Tests skipped   : 1825 ( 11.4%) --------
 Tests warned    :    1 (  0.0%) (  0.0%)
-Tests failed    :    2 (  0.0%) (  0.0%)
+Tests failed    :    7 (  0.0%) (  0.0%)
 Expected fail   :   43 (  0.3%) (  0.3%)
-Tests passed    : 14223 ( 88.4%) ( 99.7%)
+Tests passed    : 14188 ( 88.3%) ( 99.6%)
 ---------------------------------------------------------------------
-Time taken      :  848 seconds
+Time taken      :  968 seconds
 =====================================================================
 
 =====================================================================
 SLOW TEST SUMMARY
 ---------------------------------------------------------------------
+(120.143 s) FPM: Socket for invalid allowed client only [sapi/fpm/tests/socket-invalid-allowed-clients.phpt]
 (28.032 s) Test fileatime(), filemtime(), filectime() & touch() functions : usage variation [ext/standard/tests/file/005_variation.phpt]
-(10.154 s) CURL file uploading [ext/curl/tests/curl_file_upload.phpt]
-(8.617 s) mysqli_fetch_array() - large packages (to test compression) [ext/mysqli/tests/mysqli_fetch_array_large.phpt]
+(18.154 s) CURL file uploading [ext/curl/tests/curl_file_upload.phpt]
+(8.665 s) mysqli_fetch_array() - large packages (to test compression) [ext/mysqli/tests/mysqli_fetch_array_large.phpt]
 (6.029 s) Test lstat() & stat() functions: basic functionality [ext/standard/tests/file/lstat_stat_basic.phpt]
 (6.028 s) mysqlnd.net_read_timeout > default_socket_timeout [ext/mysqli/tests/mysqli_mysqlnd_read_timeout_long.phpt]
 (5.253 s) mysqli_fetch_array() [ext/mysqli/tests/mysqli_fetch_array_many_rows.phpt]
 (5.028 s) Test usleep() function [ext/standard/tests/general_functions/usleep_basic.phpt]
-(5.028 s) Test sleep() function : basic functionality [ext/standard/tests/general_functions/sleep_basic.phpt]
-(4.147 s) Bug #27023 (CURLOPT_POSTFIELDS does not parse content types for files) [ext/curl/tests/bug27023.phpt]
+(5.027 s) Test sleep() function : basic functionality [ext/standard/tests/general_functions/sleep_basic.phpt]
+(4.142 s) Bug #27023 (CURLOPT_POSTFIELDS does not parse content types for files) [ext/curl/tests/bug27023.phpt]
 (4.032 s) Trying implicit reconnect after wait_timeout and KILL using mysqli_ping() [ext/mysqli/tests/mysqli_no_reconnect.phpt]
-(4.026 s) Issue #140: "opcache.enable_file_override" doesn't respect "opcache.revalidate_freq" [ext/opcache/tests/issue0140.phpt]
+(4.027 s) Issue #140: "opcache.enable_file_override" doesn't respect "opcache.revalidate_freq" [ext/opcache/tests/issue0140.phpt]
 (3.030 s) Bug #70198 Checking liveness does not work as expected [ext/standard/tests/streams/bug70198.phpt]
-(3.029 s) Timeout within array_walk [tests/basic/timeout_variation_2.phpt]
+(3.028 s) Timeout within call_user_func [tests/basic/timeout_variation_4.phpt]
+(3.028 s) Timeout within eval [tests/basic/timeout_variation_3.phpt]
 (3.028 s) Timeout within function containing exception [tests/basic/timeout_variation_5.phpt]
-(3.027 s) Timeout within shutdown function [tests/basic/timeout_variation_9.phpt]
-(3.027 s) Timeout within eval [tests/basic/timeout_variation_3.phpt]
-(3.027 s) Timeout within foreach loop [tests/basic/timeout_variation_8.phpt]
+(3.028 s) Timeout within array_walk [tests/basic/timeout_variation_2.phpt]
+(3.028 s) Timeout within shutdown function, variation [tests/basic/timeout_variation_10.phpt]
+(3.028 s) Timeout within function [tests/basic/timeout_variation_1.phpt]
 (3.027 s) Timeout within while loop [tests/basic/timeout_variation_0.phpt]
-(3.027 s) Timeout within call_user_func [tests/basic/timeout_variation_4.phpt]
-(3.025 s) Timeout within for loop [tests/basic/timeout_variation_7.phpt]
-(3.024 s) Timeout within shutdown function, variation [tests/basic/timeout_variation_10.phpt]
-(3.024 s) Timeout within function [tests/basic/timeout_variation_1.phpt]
-(2.721 s) Bind limits [ext/mysqli/tests/mysqli_stmt_bind_limits.phpt]
-(2.645 s) Compiled regex cache limit [ext/pcre/tests/cache_limit.phpt]
-(2.312 s) Phar: SLOW TEST bug #13727: "Number of files in the Phar" limited to 2042 [ext/phar/tests/bug13727.phpt]
-(2.137 s) Bug #54798 (Segfault when CURLOPT_STDERR file pointer is closed before calling curl_exec) [ext/curl/tests/bug54798.phpt]
-(2.033 s) Test pcntl wait functionality [ext/pcntl/tests/001.phpt]
-(2.032 s) Timeout again inside register_shutdown_function [tests/lang/045.phpt]
-(2.031 s) Phar: delete a file within a zip-based .phar (confirm disk file is changed) [ext/phar/tests/zip/delete_in_phar_confirm.phpt]
-(2.031 s) Phar: create and modify zip-based phar [ext/phar/tests/zip/create_new_and_modify.phpt]
+(3.026 s) Timeout within for loop [tests/basic/timeout_variation_7.phpt]
+(3.025 s) Timeout within foreach loop [tests/basic/timeout_variation_8.phpt]
+(3.024 s) Timeout within shutdown function [tests/basic/timeout_variation_9.phpt]
+(2.715 s) Compiled regex cache limit [ext/pcre/tests/cache_limit.phpt]
+(2.700 s) Bind limits [ext/mysqli/tests/mysqli_stmt_bind_limits.phpt]
+(2.669 s) Phar: SLOW TEST bug #13727: "Number of files in the Phar" limited to 2042 [ext/phar/tests/bug13727.phpt]
+(2.136 s) Test curl_opt() function with POST params from array with a numeric key [ext/curl/tests/bug55767.phpt]
+(2.082 s) FPM: bug77934 - php-fpm kill -USR2 not working [sapi/fpm/tests/bug77934-reload-process-control.phpt]
+(2.034 s) Test pcntl wait functionality [ext/pcntl/tests/001.phpt]
+(2.033 s) Test lstat() and stat() functions: usage variations - effects of touch() on dir [ext/standard/tests/file/lstat_stat_variation5.phpt]
+(2.033 s) Test lstat() and stat() functions: usage variations - effects changing permissions of link [ext/standard/tests/file/lstat_stat_variation15.phpt]
+(2.032 s) Test lstat() and stat() functions: usage variations - effects changing permissions of dir [ext/standard/tests/file/lstat_stat_variation17.phpt]
 (2.030 s) Phar: delete a file within a tar-based .phar [ext/phar/tests/tar/delete_in_phar.phpt]
 (2.030 s) Phar: delete a file within a zip-based .phar [ext/phar/tests/zip/delete_in_phar.phpt]
-(2.030 s) Test lstat() and stat() functions: usage variations - effects of is_link() [ext/standard/tests/file/lstat_stat_variation12.phpt]
-(2.029 s) mysqlnd.net_read_timeout = 0 [ext/mysqli/tests/mysqli_mysqlnd_read_timeout_zero.phpt]
-(2.029 s) Test lstat() and stat() functions: usage variations - effect of is_file() [ext/standard/tests/file/lstat_stat_variation11.phpt]
-(2.029 s) Test lstat() and stat() functions: usage variations - effects of truncate() [ext/standard/tests/file/lstat_stat_variation21.phpt]
-(2.029 s) Test lstat() and stat() functions: usage variations - effects changing permissions of link [ext/standard/tests/file/lstat_stat_variation15.phpt]
+(2.030 s) Phar: delete a file within a zip-based .phar (confirm disk file is changed) [ext/phar/tests/zip/delete_in_phar_confirm.phpt]
+(2.030 s) Test lstat() and stat() functions: usage variations - effects changing permissions of file [ext/standard/tests/file/lstat_stat_variation16.phpt]
+(2.030 s) Phar: delete a file within a tar-based .phar (confirm disk file is changed) [ext/phar/tests/tar/delete_in_phar_confirm.phpt]
+(2.030 s) Test lstat() and stat() functions: usage variations - creating file/subdir [ext/standard/tests/file/lstat_stat_variation8.phpt]
+(2.030 s) Bug #74093 (Maximum execution time of n+2 seconds exceed not written in error_log) [Zend/tests/bug74093.phpt]
+(2.029 s) File type functions [ext/standard/tests/file/001.phpt]
+(2.029 s) Timeout again inside register_shutdown_function [tests/lang/045.phpt]
 (2.029 s) Test lstat() and stat() functions: usage variations - file opened using w and r mode [ext/standard/tests/file/lstat_stat_variation13.phpt]
-(2.028 s) Test parameter handling in socket_select(). [ext/sockets/tests/socket_select-wrongparams-4.phpt]
-(2.028 s) Test lstat() and stat() functions: usage variations - effects of is_dir() [ext/standard/tests/file/lstat_stat_variation10.phpt]
-(2.028 s) Test lstat() and stat() functions: usage variations - effects changing permissions of file [ext/standard/tests/file/lstat_stat_variation16.phpt]
-(2.028 s) Test lstat() and stat() functions: usage variations - effects of touch() on file [ext/standard/tests/file/lstat_stat_variation4.phpt]
-(2.028 s) Test lstat() and stat() functions: usage variations - effects changing permissions of dir [ext/standard/tests/file/lstat_stat_variation17.phpt]
+(2.028 s) Test lstat() and stat() functions: usage variations - effect of is_file() [ext/standard/tests/file/lstat_stat_variation11.phpt]
 (2.028 s) Phar: create and modify tar-based phar [ext/phar/tests/tar/create_new_and_modify.phpt]
-(2.028 s) Test lstat() and stat() functions: usage variations - creating file/subdir [ext/standard/tests/file/lstat_stat_variation8.phpt]
-(2.028 s) Bug #74093 (Maximum execution time of n+2 seconds exceed not written in error_log) [Zend/tests/bug74093.phpt]
-(2.028 s) File type functions [ext/standard/tests/file/001.phpt]
-(2.028 s) Test lstat() and stat() functions: usage variations - effects of touch() on dir [ext/standard/tests/file/lstat_stat_variation5.phpt]
-(2.028 s) time_nanosleep — Delay for a number of seconds and nanoseconds [ext/standard/tests/misc/time_nanosleep_basic.phpt]
+(2.028 s) mysqlnd.net_read_timeout = 0 [ext/mysqli/tests/mysqli_mysqlnd_read_timeout_zero.phpt]
+(2.028 s) Test parameter handling in socket_select(). [ext/sockets/tests/socket_select-wrongparams-4.phpt]
+(2.028 s) Phar: create and modify zip-based phar [ext/phar/tests/zip/create_new_and_modify.phpt]
 (2.027 s) Phar: create and modify phar [ext/phar/tests/create_new_and_modify.phpt]
-(2.027 s) Phar: delete a file within a tar-based .phar (confirm disk file is changed) [ext/phar/tests/tar/delete_in_phar_confirm.phpt]
-(2.027 s) Phar: delete a file within a .phar (confirm disk file is changed) [ext/phar/tests/delete_in_phar_confirm.phpt]
-(2.026 s) Phar: delete a file within a .phar [ext/phar/tests/delete_in_phar.phpt]
-(2.025 s) proc_open [ext/standard/tests/general_functions/proc_open02.phpt]
-(2.025 s) Timeout within function trowing exception before timeout reached [tests/basic/timeout_variation_6.phpt]
-(1.906 s) time_sleep_until() function - basic test for time_sleep_until() [ext/standard/tests/misc/time_sleep_until_basic.phpt]
-(1.334 s) int mysqli_poll() and kill [ext/mysqli/tests/mysqli_poll_kill.phpt]
-(1.283 s) Peer verification enabled for client streams [ext/openssl/tests/peer_verification.phpt]
-(1.243 s) Basic bitwise stream crypto context flag assignment [ext/openssl/tests/stream_crypto_flags_001.phpt]
-(1.173 s) Capture SSL session meta array in stream context [ext/openssl/tests/session_meta_capture.phpt]
-(1.144 s) Server bitwise stream crypto flag assignment [ext/openssl/tests/stream_crypto_flags_003.phpt]
-(1.136 s) Test curl_opt() function with POST params from array with a numeric key [ext/curl/tests/bug55767.phpt]
-(1.134 s) Variation of bug #48203 with curl_multi_exec (Crash when file pointers passed to curl are closed before calling curl_multi_exec) [ext/curl/tests/bug48203_multi.phpt]
-(1.048 s) stream context tcp_nodelay server [ext/standard/tests/streams/stream_context_tcp_nodelay_server.phpt]
-(1.045 s) proc_open() with no pipes [ext/standard/tests/general_functions/proc_open_pipes2.phpt]
+(2.027 s) Test lstat() and stat() functions: usage variations - effects of is_dir() [ext/standard/tests/file/lstat_stat_variation10.phpt]
+(2.027 s) Test lstat() and stat() functions: usage variations - effects of is_link() [ext/standard/tests/file/lstat_stat_variation12.phpt]
+(2.027 s) Phar: delete a file within a .phar [ext/phar/tests/delete_in_phar.phpt]
+(2.027 s) Test lstat() and stat() functions: usage variations - effects of truncate() [ext/standard/tests/file/lstat_stat_variation21.phpt]
+(2.027 s) Test lstat() and stat() functions: usage variations - effects of touch() on file [ext/standard/tests/file/lstat_stat_variation4.phpt]
+(2.027 s) Timeout within function trowing exception before timeout reached [tests/basic/timeout_variation_6.phpt]
+(2.026 s) Phar: delete a file within a .phar (confirm disk file is changed) [ext/phar/tests/delete_in_phar_confirm.phpt]
+(2.026 s) time_nanosleep — Delay for a number of seconds and nanoseconds [ext/standard/tests/misc/time_nanosleep_basic.phpt]
+(2.024 s) proc_open [ext/standard/tests/general_functions/proc_open02.phpt]
+(1.361 s) Basic bitwise stream crypto context flag assignment [ext/openssl/tests/stream_crypto_flags_001.phpt]
+(1.331 s) int mysqli_poll() and kill [ext/mysqli/tests/mysqli_poll_kill.phpt]
+(1.309 s) Peer verification enabled for client streams [ext/openssl/tests/peer_verification.phpt]
+(1.249 s) Capture SSL session meta array in stream context [ext/openssl/tests/session_meta_capture.phpt]
+(1.247 s) Server bitwise stream crypto flag assignment [ext/openssl/tests/stream_crypto_flags_003.phpt]
+(1.136 s) Bug #54798 (Segfault when CURLOPT_STDERR file pointer is closed before calling curl_exec) [ext/curl/tests/bug54798.phpt]
+(1.135 s) Variation of bug #48203 with curl_multi_exec (Crash when file pointers passed to curl are closed before calling curl_multi_exec) [ext/curl/tests/bug48203_multi.phpt]
+(1.106 s) time_sleep_until() function - basic test for time_sleep_until() [ext/standard/tests/misc/time_sleep_until_basic.phpt]
+(1.047 s) stream context tcp_nodelay server [ext/standard/tests/streams/stream_context_tcp_nodelay_server.phpt]
 (1.045 s) proc_open() with > 16 pipes [ext/standard/tests/general_functions/proc_open_pipes1.phpt]
-(1.045 s) proc_open() with invalid pipes [ext/standard/tests/general_functions/proc_open_pipes3.phpt]
-(1.038 s) PDO PgSQL LISTEN/NOTIFY support [ext/pdo_pgsql/tests/getnotify.phpt]
-(1.034 s) Killing a persistent connection. [ext/mysqli/tests/mysqli_pconn_kill.phpt]
-(1.031 s) MySQL PDO->__construct(), PDO::ATTR_PERSISTENT [ext/pdo_mysql/tests/pdo_mysql_pconnect.phpt]
-(1.029 s) Bug #39322 (proc_terminate() losing process resource) [ext/standard/tests/general_functions/bug39322.phpt]
+(1.042 s) proc_open() with invalid pipes [ext/standard/tests/general_functions/proc_open_pipes3.phpt]
+(1.042 s) proc_open() with no pipes [ext/standard/tests/general_functions/proc_open_pipes2.phpt]
+(1.039 s) PDO PgSQL LISTEN/NOTIFY support [ext/pdo_pgsql/tests/getnotify.phpt]
+(1.037 s) Killing a persistent connection. [ext/mysqli/tests/mysqli_pconn_kill.phpt]
+(1.029 s) MySQL PDO->__construct(), PDO::ATTR_PERSISTENT [ext/pdo_mysql/tests/pdo_mysql_pconnect.phpt]
+(1.028 s) Bug #39322 (proc_terminate() losing process resource) [ext/standard/tests/general_functions/bug39322.phpt]
 (1.028 s) mysqlnd.net_read_timeout limit check [ext/mysqli/tests/mysqli_mysqlnd_read_timeout.phpt]
-(1.028 s) Bug #73783: (SIG_IGN needs to be set to prevent syscals from returning early) [ext/pcntl/tests/bug73783.phpt]
-(1.028 s) Test touch() function : basic functionality [ext/standard/tests/file/touch_basic.phpt]
-(1.026 s) Testing register_shutdown_function() with timeout. (Bug: #21513) [tests/func/005a.phpt]
-(1.025 s) pcntl_alarm() [ext/pcntl/tests/pcntl_alarm.phpt]
+(1.028 s) Testing register_shutdown_function() with timeout. (Bug: #21513) [tests/func/005a.phpt]
+(1.027 s) Bug #73783: (SIG_IGN needs to be set to prevent syscals from returning early) [ext/pcntl/tests/bug73783.phpt]
+(1.026 s) Test touch() function : basic functionality [ext/standard/tests/file/touch_basic.phpt]
+(1.024 s) pcntl_alarm() [ext/pcntl/tests/pcntl_alarm.phpt]
 =====================================================================
 
 =====================================================================
@@ -3079,8 +3080,13 @@ Bug #70219 Use after free vulnerability in session deserializer [ext/standard/te
 =====================================================================
 FAILED TEST SUMMARY
 ---------------------------------------------------------------------
-Bug #78323 Test exit code for invalid parameters [sapi/cgi/tests/bug78323.phpt]
-FPM: Bug #78323 Test exit code for invalid parameters [sapi/fpm/tests/bug78323-invalid-parameters-exit-code.phpt]
+FPM: bug77934 - php-fpm kill -USR2 not working [sapi/fpm/tests/bug77934-reload-process-control.phpt]
+FPM: Function fastcgi_finish_request basic test [sapi/fpm/tests/fastcgi_finish_request_basic.phpt]
+FPM: Main invocation with prefix [sapi/fpm/tests/main-global-prefix.phpt]
+FPM: Pool prefix [sapi/fpm/tests/pool-prefix.phpt]
+FPM: Process manager config option pm.start_servers missing [sapi/fpm/tests/proc-no-start-server.phpt]
+FPM: Process user setting ignored when FPM is not running as root [sapi/fpm/tests/proc-user-ignored.phpt]
+FPM: Socket for invalid allowed client only [sapi/fpm/tests/socket-invalid-allowed-clients.phpt]
 =====================================================================
 
 =====================================================================
@@ -3090,10 +3096,11 @@ MySQL PDO->prepare(), emulated PS [ext/pdo_mysql/tests/pdo_mysql_prepare_emulate
 =====================================================================
 
 Posting to http://qa.php.net/buildtest-process.php
-travis_time:end:1913c4c0:start=1564666673918138439,finish=1564667523257816798,duration=849339678359[0K[31;1mThe command "./sapi/cli/php run-tests.php -p `pwd`/sapi/cli/php $(if [ $ENABLE_DEBUG == 0 ]; then echo "-d opcache.enable_cli=1 -d zend_extension=`pwd`/modules/opcache.so"; fi) -g "FAIL,XFAIL,BORK,WARN,LEAK,SKIP" --offline --show-diff --show-slow 1000 --set-timeout 120" exited with 1.[0m
+travis_time:end:10304f88:start=1557602657476231238,finish=1557603625583411422,duration=968107180184[0K[31;1mThe command "./sapi/cli/php run-tests.php -p `pwd`/sapi/cli/php $(if [ $ENABLE_DEBUG == 0 ]; then echo "-d opcache.enable_cli=1 -d zend_extension=`pwd`/modules/opcache.so"; fi) -g "FAIL,XFAIL,BORK,WARN,LEAK,SKIP" --offline --show-diff --show-slow 1000 --set-timeout 120" exited with 1.[0m
 
 travis_fold:start:cache.2[0Kstore build cache
-travis_time:start:005bc3f2[0Ktravis_time:end:005bc3f2:start=1564667523264973063,finish=1564667523268904598,duration=3931535[0Ktravis_time:start:03e63e32[0K[32;1mchanges detected (content changed, file is created, or file is deleted):\n/home/travis/.ccache/0/0/0cf4d4ff8e28398d61b2457b20c2c2-2739.manifest
+travis_time:start:012274dd[0Ktravis_time:end:012274dd:start=1557603625593227556,finish=1557603625599384780,duration=6157224[0Ktravis_time:start:153ddf40[0K[32;1mchange detected (content changed, file is created, or file is deleted):
+/home/travis/.ccache/0/0/0cf4d4ff8e28398d61b2457b20c2c2-2739.manifest
 /home/travis/.ccache/0/0/1a3c3b4c266602c0afb1f8d5b4b2ee-16361.manifest
 /home/travis/.ccache/0/0/3ba253ff8f32a8110e3dd4d7e14d16-20255.manifest
 /home/travis/.ccache/0/0/488af9b2276821bb7dc24458bf832c-5869.manifest
@@ -3107,10 +3114,18 @@ travis_time:start:005bc3f2[0Ktravis_time:end:005bc3f2:start=156466752326497306
 /home/travis/.ccache/0/1/58d84e8fe7487cbdb2b72fe1d9c88e-6078.manifest
 /home/travis/.ccache/0/1/70fda8d49bd2c9d3596ae71ba213d0-39748.manifest
 /home/travis/.ccache/0/1/895457c3a8b9fb946bc20f6dc5dad6-3129.manifest
-/home/travis/.c\n...[0m
+/home/travis/.cc
+[0m
+[32;1m...
+[0m
 [32;1mchanges detected, packing new archive[0m
-[32;1muploading PR.4466/cache-linux-trusty-1995a87b12064438e57eade9c90dd9760616494c680d1e58e16607daa6032bb2--compiler-gcc.tgz[0m
+.
+.
+.
+.
+.
+[32;1muploading PHP-7.2/cache-linux-trusty-1995a87b12064438e57eade9c90dd9760616494c680d1e58e16607daa6032bb2--compiler-gcc.tgz[0m
 [32;1mcache uploaded[0m
-travis_time:end:03e63e32:start=1564667523275417494,finish=1564667537391230260,duration=14115812766[0Ktravis_fold:end:cache.2[0K
+travis_time:end:153ddf40:start=1557603625609069293,finish=1557603660169665201,duration=34560595908[0Ktravis_fold:end:cache.2[0K
 
 Done. Your build exited with 1.
