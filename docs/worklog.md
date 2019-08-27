@@ -2,6 +2,37 @@
 
 # Carolin Master Thesis Work Log
 
+## 27.8.19
+
+- more xml escaping fixes
+- both pbe and ir tool handle filenames with slashes for saving results of evaluations
+- try to make learning in prose iterative (not sure wether that worked...)
+- unification tool / eval running script output intermediate results / progress now
+- output eval results to csv
+- save plots
+- prepare Meeting with Moritz and Annibale
+
+## 26.8.19
+
+- recollect various files missed in data collection for BuildFailureReason
+- handle parsing of special characters in example sets in pbe tool
+- fix a lot of auto-format whitespace errors in already collected samples
+- base evaluation on list of example sets
+- remove log samples that are not useful for the evaluation / data set
+- started on various xml escaping fixes for the C example sets
+- started on overview of possible results of my work "which extraction is suitable when"
+- document example sets still to be labeled
+
+## 25.8.19
+
+- labeled 8 more example sets
+
+## 23.8.19
+
+- check that plotting prose results still works
+- improved some of the readmes
+- more fixes for evaluation
+
 ## 22.8.19
 
 - wrote / corrected / renamed various readmes for a bit more documentation (cause I had no idea how my evaluation worked anymore 😅)
