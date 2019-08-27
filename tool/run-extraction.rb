@@ -97,11 +97,12 @@ class Optparser
   def self.print_pbe_options(opts)
     opt_arr = [opts.action, '-p', opts.example_set]
 
-    opt_arr << '-v' if opts.verbose
 
     if opts.action == :analyze
       opt_arr << '-f'
       opt_arr << opts.file_path
+      opt_arr << '-v' if opts.verbose
+
     elsif opts.action == :evaluate
       opt_arr << '-s' << opts.selection
       opt_arr << '-l' << opts.learning_step_count
@@ -158,19 +159,17 @@ if $PROGRAM_NAME == __FILE__
       # build pbe tool
       `nuget restore ../pbe-extraction-buildlogs/pbe-extraction-buildlogs.sln`
       `msbuild ../pbe-extraction-buildlogs /v:m /p:Configuration=Debug`
-      puts `mono ../pbe-extraction-buildlogs/pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe #{Optparser.print_pbe_options(options)}`
+      system("mono ../pbe-extraction-buildlogs/pbe-extraction-buildlogs/bin/Debug/pbe-extraction-buildlogs.exe #{Optparser.print_pbe_options(options)}")
     when :ir
-      puts "#{Optparser.print_ir_options(options)}"
-      puts `Rscript ../r-extractions/information-retrieval.R #{Optparser.print_ir_options(options)}`
+      system("Rscript ../r-extractions/information-retrieval.R #{Optparser.print_ir_options(options)}")
     when :keyword
-      puts `Rscript ../r-extractions/keyword-search.R #{Optparser.print_keyword_options(options)}`
+      system("Rscript ../r-extractions/keyword-search.R #{Optparser.print_keyword_options(options)}")
     when :random
-      puts `Rscript ../r-extractions/random-selection.R #{Optparser.print_random_options(options)}`
+      system("Rscript ../r-extractions/random-selection.R #{Optparser.print_random_options(options)}")
     when :regex
-      puts `Rscript ../r-extractions/manual-regex.R #{Optparser.print_regex_options(options)}`
+      system("Rscript ../r-extractions/manual-regex.R #{Optparser.print_regex_options(options)}")
     else
-      puts Optparser.print_ir_options(options)
-      puts `echo technique not yet supported`
+      puts 'technique not yet supported'
     end
   )
 

@@ -8,4 +8,4 @@ source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 data <-
   getDataFrameForPBEResultsFile("android-failure-with-dependencies_ManualSelection.xml")
 
-result <- plot_evaluation_result(data, "android-failure-with-dependencies", "pbe", "manual")
+result <- plot_evaluation_result(data, "android-failure-with-dependencies", "pbe", "manual", 0, 0)

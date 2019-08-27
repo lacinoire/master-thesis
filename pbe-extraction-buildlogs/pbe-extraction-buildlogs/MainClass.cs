@@ -180,7 +180,8 @@ namespace pbeextractionbuildlogs
 			XmlSerializer serializer = new XmlSerializer(result.GetType());
 			Directory.CreateDirectory(
 				Config.RESULT_DIRECTORY.Remove(Config.RESULT_DIRECTORY.Length - 1));
-			using (StreamWriter file = new StreamWriter(File.Create(Config.RESULT_DIRECTORY + result.ProgramName + "_" + result.ExampleSelection.GetType().Name + ".xml")))
+			var progSaveName = result.ProgramName.Replace("/", "@");
+			using (StreamWriter file = new StreamWriter(File.Create(Config.RESULT_DIRECTORY + progSaveName + "_" + result.ExampleSelection.GetType().Name + ".xml")))
 			{
 				serializer.Serialize(file, result);
 			}

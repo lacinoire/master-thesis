@@ -111,6 +111,7 @@ namespace pbeextractionbuildlogs
 		public EvaluationResult<OutputType> Evaluate(ExampleSelection exampleSelection,
 			EvaluationResult<OutputType> result)
 		{
+			Console.WriteLine(exampleSelection);
 
 			if (exampleSelection is RandomSelection)
 			{
@@ -127,19 +128,38 @@ namespace pbeextractionbuildlogs
 				// take examples in list they are defined in file (so sequence they have in the LearningData already)
 			}
 
+			// less examples than learning steps? lower the number of learning steps!
+			if (exampleSelection.LearningStepCount + exampleSelection.TestCount > LearningData.Examples.Count)
+			{
+				exampleSelection.LearningStepCount = LearningData.Examples.Count - exampleSelection.TestCount;
+				if (exampleSelection.LearningStepCount <= 0)
+				{
+					throw new ArgumentException("Learning Step Count + Test Count should be smaller or equal to the number of avaliable examples in the exampleset!");
+				}
+			}
+
+			analysisSession = new SessionType();
+			SessionData<ExampleData<OutputType>> currentLearningData = new SessionData<ExampleData<OutputType>>();
+
 			for (int exampleCount = 1; exampleCount <= exampleSelection.LearningStepCount; exampleCount++)
 			{
-				SessionData<ExampleData<OutputType>> currentLearningData = new SessionData<ExampleData<OutputType>>();
-				currentLearningData.Examples = LearningData.Examples.GetRange(0, Math.Min(exampleCount, LearningData.Examples.Count));
+				var ex = LearningData.Examples[exampleCount - 1];
+				analysisSession.AddExample(new ExampleData<OutputType>(Config.SAMPLE_DIRECTORY + ex.InputPath, ex.Output));
+				currentLearningData.Examples.Add(ex);
+
 				if (exampleSelection.IncludeAllInputs)
 				{
-					currentLearningData.InputPaths = LearningData.InputPaths;
+					analysisSession.AddInput(Config.SAMPLE_DIRECTORY + LearningData.InputPaths[exampleCount - 1]);
+					currentLearningData.InputPaths.Add(LearningData.InputPaths[exampleCount - 1]);
 				}
+
 				List<ExampleData<OutputType>> testSamples = LearningData.Examples.GetRange(exampleCount, Math.Min(exampleSelection.TestCount, LearningData.Examples.Count - exampleCount));
 				List<AnalysisResult<OutputType>> testResults = new List<AnalysisResult<OutputType>>();
+
 				foreach (ExampleData<OutputType> testSample in testSamples)
 				{
-					var analysisResult = ApplyToFileWithLearningData(Config.SAMPLE_DIRECTORY + testSample.InputPath, currentLearningData, new AnalysisResult<OutputType>(), true);
+					Console.WriteLine(Describe(currentLearningData));
+					var analysisResult = analysisSession.Analyze(Config.SAMPLE_DIRECTORY + testSample.InputPath, new AnalysisResult<OutputType>(), true);
 					analysisResult.DesiredOutput = testSample.Output;
 					Console.WriteLine(ConsoleOutput.PrintAnalysisResult(analysisResult, 0, true));
 					testResults.Add(analysisResult);

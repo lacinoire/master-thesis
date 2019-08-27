@@ -4,6 +4,7 @@ suppressPackageStartupMessages({
   library(graphics)
   library(stringdist)
   library(ggplot2)
+  library(svglite)
 })
 
 main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
@@ -78,7 +79,7 @@ calculate_accuracy <- function(data) {
   return(data)
 }
 
-plot_evaluation_result <- function(result, program_name, technique, selection) {
+plot_evaluation_result <- function(result, program_name, technique, selection, learning_step_count, test_count) {
   result <- calculate_accuracy(result)
   plot_data <-
     result[c("ExampleCount",
@@ -125,5 +126,16 @@ plot_evaluation_result <- function(result, program_name, technique, selection) {
   plot(p)
   message("-------- press return to close plot --------")
   invisible(readLines("stdin", n = 1))
+
+  setwd(paste(main_path, paste0("/evaluation/results/", technique), sep = ""))
+  results_file_name <- evaluation_identification(technique, gsub("/", "@", program_name), selection, learning_step_count, test_count)
+  ggsave(paste0(results_file_name, ".svg"), p)
+
+  write.csv(
+    transform(result,
+    LearningDuration = format(LearningDuration, "%M.%OS3"),
+    ApplicationDuration = format(ApplicationDuration, "%M.%OS3")
+    ), file = paste0(results_file_name, ".csv"))
+
   return(result)
 }
