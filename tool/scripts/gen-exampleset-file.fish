@@ -2,9 +2,9 @@
 # to generate a respecive example-set template containing all the log file samples in the folder
 
 # Change Metamodel object at the end here if you want to put it in another example-set folder
-set pretext "<?xml version="1.0" encoding="utf-8"?>
-<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+set pretext "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" 
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">
 <SaveName>BuildFailureReason/"
 # here add path to repo folder
 set sectext "</SaveName>
