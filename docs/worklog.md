@@ -2,6 +2,12 @@
 
 # Carolin Master Thesis Work Log
 
+## 28.8.19
+
+- Meeting Summary to Annibale
+- Start scheduling meeting kw39
+- Regenrate Eval files for recollected log samples
+
 ## 27.8.19
 
 - more xml escaping fixes
