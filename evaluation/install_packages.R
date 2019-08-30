@@ -1,0 +1,13 @@
+install.packages("XML")
+install.packages("methods")
+install.packages("graphics")
+install.packages("stringdist")
+install.packages("ggplot2")
+install.packages("svglite")
+install.packages("dplyr")
+install.packages("text2vec")
+install.packages("optigrab")
+install.packages("stringi")
+install.packages("stringr")
+install.packages("purrr")
+
