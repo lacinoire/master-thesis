@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SaveName>BuildFailureReason/Lisp/purcell@emacs.d</SaveName>
+  <LearningData>
+    <InputPaths>
+      <string>Lisp/purcell@emacs.d/failed/495224858.log</string>
+      <string>Lisp/purcell@emacs.d/failed/495247642.log</string>
+      <string>Lisp/purcell@emacs.d/failed/495316554.log</string>
+      <string>Lisp/purcell@emacs.d/failed/495429346.log</string>
+      <string>Lisp/purcell@emacs.d/failed/515415388.log</string>
+      <string>Lisp/purcell@emacs.d/failed/515415960.log</string>
+      <string>Lisp/purcell@emacs.d/failed/515416520.log</string>
+      <string>Lisp/purcell@emacs.d/failed/516445189.log</string>
+      <string>Lisp/purcell@emacs.d/failed/533616131.log</string>
+      <string>Lisp/purcell@emacs.d/failed/570347231.log</string>
+    </InputPaths>
+    <Examples>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/495224858.log</InputPath>
+        <Output>signal(error ("Could not create connection to elpa.gnu.org:443"))
+  error("Could not create connection to %s:%d" "elpa.gnu.org" 443)
+  url-http([cl-struct-url "https" nil nil "elpa.gnu.org" nil "/packages/archive-contents" nil nil t nil t] #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil))
+  url-https([cl-struct-url "https" nil nil "elpa.gnu.org" nil "/packages/archive-contents" nil nil t nil t] #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil))
+  url-retrieve-internal("https://elpa.gnu.org/packages/archive-contents" #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil) nil nil)
+  url-retrieve("https://elpa.gnu.org/packages/archive-contents" #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] nil nil nil)
+  url-retrieve-synchronously("https://elpa.gnu.org/packages/archive-contents")
+  url-insert-file-contents("https://elpa.gnu.org/packages/archive-contents")
+  package--download-one-archive(("gnu" . "https://elpa.gnu.org/packages/") "archive-contents")
+  #[0 "\301\300\302\"\207" [("gnu" . "https://elpa.gnu.org/packages/") package--download-one-archive "archive-contents"] 3 "\n\n(fn)"]()
+  funcall(#[0 "\301\300\302\"\207" [("gnu" . "https://elpa.gnu.org/packages/") package--download-one-archive "archive-contents"] 3 "\n\n(fn)"])
+  package-refresh-contents()
+  (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))
+  (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))
+  (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))
+  (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))
+  (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))))(fullframe)
+  apply((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe nil)
+  (let ((available (apply oldfun package args))) (prog1 available (if (and available (boundp (quote package-selected-packages))) (progn (add-to-list (quote sanityinc/required-packages) package)))))
+  sanityinc/note-selected-package((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe)
+  apply(sanityinc/note-selected-package (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe)
+  require-package(fullframe)
+  eval-buffer(#<buffer  *load*-391660> nil "/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" nil t)  ; Reading at buffer position 3632
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" "/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" nil t)
+  #<subr require>(init-elpa)
+  apply(#<subr require> init-elpa nil)
+  (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis (current-time) require-start-time))) (add-to-list (quote sanityinc/require-times) (list feature require-start-time time) t)))))
+  (let* ((already-loaded (memq feature features)) (require-start-time (and (not already-loaded) (current-time)))) (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis ... require-start-time))) (add-to-list (quote sanityinc/require-times) (list feature require-start-time time) t))))))
+  sanityinc/require-times-wrapper(#<subr require> init-elpa)
+  apply(sanityinc/require-times-wrapper #<subr require> init-elpa)
+  require(init-elpa)
+  eval-buffer(#<buffer  *load*> nil "/home/travis/build/purcell/emacs.d/init.el" nil t)  ; Reading at buffer position 1702
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/init.el" "/home/travis/build/purcell/emacs.d/init.el" nil nil)
+  load("/home/travis/build/purcell/emacs.d/init.el" nil nil t)
+  load-file("/home/travis/build/purcell/emacs.d/init.el")
+  (let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook)))
+  eval((let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook))))
+  command-line-1(("--eval" "(let ((debug-on-error t)\n                              (url-show-status nil)\n                              (user-emacs-directory default-directory)\n                              (user-init-file (expand-file-name \"init.el\"))\n                              (load-path (delq default-directory load-path)))\n                           (load-file user-init-file)\n                           (run-hooks (quote after-init-hook)))"))
+  command-line()
+  normal-top-level()</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/495247642.log</InputPath>
+        <Output>signal(error ("Could not create connection to elpa.gnu.org:443"))
+  error("Could not create connection to %s:%d" "elpa.gnu.org" 443)
+  url-http([cl-struct-url "https" nil nil "elpa.gnu.org" nil "/packages/archive-contents" nil nil t nil t] #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil))
+  url-https([cl-struct-url "https" nil nil "elpa.gnu.org" nil "/packages/archive-contents" nil nil t nil t] #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil))
+  url-retrieve-internal("https://elpa.gnu.org/packages/archive-contents" #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil) nil nil)
+  url-retrieve("https://elpa.gnu.org/packages/archive-contents" #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] nil nil nil)
+  url-retrieve-synchronously("https://elpa.gnu.org/packages/archive-contents")
+  url-insert-file-contents("https://elpa.gnu.org/packages/archive-contents")
+  package--download-one-archive(("gnu" . "https://elpa.gnu.org/packages/") "archive-contents")
+  #[0 "\301\300\302\"\207" [("gnu" . "https://elpa.gnu.org/packages/") package--download-one-archive "archive-contents"] 3 "\n\n(fn)"]()
+  funcall(#[0 "\301\300\302\"\207" [("gnu" . "https://elpa.gnu.org/packages/") package--download-one-archive "archive-contents"] 3 "\n\n(fn)"])
+  package-refresh-contents()
+  (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))
+  (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))
+  (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))
+  (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))
+  (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))))(fullframe)
+  apply((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe nil)
+  (let ((available (apply oldfun package args))) (prog1 available (if (and available (boundp (quote package-selected-packages))) (progn (add-to-list (quote sanityinc/required-packages) package)))))
+  sanityinc/note-selected-package((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe)
+  apply(sanityinc/note-selected-package (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe)
+  require-package(fullframe)
+  eval-buffer(#<buffer  *load*-699371> nil "/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" nil t)  ; Reading at buffer position 3632
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" "/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" nil t)
+  #<subr require>(init-elpa)
+  apply(#<subr require> init-elpa nil)
+  (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis (current-time) require-start-time))) (add-to-list (quote sanityinc/require-times) (list feature require-start-time time) t)))))
+  (let* ((already-loaded (memq feature features)) (require-start-time (and (not already-loaded) (current-time)))) (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis ... require-start-time))) (add-to-list (quote sanityinc/require-times) (list feature require-start-time time) t))))))
+  sanityinc/require-times-wrapper(#<subr require> init-elpa)
+  apply(sanityinc/require-times-wrapper #<subr require> init-elpa)
+  require(init-elpa)
+  eval-buffer(#<buffer  *load*> nil "/home/travis/build/purcell/emacs.d/init.el" nil t)  ; Reading at buffer position 1702
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/init.el" "/home/travis/build/purcell/emacs.d/init.el" nil nil)
+  load("/home/travis/build/purcell/emacs.d/init.el" nil nil t)
+  load-file("/home/travis/build/purcell/emacs.d/init.el")
+  (let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook)))
+  eval((let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook))))
+  command-line-1(("--eval" "(let ((debug-on-error t)\n                              (url-show-status nil)\n                              (user-emacs-directory default-directory)\n                              (user-init-file (expand-file-name \"init.el\"))\n                              (load-path (delq default-directory load-path)))\n                           (load-file user-init-file)\n                           (run-hooks (quote after-init-hook)))"))
+  command-line()
+  normal-top-level()</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/495316554.log</InputPath>
+        <Output>signal(error ("Could not create connection to elpa.gnu.org:443"))
+  error("Could not create connection to %s:%d" "elpa.gnu.org" 443)
+  url-http([cl-struct-url "https" nil nil "elpa.gnu.org" nil "/packages/archive-contents" nil nil t nil t] #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil))
+  url-https([cl-struct-url "https" nil nil "elpa.gnu.org" nil "/packages/archive-contents" nil nil t nil t] #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil))
+  url-retrieve-internal("https://elpa.gnu.org/packages/archive-contents" #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil) nil nil)
+  url-retrieve("https://elpa.gnu.org/packages/archive-contents" #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] nil nil nil)
+  url-retrieve-synchronously("https://elpa.gnu.org/packages/archive-contents")
+  url-insert-file-contents("https://elpa.gnu.org/packages/archive-contents")
+  package--download-one-archive(("gnu" . "https://elpa.gnu.org/packages/") "archive-contents")
+  #[0 "\301\300\302\"\207" [("gnu" . "https://elpa.gnu.org/packages/") package--download-one-archive "archive-contents"] 3 "\n\n(fn)"]()
+  funcall(#[0 "\301\300\302\"\207" [("gnu" . "https://elpa.gnu.org/packages/") package--download-one-archive "archive-contents"] 3 "\n\n(fn)"])
+  package-refresh-contents()
+  (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))
+  (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))
+  (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))
+  (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))
+  (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))))(fullframe)
+  apply((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe nil)
+  (let ((available (apply oldfun package args))) (prog1 available (if (and available (boundp (quote package-selected-packages))) (progn (add-to-list (quote sanityinc/required-packages) package)))))
+  sanityinc/note-selected-package((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe)
+  apply(sanityinc/note-selected-package (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe)
+  require-package(fullframe)
+  eval-buffer(#<buffer  *load*-649057> nil "/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" nil t)  ; Reading at buffer position 3632
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" "/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" nil t)
+  #<subr require>(init-elpa)
+  apply(#<subr require> init-elpa nil)
+  (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis (current-time) require-start-time))) (add-to-list (quote sanityinc/require-times) (list feature require-start-time time) t)))))
+  (let* ((already-loaded (memq feature features)) (require-start-time (and (not already-loaded) (current-time)))) (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis ... require-start-time))) (add-to-list (quote sanityinc/require-times) (list feature require-start-time time) t))))))
+  sanityinc/require-times-wrapper(#<subr require> init-elpa)
+  apply(sanityinc/require-times-wrapper #<subr require> init-elpa)
+  require(init-elpa)
+  eval-buffer(#<buffer  *load*> nil "/home/travis/build/purcell/emacs.d/init.el" nil t)  ; Reading at buffer position 1702
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/init.el" "/home/travis/build/purcell/emacs.d/init.el" nil nil)
+  load("/home/travis/build/purcell/emacs.d/init.el" nil nil t)
+  load-file("/home/travis/build/purcell/emacs.d/init.el")
+  (let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook)))
+  eval((let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook))))
+  command-line-1(("--eval" "(let ((debug-on-error t)\n                              (url-show-status nil)\n                              (user-emacs-directory default-directory)\n                              (user-init-file (expand-file-name \"init.el\"))\n                              (load-path (delq default-directory load-path)))\n                           (load-file user-init-file)\n                           (run-hooks (quote after-init-hook)))"))
+  command-line()
+  normal-top-level()</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/495429346.log</InputPath>
+        <Output>signal(error ("Could not create connection to elpa.gnu.org:443"))
+  error("Could not create connection to %s:%d" "elpa.gnu.org" 443)
+  url-http([cl-struct-url "https" nil nil "elpa.gnu.org" nil "/packages/archive-contents" nil nil t nil t] #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil))
+  url-https([cl-struct-url "https" nil nil "elpa.gnu.org" nil "/packages/archive-contents" nil nil t nil t] #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil))
+  url-retrieve-internal("https://elpa.gnu.org/packages/archive-contents" #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] (nil) nil nil)
+  url-retrieve("https://elpa.gnu.org/packages/archive-contents" #[128 "\302\303\304p#\210\300\305\240\210\301p\240\207" [(nil) (nil) url-debug retrieval "Synchronous fetching done (%S)" t] 5 "\n\n(fn &rest IGNORED)"] nil nil nil)
+  url-retrieve-synchronously("https://elpa.gnu.org/packages/archive-contents")
+  url-insert-file-contents("https://elpa.gnu.org/packages/archive-contents")
+  package--download-one-archive(("gnu" . "https://elpa.gnu.org/packages/") "archive-contents")
+  #[0 "\301\300\302\"\207" [("gnu" . "https://elpa.gnu.org/packages/") package--download-one-archive "archive-contents"] 3 "\n\n(fn)"]()
+  funcall(#[0 "\301\300\302\"\207" [("gnu" . "https://elpa.gnu.org/packages/") package--download-one-archive "archive-contents"] 3 "\n\n(fn)"])
+  package-refresh-contents()
+  (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))
+  (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))
+  (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))
+  (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))
+  (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))))(fullframe)
+  apply((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe nil)
+  (let ((available (apply oldfun package args))) (prog1 available (if (and available (boundp (quote package-selected-packages))) (progn (add-to-list (quote sanityinc/required-packages) package)))))
+  sanityinc/note-selected-package((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe)
+  apply(sanityinc/note-selected-package (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) fullframe)
+  require-package(fullframe)
+  eval-buffer(#<buffer  *load*-926337> nil "/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" nil t)  ; Reading at buffer position 3632
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" "/home/travis/build/purcell/emacs.d/lisp/init-elpa.el" nil t)
+  #<subr require>(init-elpa)
+  apply(#<subr require> init-elpa nil)
+  (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis (current-time) require-start-time))) (add-to-list (quote sanityinc/require-times) (list feature require-start-time time) t)))))
+  (let* ((already-loaded (memq feature features)) (require-start-time (and (not already-loaded) (current-time)))) (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis ... require-start-time))) (add-to-list (quote sanityinc/require-times) (list feature require-start-time time) t))))))
+  sanityinc/require-times-wrapper(#<subr require> init-elpa)
+  apply(sanityinc/require-times-wrapper #<subr require> init-elpa)
+  require(init-elpa)
+  eval-buffer(#<buffer  *load*> nil "/home/travis/build/purcell/emacs.d/init.el" nil t)  ; Reading at buffer position 1702
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/init.el" "/home/travis/build/purcell/emacs.d/init.el" nil nil)
+  load("/home/travis/build/purcell/emacs.d/init.el" nil nil t)
+  load-file("/home/travis/build/purcell/emacs.d/init.el")
+  (let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook)))
+  eval((let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook))))
+  command-line-1(("--eval" "(let ((debug-on-error t)\n                              (url-show-status nil)\n                              (user-emacs-directory default-directory)\n                              (user-init-file (expand-file-name \"init.el\"))\n                              (load-path (delq default-directory load-path)))\n                           (load-file user-init-file)\n                           (run-hooks (quote after-init-hook)))"))
+  command-line()
+  normal-top-level()</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/515415388.log</InputPath>
+        <Output>signal(error ("Package `emacs-25.1' is unavailable"))
+  error("Package `%s-%s' is unavailable" emacs "25.1")
+  package-compute-transaction(([cl-struct-package-desc scratch (20190314 614) "Mode-specific scratch buffers" ((emacs (25 1))) single "melpa" nil ((:commit . "4813d82b39a451f2a6d5b730cd7ec49a9bdabcca") (:keywords "convenience" "tools" "files") (:authors ("Ian Eure" . "ian.eure@gmail.com")) (:maintainer "Ian Eure" . "ian.eure@gmail.com") (:url . "https://github.com/ieure/scratch-el")) nil]) ((emacs (25 1))) ([cl-struct-package-desc scratch (20190314 614) "Mode-specific scratch buffers" ((emacs (25 1))) single "melpa" nil ((:commit . "4813d82b39a451f2a6d5b730cd7ec49a9bdabcca") (:keywords "convenience" "tools" "files") (:authors ("Ian Eure" . "ian.eure@gmail.com")) (:maintainer "Ian Eure" . "ian.eure@gmail.com") (:url . "https://github.com/ieure/scratch-el")) nil]))
+  package-compute-transaction(nil ((scratch)))
+  package-install(scratch)
+  (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))
+  (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))
+  (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))
+  (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))))(scratch)
+  apply((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) scratch nil)
+  (let ((available (apply oldfun package args))) (prog1 available (if (and available (boundp (quote package-selected-packages))) (progn (add-to-list (quote sanityinc/required-packages) package)))))
+  sanityinc/note-selected-package((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) scratch)
+  apply(sanityinc/note-selected-package (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) scratch)
+  require-package(scratch)
+  eval-buffer(#<buffer  *load*> nil "/home/travis/build/purcell/emacs.d/init.el" nil t)  ; Reading at buffer position 2315
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/init.el" "/home/travis/build/purcell/emacs.d/init.el" nil nil)
+  load("/home/travis/build/purcell/emacs.d/init.el" nil nil t)
+  load-file("/home/travis/build/purcell/emacs.d/init.el")
+  (let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook)))
+  eval((let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook))))
+  command-line-1(("--eval" "(let ((debug-on-error t)\n                              (url-show-status nil)\n                              (user-emacs-directory default-directory)\n                              (user-init-file (expand-file-name \"init.el\"))\n                              (load-path (delq default-directory load-path)))\n                           (load-file user-init-file)\n                           (run-hooks (quote after-init-hook)))"))
+  command-line()
+  normal-top-level()</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/515415960.log</InputPath>
+        <Output>signal(error ("Package `emacs-25.1' is unavailable"))
+  error("Package `%s-%s' is unavailable" emacs "25.1")
+  package-compute-transaction(([cl-struct-package-desc scratch (20190314 614) "Mode-specific scratch buffers" ((emacs (25 1))) single "melpa" nil ((:commit . "4813d82b39a451f2a6d5b730cd7ec49a9bdabcca") (:keywords "convenience" "tools" "files") (:authors ("Ian Eure" . "ian.eure@gmail.com")) (:maintainer "Ian Eure" . "ian.eure@gmail.com") (:url . "https://github.com/ieure/scratch-el")) nil]) ((emacs (25 1))) ([cl-struct-package-desc scratch (20190314 614) "Mode-specific scratch buffers" ((emacs (25 1))) single "melpa" nil ((:commit . "4813d82b39a451f2a6d5b730cd7ec49a9bdabcca") (:keywords "convenience" "tools" "files") (:authors ("Ian Eure" . "ian.eure@gmail.com")) (:maintainer "Ian Eure" . "ian.eure@gmail.com") (:url . "https://github.com/ieure/scratch-el")) nil]))
+  package-compute-transaction(nil ((scratch)))
+  package-install(scratch)
+  (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))
+  (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))
+  (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))
+  (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t))))))(scratch)
+  apply((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) scratch nil)
+  (let ((available (apply oldfun package args))) (prog1 available (if (and available (boundp (quote package-selected-packages))) (progn (add-to-list (quote sanityinc/required-packages) package)))))
+  sanityinc/note-selected-package((closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) scratch)
+  apply(sanityinc/note-selected-package (closure (t) (package &optional min-version no-refresh) "Install given PACKAGE, optionally requiring MIN-VERSION.\nIf NO-REFRESH is non-nil, the available package lists will not be\nre-downloaded in order to locate PACKAGE." (or (package-installed-p package min-version) (let* ((known (cdr (assoc package package-archive-contents))) (versions (mapcar (function package-desc-version) known))) (if (cl-find-if (function (lambda (v) (version-list-<= min-version v))) versions) (package-install package) (if no-refresh (error "No version of %s >= %S is available" package min-version) (package-refresh-contents) (require-package package min-version t)))))) scratch)
+  require-package(scratch)
+  eval-buffer(#<buffer  *load*> nil "/home/travis/build/purcell/emacs.d/init.el" nil t)  ; Reading at buffer position 2315
+  load-with-code-conversion("/home/travis/build/purcell/emacs.d/init.el" "/home/travis/build/purcell/emacs.d/init.el" nil nil)
+  load("/home/travis/build/purcell/emacs.d/init.el" nil nil t)
+  load-file("/home/travis/build/purcell/emacs.d/init.el")
+  (let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook)))
+  eval((let ((debug-on-error t) (url-show-status nil) (user-emacs-directory default-directory) (user-init-file (expand-file-name "init.el")) (load-path (delq default-directory load-path))) (load-file user-init-file) (run-hooks (quote after-init-hook))))
+  command-line-1(("--eval" "(let ((debug-on-error t)\n                              (url-show-status nil)\n                              (user-emacs-directory default-directory)\n                              (user-init-file (expand-file-name \"init.el\"))\n                              (load-path (delq default-directory load-path)))\n                           (load-file user-init-file)\n                           (run-hooks (quote after-init-hook)))"))
+  command-line()
+  normal-top-level()</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/515416520.log</InputPath>
+        <Output></Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/516445189.log</InputPath>
+        <Output></Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/533616131.log</InputPath>
+        <Output></Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Lisp/purcell@emacs.d/failed/570347231.log</InputPath>
+        <Output></Output>
+      </ExampleDataOfString>
+    </Examples>
+  </LearningData>
+  <LogKind>
+    <Language>java</Language>
+    <BuildTool>android</BuildTool>
+  </LogKind>
+  <Target>BuildFailureReason</Target>
+</AnalysisProgramOfRegionAnalysisSessionString>
