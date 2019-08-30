@@ -2,6 +2,17 @@
 
 # Carolin Master Thesis Work Log
 
+## 30.8.19
+
+- start on dockerizing evaluation for the server
+- label about 10 more example sets
+
+## 29.8.19
+
+- read online & some papers about mturk and using it for data collection / cs surveys
+- talk to wouter about Server: got access to athens and munich
+- looked at log datasets sent by Moritz
+
 ## 28.8.19
 
 - Meeting Summary to Annibale
