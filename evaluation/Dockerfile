@@ -25,6 +25,9 @@ RUN echo "deb http://download.mono-project.com/repo/debian wheezy main" > /etc/a
     apt-get -qq -y install --no-install-recommends --no-install-suggests \
         ca-certificates software-properties-common gnupg2 gnupg1 &&\
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 &&\
+    echo "deb http://cran.rstudio.com/bin/linux/debian wheezy-cran3/" >> /etc/apt/sources.list &&\
+    apt-key adv --keyserver keys.gnupg.net --recv-key 381BA480 &&\
+    apt-get -qq update &&\
     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' &&\
     apt-get -qq install -y r-base
 

@@ -1,36 +1,1137 @@
-<?xml version="1.0" encoding="utf-8"?>
-<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<SaveName>BuildFailureReason/Shell/jwilder@nginx-proxy</SaveName>
-<LearningData>
-<InputPaths>
-<string>Shell/jwilder@nginx-proxy/failed/534527355.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/549357727.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/553283911.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/561337553.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/565135948.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/565138449.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/565138602.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/565146113.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/565363151.log</string>
-<string>Shell/jwilder@nginx-proxy/failed/565363656.log</string>
-</InputPaths>
-<Examples>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/534527355.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/549357727.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/553283911.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/561337553.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/565135948.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/565138449.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/565138602.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/565146113.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/565363151.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Shell/jwilder@nginx-proxy/failed/565363656.log</InputPath><Output></Output></ExampleDataOfString>
-</Examples>
-</LearningData>
-<LogKind>
-<Language>java</Language>
-<BuildTool>android</BuildTool>
-</LogKind>
-<Target>BuildFailureReason</Target>
+<?xml version="1.0" encoding="utf-8" ?>
+<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SaveName>BuildFailureReason/Shell/jwilder@nginx-proxy</SaveName>
+  <LearningData>
+    <InputPaths>
+      <string>Shell/jwilder@nginx-proxy/failed/534527355.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/549357727.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/553283911.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/561337553.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/565135948.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/565138449.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/565138602.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/565146113.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/565363151.log</string>
+      <string>Shell/jwilder@nginx-proxy/failed/565363656.log</string>
+    </InputPaths>
+    <Examples>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/534527355.log</InputPath>
+        <Output>[1m[31m__________________________ test_web5_dhparam_is_used ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7fe6b7c1fa90>
+
+[1m    @require_openssl("1.0.2")[0m
+[1m    def test_web5_dhparam_is_used(docker_compose):[0m
+[1m        sut_container = docker_client.containers.get("nginxproxy")[0m
+[1m        assert sut_container.status == "running"[0m
+[1m    [0m
+[1m        host = "%s:443" % sut_container.attrs["NetworkSettings"]["IPAddress"][0m
+[1m        r = subprocess.check_output([0m
+[1m            "echo '' | openssl s_client -connect %s -cipher 'EDH' | grep 'Server Temp Key'" % host, shell=True)[0m
+[1m>       assert "Server Temp Key: DH, 2048 bits\n" == r[0m
+[1m[31mE       assert 'Server Temp ..., 2048 bits\n' == 'Server Temp K...9, 253 bits\n'[0m
+[1m[31mE         - Server Temp Key: DH, 2048 bits[0m
+[1m[31mE         ?                  ^^   ^^^[0m
+[1m[31mE         + Server Temp Key: X25519, 253 bits[0m
+[1m[31mE         ?                  ^^^^^^   ^^[0m
+
+[1m[31mtest_ssl/test_dhparam.py[0m:93: AssertionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/549357727.log</InputPath>
+        <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7f12aa979a90>
+nginxproxy = <conftest.requests_for_docker object at 0x7f12aa7f1650>
+
+[1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
+[1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
+
+[1m[31mtest_DOCKER_HOST_unix_socket.py[0m:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31mconftest.py[0m:83: in get
+[1m    return _get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/backoff.py[0m:173: in retry
+[1m    ret = target(*args, **kwargs)[0m
+[1m[31mconftest.py[0m:82: in _get
+[1m    return self.session.get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:488: in get
+[1m    return self.request('GET', url, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:475: in request
+[1m    resp = self.send(prep, **send_kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:596: in send
+[1m    r = adapter.send(request, **kwargs)[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <requests.adapters.HTTPAdapter object at 0x7f12aa80cc50>
+request = <PreparedRequest [GET]>, stream = False
+timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f12aa6c3990>
+verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
+cert = None, proxies = OrderedDict()
+
+[1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
+[1m        """Sends PreparedRequest object. Returns Response object.[0m
+[1m    [0m
+[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param stream: (optional) Whether to stream the request content.[0m
+[1m            :param timeout: (optional) How long to wait for the server to send[0m
+[1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
+[1m                read timeout) <timeouts>` tuple.[0m
+[1m            :type timeout: float or tuple[0m
+[1m            :param verify: (optional) Whether to verify SSL certificates.[0m
+[1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
+[1m            :param proxies: (optional) The proxies dictionary to apply to the request.[0m
+[1m            :rtype: requests.Response[0m
+[1m            """[0m
+[1m    [0m
+[1m        conn = self.get_connection(request.url, proxies)[0m
+[1m    [0m
+[1m        self.cert_verify(conn, request.url, verify, cert)[0m
+[1m        url = self.request_url(request, proxies)[0m
+[1m        self.add_headers(request)[0m
+[1m    [0m
+[1m        chunked = not (request.body is None or 'Content-Length' in request.headers)[0m
+[1m    [0m
+[1m        if isinstance(timeout, tuple):[0m
+[1m            try:[0m
+[1m                connect, read = timeout[0m
+[1m                timeout = TimeoutSauce(connect=connect, read=read)[0m
+[1m            except ValueError as e:[0m
+[1m                # this may raise a string formatting error.[0m
+[1m                err = ("Invalid timeout {0}. Pass a (connect, read) "[0m
+[1m                       "timeout tuple, or a single float to set "[0m
+[1m                       "both timeouts to the same value".format(timeout))[0m
+[1m                raise ValueError(err)[0m
+[1m        else:[0m
+[1m            timeout = TimeoutSauce(connect=timeout, read=timeout)[0m
+[1m    [0m
+[1m        try:[0m
+[1m            if not chunked:[0m
+[1m                resp = conn.urlopen([0m
+[1m                    method=request.method,[0m
+[1m                    url=url,[0m
+[1m                    body=request.body,[0m
+[1m                    headers=request.headers,[0m
+[1m                    redirect=False,[0m
+[1m                    assert_same_host=False,[0m
+[1m                    preload_content=False,[0m
+[1m                    decode_content=False,[0m
+[1m                    retries=self.max_retries,[0m
+[1m                    timeout=timeout[0m
+[1m                )[0m
+[1m    [0m
+[1m            # Send the request.[0m
+[1m            else:[0m
+[1m                if hasattr(conn, 'proxy_pool'):[0m
+[1m                    conn = conn.proxy_pool[0m
+[1m    [0m
+[1m                low_conn = conn._get_conn(timeout=DEFAULT_POOL_TIMEOUT)[0m
+[1m    [0m
+[1m                try:[0m
+[1m                    low_conn.putrequest(request.method,[0m
+[1m                                        url,[0m
+[1m                                        skip_accept_encoding=True)[0m
+[1m    [0m
+[1m                    for header, value in request.headers.items():[0m
+[1m                        low_conn.putheader(header, value)[0m
+[1m    [0m
+[1m                    low_conn.endheaders()[0m
+[1m    [0m
+[1m                    for i in request.body:[0m
+[1m                        low_conn.send(hex(len(i))[2:].encode('utf-8'))[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                        low_conn.send(i)[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                    low_conn.send(b'0\r\n\r\n')[0m
+[1m    [0m
+[1m                    # Receive the response from the server[0m
+[1m                    try:[0m
+[1m                        # For Python 2.7+ versions, use buffering of HTTP[0m
+[1m                        # responses[0m
+[1m                        r = low_conn.getresponse(buffering=True)[0m
+[1m                    except TypeError:[0m
+[1m                        # For compatibility with Python 2.6 versions and back[0m
+[1m                        r = low_conn.getresponse()[0m
+[1m    [0m
+[1m                    resp = HTTPResponse.from_httplib([0m
+[1m                        r,[0m
+[1m                        pool=conn,[0m
+[1m                        connection=low_conn,[0m
+[1m                        preload_content=False,[0m
+[1m                        decode_content=False[0m
+[1m                    )[0m
+[1m                except:[0m
+[1m                    # If we hit any problems here, clean up the connection.[0m
+[1m                    # Then, reraise so that we can handle the actual exception.[0m
+[1m                    low_conn.close()[0m
+[1m                    raise[0m
+[1m    [0m
+[1m        except (ProtocolError, socket.error) as err:[0m
+[1m            raise ConnectionError(err, request=request)[0m
+[1m    [0m
+[1m        except MaxRetryError as e:[0m
+[1m            if isinstance(e.reason, ConnectTimeoutError):[0m
+[1m                # TODO: Remove this in 3.0.0: see #2811[0m
+[1m                if not isinstance(e.reason, NewConnectionError):[0m
+[1m                    raise ConnectTimeout(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, ResponseError):[0m
+[1m                raise RetryError(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, _ProxyError):[0m
+[1m                raise ProxyError(e, request=request)[0m
+[1m    [0m
+[1m>           raise ConnectionError(e, request=request)[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f12aa6c3dd0>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/553283911.log</InputPath>
+        <Output>[1m[31m__________________________ test_web5_dhparam_is_used ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7f5153c97a90>
+
+[1m    @require_openssl("1.0.2")[0m
+[1m    def test_web5_dhparam_is_used(docker_compose):[0m
+[1m        sut_container = docker_client.containers.get("nginxproxy")[0m
+[1m        assert sut_container.status == "running"[0m
+[1m    [0m
+[1m        host = "%s:443" % sut_container.attrs["NetworkSettings"]["IPAddress"][0m
+[1m        r = subprocess.check_output([0m
+[1m            "echo '' | openssl s_client -connect %s -cipher 'EDH' | grep 'Server Temp Key'" % host, shell=True)[0m
+[1m>       assert "Server Temp Key: DH, 2048 bits\n" == r[0m
+[1m[31mE       assert 'Server Temp ..., 2048 bits\n' == 'Server Temp K...9, 253 bits\n'[0m
+[1m[31mE         - Server Temp Key: DH, 2048 bits[0m
+[1m[31mE         ?                  ^^   ^^^[0m
+[1m[31mE         + Server Temp Key: X25519, 253 bits[0m
+[1m[31mE         ?                  ^^^^^^   ^^[0m
+
+[1m[31mtest_ssl/test_dhparam.py[0m:93: AssertionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/561337553.log</InputPath>
+        <Output>[1m[31m_____________________ test_http_redirects_to_https[1-True] _____________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7f402adeca90>
+nginxproxy = <conftest.requests_for_docker object at 0x7f402aca0450>
+subdomain = 1, should_redirect_to_https = True
+
+[1m    @pytest.mark.parametrize("subdomain,should_redirect_to_https", [[0m
+[1m        (1, True),[0m
+[1m        (2, True),[0m
+[1m        (3, False),[0m
+[1m    ])[0m
+[1m    def test_http_redirects_to_https(docker_compose, nginxproxy, subdomain, should_redirect_to_https):[0m
+[1m        r = nginxproxy.get("http://%s.web.nginx-proxy.tld/port" % subdomain)[0m
+[1m        if should_redirect_to_https:[0m
+[1m>           assert len(r.history) > 0[0m
+[1m[31mE           assert 0 > 0[0m
+[1m[31mE            +  where 0 = len([])[0m
+[1m[31mE            +    where [] = <Response [404]>.history[0m
+
+[1m[31mtest_ssl/wildcard_cert_and_nohttps/test_wildcard_cert_nohttps.py[0m:14: AssertionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/565135948.log</InputPath>
+        <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7f41bffe5a90>
+nginxproxy = <conftest.requests_for_docker object at 0x7f41bfe5d650>
+
+[1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
+[1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
+
+[1m[31mtest_DOCKER_HOST_unix_socket.py[0m:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31mconftest.py[0m:83: in get
+[1m    return _get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/backoff.py[0m:173: in retry
+[1m    ret = target(*args, **kwargs)[0m
+[1m[31mconftest.py[0m:82: in _get
+[1m    return self.session.get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:488: in get
+[1m    return self.request('GET', url, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:475: in request
+[1m    resp = self.send(prep, **send_kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:596: in send
+[1m    r = adapter.send(request, **kwargs)[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <requests.adapters.HTTPAdapter object at 0x7f41bfe784d0>
+request = <PreparedRequest [GET]>, stream = False
+timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f41bfd2f790>
+verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
+cert = None, proxies = OrderedDict()
+
+[1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
+[1m        """Sends PreparedRequest object. Returns Response object.[0m
+[1m    [0m
+[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param stream: (optional) Whether to stream the request content.[0m
+[1m            :param timeout: (optional) How long to wait for the server to send[0m
+[1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
+[1m                read timeout) <timeouts>` tuple.[0m
+[1m            :type timeout: float or tuple[0m
+[1m            :param verify: (optional) Whether to verify SSL certificates.[0m
+[1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
+[1m            :param proxies: (optional) The proxies dictionary to apply to the request.[0m
+[1m            :rtype: requests.Response[0m
+[1m            """[0m
+[1m    [0m
+[1m        conn = self.get_connection(request.url, proxies)[0m
+[1m    [0m
+[1m        self.cert_verify(conn, request.url, verify, cert)[0m
+[1m        url = self.request_url(request, proxies)[0m
+[1m        self.add_headers(request)[0m
+[1m    [0m
+[1m        chunked = not (request.body is None or 'Content-Length' in request.headers)[0m
+[1m    [0m
+[1m        if isinstance(timeout, tuple):[0m
+[1m            try:[0m
+[1m                connect, read = timeout[0m
+[1m                timeout = TimeoutSauce(connect=connect, read=read)[0m
+[1m            except ValueError as e:[0m
+[1m                # this may raise a string formatting error.[0m
+[1m                err = ("Invalid timeout {0}. Pass a (connect, read) "[0m
+[1m                       "timeout tuple, or a single float to set "[0m
+[1m                       "both timeouts to the same value".format(timeout))[0m
+[1m                raise ValueError(err)[0m
+[1m        else:[0m
+[1m            timeout = TimeoutSauce(connect=timeout, read=timeout)[0m
+[1m    [0m
+[1m        try:[0m
+[1m            if not chunked:[0m
+[1m                resp = conn.urlopen([0m
+[1m                    method=request.method,[0m
+[1m                    url=url,[0m
+[1m                    body=request.body,[0m
+[1m                    headers=request.headers,[0m
+[1m                    redirect=False,[0m
+[1m                    assert_same_host=False,[0m
+[1m                    preload_content=False,[0m
+[1m                    decode_content=False,[0m
+[1m                    retries=self.max_retries,[0m
+[1m                    timeout=timeout[0m
+[1m                )[0m
+[1m    [0m
+[1m            # Send the request.[0m
+[1m            else:[0m
+[1m                if hasattr(conn, 'proxy_pool'):[0m
+[1m                    conn = conn.proxy_pool[0m
+[1m    [0m
+[1m                low_conn = conn._get_conn(timeout=DEFAULT_POOL_TIMEOUT)[0m
+[1m    [0m
+[1m                try:[0m
+[1m                    low_conn.putrequest(request.method,[0m
+[1m                                        url,[0m
+[1m                                        skip_accept_encoding=True)[0m
+[1m    [0m
+[1m                    for header, value in request.headers.items():[0m
+[1m                        low_conn.putheader(header, value)[0m
+[1m    [0m
+[1m                    low_conn.endheaders()[0m
+[1m    [0m
+[1m                    for i in request.body:[0m
+[1m                        low_conn.send(hex(len(i))[2:].encode('utf-8'))[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                        low_conn.send(i)[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                    low_conn.send(b'0\r\n\r\n')[0m
+[1m    [0m
+[1m                    # Receive the response from the server[0m
+[1m                    try:[0m
+[1m                        # For Python 2.7+ versions, use buffering of HTTP[0m
+[1m                        # responses[0m
+[1m                        r = low_conn.getresponse(buffering=True)[0m
+[1m                    except TypeError:[0m
+[1m                        # For compatibility with Python 2.6 versions and back[0m
+[1m                        r = low_conn.getresponse()[0m
+[1m    [0m
+[1m                    resp = HTTPResponse.from_httplib([0m
+[1m                        r,[0m
+[1m                        pool=conn,[0m
+[1m                        connection=low_conn,[0m
+[1m                        preload_content=False,[0m
+[1m                        decode_content=False[0m
+[1m                    )[0m
+[1m                except:[0m
+[1m                    # If we hit any problems here, clean up the connection.[0m
+[1m                    # Then, reraise so that we can handle the actual exception.[0m
+[1m                    low_conn.close()[0m
+[1m                    raise[0m
+[1m    [0m
+[1m        except (ProtocolError, socket.error) as err:[0m
+[1m            raise ConnectionError(err, request=request)[0m
+[1m    [0m
+[1m        except MaxRetryError as e:[0m
+[1m            if isinstance(e.reason, ConnectTimeoutError):[0m
+[1m                # TODO: Remove this in 3.0.0: see #2811[0m
+[1m                if not isinstance(e.reason, NewConnectionError):[0m
+[1m                    raise ConnectTimeout(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, ResponseError):[0m
+[1m                raise RetryError(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, _ProxyError):[0m
+[1m                raise ProxyError(e, request=request)[0m
+[1m    [0m
+[1m>           raise ConnectionError(e, request=request)[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f41bfd2fa90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/565138449.log</InputPath>
+        <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7f1b461f0a90>
+nginxproxy = <conftest.requests_for_docker object at 0x7f1b46068650>
+
+[1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
+[1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
+
+[1m[31mtest_DOCKER_HOST_unix_socket.py[0m:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31mconftest.py[0m:83: in get
+[1m    return _get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/backoff.py[0m:173: in retry
+[1m    ret = target(*args, **kwargs)[0m
+[1m[31mconftest.py[0m:82: in _get
+[1m    return self.session.get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:488: in get
+[1m    return self.request('GET', url, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:475: in request
+[1m    resp = self.send(prep, **send_kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:596: in send
+[1m    r = adapter.send(request, **kwargs)[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <requests.adapters.HTTPAdapter object at 0x7f1b460833d0>
+request = <PreparedRequest [GET]>, stream = False
+timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f1b45f3aa10>
+verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
+cert = None, proxies = OrderedDict()
+
+[1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
+[1m        """Sends PreparedRequest object. Returns Response object.[0m
+[1m    [0m
+[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param stream: (optional) Whether to stream the request content.[0m
+[1m            :param timeout: (optional) How long to wait for the server to send[0m
+[1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
+[1m                read timeout) <timeouts>` tuple.[0m
+[1m            :type timeout: float or tuple[0m
+[1m            :param verify: (optional) Whether to verify SSL certificates.[0m
+[1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
+[1m            :param proxies: (optional) The proxies dictionary to apply to the request.[0m
+[1m            :rtype: requests.Response[0m
+[1m            """[0m
+[1m    [0m
+[1m        conn = self.get_connection(request.url, proxies)[0m
+[1m    [0m
+[1m        self.cert_verify(conn, request.url, verify, cert)[0m
+[1m        url = self.request_url(request, proxies)[0m
+[1m        self.add_headers(request)[0m
+[1m    [0m
+[1m        chunked = not (request.body is None or 'Content-Length' in request.headers)[0m
+[1m    [0m
+[1m        if isinstance(timeout, tuple):[0m
+[1m            try:[0m
+[1m                connect, read = timeout[0m
+[1m                timeout = TimeoutSauce(connect=connect, read=read)[0m
+[1m            except ValueError as e:[0m
+[1m                # this may raise a string formatting error.[0m
+[1m                err = ("Invalid timeout {0}. Pass a (connect, read) "[0m
+[1m                       "timeout tuple, or a single float to set "[0m
+[1m                       "both timeouts to the same value".format(timeout))[0m
+[1m                raise ValueError(err)[0m
+[1m        else:[0m
+[1m            timeout = TimeoutSauce(connect=timeout, read=timeout)[0m
+[1m    [0m
+[1m        try:[0m
+[1m            if not chunked:[0m
+[1m                resp = conn.urlopen([0m
+[1m                    method=request.method,[0m
+[1m                    url=url,[0m
+[1m                    body=request.body,[0m
+[1m                    headers=request.headers,[0m
+[1m                    redirect=False,[0m
+[1m                    assert_same_host=False,[0m
+[1m                    preload_content=False,[0m
+[1m                    decode_content=False,[0m
+[1m                    retries=self.max_retries,[0m
+[1m                    timeout=timeout[0m
+[1m                )[0m
+[1m    [0m
+[1m            # Send the request.[0m
+[1m            else:[0m
+[1m                if hasattr(conn, 'proxy_pool'):[0m
+[1m                    conn = conn.proxy_pool[0m
+[1m    [0m
+[1m                low_conn = conn._get_conn(timeout=DEFAULT_POOL_TIMEOUT)[0m
+[1m    [0m
+[1m                try:[0m
+[1m                    low_conn.putrequest(request.method,[0m
+[1m                                        url,[0m
+[1m                                        skip_accept_encoding=True)[0m
+[1m    [0m
+[1m                    for header, value in request.headers.items():[0m
+[1m                        low_conn.putheader(header, value)[0m
+[1m    [0m
+[1m                    low_conn.endheaders()[0m
+[1m    [0m
+[1m                    for i in request.body:[0m
+[1m                        low_conn.send(hex(len(i))[2:].encode('utf-8'))[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                        low_conn.send(i)[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                    low_conn.send(b'0\r\n\r\n')[0m
+[1m    [0m
+[1m                    # Receive the response from the server[0m
+[1m                    try:[0m
+[1m                        # For Python 2.7+ versions, use buffering of HTTP[0m
+[1m                        # responses[0m
+[1m                        r = low_conn.getresponse(buffering=True)[0m
+[1m                    except TypeError:[0m
+[1m                        # For compatibility with Python 2.6 versions and back[0m
+[1m                        r = low_conn.getresponse()[0m
+[1m    [0m
+[1m                    resp = HTTPResponse.from_httplib([0m
+[1m                        r,[0m
+[1m                        pool=conn,[0m
+[1m                        connection=low_conn,[0m
+[1m                        preload_content=False,[0m
+[1m                        decode_content=False[0m
+[1m                    )[0m
+[1m                except:[0m
+[1m                    # If we hit any problems here, clean up the connection.[0m
+[1m                    # Then, reraise so that we can handle the actual exception.[0m
+[1m                    low_conn.close()[0m
+[1m                    raise[0m
+[1m    [0m
+[1m        except (ProtocolError, socket.error) as err:[0m
+[1m            raise ConnectionError(err, request=request)[0m
+[1m    [0m
+[1m        except MaxRetryError as e:[0m
+[1m            if isinstance(e.reason, ConnectTimeoutError):[0m
+[1m                # TODO: Remove this in 3.0.0: see #2811[0m
+[1m                if not isinstance(e.reason, NewConnectionError):[0m
+[1m                    raise ConnectTimeout(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, ResponseError):[0m
+[1m                raise RetryError(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, _ProxyError):[0m
+[1m                raise ProxyError(e, request=request)[0m
+[1m    [0m
+[1m>           raise ConnectionError(e, request=request)[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f1b45f3acd0>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/565138602.log</InputPath>
+        <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7f67f43a0a90>
+nginxproxy = <conftest.requests_for_docker object at 0x7f67f4218650>
+
+[1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
+[1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
+
+[1m[31mtest_DOCKER_HOST_unix_socket.py[0m:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31mconftest.py[0m:83: in get
+[1m    return _get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/backoff.py[0m:173: in retry
+[1m    ret = target(*args, **kwargs)[0m
+[1m[31mconftest.py[0m:82: in _get
+[1m    return self.session.get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:488: in get
+[1m    return self.request('GET', url, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:475: in request
+[1m    resp = self.send(prep, **send_kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:596: in send
+[1m    r = adapter.send(request, **kwargs)[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <requests.adapters.HTTPAdapter object at 0x7f67f4233110>
+request = <PreparedRequest [GET]>, stream = False
+timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f67f40eaa50>
+verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
+cert = None, proxies = OrderedDict()
+
+[1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
+[1m        """Sends PreparedRequest object. Returns Response object.[0m
+[1m    [0m
+[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param stream: (optional) Whether to stream the request content.[0m
+[1m            :param timeout: (optional) How long to wait for the server to send[0m
+[1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
+[1m                read timeout) <timeouts>` tuple.[0m
+[1m            :type timeout: float or tuple[0m
+[1m            :param verify: (optional) Whether to verify SSL certificates.[0m
+[1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
+[1m            :param proxies: (optional) The proxies dictionary to apply to the request.[0m
+[1m            :rtype: requests.Response[0m
+[1m            """[0m
+[1m    [0m
+[1m        conn = self.get_connection(request.url, proxies)[0m
+[1m    [0m
+[1m        self.cert_verify(conn, request.url, verify, cert)[0m
+[1m        url = self.request_url(request, proxies)[0m
+[1m        self.add_headers(request)[0m
+[1m    [0m
+[1m        chunked = not (request.body is None or 'Content-Length' in request.headers)[0m
+[1m    [0m
+[1m        if isinstance(timeout, tuple):[0m
+[1m            try:[0m
+[1m                connect, read = timeout[0m
+[1m                timeout = TimeoutSauce(connect=connect, read=read)[0m
+[1m            except ValueError as e:[0m
+[1m                # this may raise a string formatting error.[0m
+[1m                err = ("Invalid timeout {0}. Pass a (connect, read) "[0m
+[1m                       "timeout tuple, or a single float to set "[0m
+[1m                       "both timeouts to the same value".format(timeout))[0m
+[1m                raise ValueError(err)[0m
+[1m        else:[0m
+[1m            timeout = TimeoutSauce(connect=timeout, read=timeout)[0m
+[1m    [0m
+[1m        try:[0m
+[1m            if not chunked:[0m
+[1m                resp = conn.urlopen([0m
+[1m                    method=request.method,[0m
+[1m                    url=url,[0m
+[1m                    body=request.body,[0m
+[1m                    headers=request.headers,[0m
+[1m                    redirect=False,[0m
+[1m                    assert_same_host=False,[0m
+[1m                    preload_content=False,[0m
+[1m                    decode_content=False,[0m
+[1m                    retries=self.max_retries,[0m
+[1m                    timeout=timeout[0m
+[1m                )[0m
+[1m    [0m
+[1m            # Send the request.[0m
+[1m            else:[0m
+[1m                if hasattr(conn, 'proxy_pool'):[0m
+[1m                    conn = conn.proxy_pool[0m
+[1m    [0m
+[1m                low_conn = conn._get_conn(timeout=DEFAULT_POOL_TIMEOUT)[0m
+[1m    [0m
+[1m                try:[0m
+[1m                    low_conn.putrequest(request.method,[0m
+[1m                                        url,[0m
+[1m                                        skip_accept_encoding=True)[0m
+[1m    [0m
+[1m                    for header, value in request.headers.items():[0m
+[1m                        low_conn.putheader(header, value)[0m
+[1m    [0m
+[1m                    low_conn.endheaders()[0m
+[1m    [0m
+[1m                    for i in request.body:[0m
+[1m                        low_conn.send(hex(len(i))[2:].encode('utf-8'))[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                        low_conn.send(i)[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                    low_conn.send(b'0\r\n\r\n')[0m
+[1m    [0m
+[1m                    # Receive the response from the server[0m
+[1m                    try:[0m
+[1m                        # For Python 2.7+ versions, use buffering of HTTP[0m
+[1m                        # responses[0m
+[1m                        r = low_conn.getresponse(buffering=True)[0m
+[1m                    except TypeError:[0m
+[1m                        # For compatibility with Python 2.6 versions and back[0m
+[1m                        r = low_conn.getresponse()[0m
+[1m    [0m
+[1m                    resp = HTTPResponse.from_httplib([0m
+[1m                        r,[0m
+[1m                        pool=conn,[0m
+[1m                        connection=low_conn,[0m
+[1m                        preload_content=False,[0m
+[1m                        decode_content=False[0m
+[1m                    )[0m
+[1m                except:[0m
+[1m                    # If we hit any problems here, clean up the connection.[0m
+[1m                    # Then, reraise so that we can handle the actual exception.[0m
+[1m                    low_conn.close()[0m
+[1m                    raise[0m
+[1m    [0m
+[1m        except (ProtocolError, socket.error) as err:[0m
+[1m            raise ConnectionError(err, request=request)[0m
+[1m    [0m
+[1m        except MaxRetryError as e:[0m
+[1m            if isinstance(e.reason, ConnectTimeoutError):[0m
+[1m                # TODO: Remove this in 3.0.0: see #2811[0m
+[1m                if not isinstance(e.reason, NewConnectionError):[0m
+[1m                    raise ConnectTimeout(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, ResponseError):[0m
+[1m                raise RetryError(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, _ProxyError):[0m
+[1m                raise ProxyError(e, request=request)[0m
+[1m    [0m
+[1m>           raise ConnectionError(e, request=request)[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f67f40ea950>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/565146113.log</InputPath>
+        <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7fc23e10aa90>
+nginxproxy = <conftest.requests_for_docker object at 0x7fc23df82650>
+
+[1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
+[1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
+
+[1m[31mtest_DOCKER_HOST_unix_socket.py[0m:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31mconftest.py[0m:83: in get
+[1m    return _get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/backoff.py[0m:173: in retry
+[1m    ret = target(*args, **kwargs)[0m
+[1m[31mconftest.py[0m:82: in _get
+[1m    return self.session.get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:488: in get
+[1m    return self.request('GET', url, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:475: in request
+[1m    resp = self.send(prep, **send_kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:596: in send
+[1m    r = adapter.send(request, **kwargs)[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <requests.adapters.HTTPAdapter object at 0x7fc23df9d3d0>
+request = <PreparedRequest [GET]>, stream = False
+timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7fc23de54a10>
+verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
+cert = None, proxies = OrderedDict()
+
+[1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
+[1m        """Sends PreparedRequest object. Returns Response object.[0m
+[1m    [0m
+[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param stream: (optional) Whether to stream the request content.[0m
+[1m            :param timeout: (optional) How long to wait for the server to send[0m
+[1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
+[1m                read timeout) <timeouts>` tuple.[0m
+[1m            :type timeout: float or tuple[0m
+[1m            :param verify: (optional) Whether to verify SSL certificates.[0m
+[1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
+[1m            :param proxies: (optional) The proxies dictionary to apply to the request.[0m
+[1m            :rtype: requests.Response[0m
+[1m            """[0m
+[1m    [0m
+[1m        conn = self.get_connection(request.url, proxies)[0m
+[1m    [0m
+[1m        self.cert_verify(conn, request.url, verify, cert)[0m
+[1m        url = self.request_url(request, proxies)[0m
+[1m        self.add_headers(request)[0m
+[1m    [0m
+[1m        chunked = not (request.body is None or 'Content-Length' in request.headers)[0m
+[1m    [0m
+[1m        if isinstance(timeout, tuple):[0m
+[1m            try:[0m
+[1m                connect, read = timeout[0m
+[1m                timeout = TimeoutSauce(connect=connect, read=read)[0m
+[1m            except ValueError as e:[0m
+[1m                # this may raise a string formatting error.[0m
+[1m                err = ("Invalid timeout {0}. Pass a (connect, read) "[0m
+[1m                       "timeout tuple, or a single float to set "[0m
+[1m                       "both timeouts to the same value".format(timeout))[0m
+[1m                raise ValueError(err)[0m
+[1m        else:[0m
+[1m            timeout = TimeoutSauce(connect=timeout, read=timeout)[0m
+[1m    [0m
+[1m        try:[0m
+[1m            if not chunked:[0m
+[1m                resp = conn.urlopen([0m
+[1m                    method=request.method,[0m
+[1m                    url=url,[0m
+[1m                    body=request.body,[0m
+[1m                    headers=request.headers,[0m
+[1m                    redirect=False,[0m
+[1m                    assert_same_host=False,[0m
+[1m                    preload_content=False,[0m
+[1m                    decode_content=False,[0m
+[1m                    retries=self.max_retries,[0m
+[1m                    timeout=timeout[0m
+[1m                )[0m
+[1m    [0m
+[1m            # Send the request.[0m
+[1m            else:[0m
+[1m                if hasattr(conn, 'proxy_pool'):[0m
+[1m                    conn = conn.proxy_pool[0m
+[1m    [0m
+[1m                low_conn = conn._get_conn(timeout=DEFAULT_POOL_TIMEOUT)[0m
+[1m    [0m
+[1m                try:[0m
+[1m                    low_conn.putrequest(request.method,[0m
+[1m                                        url,[0m
+[1m                                        skip_accept_encoding=True)[0m
+[1m    [0m
+[1m                    for header, value in request.headers.items():[0m
+[1m                        low_conn.putheader(header, value)[0m
+[1m    [0m
+[1m                    low_conn.endheaders()[0m
+[1m    [0m
+[1m                    for i in request.body:[0m
+[1m                        low_conn.send(hex(len(i))[2:].encode('utf-8'))[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                        low_conn.send(i)[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                    low_conn.send(b'0\r\n\r\n')[0m
+[1m    [0m
+[1m                    # Receive the response from the server[0m
+[1m                    try:[0m
+[1m                        # For Python 2.7+ versions, use buffering of HTTP[0m
+[1m                        # responses[0m
+[1m                        r = low_conn.getresponse(buffering=True)[0m
+[1m                    except TypeError:[0m
+[1m                        # For compatibility with Python 2.6 versions and back[0m
+[1m                        r = low_conn.getresponse()[0m
+[1m    [0m
+[1m                    resp = HTTPResponse.from_httplib([0m
+[1m                        r,[0m
+[1m                        pool=conn,[0m
+[1m                        connection=low_conn,[0m
+[1m                        preload_content=False,[0m
+[1m                        decode_content=False[0m
+[1m                    )[0m
+[1m                except:[0m
+[1m                    # If we hit any problems here, clean up the connection.[0m
+[1m                    # Then, reraise so that we can handle the actual exception.[0m
+[1m                    low_conn.close()[0m
+[1m                    raise[0m
+[1m    [0m
+[1m        except (ProtocolError, socket.error) as err:[0m
+[1m            raise ConnectionError(err, request=request)[0m
+[1m    [0m
+[1m        except MaxRetryError as e:[0m
+[1m            if isinstance(e.reason, ConnectTimeoutError):[0m
+[1m                # TODO: Remove this in 3.0.0: see #2811[0m
+[1m                if not isinstance(e.reason, NewConnectionError):[0m
+[1m                    raise ConnectTimeout(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, ResponseError):[0m
+[1m                raise RetryError(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, _ProxyError):[0m
+[1m                raise ProxyError(e, request=request)[0m
+[1m    [0m
+[1m>           raise ConnectionError(e, request=request)[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7fc23de54f90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/565363151.log</InputPath>
+        <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7fe29742dad0>
+nginxproxy = <conftest.requests_for_docker object at 0x7fe29728ef10>
+
+[1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
+[1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
+
+[1m[31mtest_DOCKER_HOST_unix_socket.py[0m:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31mconftest.py[0m:83: in get
+[1m    return _get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/backoff.py[0m:173: in retry
+[1m    ret = target(*args, **kwargs)[0m
+[1m[31mconftest.py[0m:82: in _get
+[1m    return self.session.get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:488: in get
+[1m    return self.request('GET', url, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:475: in request
+[1m    resp = self.send(prep, **send_kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:596: in send
+[1m    r = adapter.send(request, **kwargs)[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <requests.adapters.HTTPAdapter object at 0x7fe2972c0950>
+request = <PreparedRequest [GET]>, stream = False
+timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7fe2972a5f50>
+verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
+cert = None, proxies = OrderedDict()
+
+[1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
+[1m        """Sends PreparedRequest object. Returns Response object.[0m
+[1m    [0m
+[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param stream: (optional) Whether to stream the request content.[0m
+[1m            :param timeout: (optional) How long to wait for the server to send[0m
+[1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
+[1m                read timeout) <timeouts>` tuple.[0m
+[1m            :type timeout: float or tuple[0m
+[1m            :param verify: (optional) Whether to verify SSL certificates.[0m
+[1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
+[1m            :param proxies: (optional) The proxies dictionary to apply to the request.[0m
+[1m            :rtype: requests.Response[0m
+[1m            """[0m
+[1m    [0m
+[1m        conn = self.get_connection(request.url, proxies)[0m
+[1m    [0m
+[1m        self.cert_verify(conn, request.url, verify, cert)[0m
+[1m        url = self.request_url(request, proxies)[0m
+[1m        self.add_headers(request)[0m
+[1m    [0m
+[1m        chunked = not (request.body is None or 'Content-Length' in request.headers)[0m
+[1m    [0m
+[1m        if isinstance(timeout, tuple):[0m
+[1m            try:[0m
+[1m                connect, read = timeout[0m
+[1m                timeout = TimeoutSauce(connect=connect, read=read)[0m
+[1m            except ValueError as e:[0m
+[1m                # this may raise a string formatting error.[0m
+[1m                err = ("Invalid timeout {0}. Pass a (connect, read) "[0m
+[1m                       "timeout tuple, or a single float to set "[0m
+[1m                       "both timeouts to the same value".format(timeout))[0m
+[1m                raise ValueError(err)[0m
+[1m        else:[0m
+[1m            timeout = TimeoutSauce(connect=timeout, read=timeout)[0m
+[1m    [0m
+[1m        try:[0m
+[1m            if not chunked:[0m
+[1m                resp = conn.urlopen([0m
+[1m                    method=request.method,[0m
+[1m                    url=url,[0m
+[1m                    body=request.body,[0m
+[1m                    headers=request.headers,[0m
+[1m                    redirect=False,[0m
+[1m                    assert_same_host=False,[0m
+[1m                    preload_content=False,[0m
+[1m                    decode_content=False,[0m
+[1m                    retries=self.max_retries,[0m
+[1m                    timeout=timeout[0m
+[1m                )[0m
+[1m    [0m
+[1m            # Send the request.[0m
+[1m            else:[0m
+[1m                if hasattr(conn, 'proxy_pool'):[0m
+[1m                    conn = conn.proxy_pool[0m
+[1m    [0m
+[1m                low_conn = conn._get_conn(timeout=DEFAULT_POOL_TIMEOUT)[0m
+[1m    [0m
+[1m                try:[0m
+[1m                    low_conn.putrequest(request.method,[0m
+[1m                                        url,[0m
+[1m                                        skip_accept_encoding=True)[0m
+[1m    [0m
+[1m                    for header, value in request.headers.items():[0m
+[1m                        low_conn.putheader(header, value)[0m
+[1m    [0m
+[1m                    low_conn.endheaders()[0m
+[1m    [0m
+[1m                    for i in request.body:[0m
+[1m                        low_conn.send(hex(len(i))[2:].encode('utf-8'))[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                        low_conn.send(i)[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                    low_conn.send(b'0\r\n\r\n')[0m
+[1m    [0m
+[1m                    # Receive the response from the server[0m
+[1m                    try:[0m
+[1m                        # For Python 2.7+ versions, use buffering of HTTP[0m
+[1m                        # responses[0m
+[1m                        r = low_conn.getresponse(buffering=True)[0m
+[1m                    except TypeError:[0m
+[1m                        # For compatibility with Python 2.6 versions and back[0m
+[1m                        r = low_conn.getresponse()[0m
+[1m    [0m
+[1m                    resp = HTTPResponse.from_httplib([0m
+[1m                        r,[0m
+[1m                        pool=conn,[0m
+[1m                        connection=low_conn,[0m
+[1m                        preload_content=False,[0m
+[1m                        decode_content=False[0m
+[1m                    )[0m
+[1m                except:[0m
+[1m                    # If we hit any problems here, clean up the connection.[0m
+[1m                    # Then, reraise so that we can handle the actual exception.[0m
+[1m                    low_conn.close()[0m
+[1m                    raise[0m
+[1m    [0m
+[1m        except (ProtocolError, socket.error) as err:[0m
+[1m            raise ConnectionError(err, request=request)[0m
+[1m    [0m
+[1m        except MaxRetryError as e:[0m
+[1m            if isinstance(e.reason, ConnectTimeoutError):[0m
+[1m                # TODO: Remove this in 3.0.0: see #2811[0m
+[1m                if not isinstance(e.reason, NewConnectionError):[0m
+[1m                    raise ConnectTimeout(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, ResponseError):[0m
+[1m                raise RetryError(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, _ProxyError):[0m
+[1m                raise ProxyError(e, request=request)[0m
+[1m    [0m
+[1m>           raise ConnectionError(e, request=request)[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7fe2972a5b90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Shell/jwilder@nginx-proxy/failed/565363656.log</InputPath>
+        <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
+
+docker_compose = <docker.client.DockerClient object at 0x7f9a970d3ad0>
+nginxproxy = <conftest.requests_for_docker object at 0x7f9a96f34f10>
+
+[1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
+[1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
+
+[1m[31mtest_DOCKER_HOST_unix_socket.py[0m:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+[1m[31mconftest.py[0m:83: in get
+[1m    return _get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/backoff.py[0m:173: in retry
+[1m    ret = target(*args, **kwargs)[0m
+[1m[31mconftest.py[0m:82: in _get
+[1m    return self.session.get(*args, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:488: in get
+[1m    return self.request('GET', url, **kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:475: in request
+[1m    resp = self.send(prep, **send_kwargs)[0m
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/sessions.py[0m:596: in send
+[1m    r = adapter.send(request, **kwargs)[0m
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <requests.adapters.HTTPAdapter object at 0x7f9a96f66390>
+request = <PreparedRequest [GET]>, stream = False
+timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f9a96f66b50>
+verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
+cert = None, proxies = OrderedDict()
+
+[1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
+[1m        """Sends PreparedRequest object. Returns Response object.[0m
+[1m    [0m
+[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param stream: (optional) Whether to stream the request content.[0m
+[1m            :param timeout: (optional) How long to wait for the server to send[0m
+[1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
+[1m                read timeout) <timeouts>` tuple.[0m
+[1m            :type timeout: float or tuple[0m
+[1m            :param verify: (optional) Whether to verify SSL certificates.[0m
+[1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
+[1m            :param proxies: (optional) The proxies dictionary to apply to the request.[0m
+[1m            :rtype: requests.Response[0m
+[1m            """[0m
+[1m    [0m
+[1m        conn = self.get_connection(request.url, proxies)[0m
+[1m    [0m
+[1m        self.cert_verify(conn, request.url, verify, cert)[0m
+[1m        url = self.request_url(request, proxies)[0m
+[1m        self.add_headers(request)[0m
+[1m    [0m
+[1m        chunked = not (request.body is None or 'Content-Length' in request.headers)[0m
+[1m    [0m
+[1m        if isinstance(timeout, tuple):[0m
+[1m            try:[0m
+[1m                connect, read = timeout[0m
+[1m                timeout = TimeoutSauce(connect=connect, read=read)[0m
+[1m            except ValueError as e:[0m
+[1m                # this may raise a string formatting error.[0m
+[1m                err = ("Invalid timeout {0}. Pass a (connect, read) "[0m
+[1m                       "timeout tuple, or a single float to set "[0m
+[1m                       "both timeouts to the same value".format(timeout))[0m
+[1m                raise ValueError(err)[0m
+[1m        else:[0m
+[1m            timeout = TimeoutSauce(connect=timeout, read=timeout)[0m
+[1m    [0m
+[1m        try:[0m
+[1m            if not chunked:[0m
+[1m                resp = conn.urlopen([0m
+[1m                    method=request.method,[0m
+[1m                    url=url,[0m
+[1m                    body=request.body,[0m
+[1m                    headers=request.headers,[0m
+[1m                    redirect=False,[0m
+[1m                    assert_same_host=False,[0m
+[1m                    preload_content=False,[0m
+[1m                    decode_content=False,[0m
+[1m                    retries=self.max_retries,[0m
+[1m                    timeout=timeout[0m
+[1m                )[0m
+[1m    [0m
+[1m            # Send the request.[0m
+[1m            else:[0m
+[1m                if hasattr(conn, 'proxy_pool'):[0m
+[1m                    conn = conn.proxy_pool[0m
+[1m    [0m
+[1m                low_conn = conn._get_conn(timeout=DEFAULT_POOL_TIMEOUT)[0m
+[1m    [0m
+[1m                try:[0m
+[1m                    low_conn.putrequest(request.method,[0m
+[1m                                        url,[0m
+[1m                                        skip_accept_encoding=True)[0m
+[1m    [0m
+[1m                    for header, value in request.headers.items():[0m
+[1m                        low_conn.putheader(header, value)[0m
+[1m    [0m
+[1m                    low_conn.endheaders()[0m
+[1m    [0m
+[1m                    for i in request.body:[0m
+[1m                        low_conn.send(hex(len(i))[2:].encode('utf-8'))[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                        low_conn.send(i)[0m
+[1m                        low_conn.send(b'\r\n')[0m
+[1m                    low_conn.send(b'0\r\n\r\n')[0m
+[1m    [0m
+[1m                    # Receive the response from the server[0m
+[1m                    try:[0m
+[1m                        # For Python 2.7+ versions, use buffering of HTTP[0m
+[1m                        # responses[0m
+[1m                        r = low_conn.getresponse(buffering=True)[0m
+[1m                    except TypeError:[0m
+[1m                        # For compatibility with Python 2.6 versions and back[0m
+[1m                        r = low_conn.getresponse()[0m
+[1m    [0m
+[1m                    resp = HTTPResponse.from_httplib([0m
+[1m                        r,[0m
+[1m                        pool=conn,[0m
+[1m                        connection=low_conn,[0m
+[1m                        preload_content=False,[0m
+[1m                        decode_content=False[0m
+[1m                    )[0m
+[1m                except:[0m
+[1m                    # If we hit any problems here, clean up the connection.[0m
+[1m                    # Then, reraise so that we can handle the actual exception.[0m
+[1m                    low_conn.close()[0m
+[1m                    raise[0m
+[1m    [0m
+[1m        except (ProtocolError, socket.error) as err:[0m
+[1m            raise ConnectionError(err, request=request)[0m
+[1m    [0m
+[1m        except MaxRetryError as e:[0m
+[1m            if isinstance(e.reason, ConnectTimeoutError):[0m
+[1m                # TODO: Remove this in 3.0.0: see #2811[0m
+[1m                if not isinstance(e.reason, NewConnectionError):[0m
+[1m                    raise ConnectTimeout(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, ResponseError):[0m
+[1m                raise RetryError(e, request=request)[0m
+[1m    [0m
+[1m            if isinstance(e.reason, _ProxyError):[0m
+[1m                raise ProxyError(e, request=request)[0m
+[1m    [0m
+[1m>           raise ConnectionError(e, request=request)[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f9a96f4b610>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+
+[1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
+      </ExampleDataOfString>
+    </Examples>
+  </LearningData>
+  <LogKind>
+    <Language>java</Language>
+    <BuildTool>android</BuildTool>
+  </LogKind>
+  <Target>BuildFailureReason</Target>
 </AnalysisProgramOfRegionAnalysisSessionString>

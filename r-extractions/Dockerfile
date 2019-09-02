@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends r-cran-xml &&\
     apt-get install -y --no-install-recommends r-cran-text2vec &&\
     apt-get install -y --no-install-recommends r-cran-stringi &&\
     apt-get install -y --no-install-recommends r-cran-stringr &&\
-    apt-get install -y --no-install-recommends r-cran-purrr &&\
+    apt-get install -y --no-install-recommends r-cran-purrr
+
+COPY . r-extractions
 
 ## Make R the default
-CMD ["R"]
+CMD ["bash"]
