@@ -3,36 +3,48 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ##### install fish
 
-RUN apt-get update --quiet && \
-    apt-get install --quiet --yes software-properties-common && \
+RUN apt-get -qq update --quiet && \
+    apt-get -qq install --quiet --yes software-properties-common && \
     add-apt-repository --yes ppa:fish-shell/release-3 && \
-    apt-get install --quiet --yes fish
+    apt-get -qq install --quiet --yes fish
 
 
 
 ##### install mono, from: https://stackoverflow.com/a/25165946
 
-RUN apt-get update &&\
-    apt-get install -y wget
+RUN apt-get -qq update &&\
+    apt-get -qq install -y wget
 
 RUN /bin/bash -l -c "wget http://download.mono-project.com/repo/xamarin.gpg" &&\
     apt-key add xamarin.gpg
 
 RUN echo "deb http://download.mono-project.com/repo/debian wheezy main" > /etc/apt/sources.list.d/mono-xamarin.list &&\
-    apt-get update &&\
-    apt-get install -y mono-complete &&\ 
+    apt-get -qq update &&\
+    apt-get -qq install -y mono-complete &&\ 
 ##### Intstall R
-    apt-get -y install --no-install-recommends --no-install-suggests \
+    apt-get -qq -y install --no-install-recommends --no-install-suggests \
         ca-certificates software-properties-common gnupg2 gnupg1 &&\
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 &&\
     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' &&\
-    apt-get install -y r-base &&\
-    #R -e "install.packages('methods',dependencies=TRUE, repos='http://cran.rstudio.com/')"  &&\
+    apt-get -qq install -y r-base
+
+## Update and install rstan
+RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends r-cran-xml
+
+RUN apt-get -qq install -y --no-install-recommends r-cran-stringdist &&\
+    apt-get -qq install -y --no-install-recommends r-cran-ggplot2 &&\
+    apt-get -qq install -y --no-install-recommends r-cran-dplyr &&\
+    apt-get -qq install -y --no-install-recommends r-cran-text2vec &&\
+    apt-get -qq install -y --no-install-recommends r-cran-stringi &&\
+    apt-get -qq install -y --no-install-recommends r-cran-stringr &&\
+    apt-get -qq install -y --no-install-recommends r-cran-purrr
+
+RUN apt-get -qq install -y --no-install-recommends r-cran-svglite &&\
 ##### install Ruby, from: https://github.com/dockerfile/ruby/blob/master/Dockerfile
 # basics
-    apt-get install -y openssl &&\
+    apt-get -qq install -y openssl &&\
 # install RVM, Ruby, and Bundler
-    apt-get install -y curl &&\
+    apt-get -qq install -y curl &&\
     gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB &&\
     \curl -L https://get.rvm.io | bash -s stable &&\
     /bin/bash -l -c "rvm requirements" &&\
