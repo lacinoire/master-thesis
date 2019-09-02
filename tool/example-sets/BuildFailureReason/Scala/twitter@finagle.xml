@@ -1,36 +1,132 @@
-<?xml version="1.0" encoding="utf-8"?>
-<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<SaveName>BuildFailureReason/Scala/twitter@finagle</SaveName>
-<LearningData>
-<InputPaths>
-<string>Scala/twitter@finagle/failed/565063041.log</string>
-<string>Scala/twitter@finagle/failed/565162577.log</string>
-<string>Scala/twitter@finagle/failed/565192758.log</string>
-<string>Scala/twitter@finagle/failed/565242073.log</string>
-<string>Scala/twitter@finagle/failed/565253029.log</string>
-<string>Scala/twitter@finagle/failed/565592331.log</string>
-<string>Scala/twitter@finagle/failed/566247562.log</string>
-<string>Scala/twitter@finagle/failed/566723155.log</string>
-<string>Scala/twitter@finagle/failed/567152415.log</string>
-<string>Scala/twitter@finagle/failed/567176660.log</string>
-</InputPaths>
-<Examples>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/565063041.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/565162577.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/565192758.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/565242073.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/565253029.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/565592331.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/566247562.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/566723155.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/567152415.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>Scala/twitter@finagle/failed/567176660.log</InputPath><Output></Output></ExampleDataOfString>
-</Examples>
-</LearningData>
-<LogKind>
-<Language>java</Language>
-<BuildTool>android</BuildTool>
-</LogKind>
-<Target>BuildFailureReason</Target>
+<?xml version="1.0" encoding="utf-8" ?>
+<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SaveName>BuildFailureReason/Scala/twitter@finagle</SaveName>
+  <LearningData>
+    <InputPaths>
+      <string>Scala/twitter@finagle/failed/565063041.log</string>
+      <string>Scala/twitter@finagle/failed/572992106.log</string>
+      <string>Scala/twitter@finagle/failed/565192758.log</string>
+      <string>Scala/twitter@finagle/failed/565242073.log</string>
+      <string>Scala/twitter@finagle/failed/565253029.log</string>
+      <string>Scala/twitter@finagle/failed/565592331.log</string>
+      <string>Scala/twitter@finagle/failed/566247562.log</string>
+      <string>Scala/twitter@finagle/failed/566723155.log</string>
+      <string>Scala/twitter@finagle/failed/567152415.log</string>
+      <string>Scala/twitter@finagle/failed/567176660.log</string>
+    </InputPaths>
+    <Examples>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/565063041.log</InputPath>
+        <Output>[info] - http/2 client, http/1.1 server (streaming): symmetric reader and getContent *** FAILED ***
+[info]   com.twitter.util.TimeoutException: 30.seconds
+[info]   at com.twitter.util.Promise.ready(Promise.scala:656)
+[info]   at com.twitter.util.Promise.result(Promise.scala:665)
+[info]   at com.twitter.util.Await$.$anonfun$result$1(Awaitable.scala:152)
+[info]   at com.twitter.concurrent.LocalScheduler$Activation.blocking(Scheduler.scala:189)
+[info]   at com.twitter.concurrent.LocalScheduler.blocking(Scheduler.scala:256)
+[info]   at com.twitter.concurrent.Scheduler$.blocking(Scheduler.scala:85)
+[info]   at com.twitter.util.Await$.result(Awaitable.scala:152)
+[info]   at com.twitter.finagle.http.AbstractEndToEndTest.await(AbstractEndToEndTest.scala:58)
+[info]   at com.twitter.finagle.http.AbstractEndToEndTest.$anonfun$streaming$7(AbstractEndToEndTest.scala:694)
+[info]   at org.scalatest.OutcomeOf.outcomeOf(OutcomeOf.scala:85)
+[info]   ...</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/572992106.log</InputPath>
+        <Output>[0m[[0m[0minfo[0m] [0m[0m- Requests exceeding limit should increase dropped_request count *** FAILED ***[0m
+[0m[[0m[0minfo[0m] [0m[0m  11 did not equal 10 (ConcurrencyEndToEndTest.scala:72)[0m</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/565192758.log</InputPath>
+        <Output>[error] /home/travis/build/twitter/finagle/finagle-exp/src/test/scala/com/twitter/finagle/exp/ConcurrencyEndToEndTest.scala:6:35: object utils is not a member of package com.twitter.finagle.client
+[error] import com.twitter.finagle.client.utils.StringClient
+[error]                                   ^
+[error] /home/travis/build/twitter/finagle/finagle-exp/src/test/scala/com/twitter/finagle/exp/ConcurrencyEndToEndTest.scala:8:35: object utils is not a member of package com.twitter.finagle.server
+[error] import com.twitter.finagle.server.utils.StringServer
+[error]                                   ^
+[error] /home/travis/build/twitter/finagle/finagle-exp/src/test/scala/com/twitter/finagle/exp/ConcurrencyEndToEndTest.scala:33:20: not found: value StringServer
+[error]       val server = StringServer.server.serve(address, svc)
+[error]                    ^
+[error] /home/travis/build/twitter/finagle/finagle-exp/src/test/scala/com/twitter/finagle/exp/ConcurrencyEndToEndTest.scala:35:20: not found: value StringClient
+[error]       val client = StringClient.client
+[error]                    ^
+[error] four errors found
+[error] (finagle-exp / Test / compileIncremental) Compilation failed
+[error] Total time: 101 s, completed Jul 29, 2019 9:41:55 PM</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/565242073.log</InputPath>
+        <Output>[info] - Single client and rejecting server results in both sides TLS connections at 0 *** FAILED ***
+[info]   Expected exception com.twitter.finagle.SslException to be thrown, but com.twitter.finagle.Failure was thrown (ThriftSmuxSslTest.scala:151)</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/565253029.log</InputPath>
+        <Output>[info] - [HTTP/2] should never leak direct paylods into the user space *** FAILED ***
+[info]   com.twitter.util.TimeoutException: 30.seconds
+[info]   at com.twitter.util.Promise.ready(Promise.scala:656)
+[info]   at com.twitter.util.Promise.result(Promise.scala:665)
+[info]   at com.twitter.util.Await$$anonfun$result$1.apply(Awaitable.scala:152)
+[info]   at com.twitter.concurrent.LocalScheduler$Activation.blocking(Scheduler.scala:189)
+[info]   at com.twitter.concurrent.LocalScheduler.blocking(Scheduler.scala:256)
+[info]   at com.twitter.concurrent.Scheduler$.blocking(Scheduler.scala:85)
+[info]   at com.twitter.util.Await$.result(Awaitable.scala:152)
+[info]   at com.twitter.finagle.http.DirectPayloadsLifecycleTest$$anonfun$doTest$1.apply(DirectPayloadsLifecycleTest.scala:43)
+[info]   at com.twitter.finagle.http.DirectPayloadsLifecycleTest$$anonfun$doTest$1.apply(DirectPayloadsLifecycleTest.scala:20)
+[info]   at org.scalatest.OutcomeOf$class.outcomeOf(OutcomeOf.scala:85)
+[info]   ...</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/565592331.log</InputPath>
+        <Output>[info] - http/2 client, http/1.1 server: aggregates trailers when streams are aggregated *** FAILED ***
+[info]   com.twitter.util.TimeoutException: 30.seconds
+[info]   at com.twitter.util.Promise.ready(Promise.scala:656)
+[info]   at com.twitter.util.Promise.result(Promise.scala:665)
+[info]   at com.twitter.util.Await$$anonfun$result$1.apply(Awaitable.scala:152)
+[info]   at com.twitter.concurrent.LocalScheduler$Activation.blocking(Scheduler.scala:189)
+[info]   at com.twitter.concurrent.LocalScheduler.blocking(Scheduler.scala:256)
+[info]   at com.twitter.concurrent.Scheduler$.blocking(Scheduler.scala:85)
+[info]   at com.twitter.util.Await$.result(Awaitable.scala:152)
+[info]   at com.twitter.finagle.http.AbstractEndToEndTest.await(AbstractEndToEndTest.scala:58)
+[info]   at com.twitter.finagle.http.AbstractEndToEndTest$$anonfun$standardBehaviour$11.apply$mcV$sp(AbstractEndToEndTest.scala:554)
+[info]   at com.twitter.finagle.http.AbstractEndToEndTest$$anonfun$standardBehaviour$11.apply(AbstractEndToEndTest.scala:531)
+[info]   ...</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/566247562.log</InputPath>
+        <Output>[info] - Should not increase dropped_request count when number of requests is less than limit *** FAILED ***
+[info]   9.0 was not greater than or equal to 10 (ConcurrencyEndToEndTest.scala:87)</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/566723155.log</InputPath>
+        <Output>[info] - Should not increase dropped_request count when number of requests is less than limit *** FAILED ***
+[info]   8.0 was not greater than or equal to 10 (ConcurrencyEndToEndTest.scala:87)</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/567152415.log</InputPath>
+        <Output>[info] - http/2 client, http/1.1 server: streaming session bi-directionally transmit trailing headers *** FAILED ***
+[info]   com.twitter.util.TimeoutException: 30.seconds
+[info]   at com.twitter.util.Promise.ready(Promise.scala:656)
+[info]   at com.twitter.util.Promise.result(Promise.scala:665)
+[info]   at com.twitter.util.Await$$anonfun$result$1.apply(Awaitable.scala:152)
+[info]   at com.twitter.concurrent.LocalScheduler$Activation.blocking(Scheduler.scala:189)
+[info]   at com.twitter.concurrent.LocalScheduler.blocking(Scheduler.scala:256)
+[info]   at com.twitter.concurrent.Scheduler$.blocking(Scheduler.scala:85)
+[info]   at com.twitter.util.Await$.result(Awaitable.scala:152)
+[info]   at com.twitter.finagle.http.AbstractEndToEndTest.await(AbstractEndToEndTest.scala:58)
+[info]   at com.twitter.finagle.http.AbstractEndToEndTest$$anonfun$streaming$8.apply$mcV$sp(AbstractEndToEndTest.scala:921)
+[info]   at com.twitter.finagle.http.AbstractEndToEndTest$$anonfun$streaming$8.apply(AbstractEndToEndTest.scala:900)
+[info]   ...</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>Scala/twitter@finagle/failed/567176660.log</InputPath>
+        <Output>[info] - Requests exceeding limit should increase dropped_request count *** FAILED ***
+[info]   10.0 was not greater than 10 (ConcurrencyEndToEndTest.scala:73)</Output>
+      </ExampleDataOfString>
+    </Examples>
+  </LearningData>
+  <LogKind>
+    <Language>java</Language>
+    <BuildTool>android</BuildTool>
+  </LogKind>
+  <Target>BuildFailureReason</Target>
 </AnalysisProgramOfRegionAnalysisSessionString>
