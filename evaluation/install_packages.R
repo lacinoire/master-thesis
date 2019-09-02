@@ -1,3 +1,7 @@
+r = getOption("repos")
+r["CRAN"] = "http://cran.us.r-project.org"
+options(repos = r)
+
 install.packages("XML")
 install.packages("methods")
 install.packages("graphics")

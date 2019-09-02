@@ -1,39 +1,43 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.10
+ENV DEBIAN_FRONTEND noninteractive
+
+##### install fish
+
+RUN apt-get update --quiet && \
+    apt-get install --quiet --yes software-properties-common && \
+    add-apt-repository --yes ppa:fish-shell/release-3 && \
+    apt-get install --quiet --yes fish
+
+
 
 ##### install mono, from: https://stackoverflow.com/a/25165946
 
-RUN sudo apt-get update
+RUN apt-get update &&\
+    apt-get install -y wget
 
-RUN sudo apt-get install -y wget
+RUN /bin/bash -l -c "wget http://download.mono-project.com/repo/xamarin.gpg" &&\
+    apt-key add xamarin.gpg
 
-RUN sudo /bin/bash -l -c "wget http://download.mono-project.com/repo/xamarin.gpg"
-
-RUN sudo apt-key add xamarin.gpg
-
-RUN sudo echo "deb http://download.mono-project.com/repo/debian wheezy main" > /etc/apt/sources.list.d/mono-xamarin.list
-
-RUN sudo apt-get update
-
-RUN sudo apt-get install -y mono-complete
-
+RUN echo "deb http://download.mono-project.com/repo/debian wheezy main" > /etc/apt/sources.list.d/mono-xamarin.list &&\
+    apt-get update &&\
+    apt-get install -y mono-complete &&\ 
 ##### Intstall R
-
-RUN apt-get install -y r-base
-
+    apt-get -y install --no-install-recommends --no-install-suggests \
+        ca-certificates software-properties-common gnupg2 gnupg1 &&\
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 &&\
+    add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' &&\
+    apt-get install -y r-base &&\
+    #R -e "install.packages('methods',dependencies=TRUE, repos='http://cran.rstudio.com/')"  &&\
 ##### install Ruby, from: https://github.com/dockerfile/ruby/blob/master/Dockerfile
-
 # basics
-RUN apt-get install -y openssl
-
+    apt-get install -y openssl &&\
 # install RVM, Ruby, and Bundler
-RUN apt-get install -y curl
-
-RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-
-RUN \curl -L https://get.rvm.io | bash -s stable
-RUN sudo /bin/bash -l -c "rvm requirements"
-RUN sudo /bin/bash -l -c "rvm install 2.6.3"
-RUN sudo /bin/bash -l -c "gem install bundler"
+    apt-get install -y curl &&\
+    gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB &&\
+    \curl -L https://get.rvm.io | bash -s stable &&\
+    /bin/bash -l -c "rvm requirements" &&\
+    /bin/bash -l -c "rvm install 2.6.3" &&\
+    /bin/bash -l -c "gem install bundler"
 
 ## collect relevant tools together
 COPY tool tool
@@ -43,19 +47,21 @@ COPY evaluation evaluation
 
 WORKDIR "/"
 
-RUN find /r-extractions/. -exec sed -i -e 's|main_path <<- "/Users/Laci/Documents/Delft/master-thesis"|main_path <<- ""|g' {} \;
-RUN find /evaluation/. -exec sed -i -e 's|main_path <<- "/Users/Laci/Documents/Delft/master-thesis"|main_path <<- ""|g' {} \;
-
-RUN sudo /bin/bash -l -c "Rscript evaluation/install_packages.R"
+RUN find /r-extractions/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/Documents/Delft/master-thesis"|main_path <<- ""|g' {} \; &&\
+    find /evaluation/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/Documents/Delft/master-thesis"|main_path <<- ""|g' {} \; &&\
+    /bin/bash -l -c "Rscript evaluation/install_packages.R"
 
 WORKDIR "/pbe-extraction-buildlogs"
 
-RUN sudo /bin/bash -l -c "msbuild /p:Configuration=Release"
+RUN /bin/bash -l -c "msbuild /p:Configuration=Release"
 
-WORKDIR "/evaluation"
+# WORKDIR "/evaluation"
 
-RUN sudo /bin/bash -l -c "ls"
-RUN sudo /bin/bash -l -c "pwd"
+##### configure fish as shell
+SHELL ["fish", "--command"]
 
-RUN sudo /bin/bash -l -c "ruby run-evaluation.rb"
-RUN sudo /bin/bash -l -c "Rscript plot-prose.R"
+RUN chsh -s /usr/bin/fish
+
+ENV SHELL /usr/bin/fish
+ENV LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
+ENTRYPOINT [ "fish" ]
