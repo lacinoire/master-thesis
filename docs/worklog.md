@@ -2,6 +2,12 @@
 
 # Carolin Master Thesis Work Log
 
+## 2.9.19
+
+- continued with trying to dockerize evaluation: not sure if this was a good idea, R is horrible... though the best alternative would be to run them locally and then time measurements get unusable (prose has to be run on the server)
+- try out to do only R docker image to run the evals separate
+- labeled 22 more example sets (6 to go & fixing xml escaping stuff)
+
 ## 30.8.19
 
 - start on dockerizing evaluation for the server
