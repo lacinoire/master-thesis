@@ -1,36 +1,979 @@
-<?xml version="1.0" encoding="utf-8"?>
-<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<SaveName>BuildFailureReason/VimL/neovim@neovim</SaveName>
-<LearningData>
-<InputPaths>
-<string>VimL/neovim@neovim/failed/567614596.log</string>
-<string>VimL/neovim@neovim/failed/567659224.log</string>
-<string>VimL/neovim@neovim/failed/567670361.log</string>
-<string>VimL/neovim@neovim/failed/567681636.log</string>
-<string>VimL/neovim@neovim/failed/567681970.log</string>
-<string>VimL/neovim@neovim/failed/567682531.log</string>
-<string>VimL/neovim@neovim/failed/567686448.log</string>
-<string>VimL/neovim@neovim/failed/567689244.log</string>
-<string>VimL/neovim@neovim/failed/567689318.log</string>
-<string>VimL/neovim@neovim/failed/567711736.log</string>
-</InputPaths>
-<Examples>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567614596.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567659224.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567670361.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567681636.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567681970.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567682531.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567686448.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567689244.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567689318.log</InputPath><Output></Output></ExampleDataOfString>
-<ExampleDataOfString><InputPath>VimL/neovim@neovim/failed/567711736.log</InputPath><Output></Output></ExampleDataOfString>
-</Examples>
-</LearningData>
-<LogKind>
-<Language>java</Language>
-<BuildTool>android</BuildTool>
-</LogKind>
-<Target>BuildFailureReason</Target>
+<?xml version="1.0" encoding="utf-8" ?>
+<AnalysisProgramOfRegionAnalysisSessionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SaveName>BuildFailureReason/VimL/neovim@neovim</SaveName>
+  <LearningData>
+    <InputPaths>
+      <string>VimL/neovim@neovim/failed/567614596.log</string>
+      <string>VimL/neovim@neovim/failed/567659224.log</string>
+      <string>VimL/neovim@neovim/failed/567670361.log</string>
+      <string>VimL/neovim@neovim/failed/567681636.log</string>
+      <string>VimL/neovim@neovim/failed/567681970.log</string>
+      <string>VimL/neovim@neovim/failed/567682531.log</string>
+      <string>VimL/neovim@neovim/failed/567686448.log</string>
+      <string>VimL/neovim@neovim/failed/567689244.log</string>
+      <string>VimL/neovim@neovim/failed/567689318.log</string>
+      <string>VimL/neovim@neovim/failed/567711736.log</string>
+    </InputPaths>
+    <Examples>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567614596.log</InputPath>
+        <Output>F /tests/unittests|unittests :: Unit tests failed</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567659224.log</InputPath>
+        <Output>ERROR: AddressSanitizer: SEGV on unknown address 0x000001d548d0 (pc 0x000000455084 bp 0x000000000000 sp 0x7ffc53357450 T0)
+= ==16563==The signal is caused by a WRITE memory access.
+=     #0 0x455083 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t> /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10
+=     #1 0x455083 in AtomicallySetQuarantineFlagIfAllocated /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:554
+=     #2 0x455083 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:631
+=     #3 0x4fb97b in __interceptor_free /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:129:3
+=     #4 0x1066974 in xfree /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:119:3
+=     #5 0x12c54b8 in free_string_option /home/travis/build/neovim/neovim/build/../src/nvim/option.c:2306:5
+=     #6 0x12c49dd in free_all_options /home/travis/build/neovim/neovim/build/../src/nvim/option.c:969:9
+=     #7 0x1069609 in free_all_mem /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:650:3
+=     #8 0x1378f95 in mch_exit /home/travis/build/neovim/neovim/build/../src/nvim/os_unix.c:102:3
+=     #9 0x114608d in exit_event /home/travis/build/neovim/neovim/build/../src/nvim/msgpack_rpc/channel.c:557:5
+=     #10 0xb02c8e in multiqueue_process_events /home/travis/build/neovim/neovim/build/../src/nvim/event/multiqueue.c:150:7
+=     #11 0xafc087 in loop_poll_events /home/travis/build/neovim/neovim/build/../src/nvim/event/loop.c:66:3
+=     #12 0x1360f73 in os_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/os/input.c:167:5
+=     #13 0x10e5f49 in line_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/misc1.c:2747:5
+=     #14 0x14ffb14 in nfa_regmatch /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6316:5
+=     #15 0x14e01bb in nfa_regtry /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6390:16
+=     #16 0x14ddef2 in nfa_regexec_both /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6560:12
+=     #17 0x148bf28 in nfa_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6706:10
+=     #18 0x143f5a7 in vim_regexec_string /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7250:16
+=     #19 0x1440287 in vim_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7302:10
+=     #20 0xa05c13 in find_some_match /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:12952:15
+=     #21 0x96fb85 in f_matchstr /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13230:3
+=     #22 0x8a5160 in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6536:11
+=     #23 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #24 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #25 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #26 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #27 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #28 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #29 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #30 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #31 0x89ee16 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3489:9
+=     #32 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #33 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #34 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #35 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #36 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #37 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #38 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #39 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #40 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #41 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #42 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #43 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #44 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #45 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #46 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #47 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #48 0x8aa093 in eval_for_line /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2662:7
+=     #49 0xca28f5 in ex_while /home/travis/build/neovim/neovim/build/../src/nvim/ex_eval.c:967:14
+=     #50 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #51 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #52 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #53 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #54 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #55 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #56 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #57 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #58 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #59 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #60 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #61 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #62 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #63 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #64 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #65 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #66 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #67 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #68 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #69 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #70 0x8b0c5e in ex_call /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2887:9
+=     #71 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #72 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #73 0xbc59a8 in do_source /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:3230:3
+=     #74 0xbc05ae in source_callback /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2365:9
+=     #75 0xbbfe05 in do_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2443:15
+=     #76 0xbc026b in do_in_path_and_pp /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2487:12
+=     #77 0xbc0581 in source_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2535:10
+=     #78 0xf46b7e in load_plugins /home/travis/build/neovim/neovim/build/../src/nvim/main.c:1354:5
+=     #79 0xf38926 in main /home/travis/build/neovim/neovim/build/../src/nvim/main.c:384:3
+=     #80 0x7f81585b282f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+=     #81 0x453db8 in _start (/home/travis/build/neovim/neovim/build/bin/nvim+0x453db8)
+= 
+= AddressSanitizer can not provide additional info.
+= SUMMARY: AddressSanitizer: SEGV /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t>
+= ==16563==ABORTING</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567670361.log</InputPath>
+        <Output>ERROR: AddressSanitizer: SEGV on unknown address 0x000001d548d0 (pc 0x000000455084 bp 0x000000000000 sp 0x7ffd2b846a30 T0)
+= ==16539==The signal is caused by a WRITE memory access.
+=     #0 0x455083 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t> /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10
+=     #1 0x455083 in AtomicallySetQuarantineFlagIfAllocated /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:554
+=     #2 0x455083 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:631
+=     #3 0x4fb97b in __interceptor_free /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:129:3
+=     #4 0x1066974 in xfree /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:119:3
+=     #5 0x12c54b8 in free_string_option /home/travis/build/neovim/neovim/build/../src/nvim/option.c:2306:5
+=     #6 0x12c49dd in free_all_options /home/travis/build/neovim/neovim/build/../src/nvim/option.c:969:9
+=     #7 0x1069609 in free_all_mem /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:650:3
+=     #8 0x1378f95 in mch_exit /home/travis/build/neovim/neovim/build/../src/nvim/os_unix.c:102:3
+=     #9 0x114608d in exit_event /home/travis/build/neovim/neovim/build/../src/nvim/msgpack_rpc/channel.c:557:5
+=     #10 0xb02c8e in multiqueue_process_events /home/travis/build/neovim/neovim/build/../src/nvim/event/multiqueue.c:150:7
+=     #11 0xafc087 in loop_poll_events /home/travis/build/neovim/neovim/build/../src/nvim/event/loop.c:66:3
+=     #12 0x1360f73 in os_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/os/input.c:167:5
+=     #13 0x10e5f49 in line_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/misc1.c:2747:5
+=     #14 0x14ffb14 in nfa_regmatch /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6316:5
+=     #15 0x14e01bb in nfa_regtry /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6390:16
+=     #16 0x14ddef2 in nfa_regexec_both /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6560:12
+=     #17 0x148bf28 in nfa_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6706:10
+=     #18 0x143f5a7 in vim_regexec_string /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7250:16
+=     #19 0x1440287 in vim_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7302:10
+=     #20 0xa05c13 in find_some_match /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:12952:15
+=     #21 0x96fb85 in f_matchstr /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13230:3
+=     #22 0x8a5160 in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6536:11
+=     #23 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #24 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #25 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #26 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #27 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #28 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #29 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #30 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #31 0x89ee16 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3489:9
+=     #32 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #33 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #34 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #35 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #36 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #37 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #38 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #39 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #40 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #41 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #42 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #43 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #44 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #45 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #46 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #47 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #48 0x8aa093 in eval_for_line /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2662:7
+=     #49 0xca28f5 in ex_while /home/travis/build/neovim/neovim/build/../src/nvim/ex_eval.c:967:14
+=     #50 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #51 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #52 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #53 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #54 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #55 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #56 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #57 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #58 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #59 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #60 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #61 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #62 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #63 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #64 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #65 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #66 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #67 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #68 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #69 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #70 0x8b0c5e in ex_call /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2887:9
+=     #71 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #72 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #73 0xbc59a8 in do_source /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:3230:3
+=     #74 0xbc05ae in source_callback /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2365:9
+=     #75 0xbbfe05 in do_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2443:15
+=     #76 0xbc026b in do_in_path_and_pp /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2487:12
+=     #77 0xbc0581 in source_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2535:10
+=     #78 0xf46b7e in load_plugins /home/travis/build/neovim/neovim/build/../src/nvim/main.c:1354:5
+=     #79 0xf38926 in main /home/travis/build/neovim/neovim/build/../src/nvim/main.c:384:3
+=     #80 0x7f27ccb4882f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+=     #81 0x453db8 in _start (/home/travis/build/neovim/neovim/build/bin/nvim+0x453db8)
+= 
+= AddressSanitizer can not provide additional info.
+= SUMMARY: AddressSanitizer: SEGV /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t>
+= ==16539==ABORTING</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567681636.log</InputPath>
+        <Output>ERROR: AddressSanitizer: SEGV on unknown address 0x000001d548d0 (pc 0x000000455084 bp 0x000000000000 sp 0x7ffe476412b0 T0)
+= ==16744==The signal is caused by a WRITE memory access.
+=     #0 0x455083 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t> /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10
+=     #1 0x455083 in AtomicallySetQuarantineFlagIfAllocated /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:554
+=     #2 0x455083 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:631
+=     #3 0x4fb97b in __interceptor_free /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:129:3
+=     #4 0x1066974 in xfree /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:119:3
+=     #5 0x12c54b8 in free_string_option /home/travis/build/neovim/neovim/build/../src/nvim/option.c:2306:5
+=     #6 0x12c49dd in free_all_options /home/travis/build/neovim/neovim/build/../src/nvim/option.c:969:9
+=     #7 0x1069609 in free_all_mem /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:650:3
+=     #8 0x1378f95 in mch_exit /home/travis/build/neovim/neovim/build/../src/nvim/os_unix.c:102:3
+=     #9 0x114608d in exit_event /home/travis/build/neovim/neovim/build/../src/nvim/msgpack_rpc/channel.c:557:5
+=     #10 0xb02c8e in multiqueue_process_events /home/travis/build/neovim/neovim/build/../src/nvim/event/multiqueue.c:150:7
+=     #11 0xafc087 in loop_poll_events /home/travis/build/neovim/neovim/build/../src/nvim/event/loop.c:66:3
+=     #12 0x1360f73 in os_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/os/input.c:167:5
+=     #13 0x10e5f49 in line_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/misc1.c:2747:5
+=     #14 0x14ffb14 in nfa_regmatch /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6316:5
+=     #15 0x14e01bb in nfa_regtry /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6390:16
+=     #16 0x14ddef2 in nfa_regexec_both /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6560:12
+=     #17 0x148bf28 in nfa_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6706:10
+=     #18 0x143f5a7 in vim_regexec_string /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7250:16
+=     #19 0x1440287 in vim_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7302:10
+=     #20 0xa05c13 in find_some_match /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:12952:15
+=     #21 0x96fb85 in f_matchstr /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13230:3
+=     #22 0x8a5160 in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6536:11
+=     #23 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #24 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #25 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #26 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #27 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #28 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #29 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #30 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #31 0x89ee16 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3489:9
+=     #32 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #33 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #34 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #35 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #36 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #37 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #38 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #39 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #40 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #41 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #42 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #43 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #44 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #45 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #46 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #47 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #48 0x8aa093 in eval_for_line /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2662:7
+=     #49 0xca28f5 in ex_while /home/travis/build/neovim/neovim/build/../src/nvim/ex_eval.c:967:14
+=     #50 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #51 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #52 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #53 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #54 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #55 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #56 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #57 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #58 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #59 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #60 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #61 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #62 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #63 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #64 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #65 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #66 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #67 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #68 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #69 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #70 0x8b0c5e in ex_call /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2887:9
+=     #71 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #72 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #73 0xbc59a8 in do_source /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:3230:3
+=     #74 0xbc05ae in source_callback /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2365:9
+=     #75 0xbbfe05 in do_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2443:15
+=     #76 0xbc026b in do_in_path_and_pp /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2487:12
+=     #77 0xbc0581 in source_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2535:10
+=     #78 0xf46b7e in load_plugins /home/travis/build/neovim/neovim/build/../src/nvim/main.c:1354:5
+=     #79 0xf38926 in main /home/travis/build/neovim/neovim/build/../src/nvim/main.c:384:3
+=     #80 0x7f230965582f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+=     #81 0x453db8 in _start (/home/travis/build/neovim/neovim/build/bin/nvim+0x453db8)
+= 
+= AddressSanitizer can not provide additional info.
+= SUMMARY: AddressSanitizer: SEGV /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t>
+= ==16744==ABORTING</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567681970.log</InputPath>
+        <Output>ERROR: AddressSanitizer: SEGV on unknown address 0x000001d548d0 (pc 0x000000455084 bp 0x000000000000 sp 0x7fffab6f2bd0 T0)
+= ==16550==The signal is caused by a WRITE memory access.
+=     #0 0x455083 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t> /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10
+=     #1 0x455083 in AtomicallySetQuarantineFlagIfAllocated /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:554
+=     #2 0x455083 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:631
+=     #3 0x4fb97b in __interceptor_free /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:129:3
+=     #4 0x1066974 in xfree /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:119:3
+=     #5 0x12c54b8 in free_string_option /home/travis/build/neovim/neovim/build/../src/nvim/option.c:2306:5
+=     #6 0x12c49dd in free_all_options /home/travis/build/neovim/neovim/build/../src/nvim/option.c:969:9
+=     #7 0x1069609 in free_all_mem /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:650:3
+=     #8 0x1378f95 in mch_exit /home/travis/build/neovim/neovim/build/../src/nvim/os_unix.c:102:3
+=     #9 0x114608d in exit_event /home/travis/build/neovim/neovim/build/../src/nvim/msgpack_rpc/channel.c:557:5
+=     #10 0xb02c8e in multiqueue_process_events /home/travis/build/neovim/neovim/build/../src/nvim/event/multiqueue.c:150:7
+=     #11 0xafc087 in loop_poll_events /home/travis/build/neovim/neovim/build/../src/nvim/event/loop.c:66:3
+=     #12 0x1360f73 in os_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/os/input.c:167:5
+=     #13 0x10e5f49 in line_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/misc1.c:2747:5
+=     #14 0x14ffb14 in nfa_regmatch /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6316:5
+=     #15 0x14e01bb in nfa_regtry /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6390:16
+=     #16 0x14ddef2 in nfa_regexec_both /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6560:12
+=     #17 0x148bf28 in nfa_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6706:10
+=     #18 0x143f5a7 in vim_regexec_string /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7250:16
+=     #19 0x1440287 in vim_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7302:10
+=     #20 0xa05c13 in find_some_match /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:12952:15
+=     #21 0x96fb85 in f_matchstr /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13230:3
+=     #22 0x8a5160 in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6536:11
+=     #23 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #24 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #25 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #26 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #27 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #28 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #29 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #30 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #31 0x89ee16 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3489:9
+=     #32 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #33 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #34 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #35 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #36 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #37 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #38 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #39 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #40 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #41 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #42 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #43 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #44 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #45 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #46 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #47 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #48 0x8aa093 in eval_for_line /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2662:7
+=     #49 0xca28f5 in ex_while /home/travis/build/neovim/neovim/build/../src/nvim/ex_eval.c:967:14
+=     #50 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #51 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #52 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #53 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #54 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #55 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #56 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #57 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #58 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #59 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #60 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #61 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #62 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #63 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #64 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #65 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #66 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #67 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #68 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #69 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #70 0x8b0c5e in ex_call /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2887:9
+=     #71 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #72 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #73 0xbc59a8 in do_source /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:3230:3
+=     #74 0xbc05ae in source_callback /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2365:9
+=     #75 0xbbfe05 in do_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2443:15
+=     #76 0xbc026b in do_in_path_and_pp /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2487:12
+=     #77 0xbc0581 in source_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2535:10
+=     #78 0xf46b7e in load_plugins /home/travis/build/neovim/neovim/build/../src/nvim/main.c:1354:5
+=     #79 0xf38926 in main /home/travis/build/neovim/neovim/build/../src/nvim/main.c:384:3
+=     #80 0x7f0890bcd82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+=     #81 0x453db8 in _start (/home/travis/build/neovim/neovim/build/bin/nvim+0x453db8)
+= 
+= AddressSanitizer can not provide additional info.
+= SUMMARY: AddressSanitizer: SEGV /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t>
+= ==16550==ABORTING</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567682531.log</InputPath>
+        <Output>ERROR: AddressSanitizer: SEGV on unknown address 0x000001d741d0 (pc 0x000000455234 bp 0x000000000000 sp 0x7fff2c221390 T0)
+= ==16549==The signal is caused by a WRITE memory access.
+=     #0 0x455233 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t> /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10
+=     #1 0x455233 in AtomicallySetQuarantineFlagIfAllocated /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:554
+=     #2 0x455233 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:631
+=     #3 0x4fbb2b in __interceptor_free /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:129:3
+=     #4 0x10850a4 in xfree /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:119:3
+=     #5 0x12e3be8 in free_string_option /home/travis/build/neovim/neovim/build/../src/nvim/option.c:2306:5
+=     #6 0x12e310d in free_all_options /home/travis/build/neovim/neovim/build/../src/nvim/option.c:969:9
+=     #7 0x1087d39 in free_all_mem /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:650:3
+=     #8 0x13976c5 in mch_exit /home/travis/build/neovim/neovim/build/../src/nvim/os_unix.c:102:3
+=     #9 0x11647bd in exit_event /home/travis/build/neovim/neovim/build/../src/nvim/msgpack_rpc/channel.c:557:5
+=     #10 0xb203be in multiqueue_process_events /home/travis/build/neovim/neovim/build/../src/nvim/event/multiqueue.c:150:7
+=     #11 0xb197b7 in loop_poll_events /home/travis/build/neovim/neovim/build/../src/nvim/event/loop.c:66:3
+=     #12 0x137f6a3 in os_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/os/input.c:167:5
+=     #13 0x1104679 in line_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/misc1.c:2747:5
+=     #14 0x151e244 in nfa_regmatch /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6316:5
+=     #15 0x14fe8eb in nfa_regtry /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6390:16
+=     #16 0x14fc622 in nfa_regexec_both /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6560:12
+=     #17 0x14aa658 in nfa_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6706:10
+=     #18 0x145dcd7 in vim_regexec_string /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7250:16
+=     #19 0x145e9b7 in vim_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7302:10
+=     #20 0xa1d0d3 in find_some_match /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13281:15
+=     #21 0x981895 in f_matchstr /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13559:3
+=     #22 0x8b71f0 in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6542:11
+=     #23 0x8c9df7 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6283:11
+=     #24 0x95ad28 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4386:15
+=     #25 0x95735a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4096:7
+=     #26 0x954e25 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3944:7
+=     #27 0x95061b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3680:7
+=     #28 0x94fab3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3598:7
+=     #29 0x94ef63 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3529:7
+=     #30 0x8b06d8 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3456:7
+=     #31 0x8b0ea6 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3495:9
+=     #32 0x8afb02 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3416:9
+=     #33 0x8bb450 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1596:9
+=     #34 0x8bb916 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1537:3
+=     #35 0xc1aa99 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #36 0xbfcba8 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #37 0x8ea31a in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:23107:3
+=     #38 0x8b6afd in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6527:11
+=     #39 0x8c9df7 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6283:11
+=     #40 0x95ad28 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4386:15
+=     #41 0x95735a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4096:7
+=     #42 0x954e25 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3944:7
+=     #43 0x95061b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3680:7
+=     #44 0x94fab3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3598:7
+=     #45 0x94ef63 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3529:7
+=     #46 0x8b06d8 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3456:7
+=     #47 0x8afb02 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3416:9
+=     #48 0x8bc123 in eval_for_line /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2668:7
+=     #49 0xcc1025 in ex_while /home/travis/build/neovim/neovim/build/../src/nvim/ex_eval.c:967:14
+=     #50 0xc1aa99 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #51 0xbfcba8 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #52 0x8ea31a in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:23107:3
+=     #53 0x8b6afd in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6527:11
+=     #54 0x8c9df7 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6283:11
+=     #55 0x95ad28 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4386:15
+=     #56 0x95735a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4096:7
+=     #57 0x954e25 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3944:7
+=     #58 0x95061b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3680:7
+=     #59 0x94fab3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3598:7
+=     #60 0x94ef63 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3529:7
+=     #61 0x8b06d8 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3456:7
+=     #62 0x8afb02 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3416:9
+=     #63 0x8bb450 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1596:9
+=     #64 0x8bb916 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1537:3
+=     #65 0xc1aa99 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #66 0xbfcba8 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #67 0x8ea31a in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:23107:3
+=     #68 0x8b6afd in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6527:11
+=     #69 0x8c9df7 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6283:11
+=     #70 0x8c2cee in ex_call /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2893:9
+=     #71 0xc1aa99 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #72 0xbfcba8 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #73 0xbe30c2 in do_source /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:3235:3
+=     #74 0xbde2ce in source_callback /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2375:9
+=     #75 0xbddb25 in do_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2453:15
+=     #76 0xbddf8b in do_in_path_and_pp /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2497:12
+=     #77 0xbde2a1 in source_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2545:10
+=     #78 0xf652ae in load_plugins /home/travis/build/neovim/neovim/build/../src/nvim/main.c:1354:5
+=     #79 0xf57056 in main /home/travis/build/neovim/neovim/build/../src/nvim/main.c:384:3
+=     #80 0x7fdfd56be82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+=     #81 0x453f68 in _start (/home/travis/build/neovim/neovim/build/bin/nvim+0x453f68)
+= 
+= AddressSanitizer can not provide additional info.
+= SUMMARY: AddressSanitizer: SEGV /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t>
+= ==16549==ABORTING</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567686448.log</InputPath>
+        <Output>ERROR: AddressSanitizer: SEGV on unknown address 0x000001d548d0 (pc 0x000000455084 bp 0x000000000000 sp 0x7ffc1654d3f0 T0)
+= ==16456==The signal is caused by a WRITE memory access.
+=     #0 0x455083 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t> /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10
+=     #1 0x455083 in AtomicallySetQuarantineFlagIfAllocated /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:554
+=     #2 0x455083 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:631
+=     #3 0x4fb97b in __interceptor_free /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:129:3
+=     #4 0x1066974 in xfree /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:119:3
+=     #5 0x12c54b8 in free_string_option /home/travis/build/neovim/neovim/build/../src/nvim/option.c:2306:5
+=     #6 0x12c49dd in free_all_options /home/travis/build/neovim/neovim/build/../src/nvim/option.c:969:9
+=     #7 0x1069609 in free_all_mem /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:650:3
+=     #8 0x1378f95 in mch_exit /home/travis/build/neovim/neovim/build/../src/nvim/os_unix.c:102:3
+=     #9 0x114608d in exit_event /home/travis/build/neovim/neovim/build/../src/nvim/msgpack_rpc/channel.c:557:5
+=     #10 0xb02c8e in multiqueue_process_events /home/travis/build/neovim/neovim/build/../src/nvim/event/multiqueue.c:150:7
+=     #11 0xafc087 in loop_poll_events /home/travis/build/neovim/neovim/build/../src/nvim/event/loop.c:66:3
+=     #12 0x1360f73 in os_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/os/input.c:167:5
+=     #13 0x10e5f49 in line_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/misc1.c:2747:5
+=     #14 0x14ffb14 in nfa_regmatch /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6316:5
+=     #15 0x14e01bb in nfa_regtry /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6390:16
+=     #16 0x14ddef2 in nfa_regexec_both /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6560:12
+=     #17 0x148bf28 in nfa_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6706:10
+=     #18 0x143f5a7 in vim_regexec_string /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7250:16
+=     #19 0x1440287 in vim_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7302:10
+=     #20 0xa05c13 in find_some_match /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:12952:15
+=     #21 0x96fb85 in f_matchstr /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13230:3
+=     #22 0x8a5160 in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6536:11
+=     #23 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #24 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #25 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #26 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #27 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #28 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #29 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #30 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #31 0x89ee16 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3489:9
+=     #32 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #33 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #34 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #35 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #36 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #37 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #38 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #39 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #40 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #41 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #42 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #43 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #44 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #45 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #46 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #47 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #48 0x8aa093 in eval_for_line /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2662:7
+=     #49 0xca28f5 in ex_while /home/travis/build/neovim/neovim/build/../src/nvim/ex_eval.c:967:14
+=     #50 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #51 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #52 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #53 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #54 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #55 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #56 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #57 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #58 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #59 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #60 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #61 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #62 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #63 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #64 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #65 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #66 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #67 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #68 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #69 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #70 0x8b0c5e in ex_call /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2887:9
+=     #71 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #72 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #73 0xbc59a8 in do_source /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:3230:3
+=     #74 0xbc05ae in source_callback /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2365:9
+=     #75 0xbbfe05 in do_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2443:15
+=     #76 0xbc026b in do_in_path_and_pp /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2487:12
+=     #77 0xbc0581 in source_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2535:10
+=     #78 0xf46b7e in load_plugins /home/travis/build/neovim/neovim/build/../src/nvim/main.c:1354:5
+=     #79 0xf38926 in main /home/travis/build/neovim/neovim/build/../src/nvim/main.c:384:3
+=     #80 0x7f7f8c82f82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+=     #81 0x453db8 in _start (/home/travis/build/neovim/neovim/build/bin/nvim+0x453db8)
+= 
+= AddressSanitizer can not provide additional info.
+= SUMMARY: AddressSanitizer: SEGV /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t>
+= ==16456==ABORTING</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567689244.log</InputPath>
+        <Output>ERROR: AddressSanitizer: SEGV on unknown address 0x000001d548d0 (pc 0x000000455084 bp 0x000000000000 sp 0x7ffe628bb830 T0)
+= ==16389==The signal is caused by a WRITE memory access.
+=     #0 0x455083 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t> /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10
+=     #1 0x455083 in AtomicallySetQuarantineFlagIfAllocated /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:554
+=     #2 0x455083 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:631
+=     #3 0x4fb97b in __interceptor_free /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:129:3
+=     #4 0x1066974 in xfree /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:119:3
+=     #5 0x12c54b8 in free_string_option /home/travis/build/neovim/neovim/build/../src/nvim/option.c:2306:5
+=     #6 0x12c49dd in free_all_options /home/travis/build/neovim/neovim/build/../src/nvim/option.c:969:9
+=     #7 0x1069609 in free_all_mem /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:650:3
+=     #8 0x1378f95 in mch_exit /home/travis/build/neovim/neovim/build/../src/nvim/os_unix.c:102:3
+=     #9 0x114608d in exit_event /home/travis/build/neovim/neovim/build/../src/nvim/msgpack_rpc/channel.c:557:5
+=     #10 0xb02c8e in multiqueue_process_events /home/travis/build/neovim/neovim/build/../src/nvim/event/multiqueue.c:150:7
+=     #11 0xafc087 in loop_poll_events /home/travis/build/neovim/neovim/build/../src/nvim/event/loop.c:66:3
+=     #12 0x1360f73 in os_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/os/input.c:167:5
+=     #13 0x10e5f49 in line_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/misc1.c:2747:5
+=     #14 0x14ffb14 in nfa_regmatch /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6316:5
+=     #15 0x14e01bb in nfa_regtry /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6390:16
+=     #16 0x14ddef2 in nfa_regexec_both /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6560:12
+=     #17 0x148bf28 in nfa_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6706:10
+=     #18 0x143f5a7 in vim_regexec_string /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7250:16
+=     #19 0x1440287 in vim_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7302:10
+=     #20 0xa05c13 in find_some_match /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:12952:15
+=     #21 0x96fb85 in f_matchstr /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13230:3
+=     #22 0x8a5160 in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6536:11
+=     #23 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #24 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #25 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #26 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #27 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #28 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #29 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #30 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #31 0x89ee16 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3489:9
+=     #32 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #33 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #34 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #35 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #36 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #37 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #38 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #39 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #40 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #41 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #42 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #43 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #44 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #45 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #46 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #47 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #48 0x8aa093 in eval_for_line /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2662:7
+=     #49 0xca28f5 in ex_while /home/travis/build/neovim/neovim/build/../src/nvim/ex_eval.c:967:14
+=     #50 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #51 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #52 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #53 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #54 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #55 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #56 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #57 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #58 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #59 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #60 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #61 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #62 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #63 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #64 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #65 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #66 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #67 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #68 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #69 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #70 0x8b0c5e in ex_call /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2887:9
+=     #71 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #72 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #73 0xbc59a8 in do_source /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:3230:3
+=     #74 0xbc05ae in source_callback /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2365:9
+=     #75 0xbbfe05 in do_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2443:15
+=     #76 0xbc026b in do_in_path_and_pp /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2487:12
+=     #77 0xbc0581 in source_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2535:10
+=     #78 0xf46b7e in load_plugins /home/travis/build/neovim/neovim/build/../src/nvim/main.c:1354:5
+=     #79 0xf38926 in main /home/travis/build/neovim/neovim/build/../src/nvim/main.c:384:3
+=     #80 0x7f680566482f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+=     #81 0x453db8 in _start (/home/travis/build/neovim/neovim/build/bin/nvim+0x453db8)
+= 
+= AddressSanitizer can not provide additional info.
+= SUMMARY: AddressSanitizer: SEGV /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t>
+= ==16389==ABORTING</Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567689318.log</InputPath>
+        <Output>ERROR   ][0m[0m [1m9[0m errors, listed below:
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/lua/util_spec.lua[0m @ [36m5[0m: [1msuite test/functional/lua/util_spec.lua[0m
+test/functional/lua/util_spec.lua:5: module 'runtime.lua.util' not found:No LuaRocks module found for runtime.lua.util
+	no field package.preload['runtime.lua.util']
+	no file '/home/travis/build/neovim/neovim/build/runtime/lua/util.lua'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/runtime/lua/util.lua'
+	no file 'runtime/lua/util.lua'
+	no file '/home/travis/nvim-deps/usr/share/lua/5.1/runtime/lua/util.lua'
+	no file '/home/travis/nvim-deps/usr/share/lua/5.1/runtime/lua/util/init.lua'
+	no file './runtime/lua/util.lua'
+	no file '/home/travis/nvim-deps/usr/share/luajit-2.0.5/runtime/lua/util.lua'
+	no file '/usr/local/share/lua/5.1/runtime/lua/util.lua'
+	no file '/usr/local/share/lua/5.1/runtime/lua/util/init.lua'
+	no file './csrc/runtime/lua/util.so'
+	no file './csrc/runtime/lua/util/runtime/lua/util.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/runtime/lua/util.so'
+	no file './runtime/lua/util.so'
+	no file '/usr/local/lib/lua/5.1/runtime/lua/util.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+	no file './csrc/runtime.so'
+	no file './csrc/runtime/runtime.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/runtime.so'
+	no file './runtime.so'
+	no file '/usr/local/lib/lua/5.1/runtime.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+
+stack traceback:
+	test/functional/lua/util_spec.lua:5: in main chunk
+
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/plugin/lsp/callbacks/textDocument_spec.lua[0m @ [36m15[0m: [1mcallbacks for textDocument textDocument/references should set nothing with an empty location list[0m
+test/functional/helpers.lua:98: Vim(lua):E5105: Error while calling lua chunk: [string "<VimL compiled string>"]:2: attempt to index local 'callbacks' (a nil value)
+
+stack traceback:
+	test/functional/helpers.lua:98: in function 'request'
+	test/functional/helpers.lua:256: in function 'nvim_command'
+	test/functional/helpers.lua:482: in function 'source'
+	test/functional/plugin/lsp/callbacks/textDocument_spec.lua:16: in function <test/functional/plugin/lsp/callbacks/textDocument_spec.lua:15>
+
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/plugin/lsp/callbacks/textDocument_spec.lua[0m @ [36m25[0m: [1mcallbacks for textDocument textDocument/references should set the location list with one item[0m
+test/functional/helpers.lua:98: Vim(lua):E5105: Error while calling lua chunk: [string "<VimL compiled string>"]:2: attempt to index local 'callbacks' (a nil value)
+
+stack traceback:
+	test/functional/helpers.lua:98: in function 'request'
+	test/functional/helpers.lua:256: in function 'nvim_command'
+	test/functional/helpers.lua:482: in function 'source'
+	test/functional/plugin/lsp/callbacks/textDocument_spec.lua:26: in function <test/functional/plugin/lsp/callbacks/textDocument_spec.lua:25>
+
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/plugin/lsp/callbacks/textDocument_spec.lua[0m @ [36m41[0m: [1mgetting a default textDocument callback should return the hover function[0m
+/home/travis/build/neovim/neovim/runtime/lua/lsp/log.lua:11: attempt to index global 'vim' (a nil value)
+
+stack traceback:
+	/home/travis/build/neovim/neovim/runtime/lua/lsp/log.lua:11: in main chunk
+
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/plugin/lsp/integration_spec.lua[0m @ [36m27[0m: [1mplugin with a server textDocument/hover[0m
+test/functional/helpers.lua:98: Vim(call):E117: Unknown function: lsp#server#add
+
+stack traceback:
+	test/functional/helpers.lua:98: in function 'request'
+	test/functional/helpers.lua:256: in function 'command'
+	test/functional/plugin/lsp/integration_spec.lua:28: in function <test/functional/plugin/lsp/integration_spec.lua:27>
+
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/plugin/lsp/integration_spec.lua[0m @ [36m63[0m: [1mplugin with a server can deal with garbage responses[0m
+test/functional/helpers.lua:98: Vim(call):E117: Unknown function: lsp#server#add
+
+stack traceback:
+	test/functional/helpers.lua:98: in function 'request'
+	test/functional/helpers.lua:256: in function 'command'
+	test/functional/plugin/lsp/integration_spec.lua:64: in function <test/functional/plugin/lsp/integration_spec.lua:63>
+
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/plugin/lsp/plugin_spec.lua[0m @ [36m11[0m: [1mLSP plugin default callbacks should return callbacks for things we have defined[0m
+test/functional/helpers.lua:98: Vim(lua):E5105: Error while calling lua chunk: [string "<VimL compiled string>"]:2: attempt to call field 'is_supported_request' (a nil value)
+
+stack traceback:
+	test/functional/helpers.lua:98: in function 'request'
+	test/functional/helpers.lua:256: in function 'nvim_command'
+	test/functional/helpers.lua:482: in function 'source'
+	test/functional/plugin/lsp/plugin_spec.lua:12: in function <test/functional/plugin/lsp/plugin_spec.lua:11>
+
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/plugin/lsp/setup_spec.lua[0m @ [36m13[0m: [1mSetup and Configuration should allow you to add clients and commands[0m
+test/functional/helpers.lua:98: Vim:E5108: Error while calling lua chunk for luaeval(): [string "<VimL compiled string>"]:1: module 'lsp.server' not found:
+	no field package.preload['lsp.server']
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/lua/lsp/server/init.lua'
+	no file '/etc/xdg/nvim/lua/lsp/server.lua'
+	no file '/etc/xdg/nvim/lua/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/lua/lsp/server/init.lua'
+	no file '/usr/local/share/nvim/site/lua/lsp/server.lua'
+	no file '/usr/local/share/nvim/site/lua/lsp/server/init.lua'
+	no file '/usr/share/nvim/site/lua/lsp/server.lua'
+	no file '/usr/share/nvim/site/lua/lsp/server/init.lua'
+	no file '/var/lib/snapd/desktop/nvim/site/lua/lsp/server.lua'
+	no file '/var/lib/snapd/desktop/nvim/site/lua/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/lsp/server/init.lua'
+	no file '/var/lib/snapd/desktop/nvim/site/after/lua/lsp/server.lua'
+	no file '/var/lib/snapd/desktop/nvim/site/after/lua/lsp/server/init.lua'
+	no file '/usr/share/nvim/site/after/lua/lsp/server.lua'
+	no file '/usr/share/nvim/site/after/lua/lsp/server/init.lua'
+	no file '/usr/local/share/nvim/site/after/lua/lsp/server.lua'
+	no file '/usr/local/share/nvim/site/after/lua/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/after/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/after/lua/lsp/server/init.lua'
+	no file '/etc/xdg/nvim/after/lua/lsp/server.lua'
+	no file '/etc/xdg/nvim/after/lua/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/after/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/after/lua/lsp/server/init.lua'
+	no file './lsp/server.lua'
+	no file '/home/travis/nvim-deps/usr/share/lua/5.1/lsp/server.lua'
+	no file '/home/travis/nvim-deps/usr/share/lua/5.1/lsp/server/init.lua'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/lsp/server.lua'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/lua/lsp/server.so'
+	no file '/etc/xdg/nvim/lua/lsp/server.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/lua/lsp/server.so'
+	no file '/usr/local/share/nvim/site/lua/lsp/server.so'
+	no file '/usr/share/nvim/site/lua/lsp/server.so'
+	no file '/var/lib/snapd/desktop/nvim/site/lua/lsp/server.so'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/lsp/server.so'
+	no file '/var/lib/snapd/desktop/nvim/site/after/lua/lsp/server.so'
+	no file '/usr/share/nvim/site/after/lua/lsp/server.so'
+	no file '/usr/local/share/nvim/site/after/lua/lsp/server.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/after/lua/lsp/server.so'
+	no file '/etc/xdg/nvim/after/lua/lsp/server.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/after/lua/lsp/server.so'
+	no file './lsp/server.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/lsp/server.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/loadall.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/lua/lsp.so'
+	no file '/etc/xdg/nvim/lua/lsp.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/lua/lsp.so'
+	no file '/usr/local/share/nvim/site/lua/lsp.so'
+	no file '/usr/share/nvim/site/lua/lsp.so'
+	no file '/var/lib/snapd/desktop/nvim/site/lua/lsp.so'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/lsp.so'
+	no file '/var/lib/snapd/desktop/nvim/site/after/lua/lsp.so'
+	no file '/usr/share/nvim/site/after/lua/lsp.so'
+	no file '/usr/local/share/nvim/site/after/lua/lsp.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/after/lua/lsp.so'
+	no file '/etc/xdg/nvim/after/lua/lsp.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/after/lua/lsp.so'
+	no file './lsp.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/lsp.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/loadall.so'
+
+stack traceback:
+	test/functional/helpers.lua:98: in function 'luaeval'
+	test/functional/plugin/lsp/setup_spec.lua:14: in function <test/functional/plugin/lsp/setup_spec.lua:13>
+
+[1m[31m[  ERROR   ][0m[0m [36mtest/functional/plugin/lsp/setup_spec.lua[0m @ [36m19[0m: [1mSetup and Configuration should allow some extra configuration if you want[0m
+test/functional/helpers.lua:98: Vim:E5108: Error while calling lua chunk for luaeval(): [string "<VimL compiled string>"]:1: module 'lsp.server' not found:
+	no field package.preload['lsp.server']
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/lua/lsp/server/init.lua'
+	no file '/etc/xdg/nvim/lua/lsp/server.lua'
+	no file '/etc/xdg/nvim/lua/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/lua/lsp/server/init.lua'
+	no file '/usr/local/share/nvim/site/lua/lsp/server.lua'
+	no file '/usr/local/share/nvim/site/lua/lsp/server/init.lua'
+	no file '/usr/share/nvim/site/lua/lsp/server.lua'
+	no file '/usr/share/nvim/site/lua/lsp/server/init.lua'
+	no file '/var/lib/snapd/desktop/nvim/site/lua/lsp/server.lua'
+	no file '/var/lib/snapd/desktop/nvim/site/lua/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/lsp/server/init.lua'
+	no file '/var/lib/snapd/desktop/nvim/site/after/lua/lsp/server.lua'
+	no file '/var/lib/snapd/desktop/nvim/site/after/lua/lsp/server/init.lua'
+	no file '/usr/share/nvim/site/after/lua/lsp/server.lua'
+	no file '/usr/share/nvim/site/after/lua/lsp/server/init.lua'
+	no file '/usr/local/share/nvim/site/after/lua/lsp/server.lua'
+	no file '/usr/local/share/nvim/site/after/lua/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/after/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/after/lua/lsp/server/init.lua'
+	no file '/etc/xdg/nvim/after/lua/lsp/server.lua'
+	no file '/etc/xdg/nvim/after/lua/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/after/lua/lsp/server.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/after/lua/lsp/server/init.lua'
+	no file './lsp/server.lua'
+	no file '/home/travis/nvim-deps/usr/share/lua/5.1/lsp/server.lua'
+	no file '/home/travis/nvim-deps/usr/share/lua/5.1/lsp/server/init.lua'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/lsp/server.lua'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/lsp/server/init.lua'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/lua/lsp/server.so'
+	no file '/etc/xdg/nvim/lua/lsp/server.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/lua/lsp/server.so'
+	no file '/usr/local/share/nvim/site/lua/lsp/server.so'
+	no file '/usr/share/nvim/site/lua/lsp/server.so'
+	no file '/var/lib/snapd/desktop/nvim/site/lua/lsp/server.so'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/lsp/server.so'
+	no file '/var/lib/snapd/desktop/nvim/site/after/lua/lsp/server.so'
+	no file '/usr/share/nvim/site/after/lua/lsp/server.so'
+	no file '/usr/local/share/nvim/site/after/lua/lsp/server.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/after/lua/lsp/server.so'
+	no file '/etc/xdg/nvim/after/lua/lsp/server.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/after/lua/lsp/server.so'
+	no file './lsp/server.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/lsp/server.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/loadall.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/lua/lsp.so'
+	no file '/etc/xdg/nvim/lua/lsp.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/lua/lsp.so'
+	no file '/usr/local/share/nvim/site/lua/lsp.so'
+	no file '/usr/share/nvim/site/lua/lsp.so'
+	no file '/var/lib/snapd/desktop/nvim/site/lua/lsp.so'
+	no file '/home/travis/build/neovim/neovim/runtime/lua/lsp.so'
+	no file '/var/lib/snapd/desktop/nvim/site/after/lua/lsp.so'
+	no file '/usr/share/nvim/site/after/lua/lsp.so'
+	no file '/usr/local/share/nvim/site/after/lua/lsp.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/share/nvim/site/after/lua/lsp.so'
+	no file '/etc/xdg/nvim/after/lua/lsp.so'
+	no file '/home/travis/build/neovim/neovim/build/Xtest_xdg/config/nvim/after/lua/lsp.so'
+	no file './lsp.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/lsp.so'
+	no file '/home/travis/nvim-deps/usr/lib/lua/5.1/loadall.so'
+
+stack traceback:
+	test/functional/helpers.lua:98: in function 'luaeval'
+	test/functional/plugin/lsp/setup_spec.lua:20: in function <test/functional/plugin/lsp/setup_spec.lua:19></Output>
+      </ExampleDataOfString>
+      <ExampleDataOfString>
+        <InputPath>VimL/neovim@neovim/failed/567711736.log</InputPath>
+        <Output>ERROR: AddressSanitizer: SEGV on unknown address 0x000001d548d0 (pc 0x000000455084 bp 0x000000000000 sp 0x7ffcdbc362b0 T0)
+= ==16577==The signal is caused by a WRITE memory access.
+=     #0 0x455083 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t> /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10
+=     #1 0x455083 in AtomicallySetQuarantineFlagIfAllocated /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:554
+=     #2 0x455083 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_allocator.cc:631
+=     #3 0x4fb97b in __interceptor_free /tmp/final/llvm.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:129:3
+=     #4 0x1066974 in xfree /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:119:3
+=     #5 0x12c54b8 in free_string_option /home/travis/build/neovim/neovim/build/../src/nvim/option.c:2306:5
+=     #6 0x12c49dd in free_all_options /home/travis/build/neovim/neovim/build/../src/nvim/option.c:969:9
+=     #7 0x1069609 in free_all_mem /home/travis/build/neovim/neovim/build/../src/nvim/memory.c:650:3
+=     #8 0x1378f95 in mch_exit /home/travis/build/neovim/neovim/build/../src/nvim/os_unix.c:102:3
+=     #9 0x114608d in exit_event /home/travis/build/neovim/neovim/build/../src/nvim/msgpack_rpc/channel.c:557:5
+=     #10 0xb02c8e in multiqueue_process_events /home/travis/build/neovim/neovim/build/../src/nvim/event/multiqueue.c:150:7
+=     #11 0xafc087 in loop_poll_events /home/travis/build/neovim/neovim/build/../src/nvim/event/loop.c:66:3
+=     #12 0x1360f73 in os_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/os/input.c:167:5
+=     #13 0x10e5f49 in line_breakcheck /home/travis/build/neovim/neovim/build/../src/nvim/misc1.c:2747:5
+=     #14 0x14ffb14 in nfa_regmatch /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6316:5
+=     #15 0x14e01bb in nfa_regtry /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6390:16
+=     #16 0x14ddef2 in nfa_regexec_both /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6560:12
+=     #17 0x148bf28 in nfa_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp_nfa.c:6706:10
+=     #18 0x143f5a7 in vim_regexec_string /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7250:16
+=     #19 0x1440287 in vim_regexec_nl /home/travis/build/neovim/neovim/build/../src/nvim/regexp.c:7302:10
+=     #20 0xa05c13 in find_some_match /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:12952:15
+=     #21 0x96fb85 in f_matchstr /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:13230:3
+=     #22 0x8a5160 in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6536:11
+=     #23 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #24 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #25 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #26 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #27 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #28 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #29 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #30 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #31 0x89ee16 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3489:9
+=     #32 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #33 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #34 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #35 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #36 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #37 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #38 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #39 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #40 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #41 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #42 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #43 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #44 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #45 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #46 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #47 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #48 0x8aa093 in eval_for_line /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2662:7
+=     #49 0xca28f5 in ex_while /home/travis/build/neovim/neovim/build/../src/nvim/ex_eval.c:967:14
+=     #50 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #51 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #52 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #53 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #54 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #55 0x948a68 in eval7 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4380:15
+=     #56 0x94509a in eval6 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:4090:7
+=     #57 0x942b65 in eval5 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3938:7
+=     #58 0x93e35b in eval4 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3674:7
+=     #59 0x93d7f3 in eval3 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3592:7
+=     #60 0x93cca3 in eval2 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3523:7
+=     #61 0x89e648 in eval1 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3450:7
+=     #62 0x89da72 in eval0 /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:3410:9
+=     #63 0x8a93c0 in ex_let_const /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1590:9
+=     #64 0x8a9886 in ex_let /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:1531:3
+=     #65 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #66 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #67 0x8d8056 in call_user_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:22775:3
+=     #68 0x8a4a6d in call_func /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6521:11
+=     #69 0x8b7d67 in get_func_tv /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:6277:11
+=     #70 0x8b0c5e in ex_call /home/travis/build/neovim/neovim/build/../src/nvim/eval.c:2887:9
+=     #71 0xbfd379 in do_one_cmd /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:2247:5
+=     #72 0xbdf488 in do_cmdline /home/travis/build/neovim/neovim/build/../src/nvim/ex_docmd.c:593:20
+=     #73 0xbc59a8 in do_source /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:3230:3
+=     #74 0xbc05ae in source_callback /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2365:9
+=     #75 0xbbfe05 in do_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2443:15
+=     #76 0xbc026b in do_in_path_and_pp /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2487:12
+=     #77 0xbc0581 in source_in_path /home/travis/build/neovim/neovim/build/../src/nvim/ex_cmds2.c:2535:10
+=     #78 0xf46b7e in load_plugins /home/travis/build/neovim/neovim/build/../src/nvim/main.c:1354:5
+=     #79 0xf38926 in main /home/travis/build/neovim/neovim/build/../src/nvim/main.c:384:3
+=     #80 0x7fccb604682f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+=     #81 0x453db8 in _start (/home/travis/build/neovim/neovim/build/bin/nvim+0x453db8)
+= 
+= AddressSanitizer can not provide additional info.
+= SUMMARY: AddressSanitizer: SEGV /tmp/final/llvm.src/projects/compiler-rt/lib/asan/../sanitizer_common/sanitizer_atomic_clang.h:81:10 in atomic_compare_exchange_strong<__sanitizer::atomic_uint8_t>
+= ==16577==ABORTING</Output>
+      </ExampleDataOfString>
+    </Examples>
+  </LearningData>
+  <LogKind>
+    <Language>java</Language>
+    <BuildTool>android</BuildTool>
+  </LogKind>
+  <Target>BuildFailureReason</Target>
 </AnalysisProgramOfRegionAnalysisSessionString>
