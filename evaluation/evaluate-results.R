@@ -122,10 +122,10 @@ plot_evaluation_result <- function(result, program_name, technique, selection, l
   # )
   # scale_x_datetime(date_labels = "%M min")
   
-  quartz()
-  plot(p)
-  message("-------- press return to close plot --------")
-  invisible(readLines("stdin", n = 1))
+  # quartz()
+  # plot(p)
+  # message("-------- press return to close plot --------")
+  # invisible(readLines("stdin", n = 1))
 
   setwd(paste(main_path, paste0("/evaluation/results/", technique), sep = ""))
   results_file_name <- evaluation_identification(technique, gsub("/", "@", program_name), selection, learning_step_count, test_count)

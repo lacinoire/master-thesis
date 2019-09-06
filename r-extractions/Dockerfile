@@ -14,10 +14,18 @@ RUN apt-get update && apt-get install -qq -y --no-install-recommends r-cran-xml 
 
 RUN apt-get -qq install -y --no-install-recommends r-cran-rcpp
 
-COPY . r-extractions
+COPY r-extractions r-extractions
+COPY evaluation evaluation
+COPY tool tool
 
 RUN find /r-extractions/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/Documents/Delft/master-thesis"|main_path <<- ""|g' {} \; &&\
+    find /evaluation/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/Documents/Delft/master-thesis"|main_path <<- ""|g' {} \; &&\
     /bin/bash -l -c "Rscript r-extractions/install_packages.R"
 
-## Make R the default
+RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|ir|g' {} \;
+
+RUN apt-get install -y ruby ruby-dev ruby-bundler
+
+WORKDIR "/evaluation"
+
 CMD ["bash"]
