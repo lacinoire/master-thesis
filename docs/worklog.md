@@ -2,6 +2,15 @@
 
 # Carolin Master Thesis Work Log
 
+## 6.9.19
+
+- mounting folders in docker to write out results
+- ran evaluation on all samples to get data about what xml escaping still needs to be done
+- continued on sampling & validation overview and wrote down mTurk proposal
+- setup dotfiles
+
+## some september days undocumented
+
 ## 2.9.19
 
 - continued with trying to dockerize evaluation: not sure if this was a good idea, R is horrible... though the best alternative would be to run them locally and then time measurements get unusable (prose has to be run on the server)
