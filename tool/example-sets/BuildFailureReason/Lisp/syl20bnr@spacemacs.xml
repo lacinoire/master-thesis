@@ -154,7 +154,7 @@
   ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')[m
   xhost + $ip[m
 [36m@@ -74,11 +75,13 @@[m [mtab and make sure you’ve got "Allow connections from network clients" ticked[m
-   -v <path_to_your_workspace>:/mnt/workspace \[m
+   -v &lt;path_to_your_workspace>:/mnt/workspace \[m
    spacemacs/emacs25:develop[m
  #+END_SRC[m
 [32m+[m
@@ -165,7 +165,7 @@
  Get [[https://www.cygwin.com][Cygwin]] with =xinit=, =xorg-server= and optionaly [[https://github.com/rprichard/winpty][winpty]](to run Emacs container with =-t=)[m
 [32m+[m
  #+BEGIN_SRC sh[m
-  export DISPLAY=<your-machine-ip>:0.0[m
+  export DISPLAY=&lt;your-machine-ip>:0.0[m
   startxwin -- -listen tcp &amp;[m
 [36m@@ -92,17 +95,20 @@[m [mGet [[https://www.cygwin.com][Cygwin]] with =xinit=, =xorg-server= and optionaly[m
  #+END_SRC[m
@@ -175,7 +175,7 @@
  #+BEGIN_SRC sh[m
  winpty docker run -ti --name spacemacs \[m
   -e DISPLAY="$DISPLAY" \[m
-  -v <path_to_your_workspace>:/mnt/workspace \[m
+  -v &lt;path_to_your_workspace>:/mnt/workspace \[m
   spacemacs/emacs25:develop[m
  #+END_SRC[m
 [32m+[m
@@ -189,7 +189,7 @@
   docker run -ti --name spacemacs \[m
    -e DISPLAY="unix$DISPLAY" \[m
 [36m@@ -116,17 +122,22 @@[m [mMake sure that =$DISPLAY= variable is set[m
-   -v <path_to_your_workspace>:/mnt/workspace \[m
+   -v &lt;path_to_your_workspace>:/mnt/workspace \[m
    spacemacs/emacs25:develop[m
  #+END_SRC[m
 [32m+[m
@@ -199,7 +199,7 @@
  But if it doesn't work You may need to allow local connection for the user[m
 [32m+[m
  #+BEGIN_SRC sh[m
-  xhost +si:localuser:<UNAME>[m
+  xhost +si:localuser:&lt;UNAME>[m
  #+END_SRC[m
 [32m+[m
  Or allow local connection from the container's host-name[m
@@ -220,21 +220,21 @@
   docker run -ti --rm --name x11-bridge \[m
    -e MODE="ssh" \[m
 [36m@@ -159,7 +171,9 @@[m [mGet [[https://xpra.org/][Xpra]] client for your OS. then[m
-   -e TZ=<your_time_zone> \[m
+   -e TZ=&lt;your_time_zone> \[m
    spacemacs/emacs25:develop[m
  #+END_SRC[m
 [32m+[m
  Now you can connect to it with Xpra desktop client[m
 [32m+[m
  #+BEGIN_SRC sh[m
-  <XPRA EXECUTABLE> attach --encoding=rgb \[m
+  &lt;XPRA EXECUTABLE> attach --encoding=rgb \[m
    --ssh="ssh -o StrictHostKeyChecking=no -p 22" \[m
 [36m@@ -181,6 +195,7 @@[m [mNow you can connect to it with Xpra desktop client[m
    -e DISPLAY=:14 \[m
    spacemacs/emacs25:develop[m
  #+END_SRC[m
 [32m+[m
- Now visit http://localhost:10000/index.html?encoding=png&amp;password=<PASSWORD>[m
+ Now visit http://localhost:10000/index.html?encoding=png&amp;password=&lt;PASSWORD>[m
  [m
  * Some basic docker commands to get you going[m
 [1mdiff --git a/layers/+distributions/spacemacs-docker/deps-install/README.org b/layers/+distributions/spacemacs-docker/deps-install/README.org[m
@@ -242,8 +242,8 @@
 [1m--- a/layers/+distributions/spacemacs-docker/deps-install/README.org[m
 [1m+++ b/layers/+distributions/spacemacs-docker/deps-install/README.org[m
 [36m@@ -33,6 +33,7 @@[m [monly if the variable =go-use-gometalinter= is =t=.[m
- Set  =<LAYER_NAME>-spacemacs-docker-disable-deps-install= to =t=[m
- if you want to disable dependency installation for the =<LAYER_NAME>= layer.[m
+ Set  =&lt;LAYER_NAME>-spacemacs-docker-disable-deps-install= to =t=[m
+ if you want to disable dependency installation for the =&lt;LAYER_NAME>= layer.[m
  Example:[m
 [32m+[m
  #+BEGIN_SRC emacs-lisp[m
@@ -380,7 +380,7 @@
 [1mindex efaa3a2..ffac0dc 100644[m
 [1m--- a/layers/+intl/keyboard-layout/README.org[m
 [1m+++ b/layers/+intl/keyboard-layout/README.org[m
-[36m@@ -69,6 +69,7 @@[m [mconfiguration by yourself*. =<NAME>= is the name of the configuration you want[m
+[36m@@ -69,6 +69,7 @@[m [mconfiguration by yourself*. =&lt;NAME>= is the name of the configuration you want[m
  to customize, they are listed under the [[#configuration][Configuration]] section.[m
  [m
  Example:[m
@@ -567,7 +567,7 @@
  #+BEGIN_SRC bash[m
  $ scalastyle[m
  scalastyle 0.8.0[m
-[36m@@ -74,6 +76,7 @@[m [mUsage: scalastyle [options] <source directory>[m
+[36m@@ -74,6 +76,7 @@[m [mUsage: scalastyle [options] &lt;source directory>[m
  [m
  Finally, enable the =syntax-checking= layer and set the =flycheck-scalastylerc=[m
  variable to a valid location.[m
@@ -832,7 +832,7 @@
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Lisp/syl20bnr@spacemacs/failed/407363615.log</InputPath>
-        <Output>error in process sentinel: (error Malformed response:{"type":"error","text":"current-buffer: README.org<phoenix><2>
+        <Output>error in process sentinel: (error Malformed response:{"type":"error","text":"current-buffer: README.org&lt;phoenix>&lt;2>
 current-file: /tmp/docs/layers/+frameworks/phoenix/README.org
 error: File \"/tmp/docs/layers/+frameworks/phoenix/README.org\" doesn't have \"Features:\"(With a colon) list in the top level \"Description\" headline
 See \"https://github.com/syl20bnr/spacemacs/blob/develop/core/templates/README.org.template\"
@@ -841,7 +841,7 @@ Exporting failed.</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
         <InputPath>Lisp/syl20bnr@spacemacs/failed/407365973.log</InputPath>
-        <Output>current-buffer: README.org<phoenix><2>
+        <Output>current-buffer: README.org&lt;phoenix>&lt;2>
 current-file: /tmp/docs/layers/+frameworks/phoenix/README.org
 error: File "/tmp/docs/layers/+frameworks/phoenix/README.org" doesn't have "Features:"(With a colon) list in the top level "Description" headline
 See "https://github.com/syl20bnr/spacemacs/blob/develop/core/templates/README.org.template"</Output>
@@ -904,12 +904,12 @@ See "https://github.com/syl20bnr/spacemacs/blob/develop/core/templates/README.or
  [m
 [31m-| Key Binding     | Description                      |[m
 [31m-|-----------------+----------------------------------|[m
-[31m-| ~<SPC> m @ @~   | Run seeing is believing          |[m
-[31m-| ~<SPC> m @ c~   | Clear seeing is believing output |[m
+[31m-| ~&lt;SPC> m @ @~   | Run seeing is believing          |[m
+[31m-| ~&lt;SPC> m @ c~   | Clear seeing is believing output |[m
 [32m+[m[32m| Key Binding   | Description                      |[m
 [32m+[m[32m|---------------+----------------------------------|[m
-[32m+[m[32m| ~<SPC> m @ @~ | Run seeing is believing          |[m
-[32m+[m[32m| ~<SPC> m @ c~ | Clear seeing is believing output |[m
+[32m+[m[32m| ~&lt;SPC> m @ @~ | Run seeing is believing          |[m
+[32m+[m[32m| ~&lt;SPC> m @ c~ | Clear seeing is believing output |[m
  [m
  * Layer options[m
  [m</Output>

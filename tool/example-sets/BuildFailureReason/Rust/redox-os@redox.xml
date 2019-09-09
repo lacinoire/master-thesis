@@ -51,11 +51,11 @@ thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Custom {
 [0m[1m[38;5;9merror[E0053][0m[0m[1m: method `alloc` has an incompatible type for trait[0m
 [0m   [0m[0m[1m[38;5;12m--> [0m[0m/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/linked_list_allocator-0.5.0/src/lib.rs:131:5[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m131[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn alloc(&amp;mut self, layout: Layout) -> Result<*mut u8, AllocErr> {[0m
+[0m[1m[38;5;12m131[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn alloc(&amp;mut self, layout: Layout) -> Result&lt;*mut u8, AllocErr> {[0m
 [0m    [0m[0m[1m[38;5;12m| [0m[0m    [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mexpected struct `core::ptr::NonNull`, found *-ptr[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut Heap, core::alloc::Layout) -> core::result::Result<core::ptr::NonNull<core::alloc::Opaque>, core::alloc::AllocErr>[0m[0m`[0m
-[0m               found type `[0m[0m[1munsafe fn(&amp;mut Heap, core::alloc::Layout) -> core::result::Result<*mut u8, core::alloc::AllocErr>[0m[0m`[0m
+[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut Heap, core::alloc::Layout) -> core::result::Result&lt;core::ptr::NonNull&lt;core::alloc::Opaque>, core::alloc::AllocErr>[0m[0m`[0m
+[0m               found type `[0m[0m[1munsafe fn(&amp;mut Heap, core::alloc::Layout) -> core::result::Result&lt;*mut u8, core::alloc::AllocErr>[0m[0m`[0m
 
 [0m[1m[38;5;9merror[E0053][0m[0m[1m: method `dealloc` has an incompatible type for trait[0m
 [0m   [0m[0m[1m[38;5;12m--> [0m[0m/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/linked_list_allocator-0.5.0/src/lib.rs:135:5[0m
@@ -63,17 +63,17 @@ thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Custom {
 [0m[1m[38;5;12m135[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn dealloc(&amp;mut self, ptr: *mut u8, layout: Layout) {[0m
 [0m    [0m[0m[1m[38;5;12m| [0m[0m    [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mexpected struct `core::ptr::NonNull`, found *-ptr[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut Heap, core::ptr::NonNull<core::alloc::Opaque>, core::alloc::Layout)[0m[0m`[0m
+[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut Heap, core::ptr::NonNull&lt;core::alloc::Opaque>, core::alloc::Layout)[0m[0m`[0m
 [0m               found type `[0m[0m[1munsafe fn(&amp;mut Heap, *mut u8, core::alloc::Layout)[0m[0m`[0m
 
 [0m[1m[38;5;9merror[E0053][0m[0m[1m: method `alloc` has an incompatible type for trait[0m
 [0m   [0m[0m[1m[38;5;12m--> [0m[0m/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/linked_list_allocator-0.5.0/src/lib.rs:178:5[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m178[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn alloc(&amp;mut self, layout: Layout) -> Result<*mut u8, AllocErr> {[0m
+[0m[1m[38;5;12m178[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn alloc(&amp;mut self, layout: Layout) -> Result&lt;*mut u8, AllocErr> {[0m
 [0m    [0m[0m[1m[38;5;12m| [0m[0m    [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mexpected struct `core::ptr::NonNull`, found *-ptr[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::alloc::Layout) -> core::result::Result<core::ptr::NonNull<core::alloc::Opaque>, core::alloc::AllocErr>[0m[0m`[0m
-[0m               found type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::alloc::Layout) -> core::result::Result<*mut u8, core::alloc::AllocErr>[0m[0m`[0m
+[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::alloc::Layout) -> core::result::Result&lt;core::ptr::NonNull&lt;core::alloc::Opaque>, core::alloc::AllocErr>[0m[0m`[0m
+[0m               found type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::alloc::Layout) -> core::result::Result&lt;*mut u8, core::alloc::AllocErr>[0m[0m`[0m
 
 [0m[1m[38;5;9merror[E0053][0m[0m[1m: method `dealloc` has an incompatible type for trait[0m
 [0m   [0m[0m[1m[38;5;12m--> [0m[0m/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/linked_list_allocator-0.5.0/src/lib.rs:182:5[0m
@@ -81,7 +81,7 @@ thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Custom {
 [0m[1m[38;5;12m182[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn dealloc(&amp;mut self, ptr: *mut u8, layout: Layout) {[0m
 [0m    [0m[0m[1m[38;5;12m| [0m[0m    [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mexpected struct `core::ptr::NonNull`, found *-ptr[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::ptr::NonNull<core::alloc::Opaque>, core::alloc::Layout)[0m[0m`[0m
+[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::ptr::NonNull&lt;core::alloc::Opaque>, core::alloc::Layout)[0m[0m`[0m
 [0m               found type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, *mut u8, core::alloc::Layout)[0m[0m`[0m</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>
@@ -105,11 +105,11 @@ thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Custom {
 [0m[1m[38;5;9merror[E0053][0m[0m[1m: method `alloc` has an incompatible type for trait[0m
 [0m   [0m[0m[1m[38;5;12m--> [0m[0m/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/linked_list_allocator-0.5.0/src/lib.rs:131:5[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m131[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn alloc(&amp;mut self, layout: Layout) -> Result<*mut u8, AllocErr> {[0m
+[0m[1m[38;5;12m131[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn alloc(&amp;mut self, layout: Layout) -> Result&lt;*mut u8, AllocErr> {[0m
 [0m    [0m[0m[1m[38;5;12m| [0m[0m    [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mexpected struct `core::ptr::NonNull`, found *-ptr[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut Heap, core::alloc::Layout) -> core::result::Result<core::ptr::NonNull<core::alloc::Opaque>, core::alloc::AllocErr>[0m[0m`[0m
-[0m               found type `[0m[0m[1munsafe fn(&amp;mut Heap, core::alloc::Layout) -> core::result::Result<*mut u8, core::alloc::AllocErr>[0m[0m`[0m
+[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut Heap, core::alloc::Layout) -> core::result::Result&lt;core::ptr::NonNull&lt;core::alloc::Opaque>, core::alloc::AllocErr>[0m[0m`[0m
+[0m               found type `[0m[0m[1munsafe fn(&amp;mut Heap, core::alloc::Layout) -> core::result::Result&lt;*mut u8, core::alloc::AllocErr>[0m[0m`[0m
 
 [0m[1m[38;5;9merror[E0053][0m[0m[1m: method `dealloc` has an incompatible type for trait[0m
 [0m   [0m[0m[1m[38;5;12m--> [0m[0m/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/linked_list_allocator-0.5.0/src/lib.rs:135:5[0m
@@ -117,17 +117,17 @@ thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Custom {
 [0m[1m[38;5;12m135[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn dealloc(&amp;mut self, ptr: *mut u8, layout: Layout) {[0m
 [0m    [0m[0m[1m[38;5;12m| [0m[0m    [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mexpected struct `core::ptr::NonNull`, found *-ptr[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut Heap, core::ptr::NonNull<core::alloc::Opaque>, core::alloc::Layout)[0m[0m`[0m
+[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut Heap, core::ptr::NonNull&lt;core::alloc::Opaque>, core::alloc::Layout)[0m[0m`[0m
 [0m               found type `[0m[0m[1munsafe fn(&amp;mut Heap, *mut u8, core::alloc::Layout)[0m[0m`[0m
 
 [0m[1m[38;5;9merror[E0053][0m[0m[1m: method `alloc` has an incompatible type for trait[0m
 [0m   [0m[0m[1m[38;5;12m--> [0m[0m/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/linked_list_allocator-0.5.0/src/lib.rs:178:5[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m178[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn alloc(&amp;mut self, layout: Layout) -> Result<*mut u8, AllocErr> {[0m
+[0m[1m[38;5;12m178[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn alloc(&amp;mut self, layout: Layout) -> Result&lt;*mut u8, AllocErr> {[0m
 [0m    [0m[0m[1m[38;5;12m| [0m[0m    [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mexpected struct `core::ptr::NonNull`, found *-ptr[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::alloc::Layout) -> core::result::Result<core::ptr::NonNull<core::alloc::Opaque>, core::alloc::AllocErr>[0m[0m`[0m
-[0m               found type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::alloc::Layout) -> core::result::Result<*mut u8, core::alloc::AllocErr>[0m[0m`[0m
+[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::alloc::Layout) -> core::result::Result&lt;core::ptr::NonNull&lt;core::alloc::Opaque>, core::alloc::AllocErr>[0m[0m`[0m
+[0m               found type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::alloc::Layout) -> core::result::Result&lt;*mut u8, core::alloc::AllocErr>[0m[0m`[0m
 
 [0m[1m[38;5;9merror[E0053][0m[0m[1m: method `dealloc` has an incompatible type for trait[0m
 [0m   [0m[0m[1m[38;5;12m--> [0m[0m/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/linked_list_allocator-0.5.0/src/lib.rs:182:5[0m
@@ -135,7 +135,7 @@ thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Custom {
 [0m[1m[38;5;12m182[0m[0m [0m[0m[1m[38;5;12m| [0m[0m    unsafe fn dealloc(&amp;mut self, ptr: *mut u8, layout: Layout) {[0m
 [0m    [0m[0m[1m[38;5;12m| [0m[0m    [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mexpected struct `core::ptr::NonNull`, found *-ptr[0m
 [0m    [0m[0m[1m[38;5;12m|[0m
-[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::ptr::NonNull<core::alloc::Opaque>, core::alloc::Layout)[0m[0m`[0m
+[0m    [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, core::ptr::NonNull&lt;core::alloc::Opaque>, core::alloc::Layout)[0m[0m`[0m
 [0m               found type `[0m[0m[1munsafe fn(&amp;mut &amp;'a LockedHeap, *mut u8, core::alloc::Layout)[0m[0m`[0m</Output>
       </ExampleDataOfString>
       <ExampleDataOfString>

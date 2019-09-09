@@ -19,7 +19,7 @@
         <InputPath>Shell/jwilder@nginx-proxy/failed/534527355.log</InputPath>
         <Output>[1m[31m__________________________ test_web5_dhparam_is_used ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7fe6b7c1fa90>
+docker_compose = &lt;docker.client.DockerClient object at 0x7fe6b7c1fa90>
 
 [1m    @require_openssl("1.0.2")[0m
 [1m    def test_web5_dhparam_is_used(docker_compose):[0m
@@ -42,8 +42,8 @@ docker_compose = <docker.client.DockerClient object at 0x7fe6b7c1fa90>
         <InputPath>Shell/jwilder@nginx-proxy/failed/549357727.log</InputPath>
         <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7f12aa979a90>
-nginxproxy = <conftest.requests_for_docker object at 0x7f12aa7f1650>
+docker_compose = &lt;docker.client.DockerClient object at 0x7f12aa979a90>
+nginxproxy = &lt;conftest.requests_for_docker object at 0x7f12aa7f1650>
 
 [1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
 [1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
@@ -64,20 +64,20 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 [1m    r = adapter.send(request, **kwargs)[0m
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <requests.adapters.HTTPAdapter object at 0x7f12aa80cc50>
-request = <PreparedRequest [GET]>, stream = False
-timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f12aa6c3990>
+self = &lt;requests.adapters.HTTPAdapter object at 0x7f12aa80cc50>
+request = &lt;PreparedRequest [GET]>, stream = False
+timeout = &lt;requests.packages.urllib3.util.timeout.Timeout object at 0x7f12aa6c3990>
 verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
 cert = None, proxies = OrderedDict()
 
 [1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
 [1m        """Sends PreparedRequest object. Returns Response object.[0m
 [1m    [0m
-[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param request: The :class:`PreparedRequest &lt;PreparedRequest>` being sent.[0m
 [1m            :param stream: (optional) Whether to stream the request content.[0m
 [1m            :param timeout: (optional) How long to wait for the server to send[0m
 [1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
-[1m                read timeout) <timeouts>` tuple.[0m
+[1m                read timeout) &lt;timeouts>` tuple.[0m
 [1m            :type timeout: float or tuple[0m
 [1m            :param verify: (optional) Whether to verify SSL certificates.[0m
 [1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
@@ -183,7 +183,7 @@ cert = None, proxies = OrderedDict()
 [1m                raise ProxyError(e, request=request)[0m
 [1m    [0m
 [1m>           raise ConnectionError(e, request=request)[0m
-[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f12aa6c3dd0>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7f12aa6c3dd0>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
 
 [1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
       </ExampleDataOfString>
@@ -191,7 +191,7 @@ cert = None, proxies = OrderedDict()
         <InputPath>Shell/jwilder@nginx-proxy/failed/553283911.log</InputPath>
         <Output>[1m[31m__________________________ test_web5_dhparam_is_used ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7f5153c97a90>
+docker_compose = &lt;docker.client.DockerClient object at 0x7f5153c97a90>
 
 [1m    @require_openssl("1.0.2")[0m
 [1m    def test_web5_dhparam_is_used(docker_compose):[0m
@@ -214,8 +214,8 @@ docker_compose = <docker.client.DockerClient object at 0x7f5153c97a90>
         <InputPath>Shell/jwilder@nginx-proxy/failed/561337553.log</InputPath>
         <Output>[1m[31m_____________________ test_http_redirects_to_https[1-True] _____________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7f402adeca90>
-nginxproxy = <conftest.requests_for_docker object at 0x7f402aca0450>
+docker_compose = &lt;docker.client.DockerClient object at 0x7f402adeca90>
+nginxproxy = &lt;conftest.requests_for_docker object at 0x7f402aca0450>
 subdomain = 1, should_redirect_to_https = True
 
 [1m    @pytest.mark.parametrize("subdomain,should_redirect_to_https", [[0m
@@ -229,7 +229,7 @@ subdomain = 1, should_redirect_to_https = True
 [1m>           assert len(r.history) > 0[0m
 [1m[31mE           assert 0 > 0[0m
 [1m[31mE            +  where 0 = len([])[0m
-[1m[31mE            +    where [] = <Response [404]>.history[0m
+[1m[31mE            +    where [] = &lt;Response [404]>.history[0m
 
 [1m[31mtest_ssl/wildcard_cert_and_nohttps/test_wildcard_cert_nohttps.py[0m:14: AssertionError</Output>
       </ExampleDataOfString>
@@ -237,8 +237,8 @@ subdomain = 1, should_redirect_to_https = True
         <InputPath>Shell/jwilder@nginx-proxy/failed/565135948.log</InputPath>
         <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7f41bffe5a90>
-nginxproxy = <conftest.requests_for_docker object at 0x7f41bfe5d650>
+docker_compose = &lt;docker.client.DockerClient object at 0x7f41bffe5a90>
+nginxproxy = &lt;conftest.requests_for_docker object at 0x7f41bfe5d650>
 
 [1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
 [1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
@@ -259,20 +259,20 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 [1m    r = adapter.send(request, **kwargs)[0m
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <requests.adapters.HTTPAdapter object at 0x7f41bfe784d0>
-request = <PreparedRequest [GET]>, stream = False
-timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f41bfd2f790>
+self = &lt;requests.adapters.HTTPAdapter object at 0x7f41bfe784d0>
+request = &lt;PreparedRequest [GET]>, stream = False
+timeout = &lt;requests.packages.urllib3.util.timeout.Timeout object at 0x7f41bfd2f790>
 verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
 cert = None, proxies = OrderedDict()
 
 [1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
 [1m        """Sends PreparedRequest object. Returns Response object.[0m
 [1m    [0m
-[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param request: The :class:`PreparedRequest &lt;PreparedRequest>` being sent.[0m
 [1m            :param stream: (optional) Whether to stream the request content.[0m
 [1m            :param timeout: (optional) How long to wait for the server to send[0m
 [1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
-[1m                read timeout) <timeouts>` tuple.[0m
+[1m                read timeout) &lt;timeouts>` tuple.[0m
 [1m            :type timeout: float or tuple[0m
 [1m            :param verify: (optional) Whether to verify SSL certificates.[0m
 [1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
@@ -378,7 +378,7 @@ cert = None, proxies = OrderedDict()
 [1m                raise ProxyError(e, request=request)[0m
 [1m    [0m
 [1m>           raise ConnectionError(e, request=request)[0m
-[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f41bfd2fa90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7f41bfd2fa90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
 
 [1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
       </ExampleDataOfString>
@@ -386,8 +386,8 @@ cert = None, proxies = OrderedDict()
         <InputPath>Shell/jwilder@nginx-proxy/failed/565138449.log</InputPath>
         <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7f1b461f0a90>
-nginxproxy = <conftest.requests_for_docker object at 0x7f1b46068650>
+docker_compose = &lt;docker.client.DockerClient object at 0x7f1b461f0a90>
+nginxproxy = &lt;conftest.requests_for_docker object at 0x7f1b46068650>
 
 [1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
 [1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
@@ -408,20 +408,20 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 [1m    r = adapter.send(request, **kwargs)[0m
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <requests.adapters.HTTPAdapter object at 0x7f1b460833d0>
-request = <PreparedRequest [GET]>, stream = False
-timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f1b45f3aa10>
+self = &lt;requests.adapters.HTTPAdapter object at 0x7f1b460833d0>
+request = &lt;PreparedRequest [GET]>, stream = False
+timeout = &lt;requests.packages.urllib3.util.timeout.Timeout object at 0x7f1b45f3aa10>
 verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
 cert = None, proxies = OrderedDict()
 
 [1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
 [1m        """Sends PreparedRequest object. Returns Response object.[0m
 [1m    [0m
-[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param request: The :class:`PreparedRequest &lt;PreparedRequest>` being sent.[0m
 [1m            :param stream: (optional) Whether to stream the request content.[0m
 [1m            :param timeout: (optional) How long to wait for the server to send[0m
 [1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
-[1m                read timeout) <timeouts>` tuple.[0m
+[1m                read timeout) &lt;timeouts>` tuple.[0m
 [1m            :type timeout: float or tuple[0m
 [1m            :param verify: (optional) Whether to verify SSL certificates.[0m
 [1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
@@ -527,7 +527,7 @@ cert = None, proxies = OrderedDict()
 [1m                raise ProxyError(e, request=request)[0m
 [1m    [0m
 [1m>           raise ConnectionError(e, request=request)[0m
-[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f1b45f3acd0>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7f1b45f3acd0>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
 
 [1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
       </ExampleDataOfString>
@@ -535,8 +535,8 @@ cert = None, proxies = OrderedDict()
         <InputPath>Shell/jwilder@nginx-proxy/failed/565138602.log</InputPath>
         <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7f67f43a0a90>
-nginxproxy = <conftest.requests_for_docker object at 0x7f67f4218650>
+docker_compose = &lt;docker.client.DockerClient object at 0x7f67f43a0a90>
+nginxproxy = &lt;conftest.requests_for_docker object at 0x7f67f4218650>
 
 [1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
 [1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
@@ -557,20 +557,20 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 [1m    r = adapter.send(request, **kwargs)[0m
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <requests.adapters.HTTPAdapter object at 0x7f67f4233110>
-request = <PreparedRequest [GET]>, stream = False
-timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f67f40eaa50>
+self = &lt;requests.adapters.HTTPAdapter object at 0x7f67f4233110>
+request = &lt;PreparedRequest [GET]>, stream = False
+timeout = &lt;requests.packages.urllib3.util.timeout.Timeout object at 0x7f67f40eaa50>
 verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
 cert = None, proxies = OrderedDict()
 
 [1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
 [1m        """Sends PreparedRequest object. Returns Response object.[0m
 [1m    [0m
-[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param request: The :class:`PreparedRequest &lt;PreparedRequest>` being sent.[0m
 [1m            :param stream: (optional) Whether to stream the request content.[0m
 [1m            :param timeout: (optional) How long to wait for the server to send[0m
 [1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
-[1m                read timeout) <timeouts>` tuple.[0m
+[1m                read timeout) &lt;timeouts>` tuple.[0m
 [1m            :type timeout: float or tuple[0m
 [1m            :param verify: (optional) Whether to verify SSL certificates.[0m
 [1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
@@ -676,7 +676,7 @@ cert = None, proxies = OrderedDict()
 [1m                raise ProxyError(e, request=request)[0m
 [1m    [0m
 [1m>           raise ConnectionError(e, request=request)[0m
-[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f67f40ea950>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7f67f40ea950>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
 
 [1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
       </ExampleDataOfString>
@@ -684,8 +684,8 @@ cert = None, proxies = OrderedDict()
         <InputPath>Shell/jwilder@nginx-proxy/failed/565146113.log</InputPath>
         <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7fc23e10aa90>
-nginxproxy = <conftest.requests_for_docker object at 0x7fc23df82650>
+docker_compose = &lt;docker.client.DockerClient object at 0x7fc23e10aa90>
+nginxproxy = &lt;conftest.requests_for_docker object at 0x7fc23df82650>
 
 [1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
 [1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
@@ -706,20 +706,20 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 [1m    r = adapter.send(request, **kwargs)[0m
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <requests.adapters.HTTPAdapter object at 0x7fc23df9d3d0>
-request = <PreparedRequest [GET]>, stream = False
-timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7fc23de54a10>
+self = &lt;requests.adapters.HTTPAdapter object at 0x7fc23df9d3d0>
+request = &lt;PreparedRequest [GET]>, stream = False
+timeout = &lt;requests.packages.urllib3.util.timeout.Timeout object at 0x7fc23de54a10>
 verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
 cert = None, proxies = OrderedDict()
 
 [1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
 [1m        """Sends PreparedRequest object. Returns Response object.[0m
 [1m    [0m
-[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param request: The :class:`PreparedRequest &lt;PreparedRequest>` being sent.[0m
 [1m            :param stream: (optional) Whether to stream the request content.[0m
 [1m            :param timeout: (optional) How long to wait for the server to send[0m
 [1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
-[1m                read timeout) <timeouts>` tuple.[0m
+[1m                read timeout) &lt;timeouts>` tuple.[0m
 [1m            :type timeout: float or tuple[0m
 [1m            :param verify: (optional) Whether to verify SSL certificates.[0m
 [1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
@@ -825,7 +825,7 @@ cert = None, proxies = OrderedDict()
 [1m                raise ProxyError(e, request=request)[0m
 [1m    [0m
 [1m>           raise ConnectionError(e, request=request)[0m
-[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7fc23de54f90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7fc23de54f90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
 
 [1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
       </ExampleDataOfString>
@@ -833,8 +833,8 @@ cert = None, proxies = OrderedDict()
         <InputPath>Shell/jwilder@nginx-proxy/failed/565363151.log</InputPath>
         <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7fe29742dad0>
-nginxproxy = <conftest.requests_for_docker object at 0x7fe29728ef10>
+docker_compose = &lt;docker.client.DockerClient object at 0x7fe29742dad0>
+nginxproxy = &lt;conftest.requests_for_docker object at 0x7fe29728ef10>
 
 [1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
 [1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
@@ -855,20 +855,20 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 [1m    r = adapter.send(request, **kwargs)[0m
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <requests.adapters.HTTPAdapter object at 0x7fe2972c0950>
-request = <PreparedRequest [GET]>, stream = False
-timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7fe2972a5f50>
+self = &lt;requests.adapters.HTTPAdapter object at 0x7fe2972c0950>
+request = &lt;PreparedRequest [GET]>, stream = False
+timeout = &lt;requests.packages.urllib3.util.timeout.Timeout object at 0x7fe2972a5f50>
 verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
 cert = None, proxies = OrderedDict()
 
 [1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
 [1m        """Sends PreparedRequest object. Returns Response object.[0m
 [1m    [0m
-[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param request: The :class:`PreparedRequest &lt;PreparedRequest>` being sent.[0m
 [1m            :param stream: (optional) Whether to stream the request content.[0m
 [1m            :param timeout: (optional) How long to wait for the server to send[0m
 [1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
-[1m                read timeout) <timeouts>` tuple.[0m
+[1m                read timeout) &lt;timeouts>` tuple.[0m
 [1m            :type timeout: float or tuple[0m
 [1m            :param verify: (optional) Whether to verify SSL certificates.[0m
 [1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
@@ -974,7 +974,7 @@ cert = None, proxies = OrderedDict()
 [1m                raise ProxyError(e, request=request)[0m
 [1m    [0m
 [1m>           raise ConnectionError(e, request=request)[0m
-[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7fe2972a5b90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7fe2972a5b90>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
 
 [1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
       </ExampleDataOfString>
@@ -982,8 +982,8 @@ cert = None, proxies = OrderedDict()
         <InputPath>Shell/jwilder@nginx-proxy/failed/565363656.log</InputPath>
         <Output>[1m[31m__________________________ test_unknown_virtual_host ___________________________[0m
 
-docker_compose = <docker.client.DockerClient object at 0x7f9a970d3ad0>
-nginxproxy = <conftest.requests_for_docker object at 0x7f9a96f34f10>
+docker_compose = &lt;docker.client.DockerClient object at 0x7f9a970d3ad0>
+nginxproxy = &lt;conftest.requests_for_docker object at 0x7f9a96f34f10>
 
 [1m    def test_unknown_virtual_host(docker_compose, nginxproxy):[0m
 [1m>       r = nginxproxy.get("http://nginx-proxy/port")[0m
@@ -1004,20 +1004,20 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 [1m    r = adapter.send(request, **kwargs)[0m
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <requests.adapters.HTTPAdapter object at 0x7f9a96f66390>
-request = <PreparedRequest [GET]>, stream = False
-timeout = <requests.packages.urllib3.util.timeout.Timeout object at 0x7f9a96f66b50>
+self = &lt;requests.adapters.HTTPAdapter object at 0x7f9a96f66390>
+request = &lt;PreparedRequest [GET]>, stream = False
+timeout = &lt;requests.packages.urllib3.util.timeout.Timeout object at 0x7f9a96f66b50>
 verify = '/home/travis/build/jwilder/nginx-proxy/test/certs/ca-root.crt'
 cert = None, proxies = OrderedDict()
 
 [1m    def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):[0m
 [1m        """Sends PreparedRequest object. Returns Response object.[0m
 [1m    [0m
-[1m            :param request: The :class:`PreparedRequest <PreparedRequest>` being sent.[0m
+[1m            :param request: The :class:`PreparedRequest &lt;PreparedRequest>` being sent.[0m
 [1m            :param stream: (optional) Whether to stream the request content.[0m
 [1m            :param timeout: (optional) How long to wait for the server to send[0m
 [1m                data before giving up, as a float, or a :ref:`(connect timeout,[0m
-[1m                read timeout) <timeouts>` tuple.[0m
+[1m                read timeout) &lt;timeouts>` tuple.[0m
 [1m            :type timeout: float or tuple[0m
 [1m            :param verify: (optional) Whether to verify SSL certificates.[0m
 [1m            :param cert: (optional) Any user-provided SSL certificate to be trusted.[0m
@@ -1123,7 +1123,7 @@ cert = None, proxies = OrderedDict()
 [1m                raise ProxyError(e, request=request)[0m
 [1m    [0m
 [1m>           raise ConnectionError(e, request=request)[0m
-[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x7f9a96f4b610>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
+[1m[31mE           ConnectionError: HTTPConnectionPool(host='nginx-proxy', port=80): Max retries exceeded with url: /port (Caused by NewConnectionError('&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7f9a96f4b610>: Failed to establish a new connection: [Errno -2] Name does not resolve',))[0m
 
 [1m[31m/usr/local/lib/python2.7/site-packages/requests/adapters.py[0m:487: ConnectionError</Output>
       </ExampleDataOfString>
