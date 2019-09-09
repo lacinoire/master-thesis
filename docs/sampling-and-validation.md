@@ -151,6 +151,7 @@ Same as simple inter-rater reliability validation for the BuildFailureReason.
 Here we could maybe also do something with mTurk later.
 
 <details>
+
   <summary>Notes on mTurk</summary>
   
   [Article on working for mTurk](https://www.theatlantic.com/business/archive/2018/01/amazon-mechanical-turk/551192/): Requesters pay on average 11€ / hour on task, important that time-to-complete estimate is correct/not underestimating!, take idle-time while looking for tasks & webpage loading into account for humane pay
