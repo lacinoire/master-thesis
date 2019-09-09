@@ -11,6 +11,9 @@ From these 86 repositories we each collected 10 build logs categorized as "faile
 One repository had only a single "failed" log, and for two others all the logs were only "null".
 After excluding those we were left with a dataset of 83 repositories with 10 log files each.
 
+## Moritz Review
+What about other build status, such as canceled, or errored?
+
 ## Build Failure Reason
 
 For each of the logs in our dataset we labeled which substring of the log file describes "the reason the build failed".
@@ -90,6 +93,29 @@ To validate this there would be two approaches:
 - for every build we sampled look up the corresponding commit on GitHub
 - if an e-mail is linked to it, we send a mail there asking for whether the labeling was correct
 
+
+#### Moritz reviewed email
+Hey {name of developer we hopefully extract from the commit / github}!
+
+We (YEP, explain!) are studying different tools that automtically extract the reason why a CI build failed from Travis CI build logs. 
+
+You authored commit {commit id} on the {date}, which lead to the failed build {buildid, linked to Travis CI}.
+We believe this is the reason why it failed (extracted from [full Travis log](log)):
+{ show extraction + some lines of context}
+
+Please help us by saying whether we were right!
+
+[Correct!] // linking something to a tiny survey in google forms to track in a google spreadsheet
+[Half-correct]
+[Wrong!] // link to a survey where they can copy in what they believe is the actual build failure reason
+
+[Something else] (like infra error?)
+
+Thanks ...
+
+PS. This is the only mail you will ever receive from us on this regard.
+
+
 > Hey {name of developer we hopefully extract from the commit / github}!
 >
 > We (link / explanation?) are studying different tools to extract information form Travis CI build logs. Because {proejct name} is one of the most popular {language} projects on GitHub and uses Travis CI, we included some of your logs in the data we want to use for our evaluation :)
@@ -107,6 +133,9 @@ To validate this there would be two approaches:
 
 - in the longer survey (for "No!", "yes" just should be completed directly and show the "thank you page" only):
   >Thanks a lot that you want to give us some deeper feedback! // already track click without completing the survey!
+  
+  >>> What about if they accidentally clicked the wrong field? :) (Easiest solution: instruction in email to correct)
+  
   >
   >We looked a build {id} and believed that it failed for this reason:  
   >{our labeled part}  
