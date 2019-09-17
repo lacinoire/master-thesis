@@ -20,28 +20,48 @@ split_text <- function(text, file_name_base,  output_path) {
 }
 
 ## obtain all lines that output spans in the given file
+## to include lines around the actual extraction use `context_lines_count`
 get_lines_containing_output <-
   function(file_name,
            base_path,
            output,
-           only_output_lines = TRUE) {
+           only_output_lines = TRUE,
+           context_lines_count = 0,
+           visually_separate_context = FALSE,
+           split_into_lines = TRUE) {
     lines <- read_build_log_from_file(file_name, base_path)
+    output_lines <- lines
     
     if (only_output_lines) {
       lines_with_output_regex <-
-        paste("\n[^\n]*",
+        paste0("\n[^\n]*",
               escapeStringAsNotRegex(output),
-              "[^\n]*\n",
-              sep = "")
+              "[^\n]*\n")
       output_postion <-
         str_locate(lines, regex(lines_with_output_regex))
-      
-      lines <-
+      output_lines <-
         substr(lines, output_postion[[1]], output_postion[[2]])
+
+      if (context_lines_count > 0) {
+        lines_with_context_regex <-
+          paste0("((\n[^\n]*){", context_lines_count, "}|^)",
+                lines_with_output_regex,
+                "(([^\n]*\n){", context_lines_count, "}|$)")
+        context_postion <-
+          str_locate(lines, regex(lines_with_context_regex))
+        
+        pre_context <- substr(lines, context_postion[[1]], output_postion[[1]])
+        post_context <- substr(lines, output_postion[[2]], context_postion[[2]])
+
+        output_lines <-
+          paste(pre_context, output_lines, post_context, sep = "-=-=-=-=-=-\n\n-=-=-=-=-=-")
+      }
     }
     
-    split <- stri_split_lines(lines, omit_empty = TRUE)
-    return(split)
+    if (split_into_lines) {
+      output_lines <- stri_split_lines(output_lines, omit_empty = TRUE)
+    }
+    return(output_lines)
   }
 
 ## gets all the lines for a sample with ids.
@@ -100,7 +120,7 @@ split_labeled_examples <- function(examples,  output_path) {
 
 ## escape all things in a string that would be regex special things
 escapeStringAsNotRegex <- function(x = character()) {
-  return(paste("\\Q", x, "\\E", sep = ""))
+  return(paste0("\\Q", x, "\\E"))
   #return(gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", x))
 }
 

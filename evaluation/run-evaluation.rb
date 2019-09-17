@@ -3,8 +3,8 @@
 example_sets = File.readlines('current-eval-sets.txt')
 
 example_sets.each do |example_set|
-
   example_set = example_set.strip
+
   selection = "chronological"
   test_count = 1
   learning_step_count = 3
