@@ -28,7 +28,7 @@ for (i in 1:nrow(examples)) {
     sample_path,
     example$output, 
     only_output_lines = TRUE, 
-    context_lines_count = 5, 
+    context_lines_count = 10, 
     visually_separate_context = TRUE, 
     split_into_lines = FALSE))
   cat("\n")

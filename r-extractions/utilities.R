@@ -44,9 +44,9 @@ get_lines_containing_output <-
 
       if (context_lines_count > 0) {
         lines_with_context_regex <-
-          paste0("((\n[^\n]*){", context_lines_count, "}|^)",
+          paste0("(\n[^\n]*){0,", context_lines_count, "}",
                 lines_with_output_regex,
-                "(([^\n]*\n){", context_lines_count, "}|$)")
+                "([^\n]*\n){0,", context_lines_count, "}")
         context_postion <-
           str_locate(lines, regex(lines_with_context_regex))
         

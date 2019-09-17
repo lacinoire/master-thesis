@@ -5,7 +5,7 @@ require 'fileutils'
 # generate files that show the output + context (configured in r-extractions/show-example-context.R) for every example set.
 # output to be found in the usual example-set name provided folder sturcture under 'example-set-outputs-with-context'
 
-example_sets = File.readlines('eval-example-sets.txt')
+example_sets = File.readlines('current-eval-sets.txt')
 
 example_sets.each do |example_set|
   example_set = example_set.strip
