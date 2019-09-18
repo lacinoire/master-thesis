@@ -2,6 +2,21 @@
 
 # Carolin Master Thesis Work Log
 
+## 17.9.19
+
+- insert skeleton code for keyword & category sampling
+- sample for 6 languages, needed various whitespace fixes as well
+- integrate keywords & categories in r exampleset parsing
+- fix save path for evaluation results
+- start on keyword evaluation code
+- update presentation slides with Research Questions & practice presentation
+
+## 16.9.19
+
+- write example output & context presentation script
+
+## more undocumented september days
+
 ## 6.9.19
 
 - mounting folders in docker to write out results
