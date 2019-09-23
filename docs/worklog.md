@@ -2,6 +2,16 @@
 
 # Carolin Master Thesis Work Log
 
+## 23.9.19
+
+- labeled keywords & categories for 9 more languages
+- fix whitespace in labels for various languages
+- trial presentation Taico
+
+## 20.9.19
+
+- did presentation on retreat & discussed about it with Georgios and Andy
+
 ## 17.9.19
 
 - insert skeleton code for keyword & category sampling
