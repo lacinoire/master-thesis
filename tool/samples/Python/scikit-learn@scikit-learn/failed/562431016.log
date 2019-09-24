@@ -1,9 +1,12 @@
-travis_fold:start:worker_info[0K[33;1mWorker information[0m
+travis_fold:start:worker_info
+[0K[33;1mWorker information[0m
 hostname: 9a739b13-173e-4fe4-b9b9-a64def20dcb7@1.production-2-worker-org-gce-rzqt
 version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
 instance: travis-job-e6192141-fd58-477b-97ed-ab757cc19672 travis-ci-garnet-trusty-1512502259-986baf0 (via amqp)
 startup: 6.358028721s
-travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+travis_fold:end:worker_info
+[0Ktravis_fold:start:system_info
+[0K[33;1mBuild system information[0m
 Build language: python
 Build group: stable
 Build dist: trusty
@@ -114,13 +117,13 @@ The following repository access (RA) modules are available:
 
 * ra_svn : Module for accessing a repository using the svn network protocol.
   - with Cyrus SASL authentication
-  - handles 'svn' scheme
+  - handles sqsvnsq scheme
 * ra_local : Module for accessing a repository on local disk.
-  - handles 'file' scheme
+  - handles sqfilesq scheme
 * ra_serf : Module for accessing a repository via WebDAV protocol using serf.
   - using serf 1.3.3
-  - handles 'http' scheme
-  - handles 'https' scheme
+  - handles sqhttpsq scheme
+  - handles sqhttpssq scheme
 
 [34m[1msudo version[0m
 Sudo version 1.8.9p5
@@ -129,7 +132,7 @@ Sudoers policy plugin version 1.8.9p5
 Sudoers file grammar version 43
 
 Sudoers path: /etc/sudoers
-Authentication methods: 'pam'
+Authentication methods: sqpamsq
 Syslog facility if syslog is being used for logging: authpriv
 Syslog priority to use when user authenticates successfully: notice
 Syslog priority to use when user authenticates unsuccessfully: alert
@@ -145,7 +148,7 @@ Length at which to wrap log file lines (0 for no wrap): 80
 Authentication timestamp timeout: 15.0 minutes
 Password prompt timeout: 0.0 minutes
 Number of tries to enter a password: 3
-Umask to use or 0777 to use user's: 022
+Umask to use or 0777 to use usersqs: 022
 Path to mail program: /usr/sbin/sendmail
 Flags for mail program: -t
 Address to send mail to: root
@@ -154,10 +157,10 @@ Incorrect password message: Sorry, try again.
 Path to authentication timestamp dir: /var/lib/sudo
 Default password prompt: [sudo] password for %p: 
 Default user to run commands as: root
-Value to override user's $PATH with: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+Value to override usersqs $PATH with: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 Path to the editor for use by visudo: /usr/bin/editor
-When to require a password for 'list' pseudocommand: any
-When to require a password for 'verify' pseudocommand: all
+When to require a password for sqlistsq pseudocommand: any
+When to require a password for sqverifysq pseudocommand: all
 File descriptors >= 3 will be closed before executing a command
 Environment variables to check for sanity:
 	TZ
@@ -243,7 +246,7 @@ There is NO WARRANTY, to the extent permitted by law.
 
 Written by Jean-loup Gailly.
 [34m[1mzip version[0m
-Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+Copyright (c) 1990-2008 Info-ZIP - Type sqzip "-L"sq for software license.
 This is Zip 3.0 (July 5th 2008), by Info-ZIP.
 Currently maintained by E. Gordon.  Please send bug reports to
 the authors using the web page at www.info-zip.org; see README for details.
@@ -410,14 +413,23 @@ Composer version 1.5.2 2017-09-11 16:59:25
 ruby-2.2.7
 ruby-2.3.4
 ruby-2.4.1
-travis_fold:end:system_info[0K
-travis_fold:start:docker_mtu[0Kdocker stop/waiting
+travis_fold:end:system_info
+[0K
+travis_fold:start:docker_mtu
+[0Kdocker stop/waiting
 docker start/running, process 3622
-travis_fold:end:docker_mtu[0Ktravis_fold:start:resolvconf[0Kresolvconf stop/waiting
+travis_fold:end:docker_mtu
+[0Ktravis_fold:start:resolvconf
+[0Kresolvconf stop/waiting
 resolvconf start/running
-travis_fold:end:resolvconf[0Ktravis_fold:start:apt[0K[33;1mInstalling APT Packages[0m
-travis_time:start:01754445[0K$ travis_apt_get_update
-travis_time:end:01754445:start=1563862741939757265,finish=1563862747889873367,duration=5950116102[0Ktravis_time:start:060cc2cc[0K$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install python-scipy libatlas3-base libatlas-dev
+travis_fold:end:resolvconf
+[0Ktravis_fold:start:apt
+[0K[33;1mInstalling APT Packages[0m
+travis_time:start:01754445
+[0K$ travis_apt_get_update
+travis_time:end:01754445:start=1563862741939757265,finish=1563862747889873367,duration=5950116102
+[0Ktravis_time:start:060cc2cc
+[0K$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install python-scipy libatlas3-base libatlas-dev
 Reading package lists...
 Building dependency tree...
 Reading state information...
@@ -473,7 +485,28 @@ Get:25 http://archive.ubuntu.com/ubuntu trusty/main amd64 python-decorator all 3
 Get:26 http://archive.ubuntu.com/ubuntu trusty-updates/main amd64 python-numpy amd64 1:1.8.2-0ubuntu0.1 [1,603 kB]
 Get:27 http://archive.ubuntu.com/ubuntu trusty/universe amd64 python-scipy amd64 0.13.3-1build1 [7,862 kB]
 Fetched 44.3 MB in 2s (20.6 MB/s)
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 93695 files and directories currently installed.)
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 93695 files and directories currently installed.)
 Preparing to unpack .../libatomic1_4.8.4-2ubuntu1~14.04.4_amd64.deb ...
 Unpacking libatomic1:amd64 (4.8.4-2ubuntu1~14.04.4) over (4.8.4-2ubuntu1~14.04.3) ...
 Preparing to unpack .../libitm1_4.8.4-2ubuntu1~14.04.4_amd64.deb ...
@@ -502,13 +535,55 @@ Processing triggers for ccache (3.1.9-1) ...
 Updating symlinks in /usr/lib/ccache ...
 Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
 Setting up gcc-4.8-base:amd64 (4.8.4-2ubuntu1~14.04.4) ...
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 93695 files and directories currently installed.)
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 93695 files and directories currently installed.)
 Preparing to unpack .../libstdc++6_4.8.4-2ubuntu1~14.04.4_amd64.deb ...
 Unpacking libstdc++6:amd64 (4.8.4-2ubuntu1~14.04.4) over (4.8.4-2ubuntu1~14.04.3) ...
 Setting up libstdc++6:amd64 (4.8.4-2ubuntu1~14.04.4) ...
 Processing triggers for libc-bin (2.19-0ubuntu6.13) ...
 Selecting previously unselected package libamd2.3.1:amd64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 93695 files and directories currently installed.)
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 93695 files and directories currently installed.)
 Preparing to unpack .../libamd2.3.1_1%3a4.2.1-3ubuntu1_amd64.deb ...
 Unpacking libamd2.3.1:amd64 (1:4.2.1-3ubuntu1) ...
 Selecting previously unselected package libcamd2.3.1:amd64.
@@ -581,27 +656,829 @@ Setting up python-decorator (3.4.0-2build1) ...
 Setting up python-numpy (1:1.8.2-0ubuntu0.1) ...
 Setting up python-scipy (0.13.3-1build1) ...
 Processing triggers for libc-bin (2.19-0ubuntu6.13) ...
-travis_time:end:060cc2cc:start=1563862747893825933,finish=1563862759837084131,duration=11943258198[0Ktravis_fold:end:apt[0K
-travis_fold:start:git.checkout[0Ktravis_time:start:04d4e04a[0K$ git clone --depth=50 https://github.com/scikit-learn/scikit-learn.git scikit-learn/scikit-learn
-Cloning into 'scikit-learn/scikit-learn'...
+travis_time:end:060cc2cc:start=1563862747893825933,finish=1563862759837084131,duration=11943258198
+[0Ktravis_fold:end:apt
+[0K
+travis_fold:start:git.checkout
+[0Ktravis_time:start:04d4e04a
+[0K$ git clone --depth=50 https://github.com/scikit-learn/scikit-learn.git scikit-learn/scikit-learn
+Cloning into sqscikit-learn/scikit-learnsq...
 remote: Enumerating objects: 1762, done.[K
-remote: Counting objects:   0% (1/1762)   [Kremote: Counting objects:   1% (18/1762)   [Kremote: Counting objects:   2% (36/1762)   [Kremote: Counting objects:   3% (53/1762)   [Kremote: Counting objects:   4% (71/1762)   [Kremote: Counting objects:   5% (89/1762)   [Kremote: Counting objects:   6% (106/1762)   [Kremote: Counting objects:   7% (124/1762)   [Kremote: Counting objects:   8% (141/1762)   [Kremote: Counting objects:   9% (159/1762)   [Kremote: Counting objects:  10% (177/1762)   [Kremote: Counting objects:  11% (194/1762)   [Kremote: Counting objects:  12% (212/1762)   [Kremote: Counting objects:  13% (230/1762)   [Kremote: Counting objects:  14% (247/1762)   [Kremote: Counting objects:  15% (265/1762)   [Kremote: Counting objects:  16% (282/1762)   [Kremote: Counting objects:  17% (300/1762)   [Kremote: Counting objects:  18% (318/1762)   [Kremote: Counting objects:  19% (335/1762)   [Kremote: Counting objects:  20% (353/1762)   [Kremote: Counting objects:  21% (371/1762)   [Kremote: Counting objects:  22% (388/1762)   [Kremote: Counting objects:  23% (406/1762)   [Kremote: Counting objects:  24% (423/1762)   [Kremote: Counting objects:  25% (441/1762)   [Kremote: Counting objects:  26% (459/1762)   [Kremote: Counting objects:  27% (476/1762)   [Kremote: Counting objects:  28% (494/1762)   [Kremote: Counting objects:  29% (511/1762)   [Kremote: Counting objects:  30% (529/1762)   [Kremote: Counting objects:  31% (547/1762)   [Kremote: Counting objects:  32% (564/1762)   [Kremote: Counting objects:  33% (582/1762)   [Kremote: Counting objects:  34% (600/1762)   [Kremote: Counting objects:  35% (617/1762)   [Kremote: Counting objects:  36% (635/1762)   [Kremote: Counting objects:  37% (652/1762)   [Kremote: Counting objects:  38% (670/1762)   [Kremote: Counting objects:  39% (688/1762)   [Kremote: Counting objects:  40% (705/1762)   [Kremote: Counting objects:  41% (723/1762)   [Kremote: Counting objects:  42% (741/1762)   [Kremote: Counting objects:  43% (758/1762)   [Kremote: Counting objects:  44% (776/1762)   [Kremote: Counting objects:  45% (793/1762)   [Kremote: Counting objects:  46% (811/1762)   [Kremote: Counting objects:  47% (829/1762)   [Kremote: Counting objects:  48% (846/1762)   [Kremote: Counting objects:  49% (864/1762)   [Kremote: Counting objects:  50% (881/1762)   [Kremote: Counting objects:  51% (899/1762)   [Kremote: Counting objects:  52% (917/1762)   [Kremote: Counting objects:  53% (934/1762)   [Kremote: Counting objects:  54% (952/1762)   [Kremote: Counting objects:  55% (970/1762)   [Kremote: Counting objects:  56% (987/1762)   [Kremote: Counting objects:  57% (1005/1762)   [Kremote: Counting objects:  58% (1022/1762)   [Kremote: Counting objects:  59% (1040/1762)   [Kremote: Counting objects:  60% (1058/1762)   [Kremote: Counting objects:  61% (1075/1762)   [Kremote: Counting objects:  62% (1093/1762)   [Kremote: Counting objects:  63% (1111/1762)   [Kremote: Counting objects:  64% (1128/1762)   [Kremote: Counting objects:  65% (1146/1762)   [Kremote: Counting objects:  66% (1163/1762)   [Kremote: Counting objects:  67% (1181/1762)   [Kremote: Counting objects:  68% (1199/1762)   [Kremote: Counting objects:  69% (1216/1762)   [Kremote: Counting objects:  70% (1234/1762)   [Kremote: Counting objects:  71% (1252/1762)   [Kremote: Counting objects:  72% (1269/1762)   [Kremote: Counting objects:  73% (1287/1762)   [Kremote: Counting objects:  74% (1304/1762)   [Kremote: Counting objects:  75% (1322/1762)   [Kremote: Counting objects:  76% (1340/1762)   [Kremote: Counting objects:  77% (1357/1762)   [Kremote: Counting objects:  78% (1375/1762)   [Kremote: Counting objects:  79% (1392/1762)   [Kremote: Counting objects:  80% (1410/1762)   [Kremote: Counting objects:  81% (1428/1762)   [Kremote: Counting objects:  82% (1445/1762)   [Kremote: Counting objects:  83% (1463/1762)   [Kremote: Counting objects:  84% (1481/1762)   [Kremote: Counting objects:  85% (1498/1762)   [Kremote: Counting objects:  86% (1516/1762)   [Kremote: Counting objects:  87% (1533/1762)   [Kremote: Counting objects:  88% (1551/1762)   [Kremote: Counting objects:  89% (1569/1762)   [Kremote: Counting objects:  90% (1586/1762)   [Kremote: Counting objects:  91% (1604/1762)   [Kremote: Counting objects:  92% (1622/1762)   [Kremote: Counting objects:  93% (1639/1762)   [Kremote: Counting objects:  94% (1657/1762)   [Kremote: Counting objects:  95% (1674/1762)   [Kremote: Counting objects:  96% (1692/1762)   [Kremote: Counting objects:  97% (1710/1762)   [Kremote: Counting objects:  98% (1727/1762)   [Kremote: Counting objects:  99% (1745/1762)   [Kremote: Counting objects: 100% (1762/1762)   [Kremote: Counting objects: 100% (1762/1762), done.[K
-remote: Compressing objects:   0% (1/1468)   [Kremote: Compressing objects:   1% (15/1468)   [Kremote: Compressing objects:   2% (30/1468)   [Kremote: Compressing objects:   3% (45/1468)   [Kremote: Compressing objects:   4% (59/1468)   [Kremote: Compressing objects:   5% (74/1468)   [Kremote: Compressing objects:   6% (89/1468)   [Kremote: Compressing objects:   7% (103/1468)   [Kremote: Compressing objects:   8% (118/1468)   [Kremote: Compressing objects:   9% (133/1468)   [Kremote: Compressing objects:  10% (147/1468)   [Kremote: Compressing objects:  11% (162/1468)   [Kremote: Compressing objects:  12% (177/1468)   [Kremote: Compressing objects:  13% (191/1468)   [Kremote: Compressing objects:  14% (206/1468)   [Kremote: Compressing objects:  15% (221/1468)   [Kremote: Compressing objects:  16% (235/1468)   [Kremote: Compressing objects:  17% (250/1468)   [Kremote: Compressing objects:  18% (265/1468)   [Kremote: Compressing objects:  19% (279/1468)   [Kremote: Compressing objects:  20% (294/1468)   [Kremote: Compressing objects:  21% (309/1468)   [Kremote: Compressing objects:  22% (323/1468)   [Kremote: Compressing objects:  23% (338/1468)   [Kremote: Compressing objects:  24% (353/1468)   [Kremote: Compressing objects:  25% (367/1468)   [Kremote: Compressing objects:  26% (382/1468)   [Kremote: Compressing objects:  27% (397/1468)   [Kremote: Compressing objects:  28% (412/1468)   [Kremote: Compressing objects:  29% (426/1468)   [Kremote: Compressing objects:  30% (441/1468)   [Kremote: Compressing objects:  31% (456/1468)   [Kremote: Compressing objects:  32% (470/1468)   [Kremote: Compressing objects:  33% (485/1468)   [Kremote: Compressing objects:  34% (500/1468)   [Kremote: Compressing objects:  35% (514/1468)   [Kremote: Compressing objects:  36% (529/1468)   [Kremote: Compressing objects:  37% (544/1468)   [Kremote: Compressing objects:  38% (558/1468)   [Kremote: Compressing objects:  39% (573/1468)   [Kremote: Compressing objects:  40% (588/1468)   [Kremote: Compressing objects:  41% (602/1468)   [Kremote: Compressing objects:  42% (617/1468)   [Kremote: Compressing objects:  43% (632/1468)   [Kremote: Compressing objects:  44% (646/1468)   [Kremote: Compressing objects:  45% (661/1468)   [Kremote: Compressing objects:  46% (676/1468)   [Kremote: Compressing objects:  47% (690/1468)   [Kremote: Compressing objects:  48% (705/1468)   [Kremote: Compressing objects:  49% (720/1468)   [Kremote: Compressing objects:  50% (734/1468)   [Kremote: Compressing objects:  51% (749/1468)   [Kremote: Compressing objects:  52% (764/1468)   [Kremote: Compressing objects:  53% (779/1468)   [Kremote: Compressing objects:  54% (793/1468)   [Kremote: Compressing objects:  55% (808/1468)   [Kremote: Compressing objects:  56% (823/1468)   [Kremote: Compressing objects:  57% (837/1468)   [Kremote: Compressing objects:  58% (852/1468)   [Kremote: Compressing objects:  59% (867/1468)   [Kremote: Compressing objects:  60% (881/1468)   [Kremote: Compressing objects:  61% (896/1468)   [Kremote: Compressing objects:  62% (911/1468)   [Kremote: Compressing objects:  63% (925/1468)   [Kremote: Compressing objects:  64% (940/1468)   [Kremote: Compressing objects:  65% (955/1468)   [Kremote: Compressing objects:  66% (969/1468)   [Kremote: Compressing objects:  67% (984/1468)   [Kremote: Compressing objects:  68% (999/1468)   [Kremote: Compressing objects:  69% (1013/1468)   [Kremote: Compressing objects:  70% (1028/1468)   [Kremote: Compressing objects:  71% (1043/1468)   [Kremote: Compressing objects:  72% (1057/1468)   [Kremote: Compressing objects:  73% (1072/1468)   [Kremote: Compressing objects:  74% (1087/1468)   [Kremote: Compressing objects:  75% (1101/1468)   [Kremote: Compressing objects:  76% (1116/1468)   [Kremote: Compressing objects:  77% (1131/1468)   [Kremote: Compressing objects:  78% (1146/1468)   [Kremote: Compressing objects:  79% (1160/1468)   [Kremote: Compressing objects:  80% (1175/1468)   [Kremote: Compressing objects:  81% (1190/1468)   [Kremote: Compressing objects:  82% (1204/1468)   [Kremote: Compressing objects:  83% (1219/1468)   [Kremote: Compressing objects:  84% (1234/1468)   [Kremote: Compressing objects:  85% (1248/1468)   [Kremote: Compressing objects:  86% (1263/1468)   [Kremote: Compressing objects:  87% (1278/1468)   [Kremote: Compressing objects:  88% (1292/1468)   [Kremote: Compressing objects:  89% (1307/1468)   [Kremote: Compressing objects:  90% (1322/1468)   [Kremote: Compressing objects:  91% (1336/1468)   [Kremote: Compressing objects:  92% (1351/1468)   [Kremote: Compressing objects:  93% (1366/1468)   [Kremote: Compressing objects:  94% (1380/1468)   [Kremote: Compressing objects:  95% (1395/1468)   [Kremote: Compressing objects:  96% (1410/1468)   [Kremote: Compressing objects:  97% (1424/1468)   [Kremote: Compressing objects:  98% (1439/1468)   [Kremote: Compressing objects:  99% (1454/1468)   [Kremote: Compressing objects: 100% (1468/1468)   [Kremote: Compressing objects: 100% (1468/1468), done.[K
-Receiving objects:   0% (1/1762)   Receiving objects:   1% (18/1762)   Receiving objects:   2% (36/1762)   Receiving objects:   3% (53/1762)   Receiving objects:   4% (71/1762)   Receiving objects:   5% (89/1762)   Receiving objects:   6% (106/1762)   Receiving objects:   7% (124/1762)   Receiving objects:   8% (141/1762)   Receiving objects:   9% (159/1762)   Receiving objects:  10% (177/1762)   Receiving objects:  11% (194/1762)   Receiving objects:  12% (212/1762)   Receiving objects:  13% (230/1762)   Receiving objects:  14% (247/1762)   Receiving objects:  15% (265/1762)   Receiving objects:  16% (282/1762)   Receiving objects:  17% (300/1762)   Receiving objects:  18% (318/1762)   Receiving objects:  19% (335/1762)   Receiving objects:  20% (353/1762)   Receiving objects:  21% (371/1762)   Receiving objects:  22% (388/1762)   Receiving objects:  23% (406/1762)   Receiving objects:  24% (423/1762)   Receiving objects:  25% (441/1762)   Receiving objects:  26% (459/1762)   Receiving objects:  27% (476/1762)   Receiving objects:  28% (494/1762)   Receiving objects:  29% (511/1762)   Receiving objects:  30% (529/1762)   Receiving objects:  31% (547/1762)   Receiving objects:  32% (564/1762)   Receiving objects:  33% (582/1762)   Receiving objects:  34% (600/1762)   Receiving objects:  35% (617/1762)   Receiving objects:  36% (635/1762)   Receiving objects:  37% (652/1762)   Receiving objects:  38% (670/1762)   Receiving objects:  39% (688/1762)   Receiving objects:  40% (705/1762)   Receiving objects:  41% (723/1762)   Receiving objects:  42% (741/1762)   Receiving objects:  43% (758/1762)   Receiving objects:  44% (776/1762)   Receiving objects:  45% (793/1762)   Receiving objects:  46% (811/1762)   Receiving objects:  47% (829/1762)   Receiving objects:  48% (846/1762)   Receiving objects:  49% (864/1762)   Receiving objects:  50% (881/1762)   Receiving objects:  51% (899/1762)   Receiving objects:  52% (917/1762)   Receiving objects:  53% (934/1762)   Receiving objects:  54% (952/1762)   Receiving objects:  55% (970/1762)   Receiving objects:  56% (987/1762)   Receiving objects:  57% (1005/1762)   Receiving objects:  58% (1022/1762)   Receiving objects:  59% (1040/1762)   Receiving objects:  60% (1058/1762)   Receiving objects:  61% (1075/1762)   Receiving objects:  62% (1093/1762)   Receiving objects:  63% (1111/1762)   Receiving objects:  64% (1128/1762)   Receiving objects:  65% (1146/1762)   Receiving objects:  66% (1163/1762)   Receiving objects:  67% (1181/1762)   Receiving objects:  68% (1199/1762)   Receiving objects:  69% (1216/1762)   Receiving objects:  70% (1234/1762)   Receiving objects:  71% (1252/1762)   Receiving objects:  72% (1269/1762)   Receiving objects:  73% (1287/1762)   Receiving objects:  74% (1304/1762)   Receiving objects:  75% (1322/1762)   Receiving objects:  76% (1340/1762)   Receiving objects:  77% (1357/1762)   Receiving objects:  78% (1375/1762)   Receiving objects:  79% (1392/1762)   Receiving objects:  80% (1410/1762)   Receiving objects:  81% (1428/1762)   Receiving objects:  82% (1445/1762)   Receiving objects:  83% (1463/1762)   Receiving objects:  84% (1481/1762)   Receiving objects:  85% (1498/1762)   Receiving objects:  86% (1516/1762)   Receiving objects:  87% (1533/1762)   Receiving objects:  88% (1551/1762)   Receiving objects:  89% (1569/1762)   Receiving objects:  90% (1586/1762)   Receiving objects:  91% (1604/1762)   Receiving objects:  92% (1622/1762)   Receiving objects:  93% (1639/1762)   Receiving objects:  94% (1657/1762)   Receiving objects:  95% (1674/1762)   Receiving objects:  96% (1692/1762)   Receiving objects:  97% (1710/1762)   remote: Total 1762 (delta 420), reused 734 (delta 277), pack-reused 0[K
-Receiving objects:  98% (1727/1762)   Receiving objects:  99% (1745/1762)   Receiving objects: 100% (1762/1762)   Receiving objects: 100% (1762/1762), 6.56 MiB | 19.58 MiB/s, done.
-Resolving deltas:   0% (0/420)   Resolving deltas:   1% (5/420)   Resolving deltas:   2% (10/420)   Resolving deltas:   3% (13/420)   Resolving deltas:   4% (18/420)   Resolving deltas:   5% (21/420)   Resolving deltas:   7% (31/420)   Resolving deltas:   8% (34/420)   Resolving deltas:   9% (39/420)   Resolving deltas:  10% (42/420)   Resolving deltas:  11% (49/420)   Resolving deltas:  12% (51/420)   Resolving deltas:  13% (55/420)   Resolving deltas:  16% (69/420)   Resolving deltas:  17% (74/420)   Resolving deltas:  19% (82/420)   Resolving deltas:  20% (84/420)   Resolving deltas:  21% (90/420)   Resolving deltas:  22% (93/420)   Resolving deltas:  23% (98/420)   Resolving deltas:  24% (101/420)   Resolving deltas:  25% (106/420)   Resolving deltas:  26% (110/420)   Resolving deltas:  27% (114/420)   Resolving deltas:  28% (118/420)   Resolving deltas:  29% (122/420)   Resolving deltas:  30% (126/420)   Resolving deltas:  31% (131/420)   Resolving deltas:  32% (138/420)   Resolving deltas:  33% (139/420)   Resolving deltas:  34% (143/420)   Resolving deltas:  35% (148/420)   Resolving deltas:  36% (152/420)   Resolving deltas:  37% (156/420)   Resolving deltas:  38% (160/420)   Resolving deltas:  39% (164/420)   Resolving deltas:  43% (184/420)   Resolving deltas:  44% (187/420)   Resolving deltas:  45% (192/420)   Resolving deltas:  46% (196/420)   Resolving deltas:  52% (222/420)   Resolving deltas:  53% (224/420)   Resolving deltas:  54% (227/420)   Resolving deltas:  55% (231/420)   Resolving deltas:  56% (236/420)   Resolving deltas:  57% (240/420)   Resolving deltas:  59% (248/420)   Resolving deltas:  60% (252/420)   Resolving deltas:  61% (257/420)   Resolving deltas:  62% (261/420)   Resolving deltas:  63% (265/420)   Resolving deltas:  64% (271/420)   Resolving deltas:  65% (274/420)   Resolving deltas:  66% (278/420)   Resolving deltas:  67% (282/420)   Resolving deltas:  68% (289/420)   Resolving deltas:  69% (290/420)   Resolving deltas:  70% (297/420)   Resolving deltas:  71% (299/420)   Resolving deltas:  73% (308/420)   Resolving deltas:  74% (311/420)   Resolving deltas:  75% (315/420)   Resolving deltas:  76% (320/420)   Resolving deltas:  77% (324/420)   Resolving deltas:  78% (328/420)   Resolving deltas:  79% (333/420)   Resolving deltas:  80% (336/420)   Resolving deltas:  81% (341/420)   Resolving deltas:  82% (345/420)   Resolving deltas:  83% (349/420)   Resolving deltas:  84% (353/420)   Resolving deltas:  85% (357/420)   Resolving deltas:  86% (362/420)   Resolving deltas:  87% (366/420)   Resolving deltas:  88% (370/420)   Resolving deltas:  89% (374/420)   Resolving deltas:  90% (379/420)   Resolving deltas:  95% (400/420)   Resolving deltas:  96% (407/420)   Resolving deltas:  97% (409/420)   Resolving deltas:  98% (414/420)   Resolving deltas:  99% (417/420)   Resolving deltas: 100% (420/420)   Resolving deltas: 100% (420/420), done.
-travis_time:end:04d4e04a:start=1563862759841110444,finish=1563862762504357047,duration=2663246603[0K$ cd scikit-learn/scikit-learn
-travis_time:start:00248b6e[0K$ git fetch origin +refs/pull/14443/merge:
-remote: Enumerating objects: 148329   [Kremote: Enumerating objects: 155472, done.[K
-remote: Counting objects:   0% (1/155471)   [Kremote: Counting objects:   1% (1555/155471)   [Kremote: Counting objects:   2% (3110/155471)   [Kremote: Counting objects:   3% (4665/155471)   [Kremote: Counting objects:   4% (6219/155471)   [Kremote: Counting objects:   5% (7774/155471)   [Kremote: Counting objects:   6% (9329/155471)   [Kremote: Counting objects:   7% (10883/155471)   [Kremote: Counting objects:   8% (12438/155471)   [Kremote: Counting objects:   9% (13993/155471)   [Kremote: Counting objects:  10% (15548/155471)   [Kremote: Counting objects:  11% (17102/155471)   [Kremote: Counting objects:  12% (18657/155471)   [Kremote: Counting objects:  13% (20212/155471)   [Kremote: Counting objects:  14% (21766/155471)   [Kremote: Counting objects:  15% (23321/155471)   [Kremote: Counting objects:  16% (24876/155471)   [Kremote: Counting objects:  17% (26431/155471)   [Kremote: Counting objects:  18% (27985/155471)   [Kremote: Counting objects:  19% (29540/155471)   [Kremote: Counting objects:  20% (31095/155471)   [Kremote: Counting objects:  21% (32649/155471)   [Kremote: Counting objects:  22% (34204/155471)   [Kremote: Counting objects:  23% (35759/155471)   [Kremote: Counting objects:  24% (37314/155471)   [Kremote: Counting objects:  25% (38868/155471)   [Kremote: Counting objects:  26% (40423/155471)   [Kremote: Counting objects:  27% (41978/155471)   [Kremote: Counting objects:  28% (43532/155471)   [Kremote: Counting objects:  29% (45087/155471)   [Kremote: Counting objects:  30% (46642/155471)   [Kremote: Counting objects:  31% (48197/155471)   [Kremote: Counting objects:  32% (49751/155471)   [Kremote: Counting objects:  33% (51306/155471)   [Kremote: Counting objects:  34% (52861/155471)   [Kremote: Counting objects:  35% (54415/155471)   [Kremote: Counting objects:  36% (55970/155471)   [Kremote: Counting objects:  37% (57525/155471)   [Kremote: Counting objects:  38% (59079/155471)   [Kremote: Counting objects:  39% (60634/155471)   [Kremote: Counting objects:  40% (62189/155471)   [Kremote: Counting objects:  41% (63744/155471)   [Kremote: Counting objects:  42% (65298/155471)   [Kremote: Counting objects:  43% (66853/155471)   [Kremote: Counting objects:  44% (68408/155471)   [Kremote: Counting objects:  45% (69962/155471)   [Kremote: Counting objects:  46% (71517/155471)   [Kremote: Counting objects:  47% (73072/155471)   [Kremote: Counting objects:  48% (74627/155471)   [Kremote: Counting objects:  49% (76181/155471)   [Kremote: Counting objects:  50% (77736/155471)   [Kremote: Counting objects:  51% (79291/155471)   [Kremote: Counting objects:  52% (80845/155471)   [Kremote: Counting objects:  53% (82400/155471)   [Kremote: Counting objects:  54% (83955/155471)   [Kremote: Counting objects:  55% (85510/155471)   [Kremote: Counting objects:  56% (87064/155471)   [Kremote: Counting objects:  57% (88619/155471)   [Kremote: Counting objects:  58% (90174/155471)   [Kremote: Counting objects:  59% (91728/155471)   [Kremote: Counting objects:  60% (93283/155471)   [Kremote: Counting objects:  61% (94838/155471)   [Kremote: Counting objects:  62% (96393/155471)   [Kremote: Counting objects:  63% (97947/155471)   [Kremote: Counting objects:  64% (99502/155471)   [Kremote: Counting objects:  65% (101057/155471)   [Kremote: Counting objects:  66% (102611/155471)   [Kremote: Counting objects:  67% (104166/155471)   [Kremote: Counting objects:  68% (105721/155471)   [Kremote: Counting objects:  69% (107275/155471)   [Kremote: Counting objects:  70% (108830/155471)   [Kremote: Counting objects:  71% (110385/155471)   [Kremote: Counting objects:  72% (111940/155471)   [Kremote: Counting objects:  73% (113494/155471)   [Kremote: Counting objects:  74% (115049/155471)   [Kremote: Counting objects:  75% (116604/155471)   [Kremote: Counting objects:  76% (118158/155471)   [Kremote: Counting objects:  77% (119713/155471)   [Kremote: Counting objects:  78% (121268/155471)   [Kremote: Counting objects:  79% (122823/155471)   [Kremote: Counting objects:  80% (124377/155471)   [Kremote: Counting objects:  81% (125932/155471)   [Kremote: Counting objects:  82% (127487/155471)   [Kremote: Counting objects:  83% (129041/155471)   [Kremote: Counting objects:  84% (130596/155471)   [Kremote: Counting objects:  85% (132151/155471)   [Kremote: Counting objects:  86% (133706/155471)   [Kremote: Counting objects:  87% (135260/155471)   [Kremote: Counting objects:  88% (136815/155471)   [Kremote: Counting objects:  89% (138370/155471)   [Kremote: Counting objects:  90% (139924/155471)   [Kremote: Counting objects:  91% (141479/155471)   [Kremote: Counting objects:  92% (143034/155471)   [Kremote: Counting objects:  93% (144589/155471)   [Kremote: Counting objects:  94% (146143/155471)   [Kremote: Counting objects:  95% (147698/155471)   [Kremote: Counting objects:  96% (149253/155471)   [Kremote: Counting objects:  97% (150807/155471)   [Kremote: Counting objects:  98% (152362/155471)   [Kremote: Counting objects:  99% (153917/155471)   [Kremote: Counting objects: 100% (155471/155471)   [Kremote: Counting objects: 100% (155471/155471), done.[K
-remote: Compressing objects:   0% (1/37799)   [Kremote: Compressing objects:   1% (378/37799)   [Kremote: Compressing objects:   2% (756/37799)   [Kremote: Compressing objects:   3% (1134/37799)   [Kremote: Compressing objects:   4% (1512/37799)   [Kremote: Compressing objects:   5% (1890/37799)   [Kremote: Compressing objects:   6% (2268/37799)   [Kremote: Compressing objects:   7% (2646/37799)   [Kremote: Compressing objects:   8% (3024/37799)   [Kremote: Compressing objects:   9% (3402/37799)   [Kremote: Compressing objects:  10% (3780/37799)   [Kremote: Compressing objects:  11% (4158/37799)   [Kremote: Compressing objects:  12% (4536/37799)   [Kremote: Compressing objects:  13% (4914/37799)   [Kremote: Compressing objects:  14% (5292/37799)   [Kremote: Compressing objects:  15% (5670/37799)   [Kremote: Compressing objects:  16% (6048/37799)   [Kremote: Compressing objects:  17% (6426/37799)   [Kremote: Compressing objects:  18% (6804/37799)   [Kremote: Compressing objects:  19% (7182/37799)   [Kremote: Compressing objects:  20% (7560/37799)   [Kremote: Compressing objects:  21% (7938/37799)   [Kremote: Compressing objects:  22% (8316/37799)   [Kremote: Compressing objects:  23% (8694/37799)   [Kremote: Compressing objects:  24% (9072/37799)   [Kremote: Compressing objects:  25% (9450/37799)   [Kremote: Compressing objects:  26% (9828/37799)   [Kremote: Compressing objects:  27% (10206/37799)   [Kremote: Compressing objects:  28% (10584/37799)   [Kremote: Compressing objects:  29% (10962/37799)   [Kremote: Compressing objects:  30% (11340/37799)   [Kremote: Compressing objects:  31% (11718/37799)   [Kremote: Compressing objects:  32% (12096/37799)   [Kremote: Compressing objects:  33% (12474/37799)   [Kremote: Compressing objects:  34% (12852/37799)   [Kremote: Compressing objects:  35% (13230/37799)   [Kremote: Compressing objects:  36% (13608/37799)   [Kremote: Compressing objects:  37% (13986/37799)   [Kremote: Compressing objects:  38% (14364/37799)   [Kremote: Compressing objects:  39% (14742/37799)   [Kremote: Compressing objects:  40% (15120/37799)   [Kremote: Compressing objects:  41% (15498/37799)   [Kremote: Compressing objects:  42% (15876/37799)   [Kremote: Compressing objects:  43% (16254/37799)   [Kremote: Compressing objects:  44% (16632/37799)   [Kremote: Compressing objects:  45% (17010/37799)   [Kremote: Compressing objects:  46% (17388/37799)   [Kremote: Compressing objects:  47% (17766/37799)   [Kremote: Compressing objects:  48% (18144/37799)   [Kremote: Compressing objects:  49% (18522/37799)   [Kremote: Compressing objects:  50% (18900/37799)   [Kremote: Compressing objects:  51% (19278/37799)   [Kremote: Compressing objects:  52% (19656/37799)   [Kremote: Compressing objects:  53% (20034/37799)   [Kremote: Compressing objects:  54% (20412/37799)   [Kremote: Compressing objects:  55% (20790/37799)   [Kremote: Compressing objects:  56% (21168/37799)   [Kremote: Compressing objects:  57% (21546/37799)   [Kremote: Compressing objects:  58% (21924/37799)   [Kremote: Compressing objects:  59% (22302/37799)   [Kremote: Compressing objects:  60% (22680/37799)   [Kremote: Compressing objects:  61% (23058/37799)   [Kremote: Compressing objects:  62% (23436/37799)   [Kremote: Compressing objects:  63% (23814/37799)   [Kremote: Compressing objects:  64% (24192/37799)   [Kremote: Compressing objects:  65% (24570/37799)   [Kremote: Compressing objects:  66% (24948/37799)   [Kremote: Compressing objects:  67% (25326/37799)   [Kremote: Compressing objects:  68% (25704/37799)   [Kremote: Compressing objects:  69% (26082/37799)   [Kremote: Compressing objects:  70% (26460/37799)   [Kremote: Compressing objects:  71% (26838/37799)   [Kremote: Compressing objects:  72% (27216/37799)   [Kremote: Compressing objects:  73% (27594/37799)   [Kremote: Compressing objects:  74% (27972/37799)   [Kremote: Compressing objects:  75% (28350/37799)   [Kremote: Compressing objects:  76% (28728/37799)   [Kremote: Compressing objects:  77% (29106/37799)   [Kremote: Compressing objects:  78% (29484/37799)   [Kremote: Compressing objects:  79% (29862/37799)   [Kremote: Compressing objects:  80% (30240/37799)   [Kremote: Compressing objects:  81% (30618/37799)   [Kremote: Compressing objects:  82% (30996/37799)   [Kremote: Compressing objects:  83% (31374/37799)   [Kremote: Compressing objects:  84% (31752/37799)   [Kremote: Compressing objects:  85% (32130/37799)   [Kremote: Compressing objects:  86% (32508/37799)   [Kremote: Compressing objects:  87% (32886/37799)   [Kremote: Compressing objects:  88% (33264/37799)   [Kremote: Compressing objects:  89% (33642/37799)   [Kremote: Compressing objects:  90% (34020/37799)   [Kremote: Compressing objects:  91% (34398/37799)   [Kremote: Compressing objects:  92% (34776/37799)   [Kremote: Compressing objects:  93% (35154/37799)   [Kremote: Compressing objects:  94% (35532/37799)   [Kremote: Compressing objects:  95% (35910/37799)   [Kremote: Compressing objects:  96% (36288/37799)   [Kremote: Compressing objects:  97% (36666/37799)   [Kremote: Compressing objects:  98% (37044/37799)   [Kremote: Compressing objects:  99% (37422/37799)   [Kremote: Compressing objects: 100% (37799/37799)   [Kremote: Compressing objects: 100% (37799/37799), done.[K
-Receiving objects:   0% (1/154582)   Receiving objects:   1% (1546/154582)   Receiving objects:   2% (3092/154582)   Receiving objects:   3% (4638/154582)   Receiving objects:   4% (6184/154582)   Receiving objects:   5% (7730/154582)   Receiving objects:   6% (9275/154582)   Receiving objects:   7% (10821/154582)   Receiving objects:   8% (12367/154582)   Receiving objects:   9% (13913/154582)   Receiving objects:  10% (15459/154582)   Receiving objects:  11% (17005/154582)   Receiving objects:  12% (18550/154582)   Receiving objects:  13% (20096/154582)   Receiving objects:  14% (21642/154582)   Receiving objects:  15% (23188/154582)   Receiving objects:  16% (24734/154582)   Receiving objects:  17% (26279/154582)   Receiving objects:  18% (27825/154582)   Receiving objects:  19% (29371/154582)   Receiving objects:  20% (30917/154582)   Receiving objects:  21% (32463/154582)   Receiving objects:  22% (34009/154582)   Receiving objects:  23% (35554/154582)   Receiving objects:  24% (37100/154582)   Receiving objects:  25% (38646/154582)   Receiving objects:  26% (40192/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  27% (41738/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  28% (43283/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  29% (44829/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  30% (46375/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  31% (47921/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  32% (49467/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  33% (51013/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  34% (52558/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  35% (54104/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  35% (55321/154582), 10.15 MiB | 20.30 MiB/s   Receiving objects:  36% (55650/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  37% (57196/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  38% (58742/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  39% (60287/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  40% (61833/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  41% (63379/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  42% (64925/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  43% (66471/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  44% (68017/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  45% (69562/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  46% (71108/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  47% (72654/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  48% (74200/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  49% (75746/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  50% (77291/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  51% (78837/154582), 25.17 MiB | 25.16 MiB/s   Receiving objects:  52% (80383/154582), 40.84 MiB | 27.23 MiB/s   Receiving objects:  52% (81895/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  53% (81929/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  54% (83475/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  55% (85021/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  56% (86566/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  57% (88112/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  58% (89658/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  59% (91204/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  60% (92750/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  61% (94296/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  62% (95841/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  63% (97387/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  64% (98933/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  65% (100479/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  66% (102025/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  67% (103570/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  68% (105116/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  69% (106662/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  70% (108208/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  71% (109754/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  72% (111300/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  73% (112845/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  74% (114391/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  75% (115937/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  76% (117483/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  77% (119029/154582), 57.18 MiB | 28.60 MiB/s   Receiving objects:  78% (120574/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  79% (122120/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  80% (123666/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  81% (125212/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  82% (126758/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  83% (128304/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  84% (129849/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  85% (131395/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  86% (132941/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  87% (134487/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  88% (136033/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  89% (137578/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  90% (139124/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  91% (140670/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  92% (142216/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  93% (143762/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  94% (145308/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  95% (146853/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  96% (148399/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  97% (149945/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  98% (151491/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects:  99% (153037/154582), 74.08 MiB | 29.64 MiB/s   remote: Total 154582 (delta 117679), reused 152911 (delta 116011), pack-reused 0[K
-Receiving objects: 100% (154582/154582), 74.08 MiB | 29.64 MiB/s   Receiving objects: 100% (154582/154582), 83.05 MiB | 29.75 MiB/s, done.
-Resolving deltas:   0% (0/117679)   Resolving deltas:   1% (1177/117679)   Resolving deltas:   2% (2365/117679)   Resolving deltas:   3% (3531/117679)   Resolving deltas:   4% (4710/117679)   Resolving deltas:   5% (5892/117679)   Resolving deltas:   6% (7144/117679)   Resolving deltas:   7% (8243/117679)   Resolving deltas:   8% (9464/117679)   Resolving deltas:   9% (10896/117679)   Resolving deltas:  10% (11777/117679)   Resolving deltas:  11% (12949/117679)   Resolving deltas:  12% (14159/117679)   Resolving deltas:  13% (15321/117679)   Resolving deltas:  14% (16572/117679)   Resolving deltas:  15% (17688/117679)   Resolving deltas:  16% (19200/117679)   Resolving deltas:  17% (20353/117679)   Resolving deltas:  18% (21609/117679)   Resolving deltas:  19% (22420/117679)   Resolving deltas:  20% (23540/117679)   Resolving deltas:  21% (24773/117679)   Resolving deltas:  22% (25909/117679)   Resolving deltas:  23% (27083/117679)   Resolving deltas:  24% (28315/117679)   Resolving deltas:  25% (29478/117679)   Resolving deltas:  26% (30681/117679)   Resolving deltas:  27% (31822/117679)   Resolving deltas:  28% (33106/117679)   Resolving deltas:  29% (34155/117679)   Resolving deltas:  30% (35323/117679)   Resolving deltas:  31% (36625/117679)   Resolving deltas:  32% (37669/117679)   Resolving deltas:  33% (39157/117679)   Resolving deltas:  34% (40081/117679)   Resolving deltas:  35% (41243/117679)   Resolving deltas:  36% (42385/117679)   Resolving deltas:  37% (43657/117679)   Resolving deltas:  38% (44736/117679)   Resolving deltas:  39% (45954/117679)   Resolving deltas:  40% (47523/117679)   Resolving deltas:  41% (48324/117679)   Resolving deltas:  42% (49435/117679)   Resolving deltas:  43% (50638/117679)   Resolving deltas:  44% (51784/117679)   Resolving deltas:  45% (52960/117679)   Resolving deltas:  46% (54332/117679)   Resolving deltas:  47% (55332/117679)   Resolving deltas:  48% (56514/117679)   Resolving deltas:  49% (58180/117679)   Resolving deltas:  50% (58855/117679)   Resolving deltas:  51% (60151/117679)   Resolving deltas:  52% (61222/117679)   Resolving deltas:  53% (62370/117679)   Resolving deltas:  54% (63569/117679)   Resolving deltas:  55% (64734/117679)   Resolving deltas:  56% (66356/117679)   Resolving deltas:  57% (67181/117679)   Resolving deltas:  58% (68277/117679)   Resolving deltas:  59% (69451/117679)   Resolving deltas:  60% (70627/117679)   Resolving deltas:  61% (71795/117679)   Resolving deltas:  62% (72962/117679)   Resolving deltas:  63% (74162/117679)   Resolving deltas:  64% (75335/117679)   Resolving deltas:  65% (76499/117679)   Resolving deltas:  66% (77670/117679)   Resolving deltas:  67% (78856/117679)   Resolving deltas:  68% (80069/117679)   Resolving deltas:  69% (81215/117679)   Resolving deltas:  70% (82510/117679)   Resolving deltas:  71% (83640/117679)   Resolving deltas:  72% (84881/117679)   Resolving deltas:  73% (85908/117679)   Resolving deltas:  74% (87218/117679)   Resolving deltas:  75% (88265/117679)   Resolving deltas:  76% (89502/117679)   Resolving deltas:  77% (90685/117679)   Resolving deltas:  78% (91790/117679)   Resolving deltas:  79% (92972/117679)   Resolving deltas:  79% (93900/117679)   Resolving deltas:  80% (94158/117679)   Resolving deltas:  81% (95336/117679)   Resolving deltas:  82% (96497/117679)   Resolving deltas:  83% (98057/117679)   Resolving deltas:  84% (98851/117679)   Resolving deltas:  85% (100118/117679)   Resolving deltas:  86% (101251/117679)   Resolving deltas:  87% (102384/117679)   Resolving deltas:  88% (103578/117679)   Resolving deltas:  89% (104740/117679)   Resolving deltas:  90% (105914/117679)   Resolving deltas:  91% (107148/117679)   Resolving deltas:  92% (108419/117679)   Resolving deltas:  93% (109507/117679)   Resolving deltas:  94% (110687/117679)   Resolving deltas:  95% (111796/117679)   Resolving deltas:  96% (112983/117679)   Resolving deltas:  97% (114174/117679)   Resolving deltas:  98% (115431/117679)   Resolving deltas:  99% (116503/117679)   Resolving deltas: 100% (117679/117679)   Resolving deltas: 100% (117679/117679), completed with 696 local objects.
+remote: Counting objects:   0% (1/1762)   [K
+remote: Counting objects:   1% (18/1762)   [K
+remote: Counting objects:   2% (36/1762)   [K
+remote: Counting objects:   3% (53/1762)   [K
+remote: Counting objects:   4% (71/1762)   [K
+remote: Counting objects:   5% (89/1762)   [K
+remote: Counting objects:   6% (106/1762)   [K
+remote: Counting objects:   7% (124/1762)   [K
+remote: Counting objects:   8% (141/1762)   [K
+remote: Counting objects:   9% (159/1762)   [K
+remote: Counting objects:  10% (177/1762)   [K
+remote: Counting objects:  11% (194/1762)   [K
+remote: Counting objects:  12% (212/1762)   [K
+remote: Counting objects:  13% (230/1762)   [K
+remote: Counting objects:  14% (247/1762)   [K
+remote: Counting objects:  15% (265/1762)   [K
+remote: Counting objects:  16% (282/1762)   [K
+remote: Counting objects:  17% (300/1762)   [K
+remote: Counting objects:  18% (318/1762)   [K
+remote: Counting objects:  19% (335/1762)   [K
+remote: Counting objects:  20% (353/1762)   [K
+remote: Counting objects:  21% (371/1762)   [K
+remote: Counting objects:  22% (388/1762)   [K
+remote: Counting objects:  23% (406/1762)   [K
+remote: Counting objects:  24% (423/1762)   [K
+remote: Counting objects:  25% (441/1762)   [K
+remote: Counting objects:  26% (459/1762)   [K
+remote: Counting objects:  27% (476/1762)   [K
+remote: Counting objects:  28% (494/1762)   [K
+remote: Counting objects:  29% (511/1762)   [K
+remote: Counting objects:  30% (529/1762)   [K
+remote: Counting objects:  31% (547/1762)   [K
+remote: Counting objects:  32% (564/1762)   [K
+remote: Counting objects:  33% (582/1762)   [K
+remote: Counting objects:  34% (600/1762)   [K
+remote: Counting objects:  35% (617/1762)   [K
+remote: Counting objects:  36% (635/1762)   [K
+remote: Counting objects:  37% (652/1762)   [K
+remote: Counting objects:  38% (670/1762)   [K
+remote: Counting objects:  39% (688/1762)   [K
+remote: Counting objects:  40% (705/1762)   [K
+remote: Counting objects:  41% (723/1762)   [K
+remote: Counting objects:  42% (741/1762)   [K
+remote: Counting objects:  43% (758/1762)   [K
+remote: Counting objects:  44% (776/1762)   [K
+remote: Counting objects:  45% (793/1762)   [K
+remote: Counting objects:  46% (811/1762)   [K
+remote: Counting objects:  47% (829/1762)   [K
+remote: Counting objects:  48% (846/1762)   [K
+remote: Counting objects:  49% (864/1762)   [K
+remote: Counting objects:  50% (881/1762)   [K
+remote: Counting objects:  51% (899/1762)   [K
+remote: Counting objects:  52% (917/1762)   [K
+remote: Counting objects:  53% (934/1762)   [K
+remote: Counting objects:  54% (952/1762)   [K
+remote: Counting objects:  55% (970/1762)   [K
+remote: Counting objects:  56% (987/1762)   [K
+remote: Counting objects:  57% (1005/1762)   [K
+remote: Counting objects:  58% (1022/1762)   [K
+remote: Counting objects:  59% (1040/1762)   [K
+remote: Counting objects:  60% (1058/1762)   [K
+remote: Counting objects:  61% (1075/1762)   [K
+remote: Counting objects:  62% (1093/1762)   [K
+remote: Counting objects:  63% (1111/1762)   [K
+remote: Counting objects:  64% (1128/1762)   [K
+remote: Counting objects:  65% (1146/1762)   [K
+remote: Counting objects:  66% (1163/1762)   [K
+remote: Counting objects:  67% (1181/1762)   [K
+remote: Counting objects:  68% (1199/1762)   [K
+remote: Counting objects:  69% (1216/1762)   [K
+remote: Counting objects:  70% (1234/1762)   [K
+remote: Counting objects:  71% (1252/1762)   [K
+remote: Counting objects:  72% (1269/1762)   [K
+remote: Counting objects:  73% (1287/1762)   [K
+remote: Counting objects:  74% (1304/1762)   [K
+remote: Counting objects:  75% (1322/1762)   [K
+remote: Counting objects:  76% (1340/1762)   [K
+remote: Counting objects:  77% (1357/1762)   [K
+remote: Counting objects:  78% (1375/1762)   [K
+remote: Counting objects:  79% (1392/1762)   [K
+remote: Counting objects:  80% (1410/1762)   [K
+remote: Counting objects:  81% (1428/1762)   [K
+remote: Counting objects:  82% (1445/1762)   [K
+remote: Counting objects:  83% (1463/1762)   [K
+remote: Counting objects:  84% (1481/1762)   [K
+remote: Counting objects:  85% (1498/1762)   [K
+remote: Counting objects:  86% (1516/1762)   [K
+remote: Counting objects:  87% (1533/1762)   [K
+remote: Counting objects:  88% (1551/1762)   [K
+remote: Counting objects:  89% (1569/1762)   [K
+remote: Counting objects:  90% (1586/1762)   [K
+remote: Counting objects:  91% (1604/1762)   [K
+remote: Counting objects:  92% (1622/1762)   [K
+remote: Counting objects:  93% (1639/1762)   [K
+remote: Counting objects:  94% (1657/1762)   [K
+remote: Counting objects:  95% (1674/1762)   [K
+remote: Counting objects:  96% (1692/1762)   [K
+remote: Counting objects:  97% (1710/1762)   [K
+remote: Counting objects:  98% (1727/1762)   [K
+remote: Counting objects:  99% (1745/1762)   [K
+remote: Counting objects: 100% (1762/1762)   [K
+remote: Counting objects: 100% (1762/1762), done.[K
+remote: Compressing objects:   0% (1/1468)   [K
+remote: Compressing objects:   1% (15/1468)   [K
+remote: Compressing objects:   2% (30/1468)   [K
+remote: Compressing objects:   3% (45/1468)   [K
+remote: Compressing objects:   4% (59/1468)   [K
+remote: Compressing objects:   5% (74/1468)   [K
+remote: Compressing objects:   6% (89/1468)   [K
+remote: Compressing objects:   7% (103/1468)   [K
+remote: Compressing objects:   8% (118/1468)   [K
+remote: Compressing objects:   9% (133/1468)   [K
+remote: Compressing objects:  10% (147/1468)   [K
+remote: Compressing objects:  11% (162/1468)   [K
+remote: Compressing objects:  12% (177/1468)   [K
+remote: Compressing objects:  13% (191/1468)   [K
+remote: Compressing objects:  14% (206/1468)   [K
+remote: Compressing objects:  15% (221/1468)   [K
+remote: Compressing objects:  16% (235/1468)   [K
+remote: Compressing objects:  17% (250/1468)   [K
+remote: Compressing objects:  18% (265/1468)   [K
+remote: Compressing objects:  19% (279/1468)   [K
+remote: Compressing objects:  20% (294/1468)   [K
+remote: Compressing objects:  21% (309/1468)   [K
+remote: Compressing objects:  22% (323/1468)   [K
+remote: Compressing objects:  23% (338/1468)   [K
+remote: Compressing objects:  24% (353/1468)   [K
+remote: Compressing objects:  25% (367/1468)   [K
+remote: Compressing objects:  26% (382/1468)   [K
+remote: Compressing objects:  27% (397/1468)   [K
+remote: Compressing objects:  28% (412/1468)   [K
+remote: Compressing objects:  29% (426/1468)   [K
+remote: Compressing objects:  30% (441/1468)   [K
+remote: Compressing objects:  31% (456/1468)   [K
+remote: Compressing objects:  32% (470/1468)   [K
+remote: Compressing objects:  33% (485/1468)   [K
+remote: Compressing objects:  34% (500/1468)   [K
+remote: Compressing objects:  35% (514/1468)   [K
+remote: Compressing objects:  36% (529/1468)   [K
+remote: Compressing objects:  37% (544/1468)   [K
+remote: Compressing objects:  38% (558/1468)   [K
+remote: Compressing objects:  39% (573/1468)   [K
+remote: Compressing objects:  40% (588/1468)   [K
+remote: Compressing objects:  41% (602/1468)   [K
+remote: Compressing objects:  42% (617/1468)   [K
+remote: Compressing objects:  43% (632/1468)   [K
+remote: Compressing objects:  44% (646/1468)   [K
+remote: Compressing objects:  45% (661/1468)   [K
+remote: Compressing objects:  46% (676/1468)   [K
+remote: Compressing objects:  47% (690/1468)   [K
+remote: Compressing objects:  48% (705/1468)   [K
+remote: Compressing objects:  49% (720/1468)   [K
+remote: Compressing objects:  50% (734/1468)   [K
+remote: Compressing objects:  51% (749/1468)   [K
+remote: Compressing objects:  52% (764/1468)   [K
+remote: Compressing objects:  53% (779/1468)   [K
+remote: Compressing objects:  54% (793/1468)   [K
+remote: Compressing objects:  55% (808/1468)   [K
+remote: Compressing objects:  56% (823/1468)   [K
+remote: Compressing objects:  57% (837/1468)   [K
+remote: Compressing objects:  58% (852/1468)   [K
+remote: Compressing objects:  59% (867/1468)   [K
+remote: Compressing objects:  60% (881/1468)   [K
+remote: Compressing objects:  61% (896/1468)   [K
+remote: Compressing objects:  62% (911/1468)   [K
+remote: Compressing objects:  63% (925/1468)   [K
+remote: Compressing objects:  64% (940/1468)   [K
+remote: Compressing objects:  65% (955/1468)   [K
+remote: Compressing objects:  66% (969/1468)   [K
+remote: Compressing objects:  67% (984/1468)   [K
+remote: Compressing objects:  68% (999/1468)   [K
+remote: Compressing objects:  69% (1013/1468)   [K
+remote: Compressing objects:  70% (1028/1468)   [K
+remote: Compressing objects:  71% (1043/1468)   [K
+remote: Compressing objects:  72% (1057/1468)   [K
+remote: Compressing objects:  73% (1072/1468)   [K
+remote: Compressing objects:  74% (1087/1468)   [K
+remote: Compressing objects:  75% (1101/1468)   [K
+remote: Compressing objects:  76% (1116/1468)   [K
+remote: Compressing objects:  77% (1131/1468)   [K
+remote: Compressing objects:  78% (1146/1468)   [K
+remote: Compressing objects:  79% (1160/1468)   [K
+remote: Compressing objects:  80% (1175/1468)   [K
+remote: Compressing objects:  81% (1190/1468)   [K
+remote: Compressing objects:  82% (1204/1468)   [K
+remote: Compressing objects:  83% (1219/1468)   [K
+remote: Compressing objects:  84% (1234/1468)   [K
+remote: Compressing objects:  85% (1248/1468)   [K
+remote: Compressing objects:  86% (1263/1468)   [K
+remote: Compressing objects:  87% (1278/1468)   [K
+remote: Compressing objects:  88% (1292/1468)   [K
+remote: Compressing objects:  89% (1307/1468)   [K
+remote: Compressing objects:  90% (1322/1468)   [K
+remote: Compressing objects:  91% (1336/1468)   [K
+remote: Compressing objects:  92% (1351/1468)   [K
+remote: Compressing objects:  93% (1366/1468)   [K
+remote: Compressing objects:  94% (1380/1468)   [K
+remote: Compressing objects:  95% (1395/1468)   [K
+remote: Compressing objects:  96% (1410/1468)   [K
+remote: Compressing objects:  97% (1424/1468)   [K
+remote: Compressing objects:  98% (1439/1468)   [K
+remote: Compressing objects:  99% (1454/1468)   [K
+remote: Compressing objects: 100% (1468/1468)   [K
+remote: Compressing objects: 100% (1468/1468), done.[K
+Receiving objects:   0% (1/1762)   
+Receiving objects:   1% (18/1762)   
+Receiving objects:   2% (36/1762)   
+Receiving objects:   3% (53/1762)   
+Receiving objects:   4% (71/1762)   
+Receiving objects:   5% (89/1762)   
+Receiving objects:   6% (106/1762)   
+Receiving objects:   7% (124/1762)   
+Receiving objects:   8% (141/1762)   
+Receiving objects:   9% (159/1762)   
+Receiving objects:  10% (177/1762)   
+Receiving objects:  11% (194/1762)   
+Receiving objects:  12% (212/1762)   
+Receiving objects:  13% (230/1762)   
+Receiving objects:  14% (247/1762)   
+Receiving objects:  15% (265/1762)   
+Receiving objects:  16% (282/1762)   
+Receiving objects:  17% (300/1762)   
+Receiving objects:  18% (318/1762)   
+Receiving objects:  19% (335/1762)   
+Receiving objects:  20% (353/1762)   
+Receiving objects:  21% (371/1762)   
+Receiving objects:  22% (388/1762)   
+Receiving objects:  23% (406/1762)   
+Receiving objects:  24% (423/1762)   
+Receiving objects:  25% (441/1762)   
+Receiving objects:  26% (459/1762)   
+Receiving objects:  27% (476/1762)   
+Receiving objects:  28% (494/1762)   
+Receiving objects:  29% (511/1762)   
+Receiving objects:  30% (529/1762)   
+Receiving objects:  31% (547/1762)   
+Receiving objects:  32% (564/1762)   
+Receiving objects:  33% (582/1762)   
+Receiving objects:  34% (600/1762)   
+Receiving objects:  35% (617/1762)   
+Receiving objects:  36% (635/1762)   
+Receiving objects:  37% (652/1762)   
+Receiving objects:  38% (670/1762)   
+Receiving objects:  39% (688/1762)   
+Receiving objects:  40% (705/1762)   
+Receiving objects:  41% (723/1762)   
+Receiving objects:  42% (741/1762)   
+Receiving objects:  43% (758/1762)   
+Receiving objects:  44% (776/1762)   
+Receiving objects:  45% (793/1762)   
+Receiving objects:  46% (811/1762)   
+Receiving objects:  47% (829/1762)   
+Receiving objects:  48% (846/1762)   
+Receiving objects:  49% (864/1762)   
+Receiving objects:  50% (881/1762)   
+Receiving objects:  51% (899/1762)   
+Receiving objects:  52% (917/1762)   
+Receiving objects:  53% (934/1762)   
+Receiving objects:  54% (952/1762)   
+Receiving objects:  55% (970/1762)   
+Receiving objects:  56% (987/1762)   
+Receiving objects:  57% (1005/1762)   
+Receiving objects:  58% (1022/1762)   
+Receiving objects:  59% (1040/1762)   
+Receiving objects:  60% (1058/1762)   
+Receiving objects:  61% (1075/1762)   
+Receiving objects:  62% (1093/1762)   
+Receiving objects:  63% (1111/1762)   
+Receiving objects:  64% (1128/1762)   
+Receiving objects:  65% (1146/1762)   
+Receiving objects:  66% (1163/1762)   
+Receiving objects:  67% (1181/1762)   
+Receiving objects:  68% (1199/1762)   
+Receiving objects:  69% (1216/1762)   
+Receiving objects:  70% (1234/1762)   
+Receiving objects:  71% (1252/1762)   
+Receiving objects:  72% (1269/1762)   
+Receiving objects:  73% (1287/1762)   
+Receiving objects:  74% (1304/1762)   
+Receiving objects:  75% (1322/1762)   
+Receiving objects:  76% (1340/1762)   
+Receiving objects:  77% (1357/1762)   
+Receiving objects:  78% (1375/1762)   
+Receiving objects:  79% (1392/1762)   
+Receiving objects:  80% (1410/1762)   
+Receiving objects:  81% (1428/1762)   
+Receiving objects:  82% (1445/1762)   
+Receiving objects:  83% (1463/1762)   
+Receiving objects:  84% (1481/1762)   
+Receiving objects:  85% (1498/1762)   
+Receiving objects:  86% (1516/1762)   
+Receiving objects:  87% (1533/1762)   
+Receiving objects:  88% (1551/1762)   
+Receiving objects:  89% (1569/1762)   
+Receiving objects:  90% (1586/1762)   
+Receiving objects:  91% (1604/1762)   
+Receiving objects:  92% (1622/1762)   
+Receiving objects:  93% (1639/1762)   
+Receiving objects:  94% (1657/1762)   
+Receiving objects:  95% (1674/1762)   
+Receiving objects:  96% (1692/1762)   
+Receiving objects:  97% (1710/1762)   
+remote: Total 1762 (delta 420), reused 734 (delta 277), pack-reused 0[K
+Receiving objects:  98% (1727/1762)   
+Receiving objects:  99% (1745/1762)   
+Receiving objects: 100% (1762/1762)   
+Receiving objects: 100% (1762/1762), 6.56 MiB | 19.58 MiB/s, done.
+Resolving deltas:   0% (0/420)   
+Resolving deltas:   1% (5/420)   
+Resolving deltas:   2% (10/420)   
+Resolving deltas:   3% (13/420)   
+Resolving deltas:   4% (18/420)   
+Resolving deltas:   5% (21/420)   
+Resolving deltas:   7% (31/420)   
+Resolving deltas:   8% (34/420)   
+Resolving deltas:   9% (39/420)   
+Resolving deltas:  10% (42/420)   
+Resolving deltas:  11% (49/420)   
+Resolving deltas:  12% (51/420)   
+Resolving deltas:  13% (55/420)   
+Resolving deltas:  16% (69/420)   
+Resolving deltas:  17% (74/420)   
+Resolving deltas:  19% (82/420)   
+Resolving deltas:  20% (84/420)   
+Resolving deltas:  21% (90/420)   
+Resolving deltas:  22% (93/420)   
+Resolving deltas:  23% (98/420)   
+Resolving deltas:  24% (101/420)   
+Resolving deltas:  25% (106/420)   
+Resolving deltas:  26% (110/420)   
+Resolving deltas:  27% (114/420)   
+Resolving deltas:  28% (118/420)   
+Resolving deltas:  29% (122/420)   
+Resolving deltas:  30% (126/420)   
+Resolving deltas:  31% (131/420)   
+Resolving deltas:  32% (138/420)   
+Resolving deltas:  33% (139/420)   
+Resolving deltas:  34% (143/420)   
+Resolving deltas:  35% (148/420)   
+Resolving deltas:  36% (152/420)   
+Resolving deltas:  37% (156/420)   
+Resolving deltas:  38% (160/420)   
+Resolving deltas:  39% (164/420)   
+Resolving deltas:  43% (184/420)   
+Resolving deltas:  44% (187/420)   
+Resolving deltas:  45% (192/420)   
+Resolving deltas:  46% (196/420)   
+Resolving deltas:  52% (222/420)   
+Resolving deltas:  53% (224/420)   
+Resolving deltas:  54% (227/420)   
+Resolving deltas:  55% (231/420)   
+Resolving deltas:  56% (236/420)   
+Resolving deltas:  57% (240/420)   
+Resolving deltas:  59% (248/420)   
+Resolving deltas:  60% (252/420)   
+Resolving deltas:  61% (257/420)   
+Resolving deltas:  62% (261/420)   
+Resolving deltas:  63% (265/420)   
+Resolving deltas:  64% (271/420)   
+Resolving deltas:  65% (274/420)   
+Resolving deltas:  66% (278/420)   
+Resolving deltas:  67% (282/420)   
+Resolving deltas:  68% (289/420)   
+Resolving deltas:  69% (290/420)   
+Resolving deltas:  70% (297/420)   
+Resolving deltas:  71% (299/420)   
+Resolving deltas:  73% (308/420)   
+Resolving deltas:  74% (311/420)   
+Resolving deltas:  75% (315/420)   
+Resolving deltas:  76% (320/420)   
+Resolving deltas:  77% (324/420)   
+Resolving deltas:  78% (328/420)   
+Resolving deltas:  79% (333/420)   
+Resolving deltas:  80% (336/420)   
+Resolving deltas:  81% (341/420)   
+Resolving deltas:  82% (345/420)   
+Resolving deltas:  83% (349/420)   
+Resolving deltas:  84% (353/420)   
+Resolving deltas:  85% (357/420)   
+Resolving deltas:  86% (362/420)   
+Resolving deltas:  87% (366/420)   
+Resolving deltas:  88% (370/420)   
+Resolving deltas:  89% (374/420)   
+Resolving deltas:  90% (379/420)   
+Resolving deltas:  95% (400/420)   
+Resolving deltas:  96% (407/420)   
+Resolving deltas:  97% (409/420)   
+Resolving deltas:  98% (414/420)   
+Resolving deltas:  99% (417/420)   
+Resolving deltas: 100% (420/420)   
+Resolving deltas: 100% (420/420), done.
+travis_time:end:04d4e04a:start=1563862759841110444,finish=1563862762504357047,duration=2663246603
+[0K$ cd scikit-learn/scikit-learn
+travis_time:start:00248b6e
+[0K$ git fetch origin +refs/pull/14443/merge:
+remote: Enumerating objects: 148329   [K
+remote: Enumerating objects: 155472, done.[K
+remote: Counting objects:   0% (1/155471)   [K
+remote: Counting objects:   1% (1555/155471)   [K
+remote: Counting objects:   2% (3110/155471)   [K
+remote: Counting objects:   3% (4665/155471)   [K
+remote: Counting objects:   4% (6219/155471)   [K
+remote: Counting objects:   5% (7774/155471)   [K
+remote: Counting objects:   6% (9329/155471)   [K
+remote: Counting objects:   7% (10883/155471)   [K
+remote: Counting objects:   8% (12438/155471)   [K
+remote: Counting objects:   9% (13993/155471)   [K
+remote: Counting objects:  10% (15548/155471)   [K
+remote: Counting objects:  11% (17102/155471)   [K
+remote: Counting objects:  12% (18657/155471)   [K
+remote: Counting objects:  13% (20212/155471)   [K
+remote: Counting objects:  14% (21766/155471)   [K
+remote: Counting objects:  15% (23321/155471)   [K
+remote: Counting objects:  16% (24876/155471)   [K
+remote: Counting objects:  17% (26431/155471)   [K
+remote: Counting objects:  18% (27985/155471)   [K
+remote: Counting objects:  19% (29540/155471)   [K
+remote: Counting objects:  20% (31095/155471)   [K
+remote: Counting objects:  21% (32649/155471)   [K
+remote: Counting objects:  22% (34204/155471)   [K
+remote: Counting objects:  23% (35759/155471)   [K
+remote: Counting objects:  24% (37314/155471)   [K
+remote: Counting objects:  25% (38868/155471)   [K
+remote: Counting objects:  26% (40423/155471)   [K
+remote: Counting objects:  27% (41978/155471)   [K
+remote: Counting objects:  28% (43532/155471)   [K
+remote: Counting objects:  29% (45087/155471)   [K
+remote: Counting objects:  30% (46642/155471)   [K
+remote: Counting objects:  31% (48197/155471)   [K
+remote: Counting objects:  32% (49751/155471)   [K
+remote: Counting objects:  33% (51306/155471)   [K
+remote: Counting objects:  34% (52861/155471)   [K
+remote: Counting objects:  35% (54415/155471)   [K
+remote: Counting objects:  36% (55970/155471)   [K
+remote: Counting objects:  37% (57525/155471)   [K
+remote: Counting objects:  38% (59079/155471)   [K
+remote: Counting objects:  39% (60634/155471)   [K
+remote: Counting objects:  40% (62189/155471)   [K
+remote: Counting objects:  41% (63744/155471)   [K
+remote: Counting objects:  42% (65298/155471)   [K
+remote: Counting objects:  43% (66853/155471)   [K
+remote: Counting objects:  44% (68408/155471)   [K
+remote: Counting objects:  45% (69962/155471)   [K
+remote: Counting objects:  46% (71517/155471)   [K
+remote: Counting objects:  47% (73072/155471)   [K
+remote: Counting objects:  48% (74627/155471)   [K
+remote: Counting objects:  49% (76181/155471)   [K
+remote: Counting objects:  50% (77736/155471)   [K
+remote: Counting objects:  51% (79291/155471)   [K
+remote: Counting objects:  52% (80845/155471)   [K
+remote: Counting objects:  53% (82400/155471)   [K
+remote: Counting objects:  54% (83955/155471)   [K
+remote: Counting objects:  55% (85510/155471)   [K
+remote: Counting objects:  56% (87064/155471)   [K
+remote: Counting objects:  57% (88619/155471)   [K
+remote: Counting objects:  58% (90174/155471)   [K
+remote: Counting objects:  59% (91728/155471)   [K
+remote: Counting objects:  60% (93283/155471)   [K
+remote: Counting objects:  61% (94838/155471)   [K
+remote: Counting objects:  62% (96393/155471)   [K
+remote: Counting objects:  63% (97947/155471)   [K
+remote: Counting objects:  64% (99502/155471)   [K
+remote: Counting objects:  65% (101057/155471)   [K
+remote: Counting objects:  66% (102611/155471)   [K
+remote: Counting objects:  67% (104166/155471)   [K
+remote: Counting objects:  68% (105721/155471)   [K
+remote: Counting objects:  69% (107275/155471)   [K
+remote: Counting objects:  70% (108830/155471)   [K
+remote: Counting objects:  71% (110385/155471)   [K
+remote: Counting objects:  72% (111940/155471)   [K
+remote: Counting objects:  73% (113494/155471)   [K
+remote: Counting objects:  74% (115049/155471)   [K
+remote: Counting objects:  75% (116604/155471)   [K
+remote: Counting objects:  76% (118158/155471)   [K
+remote: Counting objects:  77% (119713/155471)   [K
+remote: Counting objects:  78% (121268/155471)   [K
+remote: Counting objects:  79% (122823/155471)   [K
+remote: Counting objects:  80% (124377/155471)   [K
+remote: Counting objects:  81% (125932/155471)   [K
+remote: Counting objects:  82% (127487/155471)   [K
+remote: Counting objects:  83% (129041/155471)   [K
+remote: Counting objects:  84% (130596/155471)   [K
+remote: Counting objects:  85% (132151/155471)   [K
+remote: Counting objects:  86% (133706/155471)   [K
+remote: Counting objects:  87% (135260/155471)   [K
+remote: Counting objects:  88% (136815/155471)   [K
+remote: Counting objects:  89% (138370/155471)   [K
+remote: Counting objects:  90% (139924/155471)   [K
+remote: Counting objects:  91% (141479/155471)   [K
+remote: Counting objects:  92% (143034/155471)   [K
+remote: Counting objects:  93% (144589/155471)   [K
+remote: Counting objects:  94% (146143/155471)   [K
+remote: Counting objects:  95% (147698/155471)   [K
+remote: Counting objects:  96% (149253/155471)   [K
+remote: Counting objects:  97% (150807/155471)   [K
+remote: Counting objects:  98% (152362/155471)   [K
+remote: Counting objects:  99% (153917/155471)   [K
+remote: Counting objects: 100% (155471/155471)   [K
+remote: Counting objects: 100% (155471/155471), done.[K
+remote: Compressing objects:   0% (1/37799)   [K
+remote: Compressing objects:   1% (378/37799)   [K
+remote: Compressing objects:   2% (756/37799)   [K
+remote: Compressing objects:   3% (1134/37799)   [K
+remote: Compressing objects:   4% (1512/37799)   [K
+remote: Compressing objects:   5% (1890/37799)   [K
+remote: Compressing objects:   6% (2268/37799)   [K
+remote: Compressing objects:   7% (2646/37799)   [K
+remote: Compressing objects:   8% (3024/37799)   [K
+remote: Compressing objects:   9% (3402/37799)   [K
+remote: Compressing objects:  10% (3780/37799)   [K
+remote: Compressing objects:  11% (4158/37799)   [K
+remote: Compressing objects:  12% (4536/37799)   [K
+remote: Compressing objects:  13% (4914/37799)   [K
+remote: Compressing objects:  14% (5292/37799)   [K
+remote: Compressing objects:  15% (5670/37799)   [K
+remote: Compressing objects:  16% (6048/37799)   [K
+remote: Compressing objects:  17% (6426/37799)   [K
+remote: Compressing objects:  18% (6804/37799)   [K
+remote: Compressing objects:  19% (7182/37799)   [K
+remote: Compressing objects:  20% (7560/37799)   [K
+remote: Compressing objects:  21% (7938/37799)   [K
+remote: Compressing objects:  22% (8316/37799)   [K
+remote: Compressing objects:  23% (8694/37799)   [K
+remote: Compressing objects:  24% (9072/37799)   [K
+remote: Compressing objects:  25% (9450/37799)   [K
+remote: Compressing objects:  26% (9828/37799)   [K
+remote: Compressing objects:  27% (10206/37799)   [K
+remote: Compressing objects:  28% (10584/37799)   [K
+remote: Compressing objects:  29% (10962/37799)   [K
+remote: Compressing objects:  30% (11340/37799)   [K
+remote: Compressing objects:  31% (11718/37799)   [K
+remote: Compressing objects:  32% (12096/37799)   [K
+remote: Compressing objects:  33% (12474/37799)   [K
+remote: Compressing objects:  34% (12852/37799)   [K
+remote: Compressing objects:  35% (13230/37799)   [K
+remote: Compressing objects:  36% (13608/37799)   [K
+remote: Compressing objects:  37% (13986/37799)   [K
+remote: Compressing objects:  38% (14364/37799)   [K
+remote: Compressing objects:  39% (14742/37799)   [K
+remote: Compressing objects:  40% (15120/37799)   [K
+remote: Compressing objects:  41% (15498/37799)   [K
+remote: Compressing objects:  42% (15876/37799)   [K
+remote: Compressing objects:  43% (16254/37799)   [K
+remote: Compressing objects:  44% (16632/37799)   [K
+remote: Compressing objects:  45% (17010/37799)   [K
+remote: Compressing objects:  46% (17388/37799)   [K
+remote: Compressing objects:  47% (17766/37799)   [K
+remote: Compressing objects:  48% (18144/37799)   [K
+remote: Compressing objects:  49% (18522/37799)   [K
+remote: Compressing objects:  50% (18900/37799)   [K
+remote: Compressing objects:  51% (19278/37799)   [K
+remote: Compressing objects:  52% (19656/37799)   [K
+remote: Compressing objects:  53% (20034/37799)   [K
+remote: Compressing objects:  54% (20412/37799)   [K
+remote: Compressing objects:  55% (20790/37799)   [K
+remote: Compressing objects:  56% (21168/37799)   [K
+remote: Compressing objects:  57% (21546/37799)   [K
+remote: Compressing objects:  58% (21924/37799)   [K
+remote: Compressing objects:  59% (22302/37799)   [K
+remote: Compressing objects:  60% (22680/37799)   [K
+remote: Compressing objects:  61% (23058/37799)   [K
+remote: Compressing objects:  62% (23436/37799)   [K
+remote: Compressing objects:  63% (23814/37799)   [K
+remote: Compressing objects:  64% (24192/37799)   [K
+remote: Compressing objects:  65% (24570/37799)   [K
+remote: Compressing objects:  66% (24948/37799)   [K
+remote: Compressing objects:  67% (25326/37799)   [K
+remote: Compressing objects:  68% (25704/37799)   [K
+remote: Compressing objects:  69% (26082/37799)   [K
+remote: Compressing objects:  70% (26460/37799)   [K
+remote: Compressing objects:  71% (26838/37799)   [K
+remote: Compressing objects:  72% (27216/37799)   [K
+remote: Compressing objects:  73% (27594/37799)   [K
+remote: Compressing objects:  74% (27972/37799)   [K
+remote: Compressing objects:  75% (28350/37799)   [K
+remote: Compressing objects:  76% (28728/37799)   [K
+remote: Compressing objects:  77% (29106/37799)   [K
+remote: Compressing objects:  78% (29484/37799)   [K
+remote: Compressing objects:  79% (29862/37799)   [K
+remote: Compressing objects:  80% (30240/37799)   [K
+remote: Compressing objects:  81% (30618/37799)   [K
+remote: Compressing objects:  82% (30996/37799)   [K
+remote: Compressing objects:  83% (31374/37799)   [K
+remote: Compressing objects:  84% (31752/37799)   [K
+remote: Compressing objects:  85% (32130/37799)   [K
+remote: Compressing objects:  86% (32508/37799)   [K
+remote: Compressing objects:  87% (32886/37799)   [K
+remote: Compressing objects:  88% (33264/37799)   [K
+remote: Compressing objects:  89% (33642/37799)   [K
+remote: Compressing objects:  90% (34020/37799)   [K
+remote: Compressing objects:  91% (34398/37799)   [K
+remote: Compressing objects:  92% (34776/37799)   [K
+remote: Compressing objects:  93% (35154/37799)   [K
+remote: Compressing objects:  94% (35532/37799)   [K
+remote: Compressing objects:  95% (35910/37799)   [K
+remote: Compressing objects:  96% (36288/37799)   [K
+remote: Compressing objects:  97% (36666/37799)   [K
+remote: Compressing objects:  98% (37044/37799)   [K
+remote: Compressing objects:  99% (37422/37799)   [K
+remote: Compressing objects: 100% (37799/37799)   [K
+remote: Compressing objects: 100% (37799/37799), done.[K
+Receiving objects:   0% (1/154582)   
+Receiving objects:   1% (1546/154582)   
+Receiving objects:   2% (3092/154582)   
+Receiving objects:   3% (4638/154582)   
+Receiving objects:   4% (6184/154582)   
+Receiving objects:   5% (7730/154582)   
+Receiving objects:   6% (9275/154582)   
+Receiving objects:   7% (10821/154582)   
+Receiving objects:   8% (12367/154582)   
+Receiving objects:   9% (13913/154582)   
+Receiving objects:  10% (15459/154582)   
+Receiving objects:  11% (17005/154582)   
+Receiving objects:  12% (18550/154582)   
+Receiving objects:  13% (20096/154582)   
+Receiving objects:  14% (21642/154582)   
+Receiving objects:  15% (23188/154582)   
+Receiving objects:  16% (24734/154582)   
+Receiving objects:  17% (26279/154582)   
+Receiving objects:  18% (27825/154582)   
+Receiving objects:  19% (29371/154582)   
+Receiving objects:  20% (30917/154582)   
+Receiving objects:  21% (32463/154582)   
+Receiving objects:  22% (34009/154582)   
+Receiving objects:  23% (35554/154582)   
+Receiving objects:  24% (37100/154582)   
+Receiving objects:  25% (38646/154582)   
+Receiving objects:  26% (40192/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  27% (41738/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  28% (43283/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  29% (44829/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  30% (46375/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  31% (47921/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  32% (49467/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  33% (51013/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  34% (52558/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  35% (54104/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  35% (55321/154582), 10.15 MiB | 20.30 MiB/s   
+Receiving objects:  36% (55650/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  37% (57196/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  38% (58742/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  39% (60287/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  40% (61833/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  41% (63379/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  42% (64925/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  43% (66471/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  44% (68017/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  45% (69562/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  46% (71108/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  47% (72654/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  48% (74200/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  49% (75746/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  50% (77291/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  51% (78837/154582), 25.17 MiB | 25.16 MiB/s   
+Receiving objects:  52% (80383/154582), 40.84 MiB | 27.23 MiB/s   
+Receiving objects:  52% (81895/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  53% (81929/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  54% (83475/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  55% (85021/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  56% (86566/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  57% (88112/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  58% (89658/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  59% (91204/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  60% (92750/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  61% (94296/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  62% (95841/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  63% (97387/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  64% (98933/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  65% (100479/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  66% (102025/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  67% (103570/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  68% (105116/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  69% (106662/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  70% (108208/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  71% (109754/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  72% (111300/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  73% (112845/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  74% (114391/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  75% (115937/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  76% (117483/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  77% (119029/154582), 57.18 MiB | 28.60 MiB/s   
+Receiving objects:  78% (120574/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  79% (122120/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  80% (123666/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  81% (125212/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  82% (126758/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  83% (128304/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  84% (129849/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  85% (131395/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  86% (132941/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  87% (134487/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  88% (136033/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  89% (137578/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  90% (139124/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  91% (140670/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  92% (142216/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  93% (143762/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  94% (145308/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  95% (146853/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  96% (148399/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  97% (149945/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  98% (151491/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects:  99% (153037/154582), 74.08 MiB | 29.64 MiB/s   
+remote: Total 154582 (delta 117679), reused 152911 (delta 116011), pack-reused 0[K
+Receiving objects: 100% (154582/154582), 74.08 MiB | 29.64 MiB/s   
+Receiving objects: 100% (154582/154582), 83.05 MiB | 29.75 MiB/s, done.
+Resolving deltas:   0% (0/117679)   
+Resolving deltas:   1% (1177/117679)   
+Resolving deltas:   2% (2365/117679)   
+Resolving deltas:   3% (3531/117679)   
+Resolving deltas:   4% (4710/117679)   
+Resolving deltas:   5% (5892/117679)   
+Resolving deltas:   6% (7144/117679)   
+Resolving deltas:   7% (8243/117679)   
+Resolving deltas:   8% (9464/117679)   
+Resolving deltas:   9% (10896/117679)   
+Resolving deltas:  10% (11777/117679)   
+Resolving deltas:  11% (12949/117679)   
+Resolving deltas:  12% (14159/117679)   
+Resolving deltas:  13% (15321/117679)   
+Resolving deltas:  14% (16572/117679)   
+Resolving deltas:  15% (17688/117679)   
+Resolving deltas:  16% (19200/117679)   
+Resolving deltas:  17% (20353/117679)   
+Resolving deltas:  18% (21609/117679)   
+Resolving deltas:  19% (22420/117679)   
+Resolving deltas:  20% (23540/117679)   
+Resolving deltas:  21% (24773/117679)   
+Resolving deltas:  22% (25909/117679)   
+Resolving deltas:  23% (27083/117679)   
+Resolving deltas:  24% (28315/117679)   
+Resolving deltas:  25% (29478/117679)   
+Resolving deltas:  26% (30681/117679)   
+Resolving deltas:  27% (31822/117679)   
+Resolving deltas:  28% (33106/117679)   
+Resolving deltas:  29% (34155/117679)   
+Resolving deltas:  30% (35323/117679)   
+Resolving deltas:  31% (36625/117679)   
+Resolving deltas:  32% (37669/117679)   
+Resolving deltas:  33% (39157/117679)   
+Resolving deltas:  34% (40081/117679)   
+Resolving deltas:  35% (41243/117679)   
+Resolving deltas:  36% (42385/117679)   
+Resolving deltas:  37% (43657/117679)   
+Resolving deltas:  38% (44736/117679)   
+Resolving deltas:  39% (45954/117679)   
+Resolving deltas:  40% (47523/117679)   
+Resolving deltas:  41% (48324/117679)   
+Resolving deltas:  42% (49435/117679)   
+Resolving deltas:  43% (50638/117679)   
+Resolving deltas:  44% (51784/117679)   
+Resolving deltas:  45% (52960/117679)   
+Resolving deltas:  46% (54332/117679)   
+Resolving deltas:  47% (55332/117679)   
+Resolving deltas:  48% (56514/117679)   
+Resolving deltas:  49% (58180/117679)   
+Resolving deltas:  50% (58855/117679)   
+Resolving deltas:  51% (60151/117679)   
+Resolving deltas:  52% (61222/117679)   
+Resolving deltas:  53% (62370/117679)   
+Resolving deltas:  54% (63569/117679)   
+Resolving deltas:  55% (64734/117679)   
+Resolving deltas:  56% (66356/117679)   
+Resolving deltas:  57% (67181/117679)   
+Resolving deltas:  58% (68277/117679)   
+Resolving deltas:  59% (69451/117679)   
+Resolving deltas:  60% (70627/117679)   
+Resolving deltas:  61% (71795/117679)   
+Resolving deltas:  62% (72962/117679)   
+Resolving deltas:  63% (74162/117679)   
+Resolving deltas:  64% (75335/117679)   
+Resolving deltas:  65% (76499/117679)   
+Resolving deltas:  66% (77670/117679)   
+Resolving deltas:  67% (78856/117679)   
+Resolving deltas:  68% (80069/117679)   
+Resolving deltas:  69% (81215/117679)   
+Resolving deltas:  70% (82510/117679)   
+Resolving deltas:  71% (83640/117679)   
+Resolving deltas:  72% (84881/117679)   
+Resolving deltas:  73% (85908/117679)   
+Resolving deltas:  74% (87218/117679)   
+Resolving deltas:  75% (88265/117679)   
+Resolving deltas:  76% (89502/117679)   
+Resolving deltas:  77% (90685/117679)   
+Resolving deltas:  78% (91790/117679)   
+Resolving deltas:  79% (92972/117679)   
+Resolving deltas:  79% (93900/117679)   
+Resolving deltas:  80% (94158/117679)   
+Resolving deltas:  81% (95336/117679)   
+Resolving deltas:  82% (96497/117679)   
+Resolving deltas:  83% (98057/117679)   
+Resolving deltas:  84% (98851/117679)   
+Resolving deltas:  85% (100118/117679)   
+Resolving deltas:  86% (101251/117679)   
+Resolving deltas:  87% (102384/117679)   
+Resolving deltas:  88% (103578/117679)   
+Resolving deltas:  89% (104740/117679)   
+Resolving deltas:  90% (105914/117679)   
+Resolving deltas:  91% (107148/117679)   
+Resolving deltas:  92% (108419/117679)   
+Resolving deltas:  93% (109507/117679)   
+Resolving deltas:  94% (110687/117679)   
+Resolving deltas:  95% (111796/117679)   
+Resolving deltas:  96% (112983/117679)   
+Resolving deltas:  97% (114174/117679)   
+Resolving deltas:  98% (115431/117679)   
+Resolving deltas:  99% (116503/117679)   
+Resolving deltas: 100% (117679/117679)   
+Resolving deltas: 100% (117679/117679), completed with 696 local objects.
 From https://github.com/scikit-learn/scikit-learn
  * branch                refs/pull/14443/merge -> FETCH_HEAD
-travis_time:end:00248b6e:start=1563862762508446055,finish=1563862776098810032,duration=13590363977[0K$ git checkout -qf FETCH_HEAD
-travis_fold:end:git.checkout[0K
+travis_time:end:00248b6e:start=1563862762508446055,finish=1563862776098810032,duration=13590363977
+[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout
+[0K
 
 [33;1mSetting environment variables from .travis.yml[0m
 $ export TEST_DIR=/tmp/sklearn
@@ -612,24 +1489,40 @@ $ export PYTHON_VERSION="2.7"
 $ export CYTHON_VERSION="0.23.5"
 $ export COVERAGE=true
 
-travis_time:start:05c8e132[0K$ source ~/virtualenv/python3.6/bin/activate
-travis_time:end:05c8e132:start=1563862776381645875,finish=1563862776426040525,duration=44394650[0Ktravis_fold:start:cache.1[0KSetting up build cache
+travis_time:start:05c8e132
+[0K$ source ~/virtualenv/python3.6/bin/activate
+travis_time:end:05c8e132:start=1563862776381645875,finish=1563862776426040525,duration=44394650
+[0Ktravis_fold:start:cache.1
+[0KSetting up build cache
 $ export CASHER_DIR=${TRAVIS_HOME}/.casher
-travis_time:start:00d38dcc[0K$ Installing caching utilities
-travis_time:end:00d38dcc:start=1563862780916289788,finish=1563862781090654012,duration=174364224[0Ktravis_time:start:162d3e0c[0Ktravis_time:end:162d3e0c:start=1563862781095850445,finish=1563862781098841805,duration=2991360[0Ktravis_time:start:351e2de8[0Kattempting to download cache archive[0m
+travis_time:start:00d38dcc
+[0K$ Installing caching utilities
+travis_time:end:00d38dcc:start=1563862780916289788,finish=1563862781090654012,duration=174364224
+[0Ktravis_time:start:162d3e0c
+[0Ktravis_time:end:162d3e0c:start=1563862781095850445,finish=1563862781098841805,duration=2991360
+[0Ktravis_time:start:351e2de8
+[0Kattempting to download cache archive[0m
 [32;1mfetching PR.14443/cache-linux-trusty-1509ff738231c6497afa89d7c87c29cd358e9a57ea907ba2ecae102489b400c4--python-3.6.tgz[0m
 [32;1mfound cache[0m
-travis_time:end:351e2de8:start=1563862781102610072,finish=1563862783071174752,duration=1968564680[0Ktravis_time:start:01e77db4[0Ktravis_time:end:01e77db4:start=1563862783075437838,finish=1563862783078289370,duration=2851532[0Ktravis_time:start:0d4b774e[0Kadding /home/travis/.cache/pip to cache[0m
+travis_time:end:351e2de8:start=1563862781102610072,finish=1563862783071174752,duration=1968564680
+[0Ktravis_time:start:01e77db4
+[0Ktravis_time:end:01e77db4:start=1563862783075437838,finish=1563862783078289370,duration=2851532
+[0Ktravis_time:start:0d4b774e
+[0Kadding /home/travis/.cache/pip to cache[0m
 adding /home/travis/.ccache to cache[0m
-travis_time:end:0d4b774e:start=1563862783081982896,finish=1563862784844852505,duration=1762869609[0Ktravis_fold:end:cache.1[0K
+travis_time:end:0d4b774e:start=1563862783081982896,finish=1563862784844852505,duration=1762869609
+[0Ktravis_fold:end:cache.1
+[0K
 $ python --version
 Python 3.6.3
 $ pip --version
 pip 9.0.1 from /home/travis/virtualenv/python3.6.3/lib/python3.6/site-packages (python 3.6)
-travis_fold:start:install[0Ktravis_time:start:0ea01e1a[0K$ source build_tools/travis/install.sh
+travis_fold:start:install
+[0Ktravis_time:start:0ea01e1a
+[0K$ source build_tools/travis/install.sh
 List files from cached directories
 pip:
-http  wheels
+httpwheels
 Set cache size limit to 100.0 Mbytes
 cache directory                     /home/travis/.ccache
 cache hit (direct)                    66
@@ -641,7 +1534,7 @@ cache size                          38.1 Mbytes
 max cache size                     100.0 Mbytes
 New python executable in /home/travis/build/scikit-learn/scikit-learn/testvenv/bin/python
 Installing setuptools, pip, wheel...done.
-[33mDEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support[0m
+[33mDEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 wonsqt be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support[0m
 Collecting pytest
 /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/pip/_vendor/urllib3/util/ssl_.py:365: SNIMissingWarning: An HTTPS request has been made, but the SNI (Server Name Indication) extension to TLS is not available on this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
   SNIMissingWarning
@@ -688,9 +1581,9 @@ Collecting pyparsing>=2.0.2 (from packaging->pytest)
 Installing collected packages: funcsigs, configparser, zipp, contextlib2, six, scandir, pathlib2, importlib-metadata, pluggy, attrs, py, more-itertools, wcwidth, pyparsing, packaging, atomicwrites, pytest, coverage, pytest-cov, cython
   Found existing installation: six 1.5.2
     Not uninstalling six at /usr/lib/python2.7/dist-packages, outside environment /home/travis/build/scikit-learn/scikit-learn/testvenv
-    Can't uninstall 'six'. No files were found to uninstall.
+    Cansqt uninstall sqsixsq. No files were found to uninstall.
 Successfully installed atomicwrites-1.3.0 attrs-19.1.0 configparser-3.7.4 contextlib2-0.5.5 coverage-4.5.3 cython-0.23.5 funcsigs-1.0.2 importlib-metadata-0.18 more-itertools-5.0.0 packaging-19.0 pathlib2-2.3.4 pluggy-0.12.0 py-1.8.0 pyparsing-2.4.1 pytest-4.6.4 pytest-cov-2.7.1 scandir-1.10.0 six-1.12.0 wcwidth-0.1.7 zipp-0.5.2
-[33mDEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support[0m
+[33mDEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 wonsqt be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support[0m
 Requirement already satisfied: coverage in ./testvenv/lib/python2.7/site-packages (4.5.3)
 Collecting codecov
 /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/pip/_vendor/urllib3/util/ssl_.py:365: SNIMissingWarning: An HTTPS request has been made, but the SNI (Server Name Indication) extension to TLS is not available on this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
@@ -711,13 +1604,13 @@ Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 (from requests>=2.7.9->codeco
 Installing collected packages: idna, chardet, certifi, urllib3, requests, codecov
   Found existing installation: chardet 2.0.1
     Not uninstalling chardet at /usr/lib/python2.7/dist-packages, outside environment /home/travis/build/scikit-learn/scikit-learn/testvenv
-    Can't uninstall 'chardet'. No files were found to uninstall.
+    Cansqt uninstall sqchardetsq. No files were found to uninstall.
   Found existing installation: urllib3 1.7.1
     Not uninstalling urllib3 at /usr/lib/python2.7/dist-packages, outside environment /home/travis/build/scikit-learn/scikit-learn/testvenv
-    Can't uninstall 'urllib3'. No files were found to uninstall.
+    Cansqt uninstall squrllib3sq. No files were found to uninstall.
   Found existing installation: requests 2.2.1
     Not uninstalling requests at /usr/lib/python2.7/dist-packages, outside environment /home/travis/build/scikit-learn/scikit-learn/testvenv
-    Can't uninstall 'requests'. No files were found to uninstall.
+    Cansqt uninstall sqrequestssq. No files were found to uninstall.
 Successfully installed certifi-2019.6.16 chardet-3.0.4 codecov-2.0.15 idna-2.8 requests-2.22.0 urllib3-1.25.3
 Python 2.7.6
 numpy 1.8.2
@@ -725,20 +1618,20 @@ scipy 0.13.3
 Partial import of sklearn during the build process.
 [39mblas_opt_info:[0m
 [39mblas_mkl_info:[0m
-[39m  libraries mkl,vml,guide not found in ['/home/travis/build/scikit-learn/scikit-learn/testvenv/lib', '/usr/local/lib', '/usr/lib', '/usr/lib/x86_64-linux-gnu'][0m
+[39m  libraries mkl,vml,guide not found in [sq/home/travis/build/scikit-learn/scikit-learn/testvenv/libsq, sq/usr/local/libsq, sq/usr/libsq, sq/usr/lib/x86_64-linux-gnusq][0m
 [39m  NOT AVAILABLE[0m
 [39m[0m
 [39mopenblas_info:[0m
-[39m  libraries  not found in ['/home/travis/build/scikit-learn/scikit-learn/testvenv/lib', '/usr/local/lib', '/usr/lib', '/usr/lib/x86_64-linux-gnu'][0m
+[39m  libraries  not found in [sq/home/travis/build/scikit-learn/scikit-learn/testvenv/libsq, sq/usr/local/libsq, sq/usr/libsq, sq/usr/lib/x86_64-linux-gnusq][0m
 [39m  NOT AVAILABLE[0m
 [39m[0m
 [39matlas_blas_threads_info:[0m
 [39mSetting PTATLAS=ATLAS[0m
-[39m  libraries ptf77blas,ptcblas,atlas not found in ['/home/travis/build/scikit-learn/scikit-learn/testvenv/lib', '/usr/local/lib', '/usr/lib/atlas-base', '/usr/lib', '/usr/lib/x86_64-linux-gnu'][0m
+[39m  libraries ptf77blas,ptcblas,atlas not found in [sq/home/travis/build/scikit-learn/scikit-learn/testvenv/libsq, sq/usr/local/libsq, sq/usr/lib/atlas-basesq, sq/usr/libsq, sq/usr/lib/x86_64-linux-gnusq][0m
 [39m  NOT AVAILABLE[0m
 [39m[0m
 [39matlas_blas_info:[0m
-[39m  libraries f77blas,cblas,atlas not found in ['/home/travis/build/scikit-learn/scikit-learn/testvenv/lib', '/usr/local/lib', '/usr/lib/atlas-base', '/usr/lib', '/usr/lib/x86_64-linux-gnu'][0m
+[39m  libraries f77blas,cblas,atlas not found in [sq/home/travis/build/scikit-learn/scikit-learn/testvenv/libsq, sq/usr/local/libsq, sq/usr/lib/atlas-basesq, sq/usr/libsq, sq/usr/lib/x86_64-linux-gnusq][0m
 [39m  NOT AVAILABLE[0m
 [39m[0m
 /usr/lib/python2.7/dist-packages/numpy/distutils/system_info.py:1521: UserWarning: 
@@ -746,17 +1639,17 @@ Partial import of sklearn during the build process.
     Directories to search for the libraries can be specified in the
     numpy/distutils/site.cfg file (section [atlas]) or by setting
     the ATLAS environment variable.
-  warnings.warn(AtlasNotFoundError.__doc__)
+warnings.warn(AtlasNotFoundError.__doc__)
 [39mblas_info:[0m
 [39m  FOUND:[0m
-[39m    libraries = ['blas'][0m
-[39m    library_dirs = ['/usr/lib'][0m
+[39m    libraries = [sqblassq][0m
+[39m    library_dirs = [sq/usr/libsq][0m
 [39m    language = f77[0m
 [39m[0m
 [39m  FOUND:[0m
-[39m    libraries = ['blas'][0m
-[39m    library_dirs = ['/usr/lib'][0m
-[39m    define_macros = [('NO_ATLAS_INFO', 1)][0m
+[39m    libraries = [sqblassq][0m
+[39m    library_dirs = [sq/usr/libsq][0m
+[39m    define_macros = [(sqNO_ATLAS_INFOsq, 1)][0m
 [39m    language = f77[0m
 [39m[0m
 sklearn/setup.py:73: UserWarning: 
@@ -764,8 +1657,8 @@ sklearn/setup.py:73: UserWarning:
     Directories to search for the libraries can be specified in the
     numpy/distutils/site.cfg file (section [blas]) or by setting
     the BLAS environment variable.
-  warnings.warn(BlasNotFoundError.__doc__)
-missing cimport in module 'sklearn.neighbors': sklearn/manifold/_barnes_hut_tsne.pyx
+warnings.warn(BlasNotFoundError.__doc__)
+missing cimport in module sqsklearn.neighborssq: sklearn/manifold/_barnes_hut_tsne.pyx
 Compiling sklearn/__check_build/_check_build.pyx because it changed.
 Compiling sklearn/cluster/_dbscan_inner.pyx because it changed.
 Compiling sklearn/cluster/_hierarchical.pyx because it changed.
@@ -900,14 +1793,14 @@ Compiling sklearn/utils/_logistic_sigmoid.pyx because it changed.
 [39mwriting scikit_learn.egg-info/PKG-INFO[0m
 [39mwriting top-level names to scikit_learn.egg-info/top_level.txt[0m
 [39mwriting dependency_links to scikit_learn.egg-info/dependency_links.txt[0m
-[39mwriting manifest file 'scikit_learn.egg-info/SOURCES.txt'[0m
-[39mreading manifest file 'scikit_learn.egg-info/SOURCES.txt'[0m
-[39mreading manifest template 'MANIFEST.in'[0m
-[39mwriting manifest file 'scikit_learn.egg-info/SOURCES.txt'[0m
+[39mwriting manifest file sqscikit_learn.egg-info/SOURCES.txtsq[0m
+[39mreading manifest file sqscikit_learn.egg-info/SOURCES.txtsq[0m
+[39mreading manifest template sqMANIFEST.insq[0m
+[39mwriting manifest file sqscikit_learn.egg-info/SOURCES.txtsq[0m
 [39mrunning build_ext[0m
 [39mcustomize UnixCCompiler[0m
 [39mcustomize UnixCCompiler using build_clib[0m
-[39mbuilding 'libsvm-skl' library[0m
+[39mbuilding sqlibsvm-sklsq library[0m
 [39mcompiling C++ sources[0m
 [39mC compiler: /usr/lib/ccache/g++ -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -fPIC
 [0m
@@ -917,16 +1810,16 @@ Compiling sklearn/utils/_logistic_sigmoid.pyx because it changed.
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/svm[0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/svm/src[0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/svm/src/libsvm[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -csq[0m
 [39mg++: sklearn/svm/src/libsvm/libsvm_template.cpp[0m
 [39mar: adding 1 object files to build/temp.linux-x86_64-2.7/liblibsvm-skl.a[0m
-[39mbuilding 'cblas' library[0m
+[39mbuilding sqcblassq library[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/src[0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/src/cblas[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -csq[0m
 [39mgcc: sklearn/src/cblas/cblas_dnrm2.c[0m
 [39mgcc: sklearn/src/cblas/cblas_sgemv.c[0m
 sklearn/src/cblas/cblas_sgemv.c: In function ‘cblas_sgemv’:
@@ -1096,7 +1989,7 @@ sklearn/src/cblas/atlas_misc.h:409:14: warning: ‘ATL_Align2Ptr’ defined but 
 [39mar: adding 40 object files to build/temp.linux-x86_64-2.7/libcblas.a[0m
 [39mcustomize UnixCCompiler[0m
 [39mcustomize UnixCCompiler using build_ext[0m
-[31mresetting extension 'sklearn.svm.liblinear' language from 'f77' to 'c++'.[0m
+[31mresetting extension sqsklearn.svm.liblinearsq language from sqf77sq to sqc++sq.[0m
 [39mcustomize UnixCCompiler[0m
 [39mcustomize UnixCCompiler using build_ext[0m
 [39mcustomize Gnu95FCompiler[0m
@@ -1126,23 +2019,23 @@ sklearn/src/cblas/atlas_misc.h:409:14: warning: ‘ATL_Align2Ptr’ defined but 
 [31mCould not locate executable g95[0m
 [39mcustomize PathScaleFCompiler[0m
 [31mCould not locate executable pathf95[0m
-[31mdon't know how to compile Fortran code on platform 'posix'[0m
+[31mdonsqt know how to compile Fortran code on platform sqposixsq[0m
 [31mwarning: build_ext: f77_compiler=None is not available.
 [0m
-[39mbuilding 'sklearn.__check_build._check_build' extension[0m
+[39mbuilding sqsklearn.__check_build._check_buildsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/__check_build[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/__check_build/_check_build.c[0m
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/__check_build/_check_build.o -Lbuild/temp.linux-x86_64-2.7 -o sklearn/__check_build/_check_build.so[0m
-[39mbuilding 'sklearn.cluster._dbscan_inner' extension[0m
+[39mbuilding sqsklearn.cluster._dbscan_innersq extension[0m
 [39mcompiling C++ sources[0m
 [39mC compiler: /usr/lib/ccache/g++ -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/cluster[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mg++: sklearn/cluster/_dbscan_inner.cpp[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1163,11 +2056,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39m/usr/lib/ccache/g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/cluster/_dbscan_inner.o -Lbuild/temp.linux-x86_64-2.7 -o sklearn/cluster/_dbscan_inner.so[0m
-[39mbuilding 'sklearn.cluster._hierarchical' extension[0m
+[39mbuilding sqsklearn.cluster._hierarchicalsq extension[0m
 [39mcompiling C++ sources[0m
 [39mC compiler: /usr/lib/ccache/g++ -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mg++: sklearn/cluster/_hierarchical.cpp[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1182,11 +2075,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39m/usr/lib/ccache/g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/cluster/_hierarchical.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/cluster/_hierarchical.so[0m
-[39mbuilding 'sklearn.cluster._k_means_elkan' extension[0m
+[39mbuilding sqsklearn.cluster._k_means_elkansq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/cluster/_k_means_elkan.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1207,13 +2100,13 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/cluster/_k_means_elkan.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/cluster/_k_means_elkan.so[0m
-[39mbuilding 'sklearn.cluster._k_means' extension[0m
-[31mwarning: build_ext: extension 'sklearn.cluster._k_means' has Fortran libraries but no Fortran linker found, using default linker
+[39mbuilding sqsklearn.cluster._k_meanssq extension[0m
+[31mwarning: build_ext: extension sqsklearn.cluster._k_meanssq has Fortran libraries but no Fortran linker found, using default linker
 [0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/cluster/_k_means.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1245,12 +2138,12 @@ sklearn/cluster/_k_means.c: At top level:
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/cluster/_k_means.o -Lbuild/temp.linux-x86_64-2.7 -lcblas -lm -o sklearn/cluster/_k_means.so[0m
-[39mbuilding 'sklearn.datasets._svmlight_format' extension[0m
+[39mbuilding sqsklearn.datasets._svmlight_formatsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/datasets[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/datasets/_svmlight_format.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1265,12 +2158,12 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/datasets/_svmlight_format.o -Lbuild/temp.linux-x86_64-2.7 -o sklearn/datasets/_svmlight_format.so[0m
-[39mbuilding 'sklearn.decomposition._online_lda' extension[0m
+[39mbuilding sqsklearn.decomposition._online_ldasq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/decomposition[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/decomposition/_online_lda.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1285,19 +2178,19 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/decomposition/_online_lda.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/decomposition/_online_lda.so[0m
-[39mbuilding 'sklearn.decomposition.cdnmf_fast' extension[0m
+[39mbuilding sqsklearn.decomposition.cdnmf_fastsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/decomposition/cdnmf_fast.c[0m
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/decomposition/cdnmf_fast.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/decomposition/cdnmf_fast.so[0m
-[39mbuilding 'sklearn.ensemble._gradient_boosting' extension[0m
+[39mbuilding sqsklearn.ensemble._gradient_boostingsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/ensemble[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/ensemble/_gradient_boosting.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1312,12 +2205,12 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/ensemble/_gradient_boosting.o -Lbuild/temp.linux-x86_64-2.7 -o sklearn/ensemble/_gradient_boosting.so[0m
-[39mbuilding 'sklearn.feature_extraction._hashing' extension[0m
+[39mbuilding sqsklearn.feature_extraction._hashingsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/feature_extraction[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/feature_extraction/_hashing.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1332,13 +2225,13 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/feature_extraction/_hashing.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/feature_extraction/_hashing.so[0m
-[39mbuilding 'sklearn.manifold._utils' extension[0m
+[39mbuilding sqsklearn.manifold._utilssq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/manifold[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
-extra options: '-O3'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq
+extra options: sq-O3sq[0m
 [39mgcc: sklearn/manifold/_utils.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1359,14 +2252,14 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/manifold/_utils.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/manifold/_utils.so[0m
-[39mbuilding 'sklearn.manifold._barnes_hut_tsne' extension[0m
-[31mwarning: build_ext: extension 'sklearn.manifold._barnes_hut_tsne' has Fortran libraries but no Fortran linker found, using default linker
+[39mbuilding sqsklearn.manifold._barnes_hut_tsnesq extension[0m
+[31mwarning: build_ext: extension sqsklearn.manifold._barnes_hut_tsnesq has Fortran libraries but no Fortran linker found, using default linker
 [0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
-extra options: '-O4'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq
+extra options: sq-O4sq[0m
 [39mgcc: sklearn/manifold/_barnes_hut_tsne.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1426,13 +2319,13 @@ sklearn/manifold/_barnes_hut_tsne.c:2908:9: note: ‘__pyx_v_neg_force[0]’ was
    float __pyx_v_neg_force[3];
          ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/manifold/_barnes_hut_tsne.o -Lbuild/temp.linux-x86_64-2.7 -lcblas -o sklearn/manifold/_barnes_hut_tsne.so[0m
-[39mbuilding 'sklearn.metrics.cluster.expected_mutual_info_fast' extension[0m
+[39mbuilding sqsklearn.metrics.cluster.expected_mutual_info_fastsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/metrics[0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/metrics/cluster[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/metrics/cluster/expected_mutual_info_fast.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1447,13 +2340,13 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/metrics/cluster/expected_mutual_info_fast.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/metrics/cluster/expected_mutual_info_fast.so[0m
-[39mbuilding 'sklearn.metrics.pairwise_fast' extension[0m
-[31mwarning: build_ext: extension 'sklearn.metrics.pairwise_fast' has Fortran libraries but no Fortran linker found, using default linker
+[39mbuilding sqsklearn.metrics.pairwise_fastsq extension[0m
+[31mwarning: build_ext: extension sqsklearn.metrics.pairwise_fastsq has Fortran libraries but no Fortran linker found, using default linker
 [0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/metrics/pairwise_fast.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1468,12 +2361,12 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/metrics/pairwise_fast.o -Lbuild/temp.linux-x86_64-2.7 -lcblas -lm -o sklearn/metrics/pairwise_fast.so[0m
-[39mbuilding 'sklearn.neighbors.ball_tree' extension[0m
+[39mbuilding sqsklearn.neighbors.ball_treesq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/neighbors[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/neighbors/ball_tree.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1502,11 +2395,11 @@ sklearn/neighbors/ball_tree.c:18980:50: note: ‘__pyx_v_sample_weight’ was de
    __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_sample_weight;
                                                   ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/neighbors/ball_tree.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/neighbors/ball_tree.so[0m
-[39mbuilding 'sklearn.neighbors.kd_tree' extension[0m
+[39mbuilding sqsklearn.neighbors.kd_treesq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/neighbors/kd_tree.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1535,11 +2428,11 @@ sklearn/neighbors/kd_tree.c:18951:50: note: ‘__pyx_v_sample_weight’ was decl
    __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_sample_weight;
                                                   ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/neighbors/kd_tree.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/neighbors/kd_tree.so[0m
-[39mbuilding 'sklearn.neighbors.dist_metrics' extension[0m
+[39mbuilding sqsklearn.neighbors.dist_metricssq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include/numpy -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include/numpy -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/neighbors/dist_metrics.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1583,11 +2476,11 @@ sklearn/neighbors/dist_metrics.c: At top level:
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/neighbors/dist_metrics.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/neighbors/dist_metrics.so[0m
-[39mbuilding 'sklearn.neighbors.typedefs' extension[0m
+[39mbuilding sqsklearn.neighbors.typedefssq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/neighbors/typedefs.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1608,11 +2501,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/neighbors/typedefs.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/neighbors/typedefs.so[0m
-[39mbuilding 'sklearn.neighbors.quad_tree' extension[0m
+[39mbuilding sqsklearn.neighbors.quad_treesq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/neighbors/quad_tree.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1643,13 +2536,13 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/neighbors/quad_tree.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/neighbors/quad_tree.so[0m
-[39mbuilding 'sklearn.tree._tree' extension[0m
+[39mbuilding sqsklearn.tree._treesq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/tree[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
-extra options: '-O3'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq
+extra options: sq-O3sq[0m
 [39mgcc: sklearn/tree/_tree.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1670,12 +2563,12 @@ sklearn/tree/_tree.c: At top level:
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/tree/_tree.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/tree/_tree.so[0m
-[39mbuilding 'sklearn.tree._splitter' extension[0m
+[39mbuilding sqsklearn.tree._splittersq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
-extra options: '-O3'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq
+extra options: sq-O3sq[0m
 [39mgcc: sklearn/tree/_splitter.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1690,12 +2583,12 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/tree/_splitter.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/tree/_splitter.so[0m
-[39mbuilding 'sklearn.tree._criterion' extension[0m
+[39mbuilding sqsklearn.tree._criterionsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
-extra options: '-O3'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq
+extra options: sq-O3sq[0m
 [39mgcc: sklearn/tree/_criterion.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1710,12 +2603,12 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/tree/_criterion.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/tree/_criterion.so[0m
-[39mbuilding 'sklearn.tree._utils' extension[0m
+[39mbuilding sqsklearn.tree._utilssq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
-extra options: '-O3'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq
+extra options: sq-O3sq[0m
 [39mgcc: sklearn/tree/_utils.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1751,11 +2644,11 @@ sklearn/tree/_utils.c:8141:43: note: ‘__pyx_v_original_median’ was declared 
    __pyx_t_7sklearn_4tree_6_utils_DOUBLE_t __pyx_v_original_median;
                                            ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/tree/_utils.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/tree/_utils.so[0m
-[39mbuilding 'sklearn.svm.libsvm' extension[0m
+[39mbuilding sqsklearn.svm.libsvmsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -Isklearn/svm/src/libsvm -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -Isklearn/svm/src/libsvm -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/svm/libsvm.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1770,11 +2663,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39m/usr/lib/ccache/g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/svm/libsvm.o -Lbuild/temp.linux-x86_64-2.7 -llibsvm-skl -o sklearn/svm/libsvm.so[0m
-[39mbuilding 'sklearn.svm.liblinear' extension[0m
+[39mbuilding sqsklearn.svm.liblinearsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/svm/liblinear.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1802,7 +2695,7 @@ sklearn/svm/liblinear.c: At top level:
 [39mC compiler: /usr/lib/ccache/g++ -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/svm/src/liblinear[0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mg++: sklearn/svm/src/liblinear/linear.cpp[0m
 sklearn/svm/src/liblinear/linear.cpp: In function ‘model* train(const problem*, const parameter*)’:
 sklearn/svm/src/liblinear/linear.cpp:2370:6: warning: unused variable ‘n_iter’ [-Wunused-variable]
@@ -1810,11 +2703,11 @@ sklearn/svm/src/liblinear/linear.cpp:2370:6: warning: unused variable ‘n_iter�
       ^
 [39mg++: sklearn/svm/src/liblinear/tron.cpp[0m
 [39m/usr/lib/ccache/g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/svm/liblinear.o build/temp.linux-x86_64-2.7/sklearn/svm/src/liblinear/tron.o build/temp.linux-x86_64-2.7/sklearn/svm/src/liblinear/linear.o -Lbuild/temp.linux-x86_64-2.7 -lcblas -lm -o sklearn/svm/liblinear.so[0m
-[39mbuilding 'sklearn.svm.libsvm_sparse' extension[0m
+[39mbuilding sqsklearn.svm.libsvm_sparsesq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -Isklearn/svm/src/libsvm -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -Isklearn/svm/src/libsvm -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/svm/libsvm_sparse.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1829,11 +2722,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39m/usr/lib/ccache/g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/svm/libsvm_sparse.o -Lbuild/temp.linux-x86_64-2.7 -llibsvm-skl -o sklearn/svm/libsvm_sparse.so[0m
-[39mbuilding 'sklearn._isotonic' extension[0m
+[39mbuilding sqsklearn._isotonicsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/_isotonic.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1854,14 +2747,14 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/_isotonic.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/_isotonic.so[0m
-[39mbuilding 'sklearn.linear_model.cd_fast' extension[0m
-[31mwarning: build_ext: extension 'sklearn.linear_model.cd_fast' has Fortran libraries but no Fortran linker found, using default linker
+[39mbuilding sqsklearn.linear_model.cd_fastsq extension[0m
+[31mwarning: build_ext: extension sqsklearn.linear_model.cd_fastsq has Fortran libraries but no Fortran linker found, using default linker
 [0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/linear_model[0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/linear_model/cd_fast.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -1981,13 +2874,13 @@ sklearn/linear_model/cd_fast.c: At top level:
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/linear_model/cd_fast.o -Lbuild/temp.linux-x86_64-2.7 -lcblas -lm -o sklearn/linear_model/cd_fast.so[0m
-[39mbuilding 'sklearn.linear_model.sgd_fast' extension[0m
-[31mwarning: build_ext: extension 'sklearn.linear_model.sgd_fast' has Fortran libraries but no Fortran linker found, using default linker
+[39mbuilding sqsklearn.linear_model.sgd_fastsq extension[0m
+[31mwarning: build_ext: extension sqsklearn.linear_model.sgd_fastsq has Fortran libraries but no Fortran linker found, using default linker
 [0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/linear_model/sgd_fast.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2002,11 +2895,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/linear_model/sgd_fast.o -Lbuild/temp.linux-x86_64-2.7 -lcblas -lm -o sklearn/linear_model/sgd_fast.so[0m
-[39mbuilding 'sklearn.linear_model.sag_fast' extension[0m
+[39mbuilding sqsklearn.linear_model.sag_fastsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/linear_model/sag_fast.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2034,12 +2927,12 @@ sklearn/linear_model/sag_fast.c:5207:10: note: ‘__pyx_v_cum_sum_prox’ was de
    double __pyx_v_cum_sum_prox;
           ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/linear_model/sag_fast.o -Lbuild/temp.linux-x86_64-2.7 -o sklearn/linear_model/sag_fast.so[0m
-[39mbuilding 'sklearn.utils.sparsefuncs_fast' extension[0m
+[39mbuilding sqsklearn.utils.sparsefuncs_fastsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/utils[0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/sparsefuncs_fast.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2054,13 +2947,13 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/sparsefuncs_fast.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/utils/sparsefuncs_fast.so[0m
-[39mbuilding 'sklearn.utils.arrayfuncs' extension[0m
-[31mwarning: build_ext: extension 'sklearn.utils.arrayfuncs' has Fortran libraries but no Fortran linker found, using default linker
+[39mbuilding sqsklearn.utils.arrayfuncssq extension[0m
+[31mwarning: build_ext: extension sqsklearn.utils.arrayfuncssq has Fortran libraries but no Fortran linker found, using default linker
 [0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/arrayfuncs.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2075,11 +2968,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/arrayfuncs.o -Lbuild/temp.linux-x86_64-2.7 -lcblas -lm -o sklearn/utils/arrayfuncs.so[0m
-[39mbuilding 'sklearn.utils.murmurhash' extension[0m
+[39mbuilding sqsklearn.utils.murmurhashsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-Isklearn/utils/src -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-Isklearn/utils/src -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/murmurhash.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2097,22 +2990,22 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
 [39mC compiler: /usr/lib/ccache/g++ -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -fPIC
 [0m
 [39mcreating build/temp.linux-x86_64-2.7/sklearn/utils/src[0m
-[39mcompile options: '-Isklearn/utils/src -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-Isklearn/utils/src -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mg++: sklearn/utils/src/MurmurHash3.cpp[0m
 [39m/usr/lib/ccache/g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/murmurhash.o build/temp.linux-x86_64-2.7/sklearn/utils/src/MurmurHash3.o -Lbuild/temp.linux-x86_64-2.7 -o sklearn/utils/murmurhash.so[0m
-[39mbuilding 'sklearn.utils.lgamma' extension[0m
+[39mbuilding sqsklearn.utils.lgammasq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-Isklearn/utils/src -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-Isklearn/utils/src -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/lgamma.c[0m
 [39mgcc: sklearn/utils/src/gamma.c[0m
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/lgamma.o build/temp.linux-x86_64-2.7/sklearn/utils/src/gamma.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/utils/lgamma.so[0m
-[39mbuilding 'sklearn.utils.graph_shortest_path' extension[0m
+[39mbuilding sqsklearn.utils.graph_shortest_pathsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/graph_shortest_path.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2127,11 +3020,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/graph_shortest_path.o -Lbuild/temp.linux-x86_64-2.7 -o sklearn/utils/graph_shortest_path.so[0m
-[39mbuilding 'sklearn.utils.fast_dict' extension[0m
+[39mbuilding sqsklearn.utils.fast_dictsq extension[0m
 [39mcompiling C++ sources[0m
 [39mC compiler: /usr/lib/ccache/g++ -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mg++: sklearn/utils/fast_dict.cpp[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2154,11 +3047,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39m/usr/lib/ccache/g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/fast_dict.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/utils/fast_dict.so[0m
-[39mbuilding 'sklearn.utils.seq_dataset' extension[0m
+[39mbuilding sqsklearn.utils.seq_datasetsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/seq_dataset.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2173,13 +3066,13 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/seq_dataset.o -Lbuild/temp.linux-x86_64-2.7 -o sklearn/utils/seq_dataset.so[0m
-[39mbuilding 'sklearn.utils.weight_vector' extension[0m
-[31mwarning: build_ext: extension 'sklearn.utils.weight_vector' has Fortran libraries but no Fortran linker found, using default linker
+[39mbuilding sqsklearn.utils.weight_vectorsq extension[0m
+[31mwarning: build_ext: extension sqsklearn.utils.weight_vectorsq has Fortran libraries but no Fortran linker found, using default linker
 [0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-DNO_ATLAS_INFO=1 -Isklearn/src/cblas -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/weight_vector.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2194,11 +3087,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/weight_vector.o -Lbuild/temp.linux-x86_64-2.7 -lcblas -lm -o sklearn/utils/weight_vector.so[0m
-[39mbuilding 'sklearn.utils._random' extension[0m
+[39mbuilding sqsklearn.utils._randomsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/_random.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2213,11 +3106,11 @@ In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
  _import_umath(void)
  ^
 [39mx86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/sklearn/utils/_random.o -Lbuild/temp.linux-x86_64-2.7 -lm -o sklearn/utils/_random.so[0m
-[39mbuilding 'sklearn.utils._logistic_sigmoid' extension[0m
+[39mbuilding sqsklearn.utils._logistic_sigmoidsq extension[0m
 [39mcompiling C sources[0m
 [39mC compiler: /usr/lib/ccache/gcc -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
 [0m
-[39mcompile options: '-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'[0m
+[39mcompile options: sq-I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -csq[0m
 [39mgcc: sklearn/utils/_logistic_sigmoid.c[0m
 In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
                  from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
@@ -2262,7 +3155,10 @@ called for link                       28
 files in cache                       173
 cache size                          32.9 Mbytes
 max cache size                     100.0 Mbytes
-travis_time:end:0ea01e1a:start=1563862785836496911,finish=1563862917407382482,duration=131570885571[0Ktravis_fold:end:install[0Ktravis_time:start:23f650b6[0K$ bash build_tools/travis/test_script.sh
+travis_time:end:0ea01e1a:start=1563862785836496911,finish=1563862917407382482,duration=131570885571
+[0Ktravis_fold:end:install
+[0Ktravis_time:start:23f650b6
+[0K$ bash build_tools/travis/test_script.sh
 Python 2.7.6
 numpy 1.8.2
 scipy 0.13.3
@@ -2272,7 +3168,28 @@ scipy 0.13.3
 platform linux2 -- Python 2.7.6, pytest-4.6.4, py-1.8.0, pluggy-0.12.0
 rootdir: /tmp/sklearn, inifile: setup.cfg
 plugins: cov-2.7.1
-[1mcollecting ... [0m[1mcollecting 0 items                                                             [0m[1mcollecting 23 items                                                            [0m[1mcollecting 251 items                                                           [0m[1mcollecting 406 items                                                           [0m[1mcollecting 767 items                                                           [0m[1mcollecting 1103 items                                                          [0m[1mcollecting 1212 items                                                          [0m[1mcollecting 1759 items                                                          [0m[1mcollecting 2011 items                                                          [0m[1mcollecting 2350 items                                                          [0m[1mcollecting 2569 items                                                          [0m[1mcollecting 3278 items                                                          [0m[1mcollecting 3459 items                                                          [0m[1mcollecting 4061 items                                                          [0m[1mcollecting 4153 items                                                          [0m[1mcollecting 4488 items                                                          [0m[1mcollecting 9609 items                                                          [0m[1mcollecting 9907 items                                                          [0m[1mcollecting 10204 items                                                         [0m[1mcollecting 10396 items                                                         [0m[1mcollected 10452 items                                                          [0m
+[1mcollecting ... [0m[1m
+collecting 0 items                                                             [0m[1m
+collecting 23 items                                                            [0m[1m
+collecting 251 items                                                           [0m[1m
+collecting 406 items                                                           [0m[1m
+collecting 767 items                                                           [0m[1m
+collecting 1103 items                                                          [0m[1m
+collecting 1212 items                                                          [0m[1m
+collecting 1759 items                                                          [0m[1m
+collecting 2011 items                                                          [0m[1m
+collecting 2350 items                                                          [0m[1m
+collecting 2569 items                                                          [0m[1m
+collecting 3278 items                                                          [0m[1m
+collecting 3459 items                                                          [0m[1m
+collecting 4061 items                                                          [0m[1m
+collecting 4153 items                                                          [0m[1m
+collecting 4488 items                                                          [0m[1m
+collecting 9609 items                                                          [0m[1m
+collecting 9907 items                                                          [0m[1m
+collecting 10204 items                                                         [0m[1m
+collecting 10396 items                                                         [0m[1m
+collected 10452 items                                                          [0m
 
 _config.py [33ms[0m[36m                                                             [  0%][0m
 discriminant_analysis.py [33ms[0m[33ms[0m[36m                                              [  0%][0m
@@ -2674,22 +3591,22 @@ utils/tests/test_validation.py [32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0
 
 [1m    def test_unsorted_indices():[0m
 [1m        # test that the result with sorted and unsorted indices in csr is the same[0m
-[1m        # we use a subset of digits as iris, blobs or make_classification didn't[0m
+[1m        # we use a subset of digits as iris, blobs or make_classification didnsqt[0m
 [1m        # show the problem[0m
 [1m        digits = load_digits()[0m
 [1m        X, y = digits.data[:50], digits.target[:50][0m
 [1m        X_test = sparse.csr_matrix(digits.data[50:100])[0m
 [1m    [0m
 [1m        X_sparse = sparse.csr_matrix(X)[0m
-[1m        coef_dense = svm.SVC(kernel='linear', probability=True,[0m
+[1m        coef_dense = svm.SVC(kernel=sqlinearsq, probability=True,[0m
 [1m                             random_state=0).fit(X, y).coef_[0m
-[1m        sparse_svc = svm.SVC(kernel='linear', probability=True,[0m
+[1m        sparse_svc = svm.SVC(kernel=sqlinearsq, probability=True,[0m
 [1m                             random_state=0).fit(X_sparse, y)[0m
 [1m        coef_sorted = sparse_svc.coef_[0m
 [1m        # make sure dense and sparse SVM give the same result[0m
 [1m        assert_array_almost_equal(coef_dense, coef_sorted.toarray())[0m
 [1m    [0m
-[1m        # reverse each row's indices[0m
+[1m        # reverse each rowsqs indices[0m
 [1m        def scramble_indices(X):[0m
 [1m            new_data = [][0m
 [1m            new_indices = [][0m
@@ -2705,17 +3622,17 @@ utils/tests/test_validation.py [32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0
 X          = array([[  0.,   0.,   5., ...,   0.,   0.,   0.],
        [  0.,   0.,   0., ..... 2., ...,   6.,   0.,   0.],
        [  0.,   0.,   1., ...,   8.,   0.,   0.]])
-X_sparse   = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-	with 1628 stored elements in Compressed Sparse Row format>
-X_test     = <50x64 sparse matrix of type '<type 'numpy.float64'>'
-	with 1583 stored elements in Compressed Sparse Row format>
+X_sparse   = <50x64 sparse matrix of type xxx!xxx
+with 1628 stored elements in Compressed Sparse Row format>
+X_test     = <50x64 sparse matrix of type xxx!xxx
+with 1583 stored elements in Compressed Sparse Row format>
 coef_dense = array([[ 0.        ,  0.        ,  0.00134814, ..., -0.002488  ,
          0.  ...-0.00067068, -0.0021453 , ..., -0.00229777,
         -0.00393698, -0.00026964]])
-coef_sorted = <45x64 sparse matrix of type '<type 'numpy.float64'>'
-	with 2045 stored elements in Compressed Sparse Row format>
-digits     = {'images': array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
-        [  0.,  ...ication\n    Algorithm. NIPS. 2000.", 'target': array([0, 1, 2, ..., 8, 9, 8])}
+coef_sorted = <45x64 sparse matrix of type xxx!xxx
+with 2045 stored elements in Compressed Sparse Row format>
+digits     = {sqimagessq: array([[[  0.,   0.,   5., ...,   1.,   0.,   0.],
+        [  0.,  ...ication\n    Algorithm. NIPS. 2000.", sqtargetsq: array([0, 1, 2, ..., 8, 9, 8])}
 scramble_indices = <function scramble_indices at 0x7f716f4711b8>
 sparse_svc = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
   decision_function_s..., probability=True, random_state=0,
@@ -2735,11 +3652,11 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 dtype = None, a = [10.0, 13.0, 6.0, 12.0, 10.0, 5.0, ...], default = None
 
 [1m    def getdtype(dtype, a=None, default=None):[0m
-[1m        """Function used to simplify argument processing.  If 'dtype' is not[0m
+[1m        """Function used to simplify argument processing.  If sqdtypesq is not[0m
 [1m        specified (is None), returns a.dtype; otherwise returns a np.dtype[0m
-[1m        object created from the specified dtype argument.  If 'dtype' and 'a'[0m
-[1m        are both None, construct a data type out of the 'default' parameter.[0m
-[1m        Furthermore, 'dtype' must be in 'allowed' set.[0m
+[1m        object created from the specified dtype argument.  If sqdtypesq and sqasq[0m
+[1m        are both None, construct a data type out of the sqdefaultsq parameter.[0m
+[1m        Furthermore, sqdtypesq must be in sqallowedsq set.[0m
 [1m        """[0m
 [1m        #TODO is this really what we want?[0m
 [1m        canCast = True[0m
@@ -2767,8 +3684,8 @@ args = (), kwargs = {}
 [1m    @wraps(fn)[0m
 [1m    def wrapper(*args, **kwargs):[0m
 [1m        clean_warning_registry()[0m
-[1m        with warnings.catch_warnings():[0m
-[1m            warnings.simplefilter("ignore", self.category)[0m
+[1m      with warnings.catch_warnings():[0m
+[1m          warnings.simplefilter("ignore", self.category)[0m
 [1m>           return fn(*args, **kwargs)[0m
 [1m[31mE           TypeError: test_show_versions_with_blas() takes exactly 1 argument (0 given)[0m
 
@@ -3272,7 +4189,7 @@ TOTAL                                                                           
 SKIPPED [7] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/metrics/cluster/supervised.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/tree/export.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: numpydoc is required to test the docstrings
-SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/tests/test_impute.py:302: could not import 'pandas': No module named pandas
+SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/tests/test_impute.py:302: could not import sqpandassq: No module named pandas
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: California housing dataset can not be loaded.
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/discriminant_analysis.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/decomposition/kernel_pca.py: doctests are only run for numpy >= 1.14 and python >= 3
@@ -3291,9 +4208,9 @@ SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/pyth
 SKIPPED [3] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/random_projection.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/_discretization.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/neural_network/rbm.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [9] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:832: could not import 'pandas': No module named pandas
+SKIPPED [9] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:832: could not import sqpandassq: No module named pandas
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/compose/_column_transformer.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:1059: could not import 'pandas': No module named pandas
+SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:1059: could not import sqpandassq: No module named pandas
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/decomposition/fastica_.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_data.py:939: RobustScaler cannot center sparse matrix
 SKIPPED [15] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/model_selection/_split.py: doctests are only run for numpy >= 1.14 and python >= 3
@@ -3305,7 +4222,7 @@ SKIPPED [6] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/metrics/re
 SKIPPED [7] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/datasets/base.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/covariance/shrunk_covariance_.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [4] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/kernel_approximation.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_function_transformer.py:206: could not import 'pandas': No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_function_transformer.py:206: could not import sqpandassq: No module named pandas
 SKIPPED [6] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/metrics/ranking.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: Covertype dataset can not be loaded.
 SKIPPED [4] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/linear_model/ridge.py: doctests are only run for numpy >= 1.14 and python >= 3
@@ -3317,13 +4234,13 @@ SKIPPED [4] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/naive_baye
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/gaussian_process/gpc.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: kddcup99 dataset can not be loaded.
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: Sum is as unstable as cumsum for numpy < 1.9
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:134: could not import 'pandas': No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:134: could not import sqpandassq: No module named pandas
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/cluster/affinity_propagation_.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [3] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: Skipping check_estimators_data_not_an_array for cross decomposition module as estimators are not deterministic.
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/decomposition/truncated_svd.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/ensemble/partial_dependence.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/ensemble/voting_classifier.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:265: could not import 'pandas': No module named pandas
+SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:265: could not import sqpandassq: No module named pandas
 SKIPPED [9] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/linear_model/coordinate_descent.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/linear_model/base.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [3] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/model_selection/_search.py: doctests are only run for numpy >= 1.14 and python >= 3
@@ -3333,11 +4250,11 @@ SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/manifold/t
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/utils/random.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/exceptions.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [4] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/neighbors/base.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [4] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_data.py:732: 'with_mean=True' cannot be used with sparse matrix.
+SKIPPED [4] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_data.py:732: sqwith_mean=Truesq cannot be used with sparse matrix.
 SKIPPED [3] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/linear_model/tests/test_sgd.py:1524: this test uses scipy.random, that was introduced in version  0.17. This skip condition can be dropped as soon as we drop support for scipy versions older than 0.17
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:1022: could not import 'pandas': No module named pandas
-SKIPPED [3] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_encoders.py:323: could not import 'pandas': No module named pandas
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_encoders.py:504: could not import 'pandas': No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:1022: could not import sqpandassq: No module named pandas
+SKIPPED [3] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_encoders.py:323: could not import sqpandassq: No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_encoders.py:504: could not import sqpandassq: No module named pandas
 SKIPPED [3] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/semi_supervised/label_propagation.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: This test is failing on the buildbot, but cannot reproduce. Temporarily disabling it until it can be reproduced and  fixed.
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/linear_model/bayes.py: doctests are only run for numpy >= 1.14 and python >= 3
@@ -3361,7 +4278,7 @@ SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/cross_deco
 SKIPPED [6] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/svm/classes.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/linear_model/perceptron.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/cluster/k_means_.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/tests/test_impute.py:415: could not import 'pandas': No module named pandas
+SKIPPED [2] /home/travis/build/scikit-learn/scikit-learn/sklearn/tests/test_impute.py:415: could not import sqpandassq: No module named pandas
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/tree/tree.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/feature_extraction/hashing.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/feature_extraction/dict_vectorizer.py: doctests are only run for numpy >= 1.14 and python >= 3
@@ -3375,7 +4292,7 @@ SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/cluster/hi
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/linear_model/ransac.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/cluster/mean_shift_.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [6] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/feature_selection/univariate_selection.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/utils/tests/test_validation.py:713: could not import 'pandas': No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/utils/tests/test_validation.py:713: could not import sqpandassq: No module named pandas
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/decomposition/sparse_pca.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/utils/deprecation.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [3] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/feature_extraction/text.py: doctests are only run for numpy >= 1.14 and python >= 3
@@ -3385,10 +4302,10 @@ SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/feature_ex
 SKIPPED [4] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/model_selection/_validation.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/covariance/empirical_covariance_.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/manifold/isomap.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:472: could not import 'pandas': No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:472: could not import sqpandassq: No module named pandas
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/neighbors/unsupervised.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/neighbors/regression.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:558: could not import 'pandas': No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/compose/tests/test_column_transformer.py:558: could not import sqpandassq: No module named pandas
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: Download RCV1 dataset to run this test.
 SKIPPED [2] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/cluster/bicluster.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: transform of SparsePCA is not invariant when applied to a subset.
@@ -3397,7 +4314,7 @@ SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/decomposit
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/kernel_ridge.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/cluster/birch.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [3] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: Matplotlib not available.
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/utils/tests/test_validation.py:699: could not import 'pandas': No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/utils/tests/test_validation.py:699: could not import sqpandassq: No module named pandas
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/decomposition/factor_analysis.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [4] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/label.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/_config.py: doctests are only run for numpy >= 1.14 and python >= 3
@@ -3405,7 +4322,7 @@ SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/utils/test
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: score_samples of BernoulliRBM is not invariant when applied to a subset.
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/compose/_target.py: doctests are only run for numpy >= 1.14 and python >= 3
 SKIPPED [13] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/data.py: doctests are only run for numpy >= 1.14 and python >= 3
-SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_encoders.py:672: could not import 'pandas': No module named pandas
+SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/sklearn/preprocessing/tests/test_encoders.py:672: could not import sqpandassq: No module named pandas
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: pyamg not available.
 SKIPPED [1] /home/travis/build/scikit-learn/scikit-learn/testvenv/local/lib/python2.7/site-packages/_pytest/nose.py:32: numpydoc is required to test the docstrings, as well as python version >= 3.5
 SKIPPED [1] ../../home/travis/build/scikit-learn/scikit-learn/sklearn/decomposition/pca.py: doctests are only run for numpy >= 1.14 and python >= 3
