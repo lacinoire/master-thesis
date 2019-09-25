@@ -2,6 +2,12 @@
 
 # Carolin Master Thesis Work Log
 
+## 24.9.19
+
+- listen to talk about automatic refactorings and unit testability
+- finish labeling & fixing all the examplesets
+- trial presentation Taico
+
 ## 23.9.19
 
 - labeled keywords & categories for 9 more languages
