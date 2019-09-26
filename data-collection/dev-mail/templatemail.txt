@@ -1,0 +1,29 @@
+From: Carolin Brandt <c.e.brandt@tudelft.nl>
+To: <%= email %>
+Subject: Is this why build <%= build_num %> for <%= repo_name %> failed?
+
+Hey <%= dev_name %>!
+
+You authored commit <%= commit_sha %> on the <%= commit_date %>, which lead to the failed build <%= build_num %> [<a href="https://travis-ci.org/<%= repo_owner %>/<%= repo_name %>/builds/<%= build_id %>">Link to the build in Travis CI.</a>]
+
+We are a team of researchers from the Software Engineering Research Group of the Technical University of Delft, Netherlands and we are studying different tools that extract the reason why a build failed from a Travis CI build log. 
+
+We believe this is the reason why it failed (extracted from <a href="https://travis-ci.org/<%= repository_owner %>/<%= repository_name %>/jobs/<%= job_id %>">the full Travis log</a>):
+<pre>
+<code>
+<%=  extraction %>
+</code>
+</pre>
+
+Please help us by saying whether we were right!
+
+<a href="https://www.surveygizmo.com/s3/5234816/Build-Failure-Reason-Validation?buildid=<%= build_id %>">Correct!</a>
+(This links to a tiny thank you page in order to record your answer :) )
+<a href="https://www.surveygizmo.com/s3/5234816/Build-Failure-Reason-Validation?buildid=<%= build_id %>">Not quite...</a> 
+(This links to a survey to record your answer, and if you want you can improve our work by telling us what would have been correct :D )
+
+Thank you a lot for sharing your expertise with us!
+
+Carolin Brandt
+
+PS. This is the only mail you will ever receive from us on this regard.

@@ -29,7 +29,7 @@ class TravisRequester
   include HTTParty
   base_uri 'https://api.travis-ci.org/'
   format :json
-  headers 'User-Agent' => 'bpe-buildlogs',
+  headers 'User-Agent' => 'pbe-buildlogs',
           'Travis-API-Version' => '3',
           'Authorization' => "token #{Config.config['auth']['travis_token']}"
 
@@ -77,6 +77,24 @@ class TravisRequester
 
     puts "found #{build_count} logs"
     categorized_builds
+  end
+
+  def self.get_build_for_id(build_id)
+    get("/build/#{build_id}")
+  end
+
+  # user that commited the commit which triggered the build
+  def self.get_commiter_for_build(build_id)
+    build = get_build_for_id(build_id)
+    if build.nil? || build['created_by'].nil?
+      return nil
+    end
+    user_id = build['created_by']['id']
+    user = get("/user/#{user_id}?include=user.emails")
+    if user.nil?
+      return nil
+    end
+    user
   end
 end
 
