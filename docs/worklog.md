@@ -2,6 +2,37 @@
 
 # Carolin Master Thesis Work Log
 
+## 24.9.19
+
+- listen to talk about automatic refactorings and unit testability
+- finish labeling & fixing all the examplesets
+- trial presentation Taico
+
+## 23.9.19
+
+- labeled keywords & categories for 9 more languages
+- fix whitespace in labels for various languages
+- trial presentation Taico
+
+## 20.9.19
+
+- did presentation on retreat & discussed about it with Georgios and Andy
+
+## 17.9.19
+
+- insert skeleton code for keyword & category sampling
+- sample for 6 languages, needed various whitespace fixes as well
+- integrate keywords & categories in r exampleset parsing
+- fix save path for evaluation results
+- start on keyword evaluation code
+- update presentation slides with Research Questions & practice presentation
+
+## 16.9.19
+
+- write example output & context presentation script
+
+## more undocumented september days
+
 ## 6.9.19
 
 - mounting folders in docker to write out results
