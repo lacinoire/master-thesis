@@ -20,6 +20,7 @@ COPY tool tool
 
 RUN find /r-extractions/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/Documents/Delft/master-thesis"|main_path <<- ""|g' {} \; &&\
     find /evaluation/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/Documents/Delft/master-thesis"|main_path <<- ""|g' {} \; &&\
+    find /evaluation/. -type f -exec sed -i -e 's|setwd(paste0(main_path, "/evaluation/results/", technique))|setwd(paste0(main_path, "/master-thesis/evaluation/results/", technique))|g' {} \; &&\
     /bin/bash -l -c "Rscript r-extractions/install_packages.R"
 
 RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|ir|g' {} \;

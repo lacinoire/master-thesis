@@ -79,6 +79,27 @@ calculate_accuracy <- function(data) {
   return(data)
 }
 
+save_evaluation_result <- function(result, program_name, technique, selection, learning_step_count, test_count) {
+  result <- calculate_accuracy(result)
+  plot_data <-
+    result[c("ExampleCount",
+             "Accuracy",
+             "LearningDuration",
+             "ApplicationDuration")]
+  setwd(paste0(main_path, "/evaluation/results/", technique))
+  results_file_name <- evaluation_identification(technique, gsub("/", "@", program_name), selection, learning_step_count, test_count)
+  # ggsave(paste0(results_file_name, ".svg"), p)
+
+  # TODO handle keywords andd categories somehow
+  write.csv(
+    transform(result,
+    LearningDuration = format(LearningDuration, "%M.%OS3"),
+    ApplicationDuration = format(ApplicationDuration, "%M.%OS3")
+    ), file = paste0(results_file_name, ".csv"))
+
+  return(result)
+}
+
 plot_evaluation_result <- function(result, program_name, technique, selection, learning_step_count, test_count) {
   result <- calculate_accuracy(result)
   plot_data <-
@@ -90,7 +111,7 @@ plot_evaluation_result <- function(result, program_name, technique, selection, l
   
   # learning_time_num <- as.numeric(plot_data$LearningDuration)
   # labels <- pretty(plot_data$LearningDuration, n = nrow(plot_data))
-  #plot(plot_data)
+  plot(plot_data)
   title <- paste(program_name, selection, "Example Selection using", technique, sep = " ")
   p <-
     ggplot(data = plot_data,
@@ -122,14 +143,14 @@ plot_evaluation_result <- function(result, program_name, technique, selection, l
   # )
   # scale_x_datetime(date_labels = "%M min")
   
-  # quartz()
-  # plot(p)
-  # message("-------- press return to close plot --------")
-  # invisible(readLines("stdin", n = 1))
+  quartz()
+  plot(p)
+  message("-------- press return to close plot --------")
+  invisible(readLines("stdin", n = 1))
 
-  setwd(paste(main_path, paste0("/evaluation/results/", technique), sep = ""))
+  setwd(paste0(main_path, "/evaluation/results/", technique))
   results_file_name <- evaluation_identification(technique, gsub("/", "@", program_name), selection, learning_step_count, test_count)
-  ggsave(paste0(results_file_name, ".svg"), p)
+  # ggsave(paste0(results_file_name, ".svg"), p)
 
   write.csv(
     transform(result,

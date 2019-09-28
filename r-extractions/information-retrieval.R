@@ -26,52 +26,6 @@ run_analysis <- function(program, file) {
   return(results[1, "TestOutput"])
 }
 
-run_evaluation <-
-  function(program,
-           selection,
-           include_inputs,
-           test_count,
-           learning_step_count,
-           verbose) {
-    ## load example set
-    examples <- get_exampleset(program)
-    
-    if (selection == "manual") {
-      # do nothing with parsed examples
-    } else if (selection == "random") {
-      examples <- examples[sample(nrow(examples)),]
-    } else if (selection == "chronological") {
-      examples <-
-        examples[order(as.integer(gsub(".*/(.*).log", "\\1", examples[, "input_path"]))), ]
-    } else {
-      print("selection has to be either 'manual', 'random' or 'chronological'")
-    }
-    
-    if (verbose) {
-      print(examples)
-    }
-    
-    results <- empty_results_data_frame()
-    
-    for (training_step in 1:learning_step_count) {
-      ## select on which examples to train / test
-      train_examples <- examples[c(1:training_step), ]
-      test_examples <-
-        examples[c(training_step:training_step + test_count), ]
-      
-      step_results <-
-        run_learning_step(train_examples, test_examples)
-      
-      step_results[1, "ExampleCount"] <- training_step
-      step_results[1, "DesiredTestOutput"] <-
-        test_examples[1, "output"]
-      
-      results <- rbind(results, step_results)
-    }
-    
-    results <- plot_evaluation_result(results, program, "ir", selection, learning_step_count, test_count)
-  }
-
 run_learning_step <- function(train_examples, test_examples) {
   
   start_time_learning <- Sys.time()
@@ -187,7 +141,9 @@ run_ir_extraction <- function() {
                      include_inputs = opt_get("include-inputs", n = 0),
                      test_count = as.integer(opt_get("test-count")),
                      learning_step_count = as.integer(opt_get("learning-step-count")),
-                     verbose = verbose)
+                     verbose = verbose,
+                     step_method = run_learning_step,
+                     technique = "ir")
 
     } else if (verb == "analyze") {
       cat(run_analysis(program = program, file = opt_get("file")))

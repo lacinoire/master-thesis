@@ -165,6 +165,8 @@ empty_results_data_frame <- function() {
       Successful = logical(),
       LearningDuration = as.POSIXct(character()),
       ApplicationDuration = as.POSIXct(character()),
+      SearchKeywords = character(),
+      Categories = character(),
       stringsAsFactors = FALSE
     )
   )
@@ -185,3 +187,52 @@ evaluation_identification <-
            learning_step_count) {
   return(paste(program, technique, selection, test_count, learning_step_count, sep = "-"))
 }
+
+## run an evaluation, does example selection, iteration over examples
+run_evaluation <-
+  function(program,
+           selection,
+           include_inputs,
+           test_count,
+           learning_step_count,
+           verbose,
+           step_method,
+           technique) {
+    ## load example set
+    examples <- get_exampleset(program)
+    
+    if (selection == "manual") {
+      # do nothing with parsed examples
+    } else if (selection == "random") {
+      examples <- examples[sample(nrow(examples)),]
+    } else if (selection == "chronological") {
+      examples <-
+        examples[order(as.integer(gsub(".*/(.*).log", "\\1", examples[, "input_path"]))), ]
+    } else {
+      print("selection has to be either 'manual', 'random' or 'chronological'")
+    }
+    
+    if (verbose) {
+      print(examples)
+    }
+    
+    results <- empty_results_data_frame()
+    
+    for (training_step in 1:learning_step_count) {
+      ## select on which examples to train / test
+      train_examples <- examples[c(1:training_step), ]
+      test_examples <-
+        examples[c(training_step:training_step + test_count), ]
+      
+      step_results <-
+        step_method(train_examples, test_examples)
+      
+      step_results[1, "ExampleCount"] <- training_step
+      step_results[1, "DesiredTestOutput"] <-
+        test_examples[1, "output"]
+      
+      results <- rbind(results, step_results)
+    }
+    
+    results <- save_evaluation_result(results, program, technique, selection, learning_step_count, test_count)
+  }

@@ -25,7 +25,9 @@ get_exampleset <- function(program) {
     data.frame(
       input_path = character(),
       output = character(),
-      stringsAsFactors = FALSE
+      stringsAsFactors = FALSE,
+      keywords = character(),
+      category = integer(),
     )
   exampleset <-
     xml[["doc"]]$children$AnalysisProgramOfRegionAnalysisSessionString[["LearningData"]][["Examples"]]
@@ -38,6 +40,8 @@ get_exampleset <- function(program) {
         data.frame(
           input_path = xmlValue(example[["InputPath"]][[1]]),
           output = output,
+          keywords = xmlValue(example[["Keywords"]][[1]]),
+          category = xmlValue(example[["Category"]][[1]]),
           stringsAsFactors = FALSE
         )
       )
