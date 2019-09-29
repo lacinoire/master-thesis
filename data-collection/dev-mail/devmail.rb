@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'net/smtp'
 require 'erb'
 require 'ostruct'
+require 'pp'
 
 # fills the csv row with information about the labeled extraction data
 def fill_extraction_data(row)
@@ -15,7 +16,8 @@ def fill_extraction_data(row)
   input_path = xml.at("//AnalysisProgramOfRegionAnalysisSessionString/LearningData/Examples/ExampleDataOfString[#{log_index}]/InputPath")
   File.open("../tool/samples/#{row['language']}/#{row['repo_slug']}/failed/#{row['build_id']}.log") do |logfile|
     job_id = logfile.read.scan(/^Job id: (.*)$/i)
-    if job_id.nil
+    if job_id.nil? || job_id[0].nil?
+      pp job_id
       row['job_id'] = 'job_id_not_found'
     else
       row['job_id'] = job_id[0][0].to_i

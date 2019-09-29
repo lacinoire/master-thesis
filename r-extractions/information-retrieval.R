@@ -26,7 +26,7 @@ run_analysis <- function(program, file) {
   return(results[1, "TestOutput"])
 }
 
-run_learning_step <- function(train_examples, test_examples) {
+run_learning_step <- function(train_examples, test_examples, step_results) {
   
   start_time_learning <- Sys.time()
   
@@ -86,7 +86,6 @@ run_learning_step <- function(train_examples, test_examples) {
   dtm_train_tfidf = fit_transform(dtm_train, tfidf)
   
   end_time_learning <- Sys.time()
-  step_results <- empty_results_data_frame()
   step_results[1, "LearningDuration"] = sys_timing_to_time(start_time_learning, end_time_learning)
   
 

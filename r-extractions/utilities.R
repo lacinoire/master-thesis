@@ -166,6 +166,7 @@ empty_results_data_frame <- function() {
       LearningDuration = as.POSIXct(character()),
       ApplicationDuration = as.POSIXct(character()),
       SearchKeywords = character(),
+      AllKeywords = character(),
       Categories = character(),
       stringsAsFactors = FALSE
     )
@@ -213,7 +214,7 @@ run_evaluation <-
     }
     
     if (verbose) {
-      print(examples)
+      # print(examples$input_path)
     }
     
     results <- empty_results_data_frame()
@@ -224,12 +225,14 @@ run_evaluation <-
       test_examples <-
         examples[c(training_step:training_step + test_count), ]
       
-      step_results <-
-        step_method(train_examples, test_examples)
-      
+      step_results <- empty_results_data_frame()
       step_results[1, "ExampleCount"] <- training_step
       step_results[1, "DesiredTestOutput"] <-
         test_examples[1, "output"]
+      step_results[1, "AllKeywords"] <- get_keywords_chain(train_examples)
+      step_results[1, "Categories"] <- get_categories_chain(train_examples)
+      
+      step_method(train_examples, test_examples, step_results)
       
       results <- rbind(results, step_results)
     }

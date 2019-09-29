@@ -5,6 +5,7 @@
 suppressPackageStartupMessages({
   library(optigrab)
   library(stringi)
+  library(plyr)
 })
 
 main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
@@ -13,6 +14,7 @@ sample_path <<-
 
 ## load other modules
 source(paste(main_path, "/r-extractions/utilities.R", sep = ""))
+source(paste(main_path, "/r-extractions/example-set.R", sep = ""))
 
 run_analysis <- function(file, keywords) {
   log <- read_build_log_from_file(file, sample_path)
@@ -22,12 +24,21 @@ run_analysis <- function(file, keywords) {
   for (i in 1:length(keywords)) {
     filtered_lines <- filtered_lines | str_detect(lines, fixed(keywords[i]))
   }
+  # TODO context
   return(join_extracted_lines(lines[filtered_lines]))
 }
 
-run_keyword_search_step <- function(train_examples, test_examples) {
+run_keyword_search_step <- function(train_examples, test_examples, step_results) {
   # TODO somehow consolidate keywords
   # search for them in text and extract stuff around it
+  print(step_results[1, "AllKeywords"])
+  keywords_chain = strsplit(step_results[1, "AllKeywords"], ", ", fixed=TRUE)
+  print(keywords_chain)
+  kwdf = data.frame(words = keywords_chain)
+  print(kwdf)
+  print(count(kwdf))
+  print(step_results)
+  step_results
 }
 
 run_keyword_search_extraction <- function() {
@@ -45,8 +56,8 @@ run_keyword_search_extraction <- function() {
                      include_inputs = opt_get("include-inputs", n = 0),
                      test_count = as.integer(opt_get("test-count")),
                      learning_step_count = as.integer(opt_get("learning-step-count")),
-                     verbose = verbose,
-                     step_method = run_keyword_search_extraction,
+                     verbose = opt_get("verbose", n = 0),
+                     step_method = run_keyword_search_step,
                      technique = "keyword")
   }
 }
