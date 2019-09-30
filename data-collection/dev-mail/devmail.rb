@@ -98,11 +98,12 @@ def send_mails
     mail_text = ''
     rows.each_with_index do |row, index|
       replacement = {
-        email: 'laci_noire@live.de', # row['email'].strip,
+        email: 'carolin.brandt@tum.de', # row['email'].strip,
         build_num: row['build_number'].strip,
         repo_name: row['repository_name'].strip,
         dev_name: row['dev_name'].strip,
-        commit_sha: row['commit_sha'].strip[0..7],
+        commit_sha_short: row['commit_sha'].strip[0..7],
+        commit_sha_long: row['commit_sha'],
         commit_date: Time.parse(row['commit_date'].strip).httpdate,
         extraction: row['output'].strip,
         repo_owner: row['repository_owner'].strip,
@@ -118,7 +119,7 @@ def send_mails
       mail_text += txt
     end
     #puts mail_text
-    smail('laci_noire@live.de', mail_text)
+    smail('carolin.brandt@tum.de', mail_text)
     break
   end
 end
