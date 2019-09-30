@@ -181,7 +181,7 @@ namespace pbeextractionbuildlogs
 			Directory.CreateDirectory(
 				Config.RESULT_DIRECTORY.Remove(Config.RESULT_DIRECTORY.Length - 1));
 			var progSaveName = result.ProgramName.Replace("/", "@");
-			using (StreamWriter file = new StreamWriter(File.Create(Config.RESULT_DIRECTORY + progSaveName + "_" + result.ExampleSelection.GetType().Name + ".xml")))
+			using (StreamWriter file = new StreamWriter(File.Create(Config.RESULT_DIRECTORY + progSaveName + "-" + "pbe" + "-" + result.ExampleSelection.Name + "-" + result.ExampleSelection.LearningStepCount + "-" + result.ExampleSelection.TestCount + ".xml")))
 			{
 				serializer.Serialize(file, result);
 			}

@@ -12,6 +12,8 @@ namespace pbeextractionbuildlogs
 		public OutputType Output { get; set; }
 		public OutputType DesiredOutput { get; set; }
 		public bool Successful { get; set; }
+		public string AllKeywords { get; set; }
+		public string Categories { get; set; }
 
 		[XmlIgnore]
 		public TimeSpan LearningDuration { get; set; }
@@ -67,13 +69,23 @@ namespace pbeextractionbuildlogs
 		public bool IncludeAllInputs { get; set; }
 		public int TestCount { get; set; }
 		public int LearningStepCount { get; set; }
+		public abstract string Name { get; }
 	}
 
-	public class RandomSelection : ExampleSelection { }
+	public class RandomSelection : ExampleSelection
+	{
+		public override string Name => "random";
+	}
 
-	public class ChronologicalSelection : ExampleSelection { }
+	public class ChronologicalSelection : ExampleSelection
+	{
+		public override string Name => "chronological";
+	}
 
-	public class ManualSelection : ExampleSelection { }
+	public class ManualSelection : ExampleSelection
+	{
+		public override string Name => "manual";
+	}
 
 
 
@@ -81,6 +93,8 @@ namespace pbeextractionbuildlogs
 	{
 		public string InputPath;
 		public OutputType Output;
+		public string Keywords;
+		public string Category;
 
 		public ExampleData() { }
 

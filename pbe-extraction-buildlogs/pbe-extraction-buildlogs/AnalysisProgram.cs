@@ -105,6 +105,10 @@ namespace pbeextractionbuildlogs
 			{
 				Console.WriteLine(Describe(learningData));
 			}
+
+			result.AllKeywords = string.Join(", ", learningData.Examples.Select(ex => ex.Keywords));
+			result.Categories = string.Join("-", learningData.Examples.Select(ex => ex.Category));
+
 			return analysisSession.Analyze(path, result, verbose);
 		}
 
