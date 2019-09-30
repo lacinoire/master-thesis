@@ -27,6 +27,9 @@ def fill_extraction_data(row)
   output = xml.at("//AnalysisProgramOfRegionAnalysisSessionString/LearningData/Examples/ExampleDataOfString[#{log_index}]/Output")
   row['output'] = output
 
+  jobs_url_job_id = row['job_id'] == 'job_id_not_found' ? 'builds/' + row['build_id'].strip : 'jobs/' + row['job_id'].strip
+  row['jobs_url_job_id'] = jobs_url_job_id
+
   row
 end
 
@@ -93,22 +96,24 @@ def send_mails
   puts mail_groups.keys.count
 
   mail_groups.each do |mail, rows|
-    next if mail == 'no_mail_found' || mail == 'no_user_found'
+    next if ['no_mail_found', 'no_user_found'].include?(mail)
 
     mail_text = ''
     rows.each_with_index do |row, index|
+      dev_name = row['dev_name'] == 'no_username_found' ? '' : row['dev_name'].strip
+      jobs_url_job_id = row['job_id'] == 'job_id_not_found' ? 'builds/' + row['build_id'].strip : 'jobs/' + row['job_id'].strip
       replacement = {
         email: 'carolin.brandt@tum.de', # row['email'].strip,
         build_num: row['build_number'].strip,
         repo_name: row['repository_name'].strip,
-        dev_name: row['dev_name'].strip,
+        dev_name: row['dev_name'] == dev_name,
         commit_sha_short: row['commit_sha'].strip[0..7],
         commit_sha_long: row['commit_sha'],
         commit_date: Time.parse(row['commit_date'].strip).httpdate,
         extraction: row['output'].strip,
         repo_owner: row['repository_owner'].strip,
         build_id: row['build_id'].strip,
-        job_id: row['job_id'].strip,
+        jobs_url_job_id: jobs_url_job_id,
         mail_count: rows.length
       }
       if index.zero?
