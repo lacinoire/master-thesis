@@ -2,6 +2,25 @@
 
 # Carolin Master Thesis Work Log
 
+## 30.9.19
+
+- send mails out to taico for review
+- fill missing job_ids & mails
+- finish keyword evaluation
+- save all eval results to fine postion & format
+- try sendding from carolin-brandt.de
+- test pbe xml -> csv transformation
+- start testrun of all evaluation
+- mail: github-link for commit
+- remove star *
+- merge mails to multiple devs into one
+
+## 25. - 29.9.19
+
+- setup validation with sending mails to developers: mail template, data collecting to fill mail, survey gizmo
+- write keyword extraction evaluation
+- clean up result file structure & savepoints for all evaluation relevant extractions
+
 ## 24.9.19
 
 - listen to talk about automatic refactorings and unit testability
