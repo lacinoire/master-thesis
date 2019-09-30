@@ -232,10 +232,26 @@ run_evaluation <-
       step_results[1, "AllKeywords"] <- get_keywords_chain(train_examples)
       step_results[1, "Categories"] <- get_categories_chain(train_examples)
       
-      step_method(train_examples, test_examples, step_results)
+      step_results <- step_method(train_examples, test_examples, step_results)
       
       results <- rbind(results, step_results)
     }
     
     results <- save_evaluation_result(results, program, technique, selection, learning_step_count, test_count)
+    #print(results)
   }
+
+select_keywords_to_search <- function(all_keywords) {
+  filtered_keywords <- character()
+  for (kw in 1:length(all_keywords)) {
+    if (all_keywords[kw] != "") {
+      filtered_keywords <- c(filtered_keywords, all_keywords[kw])
+    }
+  }
+
+  keyword_freq <- as.data.frame(table(filtered_keywords), stringsAsFactors = FALSE)
+  print(keyword_freq)
+  max_kw <- max(keyword_freq$Freq)
+  selected <- keyword_freq[keyword_freq$Freq >= max_kw, ]$filtered_keywords
+  return(selected)
+}

@@ -40,6 +40,9 @@ getDataFrameForPBEResultsFile <- function(path) {
       nanosecsToTime(as.numeric(xmlValue(test[["LearningDuration"]][[1]])))
     applicationDuration <-
       nanosecsToTime(as.numeric(xmlValue(test[["ApplicationDuration"]][[1]])))
+    allKeywords <- xmlValue(test[["AllKeywords"]][[1]])
+    searchKeywords <- select_keywords_to_search(allKeywords)
+    categories <- xmlValue(test[["Categories"]][[1]])
     
     data = rbind(
       data,
@@ -52,6 +55,9 @@ getDataFrameForPBEResultsFile <- function(path) {
         Successful = successful,
         LearningDuration = learningDuration,
         ApplicationDuration = applicationDuration,
+        SearchKeywords = searchKeywords,
+        AllKeywords = allKeywords,
+        Categories = categories,
         stringsAsFactors = FALSE
       )
     )
@@ -81,16 +87,9 @@ calculate_accuracy <- function(data) {
 
 save_evaluation_result <- function(result, program_name, technique, selection, learning_step_count, test_count) {
   result <- calculate_accuracy(result)
-  plot_data <-
-    result[c("ExampleCount",
-             "Accuracy",
-             "LearningDuration",
-             "ApplicationDuration")]
   setwd(paste0(main_path, "/evaluation/results/", technique))
   results_file_name <- evaluation_identification(technique, gsub("/", "@", program_name), selection, learning_step_count, test_count)
-  # ggsave(paste0(results_file_name, ".svg"), p)
 
-  # TODO handle keywords andd categories somehow
   write.csv(
     transform(result,
     LearningDuration = format(LearningDuration, "%M.%OS3"),

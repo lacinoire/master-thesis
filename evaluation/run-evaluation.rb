@@ -7,8 +7,8 @@ example_sets.each do |example_set|
 
   selection = "chronological"
   test_count = 1
-  learning_step_count = 3
-  technique = "ir"
+  learning_step_count = 1
+  technique = "pbe"
 
   run_eval = "ruby ../tool/run-extraction.rb -a evaluate -t #{technique} -e #{example_set} -s #{selection} -l #{learning_step_count} -c #{test_count} -v"
 

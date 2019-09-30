@@ -35,16 +35,16 @@ get_exampleset <- function(program) {
     example <- exampleset[[i]]
     output <- xmlValue(example[["Output"]])
     keywords <- xmlValue(example[["Keywords"]])
-    if (keywords.endsWith(,))
+    if (endsWith(keywords, ",")) {
       keywords <- paste0(keywords, " ")
-    end
+    }
     examples <-
       rbind(
         examples,
         data.frame(
           input_path = xmlValue(example[["InputPath"]]),
           output = output,
-          keywords = xmlValue(example[["Keywords"]]),
+          keywords = keywords,
           category = xmlValue(example[["Category"]]),
           stringsAsFactors = FALSE
         )
@@ -55,11 +55,10 @@ get_exampleset <- function(program) {
 
 ## returns a string which is a concatenation of the categories of the given examples
 get_categories_chain <- function(examples) {
-  return(paste(examples$category, sep = "-"))
+  return(paste(examples$category, collapse = "-"))
 }
 
 ## returns the list of all keywords of the given examples (with possibly duplicates)
 get_keywords_chain <- function(examples) {
-  print(examples$keywords)
-  return(paste(examples$keywords, sep = ", "))
+  return(paste(examples$keywords, collapse = ", "))
 }
