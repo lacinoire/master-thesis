@@ -4,6 +4,7 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 
 # What to write in the paper
 
+## ---------- INTRODUCTION / BACKGROUND / THEORETICAL STUFF ----------
 
 ## motivation
 - buildlogs huge valuable information source for developers and **researchers**
@@ -34,11 +35,103 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 
 ### characterize all the different approaches
 - → meta-model??
-- avaliable information in _build logs_ vs. information extraction techniques (maybe outside of build logs)
+- available information in _build logs_ vs. information extraction techniques (maybe outside of build logs)
+- which how much of that will we come up in our research? story
 
+## focus down to the three different approaches we compare
+- 3? _really do not do more_    ; though: do we have more? is random a proper one?
+- can we somehow motivate why these three?
 
+## describe our three approaches & the background behind them
+- represent in model we chose for approaches
+- for all: input / output side conditions
+- flow pictures!!
 
+### prose pbe
+- start cause this is the first one we looked at?
+- a bit of background of the library
+- paper: short short how it works, master thesis: long how it works
+
+### IR text similarity
+- our approach
+- motivate "common" ir approach chosen
+
+### keyword search
+- ad-hoc technique
+- our approach to that with keywords searched for but also context extracted
+
+## RESEARCH QUESTIONS
+
+- RQ1: Is Programming by Example suited to extract information from CI build logs?
+- RQ2: What criteria influence the suitability of an information extraction technique for CI build logs?
+- RQ3: When are text similarity or keyword search better suited for information extraction from CI build logs?
+
+## ---------- IMPLEMENTATION ----------
+
+- hmm how much is to say here? especially for the paper...
+- master thesis: go into detail here! show aaaall the work done
+
+## our (unification) tool
+- what can it do?
+- how can others use it?
+- (how can others extend it? thesis?)
+
+## ---------- COMPARISON / "EVALUATION" / STUD(Y|IES) ----------
+
+## our data set
+- how we collected logs (take from existing paper draft)
+- what data points we have & motivate what we need them for
+- how others can reuse it, (how others could add to it?)
+
+## validation of our data set data points
+- inter-rater reliability thing
+- **Mails to developers study**
+
+## evaluation
+- TODO look at IMRA or so sturcture that Moritz proposed for the last draft, can we use that?
+- evaluations we ran then: something to say in general? we do run one big evaluation isn't it?
+
+### motivate all the decisions we made!
+- why not k-fold? (chronological in real-world use, though can we argue that if we do random?)
+- why so little examples? examples only valid for one repository, user would not be willing to give more, (how could we generalize and let examples span multiple repos?)
+
+### how we interpret results
+- accuracy of findings
+- proximity
+
+### results
+- interesting stuff to look at here
+- incorporate interpretation of them directly?
+
+### discussion
+- all the results together & in relation
+
+## ANSWER RESEARCH QUESTIONS
+
+- RQ1: Is Programming by Example suited to extract information from CI build logs?
+- RQ2: What criteria influence the suitability of an information extraction technique for CI build logs?
+- RQ3: When are text similarity or keyword search better suited for information extraction from CI build logs?
+
+## ---------- RELATED WORK ----------
+- from existing paper draft
+- something to add?
+- traditional log analysis
+
+## ---------- FUTURE WORK ----------
+- adding more techniques, evaluating them in the same way
+- other works with data set
+- refine / improve / adjust techniques (like pbe) with results / data set evaluation, → meta-parameter optimization?
+
+## ---------- CONCLUSION ----------
+- nothing special, wrap up story
 
 ## glossary?
 - build log
 - keyword search / IR similarity / pbe
+- (I/O) example
+- exampleset
+
+## CONTRIBUTIONS
+- data set /w logs, labeled extractions (one interesting information), keywords & categories
+- extraction (unification) tool
+- meta modell of? data that is extractable? information extraction techniques & their configuration / data extraction tasks
