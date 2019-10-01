@@ -2,6 +2,14 @@
 
 # Carolin Master Thesis Work Log
 
+## 1.10.19
+
+- masterplan for write up of thesis
+- structure draft thesis
+- structure draft paper
+- read through old paper draft again
+- checked that survey csv upload works
+
 ## 30.9.19
 
 - send mails out to taico for review
