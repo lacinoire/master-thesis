@@ -1,6 +1,6 @@
 # Master Document of Caro's Master Thesis Write-Up
 Here collection and planning of what / how I want to write paper and master thesis.  
-Adjacent documents: Workflowy "notes" section of random things I want to hold somewhere & Workflowy "open questions" section
+Adjacent documents: Workflowy "notes" section of random things I want to hold somewhere & Workflowy "open questions" section & Workflowy "todo" section
 
 # What to write in the paper
 
@@ -9,6 +9,7 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 ## motivation
 - buildlogs huge valuable information source for developers and **researchers**
 - but only if they can extract the right information from the verbose / many lines
+- ancedotally mention different techniques and already compare here? make sure that it sounds like there is actual value in my work then. also as we moved on to comparing a general "hard to choose" story might be better than saying one is for a specific case better then the other (in the introduction)
 
 ## explain common use cases of when devs or researchers would extract information from there
 - NOT only the build failure reason (pack that into the middle somewhere)
@@ -36,7 +37,7 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 ### characterize all the different approaches
 - → meta-model??
 - available information in _build logs_ vs. information extraction techniques (maybe outside of build logs)
-- which how much of that will we come up in our research? story
+- which how much of that will we come up in our research? story wise I mean
 
 ## focus down to the three different approaches we compare
 - 3? _really do not do more_    ; though: do we have more? is random a proper one?
@@ -94,6 +95,7 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 ### motivate all the decisions we made!
 - why not k-fold? (chronological in real-world use, though can we argue that if we do random?)
 - why so little examples? examples only valid for one repository, user would not be willing to give more, (how could we generalize and let examples span multiple repos?)
+- why chronological? (if we decide to do that) cause closer to real world usage
 
 ### how we interpret results
 - accuracy of findings
@@ -108,14 +110,18 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 
 ## ANSWER RESEARCH QUESTIONS
 
-- RQ1: Is Programming by Example suited to extract information from CI build logs?
-- RQ2: What criteria influence the suitability of an information extraction technique for CI build logs?
+- RQ1: Is Programming by Example suited to extract information from CI build logs?  
+  break down into: regex suited & pbe specific & prose specific
+- RQ2: What criteria influence the suitability of an information extraction technique for CI build logs?  
+  group: criteria about logs & input avaliable for technique configuration
 - RQ3: When are text similarity or keyword search better suited for information extraction from CI build logs?
 
 ## ---------- RELATED WORK ----------
 - from existing paper draft
 - something to add?
-- traditional log analysis
+- traditional log analysis: logpai/loghub
+- papers about keyword search?
+- prose theoretical papers (Moritz wanted that, does it fit into the paper with the current story? thesis: sure)
 
 ## ---------- FUTURE WORK ----------
 - adding more techniques, evaluating them in the same way
@@ -127,6 +133,7 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 
 ## glossary?
 - build log
+- information (extraction) technique
 - keyword search / IR similarity / pbe
 - (I/O) example
 - exampleset
