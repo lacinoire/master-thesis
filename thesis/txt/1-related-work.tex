@@ -5,12 +5,39 @@
 \begin{document}
 
 \chapter{Related Work}
+\todo{introduction \& glue text}
 
 \section{CI Research}
+\mention{look into proksch papers}
+Various researchers have analyzed industrial and open source logs for failure reasons and their impact on development. Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at Google. In addition most failures are resolved within two builds. Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones. They determined that testing failures outweigh compilation errors. Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects. Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds. They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
+
+All these researchers described building parsers in order to evaluate the studied build logs. Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
+
 \section{Build log analysis and augmentation}
+Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes developers to understand build logs. They summarized relevant information in Maven build logs and augmented them with links to related stack overflow posts. They observed that highlighting the locality and context of an issue is helpful to programmers. We strive to enable a similar summarization by text extraction while also covering a wider array of programming languages.
+
+Amar et al.~\cite{amar2019mining} reduced the lines of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
+
 \section{Production Log analysis}
+\mention{logpai and drain}
+
+\mention{ask Jean?}
+
 \section{Information extraction and retrieval techniques}
+\review{Getting the general topic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
+Instead of receiving a paragraph which is similar to a given query, our works focus more on obtaining specific pieces of texts through regular expressions.}
+
+
+
 IR papers, maybe something about keyword search?
+
 \section{Program Synthesis by Example}
+\review{
+Le et al.~\cite{le2014flashextract:} developed FlashExtract as part of the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework. It is a tool which synthesizes text extraction programs from semi-structured text based on a few given examples. Users can extract multiple fields and structure them with hierarchy and sequence. FlashExtract eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
+
+We are applying FlashExtract to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information extraction.
+}
+\mention{prose theory paper \cite{polozov2015flashmeta:}}
+\mention{\cite{rolim2017learning}}
 
 \end{document}
