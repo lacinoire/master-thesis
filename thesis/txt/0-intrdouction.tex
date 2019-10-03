@@ -1,0 +1,62 @@
+
+\providecommand{\myrootdir}{..}
+\documentclass[\myrootdir/main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Introduction}
+\plan{motivate why information extraction from build logs}
+Many software projects now use continious integration (CI) to improve \mention{reasons to do this, look into Proksch papers}. Theses CI builds often produce very long and verbose build logs \mention{log characteristics, cite what Moritz cited in his proposal?}, stating the progress and results of the various steps within the build.
+
+These build logs are a highly valuable data source. First of all, for the developers that read them to analyze why their build failed or .. \mention{find more reasons}. Second, for reasearchers that can harvest the information contained in the logs (and their metadata) to study the software engineering process of a project. However they can only harvest the information within the build logs if they can adequately extract the information relevant to them.
+
+There are many different extraction techniques use for this task. Beller et al.  used regular expressions when analysing the failure reasons of ruby and Java Maven buildlogs from TravisCI \cite{beller2017oops}, while Vassallo et al. wrote a custom parser for Java Maven buildlogs to gather information for build repair hints \cite{vassallo2018un-break}. Recently Amar et al. greatly reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and successful build.~\cite{amar2019mining} \bp{anecdotal: keyword search?}. Apart from those there are various more extraction techniques like searching for keywords, ... \todo{more?} \bp{problem which to choose}
+
+With our work we want to support developers, researchers or project managers in deciding which technique is the best one for their use case. 
+
+\plan{what we do in this thesis}
+
+We aim to define a model to characterize the different extraction techniques and answer what influences the suitability of a technique. We support our assumption by evaluating three chosen techniques, namely regular expression synthesis by Example using the Microsoft PROSE library, a common text similarity approach and simple keyword search. Our \emph{Failing Build Logs Data Set} encompasses about 800 log files from 80 repositories, labeled with the log part describing the reason a build failed, keywords to search for this extractions and a categorization of the extractions according to their structural position within the log \todo{is this understandable here? leave out?}. 
+
+
+\plan{research questions}
+
+We aim to answer the following research questions:
+
+\begin{itemize}
+  \item{RQ1:} Is Programming by Example suited to extract information from CI build logs?
+  \item{RQ2:} What criteria influence the suitability of an information extraction technique for CI build logs?
+  \item{RQ3:} When are text similarity or keyword search better suited for information extraction from CI build logs?
+\end{itemize}
+
+\plan{contributions}
+
+Our work contributes:
+
+\begin{itemize}
+  \item A model to characterize information extraction techniques from \todo{CI?} build logs
+  \item A model to characterize use case scenarios for information extraction from CI build logs
+  \item A model of the extractable information in CI build logs
+  \item A tool unifying several information extraction techniques namely:
+        \begin{itemize}
+          \item our implementation of regular expression program synthesis using the Microsoft PROSE library,
+          \item a common information retrieval approach using text similarity, and
+          \item a simple keyword search approach
+        \end{itemize}
+  \item A validated data set of about 800 logs from failed Travis CI builds labeled with:
+        \begin{itemize}
+          \item the substring of the log describing the reason the build failed,
+          \item keywords developers would use to search for these descriptions of the build failure reason, and
+          \item a categorization of the extractions according to their structural position within the build log
+        \end{itemize}
+  \item An evaluation of our model for the three implemented information extraction techniques \todo{not quite clear \emph{what} we evaluate here}
+  \item A extendable model \todo{really? maybe scheme, decision tree} supporting decision on the three information extraction techniques relative to a given use case scenario
+\end{itemize}
+
+\plan{structure overview}
+This thesis first presents an overview over the related research, spanning from CI research, build log analysis and augmentation, and common \todo{production?} log processing over information extraction and retrieval techniques to program synthesis by examples.
+Next, chapter \ref{models} present our models for information extraction techniques, use case scenarios for those and extractable information from CI build logs. It also introduces the three techniques, we focus on during our research evaluation, as well as their theoretical foundations.
+Chapter \ref{data-set} describes the creation of our log data set collected from failed Travis CI build logs, and the labeling and validation process.
+Following, Chapter \ref{implementation} our implementation and the usage of our unified information extraction tool, used for the evaluation study of our models described in Chapter \ref{evaluation}. There we also describe the resulting instantiation of our reccomendation model for regex program synthesis, text similarity and keyword search.
+Lastly, we conclude and give an overview of further research opportunities in Chapter \ref{conclusion}.
+\end{document}

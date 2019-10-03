@@ -1,9 +1,14 @@
+# Determine this makefile's path.
+# Be sure to place this BEFORE `include` directives, if any.
+THIS_FILE := $(lastword $(MAKEFILE_LIST))
+
 .PHONY: FORCE_MAKE
 
 all: main.pdf
 
 .ONESHELL:
 %.pdf: %.tex FORCE_MAKE
+	@$(MAKE) -f $(THIS_FILE) inputs
 	latexmk -pdf -pdflatex="pdflatex" -cd -use-make -silent $<
 # For a speed up with standalone tikz-pictures replace the above line with:
 # 	latexmk -pdf -pdflatex="pdflatex -shell-escape" -use-make -silent $<
@@ -29,3 +34,7 @@ submit: main.pdf
 	@ zip -qu thesis.zip $<
 	@ echo " => thesis.zip was successfully created"
 .PHONY: submit
+
+inputs: $(wildcard *.tex)
+	ls txt/*.tex | awk '{printf "\\subfile{\\myrootdir/%s}\n", $$1}' > inputs.tex
+.PHONY: inputs

@@ -127,6 +127,7 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 - adding more techniques, evaluating them in the same way
 - other works with data set
 - refine / improve / adjust techniques (like pbe) with results / data set evaluation, → meta-parameter optimization?
+- socio-technical: how do developers actually interact with buildlogs?
 
 ## ---------- CONCLUSION ----------
 - nothing special, wrap up story
@@ -137,6 +138,7 @@ Adjacent documents: Workflowy "notes" section of random things I want to hold so
 - keyword search / IR similarity / pbe
 - (I/O) example
 - exampleset
+- travis CI
 
 ## CONTRIBUTIONS
 - data set /w logs, labeled extractions (one interesting information), keywords & categories

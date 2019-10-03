@@ -16,13 +16,24 @@
 % Set the template variables
 \input{\myrootdir/zyx/\myTemplate/mylogos.sty}
 
+\usepackage{xcolor}
+\newcommand{\secfunc}[1]{{\color{magenta}#1}}
+\newcommand{\mention}[1]{{\color{cyan}#1}}
+\newcommand{\plan}[1]{{\color{purple}#1}}
+\newcommand{\bp}[1]{{\color{violet}#1}}
+\newcommand{\draft}[1]{{\color{blue}#1}}
+\newcommand{\review}[1]{{\color{black}#1}}
+%\newcommand{\todo}[1]{{\color{orange}#1}}
+
 \begin{document}
 
 % Cover, abstract, table of contents, etc.
 \subfile{\myrootdir/zyx/preface.tex}
 
 % Put your chapters here
-\subfile{\myrootdir/txt/big-structure.tex}
+
+\input{inputs.tex}
+
 %% Add more chapters like this
 % \subfile{\myrootdir/txt/42-my-chapter.tex}
 
@@ -32,7 +43,7 @@
 % Add and appendix to the document
 \cleardoublepage
 \appendix
-\subfile{\myrootdir/txt/99-lipsum.tex}
+%\subfile{\myrootdir/txt2/99-lipsum.tex}
 
 % Hack to generate fully unfolded navigation table for the pdf independently
 % from the more compact printed table of content
