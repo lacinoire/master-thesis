@@ -23,7 +23,7 @@ RUN find /r-extractions/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/
     find /evaluation/. -type f -exec sed -i -e 's|setwd(paste0(main_path, "/evaluation/results/", technique))|setwd(paste0(main_path, "/master-thesis/evaluation/results/", technique))|g' {} \; &&\
     /bin/bash -l -c "Rscript r-extractions/install_packages.R"
 
-RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|ir|g' {} \;
+RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|keyword|g' {} \;
 
 RUN apt-get install -y ruby ruby-dev ruby-bundler
 

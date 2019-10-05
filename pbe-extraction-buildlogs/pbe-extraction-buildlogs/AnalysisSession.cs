@@ -77,6 +77,7 @@ namespace pbeextractionbuildlogs
 			learningStopwatch.Stop();
 			consolePrinter.WriteLine("Learning took " + learningStopwatch.Elapsed);
 			result.LearningDuration = learningStopwatch.Elapsed;
+			result.TestInputPath = inputPath;
 
 			if (topRankedProgram == null)
 			{

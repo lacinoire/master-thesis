@@ -111,6 +111,7 @@ run_learning_step <- function(train_examples, test_examples, step_results) {
     subset(test_lines, id %in% names(filtered_similarity_sums))
   step_results[1, "TestOutput"] <-
     join_extracted_lines(extracted_lines[["lines"]])
+  step_results[1, "TestInputPath"] <- train_examples[1, "input_path"]
   
   end_time_application <- Sys.time()
   step_results[1, "ApplicationDuration"] <-

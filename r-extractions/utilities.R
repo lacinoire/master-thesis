@@ -159,6 +159,7 @@ empty_results_data_frame <- function() {
     data.frame(
       ExampleCount = numeric(),
       LearnedProgram = character(),
+      TestInputPath = character(),
       TestOutput = character(),
       DesiredTestOutput = character(),
       Accuracy = numeric(),

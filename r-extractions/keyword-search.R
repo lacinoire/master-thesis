@@ -46,7 +46,8 @@ run_keyword_search_step <- function(train_examples, test_examples, step_results)
   step_results[1, "LearnedProgram"] <- paste(selected, collapse = ", ")
 
   end_time_learning <- Sys.time()
-  step_results[1, "LearningDuration"] = sys_timing_to_time(start_time_learning, end_time_learning)
+  step_results[1, "LearningDuration"] <- sys_timing_to_time(start_time_learning, end_time_learning)
+  step_results[1, "TestInputPath"] <- test_examples[1, "input_path"]
 
   start_time_application <- Sys.time()
 
