@@ -25,6 +25,7 @@ def fill_extraction_data(row)
   # end
 
   output = xml.at("//AnalysisProgramOfRegionAnalysisSessionString/LearningData/Examples/ExampleDataOfString[#{log_index}]/Output")
+  output = output.lines[0, 10].join('') if output.lines.count > 10
   row['output'] = output
 
   jobs_url_job_id = row['job_id'] == 'job_id_not_found' ? 'builds/' + row['build_id'].strip : 'jobs/' + row['job_id'].strip
