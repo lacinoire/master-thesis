@@ -31,7 +31,7 @@ class Optparser
 
     opt_parser = OptionParser.new do |opts|
       opts.banner = 'Usage: ruby run-extraction.rb -a analyze -t <technique: ir, pbe, random> -e <example_set> -p <path_to_file_to_analyze>'
-      opts.separator '       ruby run-extraction.rb -a evaluate -t <technique: ir, pbe> -e <example_set> -s <selection_technique> -l <step_count_for_learning> -c <test_count>'
+      opts.separator '       ruby run-extraction.rb -a evaluate -t <technique: ir, pbe, keyword> -e <example_set> -s <selection_technique> -l <step_count_for_learning> -c <test_count>'
       opts.separator '       ruby run-extraction.rb -a analyze -t keyword -k <keyword, keyword, ...> -p <path_to_file_to_analyze>'
       opts.separator '       ruby run-extraction.rb -a analyze -t regex -r <regex to match extraction> -p <path_to_file_to_analyze>'
 
@@ -129,8 +129,19 @@ class Optparser
   end
 
   def self.print_keyword_options(opts)
-    opt_arr = ['--file', opts.file_path, '--keywords']
-    opt_arr << opts.keywords
+    opt_arr = [opts.action]
+
+    opt_arr << '--verbose' if opts.verbose
+
+    if opts.action == :analyze
+      opt_arr << ['--file', opts.file_path, '--keywords']
+      opt_arr << opts.keywords
+    elsif opts.action == :evaluate
+      opt_arr << '--program' << opts.example_set
+      opt_arr << '--selection' << opts.selection
+      opt_arr << '--learning-step-count' << opts.learning_step_count
+      opt_arr << '--test-count' << opts.test_count
+    end
     opt_arr.join(' ')
   end
 
