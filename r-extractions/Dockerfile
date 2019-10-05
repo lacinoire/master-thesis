@@ -2,7 +2,7 @@
 FROM rocker/r-apt:xenial
 
 ## Update and install rstan
-RUN apt-get update && apt-get install vim && apt-get install -qq -y --no-install-recommends r-cran-xml &&\
+RUN apt-get update && apt-get install -y vim && apt-get install -qq -y --no-install-recommends r-cran-xml &&\
     apt-get install -qq -y --no-install-recommends r-cran-svglite &&\
     apt-get install -qq -y --no-install-recommends r-cran-stringdist &&\
     apt-get install -qq -y --no-install-recommends r-cran-ggplot2 &&\
