@@ -158,35 +158,60 @@
 
 \section{Introduction}
 \subsection{Motivation}
+Many software projects now use continious integration (CI) to improve \mention{reasons to do this, look into Proksch papers}. Theses CI builds often produce very long and verbose build logs \mention{log characteristics, cite what Moritz cited in his proposal?}, stating the progress and results of the various steps within the build.
+
+These build logs are a highly valuable data source. First of all, for the developers that read them to analyze why their build failed or .. \mention{find more reasons}. Second, for reasearchers that can harvest the information contained in the logs (and their metadata) to study the software engineering process of a project. However they can only harvest the information within the build logs if they can adequately extract the information relevant to them.
+
+There are many different extraction techniques use for this task. Beller et al.  used regular expressions when analysing the failure reasons of ruby and Java Maven buildlogs from TravisCI \cite{beller2017oops}, while Vassallo et al. wrote a custom parser for Java Maven buildlogs to gather information for build repair hints \cite{vassallo2018un-break}. Recently Amar et al. greatly reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and successful build.~\cite{amar2019mining} \bp{anecdotal: keyword search?}. Apart from those there are various more extraction techniques like searching for keywords, ... \todo{more?} \bp{problem which to choose}
+
+With our work we want to support developers, researchers or project managers in deciding which technique is the best one for their use case.
+\todo{describe what we do and our results!}
 \subsection{Contribution}
+\begin{itemize}
+  \item[RQ1:] What criteria influence the suitability of an information extraction technique for CI build logs?
+  \item[RQ2:] Is Programming by Example suited to extract information from CI build logs?
+  \item[RQ3:] When are text similarity or keyword search better suited for information extraction from CI build logs?
+\end{itemize}
 \subsection{Overview}
+This paper first presents an overview over research works related to our topic. Then we characterize build logs and different techniques used for extracting information from them. We explain our three focus techniques for this work, namely PROSE regular expression program synthesis by example, text similarity and simple keyword search.
+Further, Section \ref{data-set} presents our data set and the labeling and validation process. Section \ref{study} describes our study comparing our three focus techniques.
 
 \section{Related Work}
+similar to before:
+\subsection{Build Log Analysis Tools}
+\subsection{Continuous Integration}
+\subsection{Information Extraction and Retrieval}
+\subsection{Runtime Log Parsing}
+\subsection{Semi-Structured Data?}
 
 %\section{Method}
 \section{Characterizing Build Log Information Extraction Techniques}
 \subsection{Characteristics of a Build Log}
-\subsubsection{Model of Extractable Data in Build Logs}
+describe semi-strutcturedness, separate from runtime logs?
+\subsubsection{Extractable Data in Build Logs}
+leave out?
 \subsection{Model for Information Extraction Techniques}
-\subsection{Program Synthesis by Example}
-\subsection{Text Similarity}
-\subsection{Keyword Search}
-
-\section{Our Information Extraction Tool}
-\subsection{Unified Interface}
+picture from thesis: configuration, output accuracy, ...
 \subsection{Program Synthesis by Example}
 \subsection{Text Similarity}
 \subsection{Keyword Search}
 
 \section{The Failing Build Logs Data Set}
+\label{data-set}
 \subsection{Data Structure / Points}
 \subsection{Build Log Collection}
 \subsection{Validation of Labeled Data}
 
-\section{Results}
+\section{Technique Comparison Study}
+\label{study}
 evaluations run \& graphs \& data
+\subsection{Study Design}
 
-\section{Discussion}
+\subsection{Study Execution}
+
+\subsection{Results}
+
+\subsection{Discussion}
 comparing extraction techniques,e
 \subsection{Threats to Validity}
 
