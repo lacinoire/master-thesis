@@ -21,7 +21,7 @@ This folder should contain all the necessary out & input for you to try out our 
 ``` shell
 >  ruby run-extraction.rb --help
 Usage: ruby run-extraction.rb -a analyze -t <technique> -e <example_set> -p <path_to_file_to_analyze>
-       ruby run-extraction.rb -a evaluate -t <technique: ir, pbe, keyword> -e <example_set> -s <selection_technique> -l <step_count_for_learning> -c <test_count>
+       ruby run-extraction.rb -a evaluate -t <technique: ir, pbe, keyword, random> -e <example_set> -s <selection_technique> -l <step_count_for_learning> -c <test_count>
 
 Specific options:
     -a, --action ACTION              Either run an extraction for a example set ('analyze') or run the whole evaluation of it ('evaluate')

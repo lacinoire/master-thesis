@@ -36,6 +36,7 @@ getDataFrameForPBEResultsFile <- function(path) {
     testOutput <- xmlValue(test[["Output"]][[1]])
     desiredTestOutput <-  xmlValue(test[["DesiredOutput"]][[1]])
     accuracy <- 3
+    iou <- 5
     successful <-  as.logical(xmlValue(test[["Successful"]][[1]]))
     learningDuration <-
       nanosecsToTime(as.numeric(xmlValue(test[["LearningDuration"]][[1]])))
@@ -54,6 +55,7 @@ getDataFrameForPBEResultsFile <- function(path) {
         TestOutput = testOutput,
         DesiredTestOutput = desiredTestOutput,
         Accuracy = accuracy,
+        IoU = iou,
         Successful = successful,
         LearningDuration = learningDuration,
         ApplicationDuration = applicationDuration,
@@ -74,15 +76,19 @@ calculate_accuracy <- function(data) {
   for (row in 1:nrow(data)) {
     testOutput <- data[row, "TestOutput"]
     desiredTestOutput <- data[row, "DesiredTestOutput"]
-    
+
     successful <-
       grepl(testOutput, desiredTestOutput, fixed = TRUE)
     data[row, "Successful"] <- as.logical(successful)
-    
-    accuracy <- nchar(testOutput) / nchar(desiredTestOutput)
-    accuracy2 <- stringsim(testOutput, desiredTestOutput)
-    
+
+    accuracy2 <- stringsim(testOutput, desiredTestOutput)✌
     data[row, "Accuracy"] <- accuracy2
+
+    testOutputLines <- stri_split_lines(testOutput)
+    desiredTestOutputLines <- stri_split_lines(desiredTestOutput)
+    intersection_over_union <- length(intersect(testOutputLines, desiredTestOutputLines))/length(union(testOutputLines, desiredTestOutputLines))
+
+    data[row, "IoU"] <- intersection_over_union
   }
   return(data)
 }

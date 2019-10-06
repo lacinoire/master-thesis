@@ -71,13 +71,13 @@ run_keyword_search_extraction <- function() {
   } else if (verb == "evaluate") {
     program <- opt_get("program")
     run_evaluation(program = program,
-                     selection = opt_get("selection"),
-                     include_inputs = opt_get("include-inputs", n = 0),
-                     test_count = as.integer(opt_get("test-count")),
-                     learning_step_count = as.integer(opt_get("learning-step-count")),
-                     verbose = opt_get("verbose", n = 0),
-                     step_method = run_keyword_search_step,
-                     technique = "keyword")
+                   selection = opt_get("selection"),
+                   include_inputs = opt_get("include-inputs", n = 0),
+                   test_count = as.integer(opt_get("test-count")),
+                   learning_step_count = as.integer(opt_get("learning-step-count")),
+                   verbose = opt_get("verbose", n = 0),
+                   step_method = run_keyword_search_step,
+                   technique = "keyword")
   }
 }
 

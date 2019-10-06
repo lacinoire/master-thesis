@@ -106,7 +106,8 @@ run_learning_step <- function(train_examples, test_examples, step_results) {
   sorted_similarity_sums <- sort(similarity_sums, decreasing = TRUE)
 
   # select the lines to count as extracted
-  filtered_similarity_sums <- sorted_similarity_sums[1:min(10,length(sorted_similarity_sums))] 
+  avg_output_line_count <- avg_output_line_count(train_examples)
+  filtered_similarity_sums <- sorted_similarity_sums[1:min(avg_output_line_count, length(sorted_similarity_sums))] 
   extracted_lines <-
     subset(test_lines, id %in% names(filtered_similarity_sums))
   step_results[1, "TestOutput"] <-

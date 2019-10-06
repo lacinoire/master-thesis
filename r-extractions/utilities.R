@@ -163,6 +163,7 @@ empty_results_data_frame <- function() {
       TestOutput = character(),
       DesiredTestOutput = character(),
       Accuracy = numeric(),
+      IoU = numeric(),
       Successful = logical(),
       LearningDuration = as.POSIXct(character()),
       ApplicationDuration = as.POSIXct(character()),
@@ -255,4 +256,10 @@ select_keywords_to_search <- function(all_keywords) {
   max_kw <- max(keyword_freq$Freq)
   selected <- keyword_freq[keyword_freq$Freq >= max_kw, ]$filtered_keywords
   return(selected)
+}
+
+avg_output_line_count <- function(examples) {
+  output_line_counts <- map(examples$output, function (x) str_count(x, "\n") + 1)
+  avg_output_line_count <- mean(unlist(output_line_counts))
+  return(avg_output_line_count)
 }
