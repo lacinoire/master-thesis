@@ -6,6 +6,7 @@ suppressPackageStartupMessages({
   library(dplyr)
   library(text2vec)
   library(optigrab)
+  library(purrr)
 })
 
 main_path <<- "/Users/Laci/Documents/Delft/master-thesis"

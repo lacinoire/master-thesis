@@ -14,6 +14,7 @@ sample_path <<-
 ## load other modules
 source(paste(main_path, "/r-extractions/utilities.R", sep = ""))
 source(paste(main_path, "/r-extractions/example-set.R", sep = ""))
+source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 
 run_analysis <- function(file, examples) {
   log <- read_build_log_from_file(file, sample_path)
@@ -33,7 +34,7 @@ run_random_extraction_step <- function(train_examples, test_examples, step_resul
 
   start_time_application <- Sys.time()
 
-  output <- run_analysis(test_examples[1, "input_path"], examples)
+  output <- run_analysis(test_examples[1, "input_path"], train_examples)
 
   end_time_application <- Sys.time()
   step_results[1, "ApplicationDuration"] = sys_timing_to_time(start_time_application, end_time_application)
@@ -57,8 +58,7 @@ run_random_selection_extraction <- function() {
                    learning_step_count = as.integer(opt_get("learning-step-count")),
                    verbose = opt_get("verbose", n = 0),
                    step_method = run_random_extraction_step,
-                   technique = "keyword")
-    cat(result)
+                   technique = "random")
   }
 }
 

@@ -81,11 +81,11 @@ calculate_accuracy <- function(data) {
       grepl(testOutput, desiredTestOutput, fixed = TRUE)
     data[row, "Successful"] <- as.logical(successful)
 
-    accuracy2 <- stringsim(testOutput, desiredTestOutput)✌
+    accuracy2 <- stringsim(testOutput, desiredTestOutput)
     data[row, "Accuracy"] <- accuracy2
 
-    testOutputLines <- stri_split_lines(testOutput)
-    desiredTestOutputLines <- stri_split_lines(desiredTestOutput)
+    testOutputLines <- stri_split_lines1(testOutput)
+    desiredTestOutputLines <- stri_split_lines1(desiredTestOutput)
     intersection_over_union <- length(intersect(testOutputLines, desiredTestOutputLines))/length(union(testOutputLines, desiredTestOutputLines))
 
     data[row, "IoU"] <- intersection_over_union
