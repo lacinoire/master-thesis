@@ -24,8 +24,8 @@ def fill_extraction_data(row)
   #   end
   # end
 
-  output = xml.at("//AnalysisProgramOfRegionAnalysisSessionString/LearningData/Examples/ExampleDataOfString[#{log_index}]/Output")
-  output = output.lines[0, 10].join('') if output.lines.count > 10
+  output = xml.at("//AnalysisProgramOfRegionAnalysisSessionString/LearningData/Examples/ExampleDataOfString[#{log_index}]/Output").content
+  output = output.lines[0, 1].join('') if output.lines.count > 1
   row['output'] = output
 
   jobs_url_job_id = row['job_id'] == 'job_id_not_found' ? 'builds/' + row['build_id'].strip : 'jobs/' + row['job_id'].strip
@@ -98,16 +98,17 @@ def send_mails
 
   mail_groups.each do |mail, rows|
     next if ['no_mail_found', 'no_user_found'].include?(mail)
+    next if rows[0]['language'] != 'Clojure'
 
     mail_text = ''
     rows.each_with_index do |row, index|
       dev_name = row['dev_name'] == 'no_username_found' ? '' : row['dev_name'].strip
       jobs_url_job_id = row['job_id'] == 'job_id_not_found' ? 'builds/' + row['build_id'].strip : 'jobs/' + row['job_id'].strip
       replacement = {
-        email: 'carolin.brandt@tum.de', # row['email'].strip,
+        email: 'hey@carolin-brandt.de', # row['email'].strip,
         build_num: row['build_number'].strip,
         repo_name: row['repository_name'].strip,
-        dev_name: row['dev_name'] == dev_name,
+        dev_name: dev_name,
         commit_sha_short: row['commit_sha'].strip[0..7],
         commit_sha_long: row['commit_sha'],
         commit_date: Time.parse(row['commit_date'].strip).httpdate,
@@ -124,8 +125,8 @@ def send_mails
       txt = render_erb(File.open('dev-mail/core-templatemail.txt').read, replacement)
       mail_text += txt
     end
-    #puts mail_text
-    smail('carolin.brandt@tum.de', mail_text)
+    puts mail_text
+    smail('hey@carolin-brandt.de', mail_text)
     break
   end
 end
@@ -135,10 +136,10 @@ if $PROGRAM_NAME == __FILE__
   if ARGV[0] == 'gen-csv'
     build_csv = CSV.read('dev-mail/builds.csv', headers: true)
 
-    CSV.open('dev-mail/builds2.csv', 'w') do |f|
+    CSV.open('dev-mail/buildsoneline.csv', 'w') do |f|
       build_csv.each_with_index do |row, index|
-        # row = fill_user_data(row)
-        # row = fill_build_data(row)
+        row = fill_user_data(row)
+        row = fill_build_data(row)
         row = fill_extraction_data(row)
         f << build_csv.headers if index.zero?
         f << row
@@ -151,7 +152,7 @@ if $PROGRAM_NAME == __FILE__
   elsif ARGV[0] == 'send-mails'
     send_mails
   elsif ARGV[0] == 'clean-csv'
-    build_csv = CSV.read('dev-mail/builds.csv', headers: true)
+    build_csv = CSV.read('dev-mail/builds2.csv', headers: true)
     CSV.open('dev-mail/builds-cleaned.csv', 'w') do |f|
       build_csv.each_with_index do |row, index|
         new_row = CSV::Row.new([], [])
@@ -159,10 +160,11 @@ if $PROGRAM_NAME == __FILE__
         new_row['language'] = row['language']
         new_row['repo_slug'] = row['repo_slug']
         new_row['build_id'] = row['build_id']
-        new_row['job_id'] = row['job_id']
+        new_row['jobs_url_job_id'] = row['jobs_url_job_id']
         new_row['repository_owner'] = row['repository_owner']
         new_row['repository_name'] = row['repository_name']
         new_row['build_number'] = row['build_number']
+        new_row['output'] = row['output']
         f << new_row.headers if index.zero?
         f << new_row
       end

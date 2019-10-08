@@ -2,6 +2,21 @@
 
 # Carolin Master Thesis Work Log
 
+## 7.10.19
+
+- write a huge load of mails to moritz
+- correct toc & introduction to hand in for review
+- try to fix super annoying survey gizmo csv upload things
+
+## 2. - 6.10.19
+
+- write introduction of thesis
+- rework structure of thesis a few times
+- copy over related work & write introduction text
+- make explanatory pictures for models & evaluations
+- include pictures for explanations & techniques in thesis
+- write some parts about the data set collection
+
 ## 1.10.19
 
 - masterplan for write up of thesis
