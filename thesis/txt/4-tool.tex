@@ -5,11 +5,37 @@
 \begin{document}
 
 \chapter{Our Information Extraction Tool}
-\label{implementation}
+\label{sec:implementation}
 describe implemantation of Tool
-\includegraphics[page=7, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
+\begin{figure}[h]
+	\centering
+	\includegraphics[page=7, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
+	\caption{Our tool unifying different information extraction techniques for build logs}
+	\label{fig:tool}
+\end{figure}
 
-\section{Common Interface} 
+\section{Common Interface}
+\begin{lstlisting}
+Usage: ruby run-extraction.rb -a analyze -t <technique: ir, pbe, random> -e <example_set> -p <path_to_file_to_analyze>
+       ruby run-extraction.rb -a evaluate -t <technique: ir, pbe, keyword, random> -e <example_set> -s <selection_technique> -l <step_count_for_learning> -c <test_count>
+       ruby run-extraction.rb -a analyze -t keyword -k <keyword, keyword, ...> -p <path_to_file_to_analyze>
+       ruby run-extraction.rb -a analyze -t regex -r <regex to match extraction> -p <path_to_file_to_analyze>
+
+Specific options:
+    -a, --action ACTION              Either run an extraction for a example set ('analyze') or run the whole evaluation of it ('evaluate')
+    -t, --technique TECHNIQUE        The technique used for creating the extraction program (pbe, ir, keyword, random)
+    -e, --example-set EXAMPLE_SET    The filename of the example set to use
+    -p, --path PATH                  The path to the file to be analyzed relative to the 'tool/samples' folder
+    -s, --selection SELECTION        The example sequence selection technique to use for evaluation (chronological, random, manual (= like defined in file))
+    -l, --learning-step-count COUNT  How many steps with increasing example set size to do during evaluation
+    -c, --test-count COUNT           How many test files to evaluate the generated program in each learning step of the evaluation
+    -v, --verbose                    Print additional interesting output apart from only the extraction output
+    -k, --keywords X,Y,Z             Keywords too filter lines for during keyword search based extraction
+    -r, --regex REGEX                Regex to match on build log file content in regex based extraction
+
+Common options:
+    -h, --help                       Show this message
+\end{lstlisting}
 unification tool, reference CLI somehow nicely?,
 
 ruby tool, unifies different syntax command line interfaces of the other tools, easy to switch between different techniques (NOT TOO LONG)
