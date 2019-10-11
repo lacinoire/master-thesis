@@ -103,7 +103,7 @@ namespace pbeextractionbuildlogs
 
 			if (verbose)
 			{
-				Console.WriteLine(Describe(learningData));
+				//Console.WriteLine(Summarize(learningData));
 			}
 
 			result.AllKeywords = string.Join(", ", learningData.Examples.Select(ex => ex.Keywords));

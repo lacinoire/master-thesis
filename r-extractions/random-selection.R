@@ -20,7 +20,7 @@ run_analysis <- function(file, examples) {
   log <- read_build_log_from_file(file, sample_path)
   lines <- unlist(stri_split_lines(log, omit_empty = TRUE))
 
-  return(join_extracted_lines(sample(lines, avg_output_line_count(examples))))
+  return(join_extracted_lines(sample(lines, min(avg_output_line_count(examples), length(lines)))))
 }
 
 run_random_extraction_step <- function(train_examples, test_examples, step_results) {

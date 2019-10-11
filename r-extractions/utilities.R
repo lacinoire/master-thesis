@@ -252,9 +252,9 @@ select_keywords_to_search <- function(all_keywords) {
   }
 
   keyword_freq <- as.data.frame(table(filtered_keywords), stringsAsFactors = FALSE)
-  print(keyword_freq)
   max_kw <- max(keyword_freq$Freq)
   selected <- keyword_freq[keyword_freq$Freq >= max_kw, ]$filtered_keywords
+  print(selected)
   return(selected)
 }
 
