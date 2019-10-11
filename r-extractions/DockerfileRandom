@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y vim && apt-get install -qq -y --no-inst
     apt-get install -qq -y --no-install-recommends r-cran-stringr &&\
     apt-get install -qq -y --no-install-recommends r-cran-purrr
 
-RUN apt-get -qq install -y --no-install-recommends r-cran-rcpp
+RUN apt-get -qq install -y --no-install-recommends r-cran-rcpp &&\
+    apt-get -qq install -y ruby ruby-dev ruby-bundler
 
 COPY r-extractions r-extractions
 COPY evaluation evaluation
@@ -25,8 +26,6 @@ RUN find /r-extractions/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/
 
 RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|random|g' {} \;
 
-RUN apt-get install -y ruby ruby-dev ruby-bundler
-
 WORKDIR "/evaluation"
 
-CMD ["bash"]
+CMD ["ruby run-evaluation.rb"]

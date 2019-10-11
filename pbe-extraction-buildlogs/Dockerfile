@@ -18,4 +18,4 @@ RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|pbe|g' {} \; &&\
 
 WORKDIR "/evaluation"
 
-CMD ["bash"]
+CMD ["ruby run-evaluation.rb"]
