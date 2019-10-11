@@ -2,6 +2,22 @@
 
 # Carolin Master Thesis Work Log
 
+## 11.10.19
+
+- check survey gizmo fixes & send mail out for review
+- go through output of eval runs to find errors
+- some fixes for the evaluntion code
+- read Moritz' Feedback
+- review own thesis text on chapters 2-4
+
+## 8. - 10.10.19
+
+- write some things here and there
+- literature research about CI and stuff in general for introduction claims
+- start literature search for production log analysis
+- struggle a lot with survey gizmo 
+- anand's defense and talks
+
 ## 7.10.19
 
 - write a huge load of mails to moritz
