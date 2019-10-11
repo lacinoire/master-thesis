@@ -82,8 +82,12 @@ calculate_accuracy <- function(data) {
     data[row, "Successful"] <- as.logical(successful)
 
     accuracy2 <- 0
-    if (testOutput != "" && desiredTestOutput != "" && !is.null(testOutput) && !is.null(desiredTestOutput)) {
+    if (nchar(testOutput) < 55000 && nchar(desiredTestOutput) < 55000) {
+      print(nchar(testOutput))
+      print(nchar(desiredTestOutput))
       accuracy2 <- stringsim(testOutput, desiredTestOutput)
+    } else {
+      accuracy2 <- -1
     }
 
     data[row, "Accuracy"] <- accuracy2
