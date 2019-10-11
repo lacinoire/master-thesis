@@ -98,7 +98,7 @@ def send_mails
 
   mail_groups.each do |mail, rows|
     next if ['no_mail_found', 'no_user_found'].include?(mail)
-    next if rows[0]['language'] != 'Clojure'
+    next if rows[0]['language'] != 'Erlang'
 
     mail_text = ''
     rows.each_with_index do |row, index|
@@ -127,7 +127,7 @@ def send_mails
     end
     puts mail_text
     smail('hey@carolin-brandt.de', mail_text)
-    break
+    # break
   end
 end
 
