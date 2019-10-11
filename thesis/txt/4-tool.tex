@@ -6,7 +6,10 @@
 
 \chapter{Our Information Extraction Tool}
 \label{sec:implementation}
-describe implemantation of Tool
+We implemented prototypes for our three focus information extraction techniques to evaluate them on our collected build logs.
+This section will present our unified interface and describe the implementation of each of the techniques.
+
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[page=7, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
@@ -36,11 +39,17 @@ Specific options:
 Common options:
     -h, --help                       Show this message
 \end{lstlisting}
+As we implemented the information extraction techniques in different languages, choosing one that fits the respective technique each time, we decided to abstract over language differences for cli arguments by creating a unified interfaces. Our unified interface then in turn calls the various different IE techniques over the command line.
+
+We provide two different modes: \emph{analysis} and \emph{evaluation}.
+The \emph{analysis} takes a path to a file you want to analyze and all the configuration necessary for a specific technique and returns the resulting extraction on the console output. The \emph{evaluation} takes an 
+
 unification tool, reference CLI somehow nicely?,
 
 ruby tool, unifies different syntax command line interfaces of the other tools, easy to switch between different techniques (NOT TOO LONG)
 
 \section{PROSE Program Synthesis}
+The first technique we implemented was the PROSE regular expression program synthesis. As it is based on the PROSE library from Microsoft provided in C\# we also chose C\# for our tool. 
 implementation details :)
 
 C\#, based on PROSE Text Extraction DSL, parsing example set files, feeding learning session \& applying learned regex program, can do single string extraction and also sequence extraction \& showing differentiating examples (although not in use)
