@@ -82,7 +82,7 @@ calculate_accuracy <- function(data) {
     data[row, "Successful"] <- as.logical(successful)
 
     accuracy2 <- 0
-    if (testOutput != "" && desiredTestOutput != "" && testOutupt != nil && desiredTestOutput != nil  ) {
+    if (testOutput != "" && desiredTestOutput != "" && !is.null(testOutput) && !is.null(desiredTestOutput)) {
       accuracy2 <- stringsim(testOutput, desiredTestOutput)
     }
 
