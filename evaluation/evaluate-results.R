@@ -81,7 +81,11 @@ calculate_accuracy <- function(data) {
       grepl(testOutput, desiredTestOutput, fixed = TRUE)
     data[row, "Successful"] <- as.logical(successful)
 
-    accuracy2 <- stringsim(testOutput, desiredTestOutput)
+    accuracy2 <- 0
+    if (testOutput != "" || desiredTestOutput != "") {
+      accuracy2 <- stringsim(testOutput, desiredTestOutput)
+    }
+
     data[row, "Accuracy"] <- accuracy2
 
     testOutputLines <- stri_split_lines1(testOutput)
