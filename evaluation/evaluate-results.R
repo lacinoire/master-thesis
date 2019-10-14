@@ -83,8 +83,6 @@ calculate_accuracy <- function(data) {
 
     accuracy2 <- 0
     if (nchar(testOutput) < 55000 && nchar(desiredTestOutput) < 55000) {
-      print(nchar(testOutput))
-      print(nchar(desiredTestOutput))
       accuracy2 <- stringsim(testOutput, desiredTestOutput)
     } else {
       accuracy2 <- -1

@@ -143,9 +143,9 @@ namespace pbeextractionbuildlogs
 				List<AnalysisResult<OutputType>> testResults = new List<AnalysisResult<OutputType>>();
 				foreach (ExampleData<OutputType> testSample in testSamples)
 				{
-					var analysisResult = ApplyToFileWithLearningData(Config.SAMPLE_DIRECTORY + testSample.InputPath, currentLearningData, new AnalysisResult<OutputType>(), true);
+					var analysisResult = ApplyToFileWithLearningData(Config.SAMPLE_DIRECTORY + testSample.InputPath, currentLearningData, new AnalysisResult<OutputType>(), false);
 					analysisResult.DesiredOutput = testSample.Output;
-					Console.WriteLine(ConsoleOutput.PrintAnalysisResult(analysisResult, 0, true));
+					// Console.WriteLine(ConsoleOutput.PrintAnalysisResult(analysisResult, 0, true));
 					testResults.Add(analysisResult);
 				}
 				result.Results.Add(currentLearningData, testResults);
