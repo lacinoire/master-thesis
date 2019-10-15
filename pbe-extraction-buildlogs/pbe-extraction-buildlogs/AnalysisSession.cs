@@ -41,6 +41,8 @@ namespace pbeextractionbuildlogs
 		{
 			var inputRegion = AnalysisUtil.RegionFromFile(exampleData.InputPath);
 			var startIndex = inputRegion.S.IndexOf(exampleData.Output, StringComparison.Ordinal);
+			Console.WriteLine(exampleData.InputPath)
+			Console.WriteLine(exampleData.Output)
 			var outputRegion = inputRegion.Slice((uint)startIndex, (uint)(startIndex) + ((uint)exampleData.Output.Length));
 			session.Constraints.Add(new RegionExample(inputRegion, outputRegion));
 
