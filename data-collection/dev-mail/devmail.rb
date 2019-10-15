@@ -62,15 +62,18 @@ end
 def smail(to, txt)
   # smtp = Net::SMTP.new('srv23.dsbsrv.de', 25)
   # smtp.set_debug_output $stderr
-  Net::SMTP.start('srv23.dsbsrv.de',
-                  25,
-                  'localhost',
-                  Config.config['email']['username'],
-                  Config.config['email']['password'], :plain) do |smtp|
+  server = Net::SMTP.new('postout.lrz.de',
+                         587)
+  server.enable_starttls
+
+  server.start('localhost',
+               Config.config['email']['username'],
+               Config.config['email']['password'], :plain) do |smtp|
     begin
-      smtp.send_message(txt, 'Carolin Brandt <c.e.brandt@tudelft.nl>', to)
+      smtp.send_message(txt, 'carolin.brandt@tum.de', to)
       puts "[#{Time.now}] Sent email to #{to}"
-    rescue
+    rescue => error
+      puts error
       puts "[#{Time.now}] Cannot send email to #{to}"
     end
   end
@@ -81,8 +84,23 @@ def render_erb(template, locals)
   ERB.new(template).result(OpenStruct.new(locals).instance_eval { binding })
 end
 
+
+
 # sends out mails for all entries of the buildcsv
 def send_mails
+  number_to_word = {
+    1 => 'one',
+    2 => 'two',
+    3 => 'three',
+    4 => 'four',
+    5 => 'five',
+    6 => 'six',
+    7 => 'seven',
+    8 => 'eight',
+    9 => 'nine',
+    10 => 'ten'
+  }
+
   csv = CSV.read('dev-mail/builds2.csv', headers: true)
 
   mail_groups = {}
@@ -98,17 +116,17 @@ def send_mails
 
   mail_groups.each do |mail, rows|
     next if ['no_mail_found', 'no_user_found'].include?(mail)
-    next if rows[0]['language'] != 'Erlang'
+    next if rows[0]['language'] != 'xxx'
 
     mail_text = ''
     rows.each_with_index do |row, index|
       dev_name = row['dev_name'] == 'no_username_found' ? '' : row['dev_name'].strip
       jobs_url_job_id = row['job_id'] == 'job_id_not_found' ? 'builds/' + row['build_id'].strip : 'jobs/' + row['job_id'].strip
       replacement = {
-        email: 'hey@carolin-brandt.de', # row['email'].strip,
+        email: mail.strip,
         build_num: row['build_number'].strip,
         repo_name: row['repository_name'].strip,
-        dev_name: dev_name,
+        dev_name: dev_name.split(' ')[0]&.strip,
         commit_sha_short: row['commit_sha'].strip[0..7],
         commit_sha_long: row['commit_sha'],
         commit_date: Time.parse(row['commit_date'].strip).httpdate,
@@ -116,18 +134,21 @@ def send_mails
         repo_owner: row['repository_owner'].strip,
         build_id: row['build_id'].strip,
         jobs_url_job_id: jobs_url_job_id,
-        mail_count: rows.length
+        mail_count: number_to_word[rows.length],
+        mail_index: index + 1
       }
       if index.zero?
         pre_text = render_erb(File.open('dev-mail/pre-templatemail.txt').read, replacement)
         mail_text += pre_text
       end
-      txt = render_erb(File.open('dev-mail/core-templatemail.txt').read, replacement)
-      mail_text += txt
+      text = render_erb(File.open('dev-mail/core-templatemail.txt').read, replacement)
+      mail_text += text
     end
-    puts mail_text
-    smail('hey@carolin-brandt.de', mail_text)
-    # break
+    post_text = File.open('dev-mail/post-templatemail.txt').read
+    mail_text += post_text
+    puts 'sent mail to ' + mail.strip + ' with language ' + rows[0]['language'] + ' and repo ' + rows[0]['repo_slug']
+    smail(mail.strip, mail_text)
+    break
   end
 end
 
