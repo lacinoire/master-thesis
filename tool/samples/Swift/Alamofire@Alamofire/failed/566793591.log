@@ -1,231 +1,875 @@
-travis_fold:start:worker_info[0K[33;1mWorker information[0m
+travis_fold:start:worker_info
+[0K[33;1mWorker information[0m
 hostname: 8dd51fcf-80ff-4b9f-a384-ecdc5166395e@1.worker-org-6bc68c5dcd-fkld5.macstadium-prod-2
 version: v6.2.0 https://github.com/travis-ci/worker/tree/5e5476e01646095f48eec13196fdb3faf8f5cbf7
 instance: 47c2b91e-b2dc-439f-a665-6fbd7ca8697c travis-ci-macos10.14-xcode10.2-1555600204 (via amqp)
 startup: 1m6.613853539s
-travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
-Build language: ruby
-Build id: 566793591
-Job id: 566793592
-Runtime kernel version: 18.5.0
-travis-build version: 65949ed1e
-[34m[1mBuild image provisioning date and time[0m
-Thu Apr 18 18:47:23 GMT 2019
-[34m[1mOperating System Details[0m
-ProductName:	Mac OS X
-ProductVersion:	10.14.4
-BuildVersion:	18E226
-[34m[1mGit version[0m
-git version 2.21.0
-[34m[1mbash version[0m
-GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin18)
-Copyright (C) 2007 Free Software Foundation, Inc.
-[34m[1mGCC version[0m
-Apple LLVM version 10.0.1 (clang-1001.0.46.4)
-Target: x86_64-apple-darwin18.5.0
-Thread model: posix
-InstalledDir: /Applications/Xcode-10.2.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-[34m[1mLLVM version[0m
-Apple LLVM version 10.0.1 (clang-1001.0.46.4)
-Target: x86_64-apple-darwin18.5.0
-Thread model: posix
-InstalledDir: /Applications/Xcode-10.2.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-[34m[1mPre-installed Ruby versions[0m
-ruby-2.3.5
-ruby-2.4.5
-[34m[1mPre-installed Node.js versions[0m
-v10.15.0
-v10.15.3
-v4.9.1
-v6.16.0
-v6.17.1
-v8.15.0
-v8.16.0
-[34m[1mmvn -version[0m
-Apache Maven 3.6.1 (d66c9c0b3152b2e69ee9bac180bb8fcc8e6af555; 2019-04-04T19:00:29Z)
-Maven home: /usr/local/Cellar/maven/3.6.1/libexec
-Java version: 12, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/openjdk-12.jdk/Contents/Home
-Default locale: en_US, platform encoding: UTF-8
-OS name: "mac os x", version: "10.14.4", arch: "x86_64", family: "mac"
-travis_fold:end:system_info[0K
-
-
-travis_fold:start:git.checkout[0Ktravis_time:start:027dfe74[0K$ git clone --depth=50 https://github.com/Alamofire/Alamofire.git Alamofire/Alamofire
-Cloning into 'Alamofire/Alamofire'...
-remote: Enumerating objects: 1465, done.[K
-remote: Counting objects:   0% (1/1465)   [Kremote: Counting objects:   1% (15/1465)   [Kremote: Counting objects:   2% (30/1465)   [Kremote: Counting objects:   3% (44/1465)   [Kremote: Counting objects:   4% (59/1465)   [Kremote: Counting objects:   5% (74/1465)   [Kremote: Counting objects:   6% (88/1465)   [Kremote: Counting objects:   7% (103/1465)   [Kremote: Counting objects:   8% (118/1465)   [Kremote: Counting objects:   9% (132/1465)   [Kremote: Counting objects:  10% (147/1465)   [Kremote: Counting objects:  11% (162/1465)   [Kremote: Counting objects:  12% (176/1465)   [Kremote: Counting objects:  13% (191/1465)   [Kremote: Counting objects:  14% (206/1465)   [Kremote: Counting objects:  15% (220/1465)   [Kremote: Counting objects:  16% (235/1465)   [Kremote: Counting objects:  17% (250/1465)   [Kremote: Counting objects:  18% (264/1465)   [Kremote: Counting objects:  19% (279/1465)   [Kremote: Counting objects:  20% (293/1465)   [Kremote: Counting objects:  21% (308/1465)   [Kremote: Counting objects:  22% (323/1465)   [Kremote: Counting objects:  23% (337/1465)   [Kremote: Counting objects:  24% (352/1465)   [Kremote: Counting objects:  25% (367/1465)   [Kremote: Counting objects:  26% (381/1465)   [Kremote: Counting objects:  27% (396/1465)   [Kremote: Counting objects:  28% (411/1465)   [Kremote: Counting objects:  29% (425/1465)   [Kremote: Counting objects:  30% (440/1465)   [Kremote: Counting objects:  31% (455/1465)   [Kremote: Counting objects:  32% (469/1465)   [Kremote: Counting objects:  33% (484/1465)   [Kremote: Counting objects:  34% (499/1465)   [Kremote: Counting objects:  35% (513/1465)   [Kremote: Counting objects:  36% (528/1465)   [Kremote: Counting objects:  37% (543/1465)   [Kremote: Counting objects:  38% (557/1465)   [Kremote: Counting objects:  39% (572/1465)   [Kremote: Counting objects:  40% (586/1465)   [Kremote: Counting objects:  41% (601/1465)   [Kremote: Counting objects:  42% (616/1465)   [Kremote: Counting objects:  43% (630/1465)   [Kremote: Counting objects:  44% (645/1465)   [Kremote: Counting objects:  45% (660/1465)   [Kremote: Counting objects:  46% (674/1465)   [Kremote: Counting objects:  47% (689/1465)   [Kremote: Counting objects:  48% (704/1465)   [Kremote: Counting objects:  49% (718/1465)   [Kremote: Counting objects:  50% (733/1465)   [Kremote: Counting objects:  51% (748/1465)   [Kremote: Counting objects:  52% (762/1465)   [Kremote: Counting objects:  53% (777/1465)   [Kremote: Counting objects:  54% (792/1465)   [Kremote: Counting objects:  55% (806/1465)   [Kremote: Counting objects:  56% (821/1465)   [Kremote: Counting objects:  57% (836/1465)   [Kremote: Counting objects:  58% (850/1465)   [Kremote: Counting objects:  59% (865/1465)   [Kremote: Counting objects:  60% (879/1465)   [Kremote: Counting objects:  61% (894/1465)   [Kremote: Counting objects:  62% (909/1465)   [Kremote: Counting objects:  63% (923/1465)   [Kremote: Counting objects:  64% (938/1465)   [Kremote: Counting objects:  65% (953/1465)   [Kremote: Counting objects:  66% (967/1465)   [Kremote: Counting objects:  67% (982/1465)   [Kremote: Counting objects:  68% (997/1465)   [Kremote: Counting objects:  69% (1011/1465)   [Kremote: Counting objects:  70% (1026/1465)   [Kremote: Counting objects:  71% (1041/1465)   [Kremote: Counting objects:  72% (1055/1465)   [Kremote: Counting objects:  73% (1070/1465)   [Kremote: Counting objects:  74% (1085/1465)   [Kremote: Counting objects:  75% (1099/1465)   [Kremote: Counting objects:  76% (1114/1465)   [Kremote: Counting objects:  77% (1129/1465)   [Kremote: Counting objects:  78% (1143/1465)   [Kremote: Counting objects:  79% (1158/1465)   [Kremote: Counting objects:  80% (1172/1465)   [Kremote: Counting objects:  81% (1187/1465)   [Kremote: Counting objects:  82% (1202/1465)   [Kremote: Counting objects:  83% (1216/1465)   [Kremote: Counting objects:  84% (1231/1465)   [Kremote: Counting objects:  85% (1246/1465)   [Kremote: Counting objects:  86% (1260/1465)   [Kremote: Counting objects:  87% (1275/1465)   [Kremote: Counting objects:  88% (1290/1465)   [Kremote: Counting objects:  89% (1304/1465)   [Kremote: Counting objects:  90% (1319/1465)   [Kremote: Counting objects:  91% (1334/1465)   [Kremote: Counting objects:  92% (1348/1465)   [Kremote: Counting objects:  93% (1363/1465)   [Kremote: Counting objects:  94% (1378/1465)   [Kremote: Counting objects:  95% (1392/1465)   [Kremote: Counting objects:  96% (1407/1465)   [Kremote: Counting objects:  97% (1422/1465)   [Kremote: Counting objects:  98% (1436/1465)   [Kremote: Counting objects:  99% (1451/1465)   [Kremote: Counting objects: 100% (1465/1465)   [Kremote: Counting objects: 100% (1465/1465), done.[K
-remote: Compressing objects:   0% (1/428)   [Kremote: Compressing objects:   1% (5/428)   [Kremote: Compressing objects:   2% (9/428)   [Kremote: Compressing objects:   3% (13/428)   [Kremote: Compressing objects:   4% (18/428)   [Kremote: Compressing objects:   5% (22/428)   [Kremote: Compressing objects:   6% (26/428)   [Kremote: Compressing objects:   7% (30/428)   [Kremote: Compressing objects:   8% (35/428)   [Kremote: Compressing objects:   9% (39/428)   [Kremote: Compressing objects:  10% (43/428)   [Kremote: Compressing objects:  11% (48/428)   [Kremote: Compressing objects:  12% (52/428)   [Kremote: Compressing objects:  13% (56/428)   [Kremote: Compressing objects:  14% (60/428)   [Kremote: Compressing objects:  15% (65/428)   [Kremote: Compressing objects:  16% (69/428)   [Kremote: Compressing objects:  17% (73/428)   [Kremote: Compressing objects:  18% (78/428)   [Kremote: Compressing objects:  19% (82/428)   [Kremote: Compressing objects:  20% (86/428)   [Kremote: Compressing objects:  21% (90/428)   [Kremote: Compressing objects:  22% (95/428)   [Kremote: Compressing objects:  23% (99/428)   [Kremote: Compressing objects:  24% (103/428)   [Kremote: Compressing objects:  25% (107/428)   [Kremote: Compressing objects:  26% (112/428)   [Kremote: Compressing objects:  27% (116/428)   [Kremote: Compressing objects:  28% (120/428)   [Kremote: Compressing objects:  29% (125/428)   [Kremote: Compressing objects:  30% (129/428)   [Kremote: Compressing objects:  31% (133/428)   [Kremote: Compressing objects:  32% (137/428)   [Kremote: Compressing objects:  33% (142/428)   [Kremote: Compressing objects:  34% (146/428)   [Kremote: Compressing objects:  35% (150/428)   [Kremote: Compressing objects:  36% (155/428)   [Kremote: Compressing objects:  37% (159/428)   [Kremote: Compressing objects:  38% (163/428)   [Kremote: Compressing objects:  39% (167/428)   [Kremote: Compressing objects:  40% (172/428)   [Kremote: Compressing objects:  41% (176/428)   [Kremote: Compressing objects:  42% (180/428)   [Kremote: Compressing objects:  43% (185/428)   [Kremote: Compressing objects:  44% (189/428)   [Kremote: Compressing objects:  45% (193/428)   [Kremote: Compressing objects:  46% (197/428)   [Kremote: Compressing objects:  47% (202/428)   [Kremote: Compressing objects:  48% (206/428)   [Kremote: Compressing objects:  49% (210/428)   [Kremote: Compressing objects:  50% (214/428)   [Kremote: Compressing objects:  51% (219/428)   [Kremote: Compressing objects:  52% (223/428)   [Kremote: Compressing objects:  53% (227/428)   [Kremote: Compressing objects:  54% (232/428)   [Kremote: Compressing objects:  55% (236/428)   [Kremote: Compressing objects:  56% (240/428)   [Kremote: Compressing objects:  57% (244/428)   [Kremote: Compressing objects:  58% (249/428)   [Kremote: Compressing objects:  59% (253/428)   [Kremote: Compressing objects:  60% (257/428)   [Kremote: Compressing objects:  61% (262/428)   [Kremote: Compressing objects:  62% (266/428)   [Kremote: Compressing objects:  63% (270/428)   [Kremote: Compressing objects:  64% (274/428)   [Kremote: Compressing objects:  65% (279/428)   [Kremote: Compressing objects:  66% (283/428)   [Kremote: Compressing objects:  67% (287/428)   [Kremote: Compressing objects:  68% (292/428)   [Kremote: Compressing objects:  69% (296/428)   [Kremote: Compressing objects:  70% (300/428)   [Kremote: Compressing objects:  71% (304/428)   [Kremote: Compressing objects:  72% (309/428)   [Kremote: Compressing objects:  73% (313/428)   [Kremote: Compressing objects:  74% (317/428)   [Kremote: Compressing objects:  75% (321/428)   [Kremote: Compressing objects:  76% (326/428)   [Kremote: Compressing objects:  77% (330/428)   [Kremote: Compressing objects:  78% (334/428)   [Kremote: Compressing objects:  79% (339/428)   [Kremote: Compressing objects:  80% (343/428)   [Kremote: Compressing objects:  81% (347/428)   [Kremote: Compressing objects:  82% (351/428)   [Kremote: Compressing objects:  83% (356/428)   [Kremote: Compressing objects:  84% (360/428)   [Kremote: Compressing objects:  85% (364/428)   [Kremote: Compressing objects:  86% (369/428)   [Kremote: Compressing objects:  87% (373/428)   [Kremote: Compressing objects:  88% (377/428)   [Kremote: Compressing objects:  89% (381/428)   [Kremote: Compressing objects:  90% (386/428)   [Kremote: Compressing objects:  91% (390/428)   [Kremote: Compressing objects:  92% (394/428)   [Kremote: Compressing objects:  93% (399/428)   [Kremote: Compressing objects:  94% (403/428)   [Kremote: Compressing objects:  95% (407/428)   [Kremote: Compressing objects:  96% (411/428)   [Kremote: Compressing objects:  97% (416/428)   [Kremote: Compressing objects:  98% (420/428)   [Kremote: Compressing objects:  99% (424/428)   [Kremote: Compressing objects: 100% (428/428)   [Kremote: Compressing objects: 100% (428/428), done.[K
-Receiving objects:   0% (1/1465)   Receiving objects:   1% (15/1465)   Receiving objects:   2% (30/1465)   Receiving objects:   3% (44/1465)   Receiving objects:   4% (59/1465)   Receiving objects:   5% (74/1465)   Receiving objects:   6% (88/1465)   Receiving objects:   7% (103/1465)   Receiving objects:   8% (118/1465)   Receiving objects:   9% (132/1465)   Receiving objects:  10% (147/1465)   Receiving objects:  11% (162/1465)   Receiving objects:  12% (176/1465)   Receiving objects:  13% (191/1465)   Receiving objects:  14% (206/1465)   Receiving objects:  15% (220/1465)   Receiving objects:  16% (235/1465)   Receiving objects:  17% (250/1465)   Receiving objects:  18% (264/1465)   Receiving objects:  19% (279/1465)   Receiving objects:  20% (293/1465)   Receiving objects:  21% (308/1465)   Receiving objects:  22% (323/1465)   Receiving objects:  23% (337/1465)   Receiving objects:  24% (352/1465)   Receiving objects:  25% (367/1465)   Receiving objects:  26% (381/1465)   Receiving objects:  27% (396/1465)   Receiving objects:  28% (411/1465)   Receiving objects:  29% (425/1465)   Receiving objects:  30% (440/1465)   Receiving objects:  31% (455/1465)   Receiving objects:  32% (469/1465)   Receiving objects:  33% (484/1465)   Receiving objects:  34% (499/1465)   Receiving objects:  35% (513/1465)   Receiving objects:  36% (528/1465)   Receiving objects:  37% (543/1465)   Receiving objects:  38% (557/1465)   Receiving objects:  39% (572/1465)   Receiving objects:  40% (586/1465)   Receiving objects:  41% (601/1465)   Receiving objects:  42% (616/1465)   Receiving objects:  43% (630/1465)   Receiving objects:  44% (645/1465)   Receiving objects:  45% (660/1465)   Receiving objects:  46% (674/1465)   Receiving objects:  47% (689/1465)   Receiving objects:  48% (704/1465)   Receiving objects:  49% (718/1465)   Receiving objects:  50% (733/1465)   Receiving objects:  51% (748/1465)   Receiving objects:  52% (762/1465)   Receiving objects:  53% (777/1465)   Receiving objects:  54% (792/1465)   Receiving objects:  55% (806/1465)   Receiving objects:  56% (821/1465)   Receiving objects:  57% (836/1465)   Receiving objects:  58% (850/1465)   Receiving objects:  59% (865/1465)   Receiving objects:  60% (879/1465)   Receiving objects:  61% (894/1465)   Receiving objects:  62% (909/1465)   Receiving objects:  63% (923/1465)   Receiving objects:  64% (938/1465)   Receiving objects:  65% (953/1465)   Receiving objects:  66% (967/1465)   Receiving objects:  67% (982/1465)   Receiving objects:  68% (997/1465)   Receiving objects:  69% (1011/1465)   Receiving objects:  70% (1026/1465)   Receiving objects:  71% (1041/1465)   Receiving objects:  72% (1055/1465)   Receiving objects:  73% (1070/1465)   Receiving objects:  74% (1085/1465)   Receiving objects:  75% (1099/1465)   Receiving objects:  76% (1114/1465)   Receiving objects:  77% (1129/1465)   Receiving objects:  78% (1143/1465)   Receiving objects:  79% (1158/1465)   Receiving objects:  80% (1172/1465)   Receiving objects:  81% (1187/1465)   Receiving objects:  82% (1202/1465)   Receiving objects:  83% (1216/1465)   Receiving objects:  84% (1231/1465)   Receiving objects:  85% (1246/1465)   Receiving objects:  86% (1260/1465)   Receiving objects:  87% (1275/1465)   Receiving objects:  88% (1290/1465)   Receiving objects:  89% (1304/1465)   Receiving objects:  90% (1319/1465)   Receiving objects:  91% (1334/1465)   Receiving objects:  92% (1348/1465)   Receiving objects:  93% (1363/1465)   Receiving objects:  94% (1378/1465)   Receiving objects:  95% (1392/1465)   Receiving objects:  96% (1407/1465)   Receiving objects:  97% (1422/1465)   Receiving objects:  98% (1436/1465)   Receiving objects:  99% (1451/1465)   remote: Total 1465 (delta 1058), reused 1333 (delta 974), pack-reused 0
-Receiving objects: 100% (1465/1465)   Receiving objects: 100% (1465/1465), 3.49 MiB | 19.08 MiB/s, done.
-Resolving deltas:   0% (0/1058)   Resolving deltas:   2% (22/1058)   Resolving deltas:   4% (50/1058)   Resolving deltas:   5% (57/1058)   Resolving deltas:   6% (72/1058)   Resolving deltas:   8% (87/1058)   Resolving deltas:  11% (117/1058)   Resolving deltas:  12% (134/1058)   Resolving deltas:  13% (146/1058)   Resolving deltas:  14% (154/1058)   Resolving deltas:  15% (162/1058)   Resolving deltas:  16% (170/1058)   Resolving deltas:  17% (183/1058)   Resolving deltas:  18% (195/1058)   Resolving deltas:  19% (204/1058)   Resolving deltas:  20% (215/1058)   Resolving deltas:  21% (230/1058)   Resolving deltas:  22% (240/1058)   Resolving deltas:  23% (244/1058)   Resolving deltas:  24% (256/1058)   Resolving deltas:  25% (269/1058)   Resolving deltas:  26% (276/1058)   Resolving deltas:  28% (298/1058)   Resolving deltas:  29% (310/1058)   Resolving deltas:  30% (320/1058)   Resolving deltas:  31% (333/1058)   Resolving deltas:  33% (357/1058)   Resolving deltas:  34% (362/1058)   Resolving deltas:  43% (459/1058)   Resolving deltas:  49% (522/1058)   Resolving deltas:  84% (893/1058)   Resolving deltas:  87% (930/1058)   Resolving deltas:  88% (934/1058)   Resolving deltas:  93% (990/1058)   Resolving deltas:  94% (995/1058)   Resolving deltas:  98% (1038/1058)   Resolving deltas:  99% (1049/1058)   Resolving deltas: 100% (1058/1058)   Resolving deltas: 100% (1058/1058), done.
-travis_time:end:027dfe74:start=1564722479874345000,finish=1564722480883618000,duration=1009273000[0K$ cd Alamofire/Alamofire
-ruby-2.4.5 - #gemset created /Users/travis/.rvm/gems/ruby-2.4.5@Alamofire
-ruby-2.4.5 - #generating Alamofire wrappers|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|.
-travis_time:start:2a97f6e0[0K$ git fetch origin +refs/pull/2887/merge:
-remote: Enumerating objects: 20, done.[K
-remote: Counting objects:   5% (1/18)   [Kremote: Counting objects:  11% (2/18)   [Kremote: Counting objects:  16% (3/18)   [Kremote: Counting objects:  22% (4/18)   [Kremote: Counting objects:  27% (5/18)   [Kremote: Counting objects:  33% (6/18)   [Kremote: Counting objects:  38% (7/18)   [Kremote: Counting objects:  44% (8/18)   [Kremote: Counting objects:  50% (9/18)   [Kremote: Counting objects:  55% (10/18)   [Kremote: Counting objects:  61% (11/18)   [Kremote: Counting objects:  66% (12/18)   [Kremote: Counting objects:  72% (13/18)   [Kremote: Counting objects:  77% (14/18)   [Kremote: Counting objects:  83% (15/18)   [Kremote: Counting objects:  88% (16/18)   [Kremote: Counting objects:  94% (17/18)   [Kremote: Counting objects: 100% (18/18)   [Kremote: Counting objects: 100% (18/18), done.[K
-remote: Compressing objects:  50% (1/2)   [Kremote: Compressing objects: 100% (2/2)   [Kremote: Compressing objects: 100% (2/2), done.[K
-remote: Total 5 (delta 4), reused 3 (delta 3), pack-reused 0[K
-Unpacking objects:  20% (1/5)   Unpacking objects:  40% (2/5)   Unpacking objects:  60% (3/5)   Unpacking objects:  80% (4/5)   Unpacking objects: 100% (5/5)   Unpacking objects: 100% (5/5), done.
-From https://github.com/Alamofire/Alamofire
- * branch            refs/pull/2887/merge -> FETCH_HEAD
-travis_time:end:2a97f6e0:start=1564722482712369000,finish=1564722484186676000,duration=1474307000[0K$ git checkout -qf FETCH_HEAD
-travis_fold:end:git.checkout[0K
-
-[33;1mSetting environment variables from .travis.yml[0m
-$ export LC_CTYPE=en_US.UTF-8
-$ export LANG=en_US.UTF-8
-$ export WORKSPACE=Alamofire.xcworkspace
-$ export IOS_FRAMEWORK_SCHEME="Alamofire iOS"
-$ export MACOS_FRAMEWORK_SCHEME="Alamofire macOS"
-$ export TVOS_FRAMEWORK_SCHEME="Alamofire tvOS"
-$ export WATCHOS_FRAMEWORK_SCHEME="Alamofire watchOS"
-$ export EXAMPLE_SCHEME="iOS Example"
-$ export DESTINATION="OS=5.2,name=Apple Watch Series 4 - 44mm"
-$ export SCHEME="$WATCHOS_FRAMEWORK_SCHEME"
-$ export RUN_TESTS="NO"
-$ export BUILD_EXAMPLE="NO"
-$ export POD_LINT="NO"
-
-travis_fold:start:rvm[0Ktravis_time:start:1681b6eb[0K$ rvm use $(< .ruby-version) --install --binary --fuzzy
-Using /Users/travis/.rvm/gems/ruby-2.4.5
-travis_time:end:1681b6eb:start=1564722484332154000,finish=1564722485968588000,duration=1636434000[0Ktravis_fold:end:rvm[0K
-$ export BUNDLE_GEMFILE=$PWD/Gemfile
-travis_fold:start:cache.1[0KSetting up build cache
-$ export CASHER_DIR=${TRAVIS_HOME}/.casher
-travis_time:start:2558de72[0K$ Installing caching utilities
-travis_time:end:2558de72:start=1564722488209156000,finish=1564722488403280000,duration=194124000[0Ktravis_time:start:07f0aa60[0Ktravis_time:end:07f0aa60:start=1564722488418030000,finish=1564722488427464000,duration=9434000[0Ktravis_time:start:0a31bc72[0Kattempting to download cache archive[0m
-[32;1mfetching PR.2887/cache-osx-xcode10.2-fb1d1a996e138b588d0f43522d8ac78629139b9ddc089ae51c355da447f5d2cf--rvm-default--gemfile-Gemfile.tgz[0m
-[32;1mfetching PR.2887/cache--rvm-default--gemfile-Gemfile.tgz[0m
-[32;1mfetching master/cache-osx-xcode10.2-fb1d1a996e138b588d0f43522d8ac78629139b9ddc089ae51c355da447f5d2cf--rvm-default--gemfile-Gemfile.tgz[0m
-[32;1mfound cache[0m
-travis_time:end:0a31bc72:start=1564722488438586000,finish=1564722492223929000,duration=3785343000[0Ktravis_fold:end:cache.1[0K
-
-travis_fold:start:cache.bundler[0Ktravis_time:start:02c025e4[0Ktravis_time:end:02c025e4:start=1564722492236645000,finish=1564722492247014000,duration=10369000[0Ktravis_time:start:07d4e11d[0Kadding /Users/travis/build/Alamofire/Alamofire/vendor/bundle to cache[0m
-creating directory /Users/travis/build/Alamofire/Alamofire/vendor/bundle[0m
-travis_time:end:07d4e11d:start=1564722492259754000,finish=1564722496575182000,duration=4315428000[0Ktravis_fold:end:cache.bundler[0Ktravis_fold:start:ruby.versions[0K$ ruby --version
-ruby 2.4.5p335 (2018-10-18 revision 65137) [x86_64-darwin18]
-$ rvm --version
-rvm 1.29.7-next (master) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
-$ bundle --version
-Bundler version 1.17.3
-$ gem --version
-3.0.2
-travis_fold:end:ruby.versions[0K
-travis_fold:start:install.bundler[0Ktravis_time:start:0e861a60[0K$ bundle install --jobs=3 --retry=3 --deployment --path=${BUNDLE_PATH:-vendor/bundle}
-Using CFPropertyList 3.0.0
-Using concurrent-ruby 1.1.5
-Using i18n 0.9.5
-Using minitest 5.11.3
-Using thread_safe 0.3.6
-Using tzinfo 1.2.5
-Using activesupport 4.2.11.1
-Using atomos 0.1.3
-Using bundler 1.17.3
-Using claide 1.0.2
-Using fuzzy_match 2.0.4
-Using nap 1.1.0
-Using cocoapods-core 1.7.5
-Using cocoapods-deintegrate 1.0.4
-Using cocoapods-downloader 1.2.2
-Using cocoapods-plugins 1.0.0
-Using cocoapods-search 1.0.0
-Using cocoapods-stats 1.1.0
-Using netrc 0.11.0
-Using cocoapods-trunk 1.3.1
-Using cocoapods-try 1.1.0
-Using colored2 3.1.2
-Using escape 0.0.4
-Using fourflusher 2.3.1
-Using gh_inspector 1.1.3
-Using molinillo 0.6.6
-Using ruby-macho 1.4.0
-Using nanaimo 0.2.6
-Using xcodeproj 1.11.0
-Using cocoapods 1.7.5
-Using ffi 1.11.1
-Using mustache 1.1.0
-Using open4 1.3.4
-Using redcarpet 3.5.0
-Using rouge 2.0.7
-Using rb-fsevent 0.10.3
-Using rb-inotify 0.10.0
-Using sass-listen 4.0.0
-Using sass 3.7.4
-Using sqlite3 1.4.1
-Using liferaft 0.0.6
-Using xcinvoke 0.3.0
-Using jazzy 0.10.0
-Using xcpretty 0.3.0
-Bundle complete! 3 Gemfile dependencies, 44 gems now installed.
-Bundled gems are installed into `./vendor/bundle`
-travis_time:end:0e861a60:start=1564722497660526000,finish=1564722498409314000,duration=748788000[0Ktravis_fold:end:install.bundler[0K
-travis_time:start:003fd624[0K$ set -o pipefail
-travis_time:end:003fd624:start=1564722498421665000,finish=1564722498430639000,duration=8974000[0K[32;1mThe command "set -o pipefail" exited with 0.[0m
-
-travis_time:start:1d8ecc00[0K$ xcodebuild -version
-Xcode 10.2.1
-Build version 10E1001
-travis_time:end:1d8ecc00:start=1564722498442320000,finish=1564722498598001000,duration=155681000[0K[32;1mThe command "xcodebuild -version" exited with 0.[0m
-
-travis_time:start:270c84d0[0K$ xcodebuild -showsdks
-iOS SDKs:
-	iOS 12.2                      	-sdk iphoneos12.2
-
-iOS Simulator SDKs:
-	Simulator - iOS 12.2          	-sdk iphonesimulator12.2
-
-macOS SDKs:
-	macOS 10.14                   	-sdk macosx10.14
-
-tvOS SDKs:
-	tvOS 12.2                     	-sdk appletvos12.2
-
-tvOS Simulator SDKs:
-	Simulator - tvOS 12.2         	-sdk appletvsimulator12.2
-
-watchOS SDKs:
-	watchOS 5.2                   	-sdk watchos5.2
-
-watchOS Simulator SDKs:
-	Simulator - watchOS 5.2       	-sdk watchsimulator5.2
-
-travis_time:end:270c84d0:start=1564722498612216000,finish=1564722499381389000,duration=769173000[0K[32;1mThe command "xcodebuild -showsdks" exited with 0.[0m
-
-travis_time:start:0988a2ba[0K$ if [ $RUN_TESTS == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty; else xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty; fi
-[33m▸[0m [39;1mProcessing[0m Info.plist
-
-[31m❌  [0m/Users/travis/build/Alamofire/Alamofire/Source/ParameterEncoding.swift:269:57: [31mthrown expression type 'AFError.ParameterEncoderFailureReason' does not conform to 'Error'[0m
-
-            throw AFError.ParameterEncoderFailureReason.missingRequiredComponent(.httpMethod(rawValue: "POST"))
-[36m                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-
-
-
-[31m❌  [0m/Users/travis/build/Alamofire/Alamofire/Source/ParameterEncoding.swift:302:57: [31mthrown expression type 'AFError.ParameterEncoderFailureReason' does not conform to 'Error'[0m
-
-            throw AFError.ParameterEncoderFailureReason.missingRequiredComponent(.httpMethod(rawValue: "POST"))
-[36m                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-
-
-** BUILD FAILED **
-
-
-The following build commands failed:
-	CompileSwift normal i386
-	CompileSwiftSources normal i386 com.apple.xcode.tools.swift.compiler
-(2 failures)
-travis_time:end:0988a2ba:start=1564722499394960000,finish=1564722508363263000,duration=8968303000[0K[31;1mThe command "if [ $RUN_TESTS == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty; else xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty; fi" exited with 65.[0m
-
-travis_time:start:05a41c40[0K$ if [ $BUILD_EXAMPLE == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty; fi
-travis_time:end:05a41c40:start=1564722508375185000,finish=1564722508384142000,duration=8957000[0K[32;1mThe command "if [ $BUILD_EXAMPLE == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty; fi" exited with 0.[0m
-
-travis_time:start:0980fb93[0K$ if [ $POD_LINT == "YES" ]; then pod lib lint; fi
-travis_time:end:0980fb93:start=1564722508395921000,finish=1564722508404651000,duration=8730000[0K[32;1mThe command "if [ $POD_LINT == "YES" ]; then pod lib lint; fi" exited with 0.[0m
-
-travis_fold:start:cache.2[0Kstore build cache
-$ bundle clean
-travis_time:start:10ebb1c1[0Ktravis_time:end:10ebb1c1:start=1564722508934581000,finish=1564722508944025000,duration=9444000[0Ktravis_time:start:15f968d8[0K[32;1mnothing changed[0m
-travis_time:end:15f968d8:start=1564722508955473000,finish=1564722511952525000,duration=2997052000[0Ktravis_fold:end:cache.2[0K
-
-Done. Your build exited with 1.
+travis_fold:end:worker_info
+[0Ktravis_fold:start:system_info
+[0K[33;1mBuild system information[0m
+
+Build language: ruby
+
+Build id: 566793591
+
+Job id: 566793592
+
+Runtime kernel version: 18.5.0
+
+travis-build version: 65949ed1e
+
+[34m[1mBuild image provisioning date and time[0m
+
+Thu Apr 18 18:47:23 GMT 2019
+
+[34m[1mOperating System Details[0m
+
+ProductName:	Mac OS X
+
+ProductVersion:	10.14.4
+
+BuildVersion:	18E226
+
+[34m[1mGit version[0m
+
+git version 2.21.0
+
+[34m[1mbash version[0m
+
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin18)
+
+Copyright (C) 2007 Free Software Foundation, Inc.
+
+[34m[1mGCC version[0m
+
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+
+Target: x86_64-apple-darwin18.5.0
+
+Thread model: posix
+
+InstalledDir: /Applications/Xcode-10.2.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+[34m[1mLLVM version[0m
+
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+
+Target: x86_64-apple-darwin18.5.0
+
+Thread model: posix
+
+InstalledDir: /Applications/Xcode-10.2.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+[34m[1mPre-installed Ruby versions[0m
+
+ruby-2.3.5
+
+ruby-2.4.5
+
+[34m[1mPre-installed Node.js versions[0m
+
+v10.15.0
+
+v10.15.3
+
+v4.9.1
+
+v6.16.0
+
+v6.17.1
+
+v8.15.0
+
+v8.16.0
+
+[34m[1mmvn -version[0m
+
+Apache Maven 3.6.1 (d66c9c0b3152b2e69ee9bac180bb8fcc8e6af555; 2019-04-04T19:00:29Z)
+
+Maven home: /usr/local/Cellar/maven/3.6.1/libexec
+
+Java version: 12, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/openjdk-12.jdk/Contents/Home
+
+Default locale: en_US, platform encoding: UTF-8
+
+OS name: "mac os x", version: "10.14.4", arch: "x86_64", family: "mac"
+
+travis_fold:end:system_info
+[0K
+nl
+nl
+nl
+nl
+
+travis_fold:start:git.checkout
+[0Ktravis_time:start:027dfe74
+[0K$ git clone --depth=50 https://github.com/Alamofire/Alamofire.git Alamofire/Alamofire
+
+Cloning into 'Alamofire/Alamofire'...
+
+remote: Enumerating objects: 1465, done.[K
+
+remote: Counting objects:   0% (1/1465)   [K
+remote: Counting objects:   1% (15/1465)   [K
+remote: Counting objects:   2% (30/1465)   [K
+remote: Counting objects:   3% (44/1465)   [K
+remote: Counting objects:   4% (59/1465)   [K
+remote: Counting objects:   5% (74/1465)   [K
+remote: Counting objects:   6% (88/1465)   [K
+remote: Counting objects:   7% (103/1465)   [K
+remote: Counting objects:   8% (118/1465)   [K
+remote: Counting objects:   9% (132/1465)   [K
+remote: Counting objects:  10% (147/1465)   [K
+remote: Counting objects:  11% (162/1465)   [K
+remote: Counting objects:  12% (176/1465)   [K
+remote: Counting objects:  13% (191/1465)   [K
+remote: Counting objects:  14% (206/1465)   [K
+remote: Counting objects:  15% (220/1465)   [K
+remote: Counting objects:  16% (235/1465)   [K
+remote: Counting objects:  17% (250/1465)   [K
+remote: Counting objects:  18% (264/1465)   [K
+remote: Counting objects:  19% (279/1465)   [K
+remote: Counting objects:  20% (293/1465)   [K
+remote: Counting objects:  21% (308/1465)   [K
+remote: Counting objects:  22% (323/1465)   [K
+remote: Counting objects:  23% (337/1465)   [K
+remote: Counting objects:  24% (352/1465)   [K
+remote: Counting objects:  25% (367/1465)   [K
+remote: Counting objects:  26% (381/1465)   [K
+remote: Counting objects:  27% (396/1465)   [K
+remote: Counting objects:  28% (411/1465)   [K
+remote: Counting objects:  29% (425/1465)   [K
+remote: Counting objects:  30% (440/1465)   [K
+remote: Counting objects:  31% (455/1465)   [K
+remote: Counting objects:  32% (469/1465)   [K
+remote: Counting objects:  33% (484/1465)   [K
+remote: Counting objects:  34% (499/1465)   [K
+remote: Counting objects:  35% (513/1465)   [K
+remote: Counting objects:  36% (528/1465)   [K
+remote: Counting objects:  37% (543/1465)   [K
+remote: Counting objects:  38% (557/1465)   [K
+remote: Counting objects:  39% (572/1465)   [K
+remote: Counting objects:  40% (586/1465)   [K
+remote: Counting objects:  41% (601/1465)   [K
+remote: Counting objects:  42% (616/1465)   [K
+remote: Counting objects:  43% (630/1465)   [K
+remote: Counting objects:  44% (645/1465)   [K
+remote: Counting objects:  45% (660/1465)   [K
+remote: Counting objects:  46% (674/1465)   [K
+remote: Counting objects:  47% (689/1465)   [K
+remote: Counting objects:  48% (704/1465)   [K
+remote: Counting objects:  49% (718/1465)   [K
+remote: Counting objects:  50% (733/1465)   [K
+remote: Counting objects:  51% (748/1465)   [K
+remote: Counting objects:  52% (762/1465)   [K
+remote: Counting objects:  53% (777/1465)   [K
+remote: Counting objects:  54% (792/1465)   [K
+remote: Counting objects:  55% (806/1465)   [K
+remote: Counting objects:  56% (821/1465)   [K
+remote: Counting objects:  57% (836/1465)   [K
+remote: Counting objects:  58% (850/1465)   [K
+remote: Counting objects:  59% (865/1465)   [K
+remote: Counting objects:  60% (879/1465)   [K
+remote: Counting objects:  61% (894/1465)   [K
+remote: Counting objects:  62% (909/1465)   [K
+remote: Counting objects:  63% (923/1465)   [K
+remote: Counting objects:  64% (938/1465)   [K
+remote: Counting objects:  65% (953/1465)   [K
+remote: Counting objects:  66% (967/1465)   [K
+remote: Counting objects:  67% (982/1465)   [K
+remote: Counting objects:  68% (997/1465)   [K
+remote: Counting objects:  69% (1011/1465)   [K
+remote: Counting objects:  70% (1026/1465)   [K
+remote: Counting objects:  71% (1041/1465)   [K
+remote: Counting objects:  72% (1055/1465)   [K
+remote: Counting objects:  73% (1070/1465)   [K
+remote: Counting objects:  74% (1085/1465)   [K
+remote: Counting objects:  75% (1099/1465)   [K
+remote: Counting objects:  76% (1114/1465)   [K
+remote: Counting objects:  77% (1129/1465)   [K
+remote: Counting objects:  78% (1143/1465)   [K
+remote: Counting objects:  79% (1158/1465)   [K
+remote: Counting objects:  80% (1172/1465)   [K
+remote: Counting objects:  81% (1187/1465)   [K
+remote: Counting objects:  82% (1202/1465)   [K
+remote: Counting objects:  83% (1216/1465)   [K
+remote: Counting objects:  84% (1231/1465)   [K
+remote: Counting objects:  85% (1246/1465)   [K
+remote: Counting objects:  86% (1260/1465)   [K
+remote: Counting objects:  87% (1275/1465)   [K
+remote: Counting objects:  88% (1290/1465)   [K
+remote: Counting objects:  89% (1304/1465)   [K
+remote: Counting objects:  90% (1319/1465)   [K
+remote: Counting objects:  91% (1334/1465)   [K
+remote: Counting objects:  92% (1348/1465)   [K
+remote: Counting objects:  93% (1363/1465)   [K
+remote: Counting objects:  94% (1378/1465)   [K
+remote: Counting objects:  95% (1392/1465)   [K
+remote: Counting objects:  96% (1407/1465)   [K
+remote: Counting objects:  97% (1422/1465)   [K
+remote: Counting objects:  98% (1436/1465)   [K
+remote: Counting objects:  99% (1451/1465)   [K
+remote: Counting objects: 100% (1465/1465)   [K
+remote: Counting objects: 100% (1465/1465), done.[K
+
+remote: Compressing objects:   0% (1/428)   [K
+remote: Compressing objects:   1% (5/428)   [K
+remote: Compressing objects:   2% (9/428)   [K
+remote: Compressing objects:   3% (13/428)   [K
+remote: Compressing objects:   4% (18/428)   [K
+remote: Compressing objects:   5% (22/428)   [K
+remote: Compressing objects:   6% (26/428)   [K
+remote: Compressing objects:   7% (30/428)   [K
+remote: Compressing objects:   8% (35/428)   [K
+remote: Compressing objects:   9% (39/428)   [K
+remote: Compressing objects:  10% (43/428)   [K
+remote: Compressing objects:  11% (48/428)   [K
+remote: Compressing objects:  12% (52/428)   [K
+remote: Compressing objects:  13% (56/428)   [K
+remote: Compressing objects:  14% (60/428)   [K
+remote: Compressing objects:  15% (65/428)   [K
+remote: Compressing objects:  16% (69/428)   [K
+remote: Compressing objects:  17% (73/428)   [K
+remote: Compressing objects:  18% (78/428)   [K
+remote: Compressing objects:  19% (82/428)   [K
+remote: Compressing objects:  20% (86/428)   [K
+remote: Compressing objects:  21% (90/428)   [K
+remote: Compressing objects:  22% (95/428)   [K
+remote: Compressing objects:  23% (99/428)   [K
+remote: Compressing objects:  24% (103/428)   [K
+remote: Compressing objects:  25% (107/428)   [K
+remote: Compressing objects:  26% (112/428)   [K
+remote: Compressing objects:  27% (116/428)   [K
+remote: Compressing objects:  28% (120/428)   [K
+remote: Compressing objects:  29% (125/428)   [K
+remote: Compressing objects:  30% (129/428)   [K
+remote: Compressing objects:  31% (133/428)   [K
+remote: Compressing objects:  32% (137/428)   [K
+remote: Compressing objects:  33% (142/428)   [K
+remote: Compressing objects:  34% (146/428)   [K
+remote: Compressing objects:  35% (150/428)   [K
+remote: Compressing objects:  36% (155/428)   [K
+remote: Compressing objects:  37% (159/428)   [K
+remote: Compressing objects:  38% (163/428)   [K
+remote: Compressing objects:  39% (167/428)   [K
+remote: Compressing objects:  40% (172/428)   [K
+remote: Compressing objects:  41% (176/428)   [K
+remote: Compressing objects:  42% (180/428)   [K
+remote: Compressing objects:  43% (185/428)   [K
+remote: Compressing objects:  44% (189/428)   [K
+remote: Compressing objects:  45% (193/428)   [K
+remote: Compressing objects:  46% (197/428)   [K
+remote: Compressing objects:  47% (202/428)   [K
+remote: Compressing objects:  48% (206/428)   [K
+remote: Compressing objects:  49% (210/428)   [K
+remote: Compressing objects:  50% (214/428)   [K
+remote: Compressing objects:  51% (219/428)   [K
+remote: Compressing objects:  52% (223/428)   [K
+remote: Compressing objects:  53% (227/428)   [K
+remote: Compressing objects:  54% (232/428)   [K
+remote: Compressing objects:  55% (236/428)   [K
+remote: Compressing objects:  56% (240/428)   [K
+remote: Compressing objects:  57% (244/428)   [K
+remote: Compressing objects:  58% (249/428)   [K
+remote: Compressing objects:  59% (253/428)   [K
+remote: Compressing objects:  60% (257/428)   [K
+remote: Compressing objects:  61% (262/428)   [K
+remote: Compressing objects:  62% (266/428)   [K
+remote: Compressing objects:  63% (270/428)   [K
+remote: Compressing objects:  64% (274/428)   [K
+remote: Compressing objects:  65% (279/428)   [K
+remote: Compressing objects:  66% (283/428)   [K
+remote: Compressing objects:  67% (287/428)   [K
+remote: Compressing objects:  68% (292/428)   [K
+remote: Compressing objects:  69% (296/428)   [K
+remote: Compressing objects:  70% (300/428)   [K
+remote: Compressing objects:  71% (304/428)   [K
+remote: Compressing objects:  72% (309/428)   [K
+remote: Compressing objects:  73% (313/428)   [K
+remote: Compressing objects:  74% (317/428)   [K
+remote: Compressing objects:  75% (321/428)   [K
+remote: Compressing objects:  76% (326/428)   [K
+remote: Compressing objects:  77% (330/428)   [K
+remote: Compressing objects:  78% (334/428)   [K
+remote: Compressing objects:  79% (339/428)   [K
+remote: Compressing objects:  80% (343/428)   [K
+remote: Compressing objects:  81% (347/428)   [K
+remote: Compressing objects:  82% (351/428)   [K
+remote: Compressing objects:  83% (356/428)   [K
+remote: Compressing objects:  84% (360/428)   [K
+remote: Compressing objects:  85% (364/428)   [K
+remote: Compressing objects:  86% (369/428)   [K
+remote: Compressing objects:  87% (373/428)   [K
+remote: Compressing objects:  88% (377/428)   [K
+remote: Compressing objects:  89% (381/428)   [K
+remote: Compressing objects:  90% (386/428)   [K
+remote: Compressing objects:  91% (390/428)   [K
+remote: Compressing objects:  92% (394/428)   [K
+remote: Compressing objects:  93% (399/428)   [K
+remote: Compressing objects:  94% (403/428)   [K
+remote: Compressing objects:  95% (407/428)   [K
+remote: Compressing objects:  96% (411/428)   [K
+remote: Compressing objects:  97% (416/428)   [K
+remote: Compressing objects:  98% (420/428)   [K
+remote: Compressing objects:  99% (424/428)   [K
+remote: Compressing objects: 100% (428/428)   [K
+remote: Compressing objects: 100% (428/428), done.[K
+
+Receiving objects:   0% (1/1465)   
+Receiving objects:   1% (15/1465)   
+Receiving objects:   2% (30/1465)   
+Receiving objects:   3% (44/1465)   
+Receiving objects:   4% (59/1465)   
+Receiving objects:   5% (74/1465)   
+Receiving objects:   6% (88/1465)   
+Receiving objects:   7% (103/1465)   
+Receiving objects:   8% (118/1465)   
+Receiving objects:   9% (132/1465)   
+Receiving objects:  10% (147/1465)   
+Receiving objects:  11% (162/1465)   
+Receiving objects:  12% (176/1465)   
+Receiving objects:  13% (191/1465)   
+Receiving objects:  14% (206/1465)   
+Receiving objects:  15% (220/1465)   
+Receiving objects:  16% (235/1465)   
+Receiving objects:  17% (250/1465)   
+Receiving objects:  18% (264/1465)   
+Receiving objects:  19% (279/1465)   
+Receiving objects:  20% (293/1465)   
+Receiving objects:  21% (308/1465)   
+Receiving objects:  22% (323/1465)   
+Receiving objects:  23% (337/1465)   
+Receiving objects:  24% (352/1465)   
+Receiving objects:  25% (367/1465)   
+Receiving objects:  26% (381/1465)   
+Receiving objects:  27% (396/1465)   
+Receiving objects:  28% (411/1465)   
+Receiving objects:  29% (425/1465)   
+Receiving objects:  30% (440/1465)   
+Receiving objects:  31% (455/1465)   
+Receiving objects:  32% (469/1465)   
+Receiving objects:  33% (484/1465)   
+Receiving objects:  34% (499/1465)   
+Receiving objects:  35% (513/1465)   
+Receiving objects:  36% (528/1465)   
+Receiving objects:  37% (543/1465)   
+Receiving objects:  38% (557/1465)   
+Receiving objects:  39% (572/1465)   
+Receiving objects:  40% (586/1465)   
+Receiving objects:  41% (601/1465)   
+Receiving objects:  42% (616/1465)   
+Receiving objects:  43% (630/1465)   
+Receiving objects:  44% (645/1465)   
+Receiving objects:  45% (660/1465)   
+Receiving objects:  46% (674/1465)   
+Receiving objects:  47% (689/1465)   
+Receiving objects:  48% (704/1465)   
+Receiving objects:  49% (718/1465)   
+Receiving objects:  50% (733/1465)   
+Receiving objects:  51% (748/1465)   
+Receiving objects:  52% (762/1465)   
+Receiving objects:  53% (777/1465)   
+Receiving objects:  54% (792/1465)   
+Receiving objects:  55% (806/1465)   
+Receiving objects:  56% (821/1465)   
+Receiving objects:  57% (836/1465)   
+Receiving objects:  58% (850/1465)   
+Receiving objects:  59% (865/1465)   
+Receiving objects:  60% (879/1465)   
+Receiving objects:  61% (894/1465)   
+Receiving objects:  62% (909/1465)   
+Receiving objects:  63% (923/1465)   
+Receiving objects:  64% (938/1465)   
+Receiving objects:  65% (953/1465)   
+Receiving objects:  66% (967/1465)   
+Receiving objects:  67% (982/1465)   
+Receiving objects:  68% (997/1465)   
+Receiving objects:  69% (1011/1465)   
+Receiving objects:  70% (1026/1465)   
+Receiving objects:  71% (1041/1465)   
+Receiving objects:  72% (1055/1465)   
+Receiving objects:  73% (1070/1465)   
+Receiving objects:  74% (1085/1465)   
+Receiving objects:  75% (1099/1465)   
+Receiving objects:  76% (1114/1465)   
+Receiving objects:  77% (1129/1465)   
+Receiving objects:  78% (1143/1465)   
+Receiving objects:  79% (1158/1465)   
+Receiving objects:  80% (1172/1465)   
+Receiving objects:  81% (1187/1465)   
+Receiving objects:  82% (1202/1465)   
+Receiving objects:  83% (1216/1465)   
+Receiving objects:  84% (1231/1465)   
+Receiving objects:  85% (1246/1465)   
+Receiving objects:  86% (1260/1465)   
+Receiving objects:  87% (1275/1465)   
+Receiving objects:  88% (1290/1465)   
+Receiving objects:  89% (1304/1465)   
+Receiving objects:  90% (1319/1465)   
+Receiving objects:  91% (1334/1465)   
+Receiving objects:  92% (1348/1465)   
+Receiving objects:  93% (1363/1465)   
+Receiving objects:  94% (1378/1465)   
+Receiving objects:  95% (1392/1465)   
+Receiving objects:  96% (1407/1465)   
+Receiving objects:  97% (1422/1465)   
+Receiving objects:  98% (1436/1465)   
+Receiving objects:  99% (1451/1465)   
+remote: Total 1465 (delta 1058), reused 1333 (delta 974), pack-reused 0
+
+Receiving objects: 100% (1465/1465)   
+Receiving objects: 100% (1465/1465), 3.49 MiB | 19.08 MiB/s, done.
+
+Resolving deltas:   0% (0/1058)   
+Resolving deltas:   2% (22/1058)   
+Resolving deltas:   4% (50/1058)   
+Resolving deltas:   5% (57/1058)   
+Resolving deltas:   6% (72/1058)   
+Resolving deltas:   8% (87/1058)   
+Resolving deltas:  11% (117/1058)   
+Resolving deltas:  12% (134/1058)   
+Resolving deltas:  13% (146/1058)   
+Resolving deltas:  14% (154/1058)   
+Resolving deltas:  15% (162/1058)   
+Resolving deltas:  16% (170/1058)   
+Resolving deltas:  17% (183/1058)   
+Resolving deltas:  18% (195/1058)   
+Resolving deltas:  19% (204/1058)   
+Resolving deltas:  20% (215/1058)   
+Resolving deltas:  21% (230/1058)   
+Resolving deltas:  22% (240/1058)   
+Resolving deltas:  23% (244/1058)   
+Resolving deltas:  24% (256/1058)   
+Resolving deltas:  25% (269/1058)   
+Resolving deltas:  26% (276/1058)   
+Resolving deltas:  28% (298/1058)   
+Resolving deltas:  29% (310/1058)   
+Resolving deltas:  30% (320/1058)   
+Resolving deltas:  31% (333/1058)   
+Resolving deltas:  33% (357/1058)   
+Resolving deltas:  34% (362/1058)   
+Resolving deltas:  43% (459/1058)   
+Resolving deltas:  49% (522/1058)   
+Resolving deltas:  84% (893/1058)   
+Resolving deltas:  87% (930/1058)   
+Resolving deltas:  88% (934/1058)   
+Resolving deltas:  93% (990/1058)   
+Resolving deltas:  94% (995/1058)   
+Resolving deltas:  98% (1038/1058)   
+Resolving deltas:  99% (1049/1058)   
+Resolving deltas: 100% (1058/1058)   
+Resolving deltas: 100% (1058/1058), done.
+
+travis_time:end:027dfe74:start=1564722479874345000,finish=1564722480883618000,duration=1009273000
+[0K$ cd Alamofire/Alamofire
+
+ruby-2.4.5 - #gemset created /Users/travis/.rvm/gems/ruby-2.4.5@Alamofire
+
+ruby-2.4.5 - #generating Alamofire wrappers|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|/-\|.-\|/-\|/-.|/-\|.
+
+travis_time:start:2a97f6e0
+[0K$ git fetch origin +refs/pull/2887/merge:
+
+remote: Enumerating objects: 20, done.[K
+
+remote: Counting objects:   5% (1/18)   [K
+remote: Counting objects:  11% (2/18)   [K
+remote: Counting objects:  16% (3/18)   [K
+remote: Counting objects:  22% (4/18)   [K
+remote: Counting objects:  27% (5/18)   [K
+remote: Counting objects:  33% (6/18)   [K
+remote: Counting objects:  38% (7/18)   [K
+remote: Counting objects:  44% (8/18)   [K
+remote: Counting objects:  50% (9/18)   [K
+remote: Counting objects:  55% (10/18)   [K
+remote: Counting objects:  61% (11/18)   [K
+remote: Counting objects:  66% (12/18)   [K
+remote: Counting objects:  72% (13/18)   [K
+remote: Counting objects:  77% (14/18)   [K
+remote: Counting objects:  83% (15/18)   [K
+remote: Counting objects:  88% (16/18)   [K
+remote: Counting objects:  94% (17/18)   [K
+remote: Counting objects: 100% (18/18)   [K
+remote: Counting objects: 100% (18/18), done.[K
+
+remote: Compressing objects:  50% (1/2)   [K
+remote: Compressing objects: 100% (2/2)   [K
+remote: Compressing objects: 100% (2/2), done.[K
+
+remote: Total 5 (delta 4), reused 3 (delta 3), pack-reused 0[K
+
+Unpacking objects:  20% (1/5)   
+Unpacking objects:  40% (2/5)   
+Unpacking objects:  60% (3/5)   
+Unpacking objects:  80% (4/5)   
+Unpacking objects: 100% (5/5)   
+Unpacking objects: 100% (5/5), done.
+
+From https://github.com/Alamofire/Alamofire
+
+ * branch            refs/pull/2887/merge -> FETCH_HEAD
+
+travis_time:end:2a97f6e0:start=1564722482712369000,finish=1564722484186676000,duration=1474307000
+[0K$ git checkout -qf FETCH_HEAD
+
+travis_fold:end:git.checkout
+[0K
+nl
+nl
+nl
+nl[33;1mSetting environment variables from .travis.yml[0m
+
+$ export LC_CTYPE=en_US.UTF-8
+
+$ export LANG=en_US.UTF-8
+
+$ export WORKSPACE=Alamofire.xcworkspace
+
+$ export IOS_FRAMEWORK_SCHEME="Alamofire iOS"
+
+$ export MACOS_FRAMEWORK_SCHEME="Alamofire macOS"
+
+$ export TVOS_FRAMEWORK_SCHEME="Alamofire tvOS"
+
+$ export WATCHOS_FRAMEWORK_SCHEME="Alamofire watchOS"
+
+$ export EXAMPLE_SCHEME="iOS Example"
+
+$ export DESTINATION="OS=5.2,name=Apple Watch Series 4 - 44mm"
+
+$ export SCHEME="$WATCHOS_FRAMEWORK_SCHEME"
+
+$ export RUN_TESTS="NO"
+
+$ export BUILD_EXAMPLE="NO"
+
+$ export POD_LINT="NO"
+nl
+nl
+nl
+nltravis_fold:start:rvm
+[0Ktravis_time:start:1681b6eb
+[0K$ rvm use $(< .ruby-version) --install --binary --fuzzy
+
+Using /Users/travis/.rvm/gems/ruby-2.4.5
+
+travis_time:end:1681b6eb:start=1564722484332154000,finish=1564722485968588000,duration=1636434000
+[0Ktravis_fold:end:rvm
+[0K
+
+$ export BUNDLE_GEMFILE=$PWD/Gemfile
+
+travis_fold:start:cache.1
+[0KSetting up build cache
+
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+
+travis_time:start:2558de72
+[0K$ Installing caching utilities
+
+travis_time:end:2558de72:start=1564722488209156000,finish=1564722488403280000,duration=194124000
+[0Ktravis_time:start:07f0aa60
+[0Ktravis_time:end:07f0aa60:start=1564722488418030000,finish=1564722488427464000,duration=9434000
+[0Ktravis_time:start:0a31bc72
+[0Kattempting to download cache archive[0m
+
+[32;1mfetching PR.2887/cache-osx-xcode10.2-fb1d1a996e138b588d0f43522d8ac78629139b9ddc089ae51c355da447f5d2cf--rvm-default--gemfile-Gemfile.tgz[0m
+
+[32;1mfetching PR.2887/cache--rvm-default--gemfile-Gemfile.tgz[0m
+
+[32;1mfetching master/cache-osx-xcode10.2-fb1d1a996e138b588d0f43522d8ac78629139b9ddc089ae51c355da447f5d2cf--rvm-default--gemfile-Gemfile.tgz[0m
+
+[32;1mfound cache[0m
+
+travis_time:end:0a31bc72:start=1564722488438586000,finish=1564722492223929000,duration=3785343000
+[0Ktravis_fold:end:cache.1
+[0K
+nl
+nl
+nl
+nltravis_fold:start:cache.bundler
+[0Ktravis_time:start:02c025e4
+[0Ktravis_time:end:02c025e4:start=1564722492236645000,finish=1564722492247014000,duration=10369000
+[0Ktravis_time:start:07d4e11d
+[0Kadding /Users/travis/build/Alamofire/Alamofire/vendor/bundle to cache[0m
+
+creating directory /Users/travis/build/Alamofire/Alamofire/vendor/bundle[0m
+
+travis_time:end:07d4e11d:start=1564722492259754000,finish=1564722496575182000,duration=4315428000
+[0Ktravis_fold:end:cache.bundler
+[0Ktravis_fold:start:ruby.versions
+[0K$ ruby --version
+
+ruby 2.4.5p335 (2018-10-18 revision 65137) [x86_64-darwin18]
+
+$ rvm --version
+
+rvm 1.29.7-next (master) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+
+$ bundle --version
+
+Bundler version 1.17.3
+
+$ gem --version
+
+3.0.2
+
+travis_fold:end:ruby.versions
+[0K
+
+travis_fold:start:install.bundler
+[0Ktravis_time:start:0e861a60
+[0K$ bundle install --jobs=3 --retry=3 --deployment --path=${BUNDLE_PATH:-vendor/bundle}
+
+Using CFPropertyList 3.0.0
+
+Using concurrent-ruby 1.1.5
+
+Using i18n 0.9.5
+
+Using minitest 5.11.3
+
+Using thread_safe 0.3.6
+
+Using tzinfo 1.2.5
+
+Using activesupport 4.2.11.1
+
+Using atomos 0.1.3
+
+Using bundler 1.17.3
+
+Using claide 1.0.2
+
+Using fuzzy_match 2.0.4
+
+Using nap 1.1.0
+
+Using cocoapods-core 1.7.5
+
+Using cocoapods-deintegrate 1.0.4
+
+Using cocoapods-downloader 1.2.2
+
+Using cocoapods-plugins 1.0.0
+
+Using cocoapods-search 1.0.0
+
+Using cocoapods-stats 1.1.0
+
+Using netrc 0.11.0
+
+Using cocoapods-trunk 1.3.1
+
+Using cocoapods-try 1.1.0
+
+Using colored2 3.1.2
+
+Using escape 0.0.4
+
+Using fourflusher 2.3.1
+
+Using gh_inspector 1.1.3
+
+Using molinillo 0.6.6
+
+Using ruby-macho 1.4.0
+
+Using nanaimo 0.2.6
+
+Using xcodeproj 1.11.0
+
+Using cocoapods 1.7.5
+
+Using ffi 1.11.1
+
+Using mustache 1.1.0
+
+Using open4 1.3.4
+
+Using redcarpet 3.5.0
+
+Using rouge 2.0.7
+
+Using rb-fsevent 0.10.3
+
+Using rb-inotify 0.10.0
+
+Using sass-listen 4.0.0
+
+Using sass 3.7.4
+
+Using sqlite3 1.4.1
+
+Using liferaft 0.0.6
+
+Using xcinvoke 0.3.0
+
+Using jazzy 0.10.0
+
+Using xcpretty 0.3.0
+
+Bundle complete! 3 Gemfile dependencies, 44 gems now installed.
+
+Bundled gems are installed into `./vendor/bundle`
+
+travis_time:end:0e861a60:start=1564722497660526000,finish=1564722498409314000,duration=748788000
+[0Ktravis_fold:end:install.bundler
+[0K
+
+travis_time:start:003fd624
+[0K$ set -o pipefail
+
+travis_time:end:003fd624:start=1564722498421665000,finish=1564722498430639000,duration=8974000
+[0K[32;1mThe command "set -o pipefail" exited with 0.[0m
+nl
+nl
+nl
+nltravis_time:start:1d8ecc00
+[0K$ xcodebuild -version
+
+Xcode 10.2.1
+
+Build version 10E1001
+
+travis_time:end:1d8ecc00:start=1564722498442320000,finish=1564722498598001000,duration=155681000
+[0K[32;1mThe command "xcodebuild -version" exited with 0.[0m
+nl
+nl
+nl
+nltravis_time:start:270c84d0
+[0K$ xcodebuild -showsdks
+
+iOS SDKs:
+
+	iOS 12.2                      	-sdk iphoneos12.2
+nl
+nl
+nl
+nliOS Simulator SDKs:
+
+	Simulator - iOS 12.2          	-sdk iphonesimulator12.2
+nl
+nl
+nl
+nlmacOS SDKs:
+
+	macOS 10.14                   	-sdk macosx10.14
+nl
+nl
+nl
+nltvOS SDKs:
+
+	tvOS 12.2                     	-sdk appletvos12.2
+nl
+nl
+nl
+nltvOS Simulator SDKs:
+
+	Simulator - tvOS 12.2         	-sdk appletvsimulator12.2
+nl
+nl
+nl
+nlwatchOS SDKs:
+
+	watchOS 5.2                   	-sdk watchos5.2
+nl
+nl
+nl
+nlwatchOS Simulator SDKs:
+
+	Simulator - watchOS 5.2       	-sdk watchsimulator5.2
+nl
+nl
+nl
+nltravis_time:end:270c84d0:start=1564722498612216000,finish=1564722499381389000,duration=769173000
+[0K[32;1mThe command "xcodebuild -showsdks" exited with 0.[0m
+nl
+nl
+nl
+nltravis_time:start:0988a2ba
+[0K$ if [ $RUN_TESTS == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty; else xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty; fi
+
+[33m▸[0m [39;1mProcessing[0m Info.plist
+nl
+nl
+nl
+nl[31m❌  [0m/Users/travis/build/Alamofire/Alamofire/Source/ParameterEncoding.swift:269:57: [31mthrown expression type 'AFError.ParameterEncoderFailureReason' does not conform to 'Error'[0m
+nl
+nl
+nl
+nl            throw AFError.ParameterEncoderFailureReason.missingRequiredComponent(.httpMethod(rawValue: "POST"))
+
+[36m                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+nl
+nl
+nl
+nl
+nl
+nl
+nl
+nl[31m❌  [0m/Users/travis/build/Alamofire/Alamofire/Source/ParameterEncoding.swift:302:57: [31mthrown expression type 'AFError.ParameterEncoderFailureReason' does not conform to 'Error'[0m
+nl
+nl
+nl
+nl            throw AFError.ParameterEncoderFailureReason.missingRequiredComponent(.httpMethod(rawValue: "POST"))
+
+[36m                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+nl
+nl
+nl
+nl
+
+** BUILD FAILED **
+nl
+nl
+nl
+nl
+
+The following build commands failed:
+
+	CompileSwift normal i386
+
+	CompileSwiftSources normal i386 com.apple.xcode.tools.swift.compiler
+
+(2 failures)
+
+travis_time:end:0988a2ba:start=1564722499394960000,finish=1564722508363263000,duration=8968303000
+[0K[31;1mThe command "if [ $RUN_TESTS == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty; else xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty; fi" exited with 65.[0m
+nl
+nl
+nl
+nltravis_time:start:05a41c40
+[0K$ if [ $BUILD_EXAMPLE == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty; fi
+
+travis_time:end:05a41c40:start=1564722508375185000,finish=1564722508384142000,duration=8957000
+[0K[32;1mThe command "if [ $BUILD_EXAMPLE == "YES" ]; then xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty; fi" exited with 0.[0m
+nl
+nl
+nl
+nltravis_time:start:0980fb93
+[0K$ if [ $POD_LINT == "YES" ]; then pod lib lint; fi
+
+travis_time:end:0980fb93:start=1564722508395921000,finish=1564722508404651000,duration=8730000
+[0K[32;1mThe command "if [ $POD_LINT == "YES" ]; then pod lib lint; fi" exited with 0.[0m
+nl
+nl
+nl
+nltravis_fold:start:cache.2
+[0Kstore build cache
+
+$ bundle clean
+
+travis_time:start:10ebb1c1
+[0Ktravis_time:end:10ebb1c1:start=1564722508934581000,finish=1564722508944025000,duration=9444000
+[0Ktravis_time:start:15f968d8
+[0K[32;1mnothing changed[0m
+
+travis_time:end:15f968d8:start=1564722508955473000,finish=1564722511952525000,duration=2997052000
+[0Ktravis_fold:end:cache.2
+[0K
+nl
+nl
+nl
+nlDone. Your build exited with 1.
+

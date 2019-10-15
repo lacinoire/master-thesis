@@ -1,619 +1,1367 @@
-travis_fold:start:worker_info[0K[33;1mWorker information[0m
+travis_fold:start:worker_info
+[0K[33;1mWorker information[0m
 hostname: c61aff5d-bd79-4a2f-ac2e-f40cba1d0bfa@1694.wjb-1
 version: v3.6.0 https://github.com/travis-ci/worker/tree/170b2a0bb43234479fd1911ba9e4dbcc36dadfad
 instance: 87a487f0-e37e-4826-bb98-03780c0897cf travis-ci-macos10.12-xcode8.3-1507738863 (via amqp)
 startup: 56.184013918s
-travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
-Build language: cpp
-Build id: 374222868
-Job id: 374222870
-Runtime kernel version: 16.7.0
-travis-build version: 1bfd2702f
-travis_fold:end:system_info[0K
-[32;1mNetwork availability confirmed.[0m
-
-Fix WWDRCA Certificate
-Unable to delete certificate matching "0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75"security: AppleWWDRCA.cer: already in /Library/Keychains/System.keychain
-$ rvm use
-Using /Users/travis/.rvm/gems/ruby-2.4.2
-/Users/travis/.travis/job_stages: line 489: yarn: command not found
-travis_fold:start:git.checkout[0Ktravis_time:start:2abf37ac[0K$ git clone --depth=50 https://github.com/Microsoft/vscode.git Microsoft/vscode
-Cloning into 'Microsoft/vscode'...
-Checking out files:  33% (4078/12330)   Checking out files:  34% (4193/12330)   Checking out files:  35% (4316/12330)   Checking out files:  36% (4439/12330)   Checking out files:  37% (4563/12330)   Checking out files:  38% (4686/12330)   Checking out files:  39% (4809/12330)   Checking out files:  40% (4932/12330)   Checking out files:  41% (5056/12330)   Checking out files:  42% (5179/12330)   Checking out files:  43% (5302/12330)   Checking out files:  44% (5426/12330)   Checking out files:  45% (5549/12330)   Checking out files:  46% (5672/12330)   Checking out files:  47% (5796/12330)   Checking out files:  48% (5919/12330)   Checking out files:  49% (6042/12330)   Checking out files:  50% (6165/12330)   Checking out files:  51% (6289/12330)   Checking out files:  52% (6412/12330)   Checking out files:  53% (6535/12330)   Checking out files:  54% (6659/12330)   Checking out files:  55% (6782/12330)   Checking out files:  56% (6905/12330)   Checking out files:  57% (7029/12330)   Checking out files:  58% (7152/12330)   Checking out files:  59% (7275/12330)   Checking out files:  60% (7398/12330)   Checking out files:  61% (7522/12330)   Checking out files:  62% (7645/12330)   Checking out files:  62% (7680/12330)   Checking out files:  63% (7768/12330)   Checking out files:  64% (7892/12330)   Checking out files:  65% (8015/12330)   Checking out files:  66% (8138/12330)   Checking out files:  67% (8262/12330)   Checking out files:  68% (8385/12330)   Checking out files:  69% (8508/12330)   Checking out files:  70% (8631/12330)   Checking out files:  71% (8755/12330)   Checking out files:  72% (8878/12330)   Checking out files:  73% (9001/12330)   Checking out files:  74% (9125/12330)   Checking out files:  75% (9248/12330)   Checking out files:  76% (9371/12330)   Checking out files:  77% (9495/12330)   Checking out files:  78% (9618/12330)   Checking out files:  79% (9741/12330)   Checking out files:  80% (9864/12330)   Checking out files:  81% (9988/12330)   Checking out files:  82% (10111/12330)   Checking out files:  83% (10234/12330)   Checking out files:  84% (10358/12330)   Checking out files:  85% (10481/12330)   Checking out files:  86% (10604/12330)   Checking out files:  87% (10728/12330)   Checking out files:  88% (10851/12330)   Checking out files:  89% (10974/12330)   Checking out files:  90% (11097/12330)   Checking out files:  91% (11221/12330)   Checking out files:  92% (11344/12330)   Checking out files:  92% (11390/12330)   Checking out files:  93% (11467/12330)   Checking out files:  94% (11591/12330)   Checking out files:  95% (11714/12330)   Checking out files:  96% (11837/12330)   Checking out files:  97% (11961/12330)   Checking out files:  98% (12084/12330)   Checking out files:  99% (12207/12330)   Checking out files: 100% (12330/12330)   Checking out files: 100% (12330/12330), done.
-
-travis_time:end:2abf37ac:start=1525312734762413000,finish=1525312745304921000,duration=10542508000[0K$ cd Microsoft/vscode
-travis_time:start:137dde70[0K$ git fetch origin +refs/pull/49088/merge:
-From https://github.com/Microsoft/vscode
- * branch              refs/pull/49088/merge -> FETCH_HEAD
-
-travis_time:end:137dde70:start=1525312745357357000,finish=1525312745962889000,duration=605532000[0K$ git checkout -qf FETCH_HEAD
-travis_fold:end:git.checkout[0K
-[33;1mSetting environment variables from repository settings[0m
-$ export VSCODE_BUILD_QUIET=true
-$ export COVERALLS_REPO_TOKEN=[secure]
-$ export COVERALLS_GIT_COMMIT=HEAD
-$ export PUBLIC_GITHUB_TOKEN=16edc0b78343268fd3e3f3df777dc225405b2477
-
-$ export CXX=g++
-$ export CC=gcc
-travis_fold:start:cache.1[0KSetting up build cache
-/Users/travis/.travis/job_stages: line 611: shell_session_update: command not found
-$ export CASHER_DIR=$HOME/.casher
-travis_time:start:016d5140[0K$ Installing caching utilities
-
-travis_time:end:016d5140:start=1525312747934432000,finish=1525312748078690000,duration=144258000[0Ktravis_time:start:0c1ade8c[0K
-travis_time:end:0c1ade8c:start=1525312748094598000,finish=1525312748105629000,duration=11031000[0Ktravis_time:start:10d61090[0K[32;1mattempting to download cache archive[0m
-[32;1mfetching PR.49088/cache-osx-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--compiler-gpp.tgz[0m
-[32;1mfetching PR.49088/cache--compiler-gpp.tgz[0m
-[32;1mfetching master/cache-osx-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--compiler-gpp.tgz[0m
-[32;1mfound cache[0m
-
-travis_time:end:10d61090:start=1525312748118106000,finish=1525312751287327000,duration=3169221000[0Ktravis_time:start:0f34c046[0K
-travis_time:end:0f34c046:start=1525312751302864000,finish=1525312751321763000,duration=18899000[0Ktravis_time:start:21aa27ee[0K[32;1madding /Users/travis/.cache/yarn to cache[0m
-[32;1mcreating directory /Users/travis/.cache/yarn[0m
-
-travis_time:end:21aa27ee:start=1525312751334272000,finish=1525312754966373000,duration=3632101000[0Ktravis_fold:end:cache.1[0K$ g++ --version
-Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
-Apple LLVM version 8.1.0 (clang-802.0.42)
-Target: x86_64-apple-darwin16.7.0
-Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-travis_fold:start:before_install.1[0Ktravis_time:start:0c745838[0K$ export GITHUB_TOKEN=$PUBLIC_GITHUB_TOKEN
-
-travis_time:end:0c745838:start=1525312756390859000,finish=1525312756401812000,duration=10953000[0Ktravis_fold:end:before_install.1[0Ktravis_fold:start:before_install.2[0Ktravis_time:start:0039e4ea[0K$ git submodule update --init --recursive
-
-travis_time:end:0039e4ea:start=1525312756416301000,finish=1525312756544227000,duration=127926000[0Ktravis_fold:end:before_install.2[0Ktravis_fold:start:before_install.3[0Ktravis_time:start:30896a9c[0K$ nvm install 8.9.1
-Downloading https://nodejs.org/dist/v8.9.1/node-v8.9.1-darwin-x64.tar.gz...
-Now using node v8.9.1 (npm v5.5.1)
-
-travis_time:end:30896a9c:start=1525312756556975000,finish=1525312760850837000,duration=4293862000[0Ktravis_fold:end:before_install.3[0Ktravis_fold:start:before_install.4[0Ktravis_time:start:19371c86[0K$ nvm use 8.9.1
-Now using node v8.9.1 (npm v5.5.1)
-
-travis_time:end:19371c86:start=1525312760869226000,finish=1525312761710313000,duration=841087000[0Ktravis_fold:end:before_install.4[0Ktravis_fold:start:before_install.5[0Ktravis_time:start:018874e8[0K$ npm i -g yarn
-/Users/travis/.nvm/versions/node/v8.9.1/bin/yarn -> /Users/travis/.nvm/versions/node/v8.9.1/lib/node_modules/yarn/bin/yarn.js
-/Users/travis/.nvm/versions/node/v8.9.1/bin/yarnpkg -> /Users/travis/.nvm/versions/node/v8.9.1/lib/node_modules/yarn/bin/yarn.js
-+ yarn@1.6.0
-added 1 package in 1.083s
-
-travis_time:end:018874e8:start=1525312761723217000,finish=1525312763409844000,duration=1686627000[0Ktravis_fold:end:before_install.5[0Ktravis_fold:start:before_install.6[0Ktravis_time:start:1724bf82[0K$ if [ $TRAVIS_OS_NAME == "linux" ]; then export CXX="g++-4.9" CC="gcc-4.9" DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; sleep 3; fi
-
-travis_time:end:1724bf82:start=1525312763427626000,finish=1525312763448336000,duration=20710000[0Ktravis_fold:end:before_install.6[0Ktravis_fold:start:install[0Ktravis_time:start:02670f0e[0K$ yarn
-yarn install v1.6.0
-$ node build/npm/preinstall.js
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-info windows-foreground-love@0.1.0: The platform "darwin" is incompatible with this module.
-info "windows-foreground-love@0.1.0" is an optional dependency and failed compatibility check. Excluding it from installation.
-info windows-mutex@0.2.0: The platform "darwin" is incompatible with this module.
-info "windows-mutex@0.2.0" is an optional dependency and failed compatibility check. Excluding it from installation.
-info windows-process-tree@0.2.2: The platform "darwin" is incompatible with this module.
-info "windows-process-tree@0.2.2" is an optional dependency and failed compatibility check. Excluding it from installation.
-[3/4] Linking dependencies...
-[4/4] Building fresh packages...
-$ node build/npm/postinstall.js
-yarn install v1.6.0
-warning package.json: No license field
-warning vscode-extensions@0.0.1: No license field
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-[3/4] Linking dependencies...
-[4/4] Building fresh packages...
-$ node ./postinstall
-removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/tsc.js'
-removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/tsserverlibrary.d.ts'
-removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/tsserverlibrary.js'
-removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/typescriptServices.d.ts'
-removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/typescriptServices.js'
-Done in 0.46s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning configuration-editing@1.0.0: No license field
-[1/5] Validating package.json...
-warning configuration-editing@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 1.02s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning css-language-features@1.0.0: No license field
-[1/5] Validating package.json...
-warning css-language-features@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-warning vscode-languageclient@4.0.0: The engine "vscode" appears to be invalid.
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-$ cd server && yarn install
-yarn install v1.6.0
-warning ../package.json: No license field
-warning ../../package.json: No license field
-[1/5] Validating package.json...
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.93s.
-Done in 2.46s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning emmet@1.0.0: No license field
-[1/5] Validating package.json...
-warning emmet@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 3.33s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning extension-editing@1.0.0: No license field
-[1/5] Validating package.json...
-warning extension-editing@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.88s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning git@1.0.0: No license field
-[1/5] Validating package.json...
-warning git@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 1.41s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning grunt@1.0.0: No license field
-[1/5] Validating package.json...
-warning grunt@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.19s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning gulp@1.0.0: No license field
-[1/5] Validating package.json...
-warning gulp@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.17s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning html-language-features@1.0.0: No license field
-[1/5] Validating package.json...
-warning html-language-features@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
-warning vscode-languageclient@4.0.0: The engine "vscode" appears to be invalid.
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-$ cd server && yarn install
-yarn install v1.6.0
-warning ../package.json: No license field
-warning ../../package.json: No license field
-[1/5] Validating package.json...
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.75s.
-Done in 1.65s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning jake@1.0.0: No license field
-[1/5] Validating package.json...
-warning jake@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.18s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning json-language-features@1.0.0: No license field
-[1/5] Validating package.json...
-warning json-language-features@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
-warning vscode-languageclient@4.0.0: The engine "vscode" appears to be invalid.
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-$ cd server && yarn install
-yarn install v1.6.0
-warning ../package.json: No license field
-warning ../../package.json: No license field
-[1/5] Validating package.json...
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.85s.
-Done in 1.91s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning markdown-language-features@1.0.0: No license field
-[1/5] Validating package.json...
-warning markdown-language-features@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 32.91s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning merge-conflict@1.0.0: No license field
-[1/5] Validating package.json...
-warning merge-conflict@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.19s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning npm@1.0.1: No license field
-[1/5] Validating package.json...
-warning npm@1.0.1: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.86s.
-yarn install v1.6.0
-warning package.json: No license field
-warning ../package.json: No license field
-warning php-language-features@1.0.0: No license field
-[1/5] Validating package.json...
-warning php-language-features@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 0.21s.
-yarn install v1.6.0
-warning ../package.json: No license field
-[1/5] Validating package.json...
-warning typescript-language-features@1.0.0: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 2.93s.
-yarn install v1.6.0
-warning ../package.json: No license field
-[1/5] Validating package.json...
-warning vscode-api-tests@0.0.1: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-Done in 3.31s.
-yarn install v1.6.0
-warning ../package.json: No license field
-[1/5] Validating package.json...
-warning vscode-colorize-tests@0.0.1: The engine "vscode" appears to be invalid.
-[2/5] Resolving packages...
-[3/5] Fetching packages...
-[4/5] Linking dependencies...
-[5/5] Building fresh packages...
-$ node ./node_modules/vscode/bin/install
-Detected VS Code engine version: *
-Fetching vscode.d.ts from: https://raw.githubusercontent.com/Microsoft/vscode/master/src/vs/vscode.d.ts
-vscode.d.ts successfully installed!
-
-Done in 2.96s.
-yarn install v1.6.0
-warning package.json: No license field
-warning code-oss-dev-build@1.0.0: No license field
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-[3/4] Linking dependencies...
-[4/4] Building fresh packages...
-$ npm run compile
-
-> code-oss-dev-build@1.0.0 compile /Users/travis/build/Microsoft/vscode/build
-> tsc -p tsconfig.build.json
-
-Done in 10.74s.
-yarn install v1.6.0
-warning package.json: No license field
-warning code-oss-dev-smoke-test@0.1.0: No license field
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-[3/4] Linking dependencies...
-[4/4] Building fresh packages...
-$ npm run compile
-
-> code-oss-dev-smoke-test@0.1.0 compile /Users/travis/build/Microsoft/vscode/test/smoke
-> npm run copy-driver && npm run copy-driver-definition && tsc
-
-
-> code-oss-dev-smoke-test@0.1.0 copy-driver /Users/travis/build/Microsoft/vscode/test/smoke
-> cpx src/vscode/driver.js out/vscode
-
-
-> code-oss-dev-smoke-test@0.1.0 copy-driver-definition /Users/travis/build/Microsoft/vscode/test/smoke
-> node tools/copy-driver-definition.js
-
-Done in 21.34s.
-yarn install v1.6.0
-warning ../../package.json: No license field
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-[3/4] Linking dependencies...
-[4/4] Building fresh packages...
-Done in 11.04s.
-Done in 186.08s.
-
-travis_time:end:02670f0e:start=1525312763463714000,finish=1525312950085867000,duration=186622153000[0Ktravis_fold:end:install[0Ktravis_time:start:13bcc280[0K$ node_modules/.bin/gulp electron --silent
-Downloading electron-v1.7.12-darwin-x64.zip...
-Downloading ffmpeg-v1.7.12-darwin-x64.zip...
-
-travis_time:end:13bcc280:start=1525312950103377000,finish=1525312960544695000,duration=10441318000[0K
-[32;1mThe command "node_modules/.bin/gulp electron --silent" exited with 0.[0m
-travis_time:start:00a18f8d[0K$ node_modules/.bin/gulp compile --silent --max_old_space_size=4096
-
-travis_time:end:00a18f8d:start=1525312960559423000,finish=1525313085435741000,duration=124876318000[0K
-[32;1mThe command "node_modules/.bin/gulp compile --silent --max_old_space_size=4096" exited with 0.[0m
-travis_time:start:06c9b4a6[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./scripts/test.sh --coverage --reporter dot; else ./scripts/test.sh --reporter dot; fi
-
-
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․[9897:0503/020455.447798:INFO:CONSOLE(214)] "[getWordRangeAtPosition]: ignoring custom regexp '.*' because it matches the empty string.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/api/node/extHostDocumentData.js (214)
-․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․[9897:0503/020458.957989:INFO:CONSOLE(97)] "Cannot register 'a'. This property is already registered.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/platform/configuration/common/configurationRegistry.js (97)
-․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-
-  3976 passing (37s)
-
-
-travis_time:end:06c9b4a6:start=1525313085449038000,finish=1525313128887084000,duration=43438046000[0K
-[32;1mThe command "if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./scripts/test.sh --coverage --reporter dot; else ./scripts/test.sh --reporter dot; fi" exited with 0.[0m
-travis_time:start:110333ca[0K$ ./scripts/test-integration.sh
-[02:05:30] Syncronizing built-in extensions...
-[02:05:30] You can manage built-in extensions with the --builtin flag
-[02:05:30] Downloading extension: ms-vscode.node-debug2@1.23.5 ...
-[02:05:30] Downloading extension: ms-vscode.node-debug@1.23.3 ...
-[02:05:31] [marketplace] ms-vscode.node-debug ✔︎
-[02:05:31] [marketplace] ms-vscode.node-debug2 ✔︎
-[90m[main 2:05:32 AM][0m update#ctor - updates are disabled
-[9980:0503/020537.354907:INFO:CONSOLE(236)] "%c[Extension Host] %cdebugger listening on port 5870", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/extensions/electron-browser/extensionHost.js (236)
-[9980:0503/020537.926387:INFO:CONSOLE(145)] "%c[Extension Host] %cdebugger inspector at chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:5870/f86b2555-21d2-4c86-b5fa-2c6226389f6a
-", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/extensions/electron-browser/extensionHost.js (145)
-[9980:0503/020538.025937:INFO:CONSOLE(830)] "Loading development extension at /Users/travis/build/Microsoft/vscode/extensions/vscode-api-tests", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/extensions/electron-browser/extensionService.js (830)
-[9980:0503/020538.047852:INFO:CONSOLE(524)] "Extension 'vscode.vscode-api-tests' uses PROPOSED API which is subject to change and removal without notice.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/extensions/electron-browser/extensionService.js (524)
-
-[0m[0m
-[0m  commands namespace tests[0m
-  [32m  ✓[0m[90m getCommands[0m
-  [32m  ✓[0m[90m command with args[0m
-  [32m  ✓[0m[90m editorCommand with extra args[0m[31m (1153ms)[0m
-  [32m  ✓[0m[90m api-command: vscode.previewHtm[0m[31m (617ms)[0m
-  [32m  ✓[0m[90m api-command: vscode.diff[0m[31m (405ms)[0m
-  [32m  ✓[0m[90m api-command: vscode.open[0m[31m (322ms)[0m
-
-[0m  Configuration tests[0m
-  [32m  ✓[0m[90m configurations, language defaults[0m
-  [32m  ✓[0m[90m configuration, defaults[0m
-  [32m  ✓[0m[90m configuration, name vs property[0m
-
-[0m  editor tests[0m
-  [32m  ✓[0m[90m insert snippet[0m[31m (648ms)[0m
-  [32m  ✓[0m[90m insert snippet with replacement, editor selection[0m[31m (487ms)[0m
-  [32m  ✓[0m[90m insert snippet with replacement, selection as argument[0m[31m (424ms)[0m
-  [32m  ✓[0m[90m make edit[0m[31m (315ms)[0m
-  [32m  ✓[0m[90m issue #6281: Edits fail to validate ranges correctly before applying[0m[31m (380ms)[0m
-  [32m  ✓[0m[90m TextEditor.edit can control undo/redo stack 1[0m[31m (231ms)[0m
-  [32m  ✓[0m[90m TextEditor.edit can control undo/redo stack 2[0m[31m (210ms)[0m
-  [32m  ✓[0m[90m issue #16573: Extension API: insertSpaces and tabSize are undefined[0m[31m (180ms)[0m
-  [32m  ✓[0m[90m issue #20757: Overlapping ranges are not allowed![0m[31m (210ms)[0m
-
-[0m  env-namespace[0m
-  [32m  ✓[0m[90m env is set[0m
-  [32m  ✓[0m[90m env is readonly[0m
-
-[0m  languages namespace tests[0m
-  [32m  ✓[0m[90m diagnostics, read & event[0m
-  [32m  ✓[0m[90m diagnostics & CodeActionProvider[0m[31m (187ms)[0m
-[ { insertText: 'foo',
-    kind: 'Property',
-    label: 'foo',
-    textEdit: { newText: 'foo', range: [Object] } } ]
-  [32m  ✓[0m[90m completions with document filters[0m[31m (537ms)[0m
-
-[0m  window namespace tests[0m
-  [32m  ✓[0m[90m editor, active text editor[0m[31m (76ms)[0m
-  [32m  ✓[0m[90m editor, opened via resource[0m[31m (116ms)[0m
-  [32m  ✓[0m[90m editor, assign and check view columns[0m[31m (301ms)[0m
-  [32m  ✓[0m[90m editor, onDidChangeVisibleTextEditors[0m[31m (366ms)[0m
-[Deprecation Warning] method 'TextEditor.hide' is deprecated and should no longer be used. Refer to the documentation for further details.
-  [32m  ✓[0m[90m editor, onDidChangeTextEditorViewColumn[0m[31m (249ms)[0m
-  [31m  1) issue #25801 - default column when opening a file[0m
-  [32m  ✓[0m[90m issue #27408 - showTextDocument & vscode.diff always default to ViewColumn.One[0m[31m (319ms)[0m
-  [32m  ✓[0m[90m issue #5362 - Incorrect TextEditor passed by onDidChangeTextEditorSelection[0m[31m (655ms)[0m
-  [32m  ✓[0m[90m #7013 - input without options[0m
-  [32m  ✓[0m[90m showInputBox - undefined on cancel[0m
-  [32m  ✓[0m[90m showInputBox - cancel early[0m
-  [32m  ✓[0m[90m showInputBox - '' on Enter[0m
-  [32m  ✓[0m[90m showInputBox - default value on Enter[0m[33m (38ms)[0m
-  [32m  ✓[0m[90m showInputBox - `undefined` on Esc[0m
-  [32m  ✓[0m[90m showInputBox - `undefined` on Esc (despite default)[0m
-  [32m  ✓[0m[90m showQuickPick, undefined on cancel[0m
-  [32m  ✓[0m[90m showQuickPick, cancel early[0m
-  [32m  ✓[0m[90m showQuickPick, canceled by another picker[0m
-  [32m  ✓[0m[90m showQuickPick, canceled by input[0m
-  [32m  ✓[0m[90m showQuickPick, native promise - #11754[0m
-  [32m  ✓[0m[90m showQuickPick, never resolve promise and cancel - #22453[0m
-  [32m  ✓[0m[90m showWorkspaceFolderPick[0m
-  [32m  ✓[0m[90m Default value for showInput Box accepted even if fails validateInput, #33691[0m[33m (38ms)[0m
-  [32m  ✓[0m[90m editor, selection change kind[0m[33m (70ms)[0m
-  [32m  ✓[0m[90m createTerminal, Terminal.name[0m
-  [32m  ✓[0m[90m terminal, sendText immediately after createTerminal should not throw[0m
-  [32m  ✓[0m[90m terminal, onDidCloseTerminal event fires when terminal is disposed[0m[31m (151ms)[0m
-  [32m  ✓[0m[90m terminal, processId immediately after createTerminal should fetch the pid[0m[31m (901ms)[0m
-  [32m  ✓[0m[90m terminal, name should set terminal.name[0m
-
-[0m  workspace-namespace[0m
-  [32m  ✓[0m[90m MarkdownString[0m
-  [32m  ✓[0m[90m textDocuments[0m
-  [32m  ✓[0m[90m rootPath[0m
-  [32m  ✓[0m[90m workspaceFolders[0m
-  [32m  ✓[0m[90m getWorkspaceFolder[0m
-  [32m  ✓[0m[90m openTextDocument[0m
-  [32m  ✓[0m[90m openTextDocument, illegal path[0m
-  [32m  ✓[0m[90m openTextDocument, untitled is dirty[0m
-  [32m  ✓[0m[90m openTextDocument, untitled with host[0m
-  [32m  ✓[0m[90m openTextDocument, untitled without path[0m
-  [32m  ✓[0m[90m openTextDocument, untitled without path but language ID[0m
-  [32m  ✓[0m[90m openTextDocument, untitled without path but language ID and content[0m[31m (543ms)[0m
-  [32m  ✓[0m[90m openTextDocument, untitled closes on save[0m[31m (348ms)[0m
-  [32m  ✓[0m[90m openTextDocument, uri scheme/auth/path[0m[33m (38ms)[0m
-  [32m  ✓[0m[90m eol, read[0m[31m (130ms)[0m
-  [32m  ✓[0m[90m eol, change via editor[0m[31m (310ms)[0m
-  [32m  ✓[0m[90m eol, change via applyEdit[0m[31m (346ms)[0m
-  [32m  ✓[0m[90m eol, change via onWillSave[0m[33m (69ms)[0m
-  [32m  ✓[0m[90m events: onDidOpenTextDocument, onDidChangeTextDocument, onDidSaveTextDocument[0m[31m (565ms)[0m
-  [32m  ✓[0m[90m openTextDocument, with selection[0m[31m (520ms)[0m
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, simple[0m[33m (64ms)[0m
-[9980:0503/020555.450217:INFO:CONSOLE(83)] "Unable to open 'notThere://foo/far/boo/bar' resource is not available.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/textmodelResolver/common/textModelResolverService.js (83)
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, constrains[0m[33m (43ms)[0m
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, multiple[0m[31m (84ms)[0m
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, evil provider[0m
-[9980:0503/020555.760508:INFO:CONSOLE(83)] "Unable to open 'foo://auth/path' resource is not available.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/textmodelResolver/common/textModelResolverService.js (83)
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, invalid text[0m
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, show virtual document[0m[31m (213ms)[0m
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, open/open document[0m[31m (142ms)[0m
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, empty doc[0m
-  [32m  ✓[0m[90m registerTextDocumentContentProvider, change event[0m
-Debugger listening on port 5876.
-Warning: This is an experimental feature and could change at any time.
-To start debugging, open the following URL in Chrome:
-    chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:5876/55c4ab47-7cbb-4763-94b3-d638113660f3
-  [32m  ✓[0m[90m findFiles[0m[31m (814ms)[0m
-  [32m  ✓[0m[90m applyEdit[0m
-
-
-[92m [0m[32m 82 passing[0m[90m (17s)[0m
-[31m  1 failing[0m
-
-[0m  1) window namespace tests issue #25801 - default column when opening a file:
-
-      [31mAssertionError: wanted fileName:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/nvygakhddm/viewColumn:1 but got fileName:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/jcckhnwh/viewColumn:2. a:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/gypfx, b:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/jcckhnwh, c:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/nvygakhddm[0m
-      [32m+ expected[0m [31m- actual[0m
-
-      [31m-false[0m
-      [32m+true[0m
-      [0m[90m
-      at Object.<anonymous> (extensions/vscode-api-tests/src/singlefolder-tests/window.test.ts:137:10)
-      at step (extensions/vscode-api-tests/out/singlefolder-tests/window.test.js:36:23)
-      at Object.f [as next] (extensions/vscode-api-tests/out/singlefolder-tests/window.test.js:17:53)
-      at fulfilled (extensions/vscode-api-tests/out/singlefolder-tests/window.test.js:8:58)
-      at <anonymous>
-[0m
-
-
-
-travis_time:end:110333ca:start=1525313128904798000,finish=1525313158021783000,duration=29116985000[0K
-[31;1mThe command "./scripts/test-integration.sh" exited with 1.[0m
-travis_fold:start:cache.2[0Kstore build cache
-travis_time:start:017ecd28[0K
-travis_time:end:017ecd28:start=1525313158038298000,finish=1525313158051332000,duration=13034000[0Ktravis_time:start:29b89fec[0K[32;1mnothing changed, not updating cache[0m
-
-travis_time:end:29b89fec:start=1525313158067944000,finish=1525313161153369000,duration=3085425000[0Ktravis_fold:end:cache.2[0K
-Done. Your build exited with 1.
-/Users/travis/.travis/job_stages: line 166: shell_session_update: command not found
+travis_fold:end:worker_info
+[0Ktravis_fold:start:system_info
+[0K[33;1mBuild system information[0m
+
+Build language: cpp
+
+Build id: 374222868
+
+Job id: 374222870
+
+Runtime kernel version: 16.7.0
+
+travis-build version: 1bfd2702f
+
+travis_fold:end:system_info
+[0K
+
+[32;1mNetwork availability confirmed.[0m
+nl
+nl
+nl
+nlFix WWDRCA Certificate
+
+Unable to delete certificate matching "0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75"security: AppleWWDRCA.cer: already in /Library/Keychains/System.keychain
+
+$ rvm use
+
+Using /Users/travis/.rvm/gems/ruby-2.4.2
+
+/Users/travis/.travis/job_stages: line 489: yarn: command not found
+
+travis_fold:start:git.checkout
+[0Ktravis_time:start:2abf37ac
+[0K$ git clone --depth=50 https://github.com/Microsoft/vscode.git Microsoft/vscode
+
+Cloning into 'Microsoft/vscode'...
+
+Checking out files:  33% (4078/12330)   
+Checking out files:  34% (4193/12330)   
+Checking out files:  35% (4316/12330)   
+Checking out files:  36% (4439/12330)   
+Checking out files:  37% (4563/12330)   
+Checking out files:  38% (4686/12330)   
+Checking out files:  39% (4809/12330)   
+Checking out files:  40% (4932/12330)   
+Checking out files:  41% (5056/12330)   
+Checking out files:  42% (5179/12330)   
+Checking out files:  43% (5302/12330)   
+Checking out files:  44% (5426/12330)   
+Checking out files:  45% (5549/12330)   
+Checking out files:  46% (5672/12330)   
+Checking out files:  47% (5796/12330)   
+Checking out files:  48% (5919/12330)   
+Checking out files:  49% (6042/12330)   
+Checking out files:  50% (6165/12330)   
+Checking out files:  51% (6289/12330)   
+Checking out files:  52% (6412/12330)   
+Checking out files:  53% (6535/12330)   
+Checking out files:  54% (6659/12330)   
+Checking out files:  55% (6782/12330)   
+Checking out files:  56% (6905/12330)   
+Checking out files:  57% (7029/12330)   
+Checking out files:  58% (7152/12330)   
+Checking out files:  59% (7275/12330)   
+Checking out files:  60% (7398/12330)   
+Checking out files:  61% (7522/12330)   
+Checking out files:  62% (7645/12330)   
+Checking out files:  62% (7680/12330)   
+Checking out files:  63% (7768/12330)   
+Checking out files:  64% (7892/12330)   
+Checking out files:  65% (8015/12330)   
+Checking out files:  66% (8138/12330)   
+Checking out files:  67% (8262/12330)   
+Checking out files:  68% (8385/12330)   
+Checking out files:  69% (8508/12330)   
+Checking out files:  70% (8631/12330)   
+Checking out files:  71% (8755/12330)   
+Checking out files:  72% (8878/12330)   
+Checking out files:  73% (9001/12330)   
+Checking out files:  74% (9125/12330)   
+Checking out files:  75% (9248/12330)   
+Checking out files:  76% (9371/12330)   
+Checking out files:  77% (9495/12330)   
+Checking out files:  78% (9618/12330)   
+Checking out files:  79% (9741/12330)   
+Checking out files:  80% (9864/12330)   
+Checking out files:  81% (9988/12330)   
+Checking out files:  82% (10111/12330)   
+Checking out files:  83% (10234/12330)   
+Checking out files:  84% (10358/12330)   
+Checking out files:  85% (10481/12330)   
+Checking out files:  86% (10604/12330)   
+Checking out files:  87% (10728/12330)   
+Checking out files:  88% (10851/12330)   
+Checking out files:  89% (10974/12330)   
+Checking out files:  90% (11097/12330)   
+Checking out files:  91% (11221/12330)   
+Checking out files:  92% (11344/12330)   
+Checking out files:  92% (11390/12330)   
+Checking out files:  93% (11467/12330)   
+Checking out files:  94% (11591/12330)   
+Checking out files:  95% (11714/12330)   
+Checking out files:  96% (11837/12330)   
+Checking out files:  97% (11961/12330)   
+Checking out files:  98% (12084/12330)   
+Checking out files:  99% (12207/12330)   
+Checking out files: 100% (12330/12330)   
+Checking out files: 100% (12330/12330), done.
+nl
+nl
+nl
+nltravis_time:end:2abf37ac:start=1525312734762413000,finish=1525312745304921000,duration=10542508000
+[0K$ cd Microsoft/vscode
+
+travis_time:start:137dde70
+[0K$ git fetch origin +refs/pull/49088/merge:
+
+From https://github.com/Microsoft/vscode
+
+ * branch              refs/pull/49088/merge -> FETCH_HEAD
+nl
+nl
+nl
+nltravis_time:end:137dde70:start=1525312745357357000,finish=1525312745962889000,duration=605532000
+[0K$ git checkout -qf FETCH_HEAD
+
+travis_fold:end:git.checkout
+[0K
+
+[33;1mSetting environment variables from repository settings[0m
+
+$ export VSCODE_BUILD_QUIET=true
+
+$ export COVERALLS_REPO_TOKEN=[secure]
+
+$ export COVERALLS_GIT_COMMIT=HEAD
+
+$ export PUBLIC_GITHUB_TOKEN=16edc0b78343268fd3e3f3df777dc225405b2477
+nl
+nl
+nl
+nl$ export CXX=g++
+
+$ export CC=gcc
+
+travis_fold:start:cache.1
+[0KSetting up build cache
+
+/Users/travis/.travis/job_stages: line 611: shell_session_update: command not found
+
+$ export CASHER_DIR=$HOME/.casher
+
+travis_time:start:016d5140
+[0K$ Installing caching utilities
+nl
+nl
+nl
+nltravis_time:end:016d5140:start=1525312747934432000,finish=1525312748078690000,duration=144258000
+[0Ktravis_time:start:0c1ade8c
+[0K
+
+travis_time:end:0c1ade8c:start=1525312748094598000,finish=1525312748105629000,duration=11031000
+[0Ktravis_time:start:10d61090
+[0K[32;1mattempting to download cache archive[0m
+
+[32;1mfetching PR.49088/cache-osx-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--compiler-gpp.tgz[0m
+
+[32;1mfetching PR.49088/cache--compiler-gpp.tgz[0m
+
+[32;1mfetching master/cache-osx-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--compiler-gpp.tgz[0m
+
+[32;1mfound cache[0m
+nl
+nl
+nl
+nltravis_time:end:10d61090:start=1525312748118106000,finish=1525312751287327000,duration=3169221000
+[0Ktravis_time:start:0f34c046
+[0K
+
+travis_time:end:0f34c046:start=1525312751302864000,finish=1525312751321763000,duration=18899000
+[0Ktravis_time:start:21aa27ee
+[0K[32;1madding /Users/travis/.cache/yarn to cache[0m
+
+[32;1mcreating directory /Users/travis/.cache/yarn[0m
+nl
+nl
+nl
+nltravis_time:end:21aa27ee:start=1525312751334272000,finish=1525312754966373000,duration=3632101000
+[0Ktravis_fold:end:cache.1
+[0K$ g++ --version
+
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+
+Apple LLVM version 8.1.0 (clang-802.0.42)
+
+Target: x86_64-apple-darwin16.7.0
+
+Thread model: posix
+
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+travis_fold:start:before_install.1
+[0Ktravis_time:start:0c745838
+[0K$ export GITHUB_TOKEN=$PUBLIC_GITHUB_TOKEN
+nl
+nl
+nl
+nltravis_time:end:0c745838:start=1525312756390859000,finish=1525312756401812000,duration=10953000
+[0Ktravis_fold:end:before_install.1
+[0Ktravis_fold:start:before_install.2
+[0Ktravis_time:start:0039e4ea
+[0K$ git submodule update --init --recursive
+nl
+nl
+nl
+nltravis_time:end:0039e4ea:start=1525312756416301000,finish=1525312756544227000,duration=127926000
+[0Ktravis_fold:end:before_install.2
+[0Ktravis_fold:start:before_install.3
+[0Ktravis_time:start:30896a9c
+[0K$ nvm install 8.9.1
+
+Downloading https://nodejs.org/dist/v8.9.1/node-v8.9.1-darwin-x64.tar.gz...
+
+Now using node v8.9.1 (npm v5.5.1)
+nl
+nl
+nl
+nltravis_time:end:30896a9c:start=1525312756556975000,finish=1525312760850837000,duration=4293862000
+[0Ktravis_fold:end:before_install.3
+[0Ktravis_fold:start:before_install.4
+[0Ktravis_time:start:19371c86
+[0K$ nvm use 8.9.1
+
+Now using node v8.9.1 (npm v5.5.1)
+nl
+nl
+nl
+nltravis_time:end:19371c86:start=1525312760869226000,finish=1525312761710313000,duration=841087000
+[0Ktravis_fold:end:before_install.4
+[0Ktravis_fold:start:before_install.5
+[0Ktravis_time:start:018874e8
+[0K$ npm i -g yarn
+
+/Users/travis/.nvm/versions/node/v8.9.1/bin/yarn -> /Users/travis/.nvm/versions/node/v8.9.1/lib/node_modules/yarn/bin/yarn.js
+
+/Users/travis/.nvm/versions/node/v8.9.1/bin/yarnpkg -> /Users/travis/.nvm/versions/node/v8.9.1/lib/node_modules/yarn/bin/yarn.js
+
++ yarn@1.6.0
+
+added 1 package in 1.083s
+nl
+nl
+nl
+nltravis_time:end:018874e8:start=1525312761723217000,finish=1525312763409844000,duration=1686627000
+[0Ktravis_fold:end:before_install.5
+[0Ktravis_fold:start:before_install.6
+[0Ktravis_time:start:1724bf82
+[0K$ if [ $TRAVIS_OS_NAME == "linux" ]; then export CXX="g++-4.9" CC="gcc-4.9" DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; sleep 3; fi
+nl
+nl
+nl
+nltravis_time:end:1724bf82:start=1525312763427626000,finish=1525312763448336000,duration=20710000
+[0Ktravis_fold:end:before_install.6
+[0Ktravis_fold:start:install
+[0Ktravis_time:start:02670f0e
+[0K$ yarn
+
+yarn install v1.6.0
+
+$ node build/npm/preinstall.js
+
+[1/4] Resolving packages...
+
+[2/4] Fetching packages...
+
+info windows-foreground-love@0.1.0: The platform "darwin" is incompatible with this module.
+
+info "windows-foreground-love@0.1.0" is an optional dependency and failed compatibility check. Excluding it from installation.
+
+info windows-mutex@0.2.0: The platform "darwin" is incompatible with this module.
+
+info "windows-mutex@0.2.0" is an optional dependency and failed compatibility check. Excluding it from installation.
+
+info windows-process-tree@0.2.2: The platform "darwin" is incompatible with this module.
+
+info "windows-process-tree@0.2.2" is an optional dependency and failed compatibility check. Excluding it from installation.
+
+[3/4] Linking dependencies...
+
+[4/4] Building fresh packages...
+
+$ node build/npm/postinstall.js
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning vscode-extensions@0.0.1: No license field
+
+[1/4] Resolving packages...
+
+[2/4] Fetching packages...
+
+[3/4] Linking dependencies...
+
+[4/4] Building fresh packages...
+
+$ node ./postinstall
+
+removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/tsc.js'
+
+removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/tsserverlibrary.d.ts'
+
+removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/tsserverlibrary.js'
+
+removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/typescriptServices.d.ts'
+
+removed '/Users/travis/build/Microsoft/vscode/extensions/node_modules/typescript/lib/typescriptServices.js'
+
+Done in 0.46s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning configuration-editing@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning configuration-editing@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 1.02s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning css-language-features@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning css-language-features@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+warning vscode-languageclient@4.0.0: The engine "vscode" appears to be invalid.
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+$ cd server && yarn install
+
+yarn install v1.6.0
+
+warning ../package.json: No license field
+
+warning ../../package.json: No license field
+
+[1/5] Validating package.json...
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.93s.
+
+Done in 2.46s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning emmet@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning emmet@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 3.33s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning extension-editing@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning extension-editing@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.88s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning git@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning git@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 1.41s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning grunt@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning grunt@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.19s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning gulp@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning gulp@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.17s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning html-language-features@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning html-language-features@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
+
+warning vscode-languageclient@4.0.0: The engine "vscode" appears to be invalid.
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+$ cd server && yarn install
+
+yarn install v1.6.0
+
+warning ../package.json: No license field
+
+warning ../../package.json: No license field
+
+[1/5] Validating package.json...
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.75s.
+
+Done in 1.65s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning jake@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning jake@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.18s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning json-language-features@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning json-language-features@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
+
+warning vscode-languageclient@4.0.0: The engine "vscode" appears to be invalid.
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+$ cd server && yarn install
+
+yarn install v1.6.0
+
+warning ../package.json: No license field
+
+warning ../../package.json: No license field
+
+[1/5] Validating package.json...
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.85s.
+
+Done in 1.91s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning markdown-language-features@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning markdown-language-features@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 32.91s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning merge-conflict@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning merge-conflict@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.19s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning npm@1.0.1: No license field
+
+[1/5] Validating package.json...
+
+warning npm@1.0.1: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.86s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning ../package.json: No license field
+
+warning php-language-features@1.0.0: No license field
+
+[1/5] Validating package.json...
+
+warning php-language-features@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 0.21s.
+
+yarn install v1.6.0
+
+warning ../package.json: No license field
+
+[1/5] Validating package.json...
+
+warning typescript-language-features@1.0.0: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+warning vscode-extension-telemetry@0.0.17: The engine "vscode" appears to be invalid.
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 2.93s.
+
+yarn install v1.6.0
+
+warning ../package.json: No license field
+
+[1/5] Validating package.json...
+
+warning vscode-api-tests@0.0.1: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+Done in 3.31s.
+
+yarn install v1.6.0
+
+warning ../package.json: No license field
+
+[1/5] Validating package.json...
+
+warning vscode-colorize-tests@0.0.1: The engine "vscode" appears to be invalid.
+
+[2/5] Resolving packages...
+
+[3/5] Fetching packages...
+
+[4/5] Linking dependencies...
+
+[5/5] Building fresh packages...
+
+$ node ./node_modules/vscode/bin/install
+
+Detected VS Code engine version: *
+
+Fetching vscode.d.ts from: https://raw.githubusercontent.com/Microsoft/vscode/master/src/vs/vscode.d.ts
+
+vscode.d.ts successfully installed!
+nl
+nl
+nl
+nlDone in 2.96s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning code-oss-dev-build@1.0.0: No license field
+
+[1/4] Resolving packages...
+
+[2/4] Fetching packages...
+
+[3/4] Linking dependencies...
+
+[4/4] Building fresh packages...
+
+$ npm run compile
+nl
+nl
+nl
+nl> code-oss-dev-build@1.0.0 compile /Users/travis/build/Microsoft/vscode/build
+
+> tsc -p tsconfig.build.json
+nl
+nl
+nl
+nlDone in 10.74s.
+
+yarn install v1.6.0
+
+warning package.json: No license field
+
+warning code-oss-dev-smoke-test@0.1.0: No license field
+
+[1/4] Resolving packages...
+
+[2/4] Fetching packages...
+
+[3/4] Linking dependencies...
+
+[4/4] Building fresh packages...
+
+$ npm run compile
+nl
+nl
+nl
+nl> code-oss-dev-smoke-test@0.1.0 compile /Users/travis/build/Microsoft/vscode/test/smoke
+
+> npm run copy-driver && npm run copy-driver-definition && tsc
+nl
+nl
+nl
+nl
+
+> code-oss-dev-smoke-test@0.1.0 copy-driver /Users/travis/build/Microsoft/vscode/test/smoke
+
+> cpx src/vscode/driver.js out/vscode
+nl
+nl
+nl
+nl
+
+> code-oss-dev-smoke-test@0.1.0 copy-driver-definition /Users/travis/build/Microsoft/vscode/test/smoke
+
+> node tools/copy-driver-definition.js
+nl
+nl
+nl
+nlDone in 21.34s.
+
+yarn install v1.6.0
+
+warning ../../package.json: No license field
+
+[1/4] Resolving packages...
+
+[2/4] Fetching packages...
+
+[3/4] Linking dependencies...
+
+[4/4] Building fresh packages...
+
+Done in 11.04s.
+
+Done in 186.08s.
+nl
+nl
+nl
+nltravis_time:end:02670f0e:start=1525312763463714000,finish=1525312950085867000,duration=186622153000
+[0Ktravis_fold:end:install
+[0Ktravis_time:start:13bcc280
+[0K$ node_modules/.bin/gulp electron --silent
+
+Downloading electron-v1.7.12-darwin-x64.zip...
+
+Downloading ffmpeg-v1.7.12-darwin-x64.zip...
+nl
+nl
+nl
+nltravis_time:end:13bcc280:start=1525312950103377000,finish=1525312960544695000,duration=10441318000
+[0K
+
+[32;1mThe command "node_modules/.bin/gulp electron --silent" exited with 0.[0m
+
+travis_time:start:00a18f8d
+[0K$ node_modules/.bin/gulp compile --silent --max_old_space_size=4096
+nl
+nl
+nl
+nltravis_time:end:00a18f8d:start=1525312960559423000,finish=1525313085435741000,duration=124876318000
+[0K
+
+[32;1mThe command "node_modules/.bin/gulp compile --silent --max_old_space_size=4096" exited with 0.[0m
+
+travis_time:start:06c9b4a6
+[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./scripts/test.sh --coverage --reporter dot; else ./scripts/test.sh --reporter dot; fi
+nl
+nl
+nl
+nl
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․[9897:0503/020455.447798:INFO:CONSOLE(214)] "[getWordRangeAtPosition]: ignoring custom regexp '.*' because it matches the empty string.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/api/node/extHostDocumentData.js (214)
+
+․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․[9897:0503/020458.957989:INFO:CONSOLE(97)] "Cannot register 'a'. This property is already registered.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/platform/configuration/common/configurationRegistry.js (97)
+
+․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+nl
+nl
+nl
+nl  3976 passing (37s)
+nl
+nl
+nl
+nl
+
+travis_time:end:06c9b4a6:start=1525313085449038000,finish=1525313128887084000,duration=43438046000
+[0K
+
+[32;1mThe command "if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./scripts/test.sh --coverage --reporter dot; else ./scripts/test.sh --reporter dot; fi" exited with 0.[0m
+
+travis_time:start:110333ca
+[0K$ ./scripts/test-integration.sh
+
+[02:05:30] Syncronizing built-in extensions...
+
+[02:05:30] You can manage built-in extensions with the --builtin flag
+
+[02:05:30] Downloading extension: ms-vscode.node-debug2@1.23.5 ...
+
+[02:05:30] Downloading extension: ms-vscode.node-debug@1.23.3 ...
+
+[02:05:31] [marketplace] ms-vscode.node-debug ✔︎
+
+[02:05:31] [marketplace] ms-vscode.node-debug2 ✔︎
+
+[90m[main 2:05:32 AM][0m update#ctor - updates are disabled
+
+[9980:0503/020537.354907:INFO:CONSOLE(236)] "%c[Extension Host] %cdebugger listening on port 5870", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/extensions/electron-browser/extensionHost.js (236)
+
+[9980:0503/020537.926387:INFO:CONSOLE(145)] "%c[Extension Host] %cdebugger inspector at chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:5870/f86b2555-21d2-4c86-b5fa-2c6226389f6a
+
+", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/extensions/electron-browser/extensionHost.js (145)
+
+[9980:0503/020538.025937:INFO:CONSOLE(830)] "Loading development extension at /Users/travis/build/Microsoft/vscode/extensions/vscode-api-tests", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/extensions/electron-browser/extensionService.js (830)
+
+[9980:0503/020538.047852:INFO:CONSOLE(524)] "Extension 'vscode.vscode-api-tests' uses PROPOSED API which is subject to change and removal without notice.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/extensions/electron-browser/extensionService.js (524)
+nl
+nl
+nl
+nl[0m[0m
+
+[0m  commands namespace tests[0m
+
+  [32m  ✓[0m[90m getCommands[0m
+
+  [32m  ✓[0m[90m command with args[0m
+
+  [32m  ✓[0m[90m editorCommand with extra args[0m[31m (1153ms)[0m
+
+  [32m  ✓[0m[90m api-command: vscode.previewHtm[0m[31m (617ms)[0m
+
+  [32m  ✓[0m[90m api-command: vscode.diff[0m[31m (405ms)[0m
+
+  [32m  ✓[0m[90m api-command: vscode.open[0m[31m (322ms)[0m
+nl
+nl
+nl
+nl[0m  Configuration tests[0m
+
+  [32m  ✓[0m[90m configurations, language defaults[0m
+
+  [32m  ✓[0m[90m configuration, defaults[0m
+
+  [32m  ✓[0m[90m configuration, name vs property[0m
+nl
+nl
+nl
+nl[0m  editor tests[0m
+
+  [32m  ✓[0m[90m insert snippet[0m[31m (648ms)[0m
+
+  [32m  ✓[0m[90m insert snippet with replacement, editor selection[0m[31m (487ms)[0m
+
+  [32m  ✓[0m[90m insert snippet with replacement, selection as argument[0m[31m (424ms)[0m
+
+  [32m  ✓[0m[90m make edit[0m[31m (315ms)[0m
+
+  [32m  ✓[0m[90m issue #6281: Edits fail to validate ranges correctly before applying[0m[31m (380ms)[0m
+
+  [32m  ✓[0m[90m TextEditor.edit can control undo/redo stack 1[0m[31m (231ms)[0m
+
+  [32m  ✓[0m[90m TextEditor.edit can control undo/redo stack 2[0m[31m (210ms)[0m
+
+  [32m  ✓[0m[90m issue #16573: Extension API: insertSpaces and tabSize are undefined[0m[31m (180ms)[0m
+
+  [32m  ✓[0m[90m issue #20757: Overlapping ranges are not allowed![0m[31m (210ms)[0m
+nl
+nl
+nl
+nl[0m  env-namespace[0m
+
+  [32m  ✓[0m[90m env is set[0m
+
+  [32m  ✓[0m[90m env is readonly[0m
+nl
+nl
+nl
+nl[0m  languages namespace tests[0m
+
+  [32m  ✓[0m[90m diagnostics, read & event[0m
+
+  [32m  ✓[0m[90m diagnostics & CodeActionProvider[0m[31m (187ms)[0m
+
+[ { insertText: 'foo',
+
+    kind: 'Property',
+
+    label: 'foo',
+
+    textEdit: { newText: 'foo', range: [Object] } } ]
+
+  [32m  ✓[0m[90m completions with document filters[0m[31m (537ms)[0m
+nl
+nl
+nl
+nl[0m  window namespace tests[0m
+
+  [32m  ✓[0m[90m editor, active text editor[0m[31m (76ms)[0m
+
+  [32m  ✓[0m[90m editor, opened via resource[0m[31m (116ms)[0m
+
+  [32m  ✓[0m[90m editor, assign and check view columns[0m[31m (301ms)[0m
+
+  [32m  ✓[0m[90m editor, onDidChangeVisibleTextEditors[0m[31m (366ms)[0m
+
+[Deprecation Warning] method 'TextEditor.hide' is deprecated and should no longer be used. Refer to the documentation for further details.
+
+  [32m  ✓[0m[90m editor, onDidChangeTextEditorViewColumn[0m[31m (249ms)[0m
+
+  [31m  1) issue #25801 - default column when opening a file[0m
+
+  [32m  ✓[0m[90m issue #27408 - showTextDocument & vscode.diff always default to ViewColumn.One[0m[31m (319ms)[0m
+
+  [32m  ✓[0m[90m issue #5362 - Incorrect TextEditor passed by onDidChangeTextEditorSelection[0m[31m (655ms)[0m
+
+  [32m  ✓[0m[90m #7013 - input without options[0m
+
+  [32m  ✓[0m[90m showInputBox - undefined on cancel[0m
+
+  [32m  ✓[0m[90m showInputBox - cancel early[0m
+
+  [32m  ✓[0m[90m showInputBox - '' on Enter[0m
+
+  [32m  ✓[0m[90m showInputBox - default value on Enter[0m[33m (38ms)[0m
+
+  [32m  ✓[0m[90m showInputBox - `undefined` on Esc[0m
+
+  [32m  ✓[0m[90m showInputBox - `undefined` on Esc (despite default)[0m
+
+  [32m  ✓[0m[90m showQuickPick, undefined on cancel[0m
+
+  [32m  ✓[0m[90m showQuickPick, cancel early[0m
+
+  [32m  ✓[0m[90m showQuickPick, canceled by another picker[0m
+
+  [32m  ✓[0m[90m showQuickPick, canceled by input[0m
+
+  [32m  ✓[0m[90m showQuickPick, native promise - #11754[0m
+
+  [32m  ✓[0m[90m showQuickPick, never resolve promise and cancel - #22453[0m
+
+  [32m  ✓[0m[90m showWorkspaceFolderPick[0m
+
+  [32m  ✓[0m[90m Default value for showInput Box accepted even if fails validateInput, #33691[0m[33m (38ms)[0m
+
+  [32m  ✓[0m[90m editor, selection change kind[0m[33m (70ms)[0m
+
+  [32m  ✓[0m[90m createTerminal, Terminal.name[0m
+
+  [32m  ✓[0m[90m terminal, sendText immediately after createTerminal should not throw[0m
+
+  [32m  ✓[0m[90m terminal, onDidCloseTerminal event fires when terminal is disposed[0m[31m (151ms)[0m
+
+  [32m  ✓[0m[90m terminal, processId immediately after createTerminal should fetch the pid[0m[31m (901ms)[0m
+
+  [32m  ✓[0m[90m terminal, name should set terminal.name[0m
+nl
+nl
+nl
+nl[0m  workspace-namespace[0m
+
+  [32m  ✓[0m[90m MarkdownString[0m
+
+  [32m  ✓[0m[90m textDocuments[0m
+
+  [32m  ✓[0m[90m rootPath[0m
+
+  [32m  ✓[0m[90m workspaceFolders[0m
+
+  [32m  ✓[0m[90m getWorkspaceFolder[0m
+
+  [32m  ✓[0m[90m openTextDocument[0m
+
+  [32m  ✓[0m[90m openTextDocument, illegal path[0m
+
+  [32m  ✓[0m[90m openTextDocument, untitled is dirty[0m
+
+  [32m  ✓[0m[90m openTextDocument, untitled with host[0m
+
+  [32m  ✓[0m[90m openTextDocument, untitled without path[0m
+
+  [32m  ✓[0m[90m openTextDocument, untitled without path but language ID[0m
+
+  [32m  ✓[0m[90m openTextDocument, untitled without path but language ID and content[0m[31m (543ms)[0m
+
+  [32m  ✓[0m[90m openTextDocument, untitled closes on save[0m[31m (348ms)[0m
+
+  [32m  ✓[0m[90m openTextDocument, uri scheme/auth/path[0m[33m (38ms)[0m
+
+  [32m  ✓[0m[90m eol, read[0m[31m (130ms)[0m
+
+  [32m  ✓[0m[90m eol, change via editor[0m[31m (310ms)[0m
+
+  [32m  ✓[0m[90m eol, change via applyEdit[0m[31m (346ms)[0m
+
+  [32m  ✓[0m[90m eol, change via onWillSave[0m[33m (69ms)[0m
+
+  [32m  ✓[0m[90m events: onDidOpenTextDocument, onDidChangeTextDocument, onDidSaveTextDocument[0m[31m (565ms)[0m
+
+  [32m  ✓[0m[90m openTextDocument, with selection[0m[31m (520ms)[0m
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, simple[0m[33m (64ms)[0m
+
+[9980:0503/020555.450217:INFO:CONSOLE(83)] "Unable to open 'notThere://foo/far/boo/bar' resource is not available.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/textmodelResolver/common/textModelResolverService.js (83)
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, constrains[0m[33m (43ms)[0m
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, multiple[0m[31m (84ms)[0m
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, evil provider[0m
+
+[9980:0503/020555.760508:INFO:CONSOLE(83)] "Unable to open 'foo://auth/path' resource is not available.", source: file:///Users/travis/build/Microsoft/vscode/out/vs/workbench/services/textmodelResolver/common/textModelResolverService.js (83)
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, invalid text[0m
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, show virtual document[0m[31m (213ms)[0m
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, open/open document[0m[31m (142ms)[0m
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, empty doc[0m
+
+  [32m  ✓[0m[90m registerTextDocumentContentProvider, change event[0m
+
+Debugger listening on port 5876.
+
+Warning: This is an experimental feature and could change at any time.
+
+To start debugging, open the following URL in Chrome:
+
+    chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:5876/55c4ab47-7cbb-4763-94b3-d638113660f3
+
+  [32m  ✓[0m[90m findFiles[0m[31m (814ms)[0m
+
+  [32m  ✓[0m[90m applyEdit[0m
+nl
+nl
+nl
+nl
+
+[92m [0m[32m 82 passing[0m[90m (17s)[0m
+
+[31m  1 failing[0m
+nl
+nl
+nl
+nl[0m  1) window namespace tests issue #25801 - default column when opening a file:
+nl
+nl
+nl
+nl      [31mAssertionError: wanted fileName:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/nvygakhddm/viewColumn:1 but got fileName:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/jcckhnwh/viewColumn:2. a:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/gypfx, b:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/jcckhnwh, c:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/nvygakhddm[0m
+
+      [32m+ expected[0m [31m- actual[0m
+nl
+nl
+nl
+nl      [31m-false[0m
+
+      [32m+true[0m
+
+      [0m[90m
+
+      at Object.<anonymous> (extensions/vscode-api-tests/src/singlefolder-tests/window.test.ts:137:10)
+
+      at step (extensions/vscode-api-tests/out/singlefolder-tests/window.test.js:36:23)
+
+      at Object.f [as next] (extensions/vscode-api-tests/out/singlefolder-tests/window.test.js:17:53)
+
+      at fulfilled (extensions/vscode-api-tests/out/singlefolder-tests/window.test.js:8:58)
+
+      at <anonymous>
+
+[0m
+nl
+nl
+nl
+nl
+nl
+nl
+nl
+nltravis_time:end:110333ca:start=1525313128904798000,finish=1525313158021783000,duration=29116985000
+[0K
+
+[31;1mThe command "./scripts/test-integration.sh" exited with 1.[0m
+
+travis_fold:start:cache.2
+[0Kstore build cache
+
+travis_time:start:017ecd28
+[0K
+
+travis_time:end:017ecd28:start=1525313158038298000,finish=1525313158051332000,duration=13034000
+[0Ktravis_time:start:29b89fec
+[0K[32;1mnothing changed, not updating cache[0m
+nl
+nl
+nl
+nltravis_time:end:29b89fec:start=1525313158067944000,finish=1525313161153369000,duration=3085425000
+[0Ktravis_fold:end:cache.2
+[0K
+
+Done. Your build exited with 1.
+
+/Users/travis/.travis/job_stages: line 166: shell_session_update: command not found
+
