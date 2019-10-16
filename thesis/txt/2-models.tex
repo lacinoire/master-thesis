@@ -4,13 +4,13 @@
 
 \begin{document}
 
-\chapter{Information Extraction Techniques}
+\chapter{Information Retrieval Techniques}
 \label{sec:models}
 %\includegraphics[page=1, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/RetreatSeptemberSlides.pdf}
-Many different information extraction techniques ... this section describes the conceptional / theoretical results of our thesis ...
+Many different information retrieval techniques ... this section describes the conceptional / theoretical results of our thesis ...
 We create a model to characterize BLIE techniques so we can discuss their similarities and differences more clearly.
 Additionally we present a complimentary model for IE tasks, to describe use cases for BLIE techniques in a structured way.
-From our analysis of build logs we share our notion of the extractable information within a build log.
+From our analysis of build logs we share our notion of the retrievable information within a build log.
 
 \section{Characteristics of a Build Log}
 The idea of CI is, to integrate new software changes fast and often to catch errors early~\cite{humble2010continuous}. After making a change, the developer commits and pushes it to a shared source code repository. Companies often use a specific CI server, e.g. Travis CI, linked to their source code repository. A CI build might then be triggered by a push on specific branches or after a pull request was created. When such a CI build is triggered, it typically runs through these stages:
@@ -32,16 +32,16 @@ Semi-structured for build logs means for us that the log text is:
 	\item \textbf{irregular}, the structure changes without notice \todo{we saw this in our data collection, random newlines}
 \end{itemize}
 
-\plan{a build consists of various steps, executed by different tools, these are often orchestrated by at least one overarching tool. // picture: overarching tool travis and it calls different tools which tehn output sequentiall, travis sometimes outputs something in between -> that is how the build log is made up // we have this structure though it is not always apparent from the build log / edges between the systems can look very different, mostly no agreed model, we: look at differen techniques to extract certain pieces of information \emph{without complete parsing the whole log in to a structure} -> we don't necesarrily want to understand the whole log sturcture just extract one specifi information relevant to us}
+\plan{a build consists of various steps, executed by different tools, these are often orchestrated by at least one overarching tool. // picture: overarching tool travis and it calls different tools which tehn output sequentiall, travis sometimes outputs something in between -> that is how the build log is made up // we have this structure though it is not always apparent from the build log / edges between the systems can look very different, mostly no agreed model, we: look at differen techniques to retrieve certain pieces of information \emph{without complete parsing the whole log in to a structure} -> we don't necesarrily want to understand the whole log sturcture just retrieve one specifi information relevant to us}
 
-\section{Extractable Information in Build Logs}
+\section{Retrievable Information in Build Logs}
 \begin{figure}[h]
   \centering
 \includegraphics[page=2, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
-  \caption{Information extractable from build logs}
+  \caption{Information retrievable from build logs}
   \label{fig:build-log-information-draft}
 \end{figure}
-Continuous integration build logs contain a huge amount of information about the various stages in the CI build they correspond to. In this section we present our model to more precisely describe our notion of a information extractable from a CI build log.
+Continuous integration build logs contain a huge amount of information about the various stages in the CI build they correspond to. In this section we present our model to more precisely describe our notion of a information retrievable from a CI build log.
 
 A \emph{build log information} for us has:
 \begin{itemize}
@@ -55,7 +55,7 @@ With this build information items can be hierachically ordered by their textual 
 	\caption{Build Log Information}
 	\label{fig:build-log-information}
 \end{figure}
-During our inital exploration \& data collection for the \emph{Failing Build Log Data Set}, wanted to get an impression about the information one would want to extract from a build log. Within the Travis CI build logs we found various different informations possibly interesting to be extracted
+During our inital exploration \& data collection for the \emph{Failing Build Log Data Set}, wanted to get an impression about the information one would want to retrieve from a build log. Within the Travis CI build logs we found various different informations possibly interesting to be retrieved
 \begin{itemize}
 	\item \textbf{Travis Build Step} A Travis CI build consists of several build steps defined within the Travis CI configuration language. Within the build log each of these steps are framed by \lstinline{travis_fold:start:<build step name>} and \lstinline{travis_fold:end:<build step name>}.
 	      A build step contains
@@ -70,17 +70,17 @@ During our inital exploration \& data collection for the \emph{Failing Build Log
 \todo{give at least one concrete example instantiation, best from a log in the data set, not too long so maybe it goes in the abstract?, picture/graphic with marked parts here?}
 
 
-\section{Characteristics of Information Extraction Techniques}
+\section{Characteristics of Information Retrieval Techniques}
 \begin{figure}[h]
 	\centering
 	\includegraphics[page=3, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
-	\caption{Model for an information extraction technique}
+	\caption{Model for an information retrieval technique}
 	\label{fig:model-ie-technique}
 \end{figure}
-For this thesis we want to evaluate different Information Extraction Techniques in their application to CI build logs. We focus on techniques that do not attempt or require to parse the structure of a whole build log, but rather focus on extracting just one specific information
-A build log information extraction technique (BLIE technique) consumes a build log (text file) and produces a certain output (text). \todo{make picture, output can be contained in log or not, can be continuous substring or selected lines etc.}.
+For this thesis we want to evaluate different information retrieval techniques in their application to CI build logs. We focus on techniques that do not attempt or require to parse the structure of a whole build log, but rather focus on extracting just one specific information
+A build log information retrieval technique (BLIR technique) consumes a build log (text file) and produces a certain output (text). \todo{make picture, output can be contained in log or not, can be continuous substring or selected lines etc.}.
 \begin{itemize}
-	\item \textbf{Target}{Extractable Information} each extraction technique \todo{instantiation!} targets a specific information
+	\item \textbf{Target}{Extractable Information} each retrieval technique \todo{instantiation!} targets a specific information
 	\item \textbf{Setup Overhead}{Time}
 	\item \textbf{Performance}{Performance} split into learning performance
 	\item \textbf{Configuration Scope} for one repository/project, a language/logkind, global
@@ -88,14 +88,14 @@ A build log information extraction technique (BLIE technique) consumes a build l
 
 Example instantiations of this task later in this chapter, namely for the three techniques we are comparing: PROSE program synthesis, IR text similarity, and simple keyword search. \todo{ref?}
 
-\section{Information Extraction Tasks}
+\section{Information Retrieval Tasks}
 \begin{figure}[h]
 	\centering
 	\includegraphics[page=4, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
 	\caption{Model for information extraction task}
 	\label{fig:modelt-ie-task}
 \end{figure}
-aims to describe an information extraction task of a developer or a researcher.
+aims to describe an information retrieval task of a developer or a researcher.
 \begin{itemize}
 	\item \todo{describe all classes}
 	\item{Setup Overhead}{Time}
@@ -111,7 +111,7 @@ aims to describe an information extraction task of a developer or a researcher.
   \caption{Synthesizing regular expression programs by example using PROSE}
   \label{fig:prose-explanation}
 \end{figure}
-\subsection{Overview}
+\subsection*{Overview}
 \emph{Programming by Example (PBE)} is a technique where programs are synthesized according to in and output examples provided by the user. It enables users to create programs without requiring programming knowledge~\cite{mayer2015user}. Applied A to the task of text extraction through regular expressions it relieves the developer from having to understand the whole document structure to solve a single extraction task~\cite{le2014flashextract:}.
 We chose to investigate the applicability of generating regular expression programs by example to extracting information from build logs. In this work we refer to our interpretation of this technique as \emph{PBE}. \todo{distinguish PBE for buildlogs}
 
@@ -133,11 +133,11 @@ Mayer et al.~\cite{mayer2015user} presented two system-user interaction models t
 We feel such questions of usability can be answered separately from the application domain of build logs.
 
 For our work we chose to look at the applicability of PBE from the \emph{technical} perspective.
-We investigate whether current program synthesis techniques are able to learn programs for information extraction tasks in the domain of CI build logs.
+We investigate whether current program synthesis techniques are able to learn programs for information retrieval tasks in the domain of CI build logs.
 Furthermore we gather insights in how PBE has to be applied to yield useable results and perform best.
 Our implementation of PBE \todo{which we name technique name x}, is mainly based on the Flash Extract DSL~\cite{flahsextractpaper} of the PROSE library by Microsoft\mention{cite prose website}.
 Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
-In the following we will explain the concept of how we apply PBE to information extraction from CI build logs, the concrete implementation is described in \ref{sec:impl-pbe}.
+In the following we will explain the concept of how we apply PBE to information retrieval from CI build logs, the concrete implementation is described in \ref{sec:impl-pbe}.
 
 \subsection*{Configuration / Input / Output}
 In/Output examples (I/O examples) are the main driver of Programming by Example.
@@ -155,7 +155,7 @@ Our approach is based on the Flash Extract DSL, which in turn is based on the Fl
 
 \subsection*{Model instantiation}
 
-\todo{explanation of process, the way our tool does it, instantiate model of extraction technique, probably no additional theoretical stuff really needed here?, describe regex programs}
+\todo{explanation of process, the way our tool does it, instantiate model of retrieval technique, probably no additional theoretical stuff really needed here?, describe regex programs}
 
 \section{Text Similarity}
 \begin{figure}[h]
@@ -166,16 +166,16 @@ Our approach is based on the Flash Extract DSL, which in turn is based on the Fl
 \end{figure}
 \paragraph{Overview}
 Information retrieval techniques are more and more prevalently used to extract textual information from unstructured textual sources~\mention{stuff annibale is referencing?}. We describe CI build logs as semi-structured, 
-\todo{explanation of process, the way our tool does it, instantiate model of extraction technique, probably no additional theoretical stuff really needed here?}
+\todo{explanation of process, the way our tool does it, instantiate model of retrieval technique, probably no additional theoretical stuff really needed here?}
 
-\section{Keyword search}
+\section{Keyword Search}
 \begin{figure}[h]
   \centering
 \includegraphics[page=4, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/RetreatSeptemberSlides.pdf}
   \caption{Extracting information using keyword search}
   \label{fig:keword-search-explanation}
 \end{figure}
-\todo{explanation of process, the way our tool does it, instantiate model of extraction technique, probably no additional theoretical stuff really needed here?}
+\todo{explanation of process, the way our tool does it, instantiate model of retrieval technique, probably no additional theoretical stuff really needed here?}
 
 \section{Further Techniques}
 \todo{maybe: instantiate model, or at least partly talk about it}

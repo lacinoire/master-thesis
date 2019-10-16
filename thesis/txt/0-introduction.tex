@@ -12,40 +12,48 @@
 %There are many different retrieval techniques use for this task. Beller et al.  used regular expressions when analysing the failure reasons of ruby and Java Maven buildlogs from TravisCI~\cite{beller2017oops}, while Vassallo et al. wrote a custom parser for Java Maven build logs to gather information for build repair hints~\cite{vassallo2018un-break}. Recently Amar et al. greatly reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and successful build~\cite{amar2019mining}. \bp{anecdotal: keyword search?}. Apart from those there are various more retrieval techniques like searching for keywords, ... \todo{more?} \bp{introduce problem: which one to choose}
 
 %With our work we want to support developers, researchers or project managers in deciding which technique is the best one for their use case. 
-Continuous Integration (CI) has become a best practice in software engineering and many software projects now use CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect bugs more easily~\cite{vasilescu2015quality,duvall2007continuous} and improve developer productivity~\cite{miller2008hundred,hilton2016usage} and communication~\cite{downs2012ambient}. A build on a CI server typically not only compiles and packages the software, but also executes test~\cite{beller2017oops} and various kinds of static analysis~\cite{zampetti2017open}.
+Continuous Integration (CI) has become a best practice in software engineering.
+Many software projects now use CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect bugs more easily~\cite{vasilescu2015quality,duvall2007continuous} and improve developer productivity~\cite{miller2008hundred,hilton2016usage} and communication~\cite{downs2012ambient}.
+A build on a CI server typically not only compiles and packages the software, but also executes tests~\cite{beller2017oops} and various kinds of static analyses~\cite{zampetti2017open}.
 
-CI builds often produce very long and verbose build logs~\cite{beller2017oops}, stating the progress and results of the various steps within the build. The structure of these logs changes greatly from project to project and highly depends on the tools and environment used.
-Build logs are a highly valuable data source. First of all, for the developers that read them to analyze why their build failed or how different stages of the build process perform.
-Second, for researchers that can harvest the information contained in the logs --- and their metadata --- to study the software engineering process of a project.
-However these two groups can only utilize the information within the build logs if they can adequately extract the information relevant to them.
+CI builds produce long and verbose build logs~\cite{beller2017oops}, stating the progress and results of the various steps within the build. The structure of these logs changes greatly from project to project~\cite{staahl2014modeling} as it highly depends on the tools and environment used.
+Build logs are a valuable data source. First of all, for developers, who read them to analyze why their build failed or how different stages of the build process perform.
+Second, they are valuable for researchers, who can harvest the information contained in the logs --- and their metadata --- to study the software engineering process of a project.
+However, these two groups can only utilize the information within the build logs if they can adequately retrieve the information relevant to them.
 
-There are many different retrieval techniques used for this task. Beller et al. used regular expressions when analyzing the failure reasons of Ruby and Java Maven build logs from TravisCI~\cite{beller2017oops}. Such regular expressions are developed by looking at a few exemplary build logs and maintaining them whenever new cases are introduced is a tedious and error-prone task~\cite{michael2019regexes}.
+There are different retrieval techniques used to retrieve information from CI build logs. Beller et al. use regular expressions to analyze the failure reasons of Ruby and Java Maven build logs from TravisCI~\cite{beller2017oops}.
+In general, such regular expressions are developed by looking at a few exemplary build logs and updating them whenever new cases are introduced is a tedious and error-prone task~\cite{michael2019regexes}.
 Vassallo et al. wrote a custom parser for Java Maven build logs to gather information for build repair hints~\cite{vassallo2018un-break}.
-Recently Amar et al. greatly reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and successful build~\cite{amar2019mining}.
+Recently, Amar et al. greatly reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and successful build~\cite{amar2019mining}.
 
-Currently we only have anecdotal evidence on the performance of these techniques and when to use which. Developers and researches have little support while choosing which one to use for an retrieval task. Our goal for this thesis is to investigate different information retrieval techniques and describe under which circumstances we recommend each of the techniques.
+Currently there is only anecdotal evidence on the performance of these techniques and when a technique should be preferred. Developers and researches have little support while choosing which technique to use for an retrieval task. The goal for this thesis is to investigate different information retrieval techniques and describe under which circumstances we recommend each of the techniques.
 
 We aim to define a model to characterize the different retrieval techniques and answer what influences the suitability of a technique.
-We support our assumption by evaluating three chosen techniques, namely regular expression synthesis by example using the Microsoft PROSE library (referred to as PBE), a common text similarity approach (referred to as TS) and simple keyword search (referred to as SKWS).
-Our \emph{Failing Build Logs Data Set} encompasses about 800 log files from 80 repositories, labeled with the log part describing the reason a build failed, keywords to search for this retrievals and a categorization of the retrievals according to their structural position within the log. 
+We support our assumption by implementing and evaluating three techniques:
+\begin{itemize}
+  \item regular expression synthesis by example using the Microsoft PROSE library (referred to as PBE),
+  \item a common text similarity approach (referred to as TS) and
+  \item simple keyword search (referred to as SKWS)
+\end{itemize}
+To evaluate these techniques we create the \emph{Failing Build Logs Data Set}, which encompasses about 800 log files from 80 repositories. Each log is labeled with the log part describing the reason a build failed, keywords to search for this log part and a categorization of the labeled log part according to its structural position within the log. 
 
 
 We aim to answer the following research questions:
 \begin{itemize}
-  \item[\textbf{RQ1:}] What criteria influence the suitability of an information retrieval technique for CI build logs?
-  \item[\textbf{RQ2:}] When are PBE, TS and SKWS suited to extract information from CI build logs?
+  \item[\textbf{RQ1:}] Which criteria influence the suitability of an information retrieval technique for CI build logs?
+  \item[\textbf{RQ2:}] When are PBE, TS and SKWS suited to retrieve information from CI build logs?
   \item[\textbf{RQ2.1:}] How many examples do PBE, TS and SKWS need to perform best?
   \item[\textbf{RQ2.2:}] How accurate are the retrievals of PBE, TS and SKWS?
   \item[\textbf{RQ2.3:}] How structurally similar do the examples for PBE and TS need to be for the techniques to be applicable?
 \end{itemize}
 
 \plan{results and conclusions of my work}
-Our study of the three techniques on \emph{Failing Build Logs Data Set} shows that PROSE is suitable for retrieval tasks requiring a high precision, ... . Extracting information by using text similarity of examples is suitable when ... . Simple keyword search is suitable ... .
+Our study of the three techniques on \emph{Failing Build Logs Data Set} shows that PROSE is suitable for retrieval tasks requiring a high precision, ... . Retrieving information by using text similarity of examples is suitable when ... . Simple keyword search is suitable ... .
 
 
 \paragraph{Our work contributes:}
 \begin{itemize}
-  \item A model of the extractable information in CI build logs
+  \item A model of the retrievable information in CI build logs
   \item A model to characterize information retrieval techniques from CI build logs
   \item A model to characterize use case scenarios for information retrieval from CI build logs
   \item A tool unifying several information retrieval techniques namely:
@@ -67,8 +75,8 @@ Our study of the three techniques on \emph{Failing Build Logs Data Set} shows th
 
 
 This thesis first presents an overview over the related research, spanning from CI research, build log analysis and augmentation, and common \todo{production?} log processing over information retrieval techniques to program synthesis by examples.
-Next, chapter \ref{sec:models} present our models for information retrieval techniques, use case scenarios for such techniques and extractable information from CI build logs. It also introduces the three techniques, we focus on during our research evaluation, as well as their theoretical foundations.
-Chapter \ref{sec:data-set} describes the creation of our \emph{The Failing Build Logs Data Set} collected from failed Travis CI build logs, and the labeling and validation process.
+Next, chapter \ref{sec:models} present our models for information retrieval techniques, use case scenarios for such techniques and retrievable information from CI build logs. It also introduces the three techniques, we focus on during our research evaluation.
+Chapter \ref{sec:data-set} describes the creation of our \emph{Failing Build Logs Data Set} collected from failed Travis CI build logs and the labeling as well as the validation process.
 Following, Chapter \ref{sec:implementation} our implementation of the three chosen information retrieval techniques and the usage of our unified information retrieval tool.
 This tool is also used for the evaluation study of our models described in Chapter \ref{sec:study}. There we also describe the resulting instantiation of our recommendation model for regex program synthesis, text similarity and keyword search.
 Lastly, we conclude and give an overview of further research opportunities in Chapter \ref{sec:conclusion}.
