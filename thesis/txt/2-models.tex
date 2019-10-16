@@ -13,7 +13,7 @@ Additionally we present a complimentary model for IE tasks, to describe use case
 From our analysis of build logs we share our notion of the extractable information within a build log.
 
 \section{Characteristics of a Build Log}
-The idea of CI is, to integrate new software changes fast and often to catch errors early. After making a change, the developer commits and pushes it to a shared source code repository. Companies often use a specific CI server, e.g. Travis CI, linked to their source code repository. A CI build might then be triggered by a push on specific branches or after a pull request was created. When such a CI build is triggered, it typically runs through these stages:
+The idea of CI is, to integrate new software changes fast and often to catch errors early~\cite{humble2010continuous}. After making a change, the developer commits and pushes it to a shared source code repository. Companies often use a specific CI server, e.g. Travis CI, linked to their source code repository. A CI build might then be triggered by a push on specific branches or after a pull request was created. When such a CI build is triggered, it typically runs through these stages:
 \begin{itemize}
 	\item Pulling in the new, changed version of the source code.
 	\item Running static analysis tools~\cite{zampetti2017open}.
@@ -28,8 +28,8 @@ The structure of this output is chosen by every tool themselves. Many have impli
 
 Semi-structured for build logs means for us that the log text is:
 \begin{itemize}
-	\item[implicitly stuructured], we do not have access to explicit structuring elements or an explicit structure description
-	\item[irregular], the structure changes without notice \todo{we saw this in our data collection, random newlines}
+	\item \textbf{implicitly stuructured}, we do not have access to explicit structuring elements or an explicit structure description
+	\item \textbf{irregular}, the structure changes without notice \todo{we saw this in our data collection, random newlines}
 \end{itemize}
 
 \plan{a build consists of various steps, executed by different tools, these are often orchestrated by at least one overarching tool. // picture: overarching tool travis and it calls different tools which tehn output sequentiall, travis sometimes outputs something in between -> that is how the build log is made up // we have this structure though it is not always apparent from the build log / edges between the systems can look very different, mostly no agreed model, we: look at differen techniques to extract certain pieces of information \emph{without complete parsing the whole log in to a structure} -> we don't necesarrily want to understand the whole log sturcture just extract one specifi information relevant to us}
@@ -57,13 +57,13 @@ With this build information items can be hierachically ordered by their textual 
 \end{figure}
 During our inital exploration \& data collection for the \emph{Failing Build Log Data Set}, wanted to get an impression about the information one would want to extract from a build log. Within the Travis CI build logs we found various different informations possibly interesting to be extracted
 \begin{itemize}
-	\item[Travis Build Step] A Travis CI build consists of several build steps defined within the Travis CI configuration language. Within the build log each of these steps are framed by \lstinline{travis_fold:start:<build step name>} and \lstinline{travis_fold:end:<build step name>}.
+	\item \textbf{Travis Build Step} A Travis CI build consists of several build steps defined within the Travis CI configuration language. Within the build log each of these steps are framed by \lstinline{travis_fold:start:<build step name>} and \lstinline{travis_fold:end:<build step name>}.
 	      A build step contains
 	      \begin{itemize}
-		      \item[Build Step Name] The string Travis uses to identify the step within start \& end statements.
-		      \item[Build Step Output] The output generated during the build step. The textual representation of the \texttt{Build Step Output} is the substring between the start \& end statements.
+		      \item \textbf{Build Step Name} The string Travis uses to identify the step within start \& end statements.
+		      \item \textbf{Build Step Output} The output generated during the build step. The textual representation of the \texttt{Build Step Output} is the substring between the start \& end statements.
 	      \end{itemize}
-	\item[Travis Timing] Travis can measure the time of specified sections of the build process. It represents those by \lstinline{travis_time:start:<timing section id>} and \lstinline{travis_time:end:<timing section id>:start=<start time>,finish=<finish time>,duration=<duration>}
+	\item \textbf{Travis Timing} Travis can measure the time of specified sections of the build process. It represents those by \lstinline{travis_time:start:<timing section id>} and \lstinline{travis_time:end:<timing section id>:start=<start time>,finish=<finish time>,duration=<duration>}
 \end{itemize}
 
 \todo{differentiate Travis CI specific things, explain high variability for instantiations}
@@ -77,12 +77,12 @@ During our inital exploration \& data collection for the \emph{Failing Build Log
 	\caption{Model for an information extraction technique}
 	\label{fig:model-ie-technique}
 \end{figure}
-\plan{model = making a picture with boxes to visualize what we are talking about}
+For this thesis we want to evaluate different Information Extraction Techniques in their application to CI build logs. We focus on techniques that do not attempt or require to parse the structure of a whole build log, but rather focus on extracting just one specific information
 A build log information extraction technique (BLIE technique) consumes a build log (text file) and produces a certain output (text). \todo{make picture, output can be contained in log or not, can be continuous substring or selected lines etc.}.
 \begin{itemize}
-	\item{Target}{Extractable Information} each extraction technique \todo{instantiation!} targets a specific information
-	\item{Setup Overhead}{Time}
-	\item{Performance}{Performance} split into learning performance
+	\item \textbf{Target}{Extractable Information} each extraction technique \todo{instantiation!} targets a specific information
+	\item \textbf{Setup Overhead}{Time}
+	\item \textbf{Performance}{Performance} split into learning performance
 	\item \textbf{Configuration Scope} for one repository/project, a language/logkind, global
 \end{itemize}
 
@@ -111,6 +111,50 @@ aims to describe an information extraction task of a developer or a researcher.
   \caption{Synthesizing regular expression programs by example using PROSE}
   \label{fig:prose-explanation}
 \end{figure}
+\subsection{Overview}
+\emph{Programming by Example (PBE)} is a technique where programs are synthesized according to in and output examples provided by the user. It enables users to create programs without requiring programming knowledge~\cite{mayer2015user}. Applied A to the task of text extraction through regular expressions it relieves the developer from having to understand the whole document structure to solve a single extraction task~\cite{le2014flashextract:}.
+We chose to investigate the applicability of generating regular expression programs by example to extracting information from build logs. In this work we refer to our interpretation of this technique as \emph{PBE}. \todo{distinguish PBE for buildlogs}
+
+Generally, we are interested in whether a Programming by Example could replace manually writing regular expressions.
+Writing and especially maintaining regular expressions is known to be a difficult, tedious and error-prone task~\cite{michael2019regexes}.
+There are two ways to approach this question: from the usability side or the technical side.
+
+When studying the applicability of PBE from the \emph{usability} perspective you run into questions like
+\begin{itemize}
+	\item Are users faster when using PBE compared to manual regex construction?
+	\item Are users more comfortable using PBE over manual regex construction?
+	\item Are users confident in the resulting regular expression program from PBE?
+	\item Are the resulting extractions more or less accurate when using PBE over manual regex construction?
+\end{itemize}
+Some of these were already evaluated in existing works about PBE and user interaction~\cite{mayer2015user} \mention{other works?}.
+Adequately answering those questions is however highly dependent on the user interface and the corresponding interaction model used during a study.
+Developers who are accustomed to crunching on regular expressions in their favorite IDE or Editor might have an adversely negative view on syntesizing programs from examples in an unknow interface.
+Mayer et al.~\cite{mayer2015user} presented two system-user interaction models to improve the confidence of users into the programs synthesized from their examples.
+We feel such questions of usability can be answered separately from the application domain of build logs.
+
+For our work we chose to look at the applicability of PBE from the \emph{technical} perspective.
+We investigate whether current program synthesis techniques are able to learn programs for information extraction tasks in the domain of CI build logs.
+Furthermore we gather insights in how PBE has to be applied to yield useable results and perform best.
+Our implementation of PBE \todo{which we name technique name x}, is mainly based on the Flash Extract DSL~\cite{flahsextractpaper} of the PROSE library by Microsoft\mention{cite prose website}.
+Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
+In the following we will explain the concept of how we apply PBE to information extraction from CI build logs, the concrete implementation is described in \ref{sec:impl-pbe}.
+
+\subsection*{Configuration / Input / Output}
+In/Output examples (I/O examples) are the main driver of Programming by Example.
+When extracting information from build logs the \emph{input} is always a whole build log, i.e. the whole text of the build log file without any preprocessing.
+In the implementation we did have to apply a few text replacements as described in \ref{sec:impl-preprocessing}.
+The \emph{output} is always a substring of the log file text, representing the substring that should be extracted by the syntesized program when given the corresponding input file.
+One or multiple I/O examples are needed as configuration for PBEBL, they are used to define substring of a log should be extracted.
+For execution PBEBL takes a build file as input and returns a substring of the build file content.
+
+\subsection*{Synthesizing Programs with Flash Extract}
+\todo{maybe scrap this section / incorporate last sentence somewhere else, expalnation will mostly be in rw. How to usefully sturcture the stuff above this?}
+In the following we want to give an impression on how the PROSE library and specifically the Flash Extract DSL synthesize programs for extracting substrings from text via regular expressions.
+\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
+Our approach is based on the Flash Extract DSL, which in turn is based on the FlashMeta algorithm. Both are described in \todo{ref rw sections}.
+
+\subsection*{Model instantiation}
+
 \todo{explanation of process, the way our tool does it, instantiate model of extraction technique, probably no additional theoretical stuff really needed here?, describe regex programs}
 
 \section{Text Similarity}
@@ -120,6 +164,8 @@ aims to describe an information extraction task of a developer or a researcher.
   \caption{Extracting information using text similarity}
   \label{fig:text-similarity-explanation}
 \end{figure}
+\paragraph{Overview}
+Information retrieval techniques are more and more prevalently used to extract textual information from unstructured textual sources~\mention{stuff annibale is referencing?}. We describe CI build logs as semi-structured, 
 \todo{explanation of process, the way our tool does it, instantiate model of extraction technique, probably no additional theoretical stuff really needed here?}
 
 \section{Keyword search}
