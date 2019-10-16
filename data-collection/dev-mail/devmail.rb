@@ -129,7 +129,7 @@ def send_mails
         dev_name: dev_name.split(' ')[0]&.strip,
         commit_sha_short: row['commit_sha'].strip[0..7],
         commit_sha_long: row['commit_sha'],
-        commit_date: Time.parse(row['commit_date'].strip).httpdate,
+        commit_date: Time.parse(row['commit_date']&.strip).httpdate,
         extraction: row['output'].strip,
         repo_owner: row['repository_owner'].strip,
         build_id: row['build_id'].strip,
@@ -148,7 +148,6 @@ def send_mails
     mail_text += post_text
     puts 'sent mail to ' + mail.strip + ' with language ' + rows[0]['language'] + ' and repo ' + rows[0]['repo_slug']
     smail(mail.strip, mail_text)
-    break
   end
 end
 
