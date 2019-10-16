@@ -45,18 +45,18 @@ our impression?
 
 
 \section{Build Failure Reason}
-\todo{WHY? one common information developers and researches might want to extract, intentionally not focus on one structurally clearly defined extraction   cause that would be simple for PROSE extraction -> better comparability}
+\todo{WHY? one common information developers and researches might want to extract, intentionally not focus on one structurally clearly defined retrieval   cause that would be simple for PROSE retrieval -> better comparability}
 
 
 \section{Data Model}
-For our study, described in Chapter \ref{sec:study}, we want to investigate the extraction capabilities of three techniques. Therefore, we need a data set of in/output examples for one \texttt{BuildLogInformation}. Furthermore, Keyword search is not configured by such in/output, but search keywords surrounding the desired output. Finally, this section describes our notion of structural categories, which we use to quantify our assumptions on the needed uniformness of in/output examples.
+For our study, described in Chapter \ref{sec:study}, we want to investigate the retrieval capabilities of three techniques. Therefore, we need a data set of in/output examples for one \texttt{BuildLogInformation}. Furthermore, Keyword search is not configured by such in/output, but search keywords surrounding the desired output. Finally, this section describes our notion of structural categories, which we use to quantify our assumptions on the needed uniformness of in/output examples.
 
 \subsection{Example Set}
-Our data set is organized in example sets. One example set always contains build log in/output examples from the same software repository or project and for one specific build log information. They are all from one repository because we investigate information extraction techniques which are always configured to the scope of one particular software repository or project.
+Our data set is organized in example sets. One example set always contains build log in/output examples from the same software repository or project and for one specific build log information. They are all from one repository because we investigate information retrieval techniques which are always configured to the scope of one particular software repository or project.
 Each example set has an identifying \emph{save name}, a \emph{build log information} that is desired to be extracted by this configuration, and a list of \emph{in / output examples}.
 
 \subsection{In / Output Example}
-In/output examples (I/O examples) are used to configure two of the information extraction techniques we are evaluating for this thesis, PROSE regular expression program synthesis by example and text similarity. In our data set they always consist of an \emph{input path}, linking to the build log file which is the input for this example. The \emph{output} is a substring of that build log, the textual representation of the targeted build log information within the input build log.
+In/output examples (I/O examples) are used to configure two of the information retrieval techniques we are evaluating for this thesis, PROSE regular expression program synthesis by example and text similarity. In our data set they always consist of an \emph{input path}, linking to the build log file which is the input for this example. The \emph{output} is a substring of that build log, the textual representation of the targeted build log information within the input build log.
 
 \subsection{Keywords}
 The keyword search is configured by a list of keywords which are searched in the document with plain text search. In order to compare it to the two other techniques, each in/output example is associated with a list of 1 - 3 keywords that can be found close to the textual representation of the targeted build log information.
@@ -68,21 +68,21 @@ The keyword search is configured by a list of keywords which are searched in the
 
 \subsection{Categories}
 Our intuition was that the ability of PROSE to be able to successfully learn a regex program depended on the structural uniformity of the provided in/output examples.
-The regular expressions need a consistent pattern in the build log string at the borders or around the textual representation of a build log information to match on for the extraction.
+The regular expressions need a consistent pattern in the build log string at the borders or around the textual representation of a build log information to match on for the retrieval.
 To be able to quantify this intuition in our evaluation we assigned \emph{structural categories} to each of the examples within an example set.
-If two extractions are at the same structural location with the build log, meaning they are surrounded by a similar markings, the fall into the same category.
+If two retrievals are at the same structural location with the build log, meaning they are surrounded by a similar markings, the fall into the same category.
 For most cases, two build failure reason examples which fall into one category are outputted either within the same build step or by the same build step tool.
 
 \section{Labeling}
 \subsection{Output Examples: Build Failure Reason}
 We labeled the first occuring substring describing the failure. If there were multiple errors described we took the first continuous block of error description.
 
-The labeler read or skimmed through build log and copy out the substring describing the reason the build failed. Whitespace or special characters were preserved, as they might be crucial for an information extraction technique to detect the desired.
+The labeler read or skimmed through build log and copy out the substring describing the reason the build failed. Whitespace or special characters were preserved, as they might be crucial for an information retrieval technique to detect the desired.
 Because we are using xml to save our example sets, we also had to make sure to escape respective special characters (ampersand, less than).
 
 
 \section{Validation}
-We vaildated our collected labels in two different ways. We did a second pass of labeling the build failure reason, keywords and categoies on a subset of the data and compared the results to calculate the inter-rater reliability using cohens kappa. In addition, we sent out a survey to the developers, whose commits triggered the builds within our data set and asked them whether our extraction of the log part describing the reason the build failed was correct. In the following we describe the results of those two validation studies.
+We vaildated our collected labels in two different ways. We did a second pass of labeling the build failure reason, keywords and categoies on a subset of the data and compared the results to calculate the inter-rater reliability using cohens kappa. In addition, we sent out a survey to the developers, whose commits triggered the builds within our data set and asked them whether our retrieval of the log part describing the reason the build failed was correct. In the following we describe the results of those two validation studies.
 
 \subsection{Inter-Rater Reliability}
 re-labeling of parts of the labels - cohen's kappa

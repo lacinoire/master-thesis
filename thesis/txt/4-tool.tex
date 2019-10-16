@@ -4,16 +4,16 @@
 
 \begin{document}
 
-\chapter{Information Extraction Tool}
+\chapter{Information Retrieval Tool}
 \label{sec:implementation}
-We implemented prototypes for our three focus information extraction techniques to evaluate them on our collected build logs.
+We implemented prototypes for our three focus information retrieval techniques to evaluate them on our collected build logs.
 This section will present our unified interface and describe the implementation of each of the techniques.
 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[page=7, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
-	\caption{Our tool unifying different information extraction techniques for build logs}
+	\caption{Our tool unifying different information retrieval techniques for build logs}
 	\label{fig:tool}
 \end{figure}
 
@@ -25,24 +25,24 @@ Usage: ruby run-extraction.rb -a analyze -t <technique: ir, pbe, random> -e <exa
        ruby run-extraction.rb -a analyze -t regex -r <regex to match extraction> -p <path_to_file_to_analyze>
 
 Specific options:
-    -a, --action ACTION              Either run an extraction for a example set ('analyze') or run the whole evaluation of it ('evaluate')
-    -t, --technique TECHNIQUE        The technique used for creating the extraction program (pbe, ir, keyword, random)
+    -a, --action ACTION              Either run an retrieval for a example set ('analyze') or run the whole evaluation of it ('evaluate')
+    -t, --technique TECHNIQUE        The technique used for creating the retrieval program (pbe, ir, keyword, random)
     -e, --example-set EXAMPLE_SET    The filename of the example set to use
     -p, --path PATH                  The path to the file to be analyzed relative to the 'tool/samples' folder
     -s, --selection SELECTION        The example sequence selection technique to use for evaluation (chronological, random, manual (= like defined in file))
     -l, --learning-step-count COUNT  How many steps with increasing example set size to do during evaluation
     -c, --test-count COUNT           How many test files to evaluate the generated program in each learning step of the evaluation
-    -v, --verbose                    Print additional interesting output apart from only the extraction output
-    -k, --keywords X,Y,Z             Keywords too filter lines for during keyword search based extraction
-    -r, --regex REGEX                Regex to match on build log file content in regex based extraction
+    -v, --verbose                    Print additional interesting output apart from only the retrieval output
+    -k, --keywords X,Y,Z             Keywords too filter lines for during keyword search based retrieval
+    -r, --regex REGEX                Regex to match on build log file content in regex based retrieval
 
 Common options:
     -h, --help                       Show this message
 \end{lstlisting}
-As we implemented the information extraction techniques in different languages, choosing one that fits the respective technique each time, we decided to abstract over language differences for cli arguments by creating a unified interfaces. Our unified interface then in turn calls the various different IE techniques over the command line.
+As we implemented the information retrieval techniques in different languages, choosing one that fits the respective technique each time, we decided to abstract over language differences for cli arguments by creating a unified interfaces. Our unified interface then in turn calls the various different IE techniques over the command line.
 
 We provide two different modes: \emph{analysis} and \emph{evaluation}.
-The \emph{analysis} takes a path to a file you want to analyze and all the configuration necessary for a specific technique and returns the resulting extraction on the console output. The \emph{evaluation} takes an 
+The \emph{analysis} takes a path to a file you want to analyze and all the configuration necessary for a specific technique and returns the resulting retrieval on the console output. The \emph{evaluation} takes an 
 
 unification tool, reference CLI somehow nicely?,
 

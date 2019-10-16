@@ -7,7 +7,7 @@
 \chapter{Related Work}
 \label{sec:rw}
 \todo{introduction \& glue text}
-This section presents various research works adjecent or foundational for our work. Starting with studies about Continuous Integration used in software projects, we move on to past works about build log analysis and their augmentation. We differentiate our work from the more common production runtime log analysis and cover different information extraction and retrieval techniques. Lastly this section mentions different Programming by Example resources surrounding Microsoft's work on the PROSE library.
+This section presents various research works adjecent or foundational for our work. Starting with studies about Continuous Integration used in software projects, we move on to past works about build log analysis and their augmentation. We differentiate our work from the more common production runtime log analysis and cover different information retrieval techniques. Lastly this section mentions different Programming by Example resources surrounding Microsoft's work on the PROSE library.
 
 \section{Continuous Integration}
 \mention{look into proksch papers}
@@ -16,7 +16,8 @@ Various researchers have analyzed industrial and open source logs for failure re
 All these researchers described building parsers in order to evaluate the studied build logs. Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
 
 \section{Build Log Analysis and Augmentation}
-Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes developers to understand build logs. They summarized relevant information in Maven build logs and augmented them with links to related stack overflow posts. They observed that highlighting the locality and context of an issue is helpful to programmers. We strive to enable a similar summarization by text extraction while also covering a wider array of programming languages.
+Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes developers to understand build logs. They summarized relevant information in Maven build logs and augmented them with links to related stack overflow posts. They observed that highlighting the locality and context of an issue is helpful to programmers. We strive to enable a similar summarization by text retrieval while also covering a wider array of programming languages.
+\todo{reference their new paper}
 
 Amar et al.~\cite{amar2019mining} reduced the lines of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
 
@@ -43,7 +44,7 @@ by contributing along several dimensions: development of domain specific languag
 
 \mention{ask Jean?}
 
-\section{Information Extraction and Retrieval Techniques}
+\section{Information retrieval and Retrieval Techniques}
 \review{Getting the general topic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
 Instead of receiving a paragraph which is similar to a given query, our works focus more on obtaining specific pieces of texts through regular expressions.}
 
@@ -52,10 +53,11 @@ Instead of receiving a paragraph which is similar to a given query, our works fo
 \mention{IR papers, maybe something about keyword search?}
 
 \section{Program Synthesis by Example}
+\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
 \review{
 Le et al.~\cite{le2014flashextract:} developed FlashExtract as part of the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework. It is a tool which synthesizes text extraction programs from semi-structured text based on a few given examples. Users can extract multiple fields and structure them with hierarchy and sequence. FlashExtract eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
 
-We are applying FlashExtract to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information extraction.
+We are applying FlashExtract to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information retrieval.
 }
 \mention{prose theory paper \cite{polozov2015flashmeta:}}
 \mention{\cite{rolim2017learning}}
