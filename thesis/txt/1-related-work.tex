@@ -27,18 +27,6 @@ Amar et al.~\cite{amar2019mining} reduced the lines of a log to be inspected by 
 [8] K. Fisher, D. Walker, K. Q. Zhu, and P. White. From dirt to shovels:
 fully automatic tool generation from ad hoc data. In POPL, 2008.[23] Q. Xi and D. Walker. A context-free markup language for semi- structured text. In PLDI, pages 221–232, 2010.
  The PADS project [7] has en- abled simplification of ad hoc data processing tasks for programmers
-accounts addresses split chairs awk banks companies countries hadoop horses instruments ls-l mgx namephone nozzle numbertext papers pldi12 pldi13 pop13 quotes speechbench techfest ucla-faculty users
-accounts addresses split chairs awk banks companies countries hadoop horses instruments ls-l mgx namephone nozzle numbertext papers pldi12 pldi13 pop13 quotes speechbench techfest ucla-faculty users
-abt amazon apple barnes bestbuy bigtray bol buy cameraword cnet cooking-bw dealtime drugstore ebay mgzoutlet mediaworld nthbutsw powells googlepdct yahooshop shopping shopzilla target tigerdirect venere
-abt amazon apple barnes bestbuy bigtray bol buy cameraword cnet cooking-bw dealtime drugstore ebay mgzoutlet mediaworld nthbutsw powells googlepdct yahooshop shopping shopzilla target tigerdirect venere
-hg_ex12 hg_ex18 hg_ex2 hg_ex26 hg_ex29 hg_ex3 hg_ex39 _h8d62ck1* 03PFMJOU* 2003Fall 64040 anrep9899* bali ch15_e compliance* DataDiction* deliverable* e_Bubble_* flip_usd5 Funded - F ge-revenues HOSPITAL* pwpSurvey* SOA4-YEAR* young_table
-hg_ex12 hg_ex18 hg_ex2 hg_ex26 hg_ex29 hg_ex3 hg_ex39 _h8d62ck1* 03PFMJOU* 2003Fall 64040 anrep9899* bali ch15_e compliance* DataDiction* deliverable* e_Bubble_* flip_usd5 Funded - F ge-revenues HOSPITAL* pwpSurvey* SOA4-YEAR* young_table
-seconds
-# examples
-seconds
-examples
-seconds
-examples
 by contributing along several dimensions: development of domain specific languages for describing text structure or data format, learn- ing algorithms for automatically inferring such formats [8], and a markup language to allow users to add simple annotations to enable more effective learning of text structure [23] While PADS supports parsing of entire files, FlashExtract allows users to extract only parts of the file thereby avoiding unnecessary complications. PADS’s learner only supports a fixed line-by-line chunking strategy to split the records; in contrast, FlashExtract can learn chunking (aka, struc- ture boundaries) from examples, making it suitable for extracting data fields and records that have arbitrary length (and might cross multiple lines). Finally, PADS primarily targets ad hoc text files. Although one can view webpages and spreadsheet as text files, it is unclear if the PADS learning algorithm can be adapted to work effectively for webpages and spreadsheets.
 }
 
@@ -46,7 +34,7 @@ by contributing along several dimensions: development of domain specific languag
 
 \section{Information Extraction and Retrieval Techniques}
 \todo{explain difference here, reference pads and stuff}
-\review{Getting the general topic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
+\review{Getting the general tot p cic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
 Instead of receiving a paragraph which is similar to a given query, our works focus more on obtaining specific pieces of texts through regular expressions.}
 
 
@@ -63,4 +51,23 @@ We are applying FlashExtract to the domain of build logs, using programming by e
 \mention{prose theory paper \cite{polozov2015flashmeta:}}
 \mention{\cite{rolim2017learning}}
 
+\section{Semi-Structured Data}
+\label{sec:rw-semi-structured-data}
+Serge Abiteboul ``characterizes essential aspects of semi-structured data''~\cite{abiteboul1997querying} in the context of integrating data from various data sources.
+The content of CI build logs is combined from several tools involved in the build process and several of Abiteboul's aspects can be applied to build logs.
+
+The structure of build logs
+\begin{itemize}
+  \item is \textbf{implicit}, as we do not have access to explicit structuring elements or an explicit structure description and computation is required to obtain the structure which is present.
+  \item is \textbf{irregular}, as changes in the build process or execution environment might change it without notice.
+  We observed this in the logs we collected for the \emph{Failing Build Log Data Set}, where for the same repository and build configuration some logs had double new line characters without any noticeable explanation.
+  You can see an example of this in Figure \ref{fig:log-4} and Figure \ref{fig:log-5}.
+  \item is \textbf{partial}, some parts are highly structured by e.g. structure indicating special characters and others are unstructured, e.g. natural language text in error messages.
+  \item can described with an \textbf{a-posteriori data guide} than an a-priori schema.
+  There is no fixed specification on how build tools have to structure their output, more we afterwards extract structuring patterns in the produced output.
+  \item has a \textbf{rapidly evolving} schema.
+  Modifications in the build configuration change the tools involved in the build and therefore the composition of the build log.
+\end{itemize}
+
+Abiteboul proposes an approach to overlay the semi-structured data with a structured layer. The additional layer can answer queries and give access to the semi-structured data relevant to the query. In contrast to that, this thesis takes a look at techniques to gater a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
 \end{document}
