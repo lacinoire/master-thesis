@@ -6,7 +6,12 @@ For each mentioned repository/buildlog here, look up the corresponding n-th log 
 ###
 #### "n"    "repo"
 #### [7    BuildFailureReason/Elixir/phoenixframework@phoenix](../tool/samples/Elixir/elixir-lang@elixir/failed/572202566.log)
-→←
+→== Compilation error in file test/elixir/list_test.exs ==
+** (CompileError) (for doctest at) lib/list.ex:102: undefined function i/1
+    (elixir 1.10.0-dev) src/elixir_locals.erl:108: :elixir_locals."-ensure_no_undefined_local/3-lc$^0/1-0-"/2
+    (elixir 1.10.0-dev) src/elixir_locals.erl:109: anonymous fn/3 in :elixir_locals.ensure_no_undefined_local/3
+Makefile:270: recipe for target 'test_stdlib' failed
+make: *** [test_stdlib] Error 1←
 
 #### [10   BuildFailureReason/Scala/twitter@finagle](../tool/samples/Scala/twitter@finagle/failed/572992106.log)
 →←
