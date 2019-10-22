@@ -32,7 +32,7 @@ getDataFrameForPBEResultsFile <- function(path) {
     
     test <- item[["value"]][[1]][[1]]
     learnedProgram <- xmlValue(test[["LearnedProgram"]][[1]])
-    testInputPath <- xmlValue(tes[["TestInputPath"]][[1]])
+    testInputPath <- xmlValue(test[["TestInputPath"]][[1]])
     testOutput <- xmlValue(test[["Output"]][[1]])
     desiredTestOutput <-  xmlValue(test[["DesiredOutput"]][[1]])
     accuracy <- 3

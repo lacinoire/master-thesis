@@ -2,6 +2,19 @@
 
 # Carolin Master Thesis Work Log
 
+## 21.10.19
+
+- tried to do data analysis with ruby: bad idea. don't use badly documented things
+- finally switched to python/pandas and have at least a few graphs now
+
+## 20.10.19
+
+- looked into results of sending mails to devs
+- tried to data eval of big study in excel and numbers: oei it is horrible with multiline csv strings and their formulas
+- corrected parts of the thesis
+
+## many undocumented days again
+
 ## 11.10.19
 
 - check survey gizmo fixes & send mail out for review
