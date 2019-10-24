@@ -30,7 +30,7 @@ The \texttt{LogCollector} uses the \texttt{TravisRequester}, our tool querying t
 
 \subsection{Sampling Logs}
 For each build the \texttt{TravisRequester} then selects a log to download. Logs in Travis CI are not directly attributed to \texttt{build}s, but to \texttt{job}s.
-A single build can consist of multiple jobs, e.g. building and executing tests in various different testing environments.
+A single build can consist of multiple jobs, e.g.\ building and executing tests in various different testing environments.
 \texttt{TravisRequester} therefore queries each build for a job, which has the same state.
 A failed build can have successful job executions, as just one failed job leads to the whole build being marked as failed.
 For the selected jobs, our tool then queries the Travis API V3 and obtains the respective build log.
@@ -86,8 +86,33 @@ We vaildated our collected labels in two different ways. We did a second pass of
 
 \subsection{Inter-Rater Reliability}
 re-labeling of parts of the labels - cohen's kappa
+\subsubsection{Introduction}
+\subsubsection{Method}
+\subsubsection{Results}
+\subsubsection{Discussion}
+\subsubsection{Threats to Validity}
 
 \subsection{Sending Mails to Developers}
-study description \& results
+\subsubsection{Introduction}
+For the \emph{Failing Build Log Data Set} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
+As we are not involved in the development of any of the open source projects within our data set we could only rely on our previous experience with differen build logs and systems.
+We only looked into the logs and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
+
+The person who probably knows best why a build failed is the one committing the changes which triggered the build.
+If the build was e.g.\ part of a pull request then developer likely looked at it and tried to fix it so the pull request could be accepted.
+In this section we describe how we validate the extractions of the build failure reason the \emph{Failing Build Log Data Set} describes.
+\subsubsection{Method}
+Using the Travis API, for every build log in the data set we looked up the corresponding build and the committer information. 
+\subsubsection{Results}
+\subsubsection{Discussion}
+\subsubsection{Threats to Validity}
+
+\section{Threats to Validity}
+\bp{some errors are not shown inside the log: we always choose an extraction, if we did not see the actual reason for the error reported, we chose the part stating that an error occured / the build failed
+
+we are not developers of the projects and we did not analyze their travis configuration: possible that we labeled parts that presented an error, though the build did not fail because of that error
+
+end all the points with: we tried to remedy this by (e.g.\ validations)
+}
 
 \end{document}

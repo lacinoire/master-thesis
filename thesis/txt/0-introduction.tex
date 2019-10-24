@@ -5,18 +5,13 @@
 \begin{document}
 
 \chapter{Introduction}
-%Many s These CI builds often produce very long and verbose build logs \mention{add log characteristics, cite what Moritz cited in his proposal?}, stating the progress and results of the various steps within the build.
-
-%These build logs are a highly valuable data source. First of all, for the developers that read them to analyze why their build failed or .. \mention{find more reasons}. Second, for researchers that can harvest the information contained in the logs -- and their metadata -- to study the software engineering process of a project. However they can only utilize the information within the build logs if they can adequately extract the information relevant to them.
-
-%There are many different retrieval techniques use for this task. Beller et al.  used regular expressions when analysing the failure reasons of ruby and Java Maven buildlogs from TravisCI~\cite{beller2017oops}, while Vassallo et al. wrote a custom parser for Java Maven build logs to gather information for build repair hints~\cite{vassallo2018un-break}. Recently Amar et al. greatly reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and successful build~\cite{amar2019mining}. \bp{anecdotal: keyword search?}. Apart from those there are various more retrieval techniques like searching for keywords, ... \todo{more?} \bp{introduce problem: which one to choose}
-
-%With our work we want to support developers, researchers or project managers in deciding which technique is the best one for their use case. 
+\plan{finalized, out for review}
 Continuous Integration (CI) has become a best practice in software engineering.
 Many software projects now use CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect bugs more easily~\cite{vasilescu2015quality,duvall2007continuous} and improve developer productivity~\cite{miller2008hundred,hilton2016usage} and communication~\cite{downs2012ambient}.
 A build on a CI server typically not only compiles and packages the software, but also executes tests~\cite{beller2017oops} and various kinds of static analyses~\cite{zampetti2017open}.
 
-CI builds produce long and verbose build logs~\cite{beller2017oops}, stating the progress and results of the various steps within the build. The structure of these logs changes greatly from project to project~\cite{staahl2014modeling} as it highly depends on the tools and environment used.
+CI builds produce long and verbose build logs~\cite{beller2017oops}, stating the progress and results of the various steps within the build.
+The structure of these logs changes greatly from project to project~\cite{staahl2014modeling} as it highly depends on the tools and environment used.
 Build logs are a valuable data source. First of all, for developers, who read them to analyze why their build failed or how different stages of the build process perform\mention{ citation needed }.
 Second, they are valuable for researchers, who can harvest the information contained in the logs --- and their metadata --- to study the software engineering process of a project\mention{ citation needed vassallo beller}.
 However, these two groups can only utilize the information within the build logs if they can adequately retrieve the information relevant to them.
@@ -27,18 +22,18 @@ Vassallo et al. wrote a custom parser for Java Maven build logs to gather inform
 Recently, Amar et al. greatly reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and successful build~\cite{amar2019mining}.
 
 Currently there is only anecdotal evidence on the performance of these techniques and when a technique should be preferred.
-Developers and researches have little support while choosing which technique to use for an retrieval task.
+Developers and researches have little support while choosing which technique to use for a retrieval task.
 The goal for this thesis is to investigate different information retrieval techniques (IR techniques) and describe under which circumstances we recommend each of the techniques.
 
-We aim to define a model to characterize the different IR techniques as well as the information retrievable from CI build logs.
+We aim to define a model to characterize different IR techniques as well as the information retrievable from CI build logs.
 For our first research question we analyze which criteria influence the suitability of an IR technique.
 We support our assumption by implementing and evaluating three techniques:
 \begin{itemize}
-  \item regular expression synthesis by example using the Microsoft PROSE library (referred to as PBE),
+  \item regular expression program synthesis from examples using the Microsoft PROSE library (referred to as PBE),
   \item a common text similarity approach (referred to as TS) and
   \item simple keyword search (referred to as SKWS)
 \end{itemize}
-Our second research question asks in which cases PBE, TS and SKWS are suited to retrieve information from continuous integration build logs. RQ2 is refined sub-questions along the criteria resulting from RQ1 and compares their instantiations for the three techniques: how many examples the techniques need to perform best, the accuracy of the retrieved output and how diverse the configuring examples can be structurally.
+Our second research question asks in which cases PBE, TS and SKWS are suited to retrieve information from continuous integration build logs. RQ2 is refined into sub-questions along the criteria resulting from RQ1 and compares their instantiations for the three techniques: how many examples a technique needs to perform best, the accuracy of the retrieved output and how diverse the configuring examples can be structurally.
 \begin{simplebox}{Research Questions}
 \begin{itemize}
   \item[\textbf{RQ1:}] Which criteria influence the suitability of an information retrieval technique for CI build logs?

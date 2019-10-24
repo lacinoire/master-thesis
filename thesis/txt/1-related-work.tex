@@ -5,23 +5,29 @@
 \begin{document}
 
 \chapter{Related Work}
+\plan{all of RW: 4 - 5 pages left to do + some research!}
+\plan{write, 1/3 page, blocked by: other sections}
 \label{sec:rw}
 \todo{introduction \& glue text}
 This section presents various research works adjecent or foundational for our work. Starting with studies about Continuous Integration used in software projects, we move on to past works about build log analysis and their augmentation. We differentiate our work from the more common production runtime log analysis and cover different information retrieval techniques. Lastly this section mentions different Programming by Example resources surrounding Microsoft's work on the PROSE library.
 
 \section{Continuous Integration}
+\plan{extend, 1 page}
 \mention{look into proksch papers}
 Various researchers have analyzed industrial and open source logs for failure reasons and their impact on development. Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at Google. In addition most failures are resolved within two builds. Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones. They determined that testing failures outweigh compilation errors. Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects. Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds. They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
 
 All these researchers described building parsers in order to evaluate the studied build logs. Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
 
 \section{Build Log Analysis and Augmentation}
+\label{sec:rw-bl-analysis}
+\plan{extend, 1 page}
 Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes developers to understand build logs. They summarized relevant information in Maven build logs and augmented them with links to related stack overflow posts. They observed that highlighting the locality and context of an issue is helpful to programmers. We strive to enable a similar summarization by text retrieval while also covering a wider array of programming languages.
 \todo{reference their new paper}
 
 Amar et al.~\cite{amar2019mining} reduced the lines of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
 
 \section{Production Log Analysis}
+\plan{research + write, 1/2 - 1 page}
 \mention{logpai and drain, [7] K. Fisher and D. Walker. The pads project: an overview. In ICDT,
 2011.
 [8] K. Fisher, D. Walker, K. Q. Zhu, and P. White. From dirt to shovels:
@@ -33,7 +39,8 @@ by contributing along several dimensions: development of domain specific languag
 \mention{ask Jean?}
 
 \section{Information Extraction and Retrieval Techniques}
-\todo{explain difference here, reference pads and stuff}
+\plan{research + write, 1/2 - 1 page}
+\todo{explain difference here, reference pads(maybe that is already in log anlysis!) and stuff}
 \review{Getting the general tot p cic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
 Instead of receiving a paragraph which is similar to a given query, our works focus more on obtaining specific pieces of texts through regular expressions.}
 
@@ -42,6 +49,7 @@ Instead of receiving a paragraph which is similar to a given query, our works fo
 \mention{IR papers, maybe something about keyword search?}
 
 \section{Program Synthesis by Example}
+\plan{extend, 1 page}
 \todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
 \review{
 Le et al.~\cite{le2014flashextract:} developed FlashExtract as part of the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework. It is a tool which synthesizes text extraction programs from semi-structured text based on a few given examples. Users can extract multiple fields and structure them with hierarchy and sequence. FlashExtract eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
@@ -51,7 +59,13 @@ We are applying FlashExtract to the domain of build logs, using programming by e
 \mention{prose theory paper \cite{polozov2015flashmeta:}}
 \mention{\cite{rolim2017learning}}
 
+\todo{maybe scrap this section / incorporate last sentence somewhere else, expalnation will mostly be in rw. How to usefully sturcture the stuff above this?}
+In the following we want to give an impression on how the PROSE library and specifically the Flash Extract DSL synthesize programs for extracting substrings from text via regular expressions.
+\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
+Our approach is based on the Flash Extract DSL, which in turn is based on the FlashMeta algorithm. Both are described in \todo{ref rw sections}.
+
 \section{Semi-Structured Data}
+\plan{finalized, out for review}
 \label{sec:rw-semi-structured-data}
 Serge Abiteboul ``characterizes essential aspects of semi-structured data''~\cite{abiteboul1997querying} in the context of integrating data from various data sources.
 The content of CI build logs is combined from several tools involved in the build process and several of Abiteboul's aspects can be applied to build logs.
@@ -65,12 +79,15 @@ The structure of build logs
   Changes in the build process or execution environment might change the structure of a build log without notice.
   We observed this in the logs we collected for the \emph{Failing Build Log Data Set}, where for the same repository and build configuration some logs had double new line characters without any noticeable explanation.
   You can see an example of this in Figure \ref{fig:log-4} and Figure \ref{fig:log-5}.
-  \item is \textbf{partial}, some parts are highly structured by e.g. structure indicating special characters and others are unstructured, e.g. natural language text in error messages.
-  \item can described with an \textbf{a-posteriori data guide} than an a-priori schema.
-  There is no fixed specification on how build tools have to structure their output, more we afterwards extract structuring patterns in the produced output.
+  \item is \textbf{partial}. Some parts are highly structured by e.g.\ structure indicating special characters and others are unstructured, e.g.\ natural language text in error messages.
+  \item can be described with an \textbf{a-posteriori data guide} rather than an a-priori schema.
+  There is no fixed specification on how build tools have to structure their output.
+  We afterwards extract structuring patterns in the produced output.
   \item has a \textbf{rapidly evolving} schema.
-  Modifications in the build configuration change the tools involved in the build and therefore the composition of the build log.
+  Modifications in the build configuration might change the tools involved in the build and therefore the composition of the build log.
 \end{itemize}
 
-Abiteboul proposes an approach to overlay the semi-structured data with a structured layer. The additional layer can answer queries and give access to the semi-structured data relevant to the query. In contrast to that, this thesis takes a look at techniques to gater a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
+Abiteboul proposes an approach to overlay the semi-structured data with a structured layer.
+The additional layer can answer queries and give access to the semi-structured data relevant to the query.
+In contrast to that, this thesis takes a look at techniques to gater a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
 \end{document}
