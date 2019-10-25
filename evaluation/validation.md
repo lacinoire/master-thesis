@@ -14,22 +14,628 @@ Makefile:270: recipe for target 'test_stdlib' failed
 make: *** [test_stdlib] Error 1←
 
 #### [10   BuildFailureReason/Scala/twitter@finagle](../tool/samples/Scala/twitter@finagle/failed/572992106.log)
-→←
+→WARNING: DarkTrafficFilter Failed invocation: fail
+java.lang.Exception: fail
+	at com.twitter.finagle.exp.DarkTrafficFilterTest$$anonfun$4$$anon$5$$anon$2.apply(DarkTrafficFilterTest.scala:71)
+	at com.twitter.finagle.exp.DarkTrafficFilterTest$$anonfun$4$$anon$5$$anon$2.apply(DarkTrafficFilterTest.scala:70)
+	at com.twitter.finagle.exp.AbstractDarkTrafficFilter$class.sendDarkRequest(AbstractDarkTrafficFilter.scala:64)
+	at com.twitter.finagle.exp.DarkTrafficFilter.sendDarkRequest(DarkTrafficFilter.scala:17)
+	at com.twitter.finagle.exp.AbstractDarkTrafficFilter$class.serviceConcurrently(AbstractDarkTrafficFilter.scala:45)
+	at com.twitter.finagle.exp.DarkTrafficFilter.serviceConcurrently(DarkTrafficFilter.scala:17)
+	at com.twitter.finagle.exp.DarkTrafficFilter.apply(DarkTrafficFilter.scala:39)
+	at com.twitter.finagle.exp.DarkTrafficFilterTest$$anonfun$4$$anon$5.<init>(DarkTrafficFilterTest.scala:74)
+	at com.twitter.finagle.exp.DarkTrafficFilterTest$$anonfun$4.apply(DarkTrafficFilterTest.scala:68)
+	at com.twitter.finagle.exp.DarkTrafficFilterTest$$anonfun$4.apply(DarkTrafficFilterTest.scala:68)
+	at org.scalatest.OutcomeOf$class.outcomeOf(OutcomeOf.scala:85)
+	at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)
+	at org.scalatest.Transformer.apply(Transformer.scala:22)
+	at org.scalatest.Transformer.apply(Transformer.scala:20)
+	at org.scalatest.FunSuiteLike$$anon$1.apply(FunSuiteLike.scala:186)
+	at org.scalatest.TestSuite$class.withFixture(TestSuite.scala:196)
+	at org.scalatest.FunSuite.withFixture(FunSuite.scala:1560)
+	at org.scalatest.FunSuiteLike$class.invokeWithFixture$1(FunSuiteLike.scala:183)
+	at org.scalatest.FunSuiteLike$$anonfun$runTest$1.apply(FunSuiteLike.scala:196)
+	at org.scalatest.FunSuiteLike$$anonfun$runTest$1.apply(FunSuiteLike.scala:196)
+	at org.scalatest.SuperEngine.runTestImpl(Engine.scala:289)
+	at org.scalatest.FunSuiteLike$class.runTest(FunSuiteLike.scala:196)
+	at org.scalatest.FunSuite.runTest(FunSuite.scala:1560)
+	at org.scalatest.FunSuiteLike$$anonfun$runTests$1.apply(FunSuiteLike.scala:229)
+	at org.scalatest.FunSuiteLike$$anonfun$runTests$1.apply(FunSuiteLike.scala:229)
+	at org.scalatest.SuperEngine$$anonfun$traverseSubNodes$1$1.apply(Engine.scala:396)
+	at org.scalatest.SuperEngine$$anonfun$traverseSubNodes$1$1.apply(Engine.scala:384)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.scalatest.SuperEngine.traverseSubNodes$1(Engine.scala:384)
+	at org.scalatest.SuperEngine.org$scalatest$SuperEngine$$runTestsInBranch(Engine.scala:379)
+	at org.scalatest.SuperEngine.runTestsImpl(Engine.scala:461)
+	at org.scalatest.FunSuiteLike$class.runTests(FunSuiteLike.scala:229)
+	at org.scalatest.FunSuite.runTests(FunSuite.scala:1560)
+	at org.scalatest.Suite$class.run(Suite.scala:1147)
+	at org.scalatest.FunSuite.org$scalatest$FunSuiteLike$$super$run(FunSuite.scala:1560)
+	at org.scalatest.FunSuiteLike$$anonfun$run$1.apply(FunSuiteLike.scala:233)
+	at org.scalatest.FunSuiteLike$$anonfun$run$1.apply(FunSuiteLike.scala:233)
+	at org.scalatest.SuperEngine.runImpl(Engine.scala:521)
+	at org.scalatest.FunSuiteLike$class.run(FunSuiteLike.scala:233)
+	at org.scalatest.FunSuite.run(FunSuite.scala:1560)
+	at org.scalatest.tools.Framework.org$scalatest$tools$Framework$$runSuite(Framework.scala:314)
+	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:472)
+	at sbt.ForkMain$Run$2.call(ForkMain.java:301)
+	at sbt.ForkMain$Run$2.call(ForkMain.java:291)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)←
 
 #### [4    BuildFailureReason/Java/ReactiveX@RxJava](../tool/samples/Java/ReactiveX@RxJava/failed/563267830.log)
-→←
+→io.reactivex.internal.operators.flowable.FlowableRefCountTest > publishNoLeak FAILED
+    java.lang.AssertionError: 19,199,656 -> 115,794,992
+        at org.junit.Assert.fail(Assert.java:88)
+        at org.junit.Assert.assertTrue(Assert.java:41)
+        at io.reactivex.internal.operators.flowable.FlowableRefCountTest.publishNoLeak(FlowableRefCountTest.java:761)
+	
+11155 tests completed, 1 failed, 213 skipped
+:test FAILED
+
+FAILURE: Build failed with an exception.←
 
 #### [7    BuildFailureReason/Haskell/purescript@purescript](../tool/samples/Haskell/purescript@purescript/failed/573124345.log)
-→←
+→
+→
+m [31;22m        Error found:
+        in module [33mMain[0m
+        at /home/travis/build/purescript/purescript/sdist-test/tests/purs/passing/Coercible.purs:6:1 - 6:28 (line 6, column 1 - line 6, column 28)
+        
+          Module [33mSafe.Coerce[0m was not found.
+          Make sure the source file exists, and that it has been provided as an input to the compiler.
+        
+        
+        See https://github.com/purescript/documentation/blob/master/errors/ModuleNotFound.md for more information,
+        or to contribute content related to this error.
+[m[31;22m        Expected these errors: ["NoInstanceFound"], but got these: ["UnknownName"], full error messages: 
+        in module [33mMain[0m
+        at /home/travis/build/purescript/purescript/sdist-test/tests/purs/failing/CoercibleForeign.purs:4:1 - 4:28 (line 4, column 1 - line 4, column 28)
+        
+          Unknown module [33mSafe.Coerce[0m
+        
+        
+        See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
+        or to contribute content related to this error.
+[m      'CoercibleNominal.purs' should fail with 'NoInstanceFound':                                                                                                                                                        [91;1mFAIL[m[91;1m (0.07s)[m[91;1m
+[m[31;22m        Expected these errors: ["NoInstanceFound"], but got these: ["UnknownName"], full error messages: 
+        in module [33mMain[0m
+        at /home/travis/build/purescript/purescript/sdist-test/tests/purs/failing/CoercibleNominal.purs:4:1 - 4:28 (line 4, column 1 - line 4, column 28)
+        
+          Unknown module [33mSafe.Coerce[0m
+        
+        
+        See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
+        or to contribute content related to this error.
+[m      'CoercibleNominalTypeApp.purs' should fail with 'NoInstanceFound':                                                                                                                                                 [91;1mFAIL[m[91;1m (0.07s)[m[91;1m
+[m[31;22m        Expected these errors: ["NoInstanceFound"], but got these: ["UnknownName"], full error messages: 
+        in module [33mMain[0m
+        at /home/travis/build/purescript/purescript/sdist-test/tests/purs/failing/CoercibleNominalTypeApp.purs:4:1 - 4:28 (line 4, column 1 - line 4, column 28)
+        
+          Unknown module [33mSafe.Coerce[0m
+        
+        
+        See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
+        or to contribute content related to this error.
+[m      'CoercibleNominalWrapped.purs' should fail with 'NoInstanceFound':                                                                                                                                                 [91;1mFAIL[m[91;1m (0.07s)[m[91;1m
+[m[31;22m        Expected these errors: ["NoInstanceFound"], but got these: ["UnknownName"], full error messages: 
+        in module [33mMain[0m
+        at /home/travis/build/purescript/purescript/sdist-test/tests/purs/failing/CoercibleNominalWrapped.purs:4:1 - 4:28 (line 4, column 1 - line 4, column 28)
+        
+          Unknown module [33mSafe.Coerce[0m
+        
+        
+        See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
+        or to contribute content related to this error.
+[m      'CoercibleRepresentational.purs' should fail with 'NoInstanceFound':                                                                                                                                               [91;1mFAIL[m[91;1m (0.07s)[m[91;1m
+[m[31;22m        Expected these errors: ["NoInstanceFound"], but got these: ["UnknownName"], full error messages: 
+        in module [33mMain[0m
+        at /home/travis/build/purescript/purescript/sdist-test/tests/purs/failing/CoercibleRepresentational.purs:4:1 - 4:28 (line 4, column 1 - line 4, column 28)
+        
+          Unknown module [33mSafe.Coerce[0m
+        
+        
+        See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
+        or to contribute content related to this error.
+[m      'CoercibleRepresentational2.purs' should fail with 'NoInstanceFound':                                                                                                                                              [91;1mFAIL[m[91;1m (0.07s)[m[91;1m
+[m[31;22m        Expected these errors: ["NoInstanceFound"], but got these: ["UnknownName"], full error messages: 
+        in module [33mMain[0m
+        at /home/travis/build/purescript/purescript/sdist-test/tests/purs/failing/CoercibleRepresentational2.purs:4:1 - 4:28 (line 4, column 1 - line 4, column 28)
+        
+          Unknown module [33mSafe.Coerce[0m
+        
+        
+        See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
+        or to contribute content related to this error.
+[m      'CoercibleRepresentational3.purs' should fail with 'NoInstanceFound':                                                                                                                                              [91;1mFAIL[m[91;1m (0.07s)[m[91;1m
+[m[31;22m        Expected these errors: ["NoInstanceFound"], but got these: ["UnknownName"], full error messages: 
+        in module [33mMain[0m
+        at /home/travis/build/purescript/purescript/sdist-test/tests/purs/failing/CoercibleRepresentational3.purs:4:1 - 4:28 (line 4, column 1 - line 4, column 28)
+        
+          Unknown module [33mSafe.Coerce[0m
+        
+        
+        See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
+        or to contribute content related to this error.←
+	←
 
 #### [1    BuildFailureReason/Erlang/erlang@otp](../tool/samples/Erlang/erlang@otp/failed/546804521.log)
-→←
+→
+Building OTP.................... failed.
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+(no logger present) unexpected logger message: {log,error,"Error in process ~p with exit value:~n~p~n",[<0.0.0>,{{badmatch,{error,{bad_lib,"Function not found prim_file:read_handle_info_nif/1"}}},[{prim_file,on_load,0,[]},{erl_init,start,2,[]}]}],#{error_logger=>#{emulator=>true,tag=>error},gl=><0.0.0>,pid=><0.0.0>,time=>1560784767891595}}
+
+done
+
+(no make[4]: *** [obj/x86_64-unknown-linux-gnu/opt/smp/PROFILE] Error 1
+make[4]: Leaving directory `/home/travis/build/erlang/otp/erts/emulator'
+make[3]: *** [opt] Error 2
+make[3]: Leaving directory `/home/travis/build/erlang/otp/erts/emulator'
+make[2]: *** [opt] Error 2
+make[2]: Leaving directory `/home/travis/build/erlang/otp/erts'
+make[1]: *** [smp] Error 2
+make[1]: Leaving directory `/home/travis/build/erlang/otp/erts'
+make: *** [emulator] Error 2
+←
 
 #### [1    BuildFailureReason/C++/bitcoin@bitcoin](../tool/samples/C++/bitcoin@bitcoin/failed/567118690.log)
-→←
+→* Checking consistency between dispatch tables and vRPCConvertParams
+src/test/test_framework/util.h seems to be missing the expected include guard:
+  #ifndef BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
+  #define BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
+  ...
+  #endif // BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
+
+^---- failure generated from test/lint/lint-include-guards.sh←
 
 #### [7    BuildFailureReason/Swift/SwiftyJSON@SwiftyJSON](../tool/samples/Swift/SwiftyJSON@SwiftyJSON/failed/431817062.log)
-→←
+→
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+nl
+nl
+nl
+nl[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+nl
+nl
+nl
+nl@dynamicMemberLookup
+
+[36m ^[0m
+nl
+nl
+nl
+nl
+
+** TEST BUILD FAILED **
+nl
+nl
+nl
+nl
+
+The following build commands failed:
+
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+
+(2 failures)
+[33m▸[0m [39;1mCompiling[0m SwiftyJSON.swift
+nl
+nl
+nl
+nl[31m❌  [0m/Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift:97:2: [31munknown attribute 'dynamicMemberLookup'[0m
+nl
+nl
+nl
+nl@dynamicMemberLookup
+
+[36m ^[0m
+nl
+nl
+nl
+nl
+
+2018-09-22 09:25:51.411 xcodebuild[2106:5934] Error Domain=IDETestOperationsObserverErrorDomain Code=14 "Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-A4F3FF8D-3ACD-4EA4-9F58-0545889309D6/SwiftyJSON iOS Tests-843F0F74-63A2-4D4B-BD1E-BFFFF8EB4A53/Session-SwiftyJSON iOS Tests-2018-09-22_092538-XHT38f.log" UserInfo={NSLocalizedDescription=Test operation was canceled. If you believe this error represents a bug, please attach the log file at /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/com.apple.dt.XCTest/IDETestRunSession-A4F3FF8D-3ACD-4EA4-9F58-0545889309D6/SwiftyJSON iOS Tests-843F0F74-63A2-4D4B-BD1E-BFFFF8EB4A53/Session-SwiftyJSON iOS Tests-2018-09-22_092538-XHT38f.log}
+nl
+nl
+nl
+nlTesting failed:
+
+	Unknown attribute 'dynamicMemberLookup'
+
+** TEST FAILED **
+nl
+nl
+nl
+nl
+
+The following build commands failed:
+
+	CompileSwift normal x86_64 /Users/travis/build/SwiftyJSON/SwiftyJSON/Source/SwiftyJSON.swift
+
+	CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler
+
+(2 failures)
+←
 
 #### [2    BuildFailureReason/Python/scikit-learn@scikit-learn](../tool/samples/Python/scikit-learn@scikit-learn/failed/562396459.log)
 →←
