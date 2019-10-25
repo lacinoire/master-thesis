@@ -1001,7 +1001,7 @@ curl: (22) The requested URL returned error: 404 Not Found
     at Process.ChildProcess._handle.onexit (internal/child_process.js:219:12)
 ←
 
-#### [3    BuildFailureReason/C#/powershell@PowerShell](../tool/samples/C#/powershell@PowerShell/failed/535987243.log)
+#### [3    BuildFailureReason/C#/powershell@PowerShell](../tool/samples/C%23/powershell@PowerShell/failed/535987243.log)
 →←
 
 #### [6    BuildFailureReason/Clojure/technomancy@leiningen](../tool/samples/Clojure/technomancy@leiningen/failed/242689049.log)
@@ -1019,7 +1019,7 @@ nl      [31mAssertionError: wanted fileName:/var/folders/bb/n7t3rs157850byt_jfdc
 [9976:0502/212512.843427:INFO:CONSOLE(200)] "%c  ERR", source: file:///Users/travis/build/Microsoft/vscode/out/vs/platform/log/common/log.js (200)
 ←
 
-#### [4    BuildFailureReason/C#/NancyFx@Nancy](../tool/samples/C\#/NancyFx@Nancy/failed/382556234.log)
+#### [4    BuildFailureReason/C#/NancyFx@Nancy](../tool/samples/C%23/NancyFx@Nancy/failed/382556234.log)
 →←
 
 #### [3    BuildFailureReason/Clojure/LightTable@LightTable](../tool/samples/Clojure/LightTable@LightTable/failed/557187552.log)
