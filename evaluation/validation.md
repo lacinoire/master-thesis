@@ -638,73 +638,486 @@ The following build commands failed:
 ←
 
 #### [2    BuildFailureReason/Python/scikit-learn@scikit-learn](../tool/samples/Python/scikit-learn@scikit-learn/failed/562396459.log)
-→←
+→PackagesNotFoundError: The following packages are not available from current channels:
+
+  - python=3.4
+  - scipy=0.16.1
+  - pillow=4.0.0
+  - cython=0.25.2
+  - numpy=1.10.4←
 
 #### [3    BuildFailureReason/Rust/BurntSushi@ripgrep](../tool/samples/Rust/BurntSushi@ripgrep/failed/524430085.log)
-→←
+→
+[K[0m[0m[1m[31merror:[0m failed to run custom build command for `pcre2-sys v0.2.0`
+process didn't exit successfully: `/target/debug/build/pcre2-sys-7d79a1a15a93a944/build-script-build` (exit code: 101)
+--- stdout
+cargo:rerun-if-env-changed=PCRE2_SYS_STATIC
+
+--- stderr
+thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }', src/libcore/result.rs:999:5
+note: Run with `RUST_BACKTRACE=1` environment variable to display a backtrace.
+←
 
 #### [5    BuildFailureReason/Erlang/processone@ejabberd](../tool/samples/Erlang/processone@ejabberd/failed/556990927.log)
-→←
+→
+21:00:26.069 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.070 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ejabberd_SUITE:init_per_group failed
+Reason: {test_case_failed,{failed_to_create_sql_tables,pgsql,
+                      {aborted,
+                          [{severity,'ERROR'},
+                           {86,<<"ERROR">>},
+                           {code,<<"42501">>},
+                           {message,<<"must be owner of relation mqtt_pub">>},
+                           {file,<<"aclchk.c">>},
+                           {line,3416},
+                           {routine,<<"aclcheck_error">>}]}}}
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+21:00:26.070 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.072 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.072 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.080 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.081 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.082 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.083 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.084 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.084 [error] SQL query 'DROP TABLE IF EXISTS mqtt_pub;' failed: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+21:00:26.084 [error] SQL transaction restarts exceeded
+** Restarts: 10
+** Last abort reason: [{severity,'ERROR'},{86,<<"ERROR">>},{code,<<"42501">>},{message,<<"must be owner of relation mqtt_pub">>},{file,<<"aclchk.c">>},{line,3416},{routine,<<"aclcheck_error">>}]
+** Stacktrace: [{ejabberd_sql,sql_query_t,1,[{file,"src/ejabberd_sql.erl"},{line,192}]},{lists,foreach,2,[{file,"lists.erl"},{line,1338}]},{ejabberd_sql,outer_transaction,3,[{file,"src/ejabberd_sql.erl"},{line,532}]},{ejabberd_sql,run_sql_cmd,4,[{file,"src/ejabberd_sql.erl"},{line,469}]},{p1_fsm,handle_msg,10,[{file,"src/p1_fsm.erl"},{line,582}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,247}]}]
+** When State == {state,<0.2049.0>,pgsql,90612,30000,<<"pgsql.localhost">>,{file_q,0,0,1000,{file_descriptor,prim_file,{#Port<0.24797>,33}},<<"/home/travis/build/processone/ejabberd/logs/ct_run.test3168@travis-job-fa0244c7-58cb-44da-927d-92608770ebd7.2019-07-10_20.50.25/processone.ejabberd.logs/run.2019-07-10_20.50.45/log_private/mnesia/queue/2">>,<0.2042.0>,0,0}}
+Testing processone.ejabberd: *** FAILED {ejabberd_SUITE,init_per_group} ***
+←
 
 #### [6    BuildFailureReason/Lisp/purcell@emacs.d](../tool/samples/Lisp/purcell@emacs.d/failed/515415960.log)
-→←
+→
+Opening TLS connection with `gnutls-cli --insecure -p 443 elpa.gnu.org'...failed
+Opening TLS connection with `gnutls-cli --insecure -p 443 elpa.gnu.org --protocols ssl3'...failed
+Opening TLS connection with `gnutls-cli --insecure -p 443 melpa.org'...failed
+Opening TLS connection with `gnutls-cli --insecure -p 443 melpa.org --protocols ssl3'...failed
+Debugger entered--Lisp error: (error "Package `emacs-25.1' is unavailable")
+  signal(error ("Package `emacs-25.1' is unavailable"))
+  error("Package `%s-%s' is unavailable" emacs "25.1")
+←
 
 #### [8    BuildFailureReason/Java/iluwatar@java-design-patterns](../tool/samples/Java/iluwatar@java-design-patterns/failed/565283745.log)
-→←
+→
+curl: (22) The requested URL returned error: 404 Not Found
+curl: (22) The requested URL returned error: 404 Not Found
+[31m  *  External link http://www.cs.wustl.edu/~schmidt/PDF/PLoP-95.pdf failed: 404 No error[0m
+[31m  *  External link http://www.javagyan.com/tutorials/corej2eepatterns/presentation-tier-patterns failed: 403 No error[0m
+[31m  *  External link https://struts.apache.org/docs/interceptors.html failed: 404 No error[0m
+[31m  *  External link https://struts.apache.org/docs/interceptors.html failed: 404 No error[0m
+htmlproofer 3.0.6 | Error:  [31mHTML-Proofer found 5 failures![0m
+travis_time:end:046a0f88:start=1564456172283754823,finish=1564456311811004519,duration=139527249696
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 1 second.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 1 second.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 2 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 2 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 3 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 3 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 5 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 5 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 8 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 8 seconds.
+[[31mfail[0m] Failed to upload index.html (Access key cannot be null.)
+[[31mfail[0m] Failed to fetch an object listing (Access key cannot be null.)
+[[34minfo[0m] Summary: 3 operations failed.
+[[31mfail[0m] Failed to push the website to http://java-design-patterns.com.s3-website-us-east-1.amazonaws.com
+
+[31;1mThe command "bundle exec s3_website push" failed. Retrying, 2 of 3.[0m
+
+[[34minfo[0m] Deploying /home/travis/build/iluwatar/java-design-patterns/_site/* to java-design-patterns.com
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 1 second.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 1 second.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 2 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 2 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 3 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 3 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 5 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 5 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 8 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 8 seconds.
+[[31mfail[0m] Failed to upload index.html (Access key cannot be null.)
+[[31mfail[0m] Failed to fetch an object listing (Access key cannot be null.)
+[[34minfo[0m] Summary: 3 operations failed.
+[[31mfail[0m] Failed to push the website to http://java-design-patterns.com.s3-website-us-east-1.amazonaws.com
+[31;1mThe command "bundle exec s3_website push" failed. Retrying, 3 of 3.[0m
+
+[[34minfo[0m] Deploying /home/travis/build/iluwatar/java-design-patterns/_site/* to java-design-patterns.com
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 1 second.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 1 second.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 2 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 2 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 3 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 3 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 5 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 5 seconds.
+[[33mwait[0m] Failed to upload index.html (Access key cannot be null.). Trying again in 8 seconds.
+[[33mwait[0m] Failed to fetch an object listing (Access key cannot be null.). Trying again in 8 seconds.
+[[31mfail[0m] Failed to upload index.html (Access key cannot be null.)
+[[31mfail[0m] Failed to fetch an object listing (Access key cannot be null.)
+[[34minfo[0m] Summary: 3 operations failed.
+[[31mfail[0m] Failed to push the website to http://java-design-patterns.com.s3-website-us-east-1.amazonaws.com
+←
 
 #### [8    BuildFailureReason/JavaScript/airbnb@javascript](../tool/samples/JavaScript/airbnb@javascript/failed/563272067.log)
-→←
+→
+not ok 6 no errors
+  ---
+    operator: notOk
+    expected: false
+    actual:   1
+    at: Test.<anonymous> (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/test/test-react-order.js:57:7)
+    stack: |-
+      Error: no errors
+          at Test.assert [as _assert] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.notOK (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:357:10)
+          at Test.bound (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.<anonymous> (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/test/test-react-order.js:57:7)
+          at Test.bound [as _cb] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:93:10)
+          at Test.bound [as run] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test._end (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:162:11)
+          at Test.bound [as _end] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+  ...
+not ok 7 no messages in results
+  ---
+    operator: deepEqual
+    expected: |-
+      []
+    actual: |-
+      [ { ruleId: 'no-multiple-empty-lines', severity: 2, message: 'Too many blank lines at the beginning of file. Max of 0 allowed.', line: 1, column: 1, nodeType: 'Program', endLine: 2, endColumn: 1, fix: { range: [ 0, 1 ], text: '' } } ]
+    at: Test.<anonymous> (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/test/test-react-order.js:58:7)
+    stack: |-
+      Error: no messages in results
+          at Test.assert [as _assert] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.tapeDeepEqual (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:422:10)
+          at Test.bound [as deepEquals] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.<anonymous> (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/test/test-react-order.js:58:7)
+          at Test.bound [as _cb] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:93:10)
+          at Test.bound [as run] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test._end (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:162:11)
+          at Test.bound [as _end] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+  ...
+# order: when random method is first
+ok 8 fails
+not ok 9 fails due to sort
+  ---
+    operator: equal
+    expected: |-
+      'react/sort-comp'
+    actual: |-
+      'no-multiple-empty-lines'
+    at: Test.<anonymous> (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/test/test-react-order.js:75:7)
+    stack: |-
+      Error: fails due to sort
+          at Test.assert [as _assert] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.equal (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:385:10)
+          at Test.bound (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.<anonymous> (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/test/test-react-order.js:75:7)
+          at Test.bound [as _cb] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:93:10)
+          at Test.bound [as run] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test._end (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:162:11)
+          at Test.bound [as _end] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+  ...
+# order: when random method after lifecycle methods
+ok 10 fails
+not ok 11 fails due to sort
+  ---
+    operator: equal
+    expected: |-
+      'react/sort-comp'
+    actual: |-
+      'no-multiple-empty-lines'
+    at: Test.<anonymous> (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/test/test-react-order.js:92:7)
+    stack: |-
+      Error: fails due to sort
+          at Test.assert [as _assert] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.equal (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:385:10)
+          at Test.bound (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.<anonymous> (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/test/test-react-order.js:92:7)
+          at Test.bound [as _cb] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:93:10)
+          at Test.bound [as run] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+          at Test._end (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:162:11)
+          at Test.bound [as _end] (/home/travis/build/airbnb/javascript/packages/eslint-config-airbnb/node_modules/tape/lib/test.js:77:32)
+  ...
+
+1..11
+\# tests 11
+\# pass  7
+\# fail  4
+←
 
 #### [6    BuildFailureReason/TeX/soulmachine@leetcode](../tool/samples/TeX/soulmachine@leetcode/failed/245016628.log)
-→←
+→
+rake aborted!
+No Rakefile found (looking for: rakefile, Rakefile, rakefile.rb, Rakefile.rb)
+/home/travis/.rvm/gems/ruby-2.2.6/bin/ruby_executable_hooks:15:in `eval'
+/home/travis/.rvm/gems/ruby-2.2.6/bin/ruby_executable_hooks:15:in `<main>'
+(See full trace by running task with --trace)
+
+travis_time:end:05a32fb2:start=1497978044086414532,finish=1497978044206321291,duration=119906759
+[0K
+[31;1mThe command "rake" exited with 1.[0m
+←
 
 #### [5    BuildFailureReason/Elixir/h4cc@awesome-elixir](../tool/samples/Elixir/h4cc@awesome-elixir/failed/513586826.log)
-→←
+→
+** (RuntimeError) Line does not match format: '[medusa](https://github.com/Vesuvium/medusa) - A static site generator with support for Pug' Is there a dot at the end?
+    check.exs:32: Awesome.parse_line/1
+    check.exs:224: Awesome.validate_list_item/1
+    check.exs:213: anonymous fn/2 in Awesome.check_list/1
+    (elixir) lib/enum.ex:1755: Enum."-reduce/3-lists^foldl/2-0-"/3
+    check.exs:213: Awesome.check_list/1
+    check.exs:192: Awesome.iterate_content/1
+    check.exs:117: Awesome.test_file/1
+←
 
 #### [6    BuildFailureReason/CSS/jgthms@bulma](../tool/samples/CSS/jgthms@bulma/failed/534204380.log)
-→←
+→
+Error: Inconsistent indentation: 3 spaces were used for indentation, but the rest of the document was indented using 2 spaces.
+        on line 8 of sass/layout/footer.sass
+        from line 5 of sass/layout/_all.sass
+        from line 9 of bulma.sass
+←
 
 #### [5    BuildFailureReason/TypeScript/angular@angular](../tool/samples/TypeScript/angular@angular/failed/502325280.log)
-→←
+→
+Progress: [
+Error: An unexpected error has occurred.
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+travis_time:end:051e2c06:start=1551855122700328996,finish=1551855266137131819,duration=143436802823
+[0K[31;1mThe command "./scripts/ci/deploy.sh" exited with 1.[0m
+←
 
 #### [1    BuildFailureReason/Go/ethereum@go-ethereum](../tool/samples/Go/ethereum@go-ethereum/failed/566009484.log)
-→←
+→
+FAIL: TestBoundedForkedSync64Fast (0.18s)
+    downloader_test.go:679: failed to synchronise blocks: retrieved hash chain is invalid
+FAIL
+coverage: 78.4% of statements
+FAIL	github.com/ethereum/go-ethereum/eth/downloader	94.804s
+←
 
 #### [2    BuildFailureReason/CSS/twbs@bootstrap](../tool/samples/CSS/twbs@bootstrap/failed/565973566.log)
-→←
+→
+ERROR: Detected 1 broken links. Scanned 589 links in 5.881 seconds.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! bootstrap@4.3.1 docs-linkinator: `linkinator _gh_pages --recurse --silent --skip "^(?!http://localhost)"`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the bootstrap@4.3.1 docs-linkinator script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/travis/.npm/_logs/2019-07-31T13_24_22_306Z-debug.log
+ERROR: "docs-linkinator" exited with 1.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! bootstrap@4.3.1 docs-lint: `npm-run-all --parallel docs-vnu docs-linkinator`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the bootstrap@4.3.1 docs-lint script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/travis/.npm/_logs/2019-07-31T13_24_22_557Z-debug.log
+ERROR: "docs-lint" exited with 1.
+←
 
 #### [5    BuildFailureReason/Swift/vsouza@awesome-ios](../tool/samples/Swift/vsouza@awesome-ios/failed/560497551.log)
-→←
+→
+[0K$ rvm use 2.4.1 --install --binary --fuzzy
+curl: (22) The requested URL returned error: 404 Not Found
+[33mRequired ruby-2.4.1 is not installed - installing.[0m
+[0mcurl: (22) The requested URL returned error: 404 Not Found
+←
 
 #### [4    BuildFailureReason/Lua/cmusatyalab@openface](../tool/samples/Lua/cmusatyalab@openface/failed/199282796.log)
-→←
+→
+\+ ERROR! openface/celeb-classifier.nn4.small2.v1.pkl md5sum did not match.
+  \+ Expected: 199a2c0d32fd0f22f14ad2d248280475
+  \+ Actual: 390264772e075a0aa5c907e4ed0c2561
+  \+ Please manually delete this file and try re-running this script.
+←
 
 #### [4    BuildFailureReason/CoffeeScript/jashkenas@coffeescript](../tool/samples/CoffeeScript/jashkenas@coffeescript/failed/429651194.log)
-→←
+→
+[0;31m  ReferenceError: getExpressionAst is not defined
+    at testAstLocationData (/home/travis/build/jashkenas/coffeescript/test/abstract_syntax_tree_location_data.coffee:8:36)
+    at Function.<anonymous> (/home/travis/build/jashkenas/coffeescript/test/abstract_syntax_tree_location_data.coffee:98:12)
+    at global.test (/home/travis/build/jashkenas/coffeescript/Cakefile:538:21)
+    at Object.<anonymous> (/home/travis/build/jashkenas/coffeescript/test/abstract_syntax_tree_location_data.coffee:97:3)
+    at Object.<anonymous> (/home/travis/build/jashkenas/coffeescript/test/abstract_syntax_tree_location_data.coffee:536:4)
+    at Module._compile (module.js:577:32)
+    at Object.CoffeeScript.run (/home/travis/build/jashkenas/coffeescript/lib/coffeescript/index.js:67:23)
+    at runTests (/home/travis/build/jashkenas/coffeescript/Cakefile:609:22)
+    at Object.action (/home/travis/build/jashkenas/coffeescript/Cakefile:636:12)
+    at invoke (/home/travis/build/jashkenas/coffeescript/lib/coffeescript/cake.js:57:26)
+    at Object.exports.run (/home/travis/build/jashkenas/coffeescript/lib/coffeescript/cake.js:87:20)
+    at Object.<anonymous> (/home/travis/build/jashkenas/coffeescript/bin/cake:22:42)
+    at Module._compile (module.js:577:32)
+    at Object.Module._extensions..js (module.js:586:10)
+    at Module.load (module.js:494:32)
+    at tryModuleLoad (module.js:453:12)
+    at Function.Module._load (module.js:445:3)
+    at Module.runMain (module.js:611:10)
+    at run (bootstrap_node.js:394:7)
+    at startup (bootstrap_node.js:160:9)
+    at bootstrap_node.js:507:3
+[0;31m  AssertionError: Property [0mtype[0;31m: expected [0me[0;31m to equal [0mBlock[0;31m
+    at exports.eq (/home/travis/build/jashkenas/coffeescript/test/support/helpers.coffee:1:1)
+    at deepStrictEqualExpectedProperties (<anonymous>:1:1)
+    at Function.eval (<anonymous>:1:1)
+    at global.test (/home/travis/build/jashkenas/coffeescript/Cakefile:538:21)
+    at eval (<anonymous>:1:1)
+[0;31m  ReferenceError: getExpressionAst is not defined
+    at testExpression (/home/travis/build/jashkenas/coffeescript/test/abstract_syntax_tree.coffee:1:1)
+    at Function.<anonymous> (/home/travis/build/jashkenas/coffeescript/test/abstract_syntax_tree.coffee:1:1)
+    at global.test (/home/travis/build/jashkenas/coffeescript/Cakefile:538:21)
+    at Object.<anonymous> (/home/travis/build/jashkenas/coffeescript/test/abstract_syntax_tree.coffee:1:1)
+    at Object.<anonymous> (/home/travis/build/jashkenas/coffeescript/test/abstract_syntax_tree.coffee:1:1)
+    at Module._compile (module.js:577:32)
+    at Object.CoffeeScript.run (/home/travis/build/jashkenas/coffeescript/lib/coffeescript/index.js:67:23)
+    at runTests (/home/travis/build/jashkenas/coffeescript/Cakefile:609:22)
+    at testBuiltCode (/home/travis/build/jashkenas/coffeescript/Cakefile:150:19)
+    at /home/travis/build/jashkenas/coffeescript/Cakefile:67:16
+    at ChildProcess.<anonymous> (/home/travis/build/jashkenas/coffeescript/Cakefile:55:16)
+    at emitTwo (events.js:106:13)
+    at ChildProcess.emit (events.js:191:7)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:219:12)
+←
 
 #### [3    BuildFailureReason/C#/powershell@PowerShell](../tool/samples/C#/powershell@PowerShell/failed/535987243.log)
 →←
 
 #### [6    BuildFailureReason/Clojure/technomancy@leiningen](../tool/samples/Clojure/technomancy@leiningen/failed/242689049.log)
-→←
+→
+rake aborted!
+No Rakefile found (looking for: rakefile, Rakefile, rakefile.rb, Rakefile.rb)
+/home/travis/.rvm/gems/ruby-2.2.6/bin/ruby_executable_hooks:15:in `eval'
+/home/travis/.rvm/gems/ruby-2.2.6/bin/ruby_executable_hooks:15:in `<main>'
+(See full trace by running task with --trace)
+←
 
 #### [1    BuildFailureReason/TypeScript/Microsoft@vscode](../tool/samples/TypeScript/Microsoft@vscode/failed/374142911.log)
-→←
+→
+nl      [31mAssertionError: wanted fileName:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dkwnjrjb/viewColumn:1 but got fileName:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/goslwd/viewColumn:2. a:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/vgdjefj, b:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/goslwd, c:/var/folders/bb/n7t3rs157850byt_jfdcq9k80000gn/T/dkwnjrjb[0m
+[9976:0502/212512.843427:INFO:CONSOLE(200)] "%c  ERR", source: file:///Users/travis/build/Microsoft/vscode/out/vs/platform/log/common/log.js (200)
+←
 
 #### [4    BuildFailureReason/C#/NancyFx@Nancy](../tool/samples/C\#/NancyFx@Nancy/failed/382556234.log)
 →←
 
 #### [3    BuildFailureReason/Clojure/LightTable@LightTable](../tool/samples/Clojure/LightTable@LightTable/failed/557187552.log)
-→←
+→
+travis_time:start:0bd347d4
+[0K$ $TRAVIS_BUILD_DIR/install-jdk.sh --install openjdk11 --target $JAVA_HOME
+/home/travis/.travis/functions: line 104: /home/travis/build/LightTable/LightTable/install-jdk.sh: Permission denied
+travis_time:end:0bd347d4:start=1562830774577381833,finish=1562830774582387203,duration=5005370
+[0K[31;1mThe command "$TRAVIS_BUILD_DIR/install-jdk.sh --install openjdk11 --target $JAVA_HOME" exited with 126.[0m
+←
 
 #### [10   BuildFailureReason/PowerShell/pester@Pester](../tool/samples/PowerShell/pester@Pester/failed/572257652.log)
-→←
+→
+[39;49m[32m[39;49m[32m  ConvertTo-PesterResult[39;49m[39;49m
+[39;49m[32m[39;49m[32m    failed tests in Tests file[39;49m[39;49m
+[39;49m[32m[39;49m[32m    failed tests in another file[39;49m[39;49m
+[39;49m[32m[39;49m[32m    Teardown fails[39;49m[39;49m
+[6n[6n[?1h=[39;49m[32m[39;49m[32m      [+] Failed teardown does not let exception propagate outside of the scope of Describe/Context in which it failed[39;49m[39;49m[39;49m[30m[39;49m[30m 8.36s[39;49m[39;49m
+←
 
 #### [7    BuildFailureReason/Objective-C/dkhamsing@open-source-ios-apps](../tool/samples/Objective-C/dkhamsing@open-source-ios-apps/failed/562461458.log)
-→←
+→
+Issues :-(
+> Links 
+  1. [L0239] 522 http://www.wtfgamersonly.com/wp-content/uploads/2014/08/gba4ios.jpg  
+  2. [L1581] 404 https://github.com/mssun/passforios/raw/master/img/preview.gif  
+←
 
 #### [8    BuildFailureReason/Go/getlantern@lantern](../tool/samples/Go/getlantern@lantern/failed/545341186.log)
-→←
+→
+-- FAIL: TestParallelPreferChained (2.46s)
+	<autogenerated>:31: 
+                        
+	Error Trace:	proxied_test.go:126
+		
+			proxied_test.go:78
+		
+	Error:		Should be true
+		
+	Messages:	Unexpected response 
+		
+
+	<autogenerated>:31: 
+                        
+	Error Trace:	proxied_test.go:142
+		
+			proxied_test.go:78
+		
+	Error:		Should be true
+		
+	Messages:	Unexpected response 
+		
+
+	<autogenerated>:31: 
+                        
+	Error Trace:	proxied_test.go:158
+		
+			proxied_test.go:78
+		
+	Error:		Should be true
+		
+	Messages:	Unexpected response {"City":{"GeoNameID":5101879,"Names":{"en":"North Bergen"}},"Continent":{"Code":"NA","GeoNameID":6255149,"Names":{"de":"Nordamerika","en":"North America","es":"Norteamérica","fr":"Amérique du Nord","ja":"北アメリカ","pt-BR":"América do Norte","ru":"Северная Америка","zh-CN":"北美洲"}},"Country":{"GeoNameID":6252001,"IsoCode":"US","Names":{"de":"USA","en":"United States","es":"Estados Unidos","fr":"États-Unis","ja":"アメリカ合衆国","pt-BR":"Estados Unidos","ru":"США","zh-CN":"美国"}},"Location":{"Latitude":40.793,"Longitude":-74.0247,"MetroCode":501,"TimeZone":"America/New_York"},"Postal":{"Code":"07047"},"RegisteredCountry":{"GeoNameID":6252001,"IsoCode":"US","Names":{"de":"USA","en":"United States","es":"Estados Unidos","fr":"États-Unis","ja":"アメリカ合衆国","pt-BR":"Estados Unidos","ru":"США","zh-CN":"美国"}},"RepresentedCountry":{"GeoNameID":0,"IsoCode":"","Names":null,"Type":""},"Subdivisions":[{"GeoNameID":5101760,"IsoCode":"NJ","Names":{"en":"New Jersey","es":"Nueva Jersey","fr":"New Jersey","ja":"ニュージャージー州","pt-BR":"Nova Jérsia","ru":"Нью-Джерси","zh-CN":"新泽西州"}}],"Traits":{"IsAnonymousProxy":false,"IsSatelliteProvider":false}}
+		
+--- FAIL: TestChainedThenFronted (4.52s)
+	<autogenerated>:31: 
+                        
+	Error Trace:	proxied_test.go:126
+		
+			proxied_test.go:82
+		
+	Error:		Should be true
+		
+	Messages:	Unexpected response 
+		
+
+	<autogenerated>:31: 
+                        
+	Error Trace:	proxied_test.go:142
+		
+			proxied_test.go:82
+		
+	Error:		Should be true
+		
+	Messages:	Unexpected response 
+		
+
+	<autogenerated>:31: 
+                        
+	Error Trace:	proxied_test.go:158
+		
+			proxied_test.go:82
+		
+	Error:		Should be true
+		
+	Messages:	Unexpected response {"City":{"GeoNameID":5101879,"Names":{"en":"North Bergen"}},"Continent":{"Code":"NA","GeoNameID":6255149,"Names":{"de":"Nordamerika","en":"North America","es":"Norteamérica","fr":"Amérique du Nord","ja":"北アメリカ","pt-BR":"América do Norte","ru":"Северная Америка","zh-CN":"北美洲"}},"Country":{"GeoNameID":6252001,"IsoCode":"US","Names":{"de":"USA","en":"United States","es":"Estados Unidos","fr":"États-Unis","ja":"アメリカ合衆国","pt-BR":"Estados Unidos","ru":"США","zh-CN":"美国"}},"Location":{"Latitude":40.793,"Longitude":-74.0247,"MetroCode":501,"TimeZone":"America/New_York"},"Postal":{"Code":"07047"},"RegisteredCountry":{"GeoNameID":6252001,"IsoCode":"US","Names":{"de":"USA","en":"United States","es":"Estados Unidos","fr":"États-Unis","ja":"アメリカ合衆国","pt-BR":"Estados Unidos","ru":"США","zh-CN":"美国"}},"RepresentedCountry":{"GeoNameID":0,"IsoCode":"","Names":null,"Type":""},"Subdivisions":[{"GeoNameID":5101760,"IsoCode":"NJ","Names":{"en":"New Jersey","es":"Nueva Jersey","fr":"New Jersey","ja":"ニュージャージー州","pt-BR":"Nova Jérsia","ru":"Нью-Джерси","zh-CN":"新泽西州"}}],"Traits":{"IsAnonymousProxy":false,"IsSatelliteProvider":false}}
+		
+FAIL
+←
 
 
 
