@@ -30,22 +30,22 @@ A CI build might then be triggered by a push on specific branches or after a pul
 When such a CI build is triggered, it typically runs through these stages:
 
 \begin{itemize}
-	\item \todo{look for more in modelling paper zampetti}
 	\item Pulling the new, changed version of the source code onto the server.
 	\item Running static analysis tools~\cite{zampetti2017open}.
 	\item Building the software, i.e. compiling and packaging it~\cite{phillips2014understanding}.
 	\item Running automated tests~\cite{beller2017oops}.
+	\item Deployment of the build artifact~\cite{schermann2016empirical}.
 \end{itemize}
 
-However these are only \emph{typical} stages and there is a high variability in the CI build processes of different software projects \mention{citation needed, zampetti2017open?}.
+However these are only \emph{typical} stages and there is a high variability in the CI build processes of different software projects~\cite{staahl2014modeling}.
 Some smaller projects might use CI to just make sure their code compiles as a minimal check before reviewing a pull request.
 Other projects might have various stages of extensive automated testing.
 
-Software tools involved in the build write out log messages to the console \mention{citation needed, paper about usages of console.log?}.
-They communicate progress updates, error and warning messages to the user.
+Software tools involved in the build write out log messages to the console.
+They communicate progress updates, error and warning messages to the user~\cite{yuan2012characterizing}.
 We refer to to the sum of this output as build log.
 The structure of their output is chosen by every tool themselves.
-Many have implicit or explicit structuring rules, some adhere to predefined standards \mention{phpunit, ruby, xuint output?}.
+Many have implicit or explicit structuring rules, some adhere to predefined standards like RSpec or PHPUnit~\cite{phpunit2019logging,rspec2019format}.
 Figure \ref{fig:tool-log-contribution} shows how different tools contribute to the whole build log.
 
 \begin{figure}[h]
@@ -67,7 +67,7 @@ As the structure of a build log is not known to us, we describe build logs as se
 	\caption{Information retrievable from build logs}
 	\label{fig:build-log-information}
 \end{figure}
-Continuous integration build logs contain a huge amount of information about the various stages in the CI build they correspond to.
+Continuous integration build logs contain a huge amount of information about the stages in the CI build they correspond to.
 In this section we present a model, which more precisely describes our notion of a information retrievable from a CI build log.
 Figure \ref{fig:build-log-information} shows the model.
 
@@ -81,9 +81,9 @@ BuildLogInformations can be hierarchically ordered by their textual representati
 As this is an ad-hoc and a-posteriori structuring schema, as we describe in Section \ref{sec:rw-semi-structured-data}, the model only presents hierarchical ordering or containment for BuildLogInformations whose structure we definetely know.
 Most build log information types can appear in various hierarchical arrangements and therefore not contained in any other type in the model.
 
-During our initial exploration and log data collection for the \emph{Failing Build Log Data Set}, we collected a broad set of build logs from 29 languages and 87 repositories.
+During our initial exploration and log data collection for the \emph{Failing Build Log Data Set}, we collected a broad set of build logs from 29 languages and 87 repositories from Travis CI~\cite{travisci2019webpage}.
 We inspected them to get an impression about the information one would want to retrieve from a build log.
-Within the build logs from Travis CI we found various different information types possibly interesting to be retrieved:
+Within the build logs from Travis CI we found different information types possibly interesting to be retrieved:
 
 \begin{itemize}
 	\item \textbf{BuildPhase} Build logs can be divided in the sections produced by different tools.
@@ -127,7 +127,7 @@ Within the build logs from Travis CI we found various different information type
 	      You can see an example of and ErrorMessage instantiation within a build log in Figure \ref{fig:log-3}.
 
 	\item \textbf{WarningMessage} In addition to errors, tools also print warning messages.
-	      These could be collected, counted and presented to developers, encouraging them to resolve them in order to improve their software.
+	      These could be collected, counted and presented to developers, encouraging them to resolve them to improve their software.
 	      You can see examples of WarningMessage instantiations within build logs in Figure \ref{fig:log-4} and Figure \ref{fig:log-5}.
 
 \end{itemize}
@@ -258,7 +258,7 @@ In/Output examples (I/O examples) are the main driver of Programming by Example.
 When extracting information from build logs the \emph{input} is always a whole build log, i.e. the whole text of the build log file without any preprocessing.
 In the implementation we did have to apply a few text replacements as described in \ref{sec:impl-preprocessing}.
 The \emph{output} is always a substring of the log file text, representing the substring that should be extracted by the synthesized program when given the corresponding input file.
-One or multiple I/O examples are needed as configuration for PBE, they are used to define substring of a log should be extracted.Our approach is based on the Flash Extract DSL, which in turn is based on the FlashMeta algorithm. Both are described in \todo{ref rw sections}.
+One or multiple I/O examples are needed as configuration for PBE, they are used to define substring of a log should be extracted.Our approach is based on the Flash Extract DSL, which in turn is based on the FlashMeta algorithm. Both are described in Section \ref{sec:rw-prose}.
 %For execution PBE takes a build file as input and returns a substring of the build file content.
 
 \subsection{Perspective: Usability vs. Technical Aspects}
@@ -273,24 +273,24 @@ When studying the applicability of PBE from the \emph{usability} perspective you
 	\item Are users confident in the resulting regular expression program from PBE?
 	\item Are the resulting extractions more or less accurate when using PBE over manual regex construction?
 \end{itemize}
-Some of these were already evaluated in existing works about PBE and user interaction~\cite{mayer2015user} \mention{other works?}.
+Some of these were already evaluated in existing works about PBE and user interaction~\cite{mayer2015user,lau2009why-programming-by-demonstration,miller2001outlier}.
 Adequately answering those questions is however highly dependent on the user interface and the corresponding interaction model used during a study.
-Developers who are accustomed to crunching on regular expressions in their favorite IDE or Editor might have an adversely negative view on syntesizing programs from examples in an unknow interface.
+Developers who are accustomed to crunching on regular expressions in their favorite IDE or Editor might have an adversely negative view on synthesizing programs from examples in an unknow interface.
 Mayer et al.~\cite{mayer2015user} presented two system-user interaction models to improve the confidence of users into the programs synthesized from their examples.
 We feel such questions of usability can be answered separately from the application domain of build logs.
 
 For our work we chose to look at the applicability of PBE from the \emph{technical} perspective.
 We investigate whether current program synthesis techniques are able to learn programs for information retrieval tasks in the domain of CI build logs.
 Furthermore we gather insights in how PBE has to be applied to yield useable results and perform best.
-Our implementation of PBE \todo{which we name technique name x}, is mainly based on the Flash Extract DSL~\cite{flahsextractpaper} of the PROSE library by Microsoft\mention{cite prose website}.
+Our implementation of PBE, is mainly based on the Flash Extract DSL~\cite{le2014flashextract:} of the PROSE library by Microsoft~\cite{prose2019webpage}.
 Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
 
 \section{Text Similarity}
 \plan{2 caro-reviews before finalized}
 
 \subsection{Overview}
-Text Similarity approaches are more and more used to filter unstructured textual software artifacts. \mention{cite papers that do exactily this. also lda possbible here}
-One common and simple technique the Vector Space Model \mention{citation needed, for VSM and that it is common maybe?}.
+Text Similarity approaches are more and more used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
+One common and simple technique the Vector Space Model~\cite{schutze2008introduction}.
 We investigate when it is a suitable technique to retrieve information from build logs.
 In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs (TS), the concrete implementation is described in \ref{sec:impl-ts}.
 Figure \ref{fig:text-similarity-explanation} shows the instantiation of the BLIRT model for TS.
@@ -307,11 +307,11 @@ For each line we apply preprocessing: Splitting it into tokens, in our case word
 Then we build a document-term-frequency matrix over the lines of the output strings and prune very often or very rarely appearing words.
 Next, the algorithm applies term-frequency inverse document frequency, a best practice for natural language queries~\cite{lee1997document}.
 To retrieve the desired information from a build log, we parse the whole text and process it in the same way.
-The algorithm calculates the cosine simlarity~\mention{citation?} to compare each line of the build log with each line of the search query.
+The algorithm calculates the cosine simlarity~\cite{korenius2007principal} to compare each line of the build log with each line of the search query.
 After summing up the similarities of each build log line to all the query lines, we sort the build log lines in decreasing similarity.
 The average number of lines in the I/O example output strings determines how many of the most similar lines are returned as the output of the retrieval run.
 
-%Information retrieval techniques are more and more prevalently used to extract textual information from unstructured textual sources~\mention{stuff annibale is referencing?}. We describe CI build logs as semi-structured, 
+%Information retrieval techniques are more and more prevalently used to extract textual information from unstructured textual sources~\mention{stuff annibale is referencing?}.
 
 \begin{figure}[hp]
 	\centering
@@ -319,7 +319,7 @@ The average number of lines in the I/O example output strings determines how man
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/skws-technique.pdf}
 		\caption{Retrieving Information Using Simple Keyword Search}
-		\label{fig:keword-search-explanation}
+		\label{fig:keyword-search-explanation}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
@@ -347,8 +347,6 @@ We chose a context of 10 lines above and below the keyword appearance.
 
 \section{Further Techniques}
 \plan{decide: what to mention here, max 1 page text}
-\todo{maybe: instantiate model, or at least partly talk about it}
-\todo{diffing, manual regex?, other summarization?, BART? <- we could reference that from related work then}
 
 Amar et al. used a technique based on line diffs to retrieve relevant lines from a failed build log~\cite{amar2019mining}d \cite{amar2019mining}, as we describe in more detail in Section \ref{sec:rw-bl-analysis}
 Figure \ref{fig:diff-technique-model} shows how this technique would be in our BLIRT model.

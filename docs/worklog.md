@@ -2,12 +2,28 @@
 
 # Carolin Master Thesis Work Log
 
-## 21.10.19
+## 24.10.19
+
+- fixed model figures in chapter 2
+- wrote about ir tasks
+- reordered sections about BLIRTs
+- analyze data from dev-mails
+- write about dev-mails validation
+- thesis-finishing-timeplan
+- prepare meeting with Moritz and Annibale
+
+## 23.10.19
+
+- make cleaner models for chapter 2
+- partial page planning
+- work in caro-review comments
+
+## 22.10.19
 
 - tried to do data analysis with ruby: bad idea. don't use badly documented things
 - finally switched to python/pandas and have at least a few graphs now
 
-## 20.10.19
+## 21.10.19
 
 - looked into results of sending mails to devs
 - tried to data eval of big study in excel and numbers: oei it is horrible with multiline csv strings and their formulas
