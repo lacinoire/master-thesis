@@ -7,7 +7,7 @@
 \chapter{Information Retrieval Techniques for Build Logs}
 \plan{whole chapter: some reordering and reviewing to do, write about 3 pages about ir technique model classes and ir tasks and other techniques}
 \plan{write, 1/3 page, blocked by: rest of chapter}
-\label{sec:models}
+\label{sec:ir-techniques}
 %\includegraphics[page=1, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/RetreatSeptemberSlides.pdf}
 Many different information retrieval techniques ... this section describes the conceptional / theoretical results of our thesis ...
 We create a model to characterize BLIE techniques so we can discuss their similarities and differences more clearly.
@@ -22,6 +22,7 @@ From our analysis of build logs, we share our notion of retrievable information 
 \end{figure}
 
 \section{Characteristics of a Build Log}
+\label{sec:bl-characteristics}
 The idea of CI is, to integrate new software changes fast and often to catch errors early~\cite{humble2010continuous}.
 After making a change, the developer commits and pushes it to a shared source code repository.
 Companies often use a specific CI server, e.g.\ Travis CI, linked to their source code repository.
@@ -65,6 +66,7 @@ As the structure of a build log is not known to us, we describe build logs as se
 	\label{fig:build-log-information}
 \end{figure}
 \section{Retrievable Information in Build Logs}
+\label{sec:bli}
 Continuous integration build logs contain a huge amount of information about the stages in the CI build they correspond to.
 In this section, we present a model, which more precisely describes our notion of a information retrievable from a CI build log.
 Figure \ref{fig:build-log-information} shows the model.
@@ -175,6 +177,7 @@ Within the build logs from Travis CI we found different information types possib
 	\label{fig:model-ie-technique}
 \end{figure}
 \section{Characteristics of Information Retrieval Techniques}
+\label{sec:blirt}
 \plan{describe model classes, 1 page text}
 For this thesis, we want to evaluate different information retrieval techniques when applied to CI build logs.
 We focus on techniques that do not require to parse the structure of a whole build log, but rather focus on extracting just one specified information.
@@ -198,6 +201,7 @@ A BLIRT
 The last sections of this chapter show instantiations of this model for the three techniques we analyze and an additional one from related works.
 
 \section{Information Retrieval Tasks}
+\label{sec:blir-tasks}
 \plan{what do we need here?, come up with model if we keep this, 1 page text max.}
 Previous sections gave various examples of situations where a developer or a researcher wants to retrieve information from a build log.
 The goal of this work is to clarify which BLIRT is suited for their specific task.
@@ -239,7 +243,8 @@ A InformationRetrievalTask
 	\end{minipage}
 \end{figure}
 
-\section{PROSE Program Synthesis}
+\section{Regular Expression Program Synthesis by Example}
+\label{sec:expl-pbe}
 \plan{2 caro-reviews before finalized}
 
 \subsection{Introduction}
@@ -286,6 +291,7 @@ Our implementation of PBE is mainly based on the Flash Extract DSL~\cite{le2014f
 Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
 
 \section{Text Similarity}
+\label{sec:expl-ts}
 \plan{2 caro-reviews before finalized}
 
 \subsection{Introduction}
@@ -330,6 +336,7 @@ The average number of lines in the I/O example output strings determines how man
 \end{figure}
 
 \section{Simple Keyword Search}
+\label{sec:expl-skws}
 \plan{2 caro-reviews before finalized}
 
 \subsection{Introduction}
@@ -346,10 +353,15 @@ As keywords are often not directly describing the desired information but rather
 We chose a context of 10 lines above and below the keyword appearance.
 
 \section{Further Techniques}
+\label{sec:expl-rlr}
 \plan{decide: what to mention here, max 1 page text}
 
+\paragraph{Log Diff}
 Amar et al. used a technique based on line diffs to retrieve relevant lines from a failed build log~\cite{amar2019mining}, as we describe in more detail in Section \ref{sec:rw-bl-analysis}.
 Figure \ref{fig:diff-technique-model} shows how this technique would be in our BLIRT model.
+\paragraph{Random Line Retrieval}
+In our evaluation we want to compare against a basic deadline of randomly extracted lines.
+The random line retrieval technique (RLR) averages the number of lines in the outputs of the configuring examples and extracts this many lines randomly from the build log.
 
 
 \end{document}
