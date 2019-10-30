@@ -59,7 +59,7 @@ get_lines_containing_output <-
     }
     
     if (split_into_lines) {
-      output_lines <- stri_split_lines(output_lines, omit_empty = TRUE)
+      output_lines <- stri_split_lines(output_lines, omit_empty = FALSE)
     }
     return(output_lines)
   }

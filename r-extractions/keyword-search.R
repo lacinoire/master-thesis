@@ -19,7 +19,7 @@ source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 
 run_analysis <- function(file, keywords, context_width, step_results) {
   log <- read_build_log_from_file(file, sample_path)
-  lines <- unlist(stri_split_lines(log, omit_empty = TRUE))
+  lines <- unlist(stri_split_lines(log, omit_empty = FALSE))
 
   filtered_lines <- logical(length(lines))
   for (i in 1:length(keywords)) {
