@@ -5,6 +5,7 @@
 suppressPackageStartupMessages({
   library(optigrab)
   library(stringi)
+  library(purrr)
 })
 
 main_path <<- "/Users/Laci/Documents/Delft/master-thesis"
