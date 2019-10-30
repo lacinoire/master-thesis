@@ -26,6 +26,8 @@ RUN find /r-extractions/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/
 
 RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|ir|g' {} \;
 
+RUN find /r-extractions/. -type f -exec sed -i -e 's|context_size_factor <- 1|context_size_factor <- 0.5' {} \;
+
 WORKDIR "/evaluation"
 
 CMD ["ruby run-evaluation.rb"]

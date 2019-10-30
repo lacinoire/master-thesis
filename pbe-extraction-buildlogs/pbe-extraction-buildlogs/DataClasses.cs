@@ -10,6 +10,8 @@ namespace pbeextractionbuildlogs
 		public string ProgramName { get; set; }
 		public string LearnedProgram { get; set; }
 		public string TestInputPath { get; set; }
+		public int TestInputLineCount { get; set; }
+		public string TestCategory { get; set; }
 		public OutputType Output { get; set; }
 		public OutputType DesiredOutput { get; set; }
 		public bool Successful { get; set; }

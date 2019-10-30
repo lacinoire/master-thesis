@@ -45,6 +45,8 @@ getDataFrameForPBEResultsFile <- function(path) {
     allKeywords <- xmlValue(test[["AllKeywords"]][[1]])
     searchKeywords <- select_keywords_to_search(allKeywords)
     categories <- xmlValue(test[["Categories"]][[1]])
+    testInputLineCount <- xmlValue(test[["TestInputLineCount"]][[1]])
+    testCategory <- xmlValue(test[["TestCategory"]][[1]])
     
     data = rbind(
       data,
@@ -62,6 +64,9 @@ getDataFrameForPBEResultsFile <- function(path) {
         SearchKeywords = searchKeywords,
         AllKeywords = allKeywords,
         Categories = categories,
+        TestInputLineCount = testInputLineCount,
+        TestCategory = testCategory,
+        ContextSizeFactor = 1,
         stringsAsFactors = FALSE
       )
     )

@@ -37,6 +37,7 @@ run_learning_step <- function(train_examples, test_examples, step_results) {
   train_lines <- get_ided_line_samples(train_examples)
   test_lines <-
     get_ided_line_samples(test_examples, only_output_lines = FALSE)
+  step_results[1, "TestInputLineCount"] <- length(test_lines)
   total_lines <- rbind(train_lines, test_lines)
   
   prep_fun <- identity
@@ -107,13 +108,17 @@ run_learning_step <- function(train_examples, test_examples, step_results) {
   sorted_similarity_sums <- sort(similarity_sums, decreasing = TRUE)
 
   # select the lines to count as extracted
-  avg_output_line_count <- avg_output_line_count(train_examples)
+  context_size_factor <- 1
+  avg_output_line_count <- avg_output_line_count(train_examples) * context_size_factor
+
   filtered_similarity_sums <- sorted_similarity_sums[1:min(avg_output_line_count, length(sorted_similarity_sums))] 
   extracted_lines <-
     subset(test_lines, id %in% names(filtered_similarity_sums))
   step_results[1, "TestOutput"] <-
     join_extracted_lines(extracted_lines[["lines"]])
-  step_results[1, "TestInputPath"] <- train_examples[1, "input_path"]
+  step_results[1, "TestInputPath"] <- test_examples[1, "input_path"]
+  step_results[1, "TestCategory"] <- test_examples[1, "category"]
+  step_results[1, "ContextSizeFactor"] <- context_size_factor
   
   end_time_application <- Sys.time()
   step_results[1, "ApplicationDuration"] <-

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using Microsoft.ProgramSynthesis.DslLibrary;
@@ -50,6 +51,11 @@ namespace pbeextractionbuildlogs
 			StringRegion region = RegionSession.CreateStringRegion(text);
 			fileCache[path] = region;
 			return region;
+		}
+
+		public static int BuildlogLineCount(string path)
+		{
+			return File.ReadLines(path).Count();
 		}
 	}
 

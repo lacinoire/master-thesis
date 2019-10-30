@@ -69,6 +69,7 @@ namespace pbeextractionbuildlogs
 			ConsolePrinter consolePrinter = new ConsolePrinter(verbose);
 
 			var inputRegion = AnalysisUtil.RegionFromFile(inputPath);
+			result.TestInputLineCount = AnalysisUtil.BuildlogLineCount(inputPath);
 
 			consolePrinter.WriteLine("Starting to learn program");
 			Stopwatch learningStopwatch = Stopwatch.StartNew();

@@ -16,11 +16,19 @@ source(paste(main_path, "/r-extractions/utilities.R", sep = ""))
 source(paste(main_path, "/r-extractions/example-set.R", sep = ""))
 source(paste(main_path, "/evaluation/evaluate-results.R", sep = ""))
 
-run_analysis <- function(file, examples) {
+run_analysis <- function(file, examples, step_results) {
   log <- read_build_log_from_file(file, sample_path)
   lines <- unlist(stri_split_lines(log, omit_empty = TRUE))
 
-  return(join_extracted_lines(sample(lines, min(avg_output_line_count(examples), length(lines)))))
+  step_results[1, "TestInputLineCount"] <- length(lines)
+
+  # select the lines to count as extracted
+  context_size_factor <- 1
+  avg_output_line_count <- avg_output_line_count(examples) * context_size_factor
+  step_results[1, "ContextSizeFactor"] <- context_size_factor
+
+  step_results[1, "TestOutput"] <- join_extracted_lines(sample(lines, min(avg_output_line_count, length(lines))))
+  return(step_results)
 }
 
 run_random_extraction_step <- function(train_examples, test_examples, step_results) {
@@ -34,20 +42,20 @@ run_random_extraction_step <- function(train_examples, test_examples, step_resul
 
   start_time_application <- Sys.time()
 
-  output <- run_analysis(test_examples[1, "input_path"], train_examples)
+  step_results <- run_analysis(test_examples[1, "input_path"], train_examples, step_results)
 
   end_time_application <- Sys.time()
   step_results[1, "ApplicationDuration"] = sys_timing_to_time(start_time_application, end_time_application)
+  step_results[1, "TestCategory"] <- test_examples[1, "category"]
 
-  step_results[1, "TestOutput"] <- output
-  step_results
+  return(step_results)
 }
 
 run_random_selection_extraction <- function() {
   verb <- opt_get_verb()
 
   if (verb == "analyze") {
-    result <- run_analysis(file = opt_get("file"), examples = get_exampleset(opt_get("program")))
+    result <- run_analysis(file = opt_get("file"), examples = get_exampleset(opt_get("program")), empty_results_data_frame())[1, "TestOutput"]
     cat(result)
   } else if (verb == "evaluate") {
     program <- opt_get("program")

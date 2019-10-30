@@ -170,6 +170,9 @@ empty_results_data_frame <- function() {
       SearchKeywords = character(),
       AllKeywords = character(),
       Categories = character(),
+      TestInputLineCount = numeric(),
+      TestCategory = numeric(),
+      ContextSizeFactor = numeric(),
       stringsAsFactors = FALSE
     )
   )

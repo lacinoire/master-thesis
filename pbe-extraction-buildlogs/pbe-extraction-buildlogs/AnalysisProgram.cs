@@ -145,6 +145,7 @@ namespace pbeextractionbuildlogs
 				{
 					var analysisResult = ApplyToFileWithLearningData(Config.SAMPLE_DIRECTORY + testSample.InputPath, currentLearningData, new AnalysisResult<OutputType>(), false);
 					analysisResult.DesiredOutput = testSample.Output;
+					analysisResult.TestCategory = testSample.Category;
 					// Console.WriteLine(ConsoleOutput.PrintAnalysisResult(analysisResult, 0, true));
 					testResults.Add(analysisResult);
 				}
