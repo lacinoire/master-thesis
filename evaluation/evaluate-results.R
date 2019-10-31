@@ -18,7 +18,7 @@ getDataFrameForPBEResultsFile <- function(path) {
   oldw <- getOption("warn")
   options(warn = -1)
   
-  setwd(paste(main_path, "/evaluation/results/pbe", sep = ""))
+  setwd(paste(main_path, "/evaluation/results/context-factor-size/pbe", sep = ""))
   xml <- xmlTreeParse(file = path)
   
   data <- empty_results_data_frame()
@@ -45,8 +45,12 @@ getDataFrameForPBEResultsFile <- function(path) {
     allKeywords <- xmlValue(test[["AllKeywords"]][[1]])
     searchKeywords <- select_keywords_to_search(allKeywords)
     categories <- xmlValue(test[["Categories"]][[1]])
+    print('xxxx')
+    print(test)
     testInputLineCount <- xmlValue(test[["TestInputLineCount"]][[1]])
+    print(testInputLineCount)
     testCategory <- xmlValue(test[["TestCategory"]][[1]])
+    print(testCategory)
     
     data = rbind(
       data,
@@ -106,8 +110,8 @@ calculate_accuracy <- function(data) {
 
 save_evaluation_result <- function(result, program_name, technique, selection, learning_step_count, test_count) {
   result <- calculate_accuracy(result)
-  print(technique)
-  message(paste0(main_path, "/evaluation/results/", technique))
+  #print(technique)
+  #message(paste0(main_path, "/evaluation/results/", technique))
   setwd(paste0(main_path, "/evaluation/results/", technique))
   results_file_name <- evaluation_identification(technique, gsub("/", "@", program_name), selection, learning_step_count, test_count)
 
