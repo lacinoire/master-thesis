@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\chapter{Information Retrieval Techniques for Build Logs}
+\chapter{Chunk Retrieval Techniques for Build Logs}
 \plan{whole chapter: some reordering and reviewing to do, write about 3 pages about ir technique model classes and ir tasks and other techniques}
 \plan{write, 1/3 page, blocked by: rest of chapter}
 \label{sec:ir-techniques}
@@ -65,7 +65,7 @@ As the structure of a build log is not known to us, we describe build logs as se
 	\caption{Information retrievable from build logs}
 	\label{fig:build-log-information}
 \end{figure}
-\section{Retrievable Information in Build Logs}
+\section{Information Chunks in Build Logs}
 \label{sec:bli}
 Continuous integration build logs contain a huge amount of information about the stages in the CI build they correspond to.
 In this section, we present a model, which more precisely describes our notion of a information retrievable from a CI build log.
@@ -176,7 +176,7 @@ Within the build logs from Travis CI we found different information types possib
 	\caption{Model for an Information Retrieval Technique}
 	\label{fig:model-ie-technique}
 \end{figure}
-\section{Characteristics of Information Retrieval Techniques}
+\section{Characteristics of Chunk Retrieval Techniques}
 \label{sec:blirt}
 \plan{describe model classes, 1 page text}
 For this thesis, we want to evaluate different information retrieval techniques when applied to CI build logs.
@@ -200,31 +200,31 @@ A BLIRT
 
 The last sections of this chapter show instantiations of this model for the three techniques we analyze and an additional one from related works.
 
-\section{Information Retrieval Tasks}
-\label{sec:blir-tasks}
-\plan{what do we need here?, come up with model if we keep this, 1 page text max.}
-Previous sections gave various examples of situations where a developer or a researcher wants to retrieve information from a build log.
-The goal of this work is to clarify which BLIRT is suited for their specific task.
-In this section we structure we present different important characteristics of such an IR task.
-You can see the model in Figure \ref{fig:model-ir-task}
+% \section{Information Retrieval Tasks}
+% \label{sec:blir-tasks}
+% \plan{what do we need here?, come up with model if we keep this, 1 page text max.}
+% Previous sections gave various examples of situations where a developer or a researcher wants to retrieve information from a build log.
+% The goal of this work is to clarify which BLIRT is suited for their specific task.
+% In this section we structure we present different important characteristics of such an IR task.
+% You can see the model in Figure \ref{fig:model-ir-task}
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/ir-task.pdf}
-	\caption{Model for an Information Retrieval Task}
-	\label{fig:model-ir-task}
-\end{figure}
+% \begin{figure}[htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth, clip]{img/ir-task.pdf}
+% 	\caption{Model for an Information Retrieval Task}
+% 	\label{fig:model-ir-task}
+% \end{figure}
 
-A InformationRetrievalTask
-\begin{itemize}
-	\item has a specific amount and kind of \textbf{Configuration} available.
-	      This represents how much data is available for the technique to learn what to extract.
-	      For a BLIRT to be suited the available configuration has to match the needed configuration of the technique.
-	\item is connected to a \textbf{TextProcessor} retrieving the output.
-	      This can be for example a developer reading the output or a program.
-	      Different TextProcessors require different accuracies in the output, e.g. a program needs exact retrievals to process automatically, while a developer can cope easier with falsely extracted lines.
-\end{itemize}
-\todo{give 2-3 concrete example instantiations here}
+% A InformationRetrievalTask
+% \begin{itemize}
+% 	\item has a specific amount and kind of \textbf{Configuration} available.
+% 	      This represents how much data is available for the technique to learn what to extract.
+% 	      For a BLIRT to be suited the available configuration has to match the needed configuration of the technique.
+% 	\item is connected to a \textbf{TextProcessor} retrieving the output.
+% 	      This can be for example a developer reading the output or a program.
+% 	      Different TextProcessors require different accuracies in the output, e.g. a program needs exact retrievals to process automatically, while a developer can cope easier with falsely extracted lines.
+% \end{itemize}
+% \todo{give 2-3 concrete example instantiations here}
 
 
 \begin{figure}[htbp]
@@ -243,11 +243,10 @@ A InformationRetrievalTask
 	\end{minipage}
 \end{figure}
 
-\section{Regular Expression Program Synthesis by Example}
+\subsection{Regular Expression Program Synthesis by Example (PBE)}
 \label{sec:expl-pbe}
 \plan{2 caro-reviews before finalized}
 
-\subsection{Introduction}
 \emph{Programming by Example (PBE)} is a technique where programs are synthesized according to in and output examples provided by the user.
 It enables users to create programs without requiring programming knowledge~\cite{mayer2015user}.
 Applied to the task of text extraction through regular expressions it relieves the developer from having to understand the whole document structure to solve a single extraction task~\cite{le2014flashextract:}.
@@ -256,7 +255,7 @@ In this work, we refer to our interpretation of this technique as \emph{PBE}.
 In the following we will explain the concept of how we apply PBE to information retrieval from CI build logs, the concrete implementation is described in \ref{sec:impl-pbe}.
 Figure \ref{fig:prose-explanation} shows the instantiation of the BLIRT model for PBE.
 
-\subsection{Method}
+\paragraph{Method}
 In/Output examples (I/O examples) are the main driver of Programming by Example.
 When extracting information from build logs the \emph{input} is always a whole build log, i.e. the whole text of the build log file without any preprocessing.
 In the implementation, we had to apply a few text replacements as described in \ref{sec:impl-preprocessing}.
@@ -266,42 +265,41 @@ Our approach is based on the Flash Extract DSL, which in turn is based on the Fl
 Both are described in Section \ref{sec:rw-prose}.
 %For execution PBE takes a build file as input and returns a substring of the build file content.
 
-\subsection{Perspective: Usability vs. Technical Aspects}
-Generally, we are interested in whether Programming by Example could replace manually writing regular expressions.
-Writing and especially maintaining regular expressions is known to be a difficult, tedious and error-prone task~\cite{michael2019regexes}.
-There are two ways to approach this question: from the usability side or the technical side.
+% \subsection{Perspective: Usability vs. Technical Aspects}
+% Generally, we are interested in whether Programming by Example could replace manually writing regular expressions.
+% Writing and especially maintaining regular expressions is known to be a difficult, tedious and error-prone task~\cite{michael2019regexes}.
+% There are two ways to approach this question: from the usability side or the technical side.
 
-When studying the applicability of PBE from the \emph{usability} perspective you run into questions like
-\begin{itemize}
-	\item Are users faster when using PBE compared to manual regex construction?
-	\item Are users more comfortable using PBE over manual regex construction?
-	\item Are users confident in the resulting regular expression program from PBE?
-	\item Are the resulting extractions more or less accurate when using PBE over manual regex construction?
-\end{itemize}
-Some of these were already evaluated in existing works about PBE and user interaction~\cite{mayer2015user,lau2009why-programming-by-demonstration,miller2001outlier}.
-Adequately answering those questions is however highly dependent on the user interface and the corresponding interaction model used during a study.
-Developers who are accustomed to crunching on regular expressions in their favorite IDE or Editor might have an adversely negative view on synthesizing programs from examples in an unknown interface.
-Mayer et al.~\cite{mayer2015user} presented two system-user interaction models to improve the confidence of users into the programs synthesized from their examples.
-We feel such questions of usability can be answered separately from the application domain of build logs.
+% When studying the applicability of PBE from the \emph{usability} perspective you run into questions like
+% \begin{itemize}
+% 	\item Are users faster when using PBE compared to manual regex construction?
+% 	\item Are users more comfortable using PBE over manual regex construction?
+% 	\item Are users confident in the resulting regular expression program from PBE?
+% 	\item Are the resulting extractions more or less accurate when using PBE over manual regex construction?
+% \end{itemize}
+% Some of these were already evaluated in existing works about PBE and user interaction~\cite{mayer2015user,lau2009why-programming-by-demonstration,miller2001outlier}.
+% Adequately answering those questions is however highly dependent on the user interface and the corresponding interaction model used during a study.
+% Developers who are accustomed to crunching on regular expressions in their favorite IDE or Editor might have an adversely negative view on synthesizing programs from examples in an unknown interface.
+% Mayer et al.~\cite{mayer2015user} presented two system-user interaction models to improve the confidence of users into the programs synthesized from their examples.
+% We feel such questions of usability can be answered separately from the application domain of build logs.
 
-For our work, we chose to look at the applicability of PBE from the \emph{technical} perspective.
-We investigate whether current program synthesis techniques can learn programs for information retrieval tasks in the domain of CI build logs.
-Furthermore, we gather insights into how PBE has to be applied to yield useable results and perform best.
-Our implementation of PBE is mainly based on the Flash Extract DSL~\cite{le2014flashextract:} of the PROSE library by Microsoft~\cite{prose2019webpage}.
-Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
+% For our work, we chose to look at the applicability of PBE from the \emph{technical} perspective.
+% We investigate whether current program synthesis techniques can learn programs for information retrieval tasks in the domain of CI build logs.
+% Furthermore, we gather insights into how PBE has to be applied to yield useable results and perform best.
+% Our implementation of PBE is mainly based on the Flash Extract DSL~\cite{le2014flashextract:} of the PROSE library by Microsoft~\cite{prose2019webpage}.
+% Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
 
-\section{Text Similarity}
+\subsection{Common Text Similarity (CTS)}
 \label{sec:expl-ts}
 \plan{2 caro-reviews before finalized}
 
-\subsection{Introduction}
 Text Similarity approaches are more and more used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
 One common and simple technique the Vector Space Model~\cite{schutze2008introduction}.
 We investigate when it is a suitable technique to retrieve information from build logs.
 In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs (TS), the concrete implementation is described in \ref{sec:impl-ts}.
 Figure \ref{fig:text-similarity-explanation} shows the instantiation of the BLIRT model for TS.
 
-\subsection{Method}
+\paragraph{Method}
 To configure a retrieval though text similarity we chose to use the same concept of I/O examples as for PBE.
 The lines of the output strings of a given example set define our search query.
 
@@ -335,24 +333,26 @@ The average number of lines in the I/O example output strings determines how man
 	\end{minipage}
 \end{figure}
 
-\section{Simple Keyword Search}
+\subsection{Keyword Search (KWS)}
 \label{sec:expl-skws}
 \plan{2 caro-reviews before finalized}
 
-\subsection{Introduction}
 When we are looking for a specific piece of information within a great amount of unstructured information, a first ad-hoc approach is to search for keywords in the text we assume to be near the information we are looking for.
 This was one of the most common approaches we took when searching for the build failure reason within a log when creating our data set.
 As this is a technique readily available in many tools developers use to view build logs, we want to study when such a simple search for keywords is recommendable for retrieving information from CI build logs.
 In the following we will explain how we use simple keyword search to retrieve information from CI build logs (SKWS), the concrete implementation is described in \ref{sec:impl-skws}.
 Figure \ref{fig:keyword-search-explanation} shows the instantiation of the BLIRT model for SKWS.
 
-\subsection{Method}
+\paragraph{Method}
 SKWS is configured by giving a set of keywords.
 For a retrieval run, we take a whole build log file as input and search for all exact occurrences of the keywords.
 As keywords are often not directly describing the desired information but rather adjacent to the desired information, this technique not only retrieves the line with the keyword but also the context around it.
 We chose a context of 10 lines above and below the keyword appearance.
 
-\section{Further Techniques}
+
+\subsection{Random Line Retrieval (RLR)}
+
+\subsection{Other Techniques}
 \label{sec:expl-rlr}
 \plan{decide: what to mention here, max 1 page text}
 

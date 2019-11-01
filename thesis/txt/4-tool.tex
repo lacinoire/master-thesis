@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\chapter{Information Retrieval Tool}
+\chapter{Tool Implementation}
 \label{sec:implementation}
 We implemented prototypes for our three focus information retrieval techniques to evaluate them on our collected build logs.
 This section will present our unified interface and describe the implementation of each of the techniques.
@@ -17,7 +17,7 @@ This section will present our unified interface and describe the implementation 
 	\label{fig:tool}
 \end{figure}
 
-\section{Common Interface}
+%\section{Common Interface}
 \begin{lstlisting}
 Usage: ruby run-extraction.rb -a analyze -t <technique: ir, pbe, random> -e <example_set> -p <path_to_file_to_analyze>
        ruby run-extraction.rb -a evaluate -t <technique: ir, pbe, keyword, random> -e <example_set> -s <selection_technique> -l <step_count_for_learning> -c <test_count>
@@ -48,21 +48,21 @@ unification tool, reference CLI somehow nicely?,
 
 ruby tool, unifies different syntax command line interfaces of the other tools, easy to switch between different techniques (NOT TOO LONG)
 
-\section{Overall Implementation Remarks}
+%\section{Overall Implementation Remarks}
 There are multiple implementation specialities that span over all languages, frameworks and implemented techniques.
 The following section discusses preprocessing and escaping of the parsed build log files / example sets, as well as ... \todo{more?}
 
 \subsection*{Preprocessing Log Text}
 \label{sec:impl-preprocessing}
 
-\section{PROSE Program Synthesis}
+%\section*{PBE}
 \label{sec:impl-pbe}
 The first technique we implemented was the PROSE regular expression program synthesis. As it is based on the PROSE library from Microsoft provided in C\# we also chose C\# for our tool. 
 implementation details :)
 
 C\#, based on PROSE Text Extraction DSL, parsing example set files, feeding learning session \& applying learned regex program, can do single string extraction and also sequence extraction \& showing differentiating examples (although not in use)
 
-\section{IR Similarity}
+%\section*{IR Similarity}
 \label{sec:impl-ts}
 impl details,
 
@@ -70,7 +70,7 @@ R, text2vec, tokenized vectors, impl of preprocessing?
 
 don't repeat from IE models section!
 
-\section{Keyword search}
+%\section*{Keyword search}
 \label{sec:impl-skws}
 impl details,
 
