@@ -9,7 +9,7 @@
 \plan{write, 1/3 page, blocked by: other sections}
 \label{sec:rw}
 \todo{introduction \& glue text}
-This section presents various research works adjecent or foundational for our work. Starting with studies about Continuous Integration used in software projects, we move on to past works about build log analysis and their augmentation. We differentiate our work from the more common production runtime log analysis and cover different information retrieval techniques. Lastly this section mentions different Programming by Example resources surrounding Microsoft's work on the PROSE library.
+This section presents various research works adjacent or foundational for our work. Starting with studies about Continuous Integration used in software projects, we move on to past works about build log analysis and their augmentation. We differentiate our work from the more common production runtime log analysis and cover different information retrieval techniques. Lastly this section mentions different Programming by Example resources surrounding Microsoft's work on the PROSE library.
 
 \section{Continuous Integration}
 \plan{extend, 1 page}
@@ -26,7 +26,7 @@ Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes d
 
 Amar et al.~\cite{amar2019mining} reduced the lines of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
 
-\section{Production Log Analysis}
+\section{System Log Analysis}
 \plan{research + write, 1/2 - 1 page}
 \mention{logpai and drain, [7] K. Fisher and D. Walker. The pads project: an overview. In ICDT,
 2011.
@@ -37,33 +37,6 @@ by contributing along several dimensions: development of domain specific languag
 }
 
 \mention{ask Jean?}
-
-\section{Information Extraction and Retrieval Techniques}
-\plan{research + write, 1/2 - 1 page}
-\todo{explain difference here, reference pads(maybe that is already in log anlysis!) and stuff}
-\review{Getting the general tot p cic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
-Instead of receiving a paragraph which is similar to a given query, our works focus more on obtaining specific pieces of texts through regular expressions.}
-
-
-
-\mention{IR papers, maybe something about keyword search?}
-
-\section{Program Synthesis by Example}
-\label{sec:rw-prose}
-\plan{extend, 1 page}
-\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
-\review{
-Le et al.~\cite{le2014flashextract:} developed FlashExtract as part of the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework. It is a tool which synthesizes text extraction programs from semi-structured text based on a few given examples. Users can extract multiple fields and structure them with hierarchy and sequence. FlashExtract eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
-
-We are applying FlashExtract to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information retrieval.
-}
-\mention{prose theory paper \cite{polozov2015flashmeta:}}
-\mention{\cite{rolim2017learning}}
-
-\todo{maybe scrap this section / incorporate last sentence somewhere else, expalnation will mostly be in rw. How to usefully sturcture the stuff above this?}
-In the following we want to give an impression on how the PROSE library and specifically the Flash Extract DSL synthesize programs for extracting substrings from text via regular expressions.
-\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
-Our approach is based on the Flash Extract DSL, which in turn is based on the FlashMeta algorithm. Both are described in \todo{ref rw sections}.
 
 \section{Semi-Structured Data}
 \plan{finalized, out for review}
@@ -92,4 +65,31 @@ The structure of build logs
 Abiteboul proposes an approach to overlay the semi-structured data with a structured layer.
 The additional layer can answer queries and give access to the semi-structured data relevant to the query.
 In contrast to that, this thesis takes a look at techniques to gater a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
+
+\section{Information Extraction and Retrieval Techniques}
+\plan{research + write, 1/2 - 1 page}
+\todo{explain difference here, reference pads(maybe that is already in log anlysis!) and stuff}
+\review{Getting the general tot p cic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
+Instead of receiving a paragraph which is similar to a given query, our works focus more on obtaining specific pieces of texts through regular expressions.}
+
+
+
+\mention{IR papers, maybe something about keyword search?}
+
+\section{Program Synthesis by Example}
+\label{sec:rw-prose}
+\plan{extend, 1 page}
+\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
+\review{
+Le et al.~\cite{le2014flashextract:} developed FlashExtract as part of the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework. It is a tool which synthesizes text extraction programs from semi-structured text based on a few given examples. Users can extract multiple fields and structure them with hierarchy and sequence. FlashExtract eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
+
+We are applying FlashExtract to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information retrieval.
+}
+\mention{prose theory paper \cite{polozov2015flashmeta:}}
+\mention{\cite{rolim2017learning}}
+
+\todo{maybe scrap this section / incorporate last sentence somewhere else, expalnation will mostly be in rw. How to usefully sturcture the stuff above this?}
+In the following we want to give an impression on how the PROSE library and specifically the Flash Extract DSL synthesize programs for extracting substrings from text via regular expressions.
+\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
+Our approach is based on the Flash Extract DSL, which in turn is based on the FlashMeta algorithm. Both are described in \todo{ref rw sections}.
 \end{document}
