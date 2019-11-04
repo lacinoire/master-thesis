@@ -6,15 +6,18 @@ For each mentioned repository/buildlog here, look up the corresponding n-th log 
 ###
 #### "n"    "repo"
 #### [7    BuildFailureReason/Elixir/phoenixframework@phoenix](../tool/samples/Elixir/elixir-lang@elixir/failed/572202566.log)
-→== Compilation error in file test/elixir/list_test.exs ==
+→
+== Compilation error in file test/elixir/list_test.exs ==
 ** (CompileError) (for doctest at) lib/list.ex:102: undefined function i/1
     (elixir 1.10.0-dev) src/elixir_locals.erl:108: :elixir_locals."-ensure_no_undefined_local/3-lc$^0/1-0-"/2
     (elixir 1.10.0-dev) src/elixir_locals.erl:109: anonymous fn/3 in :elixir_locals.ensure_no_undefined_local/3
 Makefile:270: recipe for target 'test_stdlib' failed
-make: *** [test_stdlib] Error 1←
+make: *** [test_stdlib] Error 1
+←
 
 #### [10   BuildFailureReason/Scala/twitter@finagle](../tool/samples/Scala/twitter@finagle/failed/572992106.log)
-→WARNING: DarkTrafficFilter Failed invocation: fail
+→
+WARNING: DarkTrafficFilter Failed invocation: fail
 java.lang.Exception: fail
 	at com.twitter.finagle.exp.DarkTrafficFilterTest$$anonfun$4$$anon$5$$anon$2.apply(DarkTrafficFilterTest.scala:71)
 	at com.twitter.finagle.exp.DarkTrafficFilterTest$$anonfun$4$$anon$5$$anon$2.apply(DarkTrafficFilterTest.scala:70)
@@ -63,10 +66,12 @@ java.lang.Exception: fail
 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)←
+	at java.lang.Thread.run(Thread.java:748)
+←
 
 #### [4    BuildFailureReason/Java/ReactiveX@RxJava](../tool/samples/Java/ReactiveX@RxJava/failed/563267830.log)
-→io.reactivex.internal.operators.flowable.FlowableRefCountTest > publishNoLeak FAILED
+→
+io.reactivex.internal.operators.flowable.FlowableRefCountTest > publishNoLeak FAILED
     java.lang.AssertionError: 19,199,656 -> 115,794,992
         at org.junit.Assert.fail(Assert.java:88)
         at org.junit.Assert.assertTrue(Assert.java:41)
@@ -75,10 +80,10 @@ java.lang.Exception: fail
 11155 tests completed, 1 failed, 213 skipped
 :test FAILED
 
-FAILURE: Build failed with an exception.←
+FAILURE: Build failed with an exception.
+←
 
 #### [7    BuildFailureReason/Haskell/purescript@purescript](../tool/samples/Haskell/purescript@purescript/failed/573124345.log)
-→
 →
 m [31;22m        Error found:
         in module [33mMain[0m
@@ -158,8 +163,8 @@ m [31;22m        Error found:
         
         
         See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
-        or to contribute content related to this error.←
-	←
+        or to contribute content related to this error.
+←
 
 #### [1    BuildFailureReason/Erlang/erlang@otp](../tool/samples/Erlang/erlang@otp/failed/546804521.log)
 →
@@ -558,14 +563,16 @@ make: *** [emulator] Error 2
 ←
 
 #### [1    BuildFailureReason/C++/bitcoin@bitcoin](../tool/samples/C++/bitcoin@bitcoin/failed/567118690.log)
-→* Checking consistency between dispatch tables and vRPCConvertParams
+→
+* Checking consistency between dispatch tables and vRPCConvertParams
 src/test/test_framework/util.h seems to be missing the expected include guard:
   #ifndef BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
   #define BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
   ...
   #endif // BITCOIN_TEST_TEST_FRAMEWORK_UTIL_H
 
-^---- failure generated from test/lint/lint-include-guards.sh←
+^---- failure generated from test/lint/lint-include-guards.sh
+←
 
 #### [7    BuildFailureReason/Swift/SwiftyJSON@SwiftyJSON](../tool/samples/Swift/SwiftyJSON@SwiftyJSON/failed/431817062.log)
 →
@@ -638,13 +645,15 @@ The following build commands failed:
 ←
 
 #### [2    BuildFailureReason/Python/scikit-learn@scikit-learn](../tool/samples/Python/scikit-learn@scikit-learn/failed/562396459.log)
-→PackagesNotFoundError: The following packages are not available from current channels:
+→
+PackagesNotFoundError: The following packages are not available from current channels:
 
   - python=3.4
   - scipy=0.16.1
   - pillow=4.0.0
   - cython=0.25.2
-  - numpy=1.10.4←
+  - numpy=1.10.4
+←
 
 #### [3    BuildFailureReason/Rust/BurntSushi@ripgrep](../tool/samples/Rust/BurntSushi@ripgrep/failed/524430085.log)
 →
