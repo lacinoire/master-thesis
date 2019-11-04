@@ -2858,7 +2858,7 @@ tests/test_conf.py::test_get_user_dir_path[True-/user/test/config/-~/.thefuck]
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -2909,7 +2909,7 @@ tests/test_conf.py::test_get_user_dir_path[True-~/.config-~/.thefuck]
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -2951,7 +2951,7 @@ collected 1609 items / 1 errors / 1608 selected                                [
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -2993,7 +2993,7 @@ collected 1609 items / 1 errors / 1608 selected                                [
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -3219,7 +3219,7 @@ tests/test_conf.py::test_get_user_dir_path[True-~/.config-~/.thefuck]
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -3445,7 +3445,7 @@ tests/test_conf.py::test_get_user_dir_path[True-~/.config-~/.thefuck]
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -3682,7 +3682,7 @@ tests/test_conf.py::test_get_user_dir_path[True-~/.config-~/.thefuck]
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -3838,7 +3838,7 @@ tests/test_conf.py::test_get_user_dir_path[True-~/.config-~/.thefuck]
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -3876,7 +3876,7 @@ travis_time:start:029bc664
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -3933,7 +3933,7 @@ tests/test_conf.py::test_get_user_dir_path[True-~/.config-~/.thefuck]
 ```
 
 ##### Category
-→←
+→Test←
 
 #### BuildFailureReason/Swift/Alamofire@Alamofire
 ##### BuildFailureReason & Context
@@ -4033,7 +4033,7 @@ Alamofire_iOS_Tests.SessionTestCase
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4132,7 +4132,7 @@ Alamofire_macOS_Tests.SessionTestCase
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4199,7 +4199,7 @@ Alamofire_iOS_Tests.SessionTestCase
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4248,7 +4248,7 @@ Test Suite [39;1mAlamofire iOS Tests.xctest[0m started
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4299,7 +4299,7 @@ Alamofire_iOS_Tests.StatusCodeValidationTestCase
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4366,7 +4366,7 @@ Alamofire_iOS_Tests.UploadRequestEventsTestCase
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4415,7 +4415,7 @@ Test Suite [39;1mAlamofire tvOS Tests.xctest[0m started
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4466,7 +4466,7 @@ Alamofire_iOS_Tests.UploadMultipartFormDataTestCase
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4517,7 +4517,7 @@ Alamofire_iOS_Tests.TLSEvaluationExpiredLeafCertificateTestCase
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4570,7 +4570,7 @@ travis_time:start:0988a2ba
 ```
 
 ##### Category
-→←
+→Test←
 
 #### BuildFailureReason/Perl/sjdy521@Mojo-Webqq
 ##### BuildFailureReason & Context
@@ -4609,7 +4609,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4647,7 +4647,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4685,7 +4685,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4723,7 +4723,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4761,7 +4761,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4799,7 +4799,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4837,7 +4837,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4875,7 +4875,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4913,7 +4913,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 ##### BuildFailureReason & Context
 ```
@@ -4951,7 +4951,7 @@ Test Summary Report
 ```
 
 ##### Category
-→←
+→Test←
 
 
 
