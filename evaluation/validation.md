@@ -1011,7 +1011,50 @@ curl: (22) The requested URL returned error: 404 Not Found
 ←
 
 #### [3    BuildFailureReason/C#/powershell@PowerShell](../tool/samples/C%23/powershell@PowerShell/failed/535987243.log)
-→←
+→
+Run dotnet restore /home/travis/build/PowerShell/PowerShell/src/powershell-unix --runtime linux-x64 --verbosity quiet
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version.  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1)  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1) [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version. 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1) 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1)
+Failed to restore /home/travis/build/PowerShell/PowerShell/src/powershell-unix, retrying...
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version.  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1)  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1) [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version. 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1) 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1)
+Failed to restore /home/travis/build/PowerShell/PowerShell/src/powershell-unix, retrying...
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version.  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1)  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1) [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version. 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1) 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1)
+Failed to restore /home/travis/build/PowerShell/PowerShell/src/powershell-unix, retrying...
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version.  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1)  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1) [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version. 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1) 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1)
+Failed to restore /home/travis/build/PowerShell/PowerShell/src/powershell-unix, retrying...
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version.  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1)  [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj : error NU1605:  Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1) [/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj]
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605: Detected package downgrade: System.Data.SqlClient from 4.6.1 to 4.5.1. Reference the package directly from the project to select a different version. 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> Microsoft.Windows.Compatibility 2.1.1 -> System.Data.SqlClient (>= 4.6.1) 
+/home/travis/build/PowerShell/PowerShell/src/powershell-unix/powershell-unix.csproj : error NU1605:  pwsh -> Microsoft.PowerShell.SDK -> System.Data.SqlClient (>= 4.5.1)
+Failed to restore /home/travis/build/PowerShell/PowerShell/src/powershell-unix, retrying...
+Execution of { dotnet restore $project $RestoreArguments } by build.psm1: line 519 failed with exit code 1
+At /home/travis/build/PowerShell/PowerShell/build.psm1:2038 char:17
++                 throw $errorMessage
++                 ~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : OperationStopped: (Execution of { dotn\u2026ed with exit code 1:String) [], RuntimeException
++ FullyQualifiedErrorId : Execution of { dotnet restore $project $RestoreArguments } by build.psm1: line 519 failed with exit code 1
+←
 
 #### [6    BuildFailureReason/Clojure/technomancy@leiningen](../tool/samples/Clojure/technomancy@leiningen/failed/242689049.log)
 →
@@ -1029,7 +1072,17 @@ nl      [31mAssertionError: wanted fileName:/var/folders/bb/n7t3rs157850byt_jfdc
 ←
 
 #### [4    BuildFailureReason/C#/NancyFx@Nancy](../tool/samples/C%23/NancyFx@Nancy/failed/382556234.log)
-→←
+→
+[m[37m=== TEST EXECUTION SUMMARY ===
+[m[37m   Nancy.Testing.Tests  Total: 151, Errors: 0, Failed: 1, Skipped: 0, Time: 3.917s
+[m[m[?1h=[41m[37mAn error occurred when executing task '[41m[37mTest[41m[37m'.[39;49m
+[41m[37mError: [41m[37mOne or more errors occurred.[39;49m
+[41m[37m	[41m[37mOne or more tests failed during execution of: Nancy.Testing.Tests.csproj[39;49m
+[?1l>[39;49m
+travis_time:end:05da6dee:start=1527064484406502294,finish=1527064680549233434,duration=196142731140
+[0K
+[31;1mThe command "./build.sh --verbosity=minimal" exited with 1.[0m
+←
 
 #### [3    BuildFailureReason/Clojure/LightTable@LightTable](../tool/samples/Clojure/LightTable@LightTable/failed/557187552.log)
 →
