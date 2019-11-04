@@ -1176,7 +1176,7 @@ travis_fold:start:cache.2
 ```
 
 ##### Keywords
-→, , ←
+→Error, crash, ←
 
 #### 4    BuildFailureReason/Rust/redox-os@redox
 ##### BuildFailureReason & Context
@@ -1264,7 +1264,7 @@ make[1]: Leaving directory `/home/travis/build/redox-os/redox'
 ```
 
 ##### Keywords
-→, , ←
+→error, incompatible, ←
 
 #### 3    BuildFailureReason/Lua/luvit@luvit
 ##### BuildFailureReason & Context
@@ -1327,7 +1327,7 @@ travis_time:end:0893ba80:start=1494884096579313719,finish=1494884098554894368,du
 ```
 
 ##### Keywords
-→, , ←
+→fail, error, ←
 
 #### 9    BuildFailureReason/Ruby/rails@rails
 ##### BuildFailureReason & Context
@@ -1371,7 +1371,7 @@ ThreadError: queue empty
 ```
 
 ##### Keywords
-→, , ←
+→error, , ←
 
 #### 5    BuildFailureReason/Ruby/discourse@discourse
 ##### BuildFailureReason & Context
@@ -1412,7 +1412,7 @@ Input path: Ruby/discourse@discourse/failed/566028969.log
 ```
 
 ##### Keywords
-→, , ←
+→errors, merror, problems←
 
 #### 5    BuildFailureReason/HTML/google@web-starter-kit
 ##### BuildFailureReason & Context
@@ -1457,7 +1457,7 @@ Input path: HTML/google@web-starter-kit/failed/348097360.log
 ```
 
 ##### Keywords
-→, , ←
+→merror, errors, problems←
 
 #### 9    BuildFailureReason/R/rstudio@shiny
 ##### BuildFailureReason & Context
@@ -1498,7 +1498,7 @@ travis_time:end:0e4f2050:start=1566505346503307705,finish=1566505348319267283,du
 ```
 
 ##### Keywords
-→, , ←
+→rebuild, exited, ←
 
 #### 4    BuildFailureReason/TeX/cplusplus@draft
 ##### BuildFailureReason & Context
@@ -1536,7 +1536,7 @@ travis_time:start:0d5a0e19
 ```
 
 ##### Keywords
-→, , ←
+→Overfull, , ←
 
 #### 8    BuildFailureReason/TeX/adambard@learnxinyminutes-docs
 ##### BuildFailureReason & Context
@@ -1574,7 +1574,7 @@ Tasks: TOP => default => return_code
 ```
 
 ##### Keywords
-→, , ←
+→FAILURE, failed, aborted←
 
 #### 3    BuildFailureReason/JavaScript/FreeCodeCamp@freecodecamp
 ##### BuildFailureReason & Context
@@ -1619,7 +1619,7 @@ npm ERR! Failed at the @freecodecamp/freecodecamp@0.0.1 test:curriculum script.
 ```
 
 ##### Keywords
-→, , ←
+→failing, error, failed←
 
 #### 6    BuildFailureReason/CSS/google@material-design-icons
 ##### BuildFailureReason & Context
@@ -1655,7 +1655,7 @@ Done. Your build exited with 1.
 ```
 
 ##### Keywords
-→, , ←
+→found, no, ←
 
 #### 10   BuildFailureReason/CoffeeScript/postcss@autoprefixer
 ##### BuildFailureReason & Context
@@ -1694,7 +1694,7 @@ travis_time:end:0c46979e:start=1562290189074795360,finish=1562290227622341454,du
 ```
 
 ##### Keywords
-→, , ←
+→exceeded, merror, failed←
 
 #### 3    BuildFailureReason/PHP/symfony@symfony
 ##### BuildFailureReason & Context
@@ -1762,7 +1762,7 @@ travis_time:end:2433ff6f:start=1564764240287006866,finish=1564764246304258960,du
 ```
 
 ##### Keywords
-→, , ←
+→failures, failed, ←
 
 #### 3    BuildFailureReason/C++/electron@electron
 ##### BuildFailureReason & Context
@@ -1810,7 +1810,7 @@ Error: Cannot find module 'fast-deep-equal'
 ```
 
 ##### Keywords
-→, , ←
+→Error, failed, ←
 
 #### 7    BuildFailureReason/VimL/mhinz@vim-galore
 ##### BuildFailureReason & Context
@@ -1844,7 +1844,7 @@ Done. Your build exited with 1.
 ```
 
 ##### Keywords
-→, , ←
+→longer, , ←
 
 #### 5    BuildFailureReason/VimL/neovim@neovim
 ##### BuildFailureReason & Context
@@ -1969,7 +1969,7 @@ stack traceback:
 ```
 
 ##### Keywords
-→, , ←
+→ERROR, ABORTING, ←
 
 #### 7    BuildFailureReason/C/vim@vim
 ##### BuildFailureReason & Context
@@ -2014,7 +2014,7 @@ travis_time:end:0dcc1920:start=1562861881455871857,finish=1562862066444826062,du
 ```
 
 ##### Keywords
-→, , ←
+→FAILED, failures, error←
 
 #### 9    BuildFailureReason/Shell/tldr-pages@tldr
 ##### BuildFailureReason & Context
@@ -2056,7 +2056,7 @@ travis_time:start:1844cc1e
 ```
 
 ##### Keywords
-→, , ←
+→Error, , ←
 
 #### 1    BuildFailureReason/C++/BVLC@caffe
 ##### BuildFailureReason & Context
@@ -2096,7 +2096,7 @@ See also "/home/travis/build/BVLC/caffe/build/CMakeFiles/CMakeError.log".
 ```
 
 ##### Keywords
-→, , ←
+→Error, incomplete, ←
 
 #### 2    BuildFailureReason/Elixir/elixir-lang@elixir
 ##### BuildFailureReason & Context
@@ -2138,7 +2138,7 @@ Randomized with seed 695442
 ```
 
 ##### Keywords
-→, , ←
+→invalid, error, ←
 
 #### 2    BuildFailureReason/Python/vinta@awesome-python
 ##### BuildFailureReason & Context
@@ -2175,7 +2175,7 @@ Done. Your build exited with 1.
 ```
 
 ##### Keywords
-→, , ←
+→Issues, , ←
 
 #### 8    BuildFailureReason/R/twitter@AnomalyDetection
 ##### BuildFailureReason & Context
@@ -2228,7 +2228,7 @@ travis_time:end:13d1edc8:start=1438888850359469323,finish=1438888892985538738,du
 ```
 
 ##### Keywords
-→, , ←
+→ERROR, failure, halted ←
 
 #### 3    BuildFailureReason/Lua/martanne@vis
 ##### BuildFailureReason & Context
@@ -2267,7 +2267,7 @@ travis_time:start:26f593ac
 ```
 
 ##### Keywords
-→, , ←
+→undefined, error, ←
 
 #### 3    BuildFailureReason/Scala/akka@akka
 ##### BuildFailureReason & Context
@@ -2317,7 +2317,7 @@ travis_fold:start:before_cache.1
 ```
 
 ##### Keywords
-→, , ←
+→failed, , ←
 
 #### 8    BuildFailureReason/TypeScript/Microsoft@TypeScript
 ##### BuildFailureReason & Context
@@ -2394,7 +2394,7 @@ Input path: TypeScript/Microsoft@TypeScript/failed/567134594.log
 ```
 
 ##### Keywords
-→, , ←
+→failing, error, ←
 
 #### 6    BuildFailureReason/Haskell/jgm@pandoc
 ##### BuildFailureReason & Context
@@ -2447,7 +2447,7 @@ Input path: Haskell/jgm@pandoc/failed/480353000.log
 ```
 
 ##### Keywords
-→, , ←
+→FAIL, , ←
 
 #### 9    BuildFailureReason/Java/square@retrofit
 ##### BuildFailureReason & Context
@@ -2524,7 +2524,7 @@ INFO: MockWebServer[36448] received request: GET / HTTP/1.1 and responded: HTTP/
 ```
 
 ##### Keywords
-→, , ←
+→Errors, failure, NullPointerException←
 
 #### 10   BuildFailureReason/Shell/jwilder@nginx-proxy
 ##### BuildFailureReason & Context
@@ -2707,7 +2707,7 @@ Custom dhparam.pem file found, generation skipped
 ```
 
 ##### Keywords
-→, , ←
+→FAILED, FAILURES, ←
 
 #### 3    BuildFailureReason/Ruby/jekyll@jekyll
 ##### BuildFailureReason & Context
@@ -2747,7 +2747,7 @@ Your 10 Slowest Tests
 ```
 
 ##### Keywords
-→, , ←
+→Failure, , ←
 
 #### 7    BuildFailureReason/Go/avelino@awesome-go
 ##### BuildFailureReason & Context
@@ -2795,7 +2795,7 @@ Input path: Go/avelino@awesome-go/failed/560330322.log
 ```
 
 ##### Keywords
-→, , ←
+→FAIL, , ←
 
 
 
