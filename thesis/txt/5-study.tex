@@ -6,23 +6,14 @@
 \chapter{Empirical Comparison Study}
 \label{sec:study}
 To investigate when PBE, CTS and KWS are suited to retrieve chunks from CI build logs we evaluated our implementation of those techniques on the \emph{Failing Build Log Data Set}.
-This chapter describes our study design, the analysis of the study results and threats to the validity of our conclusions.
-The analysis of the study results first focusses on each of the three techniques and describes how each one performs best.
-Later we compare them against each other and describe their trade offs against each other.
-This chapter answers our second research question and its subquestions:
-\begin{simplebox}{Research Questions}
-\begin{itemize}
-  \item[\textbf{RQ2:}] When are PBE, TS, and SKWS suited to retrieve information from CI build logs?
-  \item[\textbf{RQ2.1:}] How many examples do PBE, TS, and SKWS need to perform best?
-  \item[\textbf{RQ2.2:}] How accurate are the retrievals of PBE, TS, and SKWS?
-  \item[\textbf{RQ2.3:}] How structurally similar do the examples for PBE and TS need to be for the techniques to be applicable?
-\end{itemize}
-\end{simplebox}
+This chapter describes our study design and presents the results of the study.
+The analysis of the study results first focusses on each of the three techniques and later we compare them against each other.
+
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth, clip]{img/study-design.pdf}
-	\caption{Study Design of our technique comparison study}
+	\caption{Study design of our technique comparison study}
 	\label{fig:study}
 \end{figure}
 
@@ -38,14 +29,13 @@ For each of our evaluation runs we measure the desired vs. actual output lines o
 The desired output is given by the output of the test I/O example, which acts as the oracle for our evaluation.
 From this we obtain true/false positives/negatives and calculate precision, recall and accuracy, which we use to answer \textbf{RQ2.2}.
 We register the number of examples used as configuration for each run to answer \textbf{RQ2.1} and their structural categories to answer \textbf{RQ2.3}.
-
+\todo{mention / explain retrival size facto}
 
 %taking The Failing Build Log Data Set - run 3(4 with random) techniques with increasing example count - measuring xyz - justify choices like running chronologically / testing on 1 example / no k-fold validation - how are keywords for the search selected?
 
-\section{Analysis}
-This section presents the evaluation results for PBE, CTS and KWS separately and discusses under which circumstances these techniques yield best results.
+\section{Results}
+This section presents the evaluation results for PBE, CTS and KWS separately.
 Afterwards it compares the three techniques with each other and RLR as baseline.
-The section concludes with recommendations on which technique is suited for different situations.
 
 % \begin{figure}[htbp]
 % 	\centering
@@ -82,13 +72,13 @@ The section concludes with recommendations on which technique is suited for diff
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/failure-reason-PBE.pdf}
-		\caption{Success of Chunk Retrieval Runs with PBE}
+		\caption{Results of chunk retrieval with PBE}
 		\label{fig:failure-reason-PBE}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/failure-reason-categorycount-PBE.pdf}
-		\caption{Success of Chunk Retrieval Runs with PBE Compared with Category Count}
+		\caption{Results of chunk retrieval with PBE for numbers of categories present in configuring I/O examples}
 		\label{fig:failure-reason-categorycount-PBE}
 	\end{minipage}
 \end{figure}
@@ -97,76 +87,76 @@ The section concludes with recommendations on which technique is suited for diff
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-extraction-result-PBE.pdf}
-		\caption{Precision of PBE Chunk Retrieval Results Compared with Example Count}
+		\caption{Precision chunk retrieval with PBE for increasing count of configuring I/O examples}
 		\label{fig:precision-extraction-result-PBE}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth, clip]{img/big-study/precision-singlecategory-swarm-PBE.pdf}
-		\caption{Precision of PBE Chunk Retrieval Compare with Example Count and Category Singularity}
-		\label{fig:precision-singlecategory-swarm-PBE}
+		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
+		\caption{xxx}
+		\label{fig:xxx}
 	\end{minipage}
 \end{figure}
 \subsection{Regular Expression Program Synthesis by Example (PBE)}
-Out of the 400 runs in our evaluation, 5 runs per each of the 80 example sets, PBE extracted all the desired lines in 138 cases.
-Figure \ref{fig:failure-reason-PBE} shows that in 89 cases a program was successfully synthesized, though in 59 cases the synthesized program yielded no output at all.
+Figure~\ref{fig:failure-reason-PBE} shows the results of the PBE runs in our evaluation.
+Out of the 400 runs, 5 per each one of the 80 example sets, PBE extracted all the desired lines in 138 cases.
+Figure \ref{fig:failure-reason-PBE} shows that in 89 further cases a program was also successfully synthesized, though in 59 cases the synthesized program yielded no output at all.
 In 30 cases the synthesized program did not extract all of the desired lines, though still had an average recall of 28\%.
-In 173 cases the PROSE program synthesis could not synthesize a singular regular expression program that satisfies all of the configuring examples.
+In 173 cases the PROSE program synthesis could not synthesize a singular regular expression program that satisfies all of the configuring I/O examples.
 
-Figure \ref{fig:failure-reason-categorycount-PBE} shows that the success of the program syntesis algorithm highly depends on the structural categories present in the configuring examples.
-Programs could only be synthesized if at maximum two categories were present.
+Figure \ref{fig:failure-reason-categorycount-PBE} shows the results of PBE runs compared to the number of categories present in the configuring I/O examples.
+It shows that the program synthesis is more likely to succeed when there are few categories present in the configuring I/O examples.
+When two categories present, PROSE could not synthesize a program consistent with all configuring I/O examples in most cases.
+For three or more categories PROSE could never synthesize a consistent program.
 
-More than three examples yield no improvement in the precision of PBE chunk retrieval, as you can see in Figures \ref{fig:precision-extraction-result-PBE} and \ref{fig:precision-singlecategory-swarm-PBE}.
+Figure \ref{fig:precision-extraction-result-PBE} compares the precision of the PBE chunk retrieval runs with the count of configuring I/O examples.
+For one example there is a high number of empty extraction outputs, meaning that the regular expression synthesized from this one I/O example could not be applied to the test I/O example.
+For two or more I/O examples the chunk retrieval is either successful or no consistent program could be synthesized.
 
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/success-examples-PBE.pdf}
-% 		\caption{Successful Extractions per Number of Examples for PBE}
-% 		\label{fig:success-examples-pbe}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-PBE.pdf}
-% 		\caption{Precision of Extractions per Number of Examples for PBE}
-% 		\label{fig:precision-pbe}
-% 	\end{minipage}
-% \end{figure}
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-categorycount-examplecount-PBE.pdf}
-% 		\caption{Precision of PBE Extractions by CategoryCount}
-% 		\label{fig:precision-categorycount-examplecount-pbe}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/failure-reason-PBE.pdf}
-% 		\caption{Reasons for PBE Runs to Fail}
-% 		\label{fig:failure-reason-pbe}
-% 	\end{minipage}
-% \end{figure}
 
-% This section addresses the results produced by the PBE technique in our study.
-% We start by comparing success rate and precision for different example counts and showing the influence of example categories.
-% Next we go into detail in which cases pbe fails
-% \subsubsection{Success-Rate}
-% \subsubsection{Precision}
-% \subsubsection{Example Categories}
-% \subsubsection{Specific Failure Reasons}
-% \todo{FAILURE REASON AGAINST EXAMPLE CATEGORIES}
-% \subsection{Successful Extractions}
-% successful is interpreted by us as: all lines that were desired (within our oracle) were also extracted during the test
-
-% Figure \ref{fig:success-all} shows how successful the four different tecnhiques were in our study.
-% Figure \ref{fig:success-examples-pbe} shows that the success rate for PBE decreases with increasing example count for pbe. Section \ref{TODO ref to pbe section} explains in more detail whi this fails
-% Figure \ref{fig:success-examples-ts} shows that the success rate for TS varies but stays roughly the same for different example counts
-% Figure \ref{fig:success-examples-skws} shows that the success rate for KWS varies but stays roughly the same for different example counts
-% Figure \ref{fig:success-examples-pbe} shows that 
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-examplecount-TS.pdf}
+		\caption{Paieya}
+		\label{fig:recall-precision-examplecount-TS}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-categorycount-TS.pdf}
+		\caption{nei}
+		\label{fig:recall-precision-categorycount-TS}
+	\end{minipage}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/contextsizefactor-precision-recall-TS.pdf}
+		\caption{neind}
+		\label{fig:contextsizefactor-precision-recall-TS}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
+		\caption{xxx}
+		\label{fig:xxx}
+	\end{minipage}
+\end{figure}
 
 \subsection{Common Text Similarity (CTS)}
+Figure \ref{fig:recall-precision-examplecount-TS} presents precision and recall of chunk retrieval using CTS in our study for different numbers of configuring I/O examples.
+The count of configuring I/O examples has no visible influence on recall and precision of the chunk retrieval with CTS.
+
+Figure \ref{fig:recall-precision-categorycount-TS} shows the same measurements for different category counts in the configuring I/O examples.
+With increasing category count, precision and recall decrease.
+Especially for more than three categories present we have no chunk retrieval runs where all desired lines were extracted.
+
+Figure \ref{fig:contextsizefactor-precision-recall-TS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with CTS.
+The precision ranges from 52\% when retrieving half expected number of lines to 25\% when 2.5 times the expected number of lines.
+The recall ranges
+
 
 % \begin{figure}[htbp]
 % 	\centering
