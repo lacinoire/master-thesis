@@ -29,7 +29,8 @@ For each of our evaluation runs we measure the desired vs. actual output lines o
 The desired output is given by the output of the test I/O example, which acts as the oracle for our evaluation.
 From this we obtain true/false positives/negatives and calculate precision, recall and accuracy, which we use to answer \textbf{RQ2.2}.
 We register the number of examples used as configuration for each run to answer \textbf{RQ2.1} and their structural categories to answer \textbf{RQ2.3}.
-\todo{mention / explain retrival size facto}
+\todo{mention / explain retrival size factor}
+\todo{introduce special words / measurements like ``successful''?}
 
 %taking The Failing Build Log Data Set - run 3(4 with random) techniques with increasing example count - measuring xyz - justify choices like running chronologically / testing on 1 example / no k-fold validation - how are keywords for the search selected?
 
@@ -87,7 +88,7 @@ Afterwards it compares the three techniques with each other and RLR as baseline.
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-extraction-result-PBE.pdf}
-		\caption{Precision chunk retrieval with PBE for increasing count of configuring I/O examples}
+		\caption{Precision of chunk retrieval with PBE for increasing count of configuring I/O examples}
 		\label{fig:precision-extraction-result-PBE}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
@@ -119,13 +120,13 @@ For two or more I/O examples the chunk retrieval is either successful or no cons
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-examplecount-TS.pdf}
-		\caption{Paieya}
+		\caption{Precision and recall of chunk retrieval with CTS for increasing count of configuring I/O examples}
 		\label{fig:recall-precision-examplecount-TS}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-categorycount-TS.pdf}
-		\caption{nei}
+		\caption{Precision and recall of chunk retrieval with CTS for increasing number of categories present in the configuring I/O examples}
 		\label{fig:recall-precision-categorycount-TS}
 	\end{minipage}
 \end{figure}
@@ -134,7 +135,7 @@ For two or more I/O examples the chunk retrieval is either successful or no cons
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/contextsizefactor-precision-recall-TS.pdf}
-		\caption{neind}
+		\caption{Precision and recall of chunk retrieval with CTS compared to retrieval size factors}
 		\label{fig:contextsizefactor-precision-recall-TS}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
@@ -155,182 +156,90 @@ Especially for more than three categories present we have no chunk retrieval run
 
 Figure \ref{fig:contextsizefactor-precision-recall-TS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with CTS.
 The precision ranges from 52\% when retrieving half expected number of lines to 25\% when 2.5 times the expected number of lines.
-The recall ranges
+The recall ranges from 30\% to 55\%.
 
 
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/success-examples-TS.pdf}
-% 		\caption{Successful Extractions per Number of Examples for TS}
-% 		\label{fig:success-examples-ts}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-TS.pdf}
-% 		\caption{Precision of Extractions per Number of Examples for TS}
-% 		\label{fig:precision-ts}
-% 	\end{minipage}
-% \end{figure}
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-categorycount-examplecount-TS.pdf}
-% 		\caption{Precision of TS Extractions by CategoryCount}
-% 		\label{fig:precision-categorycount-examplecount-ts}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
-% 		\caption{xxx}
-% 		\label{fig:xxx}
-% 	\end{minipage}
-% \end{figure}
-
-% \subsubsection{Success-Rate}
-% \subsubsection{Precision}
-% \subsubsection{Example Categories}
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-examplecount-SKWS.pdf}
+		\caption{Precision and recall of chunk retrieval with SKWS for increasing count of configuring I/O examples}
+		\label{fig:recall-precision-examplecount-SKWS}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-categorycount-SKWS.pdf}
+		\caption{Precision and recall of chunk retrieval with SKWS for increasing number of categories present in the configuring I/O examples}
+		\label{fig:recall-precision-categorycount-SKWS}
+	\end{minipage}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/contextsizefactor-precision-recall-SKWS.pdf}
+		\caption{Precision and recall of chunk retrieval with SKWS compared to retrieval size factors}
+		\label{fig:contextsizefactor-precision-recall-SKWS}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
+		\caption{xxx}
+		\label{fig:xxx}
+	\end{minipage}
+\end{figure}
 
 
 \subsection{Keyword Search (KWS)}
+\todo{plot accuracy? especiall against retrieval size factor, could be that we are soon extracting all/most avaliable lines}
+Figure \ref{fig:recall-precision-examplecount-SKWS} presents precision and recall of chunk retrieval using SKWS in our study for different numbers of configuring I/O examples.
+The recall jumps from 53\% to over 70\% for more than two configuring I/O examples, while the precision stays constant at around 16\%.
 
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/success-examples-SKWS.pdf}
-% 		\caption{Successful Extractions per Number of Examples for SKWS}
-% 		\label{fig:success-examples-skws}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-SKWS.pdf}
-% 		\caption{Precision of Extractions per Number of Examples for SKWS}
-% 		\label{fig:precision-skws}
-% 	\end{minipage}
-% \end{figure}
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-categorycount-examplecount-SKWS.pdf}
-% 		\caption{Precision of SKWS Extractions by CategoryCount}
-% 		\label{fig:precision-categorycount-examplecount-skws}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
-% 		\caption{xxx}
-% 		\label{fig:xxx}
-% 	\end{minipage}
-% \end{figure}
+Figure \ref{fig:recall-precision-categorycount-SKWS} shows the same measurements for different category counts in the configuring I/O examples.
+There is no clear trend visible in precision and recall for an increasing amount of categories in the configuring I/O examples
 
-% \subsubsection{Success-Rate}
-% \subsubsection{Precision}
-% \subsubsection{Example Categories}
+Figure \ref{fig:contextsizefactor-precision-recall-SKWS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with SKWS.
+The precision ranges from 19\% when retrieving half expected number of lines to 10\% when 2.5 times the expected number of lines.
+The recall ranges from 58\% to 75\%.
 
 
-% \subsection{Random Line Retrieval (RLR)}
-
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/success-examples-RLR.pdf}
-% 		\caption{Successful Extractions per Number of Examples for RLR}
-% 		\label{fig:success-examples-rlr}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-RLR.pdf}
-% 		\caption{Precision of Extractions per Number of Examples for RLR}
-% 		\label{fig:precision-rlr}
-% 	\end{minipage}
-% \end{figure}
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-categorycount-examplecount-RLR.pdf}
-% 		\caption{Precision of RLR Extractions by CategoryCount}
-% 		\label{fig:precision-categorycount-examplecount-rlr}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
-% 		\caption{xxx}
-% 		\label{fig:xxx}
-% 	\end{minipage}
-% \end{figure}
-
-% For completion this section reports the results for the random line retrieval technique, explained in detail in Section \ref{sec:}
-
-% \subsubsection{Success-Rate}
-% \subsubsection{Precision}
-% \subsubsection{Example Categories}
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/precision-all.pdf}
+		\caption{Precision \todo{and recall} of chunk retrieval with PBE, CTS and KWS compared with RLR}
+		\label{fig:precision-all}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/precision-category-singularity-all.pdf}
+		\caption{Precision \todo{and recall} of chunk retrieval with PBE, CTS and KWS compared with RLR for single and multiple categories present in the configuring I/O examples}
+		\label{fig:precision-category-singularity-all}
+	\end{minipage}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/success-all.pdf}
+		\caption{Successful chunk retrievals for PBE, CTS, KWS and RLR}
+		\label{fig:success-all}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
+		\caption{\todo{pointplot precision and recall for all techniques compared, also aganist example/category count?}}
+		\label{fig:xxx}
+	\end{minipage}
+\end{figure}
 
 \subsection{Comparing All Techniques}
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/success-all.pdf}
-% 		\caption{Successful Extractions for all Techniques Compared}
-% 		\label{fig:success-all}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-all.pdf}
-% 		\caption{Precision of Extractions for all Techniques Compared}
-% 		\label{fig:precision-all}
-% 	\end{minipage}
-% \end{figure}
+Figure \ref{fig:precision-all}: PBE highest precision if extraction successful, also highest recall of all?. CTS still good also when not all information extracted
 
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-category-singularity-all.pdf}
-% 		\caption{\todo{todo}}
-% 		\label{fig:precision-category-singularity-all}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/single-cateogry-precision-all.pdf}
-% 		\caption{\todo{todo}}
-% 		\label{fig:single-cateogry-precision-all}
-% 	\end{minipage}
-% \end{figure}
+Figure \ref{fig:precision-category-singularity-all}: pbe very good for a single category, very bad for multilpe, performance of others quite similar for single vs. multiple categories, CTS slightly impacted, random benefits (<- do we need to explain that in text?)
 
-% \begin{figure}[htbp]
-% 	\centering
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-categorycount-examplecount-all.pdf}
-% 		\caption{\todo{todo}}
-% 		\label{fig:precision-categorycount-examplecount-all}
-% 	\end{minipage}\hfill
-% 	\begin{minipage}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
-% 		\caption{\todo{todo}}
-% 		\label{fig:xxx}
-% 	\end{minipage}
-% \end{figure}
-
-% \subsubsection{Success-Rate}
-% \subsubsection{Precision}
-% \subsubsection{Example Categories}
-
-% \section{Discussion}
-% \todo{draw decision tree}
-
-% interpret results - when should PROSE be used? - when should text similarity be used? - when should keyword search be used? - answer RQ about PROSE \& other techniques
-\section{Threats to Validity}
-%chronologically selected examples -> very specific view
-
-
+Figure \ref{fig:success-all} pbe and kws best at extracting all desired lines, precision fig: pbe with higher precision
 
 \end{document}

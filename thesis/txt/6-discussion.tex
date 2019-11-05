@@ -16,10 +16,59 @@ This chapter answers our second research question and its subquestions:
 \end{simplebox}
 
 \section{wip: best usage of single techniques}
+
+
 \subsection{wip: best usage of PBE}
+\paragraph{wip: input}
+when textual representation of blii to extract is only of one structural category. 1-3 examples enough.
+\paragraph{wip: output usage}
+very precise output & high recall if synthesis and extraction yields result: good for computer consumed retrievals.
+If there is an output user can have high confidence it is the correct output.
+Clearly detectable when there is no program synthesized / empty output -> system can go to fail-safe state.
+
 \subsection{wip: best usage of CTS}
+\paragraph{wip: input}
+retrieval size factor 1 gives best balance of recall and precision, can handle different structural categories but bit of decline in retrieval quality, more examples do not improve quality in the number of examples we tested -> ir techniques commonly use a lot more examples for learning on
+\paragraph{wip: output usage}
+
+
 \subsection{wip: best usage of KWS}
+\paragraph{wip: input}
+category count has little influence -> suited if there is little prior knowledge on what the build failed / will fail. e.g. builds with a lot of steps and no pre-categorization of what step failed available
+retrieval size factor: at least 1, more seems to have positive, but marginal influence
+\paragraph{wip: output usage}
+very low precision, only useful to filter lines in build log for further processing, e.g. reading by a developer
 
 \section{wip:when to choose which technique}
+TABLE!
+\paragraph{wip: input}
+number of categories:
+one? -> pbe
+two? -> CTS
+more? -> KWS
+
+availaable examples:
+
+\paragraph{wip: output usage}
+precision needed:
+
+\begin{table}[htbp]
+\begin{tabular}{ |c||c|c|c| }
+  Technique & \multicolumn{3}{|c|}{Number of Categories in configuring examples} \\
+  \hline
+  & one & two & more \\
+  PBE & yes & no & no \\ 
+  CTS & yes & yes & no \\ 
+  KWS & yes & yes & yes \\ 
+  \hline
+\end{tabular}
+\caption{The small $1 \cdot 1$}
+\label{tab:101}
+\end{table}
+
+\section{Threats to Validity}
+chronologically selected examples -> very specific view, devs/users might pick more representative examples
+
+very few evaluation runs with a high number of categories in configuring I/O examples -> because we chose to create such a ``realistic'' data set, from data set we see that many structural categories uncommon
 
 \end{document}
