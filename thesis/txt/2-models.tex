@@ -46,7 +46,7 @@ They communicate progress updates, error and warning messages to the user~\cite{
 We refer to to the sum of this output as build log.
 The structure of their output is chosen by every tool themselves.
 Many have implicit or explicit structuring rules, some adhere to predefined standards like RSpec or PHPUnit~\cite{phpunit2019logging,rspec2019format}.
-Figure \ref{fig:tool-log-contribution} shows how different tools contribute to the whole build log.
+Figure~\ref{fig:tool-log-contribution} shows how different tools contribute to the whole build log.
 
 \begin{figure}[htbp]
 	\centering
@@ -56,7 +56,7 @@ Figure \ref{fig:tool-log-contribution} shows how different tools contribute to t
 \end{figure}
 
 When analyzing build logs we might not have access to the exact build configuration, describing which tools are used in which order, or might not have access to a useable definition of the output structure of a specific tool.
-As the structure of a build log is not known to us, we describe build logs as semi-structured. Section \ref{sec:rw-semi-structured-data} describes different properties of semi-structured data.
+As the structure of a build log is not known to us, we describe build logs as semi-structured. Section~\ref{sec:rw-semi-structured-data} describes different properties of semi-structured data.
 
 
 \begin{figure}[htbp]
@@ -69,7 +69,7 @@ As the structure of a build log is not known to us, we describe build logs as se
 \label{sec:bli}
 Continuous integration build logs contain a huge amount of information about the stages in the CI build they correspond to.
 In this section, we present a model, which more precisely describes our notion of a information retrievable from a CI build log.
-Figure \ref{fig:build-log-information} shows the model.
+Figure~\ref{fig:build-log-information} shows the model.
 
 The central class of our model is the \emph{BuildLogInformation} (BLI), representing a piece of information possibly retrievable from a build log.
 \emph{Possibly}, because a BuildLogInformation is not necessarily present in every build log.
@@ -78,7 +78,7 @@ If it is present, we call it a \emph{BuildLogInformation instantiation} (BLII), 
 Each BLII for us has a \emph{textual representation} within the build log.
 This textual representation is always a substring of the log text.
 BuildLogInformations can be hierarchically ordered by their textual representations containing each other.
-As this is an ad-hoc and a-posteriori structuring schema, as we describe in Section \ref{sec:rw-semi-structured-data}, the model only presents hierarchical ordering or containment for BuildLogInformations whose structure we definitely know.
+As this is an ad-hoc and a-posteriori structuring schema, as we describe in Section~\ref{sec:rw-semi-structured-data}, the model only presents hierarchical ordering or containment for BuildLogInformations whose structure we definitely know.
 Most build log information types can appear in various hierarchical arrangements and therefore not contained in any other type in the model.
 
 During our initial exploration and log data collection for the \emph{Failing Build Log Data Set}, we collected a broad set of build logs from 29 languages and 87 repositories from Travis CI~\cite{travisci2019webpage}.
@@ -96,39 +96,39 @@ Within the build logs from Travis CI we found different information types possib
 		      \item \textbf{TravisPhaseName} The string Travis CI uses to identify the phase within start and end statements.
 		      \item \textbf{TravisPhaseOutput} The output generated during the build step. The textual representation of the \texttt{Build Step Output} Instantiation is the substring between the start and end statements.
 	      \end{itemize}
-	      You can see an example of a TravisPhase and its components within a build log in Figure \ref{fig:log-1}.
+	      You can see an example of a TravisPhase and its components within a build log in Figure~\ref{fig:log-1}.
 
 	\item
 	\item \textbf{TravisTiming} Travis can measure the time of specified sections of the build process.
 	      Timing information can be useful to retrieve when you want to automatically monitor the performance of your build.
-	      You can see an example of a Travis Build Step and its components within a build log in Figure \ref{fig:log-1}.
+	      You can see an example of a Travis Build Step and its components within a build log in Figure~\ref{fig:log-1}.
 	      %It represents those by \lstinline{travis_time:start:<timing section id>} and \\ \lstinline{travis_time:end:<timing section id>:start=<start time>,finish=<finish time>,duration=<duration>}
 
 	\item \textbf{TravisWorker} Travis CI mentions for each build which machine is executing it.
 	      Retrieving this information from multiple build logs could for example help visualize the impact of the build server assignment algorithm.
 	      The TravisWorker is a good example to show that the same BLI can have different textual representations in different build logs.
-	      You can see examples of TravisWorker instantiations in Figure \ref{fig:log-0} and Figure \ref{fig:log-2}.
+	      You can see examples of TravisWorker instantiations in Figure~\ref{fig:log-0} and Figure~\ref{fig:log-2}.
 
 	\item \textbf{TravisSystemInfo} At the beginning of each log Travis CI describes the tech stack of the server executing the build.
 	      The system info could be retrieved from both failing and successful logs and compared to identify if a failure is possibly based on the execution environment.
-	      You can see an example of a TravisSystemInfo instantiation within a build log in Figure \ref{fig:log-0}.
+	      You can see an example of a TravisSystemInfo instantiation within a build log in Figure~\ref{fig:log-0}.
 
 	\item \textbf{TriggeringCommand} Travis CI logs the commands it uses to call certain tools.
 	      These come from the \texttt{travis.yml} configuring the build.
 	      Retrieving this information from the log could, for example, be useful when reverse engineering the build configuration.
-	      You can see an example of a TriggeringCommand instantiation within a build log in Figure \ref{fig:log-3}.
+	      You can see an example of a TriggeringCommand instantiation within a build log in Figure~\ref{fig:log-3}.
 
 	\item \textbf{ExitCode} Travis CI prints all exit codes of commands.
 	      This information could be used to fill an overview of the build steps and why they failed.
-	      You can see an example of an ExitCode instantiation within a build log in Figure \ref{fig:log-3}.
+	      You can see an example of an ExitCode instantiation within a build log in Figure~\ref{fig:log-3}.
 
 	\item \textbf{ErrorMessage} Various tools involved in the build process might output messages of errors that occurred during their execution.
 	      Retrieving these and showing them to developers could help them understand quicker why the build failed.
-	      You can see an example of and ErrorMessage instantiation within a build log in Figure \ref{fig:log-3}.
+	      You can see an example of and ErrorMessage instantiation within a build log in Figure~\ref{fig:log-3}.
 
 	\item \textbf{WarningMessage} In addition to errors, tools also print warning messages.
 	      These could be collected, counted and presented to developers, encouraging them to resolve them to improve their software.
-	      You can see examples of WarningMessage instantiations within build logs in Figure \ref{fig:log-4} and Figure \ref{fig:log-5}.
+	      You can see examples of WarningMessage instantiations within build logs in Figure~\ref{fig:log-4} and Figure~\ref{fig:log-5}.
 
 \end{itemize}
 
@@ -206,7 +206,7 @@ The last sections of this chapter show instantiations of this model for the thre
 % Previous sections gave various examples of situations where a developer or a researcher wants to retrieve information from a build log.
 % The goal of this work is to clarify which BLIRT is suited for their specific task.
 % In this section we structure we present different important characteristics of such an IR task.
-% You can see the model in Figure \ref{fig:model-ir-task}
+% You can see the model in Figure~\ref{fig:model-ir-task}
 
 % \begin{figure}[htbp]
 % 	\centering
@@ -252,17 +252,17 @@ It enables users to create programs without requiring programming knowledge~\cit
 Applied to the task of text extraction through regular expressions it relieves the developer from having to understand the whole document structure to solve a single extraction task~\cite{le2014flashextract:}.
 We chose to investigate the applicability of generating regular expression programs by example to extracting information from build logs.
 In this work, we refer to our interpretation of this technique as \emph{PBE}.
-In the following we will explain the concept of how we apply PBE to information retrieval from CI build logs, the concrete implementation is described in \ref{sec:impl-pbe}.
-Figure \ref{fig:prose-explanation} shows the instantiation of the BLIRT model for PBE.
+In the following we will explain the concept of how we apply PBE to information retrieval from CI build logs, the concrete implementation is described in~\ref{sec:impl-pbe}.
+Figure~\ref{fig:prose-explanation} shows the instantiation of the BLIRT model for PBE.
 
 \paragraph{Method}
 In/Output examples (I/O examples) are the main driver of Programming by Example.
 When extracting information from build logs the \emph{input} is always a whole build log, i.e. the whole text of the build log file without any preprocessing.
-In the implementation, we had to apply a few text replacements as described in \ref{sec:impl-preprocessing}.
+In the implementation, we had to apply a few text replacements as described in~\ref{sec:impl-preprocessing}.
 The \emph{output} is always a substring of the log file text, representing the substring that should be extracted by the synthesized program when given the corresponding input file.
 One or multiple I/O examples are needed as configuration for PBE, they are used to define substring of a log should be extracted.
 Our approach is based on the Flash Extract DSL, which in turn is based on the FlashMeta algorithm.
-Both are described in Section \ref{sec:rw-prose}.
+Both are described in Section~\ref{sec:rw-prose}.
 %For execution PBE takes a build file as input and returns a substring of the build file content.
 
 % \subsection{Perspective: Usability vs. Technical Aspects}
@@ -296,8 +296,8 @@ Both are described in Section \ref{sec:rw-prose}.
 Text Similarity approaches are more and more used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
 One common and simple technique the Vector Space Model~\cite{schutze2008introduction}.
 We investigate when it is a suitable technique to retrieve information from build logs.
-In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs (TS), the concrete implementation is described in \ref{sec:impl-ts}.
-Figure \ref{fig:text-similarity-explanation} shows the instantiation of the BLIRT model for TS.
+In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs (TS), the concrete implementation is described in~\ref{sec:impl-ts}.
+Figure~\ref{fig:text-similarity-explanation} shows the instantiation of the BLIRT model for TS.
 
 \paragraph{Method}
 To configure a retrieval though text similarity we chose to use the same concept of I/O examples as for PBE.
@@ -340,8 +340,8 @@ The average number of lines in the I/O example output strings determines how man
 When we are looking for a specific piece of information within a great amount of unstructured information, a first ad-hoc approach is to search for keywords in the text we assume to be near the information we are looking for.
 This was one of the most common approaches we took when searching for the build failure reason within a log when creating our data set.
 As this is a technique readily available in many tools developers use to view build logs, we want to study when such a simple search for keywords is recommendable for retrieving information from CI build logs.
-In the following we will explain how we use simple keyword search to retrieve information from CI build logs (SKWS), the concrete implementation is described in \ref{sec:impl-skws}.
-Figure \ref{fig:keyword-search-explanation} shows the instantiation of the BLIRT model for SKWS.
+In the following we will explain how we use simple keyword search to retrieve information from CI build logs (SKWS), the concrete implementation is described in~\ref{sec:impl-skws}.
+Figure~\ref{fig:keyword-search-explanation} shows the instantiation of the BLIRT model for SKWS.
 
 \paragraph{Method}
 SKWS is configured by giving a set of keywords.
@@ -355,8 +355,8 @@ We chose a context of 10 lines above and below the keyword appearance.
 \plan{decide: what to mention here, max 1 page text}
 
 \paragraph{Log Diff}
-Amar et al. used a technique based on line diffs to retrieve relevant lines from a failed build log~\cite{amar2019mining}, as we describe in more detail in Section \ref{sec:rw-bl-analysis}.
-Figure \ref{fig:diff-technique-model} shows how this technique would be in our BLIRT model.
+Amar et al. used a technique based on line diffs to retrieve relevant lines from a failed build log~\cite{amar2019mining}, as we describe in more detail in Section~\ref{sec:rw-bl-analysis}.
+Figure~\ref{fig:diff-technique-model} shows how this technique would be in our BLIRT model.
 \paragraph{Random Line Retrieval (RLR)}
 In our evaluation we want to compare against a basic deadline of randomly extracted lines.
 The random line retrieval technique (RLR) averages the number of lines in the outputs of the configuring examples and extracts this many lines randomly from the build log.

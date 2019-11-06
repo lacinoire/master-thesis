@@ -18,19 +18,22 @@ The analysis of the study results first focusses on each of the three techniques
 \end{figure}
 
 \section{Study Design}
-For the comparison study we evaluate the three chunk retrieval techniques PBE, CTS and KWS, described in Sections \ref{sec:expl-pbe},\ref{sec:expl-ts} and \ref{sec:expl-skws}.
-RLR, explained in Section \ref{sec:expl-rlr}, acts as a baseline for the comparison.
+For the comparison study we evaluate the three chunk retrieval techniques PBE, CTS and KWS, described in Sections~\ref{sec:expl-pbe},\ref{sec:expl-ts} and~\ref{sec:expl-skws}.
+RLR, explained in Section~\ref{sec:expl-rlr}, acts as a baseline for the comparison.
 We run four techniques on the example sets from the \emph{Failing Build Log Data Set}.
 
 The examples are sorted chronologically, i.e. a technique is configured with examples from the directly preceding build logs.
-For each example set and each technique, we select one to five successive I/O examples as configuration, the \emph{configuring I/O examples}, and run the chunk retrieval on the next I/O example, the \emph{test I/O example}.
+For each example set and each technique, we select one to five consecutive I/O examples as configuration, the \emph{configuring I/O examples}, and run the chunk retrieval on the following I/O example, the \emph{test I/O example}.
 
 For each of our evaluation runs we measure the desired vs. actual output lines of the chunk retrieval.
 The desired output is given by the output of the test I/O example, which acts as the oracle for our evaluation.
-From this we obtain true/false positives/negatives and calculate precision, recall and accuracy, which we use to answer \textbf{RQ2.2}.
-We register the number of examples used as configuration for each run to answer \textbf{RQ2.1} and their structural categories to answer \textbf{RQ2.3}.
-\todo{mention / explain retrival size factor}
-\todo{introduce special words / measurements like ``successful''?}
+From this we obtain true/false positives/negatives and calculate precision, recall and accuracy.
+We use these values to answer \textbf{RQ2.2}.
+If all desired lines are extracted, i.e. recall is one, we say a chunk retrieval run was \emph{successful}.
+To answer \textbf{RQ2.1}, we register the number configuring I/O examples for each run.
+The structural categories of the configuring I/O examples are saved to answer \textbf{RQ2.3}.
+Recall and precision of those techniques vary with the number of lines selected for retrieval.
+We evaluate the impact of varying the number of extracted lines by multiplying the average number of lines present in the configuring examples with a \emph{retrieval size factor} from 0.5 to 2.5 in steps of 0.5.
 
 %taking The Failing Build Log Data Set - run 3(4 with random) techniques with increasing example count - measuring xyz - justify choices like running chronologically / testing on 1 example / no k-fold validation - how are keywords for the search selected?
 
@@ -64,8 +67,8 @@ Afterwards it compares the three techniques with each other and RLR as baseline.
 % \subsection{Category Distribution in Data Set}
 % Categories distributed in over data set
 % - why are we looking at that?: interesting how categories are distributed for this real world example of build Failure reasons in travis ci categorization
-% - Figure \ref{fig:categories-dataset} shows the distribution of categories in the configuring example sets in rou study
-% - Figure \ref{fig:categorycount-examplecount-dataset} shows the category count separated by the different example count.
+% - Figure~\ref{fig:categories-dataset} shows the distribution of categories in the configuring example sets in rou study
+% - Figure~\ref{fig:categorycount-examplecount-dataset} shows the category count separated by the different example count.
 
 
 \begin{figure}[htbp]
@@ -101,18 +104,18 @@ Afterwards it compares the three techniques with each other and RLR as baseline.
 \subsection{Regular Expression Program Synthesis by Example (PBE)}
 Figure~\ref{fig:failure-reason-PBE} shows the results of the PBE runs in our evaluation.
 Out of the 400 runs, 5 per each one of the 80 example sets, PBE extracted all the desired lines in 138 cases.
-Figure \ref{fig:failure-reason-PBE} shows that in 89 further cases a program was also successfully synthesized, though in 59 cases the synthesized program yielded no output at all.
+Figure~\ref{fig:failure-reason-PBE} shows that in 89 further cases a program was also successfully synthesized, though in 59 cases the synthesized program yielded no output at all.
 In 30 cases the synthesized program did not extract all of the desired lines, though still had an average recall of 28\%.
 In 173 cases the PROSE program synthesis could not synthesize a singular regular expression program that satisfies all of the configuring I/O examples.
 
-Figure \ref{fig:failure-reason-categorycount-PBE} shows the results of PBE runs compared to the number of categories present in the configuring I/O examples.
+Figure~\ref{fig:failure-reason-categorycount-PBE} shows the results of PBE runs compared to the number of sturctural categories present in the configuring I/O examples.
 It shows that the program synthesis is more likely to succeed when there are few categories present in the configuring I/O examples.
-When two categories present, PROSE could not synthesize a program consistent with all configuring I/O examples in most cases.
-For three or more categories PROSE could never synthesize a consistent program.
+When two structural categories are present, PROSE could in most cases not synthesize a program consistent with all configuring I/O examples.
+For three or more present categories PROSE could never synthesize a consistent program.
 
-Figure \ref{fig:precision-extraction-result-PBE} compares the precision of the PBE chunk retrieval runs with the count of configuring I/O examples.
-For one example there is a high number of empty extraction outputs, meaning that the regular expression synthesized from this one I/O example could not be applied to the test I/O example.
-For two or more I/O examples the chunk retrieval is either successful or no consistent program could be synthesized.
+Figure~\ref{fig:precision-extraction-result-PBE} compares the precision of the PBE chunk retrieval runs with the count of configuring I/O examples.
+For one example there is a high number of empty extraction outputs, meaning that the regular expression synthesized from this one configuring I/O example could not be applied to the test I/O example.
+For two or more I/O examples the chunk retrieval is in most cases either successful or no consistent program could be synthesized.
 
 
 \begin{figure}[htbp]
@@ -147,14 +150,14 @@ For two or more I/O examples the chunk retrieval is either successful or no cons
 \end{figure}
 
 \subsection{Common Text Similarity (CTS)}
-Figure \ref{fig:recall-precision-examplecount-TS} presents precision and recall of chunk retrieval using CTS in our study for different numbers of configuring I/O examples.
+Figure~\ref{fig:recall-precision-examplecount-TS} presents precision and recall of chunk retrieval using CTS for different numbers of configuring I/O examples.
 The count of configuring I/O examples has no visible influence on recall and precision of the chunk retrieval with CTS.
 
-Figure \ref{fig:recall-precision-categorycount-TS} shows the same measurements for different category counts in the configuring I/O examples.
+Figure~\ref{fig:recall-precision-categorycount-TS} shows the same measurements for different category counts in the configuring I/O examples.
 With increasing category count, precision and recall decrease.
 Especially for more than three categories present we have no chunk retrieval runs where all desired lines were extracted.
 
-Figure \ref{fig:contextsizefactor-precision-recall-TS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with CTS.
+Figure~\ref{fig:contextsizefactor-precision-recall-TS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with CTS.
 The precision ranges from 52\% when retrieving half expected number of lines to 25\% when 2.5 times the expected number of lines.
 The recall ranges from 30\% to 55\%.
 
@@ -179,67 +182,115 @@ The recall ranges from 30\% to 55\%.
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/contextsizefactor-precision-recall-SKWS.pdf}
-		\caption{Precision and recall of chunk retrieval with SKWS compared to retrieval size factors}
+		\caption{Precision and recall of chunk retrieval with SKWS compared to retrieval size factor}
 		\label{fig:contextsizefactor-precision-recall-SKWS}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
-		\caption{xxx}
-		\label{fig:xxx}
+		\includegraphics[width=\textwidth, clip]{img/big-study/retrievalsizefactor-retrievalratio-SKWS.pdf}
+		\caption{Ratio of lines retrieved with SKWS compared to retrieval size factor}
+		\label{fig:retrievalsizefactor-retrievalratio-SKWS}
 	\end{minipage}
 \end{figure}
 
 
 \subsection{Keyword Search (KWS)}
-\todo{plot accuracy? especiall against retrieval size factor, could be that we are soon extracting all/most avaliable lines}
-Figure \ref{fig:recall-precision-examplecount-SKWS} presents precision and recall of chunk retrieval using SKWS in our study for different numbers of configuring I/O examples.
+Figure~\ref{fig:recall-precision-examplecount-SKWS} presents precision and recall of chunk retrieval using SKWS in our study for different numbers of configuring I/O examples.
 The recall jumps from 53\% to over 70\% for more than two configuring I/O examples, while the precision stays constant at around 16\%.
 
-Figure \ref{fig:recall-precision-categorycount-SKWS} shows the same measurements for different category counts in the configuring I/O examples.
+Figure~\ref{fig:recall-precision-categorycount-SKWS} shows the same measurements for different category counts in the configuring I/O examples.
 There is no clear trend visible in precision and recall for an increasing amount of categories in the configuring I/O examples
 
-Figure \ref{fig:contextsizefactor-precision-recall-SKWS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with SKWS.
+Figure~\ref{fig:contextsizefactor-precision-recall-SKWS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with SKWS.
 The precision ranges from 19\% when retrieving half expected number of lines to 10\% when 2.5 times the expected number of lines.
 The recall ranges from 58\% to 75\%.
 
+Figure~\ref{fig:retrievalsizefactor-retrievalratio-SKWS} shows the average proportion of the lines in the test log file retrieved for different retrieval size factors with KWS.
+When retrieving the mean number of lines in the configuring I/O examples, 15\% of the log lines are retrieved on average.
+This proportion goes up to 25\% when retrieving 1.5 times more lines.
 
+% \begin{figure}[htbp]
+% 	\centering
+% 	\begin{minipage}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-all.pdf}
+% 		\caption{Precision \todo{and recall} of chunk retrieval with PBE, CTS and KWS compared with RLR}
+% 		\label{fig:precision-all}
+% 	\end{minipage}\hfill
+% 	\begin{minipage}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth, clip]{img/big-study/precision-category-singularity-all.pdf}
+% 		\caption{Precision \todo{and recall} of chunk retrieval with PBE, CTS and KWS compared with RLR for single and multiple categories present in the configuring I/O examples}
+% 		\label{fig:precision-category-singularity-all}
+% 	\end{minipage}
+% \end{figure}
 \begin{figure}[htbp]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth, clip]{img/big-study/precision-all.pdf}
-		\caption{Precision \todo{and recall} of chunk retrieval with PBE, CTS and KWS compared with RLR}
-		\label{fig:precision-all}
+		\includegraphics[width=\textwidth, clip]{img/big-study/success-partial-all.pdf}
+		\caption{Success of chunk retrievals for PBE, CTS, KWS and RLR}
+		\label{fig:success-partial-all}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth, clip]{img/big-study/precision-category-singularity-all.pdf}
-		\caption{Precision \todo{and recall} of chunk retrieval with PBE, CTS and KWS compared with RLR for single and multiple categories present in the configuring I/O examples}
-		\label{fig:precision-category-singularity-all}
+		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-all.pdf}
+		\caption{Precision and Recall of PBE, CTS, KWS and RLR compared}
+		\label{fig:recall-precision-all}
 	\end{minipage}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth, clip]{img/big-study/success-all.pdf}
-		\caption{Successful chunk retrievals for PBE, CTS, KWS and RLR}
-		\label{fig:success-all}
+		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-singlecategory-all.pdf}
+		\caption{Precision and Recall of PBE, CTS, KWS and RLR compared when configuring I/O examples are from a single category}
+		\label{fig:recall-precision-singlecategory-all}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth, clip]{img/big-study/xxx.pdf}
-		\caption{\todo{pointplot precision and recall for all techniques compared, also aganist example/category count?}}
-		\label{fig:xxx}
+		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-multicategory-all.pdf}
+		\caption{Precision and Recall of PBE, CTS, KWS and RLR compared when configuring I/O examples are from multiple categories}
+		\label{fig:recall-precision-multicategory-all}
 	\end{minipage}
 \end{figure}
+
+
+% \begin{table}[htbp]
+% \centering
+% \begin{tabular}{ |c||c|c|c| }
+% 	\hline
+%   Technique & \multicolumn{3}{|c|}{Desired Lines extracted} \\
+%   \hline
+%   & all [0.345 , 0.2025, 0.3825, 0.005 ] & partial [0.045 , 0.5875, 0.4525, 0.3025] & none [0.61  , 0.21  , 0.165 , 0.6925] \\
+%   \hline
+%   & recall = 1 & 0 < recall < 1 & recall = 0 \\
+%   \hline
+%   PBE & 138 & 18 & 244 \\ 
+%   CTS & 81 & 235 & 84 \\ 
+%   KWS & 153 & 181 & 66 \\ 
+%   RLR & 2 & 121 & 277 \\ 
+%   \hline
+% \end{tabular}
+% \caption{Comparison of successful extractions for PBE, CTS, KWS and RLR}
+% \label{tab:101}
+% \end{table}
 
 \subsection{Comparing All Techniques}
-Figure \ref{fig:precision-all}: PBE highest precision if extraction successful, also highest recall of all?. CTS still good also when not all information extracted
+Figure~\ref{fig:success-partial-all} compares the success of all chunk retrieval of the different techniques in our study.
+CTS and KWS extract at least some of the desired lines in 79\% and 88.5\%.
+With 38.25\%, KWS also has the highest number of successful extractions, followed by PBE with 34.5\%.
+PBE has the lowest number of partial extraction with only 18 out of 400 chunk retrieval runs.
 
-Figure \ref{fig:precision-category-singularity-all}: pbe very good for a single category, very bad for multilpe, performance of others quite similar for single vs. multiple categories, CTS slightly impacted, random benefits (<- do we need to explain that in text?)
+The averaged precision and recall of all techniques is compared in Figure~\ref{fig:recall-precision-all}.
+PBE has a high skew towards one and zero for both measurements, meaning in most cases either the retrieval is successful or no relevant lines are extracted at all.
+Chunk retrieval with CTS has the highest average precision with 46\% and the second best recall with 45\%.
+KWS has the smallest precision of the three chunk retrieval techniques.
+With 16\% it is still higher than the precision of the RLR baseline with 7\%.
+KWS has the highest recall of all techniques with 70\%.
 
-Figure \ref{fig:success-all} pbe and kws best at extracting all desired lines, precision fig: pbe with higher precision
+The influence of a single structural category present in the configuring I/O examples compared to multiple categories present is shown in Figure~\ref{fig:recall-precision-singlecategory-all} and Figure~\ref{fig:recall-precision-multicategory-all}.
+For more than one present category, precision and recall of PBE greatly decrease.
+For CTS and KWS the values also decrease slightly, while RLR is not impacted by the number of structural categories present.
 
 \end{document}

@@ -55,7 +55,7 @@ For the selected jobs, our tool then queries the Travis API V3 and obtains the r
 
 
 \section{Data Structure}
-For our study, described in Chapter \ref{sec:study}, we want to investigate the retrieval capabilities of three techniques. Therefore, we need a data set of in/output examples for one \texttt{BuildLogInformation}. Furthermore, Keyword search is not configured by such in/output, but search keywords surrounding the desired output. Finally, this section describes our notion of structural categories, which we use to quantify our assumptions on the needed uniformness of in/output examples.
+For our study, described in Chapter~\ref{sec:study}, we want to investigate the retrieval capabilities of three techniques. Therefore, we need a data set of in/output examples for one \texttt{BuildLogInformation}. Furthermore, Keyword search is not configured by such in/output, but search keywords surrounding the desired output. Finally, this section describes our notion of structural categories, which we use to quantify our assumptions on the needed uniformness of in/output examples.
 
 \paragraph{Example Set}
 Our data set is organized in example sets. One example set always contains build log in/output examples from the same software repository or project and for one specific build log information. They are all from one repository because we investigate information retrieval techniques which are always configured to the scope of one particular software repository or project.
@@ -120,10 +120,10 @@ If the build was e.g.\ part of a pull request then developer likely looked at it
 In this section we describe how we validate the extractions of the build failure reason the \emph{Failing Build Log Data Set} describes.
 \subsubsection{Method}
 Using the Travis API, for every build log in the data set we looked up the corresponding build and the committer information.
-We grouped all commits triggered by one developer and sent out an email to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.Figure \ref{fig:dev-mail} shows one of the mails sent out.
+We grouped all commits triggered by one developer and sent out an email to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.Figure~\ref{fig:dev-mail} shows one of the mails sent out.
 The email included links to the corresponding commits, build overview and log file.
 We asked the receivers to fill out a short survey in case our extraction was not correct.
-Look at Figure \ref{fig:dev-survey} to get an impression of the survey.
+Look at Figure~\ref{fig:dev-survey} to get an impression of the survey.
 In the survey we presented the selected log part and asked the developer to paste in the log part actually describing the failure reason or describe why we were wrong in their own words.
 As some of the extractions we labeled are many lines long, we trimmed all down to 10 lines in order to keep the mail readable.
 
@@ -177,12 +177,12 @@ In total we sent out mails to 246 developers, asking about 3.2 build logs on ave
 32 of these mails could not be delivered, e.g. because they were addressed at noreply mail addresses.
 These 32 mails related to 68 of the build logs.
 We received answers from 61 developers, responding about 144 build logs.
-The proportions of mails and logs answered about, not delivered and unanswered is shown in Figure \ref{fig:mails-answers-received-mails} and Figure \ref{fig: mails-answers-received-builds}.
+The proportions of mails and logs answered about, not delivered and unanswered is shown in Figure~\ref{fig:mails-answers-received-mails} and Figure~\ref{fig: mails-answers-received-builds}.
 
 Of the 144 answers, 132 said our extraction was correct.
 26 answered either "close, but not quite correct" or "no, the build failed for another reason".
 We manually inspected these negative answers and found that extractions were correct after all.
-This yields 12 log extractions in our example set that were not correct, shown in Figure \ref{fig:mails-extraction-correct}.
+This yields 12 log extractions in our example set that were not correct, shown in Figure~\ref{fig:mails-extraction-correct}.
 
 \subsubsection{Discussion}
 This study highly strengthens the trust in the validity of the extracted build failure reasons in the \emph{Failing Build Log Data Set}.
