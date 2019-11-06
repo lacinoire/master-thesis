@@ -29,13 +29,14 @@ Our study results show, that chunk retrieval with PBE gives best results when th
 This means it is suited to retrieve BLIs, whose textual representation always has the same surrounding structure.
 To extract for example the reason a build failed, the log passage describing the failure would always have to be started and ended the same way.
 
-When all configuring I/O Examples are of the same structure, one to three examples are enough input for PROSE to synthesize a correct regular expression program. In our study, additional examples did not improve the quality of teh chunk retrieval.
+When all configuring I/O Examples are of the same structure, one to three examples are enough input for PROSE to synthesize a correct regular expression program.
+In our study, additional examples did not improve the quality of the chunk retrieval.
 
 \paragraph{Retrieval Output Usage}
 When the program synthesis succeeds and applying the regular expression program yields an output, PBE shows a high precision and high recall for chunk retrieval.
 A failure in the program synthesis or no output from the synthesized program is clearly identified by the tool.
 Therefore, if there is an output, the user can have high confidence it is the correct output.
-This makes output from PBE chunk retrieval well suited for consumption of other software components,
+This makes output from PBE chunk retrieval well suited for consumption of other software components.
 
 \subsection{Common Text Similarity (CTS)}
 \paragraph{Configuration and Input}
@@ -44,7 +45,7 @@ The number of configuring I/O examples had no measurable influence on the extrac
 Information retrieval techniques like text similarity commonly learn on a higher number of examples than we used for our study.
 Future work is needed to investigate how many examples yield improvements in the chunk retrieval over a single configuring I/O example.
 
-Extracting the average number of lines present in the configuring I/O examples seems to give the best balance of precision and recall for CTS.
+Extracting the average number of lines present in the configuring I/O examples seems to give the best balance of precision and recall for CTS\@.
 
 \paragraph{Retrieval Output Usage}
 CTS has good precision and recall on average, though the quality of a chunk retrieval run is very hard to predict from the given result.
@@ -52,7 +53,7 @@ Therefore, retrieval output from CTS is suited to be read by a human.
 
 \subsection{Keyword Search (KWS)}
 \paragraph{Configuration and Input}
-The number of structural categories in the configuring I/O examples have little impact on the extraction quality of KWS.
+The number of structural categories in the configuring I/O examples have little impact on the extraction quality of KWS\@.
 This makes KWS a good technique if there is little prior knowledge on how the desired BLI is represented in the build log to be analyzed.
 For the example of extracting the build failure reason, KWS is best suited if a build can fail in various steps logged by different tools and no pre-categorization of where the build failed is available.
 
@@ -63,11 +64,10 @@ Selecting 1.5 times as many lines around every found keyword does improve the re
 
 \paragraph{Retrieval Output Usage}
 Even though KWS has the highest recall of all three techniques, its precision is also the lowest.
-The output of a chunk retrieval with KWS is well suited to be read by humans, matching our 
-very low precision, only useful to filter lines in build log for further processing, e.g. reading by a developer
+The output of a chunk retrieval with KWS is well suited to be read by humans.
 
 \section{Choosing a Suitable Chunk Retrieval Technique}
-This section unifies our study results of the chunk retrieval techniques PBE, CTS and KWS.
+This section unifies our study results of the chunk retrieval techniques PBE, CTS and KWS\@.
 It recommends which technique to use depending on the available configuration and 
 TABLE!
 \paragraph{Configuration and Input}
@@ -84,7 +84,7 @@ very many? -> CTS
 precision needed:
 
 \begin{table}[htbp]
-\begin{tabular}{ |c||c|c|c| }
+\begin{tabular}{|c||c|c|c|}
   Technique & \multicolumn{3}{|c|}{Number of Categories in configuring examples} \\
   \hline
   & one & two & more \\

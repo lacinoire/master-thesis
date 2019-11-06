@@ -22,18 +22,18 @@ For the comparison study we evaluate the three chunk retrieval techniques PBE, C
 RLR, explained in Section~\ref{sec:expl-rlr}, acts as a baseline for the comparison.
 We run four techniques on the example sets from the \emph{Failing Build Log Data Set}.
 
-The examples are sorted chronologically, i.e. a technique is configured with examples from the directly preceding build logs.
+The examples are sorted chronologically, i.e.\ a technique is configured with examples from the directly preceding build logs.
 For each example set and each technique, we select one to five consecutive I/O examples as configuration, the \emph{configuring I/O examples}, and run the chunk retrieval on the following I/O example, the \emph{test I/O example}.
 
-For each of our evaluation runs we measure the desired vs. actual output lines of the chunk retrieval.
+For each of our evaluation runs we measure the desired and the actual output lines of the chunk retrieval.
 The desired output is given by the output of the test I/O example, which acts as the oracle for our evaluation.
 From this we obtain true/false positives/negatives and calculate precision, recall and accuracy.
 We use these values to answer \textbf{RQ2.2}.
-If all desired lines are extracted, i.e. recall is one, we say a chunk retrieval run was \emph{successful}.
+If all desired lines are extracted, i.e.\ recall is one, we say a chunk retrieval run was \emph{successful}.
 To answer \textbf{RQ2.1}, we register the number configuring I/O examples for each run.
 The structural categories of the configuring I/O examples are saved to answer \textbf{RQ2.3}.
 Recall and precision of those techniques vary with the number of lines selected for retrieval.
-We evaluate the impact of varying the number of extracted lines by multiplying the average number of lines present in the configuring examples with a \emph{retrieval size factor} from 0.5 to 2.5 in steps of 0.5.
+We evaluate the effect of varying the number of extracted lines by multiplying the average number of lines present in the configuring examples with a \emph{retrieval size factor} from 0.5 to 2.5 in steps of 0.5.
 
 %taking The Failing Build Log Data Set - run 3(4 with random) techniques with increasing example count - measuring xyz - justify choices like running chronologically / testing on 1 example / no k-fold validation - how are keywords for the search selected?
 
@@ -151,13 +151,13 @@ For two or more I/O examples the chunk retrieval is in most cases either success
 
 \subsection{Common Text Similarity (CTS)}
 Figure~\ref{fig:recall-precision-examplecount-TS} presents precision and recall of chunk retrieval using CTS for different numbers of configuring I/O examples.
-The count of configuring I/O examples has no visible influence on recall and precision of the chunk retrieval with CTS.
+The count of configuring I/O examples has no visible influence on recall and precision of the chunk retrieval with CTS\@.
 
 Figure~\ref{fig:recall-precision-categorycount-TS} shows the same measurements for different category counts in the configuring I/O examples.
 With increasing category count, precision and recall decrease.
 Especially for more than three categories present we have no chunk retrieval runs where all desired lines were extracted.
 
-Figure~\ref{fig:contextsizefactor-precision-recall-TS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with CTS.
+Figure~\ref{fig:contextsizefactor-precision-recall-TS} shows the effect of the retrieval size factor on precision and accuracy of chunk retrieval runs with CTS\@.
 The precision ranges from 52\% when retrieving half expected number of lines to 25\% when 2.5 times the expected number of lines.
 The recall ranges from 30\% to 55\%.
 
@@ -201,11 +201,11 @@ The recall jumps from 53\% to over 70\% for more than two configuring I/O exampl
 Figure~\ref{fig:recall-precision-categorycount-SKWS} shows the same measurements for different category counts in the configuring I/O examples.
 There is no clear trend visible in precision and recall for an increasing amount of categories in the configuring I/O examples
 
-Figure~\ref{fig:contextsizefactor-precision-recall-SKWS} shows the impact of the retrieval size factor on precision and accuracy of chunk retrieval runs with SKWS.
+Figure~\ref{fig:contextsizefactor-precision-recall-SKWS} shows the effect of the retrieval size factor on precision and accuracy of chunk retrieval runs with KWS\@.
 The precision ranges from 19\% when retrieving half expected number of lines to 10\% when 2.5 times the expected number of lines.
 The recall ranges from 58\% to 75\%.
 
-Figure~\ref{fig:retrievalsizefactor-retrievalratio-SKWS} shows the average proportion of the lines in the test log file retrieved for different retrieval size factors with KWS.
+Figure~\ref{fig:retrievalsizefactor-retrievalratio-SKWS} shows the average proportion of the lines in the test log file retrieved for different retrieval size factors with KWS\@.
 When retrieving the mean number of lines in the configuring I/O examples, 15\% of the log lines are retrieved on average.
 This proportion goes up to 25\% when retrieving 1.5 times more lines.
 
@@ -289,8 +289,8 @@ KWS has the smallest precision of the three chunk retrieval techniques.
 With 16\% it is still higher than the precision of the RLR baseline with 7\%.
 KWS has the highest recall of all techniques with 70\%.
 
-The influence of a single structural category present in the configuring I/O examples compared to multiple categories present is shown in Figure~\ref{fig:recall-precision-singlecategory-all} and Figure~\ref{fig:recall-precision-multicategory-all}.
+Figure~\ref{fig:recall-precision-singlecategory-all} and Figure~\ref{fig:recall-precision-multicategory-all} show the influence of a single structural category present in the configuring I/O examples compared to multiple categories present.
 For more than one present category, precision and recall of PBE greatly decrease.
-For CTS and KWS the values also decrease slightly, while RLR is not impacted by the number of structural categories present.
+For CTS and KWS the values also decrease slightly, while RLR is not affected by the number of structural categories present.
 
 \end{document}
