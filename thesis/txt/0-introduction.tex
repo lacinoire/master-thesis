@@ -10,73 +10,89 @@ Many software projects use CI~\cite{hilton2016usage,staahl2014modeling,beller201
 A build on a CI server typically compiles and packages the software, executes tests~\cite{beller2017oops} and various kinds of static analyses~\cite{zampetti2017open}.
 
 CI builds produce long and verbose build logs~\cite{beller2017oops}, reporting the progress and results of the steps within the build.
-The structure of these logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and environment used.
+The structure of these logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and the environment used.
 Build logs are a valuable data source: For developers, who read them to analyze why their build failed or how different stages of the build process perform.
-Second, For researchers, who can harvest the information contained in the logs to study the software engineering process of a project~\cite{rausch2017empirical,beller2017oops,seo2014programmers,vassallo2017a-tale}.
+Second, for researchers, who can harvest the information contained in the logs to study the software engineering process of a project~\cite{rausch2017empirical,beller2017oops,seo2014programmers,vassallo2017a-tale}.
 However, these two groups can only utilize the information within the build logs if they can adequately retrieve the information relevant to them.
 
-There are different techniques to retrieve information from CI build logs. Beller et al.\ use regular expressions to analyze the failure reasons of Ruby and Java Maven build logs from Travis CI~\cite{beller2017oops}.
+There are different techniques to retrieve information from CI build logs. Beller et al.\ use regular expressions to analyze the failure reasons of build logs from Travis CI~\cite{beller2017oops}.
 Such regular expressions are developed by looking at a few exemplary build logs and updating them whenever new cases are introduced is a tedious and error-prone task~\cite{michael2019regexes}.
-Vassallo et al.\ wrote a custom parser for Java Maven build logs to gather information for build repair hints~\cite{vassallo2018un-break}.
-Recently, Amar et al.\ greatly reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and successful build~\cite{amar2019mining}.
+Vassallo et al.\ wrote a custom parser for build logs to gather information for build repair hints~\cite{vassallo2018un-break}.
+Recently, Amar et al.\ reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and a successful build~\cite{amar2019mining}.
 
+These approaches have various downsides and strengths:
+Regular expressions are very exact but difficult to maintain~\cite{michael2019regexes}.
+Custom parsers are powerful though fragile towards changes in the log structure.
+Taking a diff between failed and successful logs can reduce the information to be processed, but the imprecise output needs to be interpreted by a developer~\cite{amar2019mining}.
 At the moment there is only anecdotal evidence on the performance of these techniques and when a technique should be preferred.
 Developers and researches currently have little support while choosing which technique to use for a retrieval task.
-The goal of this thesis is to investigate different information retrieval techniques (IR techniques) and describe under which circumstances we recommend each of the techniques.
 
-We aim to define a model to characterize different IR techniques, as well as the information retrievable from CI build logs.
-For our first research question, we analyze which criteria influence the suitability of an IR technique.
+The goal of this thesis is to investigate different chunk retrieval techniques (CR techniques) for build logs and describe under which circumstances we recommend each of the techniques.
+We aim to define a model to characterize different CR techniques, as well as the information retrievable from CI build logs.
+For \textbf{RQ1}, we analyze which criteria influence the suitability of an CR technique for CI build logs.
 We implement and evaluate three chunk retrieval techniques:
 \begin{itemize}
   \item program synthesis by example using the Microsoft PROSE library (referred to as PBE),
   \item a common text similarity approach (referred to as CTS) and
   \item keyword search (referred to as KWS)
 \end{itemize}
-Our second research question asks in which cases PBE, TS and SKWS are suited to retrieve information from continuous integration build logs. RQ2 is refined into sub-questions along the criteria resulting from RQ1 and compares their instantiations for the three techniques: how many examples a technique needs to perform best, the accuracy of the retrieved output and how structurally diverse the configuring examples can be.
-\begin{simplebox}{Research Questions}
+\textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited to retrieve information from continuous integration build logs.
+\textbf{RQ2} is refined into sub-questions along the criteria resulting from \textbf{RQ1} and compares their instantiations for the three techniques:
+how many examples a technique needs to perform best (\textbf{RQ2.1}), how structurally diverse the configuring examples can be (\textbf{RQ2.2}) and the accuracy of the retrieved output (\textbf{RQ2.3}).
+% \begin{simplebox}{Research Questions}
+% \begin{itemize}
+%   \item[\textbf{RQ1:}] Which criteria influence the suitability of a chunk retrieval technique for CI build logs?
+%   \item[\textbf{RQ2:}] Under which conditions are PBE, CTS, and KWS suited to retrieve information from CI build logs?
+%   \item[\textbf{RQ2.1:}] How many examples do PBE, CTS, and KWS need to perform best?
+%   \item[\textbf{RQ2.2:}] How structurally similar do the examples for PBE, CTS and KWS need to be for the techniques to be applicable?
+%   \item[\textbf{RQ2.3:}] How accurate are the retrievals of PBE, CTS, and KWS?
+% \end{itemize}
+% \end{simplebox}
+To evaluate PBE, CTS and KWS we create the \emph{Failing Build Logs Data Set}, which encompasses about 800 log files from 80 repositories.
+Each log is labeled with the log part describing the reason a build failed, keywords to search for this log part and a categorization of the labeled log part according to its structural position within the log.
+
+Our study of the three techniques on \emph{Failing Build Logs Data Set} shows that
 \begin{itemize}
-  \item[\textbf{RQ1:}] Which criteria influence the suitability of a chunk retrieval technique for CI build logs?
-  \item[\textbf{RQ2:}] Under which conditions are PBE, CTS, and KWS suited to retrieve information from CI build logs?
-  \item[\textbf{RQ2.1:}] How many examples do PBE, CTS, and KWS need to perform best?
-  \item[\textbf{RQ2.2:}] How structurally similar do the examples for PBE, CTS and KWS need to be for the techniques to be applicable?
-  \item[\textbf{RQ2.3:}] How accurate are the retrievals of PBE, TS, and KWS?
+  \item PBE yields very accurate results when configured with 1 to 3 examples from a single structural category.
+  \item CTS shows the best average precision, though the quality of the retrieval is hard to determine from a given result.
+  A small increase in the number of examples used in the configuration has no visible influence and fewer structural categories improve the retrieval accuracy.
+  \item KWS has the highest recall of all techniques combined with considerable lower recall.
+  It is the only technique where retrieval quality does not decrease with and increasing number of structural categories in the configuring examples.
 \end{itemize}
-\end{simplebox}
-To evaluate PBE, TS and SKWS we create the \emph{Failing Build Logs Data Set}, which encompasses about 800 log files from 80 repositories. Each log is labeled with the log part describing the reason a build failed, keywords to search for this log part and a categorization of the labeled log part according to its structural position within the log. 
-
-
-
-\plan{results and conclusions of my work}
-Our study of the three techniques on \emph{Failing Build Logs Data Set} shows that PROSE is suitable for retrieval tasks requiring a high precision,. Retrieving information by using text similarity of examples is suitable when. Simple keyword search is suitable.
-
+We recommend PBE for use cases where the desired information is always represented in the same structurally predictable way and a high confidence in the exactness of the chunk retrieval is required.
+CTS is well suited when the representation of the desired information varies slightly and the output of the chunk retrieval is further processed by a human.
+In cases where the representation fo the desired information is unpredictable or varies greatly, KWS is the best technique to choose.
+Though the low precision of the output requires a human to interpret the output of the chunk retrieval.
 
 \paragraph{Our work contributes:}
 \begin{itemize}
-  \item A model of the contained and retrievable information in CI build logs
-  \item A model to characterize information retrieval techniques from CI build logs
-  \item A model to characterize use case scenarios for information retrieval from CI build logs
-  \item A tool unifying several information retrieval techniques namely:
+  \item A model of the contained and retrievable information in CI build logs.
+  \item A model to characterize chunk retrieval techniques from CI build logs.
+  %\item A model to characterize use case scenarios for information retrieval from CI build logs
+  \item A tool unifying several chunk retrieval techniques namely:
         \begin{itemize}
-          \item regular expression program synthesis from examples using the Microsoft PROSE library (PBE),
-          \item a common information retrieval approach using text similarity (TS), and
-          \item a simple keyword search approach (SKWS)
+          \item program synthesis from examples using the Microsoft PROSE library (PBE),
+          \item a common information retrieval approach using text similarity (CTS), and
+          \item a keyword search approach (KWS)
         \end{itemize}
   %\item The \emph{LogCollector}, a tool to gather build logs from Travis CI
   \item A validated data set of about 800 logs from failed Travis CI builds labeled with:
         \begin{itemize}
           \item the substring of the log describing the reason the build failed,
           \item keywords developers would use to search for these descriptions of the build failure reason, and
-          \item a categorization of the retrievals according to their structural position within the build log
+          \item a categorization of the retrievals according to their structural position within the build log.
         \end{itemize}
-  \item An evaluation of our model for the three implemented information retrieval techniques \todo{describe \emph{what} we look for with this evaluation}
-  \item \todo{guidlines on when to use which technique, also guidelines for each technique}
+  \item A study comparing the effectiveness of the three implemented techniques.
+  \item Recommendations for the configuration of each of the investigated chunk retrieval techniques.
+  \item Guidelines on choosing a suitable chunk retrieval technique. % TODO for a given use case or so?
 \end{itemize}
 
-\todo{update}
-This thesis first presents an overview of the related research, spanning from CI research, build log analysis and augmentation, and common system log processing over information retrieval techniques to program synthesis by examples.
-Next, chapter~\ref{sec:models} presents our models for information retrieval techniques, use case scenarios for such techniques and retrievable information from CI build logs. It also introduces the three techniques, we focus on during our research evaluation.
-Chapter~\ref{sec:data-set} describes the creation of our \emph{Failing Build Logs Data Set} collected from failed Travis CI build logs and the labeling as well as the validation process.
-Following, Chapter~\ref{sec:implementation} our implementation of the three chosen information retrieval techniques and the usage of our unified information retrieval tool.
-This tool is also used for the evaluation study of our models described in Chapter~\ref{sec:study}. There we also describe the resulting instantiation of our recommendation model for regex program synthesis, text similarity, and keyword search.
+This thesis first presents an overview of related research, spanning from CI research, build log analysis and augmentation, and common system log processing over information retrieval techniques to program synthesis by examples.
+Next, chapter~\ref{sec:models} characterizes chunk retrieval techniques and contained and retrievable information from CI build logs.
+It also introduces the three investigated techniques PBE, CTS and KWS.
+Chapter~\ref{sec:data-set} describes the creation of the \emph{Failing Build Logs Data Set} collected from failed Travis CI build logs, including the labeling and the validation process.
+Following, Chapter~\ref{sec:implementation} outlines our implementation of the three chosen chunk retrieval techniques and the usage of our unified chunk retrieval tool.
+This tool is also used for the evaluation study of our models described in Chapter~\ref{sec:study}.
+Chapter~\ref{sec:discussion} presents the implications of the study results and recommendations on when PBE, CTS and KWS are most suitable.
 Lastly, we conclude and give an overview of further research opportunities in Chapter~\ref{sec:conclusion}.
 \end{document}
