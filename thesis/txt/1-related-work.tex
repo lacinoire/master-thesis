@@ -41,25 +41,24 @@ by contributing along several dimensions: development of domain specific languag
 \mention{ask Jean?}
 
 \section{Semi-Structured Data}
-\plan{finalized, out for review}
 \label{sec:rw-semi-structured-data}
-Serge Abiteboul ``characterizes essential aspects of semi-structured data''~\cite{abiteboul1997querying} in the context of integrating data from various data sources.
-The content of CI build logs is combined from several tools involved in the build process and several of Abiteboul's aspects can be applied to build logs.
+Serge Abiteboul introduced a theory of semi-structured data in his report from 1997 about integrating data from several sources~\cite{abiteboul1997querying}.
+He proposes essential characteristics of semi-structured data, and we show how five of these map to the context of build logs.
 
 The structure of build logs
 \begin{itemize}
-  \item is \textbf{implicit}.
-  We do not have access to explicit structuring elements or an explicit structure description.
+  \item \textbf{is implicit}.
+  We might not have access to explicit structuring elements or an explicit structure description.
   Computation is required to infer the present structure.
-  \item is \textbf{irregular}.
-  Changes in the build process or execution environment might change the structure of a build log without notice.
+  \item \textbf{is irregular}.
+  Changes in the build process or execution environment might change the structure of a build log.
   We observed this in the logs we collected for the \emph{Failing Build Log Data Set}, where for the same repository and build configuration some logs had double new line characters without any noticeable explanation.
   You can see an example of this in Figure~\ref{fig:log-4} and Figure~\ref{fig:log-5}.
-  \item is \textbf{partial}. Some parts are highly structured by e.g.\ structure indicating special characters and others are unstructured, e.g.\ natural language text in error messages.
-  \item can be described with an \textbf{a-posteriori data guide} rather than an a-priori schema.
-  There is no fixed specification on how build tools have to structure their output.
+  \item \textbf{is partial}. Some parts are highly structured by e.g.\ structure indicating special characters and others are unstructured, e.g.\ natural language text in error messages.
+  \item can be described with an \textbf{analytical data guide} rather than a beforehand defined schema.
+  There is no fixed specification on how build tools structure their output.
   We afterwards extract structuring patterns in the produced output.
-  \item has a \textbf{rapidly evolving} schema.
+  \item \textbf{has a rapidly evolving schema}.
   Modifications in the build configuration might change the tools involved in the build and therefore the composition of the build log.
   Previous work indicates that some projects change their CI configuration often~\cite{hilton2016usage} and software tools adopt their log messages over time~\cite{yuan2012characterizing}.
 \end{itemize}
