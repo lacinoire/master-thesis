@@ -66,7 +66,7 @@ Therefore build logs are semi-structured, as described in Section~\ref{sec:rw-se
 \section{Information Chunks in Build Logs}
 \label{sec:bli}
 CI build logs contain a great amount of information about the CI build they correspond to.
-In this section we describe our notion of a information retrievable from a CI build log.
+In this section, we describe our notion of a information retrievable from a CI build log.
 We present examples of information contained in Travis CI build logs and illustrate use cases for a developer or researcher to retrieve them.
 
 The central class of our model is the \emph{BuildLogInformation} (BLI), representing a piece of information possibly retrievable from a build log.
@@ -82,7 +82,7 @@ Most BLI types can appear in various hierarchical arrangements and are therefore
 
 During our initial exploration and log data collection for the \emph{Failing Build Log Data Set}, we collected a broad set of build logs from 29 languages and 87 repositories from Travis CI~\cite{travisci2019webpage}.
 We inspected them to get an impression about the information one would want to retrieve from a build log.
-In the following we describe the possibly interesting information types to be retrieved from Travis CI build logs.
+In the following, we describe the possibly interesting information types to be retrieved from Travis CI build logs.
 All BLIs containing ``Travis'' in their name are specific to Travis CI build logs, the others can also apply to build logs from another CI environment.
 Figure~\ref{fig:build-log-information} shows an overview of these BLIs.
 
@@ -95,9 +95,9 @@ Figure~\ref{fig:build-log-information} shows an overview of these BLIs.
 	      A TravisPhase always contains:
 	      \begin{itemize}
 		      \item \textbf{TravisPhaseName} The string Travis CI uses to identify the phase within start and end statements.
-		      \item \textbf{TravisPhaseOutput} The output generated during the travis phase. The textual representation of the \texttt{TravisPhaseOutput} instantiation is the substring between the start and end statements.
+		      \item \textbf{TravisPhaseOutput} The output generated during the TravisPhase. The textual representation of the \texttt{TravisPhaseOutput} instantiation is the substring between the start and end statements.
 	      \end{itemize}
-				 Retrieving the names of the phases of a Travis CI build log could be used to afterwards reconstruct an overview of the executed steps within a build.
+				 Retrieving the names of the phases of a Travis CI build log could be used to afterward reconstruct an overview of the executed steps within a build.
 	       Figure~\ref{fig:log-1} shows an example of a TravisPhase instantiation and its components within a build log.
 
 	\item \textbf{TravisTiming} Travis can measure the time of specified sections of the build process.
@@ -186,12 +186,12 @@ It focus on extracting just one information, specified by its configuration.
 Each CRT has a specific \textit{granularity}, i.e.\ the smallest retrievable text piece and uses a specific \textit{identification technique} to select the log parts it retrieves.
 The \textit{configuration} instantiates a CRT to target a specific BLI and supplies the necessary information for the CRT to identify the textual representation of the targeted BLI in a build log.
 Each configuration addresses a specific \textit{scope}.
-The scope an be a specific project, a tool involved in the build, a programming language or global, configuring a retrieval technique for all possible build logs.
+The scope can be a specific project, a tool involved in the build, a programming language or global, configuring a retrieval technique for all possible build logs.
 A \textit{CRT run} consumes a build log as a plain text file and produces a string output, which consists of substrings of the build log text.
 
 The following sections of this chapter introduce the three CTRs we investigate: Program synthesis by example (PBE), common text similarity (CTS) and keyword search (KWS).
 Lastly we describe other techniques which can also be comprehended as CRTs.
-Table \ref{tab:ctr} shows a comparison of the presented techniques.
+Table~\ref{tab:ctr} shows a comparison of the presented techniques.
 
 \begin{table}[htbp]
 \centering
@@ -273,14 +273,14 @@ In the following we will explain how we use simple keyword search to retrieve in
 %Figure~\ref{fig:keyword-search-explanation} shows the instantiation of the BLIRT model for SKWS.
 
 \paragraph{Configuration}
-A set of keywords configures the chunk retrieval with KWS.
+A set of keywords configures the chunk retrieval with KWS\@.
 To better compare KWS with PBE and CTS, we also configure it through I/O examples.
 We link each I/O example with keywords, which appear in the desired output or close to it in the input build log.
 The configuring keywords for KWS are the ones that appear most often in the keywords of the configuring I/O examples.
 
 \paragraph{Application}
 For a retrieval run, we take a whole build log file as input and search for all exact occurrences of the configuring keywords.
-As keywords are often not directly describing the desired information but rather adjacent to the desired information, this technique retrieves the lines around not only retrieves the line with the keyword but also the lines around it.
+As keywords are often not directly describing the desired information but rather next to the desired information, this technique retrieves the lines around not only retrieves the line with the keyword but also the lines around it.
 The number of surrounding lines retrieved is the average of lines in the output of the configuring I/O examples.
 
 \subsection{Other Techniques}
@@ -291,10 +291,10 @@ This section shows how they are described with our notion of chunk retrieval tec
 \paragraph{Log Diff}
 Amar et al.\ use a technique based on line diffs to retrieve relevant lines from a failed build log~\cite{amar2019mining}, as we describe in more detail in Section~\ref{sec:rw-bl-analysis}.
 The configuration for the technique is the log from the last successful build.
-This techniques retrieves all lines from a build log which are not present in the configuring build log.
+This technique retrieves all lines from a build log that are not present in the configuring build log.
 %Figure~\ref{fig:diff-technique-model} shows how this technique would be in our BLIRT model.
 \paragraph{Random Line Retrieval (RLR)}
-In our evaluation we want to compare against a baseline of randomly extracted lines.
+In our evaluation, we want to compare against a baseline of randomly extracted lines.
 The average number of lines in the outputs of a set of I/O examples is the configuration for random line retrieval (RLR).
 It retrieves this number of lines randomly sampled from the build log.
 
