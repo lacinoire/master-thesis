@@ -20,7 +20,7 @@ Lastly this section mentions different Programming by Example resources surround
 \plan{extend, 1 page}
 \mention{look into proksch papers}
 Various researchers have analyzed industrial and open source logs for failure reasons and their impact on development. Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at Google. In addition most failures are resolved within two builds. Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones. They determined that testing failures outweigh compilation errors. Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects. Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds. They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
-
+~\cite{vassallo2019every}
 All these researchers described building parsers in order to evaluate the studied build logs. Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
 
 \section{Build Log Analysis and Augmentation - Related Work}
@@ -72,6 +72,17 @@ The additional layer can answer queries and give access to the semi-structured d
 In contrast to that, this thesis takes a look at techniques to gater a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
 
 \section{Information Extraction and Retrieval Techniques}
+
+The process of automatically selecting documents related to a given \emph{search query} is called \emph{Information Retrieval}~\cite{schutze2008introduction}.
+%Text Similarity approaches are more and more used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
+
+\emph{Information Extraction} techniques aim to automatically structure unstructured information to support subsequent processing.
+The IEPAD tool created by Chang et al.~\cite{chang2003automatic} automatically identifies data extraction patterns in semi-structured web pages, without requiring user-labeled training examples.
+PADS: stuff one section up^
+
+We investigate chunk retrieval techniques which do not aim at inferring the whole structure of a build log, but instead focus on extracting one information characterized by a user.
+
+
 \plan{research + write, 1/2 - 1 page}
 \todo{explain difference here, reference pads(maybe that is already in log anlysis!) and stuff}
 \review{Getting the general tot p cic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
@@ -87,8 +98,7 @@ Programming by Example enables end users to automate repetitive tasks.
 The user provides examples for the input and the corresponding output and a synthesis algorithm tries to create the program intended by the user.
 This section introduces the theoretical foundations of the program synthesis algorithm implemented in the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework~\cite{prose2019webpage}.
 It presents the FlashExtract DSL, which defines text extraction tasks within PROSE and is the basis for the implementation of our PBE chunk retrieval technique.
-Further, this section covers further applications and extensions of the PROSE program synthesis, as well as previous work about 
-
+Further, this section covers further applications and extensions of the PROSE program synthesis.
 
 \paragraph{FlashMeta: Inductive Program Synthesis}
 The FlashMeta framework presented by Polozov and Gulwani~\cite{polozov2015flashmeta:} is the backbone of the program synthesis in the Microsoft PROSE framework.
@@ -102,8 +112,9 @@ The enumerated programs are ranked according to which ones the user most likely 
 The ranking characteristics are also provided by the DSL.
 From the ranked VSA, FlashMeta can then return a ranked list of complete programs consistent with the users example.
 
-The different applications of PROSE presented in the following paragraphs are all implemented as DSLs for the FlashMeta synthesis algorithm.
+In addition to I/O examples of the intended program, the user can also provide examples with only input or negative input examples not to be processed by the synthesized program.
 
+The different applications of PROSE presented in the following paragraphs are all implemented as DSLs for the FlashMeta synthesis algorithm.
 
 \paragraph{FlashExtract: Data Extraction by Example}
 Le et al.~\cite{le2014flashextract:} developed FlashExtract as DSL for the Microsoft PROSE framework.
@@ -118,40 +129,31 @@ A position is either specified by an absolute character index or a pair of two r
 The first regex matches the substring directly before the characterized position, the second regex directly after.
 A regex in FlashExtract is a concatenation of tokens, e.g.\ standard character classes or string literals frequently occurring in the input examples.
 
-We apply the text instantiation of FlashExtract to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information retrieval.
+Microsoft's system log analysis tool Azure Monitor lets users define custom log fields using the FlashExtract~\cite{azure2019custom}.
+The ConvertFrom-String function in PowerShell allows a user to specify a example template for extracting hierarchical data from a text document~\cite{powershell2019convert}.
 
+We apply the text instantiation of FlashExtract to the domain of build logs with our chunk retrieval technique PBE\@.
 
-\paragraph{Other Applications for Program Synthesis by Example}
-refazer, program transformations~\cite{rolim2017learning}
-spred sheets ~\cite{gulwani2011automating}
-table transformations~\cite{harris2011spreadsheet}
-SOME MISSING
+\paragraph{Other Applications of Program Synthesis by Example}
+Rolim et al.~\cite{rolim2017learning} use code edits as examples to learn automatic program transformations.
+Their DSL for PROSE abstracts over variables and subexpressions by describing rewrite rules applied to the abstract syntax tree.
+The synthesized transformations proposes fixes for student assignments based on corrections from other students and to automates repetitive refactoring tasks.
 
-\paragraph{Improving the Program Synthesis}
-predictive data extraction~\cite{raza2017automated}
-instead of only attributing program simplicity by program syntax e.g. shortness also take exectution traces (e.g. which substrings extraction sare performed) and output similarity to each other~\cite{ellis2017learning}
+In 2011 Gulwani and Harris applied a less generic predecessor of the FlashMeta framework to string manipulation within spreadsheets~\cite{gulwani2011automating} and spreadsheet transformations~\cite{harris2011spreadsheet}.
 
-\paragraph{Perspective: Usability vs. Technical Aspects} maybe: usability perspecitve / usability of pbe \todo{REWORK}
-Generally, we are interested in whether Programming by Example could replace manually writing regular expressions.
-Writing and especially maintaining regular expressions is known to be a difficult, tedious and error-prone task~\cite{michael2019regexes}.
-There are two ways to approach this question: from the usability side or the technical side.
-When studying the applicability of PBE from the \emph{usability} perspective, typical questions are:
-\begin{itemize}
-	\item Are users more efficient when using PBE compared to manual regex construction?
-	\item Are users more comfortable using PBE over manual regex construction?
-	\item Are users confident in the resulting regular expression program from PBE?
-	\item Are the resulting extractions more or less accurate when using PBE over manual regex construction?
-\end{itemize}
-Some of these are evaluated in existing works about PBE and user interaction~\cite{mayer2015user,lau2009why-programming-by-demonstration,miller2001outlier}.
-% Adequately answering those questions is however highly dependent on the user interface and the corresponding interaction model used during a study.
-% Developers who are accustomed to crunching on regular expressions in their favorite IDE or Editor might have an adversely negative view on synthesizing programs from examples in an unknown interface.
-% Mayer et al.~\cite{mayer2015user} presented two system-user interaction models to improve the confidence of users into the programs synthesized from their examples.
-% We feel such questions of usability can be answered separately from the application domain of build logs.
+Raza and Gulwani~\cite{raza2017automated} present an automated algorithm that tries to predict data extraction programs from only input examples.
+Their tool can split system log statements into table columns or extract data from lists on webpages into spreadsheets.
 
-For our work, we chose to look at the applicability of PBE from the \emph{technical} perspective.
-We investigate whether current program synthesis techniques can learn programs for information retrieval tasks in the domain of CI build logs.
-Furthermore, we gather insights into how PBE has to be applied to yield useable results and perform best.
-Our implementation of PBE is mainly based on the Flash Extract DSL~\cite{le2014flashextract:} of the PROSE library by Microsoft~\cite{prose2019webpage}.
-Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
+In a program synthesis shorter and simpler program often receive a better ranking.
+Ellis and Gulwani~\cite{ellis2017learning} improved the accuracy of the PROSE program learner even further by also taking into account the execution traces of the program candidates.
+For example, a program that extracts overlapping substrings is ranked lower than a program without overlapping extractions.
+They also weigh the produced output of applying a program to input only examples and prefer programs which produces output structurally similar to the provided output examples.
+
+\paragraph{User Interaction with Programming by Example}
+I/O examples are an ambiguous specification of a program and user confidence in the correctness of the synthesized program is important for a wide adoption of Programming by Example based systems~\cite{lau2009why-programming-by-demonstration}.
+Miller and Myers~\cite{miller2001outlier} uncover outliers in input data provided to a Programming by Example text editing task.
+For the PROSE framework, Mayer et al.~\cite{mayer2015user} compare two approaches for disambiguation by the user.
+With their first approach, the user can browse lower ranked program candidates in a tree like natural language transformation of the constructed VSA.
+The second approach actively asks the user to resolve ambiguous output possibilities for input only examples.
 
 \end{document}
