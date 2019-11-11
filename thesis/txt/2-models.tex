@@ -241,30 +241,6 @@ A CTR run with PBE takes a build log file as input and applies the synthesized r
 It then returns the substring of the build log matched by the program or an empty string if the program found no match.
 %For execution PBE takes a build file as input and returns a substring of the build file content.
 
-\paragraph{Perspective: Usability vs. Technical Aspects}
-Generally, we are interested in whether Programming by Example could replace manually writing regular expressions.
-Writing and especially maintaining regular expressions is known to be a difficult, tedious and error-prone task~\cite{michael2019regexes}.
-There are two ways to approach this question: from the usability side or the technical side.
-
-When studying the applicability of PBE from the \emph{usability} perspective, typical questions are:
-\begin{itemize}
-	\item Are users more efficient when using PBE compared to manual regex construction?
-	\item Are users more comfortable using PBE over manual regex construction?
-	\item Are users confident in the resulting regular expression program from PBE?
-	\item Are the resulting extractions more or less accurate when using PBE over manual regex construction?
-\end{itemize}
-Some of these are evaluated in existing works about PBE and user interaction~\cite{mayer2015user,lau2009why-programming-by-demonstration,miller2001outlier}.
-% Adequately answering those questions is however highly dependent on the user interface and the corresponding interaction model used during a study.
-% Developers who are accustomed to crunching on regular expressions in their favorite IDE or Editor might have an adversely negative view on synthesizing programs from examples in an unknown interface.
-% Mayer et al.~\cite{mayer2015user} presented two system-user interaction models to improve the confidence of users into the programs synthesized from their examples.
-% We feel such questions of usability can be answered separately from the application domain of build logs.
-
-For our work, we chose to look at the applicability of PBE from the \emph{technical} perspective.
-We investigate whether current program synthesis techniques can learn programs for information retrieval tasks in the domain of CI build logs.
-Furthermore, we gather insights into how PBE has to be applied to yield useable results and perform best.
-Our implementation of PBE is mainly based on the Flash Extract DSL~\cite{le2014flashextract:} of the PROSE library by Microsoft~\cite{prose2019webpage}.
-Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
-
 \subsection{Common Text Similarity (CTS)}
 \label{sec:expl-ts}
 Text Similarity approaches are more and more used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.

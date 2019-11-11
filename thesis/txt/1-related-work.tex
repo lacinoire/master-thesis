@@ -8,8 +8,12 @@
 \plan{all of RW: 4 - 5 pages left to do + some research!}
 \plan{write, 1/3 page, blocked by: other sections}
 \label{sec:rw}
-\todo{introduction \& glue text}
-This section presents various research works adjacent or foundational to our work. Starting with studies about Continuous Integration used in software projects, we move on to past works about build log analysis and their augmentation. We differentiate our work from the more common production runtime log analysis and cover different information retrieval techniques. Lastly this section mentions different Programming by Example resources surrounding Microsoft's work on the PROSE library.
+This section presents various research works adjacent or foundational to our work.
+Starting with studies about Continuous Integration used in software projects, we move on to past works about build log analysis and their augmentation.
+We differentiate our work from the more common system log analysis and show how we classify build logs as semi-structured data.
+We cover different information retrieval and extraction techniques \todo{half sentence missing: specify which techniques? 'used in software reasearch' 'used to assist software engineers'}.
+Lastly this section mentions different Programming by Example resources surrounding Microsoft's work on the PROSE library.
+\todo{do we also mention more things?}
 % moritz: nice formulation :)
 
 \section{Continuous Integration}
@@ -79,17 +83,75 @@ Instead of receiving a paragraph which is similar to a given query, our works fo
 
 \section{Program Synthesis by Example}
 \label{sec:rw-prose}
-\plan{extend, 1 page}
-\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
-\review{Le et al.~\cite{le2014flashextract:} developed FlashExtract as part of the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework. It is a tool which synthesizes text extraction programs from semi-structured text based on a few given examples. Users can extract multiple fields and structure them with hierarchy and sequence. FlashExtract eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
+Programming by Example enables end users to automate repetitive tasks.
+The user provides examples for the input and the corresponding output and a synthesis algorithm tries to create the program intended by the user.
+This section introduces the theoretical foundations of the program synthesis algorithm implemented in the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework~\cite{prose2019webpage}.
+It presents the FlashExtract DSL, which defines text extraction tasks within PROSE and is the basis for the implementation of our PBE chunk retrieval technique.
+Further, this section covers further applications and extensions of the PROSE program synthesis, as well as previous work about 
 
-We are applying FlashExtract to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information retrieval.
-}
-\mention{prose theory paper~\cite{polozov2015flashmeta:}}
-\mention{\cite{rolim2017learning}}
 
-\todo{maybe scrap this section / incorporate last sentence somewhere else, expalnation will mostly be in rw. How to usefully sturcture the stuff above this?}
-In the following we want to give an impression on how the PROSE library and specifically the Flash Extract DSL synthesize programs for extracting substrings from text via regular expressions.
-\todo{how much can/should we explain here? possibly big parts are already explained in related work: vsa, divied and coquer, witness functions, enumeration and ranking (prose theory paper), flash extract specifics like what functions they have (absolute pos, pre/post regex), rankings specific to ci biulg logs?}
-Our approach is based on the Flash Extract DSL, which in turn is based on the FlashMeta algorithm. Both are described in \todo{ref rw sections}.
+\paragraph{FlashMeta: Inductive Program Synthesis}
+The FlashMeta framework presented by Polozov and Gulwani~\cite{polozov2015flashmeta:} is the backbone of the program synthesis in the Microsoft PROSE framework.
+FlashMeta separates the inductive synthesis algorithm from the domain specific capabilities of the desired program, by encoding the possible program space in a domain specific language (DSL).
+The user specifies their intent by providing in / output examples (I/O examples).
+FlashMeta uses \emph{witness functions}, provided by the DSL, to divide the synthesis into smaller subtasks.
+For each of these subtasks it enumerates all possible programs that solve the subtask consistent with the set of I/O examples.
+A program is consistent with a set of I/O examples if it produces the corresponding output for each input example~\cite{mitchell1982generalization}.
+The subprograms are stored in a \emph{version space algebra} (VSA)~\cite{mitchell1982generalization}, which efficiently saves candidate programs for tasks by sharing common subexpressions.
+The enumerated programs are ranked according to which ones the user most likely intended.
+The ranking characteristics are also provided by the DSL.
+From the ranked VSA, FlashMeta can then return a ranked list of complete programs consistent with the users example.
+
+The different applications of PROSE presented in the following paragraphs are all implemented as DSLs for the FlashMeta synthesis algorithm.
+
+
+\paragraph{FlashExtract: Data Extraction by Example}
+Le et al.~\cite{le2014flashextract:} developed FlashExtract as DSL for the Microsoft PROSE framework.
+Its instantiation for text specifies text extraction programs from semi-structured text based on regular expressions.
+The authors also provide instantiations to extract data from webpages and spreadsheets.
+Users can extract multiple fields and structure them with hierarchy and sequence.
+FlashExtract synthesizes programs to extract each of the fields leveraging the information about hierarchical containment and sequentiality.
+It eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
+
+The text instantiation of FlashExtract models the extraction of a single substring as a pair of two cut positions.
+A position is either specified by an absolute character index or a pair of two regular expression (regex).
+The first regex matches the substring directly before the characterized position, the second regex directly after.
+A regex in FlashExtract is a concatenation of tokens, e.g.\ standard character classes or string literals frequently occurring in the input examples.
+
+We apply the text instantiation of FlashExtract to the domain of build logs, using programming by example to take away the need to tediously develop and maintain regular expressions for information retrieval.
+
+
+\paragraph{Other Applications for Program Synthesis by Example}
+refazer, program transformations~\cite{rolim2017learning}
+spred sheets ~\cite{gulwani2011automating}
+table transformations~\cite{harris2011spreadsheet}
+SOME MISSING
+
+\paragraph{Improving the Program Synthesis}
+predictive data extraction~\cite{raza2017automated}
+instead of only attributing program simplicity by program syntax e.g. shortness also take exectution traces (e.g. which substrings extraction sare performed) and output similarity to each other~\cite{ellis2017learning}
+
+\paragraph{Perspective: Usability vs. Technical Aspects} maybe: usability perspecitve / usability of pbe \todo{REWORK}
+Generally, we are interested in whether Programming by Example could replace manually writing regular expressions.
+Writing and especially maintaining regular expressions is known to be a difficult, tedious and error-prone task~\cite{michael2019regexes}.
+There are two ways to approach this question: from the usability side or the technical side.
+When studying the applicability of PBE from the \emph{usability} perspective, typical questions are:
+\begin{itemize}
+	\item Are users more efficient when using PBE compared to manual regex construction?
+	\item Are users more comfortable using PBE over manual regex construction?
+	\item Are users confident in the resulting regular expression program from PBE?
+	\item Are the resulting extractions more or less accurate when using PBE over manual regex construction?
+\end{itemize}
+Some of these are evaluated in existing works about PBE and user interaction~\cite{mayer2015user,lau2009why-programming-by-demonstration,miller2001outlier}.
+% Adequately answering those questions is however highly dependent on the user interface and the corresponding interaction model used during a study.
+% Developers who are accustomed to crunching on regular expressions in their favorite IDE or Editor might have an adversely negative view on synthesizing programs from examples in an unknown interface.
+% Mayer et al.~\cite{mayer2015user} presented two system-user interaction models to improve the confidence of users into the programs synthesized from their examples.
+% We feel such questions of usability can be answered separately from the application domain of build logs.
+
+For our work, we chose to look at the applicability of PBE from the \emph{technical} perspective.
+We investigate whether current program synthesis techniques can learn programs for information retrieval tasks in the domain of CI build logs.
+Furthermore, we gather insights into how PBE has to be applied to yield useable results and perform best.
+Our implementation of PBE is mainly based on the Flash Extract DSL~\cite{le2014flashextract:} of the PROSE library by Microsoft~\cite{prose2019webpage}.
+Due to that our technique of text extraction through regular expression programs synthesized is highly influenced by the capabilities of Flash Extract.
+
 \end{document}
