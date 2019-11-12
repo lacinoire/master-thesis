@@ -32,17 +32,27 @@ Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes d
 
 Amar et al.~\cite{amar2019mining} reduced the lines \todo{portions?} of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
 
-\section{System Log Analysis}
-\plan{research + write, 1/2 - 1 page}
-\mention{logpai and drain, [7] K. Fisher and D. Walker. The pads project: an overview. In ICDT,
-2011.
-[8] K. Fisher, D. Walker, K. Q. Zhu, and P. White. From dirt to shovels:
-fully automatic tool generation from ad hoc data. In POPL, 2008.[23] Q. Xi and D. Walker. A context-free markup language for semi- structured text. In PLDI, pages 221–232, 2010.
- The PADS project [7] has en- abled simplification of ad hoc data processing tasks for programmers
-by contributing along several dimensions: development of domain specific languages for describing text structure or data format, learn- ing algorithms for automatically inferring such formats [8], and a markup language to allow users to add simple annotations to enable more effective learning of text structure [23] While PADS supports parsing of entire files, FlashExtract allows users to extract only parts of the file thereby avoiding unnecessary complications. PADS’s learner only supports a fixed line-by-line chunking strategy to split the records; in contrast, FlashExtract can learn chunking (aka, struc- ture boundaries) from examples, making it suitable for extracting data fields and records that have arbitrary length (and might cross multiple lines). Finally, PADS primarily targets ad hoc text files. Although one can view webpages and spreadsheet as text files, it is unclear if the PADS learning algorithm can be adapted to work effectively for webpages and spreadsheets.
-}
+\section{System Log Analysis} \todo{parsing?}
 
-\mention{ask Jean?}
+A related field of log processing is the processing of system log files produced during runtime.
+A main difference in system logs is that they are fundamentally structured through events.
+Each line in the log file represents one event.
+The first goal in parsing system log files is to separate constant and variable parts within a log message~\cite{nagappan2010abstracting,he2017towards}.
+Next the log messages are clustered into log events, unifying messages with identical constant parts and varying parameters.
+The output of a log parser is a structured log, composed of a list of timed events and the corresponding parameter values~\cite{he2016evaluation}.
+This structured log is then the input to various machine learning and data mining processes.
+They mine patterns for operational profiling~\cite{nagappan2009efficiently}, debugging~\cite{oliner2012advances}, performance analytics or anomaly detection~\cite{nagappan2010abstracting}.
+Xu et al.~\cite{xu2009detecting} leveraged the connection of log statements to the source code producing them to separate messages into constant and variable parts more accurately.
+
+The techniques developer for system logs can also be applied to build logs.
+One example is comparing execution traces to reference traces of intended behaviour to detect anomalies.
+Amar et al.~\cite{amar2019mining} employed a similar approach to detect relevant lines in build logs.
+
+Classic log parsers interpret the whole log file into a sequence of events.
+A similar approach could also be applied to build logs to determine the sequence of executed buidl steps or phases.
+In this thesis we focus on extracting a single speficied information from the build log as a whole with chunk retrieval techniques.
+Chunk retrieval technques are used as a part of log parsing to retrieve the values of variable parts in a log message, e.g. through regular expressions~\cite{nagappan2010abstracting,xu2009detecting}.
+
 
 \section{Semi-Structured Data}
 \label{sec:rw-semi-structured-data}
@@ -73,24 +83,49 @@ In contrast to that, this thesis takes a look at techniques to gater a specific,
 
 \section{Information Extraction and Retrieval Techniques}
 
-The process of automatically selecting documents related to a given \emph{search query} is called \emph{Information Retrieval}~\cite{schutze2008introduction}.
-%Text Similarity approaches are more and more used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
+The process of automatically selecting unstructured documents related to a given \emph{search query} is called \emph{Information Retrieval}~\cite{schutze2008introduction}.
+For this, algorithms try to determine the general topic or conceptual information of the document.
+Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix and weighing the terms with tf-idf~\cite{lee1997document}.
+On the matrix the algorithms apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}.
+
+Information retrieval techniques are leveraged to improve software engineering in various areas.
+Antoniol et al.~\cite{antoniol2002recovering} query manual pages and requirements with program identifiers to create trace links between code and documentation.
+The same task is addressed by Marcus et al.~\cite{marcus2005recovery}, who also incorporate source code comments into their query.
+Panichella et al.~\cite{panichella2016parameterizing} and Runeson et al.~\cite{runeson2007detection} apply similar information retrieval techniques to detect duplicated bug reports.
+
+Salton et al.~\cite{salton1993approaches} retrieve text parts relevant for a given user query by calcluating global document similarity scores and refining the output through local passage similarity.
+Similarity is also calculated using term vectors.
+
 
 \emph{Information Extraction} techniques aim to automatically structure unstructured information to support subsequent processing.
 The IEPAD tool created by Chang et al.~\cite{chang2003automatic} automatically identifies data extraction patterns in semi-structured web pages, without requiring user-labeled training examples.
-PADS: stuff one section up^
+They split the semi-structured documents into tokens, discover repetitive patterns using occurrence-counting suffix trees and select the most regular and compact patterns to define extraction.
 
-We investigate chunk retrieval techniques which do not aim at inferring the whole structure of a build log, but instead focus on extracting one information characterized by a user.
+\todo{regex generation}
+Bartoli et al.~\cite{bartoli2012automatic} leverage genetic programming to generate regular expressions based on user examples.
+Their approach also reprensents the regular expressions in a tree structure and mutates them to maximize extraction accuracy on the provided examples while minimizing the length of the regular expression.
+Their evaluation shows that their algorithm is on average faster and more accurate than humans~\cite{bartoli2016on-the-automatic}.
+
+The WHISK system by Stephen Soderland~\cite{soderland1999learning} learns text extraction regular expressions for semi-structured text.
+The system interleaves the learning process with the example annotation and reduces the number of required examples by presenting examples that eliminate ambiguities between learning candidates.
+
+Dan Smith and Mauricio Lopez~\cite{smith1997information} extract structured information from sets of semi-structured documents that contain similar information but are strucutured differently.
+The user provides rules of each piece of information, detailing in which section of the document it might be present.
+Identifying keywords and regular expressions determine whether the information is present and where it starts and ends.
+
+The PADS project~\cite{fisher2011the-pads} is centered around declaring grammars for the information contained in semi-structured documents.
+Based on this declarative data description various tools are generated like format converters, e.g. to XML, data adaptors to other tools, statistical analyzers and visualizers.
+Manually defined PADS grammars eliminate the need to develop a custom data extraction parser.
+Xi and Walker developed ANNE~\cite{xi2010a-context-free}, which can infer context-free PADS grammars from a small number of user annotations and the raw document data.
+Fisher et al.~\cite{fisher2008from} fully automated the grammar generation.
+They split the data into chunks, lines or documents, and further into tokens.
+Parentheses are used to infer hierarchical structure information.
+The system guesses grammar operators unifying single tokens or subexpressions, scores the resulting grammars and applys appropriate rewrite rules to refine the candidate grammars.
+
+The presented information extraction approaches support parsing and structuring of entire files, while we investigate chunk retrieval techniques which do not aim at inferring the whole structure of a build log.
+Instead focus on extracting one specific information characterized by a user.
 
 
-\plan{research + write, 1/2 - 1 page}
-\todo{explain difference here, reference pads(maybe that is already in log anlysis!) and stuff}
-\review{Getting the general tot p cic or conceptual information of a text is a common task in information retrieval from semi-structured text sources. Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix. On the matrix we apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}. For our use case, this could be applied by slicing the build logs into lines or small sections. Then similarity measures are used to compare the overall topics in these subparts to the topic of previously labelled logparts.
-Instead of receiving a paragraph which is similar to a given query, our works focus more on obtaining specific pieces of texts through regular expressions.}
-
-
-
-\mention{IR papers, maybe something about keyword search?}
 
 \section{Program Synthesis by Example}
 \label{sec:rw-prose}
