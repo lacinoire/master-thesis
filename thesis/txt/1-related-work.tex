@@ -19,18 +19,90 @@ Lastly this section mentions different Programming by Example resources surround
 \section{Continuous Integration}
 \plan{extend, 1 page}
 \mention{look into proksch papers}
-Various researchers have analyzed industrial and open source logs for failure reasons and their impact on development. Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at Google. In addition most failures are resolved within two builds. Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones. They determined that testing failures outweigh compilation errors. Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects. Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds. They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
+Various researchers have analyzed industrial and open source logs for failure reasons and their impact on development.
+
+Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at Google.
+In addition most failures are resolved within two builds.
+The build logs were the primary data source for their analysis and they developed a custom parser to classfiy error messages reported by Java and C++ builds. 
+Small percentage of error types account for most of the build failures.
+
+Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones.
+They determined that testing failures outweigh compilation errors.
+Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects.
+analyzed the collected buildlogs by extractino eeror messages using regular expressions.
+The regular expressions were looking for keywords identified in a manual analysis.
+
+Vassallo et al.~\cite{vassallo2018continuous} conducted a survey study on how ci influences developers to continiously refactor their code to fix ci quality analysis warnings.
+Their results indicate that refactoring is rather spread in the ci environment and deemed important by the surveyed developers.
+``Lack of time'' and ``absence of a proper test suite'' are named as the main barriers to continuous refactoring.
+
+Vassallo et al.~\cite{vassallo2019automated} analyzed build logs, source code repository content and build metadata of open source repositories for CI anti-patterns.
+
+Rausch et al.~\cite{rausch2017empirical} analyzed CI builds of open soucre java procjects and categorize why builds failed.
+Most fail because of test  and for most porojects over half of failed biuilds follow another failed build.
+Found that most failures occur in the second half of the build runtime, which can cause long delays in the feedback loop, especially when builds are automatically retried upon failure.
+
+Automated static analysis tools are the focus of Zampetti et al.~\cite{zampetti2017open} in ther study of java projects from GitHub.
+Their results show that static analysis in responsible for a small amount of build failures and mainly responsible for warned builds.
+Almost all projects use custom configurations for the static analysis, however the configuration rarely changes.
+Failures because of static analysis warings are fixed in a short timeframe.
+
+Stahl and Bosch~\cite{staahl2014modeling} provide a hollistic review of literature on automatic build environments in industry projects.
+They propose a descriptive structure to model build flows, which they found to be highly different from project to project.
+
+~\cite{holck2003continuous}
+
+~\cite{schermann2016towards}
+
+~\cite{hilton2017trade-offs}
+
+~\cite{hilton2016usage}
+
+Vasilescu et al.~\cite{vasilescu2015quality} analyzed a broad rage of open source projects written in popular languages on GitHub.
+They compared their usage of CI with the successful merges of pull requests and found that CI increase the number of successful merges, internal as well as external contributions, and allows the team members to uncover more bugs.
+
+
+
+In a new study, vasallo et al. interviewed developers on how they determine why a CI build failed.
+They model how these developers resolve failures and found that error identification trhough inspecting the build logs is a central activity. \todo{check!}
+found that locating the error within the build log and using the additional informatino provided with and around the error message to understand the details of the failures are the first and most important steps when developers want to fix a build failure.
 ~\cite{vassallo2019every}
-All these researchers described building parsers in order to evaluate the studied build logs. Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
+
+identfy noise in buidl breakage data. take travistorrent data set and classify build failures according to whether they were caused by an enviornmental failure or caused by a develpoer change. They also identify cascading buildfailures created by existing unfixed errors and allowed failures, whose results were later labeled by developers to be ignored.
+thy found that about half of the failed biudls in travistorrent fall in at las one of the labeled categiries and that these, when regarded as noise, considerably impact observations reported by other works trying to model build breakages.
+their analysis starts with manual eval of logs, selected keywords and strings that identify cetrain kind of label, coded script that looked for exactly these to classify and validated the results with another manual classification.
+similar techniques -> keywords, slightly different goal as they want to classify the whole log, not extract substring from it.
+~\cite{ghaleb2019studying}
+
+Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds.
+They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
+they focus their analysis on java and ruby build logs for which they build custom parsers with regular expressions to extract the reason a build failed.
+
+
+All these researchers described building parsers in order to evaluate the studied build logs.
+Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
 
 \section{Build Log Analysis and Augmentation - Related Work}
 \label{sec:rw-bl-analysis}
 \plan{extend, 1 page}
-Vassallo et al.~\cite{vassallo2018un-break} tried to shorten the time it takes developers to understand build logs. They summarized relevant information in Maven build logs and augmented them with links to related stack overflow posts. They observed that highlighting the locality and context of an issue is helpful to programmers. We strive to enable a similar summarization by text retrieval while also covering a wider array of programming languages.
-\todo{mention which technique}
-\todo{reference their new paper}
+Vassallo et al.~\cite{vassallo2018un-break} try to shorten the time it takes developers to understand build logs.
+They parse Maven~\cite{maven2019website} build logs into a structured representation and create hint generators leveraging this structured access to the information within the build log.
+They implement several hint generators, for example one that queries stack overflow for discussions related to why the build failed.
+Their tool BART is published as a Jenkins Plugin~\cite{bart2019plugin}.
+They observed that highlighting the locality and context of an issue is helpful to programmers.
 
-Amar et al.~\cite{amar2019mining} reduced the lines \todo{portions?} of a log to be inspected by the engineer through removing lines that appear both in passing and failing build logs. They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the error. In contrast to that, our tool ALBE extracts specific parts of the build logs. As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
+We strive to enable a similar summarization by text retrieval while also covering a wider array of programming languages.
+
+BART (2019) Jenkins-Plugin. https://plugins.jenkins.io/bart. Accessed: 2019-07-24
+
+Amar et al.~\cite{amar2019mining}  compare different approaches to reduce the portions of a log to be inspected by the engineer.
+The techniques remove lines that appear both in passing and failing build logs and use a modified Term Frequency Inverse Document Frequency weighting to identify term vectors likely to occur with failures.
+They use the term vectors and cosine similarity to further filter the log portions only present in failing build logs.
+Their diff technique can be interpreted as a chunk retrieval technique, though the user can not specify an information to target.
+The information retrieved is always difference to what was before \todo{wait not quite the past failures (environmental in that case) specify the information!}
+They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the erro.
+In contrast to that, our tool ALBE extracts specific parts of the build logs.
+As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
 
 \section{System Log Analysis} \todo{parsing?}
 
