@@ -5,7 +5,7 @@
 
 \chapter{Empirical Comparison Study}
 \label{sec:study}
-To investigate when PBE, CTS and KWS are suited to retrieve chunks from CI build logs we evaluated our implementation of those techniques on the \emph{Failing Build Log Data Set}.
+To investigate when PBE, CTS and KWS are suited to retrieve chunks from CI build logs we evaluated our implementation of those techniques on the \emph{LogChunks} data set.
 This chapter describes our study design and presents the results of the study.
 The analysis of the study results first focusses on each of the three techniques and later we compare them against each other.
 
@@ -20,7 +20,7 @@ The analysis of the study results first focusses on each of the three techniques
 \section{Study Design}
 For the comparison study we evaluate the three chunk retrieval techniques PBE, CTS and KWS, described in Sections~\ref{sec:expl-pbe},\ref{sec:expl-ts} and~\ref{sec:expl-skws}.
 RLR, explained in Section~\ref{sec:expl-rlr}, acts as a baseline for the comparison.
-We run four techniques on the example sets from the \emph{Failing Build Log Data Set}.
+We run four techniques on the example sets from \emph{LogChunks}.
 
 The examples are sorted chronologically, i.e.\ a technique is configured with examples from the directly preceding build logs.
 For each example set and each technique, we select one to five consecutive I/O examples as configuration, the \emph{configuring I/O examples}, and run the chunk retrieval on the following I/O example, the \emph{test I/O example}.
@@ -35,7 +35,7 @@ The structural categories of the configuring I/O examples are saved to answer \t
 Recall and precision of those techniques vary with the number of lines selected for retrieval.
 We evaluate the effect of varying the number of extracted lines by multiplying the average number of lines present in the configuring examples with a \emph{retrieval size factor} from 0.5 to 2.5 in steps of 0.5.
 
-%taking The Failing Build Log Data Set - run 3(4 with random) techniques with increasing example count - measuring xyz - justify choices like running chronologically / testing on 1 example / no k-fold validation - how are keywords for the search selected?
+%taking The LogChunks data Set - run 3(4 with random) techniques with increasing example count - measuring xyz - justify choices like running chronologically / testing on 1 example / no k-fold validation - how are keywords for the search selected?
 
 \section{Results}
 This section presents the evaluation results for PBE, CTS and KWS separately.

@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\chapter{BUILDS - BUIld Log Data Set}
+\chapter{LogChunks Data Set}
 \includegraphics[page=5, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
 
 \label{sec:data-set}
@@ -45,7 +45,7 @@ For the selected jobs, our tool then queries the Travis API V3 and obtains the r
 
 % \section{Collection Process}
 % For our initial data collection to get an impression of build logs from various projects and languages we used the \texttt{LogCollector} to gather from the 30 most popular languages, up to 3 repositories using Travis CI each and 3 logs per state for each of those repositories.
-% For the \emph{Failing Build Log Data Set} we again collected from the same selection of repositories though saved only 10 logs of the state \emph{failed} for each repository.
+% For \emph{LogChunks} we again collected from the same selection of repositories though saved only 10 logs of the state \emph{failed} for each repository.
 % our impression?
 % \todo{image!}
 
@@ -105,20 +105,45 @@ We vaildated our collected labels in two different ways. We did a second pass of
 \subsection{Inter-Rater Reliability}
 re-labeling of parts of the labels - cohen's kappa
 \subsubsection{Introduction}
+After the manual labeling of the data set we performed a second labeling of a sample of the build logs to validate the labels.
 \subsubsection{Method}
+For each label category: Build Failure Reason, keywords and category, we relabeled 30 randomly sampled logs.
+compared the labeles, \todo{discussed about it}.
 \subsubsection{Results}
+
 \subsubsection{Discussion}
+main takeaway: overlap yes, but high variation 
+
+build failure reason: should we extract the information \emph{that} the build failed as well?
+our data set extracts the parts describing \emph{why}, but leaves out the lines stating that the build failed (e.g. step xy exited with 1).
+
+keywords: first labeler allowed also longer strings with spaces and adhered to capitalization.
+second one ignored captialization and focussed on the keyword.
+so only one word was allowed.
+also the first one labeled always a full repository at a time.
+so could take into consideration patterns and see what keywords are exception specific and would only retrieve the failure reason if this specific exception occured.
+second labeler only one build log excerpt (+ context) per repository.
+also: influene of ansi color codes ``merror'' vs. ``error'' first labeler known as ansi color codes, second one counted it into the word (whole word always)
+first was also more inclined to search for a subpart of a word to make it more generalizeable (``failure`` instead of ``failures'')
+
+categories: description for the second labeling stated: sort into categories on why build failed.
+was exectued with sorting into test/linter/compilation.
+in the case of the selected repositories everything was labeled as test. mostly correct (one linter), but more importantly no difference was made in which test step failed / how the failed tests were represented.
+the categories are thought as structural categories.
+so the surrounding sturcture and the way a test failure is communicated is important. e.g. if several tests are run then it is important which ones failed
+
+main influence / implication: the labels we select are not black/white. accurate description of what we do is very very important. mainly influenced how we described our data points in the earlier sections.
 \subsubsection{Threats to Validity}
 
 \subsection{Developer Survey}
 \subsubsection{Introduction}
-For the \emph{Failing Build Log Data Set} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
+For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
 As we are not involved in the development of any of the open source projects within our data set we could only rely on our previous experience with different build logs and systems.
 We only looked into the logs and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
 
 The person who probably knows best why a build failed is the one committing the changes which triggered the build.
 If the build was e.g.\ part of a pull request then developer likely looked at it and tried to fix it so the pull request could be accepted.
-In this section we describe how we validate the extractions of the build failure reason the \emph{Failing Build Log Data Set} describes.
+In this section we describe how we validate the extractions of the build failure reason \emph{LogChunks} describes.
 \subsubsection{Method}
 Using the Travis API, for every build log in the data set we looked up the corresponding build and the committer information.
 We grouped all commits triggered by one developer and sent out an email to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.Figure~\ref{fig:dev-mail} shows one of the mails sent out.
@@ -186,7 +211,7 @@ We manually inspected these negative answers and found that extractions were cor
 This yields 12 log extractions in our example set that were not correct, shown in Figure~\ref{fig:mails-extraction-correct}.
 
 \subsubsection{Discussion}
-This study highly strengthens the trust in the validity of the extracted build failure reasons in the \emph{Failing Build Log Data Set}.
+This study highly strengthens the trust in the validity of the extracted build failure reasons in \emph{LogChunks}.
 The study received answers about 18\% of the logs labelled in our build log, of which, after manual correction, 91\% said our labelled extractions were accurate.
 
 Most of the initial ``incorrect'' answers we adjusted in them manual inspection, stated that the proposed extraction did not show the whole reason the build failed.

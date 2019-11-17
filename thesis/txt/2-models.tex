@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\chapter{Chunk Retrieval Techniques for Build Logs}
+\chapter{Introduction to Chunk Retrieval Techniques}
 \label{sec:techniques}
 This chapter presents how a build log is created by a continuous integration (CI) build.
 It explains our notion of retrievable information contained in build logs.
@@ -80,7 +80,7 @@ BLIs can be hierarchically ordered by their textual representations containing e
 As this is an ad-hoc and a-posteriori structuring schema, as we describe in Section~\ref{sec:rw-semi-structured-data}, this section only presents hierarchical ordering or containment for BLIs whose structure we definitely know.
 Most BLI types can appear in various hierarchical arrangements and are therefore not contained in any other type in our explanation.
 
-During our initial exploration and log data collection for the \emph{Failing Build Log Data Set}, we collected a broad set of build logs from 29 languages and 87 repositories from Travis CI~\cite{travisci2019webpage}.
+During our initial exploration and log data collection for the \emph{LogChunks} data set, we collected a broad set of build logs from 29 languages and 87 repositories from Travis CI~\cite{travisci2019webpage}.
 We inspected them to get an impression about the information one would want to retrieve from a build log.
 In the following, we describe the possibly interesting information types to be retrieved from Travis CI build logs.
 All BLIs containing ``Travis'' in their name are specific to Travis CI build logs, the others can also apply to build logs from another CI environment.
@@ -267,7 +267,7 @@ The average number of lines in the outputs of the configuring I/O examples deter
 \subsection{Keyword Search (KWS)}
 \label{sec:expl-skws}
 When developers are looking for a specific piece of information within a great amount of unstructured information, they search for related keywords as a first ad-hoc approach.
-This was one of the most common approaches we took when searching for the build failure reason within a log when creating our \emph{Failing Build Logs Data Set}.
+This was one of the most common approaches we took when searching for the build failure reason within a log when creating our \emph{LogChunks} data set.
 As this is a technique readily available in many tools developers use to view build logs, we want to study when such a keyword search is recommendable for retrieving information chunks from CI build logs.
 In the following we will explain how we use simple keyword search to retrieve information from CI build logs (KWS), the concrete implementation is described in~\ref{sec:impl-skws}.
 %Figure~\ref{fig:keyword-search-explanation} shows the instantiation of the BLIRT model for SKWS.
