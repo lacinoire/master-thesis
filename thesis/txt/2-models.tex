@@ -6,9 +6,13 @@
 
 \chapter{Introduction to Chunk Retrieval Techniques}
 \label{sec:techniques}
-This chapter presents how a build log is created by a continuous integration (CI) build.
-It explains our notion of retrievable information contained in build logs.
-We introduce our notion of chunk retrieval techniques to retrieve information from build logs and present the three chunk retrieval techniques we investigate for this thesis:
+This chapter introduces the concept of chunk retrieval techniques.
+We use these techniques to extract text chunks from build logs that represent a specific, targeted information.
+This chapter first presents how a build log, the input to our chunk retrieval, is created by a continuous integration (CI) build.
+Next, it describes retrievable information chunks in build logs and gives examples found in Travis CI build logs.
+We illustrate why it is useful to extract the presented information chunks.
+The following section introduces our concept of chunk retrieval techniques, which retrieve information chunks from build logs.
+We present the three chunk retrieval techniques we investigate for this thesis:
 Program synthesis by example (PBE), common text similarity (CTS) and keyword search (KWS).
 
 \begin{figure}[htbp]
@@ -21,11 +25,11 @@ Program synthesis by example (PBE), common text similarity (CTS) and keyword sea
 \section{Characteristics of a Build Log}
 \label{sec:bl-characteristics}
 The idea of CI is to catch errors early, by integrating new software changes fast and often~\cite{humble2010continuous}.
-Companies often link a specific CI server, e.g.\ Travis CI, to their source code repository.
+Companies link a CI server, e.g.\ Travis CI, to their source code repository.
 After making a change, the developer commits and pushes the new version of the code to the repository.
 A push on specific branches or the creation of a pull request triggers a CI build.
 
-A CI build typically runs through these stages:
+A CI build typically runs through the following stages:
 \begin{itemize}
 	\item Pulling the new, changed version of the source code into the build environment.
 	\item Building the software, i.e.\ compiling and packaging it~\cite{phillips2014understanding}.
@@ -40,7 +44,7 @@ Other projects might have various stages of extensive automated testing.
 
 Software tools involved in the build write out log messages to the console.
 They communicate progress updates, error and warning messages to the user~\cite{yuan2012characterizing}.
-We refer to to the concatenation of this output as build log.
+We refer to to the concatenation of this output as \emph{build log}.
 The structure of their output is chosen by every tool themselves.
 Many have implicit or explicit structuring rules, some adhere to predefined standards like RSpec or PHPUnit~\cite{phpunit2019logging,rspec2019format}.
 Figure~\ref{fig:tool-log-contribution} shows how different tools contribute to the whole build log.
@@ -52,9 +56,9 @@ Figure~\ref{fig:tool-log-contribution} shows how different tools contribute to t
 	\label{fig:tool-log-contribution}
 \end{figure}
 
-When analyzing build logs we might not have access to the exact build configuration, describing which tools are used in which order, or might not have access to a useable definition of the output structure of a specific tool.
-Therefore build logs are semi-structured, as described in Section~\ref{sec:rw-semi-structured-data}.
-
+When analyzing build logs we do not necessarily have access to the exact build configuration, describing which tools are used in which order.
+We also do not necessarily have access to a useable definition of the output structure of a specific tool.
+Therefore, build logs are semi-structured, as described in Section~\ref{sec:rw-semi-structured-data}.
 
 \begin{figure}[htbp]
 	\centering
@@ -66,23 +70,25 @@ Therefore build logs are semi-structured, as described in Section~\ref{sec:rw-se
 \section{Information Chunks in Build Logs}
 \label{sec:bli}
 CI build logs contain a great amount of information about the CI build they correspond to.
-In this section, we describe our notion of a information retrievable from a CI build log.
-We present examples of information contained in Travis CI build logs and illustrate use cases for a developer or researcher to retrieve them.
+This section defines our concept of information retrievable from a CI build log.
+We use the introduced terms throughout the following sections and chapters to talk about the characteristics of chunk retrieval techniques.
+To illustrate why chunk retrieval from build logs is useful, we present examples of information contained in Travis CI build logs and describe use cases for developers and researchers to retrieve them.
 
 The central class of our model is the \emph{BuildLogInformation} (BLI), representing a piece of information possibly retrievable from a build log.
 \emph{Possibly}, because a BLI is not necessarily present in every build log.
-If it is present, we call it a \emph{BuildLogInformation instantiation} (BLII), which always relates to a specific build log, the one this instantiation is appearing in.
+If it is present, we call it a \emph{BuildLogInformation instantiation} (BLII).
+A BLII is always contained in a specific build log.
 Figure~\ref{fig:build-overview} presents the relation between a BLI and other entities involved in a CI build.
 
-Each BLII for us has a \emph{textual representation} within the build log.
+Each BLII has a \emph{textual representation} within the build log.
 This textual representation is always a substring of the log text.
-BLIs can be hierarchically ordered by their textual representations containing each other.
-As this is an ad-hoc and a-posteriori structuring schema, as we describe in Section~\ref{sec:rw-semi-structured-data}, this section only presents hierarchical ordering or containment for BLIs whose structure we definitely know.
+BLIs can be hierarchically ordered, determined by how their textual representations contain each other.
+As this is an ad-hoc and a-posteriori structuring schema, as we describe in Section~\ref{sec:rw-semi-structured-data}, this section only presents hierarchical containment for BLIs whose structure we definitely know.
 Most BLI types can appear in various hierarchical arrangements and are therefore not contained in any other type in our explanation.
 
 During our initial exploration and log data collection for the \emph{LogChunks} data set, we collected a broad set of build logs from 29 languages and 87 repositories from Travis CI~\cite{travisci2019webpage}.
-We inspected them to get an impression about the information one would want to retrieve from a build log.
-In the following, we describe the possibly interesting information types to be retrieved from Travis CI build logs.
+We inspected them to get an impression of the information one would want to retrieve from a build log.
+In the following, we describe information types which could be retrieved from Travis CI build logs.
 All BLIs containing ``Travis'' in their name are specific to Travis CI build logs, the others can also apply to build logs from another CI environment.
 Figure~\ref{fig:build-log-information} shows an overview of these BLIs.
 
@@ -171,12 +177,12 @@ Figure~\ref{fig:build-log-information} shows an overview of these BLIs.
 \end{figure}
 
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/ir-technique.pdf}
-	\caption{Model for an Information Retrieval Technique}
-	\label{fig:model-ie-technique}
-\end{figure}
+% \begin{figure}[htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth, clip]{img/ir-technique.pdf}
+% 	\caption{Model for an Information Retrieval Technique}
+% 	\label{fig:model-ie-technique}
+% \end{figure}
 \section{Characteristics of Chunk Retrieval Techniques}
 \label{sec:blirt}
 For this thesis, we want to evaluate different \emph{chunk retrieval techniques} (CRTs) when applied to CI build logs.
@@ -220,16 +226,17 @@ Diff Approach                &         & Line not present in successful log     
 \emph{Programming by Example} is a technique which synthesizes programs according to in and output examples provided by the user.
 It enables users to create programs without a priori programming knowledge~\cite{mayer2015user}.
 In the context of text extraction through regular expressions, Programming by Example relieves the developer from having to understand the whole document structure to solve a single extraction task~\cite{le2014flashextract:}.
-We chose to investigate the applicability of generating regular expression programs by example to retrieving information chunks from build logs.
-In this work, we refer to our interpretation of Programming by Example as \emph{PBE}.
-In the following we will explain the concept of how we apply PBE to chunk retrieval from CI build logs, the concrete implementation is described in~\ref{sec:impl-pbe}.
+In this work, we refer to our interpretation of Programming by Example as \emph{PBE}\@.
+We investigate the suitability of PBE to retrieve information chunks from build logs.
+In the following, we explain the configuration and application of PBE to chunk retrieval from CI build logs.
+The concrete implementation is described in~\ref{sec:impl-pbe}.
 %Figure~\ref{fig:prose-explanation} shows the instantiation of the BLIRT model for PBE\@.
 
 \paragraph{Configuration}
 In/output examples (I/O examples) are the main driver of Programming by Example.
 When retrieving information chunks from build logs the \emph{input} is always a whole build log, i.e.\ the whole text of the build log file.
 The \emph{output} is always a substring of the log file text, representing the substring that should be retrieved by the synthesized program when given the corresponding input file.
-One or multiple I/O examples configure a chunk retrieval with PBE, they define the substring of a build log that should be extracted.
+One or multiple I/O examples configure a chunk retrieval with PBE: they define the substring of a build log that should be extracted.
 The PROSE program synthesis then tries to construct a regular expression program consistent with all configuring I/O examples.
 A program is consistent with an I/O example if it returns the defined output when executed on the defined input.
 PBE reports an error back to the user if no consistent program could be synthesized.
@@ -243,20 +250,20 @@ It then returns the substring of the build log matched by the program or an empt
 
 \subsection{Common Text Similarity (CTS)}
 \label{sec:expl-ts}
-Text Similarity approaches are more and more used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
-One common and simple technique the Vector Space Model~\cite{schutze2008introduction}.
+Text Similarity approaches are used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
+One common and simple technique is the Vector Space Model~\cite{schutze2008introduction}.
 We investigate when text similarity is a suitable technique to retrieve information chunks from build logs.
 In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs (CTS), the concrete implementation is described in~\ref{sec:impl-ts}.
 %Figure~\ref{fig:text-similarity-explanation} shows the instantiation of the BLIRT model for CTS.
 
 \paragraph{Configuration}
-To configure a chunk retrieval though text similarity we chose to use the same concept of I/O examples as for PBE\@.
+To configure chunk retrieval though text similarity we chose to use the same concept of I/O examples as for PBE\@.
 The lines of the output strings of the configuring I/O examples define our search query.
 The algorithm splits the search query into single lines and identifies tokens, in our case words.
 %Commonly text similarity techniques employ further normalization like removing special characters and stop words.
 %We chose to keep the build log lines as complete as possible, as we often saw special characters and words identifying an interesting area.
 Then we build a document-term-frequency matrix over the lines from the search query and prune very often or very rarely appearing words.
-Next, the algorithm applies term-frequency inverse document frequency to the matrix, a best practice for natural language queries~\cite{lee1997document}.
+Next, the algorithm applies term frequency inverse document frequency to the matrix, a best practice for natural language queries~\cite{lee1997document}.
 
 \paragraph{Application}
 To retrieve the desired information from a build log, we parse the whole text and process it in the same way as the search query.
@@ -266,10 +273,11 @@ The average number of lines in the outputs of the configuring I/O examples deter
 
 \subsection{Keyword Search (KWS)}
 \label{sec:expl-skws}
-When developers are looking for a specific piece of information within a great amount of unstructured information, they search for related keywords as a first ad-hoc approach.
+When developers are looking for a specific piece of information within a large amount of unstructured information, a first ad-hoc approach they use is searching for related keywords.
 This was one of the most common approaches we took when searching for the build failure reason within a log when creating our \emph{LogChunks} data set.
-As this is a technique readily available in many tools developers use to view build logs, we want to study when such a keyword search is recommendable for retrieving information chunks from CI build logs.
-In the following we will explain how we use simple keyword search to retrieve information from CI build logs (KWS), the concrete implementation is described in~\ref{sec:impl-skws}.
+As this is a technique readily available in many tools developers use to view build logs, we study when such a keyword search is recommendable for retrieving information chunks from CI build logs.
+In the following we will explain how we use simple keyword search to retrieve information from CI build logs (KWS).
+The concrete implementation is described in~\ref{sec:impl-skws}.
 %Figure~\ref{fig:keyword-search-explanation} shows the instantiation of the BLIRT model for SKWS.
 
 \paragraph{Configuration}
@@ -280,7 +288,7 @@ The configuring keywords for KWS are the ones that appear most often in the keyw
 
 \paragraph{Application}
 For a retrieval run, we take a whole build log file as input and search for all exact occurrences of the configuring keywords.
-As keywords are often not directly describing the desired information but rather next to the desired information, this technique retrieves the lines around not only retrieves the line with the keyword but also the lines around it.
+As keywords are often not directly describing the desired information, but rather appear close to the desired information, KWS also retrieves the lines around the found keyword.
 The number of surrounding lines retrieved is the average of lines in the output of the configuring I/O examples.
 
 \subsection{Other Techniques}
@@ -289,9 +297,9 @@ Apart from the three techniques we investigate, there are further build log anal
 This section shows how they are described with our notion of chunk retrieval techniques.
 
 \paragraph{Log Diff}
-Amar et al.\ use a technique based on line diffs to retrieve relevant lines from a failed build log~\cite{amar2019mining}, as we describe in more detail in Section~\ref{sec:rw-bl-analysis}.
-The configuration for the technique is the log from the last successful build.
-This technique retrieves all lines from a build log that are not present in the configuring build log.
+Amar et al.\ use a technique based on line diffs and information retrieval to identify relevant lines from a failed build log~\cite{amar2019mining}, as we describe in more detail in Section~\ref{sec:rw-bl-analysis}.
+The configuration for the technique is the log from the last successful build and relevant past failures.
+This technique retrieves the lines from a build log that are not present in the successful build log and contain terms related to the given past failures.
 %Figure~\ref{fig:diff-technique-model} shows how this technique would be in our BLIRT model.
 \paragraph{Random Line Retrieval (RLR)}
 In our evaluation, we want to compare against a baseline of randomly extracted lines.

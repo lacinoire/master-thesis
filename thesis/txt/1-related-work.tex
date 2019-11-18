@@ -18,90 +18,95 @@ Lastly this section mentions different Programming by Example resources surround
 % moritz: nice formulation :)
 
 \section{Continuous Integration}
-\plan{extend, 1 page}
-\mention{look into proksch papers}
-Various researchers have analyzed industrial and open source logs for failure reasons and their impact on development.
+This section starts with an overview on research into why CI is used and its impact on development.
+It presents analyses on why CI builds fail and how testing and static anlysis tools are used within CI.
+We explain how researchers compose data sets for their work on CI and how chunk retrieval techniques can support them.
 
+\paragraph{Motivation for CI and impact of CI}
+Hilton et al.~\cite{hilton2017trade-offs} investigate the motivations of developers to use CI through several surveys.
+Developers use CI to ensure consistency and quality across different execution environments and increase confidence into the code they deploy.
+Hilton et al.~\cite{hilton2016usage} also analyze how and why open source projects use CI.
+They observe CI usage in a broad range of projects, it supports them to catch bugs earlier and have more confidence in a successful build and shorten release cycles.
+Stahl and Bosch~\cite{staahl2014modeling} provide a hollistic review of literature on automatic build environments in industry projects.
+They propose a descriptive structure to model build flows, which they found to be highly different from project to project.
+Vasilescu et al.~\cite{vasilescu2015quality} analyzed a broad rage of open source projects written in popular languages on GitHub.
+They compared their usage of CI with the successful merges of pull requests and found that CI increase the number of successful merges, internal as well as external contributions, and allows the team members to uncover more bugs.
+In a new study, Vasallo et al.~\cite{vassallo2019every} interview developers on how they determine why a CI build failed.
+They model how these developers resolve failures.
+The first and most important steps when developers want to fix a build failure is locating the error within the build log.
+Then the developers use the additional information provided with and around the error message to understand the details of the failures.
+% Vassallo et al.~\cite{vassallo2018continuous} conducted a survey study on how ci influences developers to continuously refactor their code to fix ci quality analysis warnings.
+% Their results indicate that refactoring is rather spread in the ci environment and deemed important by the surveyed developers.
+% ``Lack of time'' and ``absence of a proper test suite'' are named as the main barriers to continuous refactoring.
+% Vassallo et al.~\cite{vassallo2019automated} analyzed build logs, source code repository content and build metadata of open source repositories for CI anti-patterns.
+
+\paragraph{Build Failures in CI}
+Various researchers looked into why CI builds fail and the impact of build failures on the development workflow.
 Seo et al.~\cite{seo2014programmers} found that few error types such as dependency mismatches are the most prominent cause of build failures at Google.
-In addition most failures are resolved within two builds.
-The build logs were the primary data source for their analysis and they developed a custom parser to classfiy error messages reported by Java and C++ builds. 
-Small percentage of error types account for most of the build failures.
-
+In addition most failures are resolved within two builds and a small percentage of error types account for most of the build failures.
+Rausch et al.~\cite{rausch2017empirical} analyzed CI builds of open source java procjects and categorize why builds failed.
+Most fail because of test  and for most porojects over half of failed biuilds follow another failed build.
+Found that most failures occur in the second half of the build runtime, which can cause long delays in the feedback loop, especially when builds are automatically retried upon failure.
 Vassallo et al.~\cite{vassallo2017a-tale} compared open source projects in Java to industrial ones.
 They determined that testing failures outweigh compilation errors.
 Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects.
-analyzed the collected buildlogs by extractino eeror messages using regular expressions.
-The regular expressions were looking for keywords identified in a manual analysis.
 
-Vassallo et al.~\cite{vassallo2018continuous} conducted a survey study on how ci influences developers to continiously refactor their code to fix ci quality analysis warnings.
-Their results indicate that refactoring is rather spread in the ci environment and deemed important by the surveyed developers.
-``Lack of time'' and ``absence of a proper test suite'' are named as the main barriers to continuous refactoring.
-
-Vassallo et al.~\cite{vassallo2019automated} analyzed build logs, source code repository content and build metadata of open source repositories for CI anti-patterns.
-
-Rausch et al.~\cite{rausch2017empirical} analyzed CI builds of open soucre java procjects and categorize why builds failed.
-Most fail because of test  and for most porojects over half of failed biuilds follow another failed build.
-Found that most failures occur in the second half of the build runtime, which can cause long delays in the feedback loop, especially when builds are automatically retried upon failure.
-
+\paragraph{Static Analysis and Testing in CI}
 Automated static analysis tools are the focus of Zampetti et al.~\cite{zampetti2017open} in ther study of java projects from GitHub.
 Their results show that static analysis in responsible for a small amount of build failures and mainly responsible for warned builds.
 Almost all projects use custom configurations for the static analysis, however the configuration rarely changes.
-Failures because of static analysis warings are fixed in a short timeframe.
-
-Stahl and Bosch~\cite{staahl2014modeling} provide a hollistic review of literature on automatic build environments in industry projects.
-They propose a descriptive structure to model build flows, which they found to be highly different from project to project.
-
-Hilton et al.~\cite{hilton2017trade-offs} investigate the motivations of developers to use CI through several surveys.
-Developers use CI to ensure consistency and quality across different execution environments and increase confidence into the code they deploy.
-
-Hilton et al.~\cite{hilton2016usage} analyze how and why open source projects use CI.
-They observe CI usage in a broad range of projects, it supports them to catch bugs earlier and have more confidence in a successful build and shorten release cycles.
-
-Vasilescu et al.~\cite{vasilescu2015quality} analyzed a broad rage of open source projects written in popular languages on GitHub.
-They compared their usage of CI with the successful merges of pull requests and found that CI increase the number of successful merges, internal as well as external contributions, and allows the team members to uncover more bugs.
-
-
-
-In a new study, vasallo et al. interviewed developers on how they determine why a CI build failed.
-They model how these developers resolve failures and found that error identification trhough inspecting the build logs is a central activity. \todo{check!}
-found that locating the error within the build log and using the additional informatino provided with and around the error message to understand the details of the failures are the first and most important steps when developers want to fix a build failure.
-~\cite{vassallo2019every}
-
-identfy noise in buidl breakage data. take travistorrent data set and classify build failures according to whether they were caused by an enviornmental failure or caused by a develpoer change. They also identify cascading buildfailures created by existing unfixed errors and allowed failures, whose results were later labeled by developers to be ignored.
-thy found that about half of the failed biudls in travistorrent fall in at las one of the labeled categiries and that these, when regarded as noise, considerably impact observations reported by other works trying to model build breakages.
-their analysis starts with manual eval of logs, selected keywords and strings that identify cetrain kind of label, coded script that looked for exactly these to classify and validated the results with another manual classification.
-similar techniques -> keywords, slightly different goal as they want to classify the whole log, not extract substring from it.
-~\cite{ghaleb2019studying}
-
+Failures because of static analysis warnings are fixed in a short time frame.
 Beller et al.~\cite{beller2017oops} showed that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds.
 They observed very different kinds, failure rates and numbers of test between programming languages and explained that the low failure rates hint at code being tested before it is sent to the CI server.
-they focus their analysis on java and ruby build logs for which they build custom parsers with regular expressions to extract the reason a build failed.
 
+\paragraph{Data Sets powering CI Research}
+The works presented in this section are based on either developer surveys or data sets, containing build metadata or build logs.
+Seo et al..~\cite{seo2014programmers} and Vassallo et al.~\cite{vassallo2017a-tale} based their analyses on sets of build logs collected from industry partners.
+Beller et al. created the \emph{TravisTorrent} data set~\cite{beller2017travistorrent} providing access to build metadata from more than 1,000 projects from Travis CI~\cite{travisci2019webpage}.
+TravisTorrent was the basis for several of the works mentioned in this section~\cite{rausch2017empirical,zampetti2017open,vassallo2017a-tale,beller2017oops}.
+Ghaleb et al.~\cite{ghaleb2019studying} aim to identify noise in build breakage data.
+They classify build failures from \emph{TravisTorrent} according to whether they were caused by an environmental failure or caused by a developer change.
+They also identify cascading build failures created by existing unfixed errors and allowed failures, whose results were later labeled by developers to be ignored.
+About half of the failed builds in \emph{TravisTorrent} fall into at least one of these categories.
+When regarded as noise they considerably impact observations reported by other works modeling build breakages.
 
-All these researchers described building parsers in order to evaluate the studied build logs.
-Our work could support their research by easing the parser development and enable them to cover more languages and build tools easier.
+\paragraph{Build Log Analysis in CI Research}
+For Seo et al.~\cite{seo2014programmers} the build logs were the primary data source for their analysis and they developed a custom parser to classify error messages reported by Java and C++ builds. 
+Vassallo et al.~\cite{vassallo2017a-tale} analyzed collected build logs by extraction error messages using regular expressions.
+The regular expressions were looking for keywords identified in a manual analysis.
+The analysis of Ghaleb et al.~\cite{ghaleb2019studying} starts with manual categorization of build logs.
+They select keywords and strings that identify one of their noise categories and coded script to automatically classify logs based on these keywords.
+To validate the script results, they performed another manual classification.
+Beller et al.~\cite{beller2017oops} focus their analysis on java and ruby build logs for which they built custom parsers with regular expressions to extract the reason a build failed.
+
+\paragraph{Supporting Log Analysis with Chunk Retrieval}
+To leverage the valuable information within build logs these researchers built parsers and regular expression based programs.
+This task of retrieving specific chunks of text from the build logs can be solved by the chunk retrieval techniques we compare in this thesis.
+Our results can support researchers in choosing a suitable technique for their data set of build logs and the chunks they want to retrieve.
+By relieving them from building custom parsers we enable them to cover more languages and build tools in their studies.
 
 \section{Build Log Analysis and Augmentation - Related Work}
 \label{sec:rw-bl-analysis}
-\plan{extend, 1 page}
+Build logs are a valuable data source for developers to find out why their build failed.
+Various researchers are looking into supporting developers to process the verbose build logs.
 Vassallo et al.~\cite{vassallo2018un-break} try to shorten the time it takes developers to understand build logs.
-They parse Maven~\cite{maven2019website} build logs into a structured representation and create hint generators leveraging this structured access to the information within the build log.
-They implement several hint generators, for example one that queries stack overflow for discussions related to why the build failed.
+They parse Maven~\cite{maven2019website} build logs into a structured representation and create hint generators.
+The hint generators leverage this structured access to the information within the build log to propose fixes.
+One of the hint generators for example queries stack overflow for discussions related to why the build failed.
+In a qualitative study they observed that highlighting the locality and context of an issue is helpful to programmers.
 Their tool BART is published as a Jenkins Plugin~\cite{bart2019plugin}.
-They observed that highlighting the locality and context of an issue is helpful to programmers.
+The chunk retrieval techniques we compare in this thesis can be used to fill similar structured representations with information from build logs.
+As they simplify the construction of parsers they would enable developers and researchers to cover a wider array of build tools, the main influence factor on the structure of a build log.
 
-We strive to enable a similar summarization by text retrieval while also covering a wider array of programming languages.
-
-Amar et al.~\cite{amar2019mining}  compare different approaches to reduce the portions of a log to be inspected by the engineer.
-The techniques remove lines that appear both in passing and failing build logs and use a modified Term Frequency Inverse Document Frequency weighting to identify term vectors likely to occur with failures.
+Amar et al.~\cite{amar2019mining} compare different approaches to reduce the portions of a log to be inspected by a developer.
+The techniques remove lines that appear both in passing and failing build logs and use a modified term frequency inverse document frequency weighting to identify term vectors likely to occur with failures.
 They use the term vectors and cosine similarity to further filter the log portions only present in failing build logs.
-Their diff technique can be interpreted as a chunk retrieval technique, though the user can not specify an information to target.
-The information retrieved is always difference to what was before \todo{wait not quite the past failures (environmental in that case) specify the information!}
-They further employed information retrieval techniques to identify the lines most likely hinting at the cause of the erro.
-In contrast to that, our tool ALBE extracts specific parts of the build logs.
-As this is mostly dependent on the implicit reoccurring structure within the logs we operate on the full log output.
+Their diff technique can be interpreted as a chunk retrieval technique, the targeted information is defined by the past failures used as basis for the weighted term vectors.
 
-\section{System Log Analysis} \todo{parsing?}
+Travis already provides a basic structuring of build logs within their log viewer using \emph{log folds}~\cite{travis2019logfolds}.
+They add fold identifiers around common commands and setup or teardown build phases and collapse the contained lines by default.
+
+\section{System Log Analysis}
 
 A related field of log processing is the processing of system log files produced during runtime.
 A main difference in system logs is that they are fundamentally structured through events.
@@ -113,14 +118,14 @@ This structured log is then the input to various machine learning and data minin
 They mine patterns for operational profiling~\cite{nagappan2009efficiently}, debugging~\cite{oliner2012advances}, performance analytics or anomaly detection~\cite{nagappan2010abstracting}.
 Xu et al.~\cite{xu2009detecting} leveraged the connection of log statements to the source code producing them to separate messages into constant and variable parts more accurately.
 
-The techniques developer for system logs can also be applied to build logs.
-One example is comparing execution traces to reference traces of intended behaviour to detect anomalies.
+The techniques developed for system log analysis can also be applied to build logs.
+One example is comparing execution traces to reference traces of intended behavior to detect anomalies.
 Amar et al.~\cite{amar2019mining} employed a similar approach to detect relevant lines in build logs.
 
 Classic log parsers interpret the whole log file into a sequence of events.
-A similar approach could also be applied to build logs to determine the sequence of executed buidl steps or phases.
-In this thesis we focus on extracting a single speficied information from the build log as a whole with chunk retrieval techniques.
-Chunk retrieval technques are used as a part of log parsing to retrieve the values of variable parts in a log message, e.g. through regular expressions~\cite{nagappan2010abstracting,xu2009detecting}.
+A similar approach could also be applied to build logs to determine the sequence of executed build steps or phases.
+In this thesis we taka a different approach and focus on extracting a single specified information from the build log as a whole with chunk retrieval techniques.
+Chunk retrieval techniques are used as a part of log parsing to retrieve the values of variable parts in a log message, e.g. through regular expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 
 
 \section{Semi-Structured Data}
@@ -152,8 +157,37 @@ In contrast to that, this thesis takes a look at techniques to gater a specific,
 
 \section{Information Extraction and Retrieval Techniques}
 
-The process of automatically selecting unstructured documents related to a given \emph{search query} is called \emph{Information Retrieval}~\cite{schutze2008introduction}.
-For this, algorithms try to determine the general topic or conceptual information of the document.
+The chunk retrieval techniques we compare in this thesis use different techniques from the fields of information extraction and retrieval.
+This section presents existing approaches to extract structured information from semi-structured data and how these approaches differ from chunk retrieval.
+Further we illustrate how information retrieval techniques, basis for our chunk retrieval technique CTS, are used in software engineering research.
+
+\paragraph{Information Extraction from Semi-Structured Documents}
+\emph{Information extraction} techniques aim at structuring unstructured information to support subsequent processing.
+
+The PADS project~\cite{fisher2011the-pads} is centered around declaring grammars for the information contained in semi-structured documents.
+Based on this declarative data description various tools are generated like format converters, e.g. to XML, data adaptors to other tools, statistical analyzers and visualizers.
+Manually defined PADS grammars eliminate the need to develop a custom data extraction parser.
+Xi and Walker developed ANNE~\cite{xi2010a-context-free}, which can infer context-free PADS grammars from a small number of user annotations and the raw document data.
+Fisher et al.~\cite{fisher2008from} fully automated the generation of PADS grammars.
+They split the data into chunks, lines or documents, and further into tokens.
+Parentheses are used to infer hierarchical structure information.
+The system guesses grammar operators unifying single tokens or subexpressions, scores the resulting grammars and applies appropriate rewrite rules to refine the candidate grammars.
+
+The IEPAD tool created by Chang et al.~\cite{chang2003automatic} automatically identifies data extraction patterns in semi-structured web pages, without requiring user-labeled training examples.
+They split the semi-structured documents into tokens, discover repetitive patterns using occurrence-counting suffix trees and select the most regular and compact patterns to define extraction.
+
+Dan Smith and Mauricio Lopez~\cite{smith1997information} extract structured information from sets of semi-structured documents that contain similar information but are structured differently.
+The user provides rules of each piece of information, detailing in which section of the document it might be present.
+Identifying keywords and regular expressions determine whether the information is present and where it starts and ends.
+
+These information extraction approaches support parsing and structuring of entire files.
+We investigate chunk retrieval techniques which do not aim at inferring the whole structure of a build log.
+Instead, chunk retrieval focuses on extracting one specific information characterized by the user.
+
+\paragraph{Information Retrieval in Software Engineering Research}
+The process of automatically selecting unstructured documents related to a given \emph{search query} is called \emph{information retrieval}~\cite{schutze2008introduction}.
+
+In information retrieval, algorithms try to determine the general topic or conceptual information of the document.
 Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix and weighing the terms with tf-idf~\cite{lee1997document}.
 On the matrix the algorithms apply a similarity comparison like for example vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}.
 
@@ -161,69 +195,42 @@ Information retrieval techniques are leveraged to improve software engineering i
 Antoniol et al.~\cite{antoniol2002recovering} query manual pages and requirements with program identifiers to create trace links between code and documentation.
 The same task is addressed by Marcus et al.~\cite{marcus2005recovery}, who also incorporate source code comments into their query.
 Panichella et al.~\cite{panichella2016parameterizing} and Runeson et al.~\cite{runeson2007detection} apply similar information retrieval techniques to detect duplicated bug reports.
+Salton et al.~\cite{salton1993approaches} retrieve text parts relevant for a given user query by calculating global document similarity scores and refining the output through local passage similarity.
+They also calculate similarity with term vectors.
 
-Salton et al.~\cite{salton1993approaches} retrieve text parts relevant for a given user query by calcluating global document similarity scores and refining the output through local passage similarity.
-Similarity is also calculated using term vectors.
-
-
-\emph{Information Extraction} techniques aim to automatically structure unstructured information to support subsequent processing.
-The IEPAD tool created by Chang et al.~\cite{chang2003automatic} automatically identifies data extraction patterns in semi-structured web pages, without requiring user-labeled training examples.
-They split the semi-structured documents into tokens, discover repetitive patterns using occurrence-counting suffix trees and select the most regular and compact patterns to define extraction.
-
-\todo{regex generation}
-Bartoli et al.~\cite{bartoli2012automatic} leverage genetic programming to generate regular expressions based on user examples.
-Their approach also reprensents the regular expressions in a tree structure and mutates them to maximize extraction accuracy on the provided examples while minimizing the length of the regular expression.
-Their evaluation shows that their algorithm is on average faster and more accurate than humans~\cite{bartoli2016on-the-automatic}.
-
-The WHISK system by Stephen Soderland~\cite{soderland1999learning} learns text extraction regular expressions for semi-structured text.
-The system interleaves the learning process with the example annotation and reduces the number of required examples by presenting examples that eliminate ambiguities between learning candidates.
-
-Dan Smith and Mauricio Lopez~\cite{smith1997information} extract structured information from sets of semi-structured documents that contain similar information but are strucutured differently.
-The user provides rules of each piece of information, detailing in which section of the document it might be present.
-Identifying keywords and regular expressions determine whether the information is present and where it starts and ends.
-
-The PADS project~\cite{fisher2011the-pads} is centered around declaring grammars for the information contained in semi-structured documents.
-Based on this declarative data description various tools are generated like format converters, e.g. to XML, data adaptors to other tools, statistical analyzers and visualizers.
-Manually defined PADS grammars eliminate the need to develop a custom data extraction parser.
-Xi and Walker developed ANNE~\cite{xi2010a-context-free}, which can infer context-free PADS grammars from a small number of user annotations and the raw document data.
-Fisher et al.~\cite{fisher2008from} fully automated the grammar generation.
-They split the data into chunks, lines or documents, and further into tokens.
-Parentheses are used to infer hierarchical structure information.
-The system guesses grammar operators unifying single tokens or subexpressions, scores the resulting grammars and applys appropriate rewrite rules to refine the candidate grammars.
-
-The presented information extraction approaches support parsing and structuring of entire files, while we investigate chunk retrieval techniques which do not aim at inferring the whole structure of a build log.
-Instead focus on extracting one specific information characterized by a user.
-
-
+Our chunk retrieval technique CTS uses the same approach of term vectors to identify which lines to extract from a log file.
 
 \section{Program Synthesis by Example}
 \label{sec:rw-prose}
 Programming by Example enables end users to automate repetitive tasks.
 The user provides examples for the input and the corresponding output and a synthesis algorithm tries to create the program intended by the user.
-This section introduces the theoretical foundations of the program synthesis algorithm implemented in the \emph{Microsoft Program Synthesis using Examples} (PROSE) framework~\cite{prose2019webpage}.
-It presents the FlashExtract DSL, which defines text extraction tasks within PROSE and is the basis for the implementation of our PBE chunk retrieval technique.
-Further, this section covers further applications and extensions of the PROSE program synthesis.
+This section introduces the theoretical foundations of the program synthesis algorithm of the \emph{Program Synthesis using Examples} (PROSE) framework~\cite{prose2019webpage}.
+The PROSE framework is developed by Microsoft Research.
+The section next presents the FlashExtract DSL, which defines text extraction tasks within PROSE and is the basis for the implementation of our chunk retrieval technique PBE\@.
+Further, we cover additional applications and extensions of the PROSE program synthesis and alternative research on generating regular expressions from examples.
 
 \paragraph{FlashMeta: Inductive Program Synthesis}
 The FlashMeta framework presented by Polozov and Gulwani~\cite{polozov2015flashmeta:} is the backbone of the program synthesis in the Microsoft PROSE framework.
 FlashMeta separates the inductive synthesis algorithm from the domain specific capabilities of the desired program, by encoding the possible program space in a domain specific language (DSL).
-The user specifies their intent by providing in / output examples (I/O examples).
+The user specifies the desired program behavior by providing in / output examples (I/O examples).
 FlashMeta uses \emph{witness functions}, provided by the DSL, to divide the synthesis into smaller subtasks.
 For each of these subtasks it enumerates all possible programs that solve the subtask consistent with the set of I/O examples.
-A program is consistent with a set of I/O examples if it produces the corresponding output for each input example~\cite{mitchell1982generalization}.
-The subprograms are stored in a \emph{version space algebra} (VSA)~\cite{mitchell1982generalization}, which efficiently saves candidate programs for tasks by sharing common subexpressions.
-The enumerated programs are ranked according to which ones the user most likely intended.
-The ranking characteristics are also provided by the DSL.
+A program is consistent with a set of I/O examples if, for each input example, it produces the corresponding output~\cite{mitchell1982generalization}.
+The possible subprograms are joined and stored in a \emph{version space algebra} (VSA)~\cite{mitchell1982generalization}.
+This a tree structure, which space-efficiently saves candidate programs for tasks by sharing common subexpressions.
+Next, FlashMeta ranks the enumerated programs according to which ones the user most likely intended.
+The DSL also provides the ranking characteristics.
 From the ranked VSA, FlashMeta can then return a ranked list of complete programs consistent with the users example.
 
-In addition to I/O examples of the intended program, the user can also provide examples with only input or negative input examples not to be processed by the synthesized program.
+In addition to I/O examples of the intended program, the user can also provide examples with only input or negative input examples.
+Negative input examples should not to be processed by the synthesized program.
 
-The different applications of PROSE presented in the following paragraphs are all implemented as DSLs for the FlashMeta synthesis algorithm.
+The different applications of PROSE presented in the following paragraphs were all eventually implemented as DSLs for the FlashMeta synthesis algorithm.
 
 \paragraph{FlashExtract: Data Extraction by Example}
-Le et al.~\cite{le2014flashextract:} developed FlashExtract as DSL for the Microsoft PROSE framework.
-Its instantiation for text specifies text extraction programs from semi-structured text based on regular expressions.
-The authors also provide instantiations to extract data from webpages and spreadsheets.
+Le et al.~\cite{le2014flashextract:} developed FlashExtract as a DSL for the Microsoft PROSE framework.
+It enables a user to define text extraction programs for text, websites and spreadsheets by giving I/O examples.
+FlashExtract's instantiation for text synthesizes text extraction programs from semi-structured text based on regular expressions.
 Users can extract multiple fields and structure them with hierarchy and sequence.
 FlashExtract synthesizes programs to extract each of the fields leveraging the information about hierarchical containment and sequentiality.
 It eliminates the need for the user to understand the entire structure of the processed document and the effort of developing a suitable extraction program themselves.
@@ -233,25 +240,26 @@ A position is either specified by an absolute character index or a pair of two r
 The first regex matches the substring directly before the characterized position, the second regex directly after.
 A regex in FlashExtract is a concatenation of tokens, e.g.\ standard character classes or string literals frequently occurring in the input examples.
 
-Microsoft's system log analysis tool Azure Monitor lets users define custom log fields using the FlashExtract~\cite{azure2019custom}.
-The ConvertFrom-String function in PowerShell allows a user to specify a example template for extracting hierarchical data from a text document~\cite{powershell2019convert}.
+Apart from automatic completion in Excel spreadsheets~\cite{excel2019flashfill}, FlashExtract is the basis for two other Microsoft product features:
+Microsoft's system log analysis tool Azure Monitor lets users define custom log fields~\cite{azure2019custom}.
+The ConvertFrom-String function in PowerShell allows a user to specify an example template to extract hierarchical data from a text document~\cite{powershell2019convert}.
 
 We apply the text instantiation of FlashExtract to the domain of build logs with our chunk retrieval technique PBE\@.
 
 \paragraph{Other Applications of Program Synthesis by Example}
+Gulwani and Harris apply a less generic predecessor of the FlashMeta framework to string manipulation within spreadsheets~\cite{gulwani2011automating} and spreadsheet transformations~\cite{harris2011spreadsheet}.
+
 Rolim et al.~\cite{rolim2017learning} use code edits as examples to learn automatic program transformations.
 Their DSL for PROSE abstracts over variables and subexpressions by describing rewrite rules applied to the abstract syntax tree.
 The synthesized transformations proposes fixes for student assignments based on corrections from other students and to automates repetitive refactoring tasks.
-
-In 2011 Gulwani and Harris applied a less generic predecessor of the FlashMeta framework to string manipulation within spreadsheets~\cite{gulwani2011automating} and spreadsheet transformations~\cite{harris2011spreadsheet}.
 
 Raza and Gulwani~\cite{raza2017automated} present an automated algorithm that tries to predict data extraction programs from only input examples.
 Their tool can split system log statements into table columns or extract data from lists on webpages into spreadsheets.
 
 In a program synthesis shorter and simpler program often receive a better ranking.
-Ellis and Gulwani~\cite{ellis2017learning} improved the accuracy of the PROSE program learner even further by also taking into account the execution traces of the program candidates.
+Ellis and Gulwani~\cite{ellis2017learning} improve the accuracy of the PROSE program learner even further by also taking the execution traces of the program candidates into account.
 For example, a program that extracts overlapping substrings is ranked lower than a program without overlapping extractions.
-They also weigh the produced output of applying a program to input only examples and prefer programs which produces output structurally similar to the provided output examples.
+They also weigh the produced output of applying a program to input only examples and prefer programs which produces output structurally similar to provided output examples.
 
 \paragraph{User Interaction with Programming by Example}
 I/O examples are an ambiguous specification of a program and user confidence in the correctness of the synthesized program is important for a wide adoption of Programming by Example based systems~\cite{lau2009why-programming-by-demonstration}.
@@ -259,5 +267,13 @@ Miller and Myers~\cite{miller2001outlier} uncover outliers in input data provide
 For the PROSE framework, Mayer et al.~\cite{mayer2015user} compare two approaches for disambiguation by the user.
 With their first approach, the user can browse lower ranked program candidates in a tree like natural language transformation of the constructed VSA.
 The second approach actively asks the user to resolve ambiguous output possibilities for input only examples.
+
+
+\paragraph{Further Approaches to Regular Expression Generation from Examples}
+Bartoli et al.~\cite{bartoli2012automatic} leverage genetic programming to generate regular expressions based on user examples.
+Their approach also represents the regular expressions in a tree structure and mutates them to maximize extraction accuracy on the provided examples while minimizing the length of the regular expression.
+Their evaluation shows that their algorithm is on average faster and more accurate than humans~\cite{bartoli2016on-the-automatic}.
+The WHISK system by Stephen Soderland~\cite{soderland1999learning} learns text extraction regular expressions for semi-structured text.
+The system interleaves the learning process with the example annotation and reduces the number of required examples by presenting examples that eliminate ambiguities between learning candidates.
 
 \end{document}
