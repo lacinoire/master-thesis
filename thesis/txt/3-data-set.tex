@@ -5,10 +5,9 @@
 \begin{document}
 
 \chapter{LogChunks Data Set}
+\label{sec:data-set}
 \includegraphics[page=5, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
 
-\label{sec:data-set}
-\section{Motivation}
 originally: log collection to get impression of build logs from various projects, what possibly extractable information they contain and how structured or unstructured they are.
 Then labeling of one build log information, namely the reason the build failed, as well as keywords and structural category to use in our evaluation and support our impressions about suitability of the techniques with quantitative results
 
@@ -18,22 +17,22 @@ Then labeling of one build log information, namely the reason the build failed, 
 \section{Log Collection}
 To collect a broad range of build logs we built the \texttt{Log Collector} using ruby.
 
-\subsection{Repository Sampling}
+\paragraph{Repository Sampling}
 Our first task was to determine a set of repositories to query logs from.
 Our \texttt{GHTorrentParser} can query the GHTorrent~\cite{gousios2013ghtorrent} data set for the most popular languages on github and the most popular repositories for a given language.
 \emph{Popularity} in this case is defined as the number of watches.
 Our \texttt{TravisRequester} can then check for a given repository whether it uses Travis CI.
 
-\subsection{Build Sampling}
+\paragraph{Build Sampling}
 The \texttt{LogCollector} uses the \texttt{TravisRequester}, our tool querying the Travis API~\cite{travisci2019apidoc}, to obtain the newest builds for a given repository.
 As most builds on Travis CI are successful \mention{citation needed} we use a stratified sampling approach: \texttt{TravisRequester} saves the found builds in logs in buckets according to their state.
 We encountered the following states during our data collection passes:
 \begin{itemize}
-	\item \todo{fill /5 mins/}
+	\item \todo{fill /5 mins/}~\cite{travis2009buildstatus}
 \end{itemize}
 \texttt{TravisRequester} saves up to a configured number of builds per state and searches through a configured number of maximum checked builds.
 
-\subsection{Log Sampling}
+\paragraph{Log Sampling}
 For each build the \texttt{TravisRequester} then selects a log to download.
 Logs in Travis CI are not directly attributed to \texttt{build}s, but to \texttt{job}s.
 A single build can consist of multiple jobs, e.g.\ building and executing tests in various different testing environments.
@@ -54,7 +53,7 @@ For the selected jobs, our tool then queries the Travis API V3 and obtains the r
 % \todo{WHY? one common information developers and researches might want to extract, intentionally not focus on one structurally clearly defined retrieval   cause that would be simple for PROSE retrieval -> better comparability}
 
 
-\section{Data Structure}
+\section{Data Schema}
 For our study, described in Chapter~\ref{sec:study}, we want to investigate the retrieval capabilities of three techniques. Therefore, we need a data set of in/output examples for one \texttt{BuildLogInformation}. Furthermore, Keyword search is not configured by such in/output, but search keywords surrounding the desired output. Finally, this section describes our notion of structural categories, which we use to quantify our assumptions on the needed uniformness of in/output examples.
 
 \paragraph{Example Set}
@@ -83,8 +82,8 @@ To be able to quantify this intuition in our evaluation we assigned \emph{struct
 If two retrievals are at the same structural location with the build log, meaning they are surrounded by a similar markings, the fall into the same category.
 For most cases, two build failure reason examples which fall into one category are outputted either within the same build step or by the same build step tool.
 
-\section{Labeling}
-\subsection*{Output Examples: Build Failure Reason}
+\section{Labeling Process}
+\paragraph{Output Examples: Build Failure Reason}
 We labeled the first occuring substring describing the failure.
 If there were multiple errors described we took the first continuous block of error description.
 
@@ -102,13 +101,13 @@ end all the points with: we tried to remedy this by (e.g.\ validations)
 }
 We vaildated our collected labels in two different ways. We did a second pass of labeling the build failure reason, keywords and categoies on a subset of the data and compared the results to calculate the inter-rater reliability using cohens kappa. In addition, we sent out a survey to the developers, whose commits triggered the builds within our data set and asked them whether our retrieval of the log part describing the reason the build failed was correct. In the following we describe the results of those two validation studies.
 
-\subsection{Inter-Rater Reliability}
+\subsection{Inter-Rater Reliability Study}
 re-labeling of parts of the labels - cohen's kappa
 \subsubsection{Introduction}
 After the manual labeling of the data set we performed a second labeling of a sample of the build logs to validate the labels.
 \subsubsection{Method}
 For each label category: Build Failure Reason, keywords and category, we relabeled 30 randomly sampled logs.
-compared the labeles, \todo{discussed about it}.
+compared the labels, \todo{discussed about it}.
 \subsubsection{Results}
 
 \subsubsection{Discussion}

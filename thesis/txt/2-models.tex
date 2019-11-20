@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\chapter{Introduction to Chunk Retrieval Techniques}
+\chapter{Chunk Retrieval Techniques for Build Logs}
 \label{sec:techniques}
 This chapter introduces the concept of chunk retrieval techniques.
 We use these techniques to extract text chunks from build logs that represent a specific, targeted information.
@@ -125,9 +125,9 @@ Figure~\ref{fig:build-log-information} shows an overview of these BLIs.
 				This information can be useful for a researcher to retrieve when reverse engineering the build configuration.
 	      Figure~\ref{fig:log-3} shows an example of a TravisTriggeringCommand instantiation.
 
-	\item \textbf{ExitCode} Travis CI prints all exit codes of commands.
+	\item \textbf{TravisExitCode} Travis CI prints all exit codes of commands.
 				A researcher can retrieve this information to fill an overview of the build steps and why they failed.
-	      Figure~\ref{fig:log-3} shows an example of an ExitCode instantiation within a build log.
+	      Figure~\ref{fig:log-3} shows an example of an TravisExitCode instantiation within a build log.
 
 	\item \textbf{ErrorMessage} Various tools involved in the build process output messages of errors that occurred during their execution.
 	      Retrieving these and showing them to developers can help them understand quicker why the build failed.
@@ -141,38 +141,38 @@ Figure~\ref{fig:build-log-information} shows an overview of these BLIs.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth, clip]{img/log0.png}
-	\caption{Excerpt from a build log showing textual representations of a long TravisWorker instantiation and a TravisSystemInfo instantiation}
+	\includegraphics[width=\textwidth, clip]{img/log02.png}
+	\caption{Excerpt from a build log showing textual representations of a long TravisWorker instantiation and a TravisSystemInfo}
 	\label{fig:log-0}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth, clip]{img/log1.png}
-	\caption{Excerpt from a build log showing textual representations of a TravisTiming instantiation and a TravisPhase, containing the TravisPhaseName and the TravisPhaseOutput}
+	\includegraphics[width=\textwidth, clip]{img/log12.png}
+	\caption{Excerpt from a build log showing textual representations of a TravisTiming and a TravisPhase, containing the TravisPhaseName and the TravisPhaseOutput}
 	\label{fig:log-1}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth, clip]{img/log2.png}
-	\caption{Excerpt from a build log showing textual representations of a short TravisWorker instantiation}
+	\includegraphics[width=\textwidth, clip]{img/log22.png}
+	\caption{Excerpt from a build log showing the textual representation of a short TravisWorker}
 	\label{fig:log-2}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth, clip]{img/log3.png}
-	\caption{Excerpt from a build log showing textual representations of ErrorMessage, ExitCode and TravisTriggeringCommand instantiations}
+	\includegraphics[width=\textwidth, clip]{img/log32.png}
+	\caption{Excerpt from a build log showing textual representations of an ErrorMessage, an ExitCode and a TravisTriggeringCommand}
 	\label{fig:log-3}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth, clip]{img/log4.png}
-	\caption{Excerpt from a build log showing textual representations of WarningMessage instantiations}
+	\includegraphics[width=\textwidth, clip]{img/log42.png}
+	\caption{Excerpt from a build log showing the textual representation of a WarningMessage}
 	\label{fig:log-4}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth, clip]{img/log5.png}
-	\caption{Excerpt from a build log showing textual representations of WarningMessage instantiations}
+	\includegraphics[width=\textwidth, clip]{img/log52.png}
+	\caption{Excerpt from a build log showing the textual representation of another WarningMessage}
 	\label{fig:log-5}
 \end{figure}
 
@@ -293,7 +293,7 @@ The number of surrounding lines retrieved is the average of lines in the output 
 
 \subsection{Other Techniques}
 \label{sec:expl-rlr}
-Apart from the three techniques we investigate, there are further build log analysis techniques mentioned in literature and used in industry.
+There are further build log analysis techniques mentioned in literature and used in industry.
 This section shows how they are described with our notion of chunk retrieval techniques.
 
 \paragraph{Log Diff}
