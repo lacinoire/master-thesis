@@ -7,12 +7,19 @@
 \chapter{LogChunks Data Set}
 \label{sec:data-set}
 \includegraphics[page=5, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
+This chapter describes the creation of the \emph{LogChunks} data set.
+\emph{LogChunks} encompasses about 800 build logs produced by a wide variety of programming languages.
+For each build log we manually labeled which substring describes why the build failed.
+Four our evaluation of the chunk retrieval techniques PBE, CTS and KWS we added search keywords and structural categories to each of the labeled substrings.
 
-originally: log collection to get impression of build logs from various projects, what possibly extractable information they contain and how structured or unstructured they are.
-Then labeling of one build log information, namely the reason the build failed, as well as keywords and structural category to use in our evaluation and support our impressions about suitability of the techniques with quantitative results
+First, we present related data sets and show how \emph{LogChunks} differs.
+Second, this chapter describes our log collection process and details the data schema of \emph{LogChunks}.
+Further, it presents the labeling process and how we validated the obtained data points.
+In our first validation study, a second person also labeled a sample of the build logs.
+For the second validation study, we sent out mails to the original project developers to determine whether the substring we labeled actually describes the reason the build failed.
 
 \section{Related Data Sets}
-\todo{kind of related work for data set? the non system one moritz sent, travis torrent, check msr, new paper in rw / other rw parpers, more?}
+\paragraph{TravisTorrent}
 
 \section{Log Collection}
 To collect a broad range of build logs we built the \texttt{Log Collector} using ruby.
