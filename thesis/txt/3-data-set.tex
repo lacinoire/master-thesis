@@ -60,6 +60,7 @@ For \emph{LogChunks} we queried GHTorrent from 01/04/2018 for the three most pop
 The \texttt{LogCollector} uses the \texttt{TravisRequester} to obtain the newest builds for a given repository.
 Wwe use a stratified sampling approach: \texttt{TravisRequester} saves the obtained builds in buckets according to their status.
 We encountered the following statuses during our data collection:
+\begin{multicols}{3}
 \begin{itemize}
 	\item created
 	\item started
@@ -68,6 +69,7 @@ We encountered the following statuses during our data collection:
 	\item errored
 	\item failed
 \end{itemize}
+\end{multicols}
 The user of \texttt{TravisRequester} configures how many builds should be checked and how many builds per status should be saved.
 
 To sample the builds for \emph{LogChunks} we let \texttt{TravisRequester} check up to a 1000 builds per repository and kept ten for each status.
