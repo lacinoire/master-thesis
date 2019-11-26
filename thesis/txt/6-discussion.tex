@@ -69,52 +69,81 @@ Even though KWS has the highest recall of all three techniques, its precision is
 The output of a chunk retrieval with KWS is well suited to be read by humans.
 
 \section{Recommendations of Suitable Techniques}
-This section unifies our study results of the chunk retrieval techniques PBE, CTS and KWS\@.
-It recommends which technique to use depending on the available configuration and 
-TABLE!
-\paragraph{Configuration and Input}
-number of categories:
-one? -> pbe
-two? -> CTS
-more? -> KWS
-available examples:
-little? -> try pbe (This depends on the categories! here we might want a decision tree to represent the importance of these characteristics against each other? <- this would also anwser RQ1: which ones of the criteria we compare are the most important)
-multiple -> kws
-very many? -> CTS
+% This section unifies our study results of the chunk retrieval techniques PBE, CTS and KWS\@.
+% It recommends which technique to use depending on the available configuration and 
+After discussing three chunk retrieval techniques separately we know want to unify out results into one recommendation scheme.
+We present a decision tree, which asks questions to a developer or researcher who wants to retrieve information chunks from build logs.
+The answers lead the user to more questions or the recommended technique as leaf nodes.
+Figure \ref{fig:crt-recommendation} presents the decision tree.
 
-\paragraph{Retrieval Output Usage}
-precision needed:
+\emph{Caveat!} This is a preliminary theory based on the results from our comparison study.
+The recommendations are therefore likely based on our implementation of the chunk retrieval techniques as well as the logs in the LogChunks data set.
+This decision tree is the answer to our first research question "which factors influence the suitability of a chunk retrieval technique".
+The earlier in the decision tree an aspect is noted, the more important it is in distinguishing the techniques.
+
+First and most important aspect are the structural categories.
+Are the textual representations of the BuildLogInformation your would like to extract always presented in the same structural way within the build logs?
+Meaning that all training examples are in the same structural category and the expected output in the log the chunk retrieval is applied to as well.
+
+If the textual representations of the BuildLogInformation are from multiple structural categories, meaning the are  not presented in the same structural way within the build logs, and recall is more important than precision we recommend to use KWS.
+If the representations are from multiple structural categories and precision is more important than recall to the user we recommend CTS.
+We also recommend CTS when the representations are from one structural category, the user does not require a high confidence in the accuracy of the outcome and the user rather have some bad output instead of no output at all.
+When the representations are from one structural category and the user wishes a high confidence in the correct need of the output or prefers no output over bad output, we recommend PBE.
 
 \begin{table}[htbp]
-\begin{tabular}{|c||c|c|c|}
+\centering
+\begin{tabularx}{\textwidth}{@{}llll@{}}
+  \toprule
   & PBE & CTS & KWS \\
-  \hline
-  \hline
+  \midrule
   Structural Categories & 1 & best if 1 & no influence \\
   Training Set Size & 1 - 3 & no influence & > 2 \\ 
-  Precision & high (if synthesis succeeds) & medium & low \\ 
-  Recall & high (if synthesis succeeds) & medium & high \\ 
-  Confidence in Output Correctness & high & low & low (precision), high (recall) \\ 
+  Precision & \makecell[l]{high \\ (if synthesis succeeds)} & medium & low \\ 
+  Recall & \makecell[l]{high \\ (if synthesis succeeds)} & medium & high \\ 
+  \makecell[l]{Confidence in \\ Output Correctness} & high & low & \makecell[l]{low (precision) \\ high (recall)} \\ 
   Output Consumption by & program & human & human \\ 
-  \hline
-\end{tabular}
+  \bottomrule
+\end{tabularx}
 \caption{Recommendations for each of the investigated chunk retrieval techniques}
-\label{tab:101}
+\label{tab:single-technique-recommendations}
 \end{table}
 
 \begin{figure}[htbp]
 		\centering
 		\includegraphics[width=0.75\textwidth, clip]{img/crt-recommendation.pdf}
 		\caption{Our preliminary recommendation scheme for chunk retrieval techniques}
-		\label{fig:fcrt-recommendation}
+		\label{fig:crt-recommendation}
 \end{figure}
 
 \section{Threats to Validity}
+
+There are several threats to the validity of the conclusions of our work.
+
+\paragraph{Implementation}
+Our results are highly dependent on the libraries we used and our implementation of the investigated chunk retrieval techniques.
+Our implementation of PBE is mainly based on the program synthesis provided by PROSE.
+It's limitations are therefore also mainly influenced by this library.
+For example, the need for examples from a single structural category stems from the fact that FlashExtract cannot learn regular expression programs with (too many?) top level OR operators.
+This limitation was necessary to keep the synthesis performance reasonable.
+
+Our implementation of CTS is dependent on the information retrieval library tex2vec and the way they split strings into word tokens.
+We intentionally chose a simple, minimally configured and tuned approach to compare against.
+Of course tuning the text similarity meta parameters more to the specific use case Of build log chunk retrieval or training  examples in specific instances would yield better chunk retrieval results.
+
+\paragraph{Data Set} the outcomes of our comparison study are highly dependent on the build logs from the LogChunks data set.
+It only consists of build logs from open source and therefore it is not clear whether our results are generalizable to industry projects.
+We only collected build logs from Travis CI, however we chose to evaluate on a BuildLogInformation, the reason the build failed, which format is not dependent on Travis CI.
+This is because the reason the build failed is described within the build logs by the tools themselves and not the Travis CI runner.
+
+\paragraph{Training set size}
+Especially the results for CTS are influences by the fact that we only trained on one to five examples.
+Information retrieval tasks commonly learn on larger data sets. \mention{CITATION NEEDED}
+We chose this small training set size as the examples would always have to be provided per repository and we expect a developer to not want to have to provide more examples than the small numbers we evaluated on.
+
+\bp{
 chronologically selected examples -> very specific view, devs/users might pick more representative examples
 
 very few evaluation runs with a high number of categories in configuring I/O examples -> because we chose to create such a ``realistic'' data set, from data set we see that many structural categories uncommon
 
-some errors are not shown inside the log: we always choose an extraction, if we did not see the actual reason for the error reported, we chose the part stating that an error occured / the build failed
-
-
+some errors are not shown inside the log: we always choose an extraction, if we did not see the actual reason for the error reported, we chose the part stating that an error occured / the build failed}
 \end{document}

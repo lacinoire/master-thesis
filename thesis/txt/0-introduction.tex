@@ -11,8 +11,9 @@ A build on a CI server typically compiles and packages the software, executes te
 
 CI builds produce long and verbose build logs~\cite{beller2017oops}, reporting the progress and results of the steps within the build.
 The structure of these logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and the environment used.
-Build logs are a valuable data source: For developers, who read them to analyze why their build failed or how different stages of the build process perform.
-Second, for researchers, who can harvest the information contained in the logs to study the software engineering process of a project~\cite{rausch2017empirical,beller2017oops,seo2014programmers,vassallo2017a-tale}.
+Build logs are a valuable data source for developers and researchers.
+Developers read them to analyze why their build failed or how different stages of the build process perform.
+Researchers can harvest the information contained in the logs to study the software engineering process of a project~\cite{rausch2017empirical,beller2017oops,seo2014programmers,vassallo2017a-tale}.
 However, these two groups can only use the information within the build logs if they can adequately retrieve the information relevant to them.
 
 There are different techniques to retrieve information from CI build logs. Beller et al.\ use regular expressions to analyze the reasons of build failures from Travis CI logs~\cite{beller2017oops}.
@@ -33,12 +34,12 @@ For \textbf{RQ1}, we analyze which criteria influence the suitability of a chunk
 We implement and evaluate three chunk retrieval techniques:
 \begin{itemize}
   \item program synthesis by example using the Microsoft PROSE library (referred to as PBE),
-  \item a common text similarity approach (referred to as CTS) and
-  \item keyword search (referred to as KWS)
+  \item a common text similarity approach (referred to as CTS), and
+  \item keyword search (referred to as KWS).
 \end{itemize}
 \textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited to retrieve information from continuous integration build logs.
 \textbf{RQ2} is refined into sub-questions along with the criteria resulting from \textbf{RQ1} and compares their instantiations for the three techniques:
-how many training examples a technique needs to perform best (\textbf{RQ2.1}), how structurally diverse the examples can be (\textbf{RQ2.2}) and the accuracy of the retrieved output (\textbf{RQ2.3}).
+How many training examples a technique needs to perform best (\textbf{RQ2.1}), how structurally diverse the examples can be (\textbf{RQ2.2}) and how accurate the retrieved output is(\textbf{RQ2.3}).
 % \begin{simplebox}{Research Questions}
 % \begin{itemize}
 %   \item[\textbf{RQ1:}] Which criteria influence the suitability of a chunk retrieval technique for CI build logs?
@@ -55,15 +56,15 @@ Our study of the three techniques on \emph{LogChunks} shows that
 \begin{itemize}
   \item PBE yields very accurate results when trained with 1 to 3 examples from a single structural category.
   \item CTS shows the best average precision, though the quality of the retrieval is hard to determine from a given result.
-  A small increase in the number of training examples has no visible influence.
+  A small increase in the number of training examples has no noticeable influence.
   Fewer structural categories improve the retrieval accuracy.
-  \item KWS has the highest recall of all techniques combined with much lower precision.
+  \item KWS has the highest recall of all techniques, however much lower precision.
   It is the only technique where retrieval accuracy does not decrease with an increasing number of structural categories in the training examples.
 \end{itemize}
 We recommend PBE for use cases where the desired information is always represented in the same structural way and high confidence in the accuracy of the chunk retrieval is required.
 CTS is well suited when the representation of the desired information varies slightly and the output of the chunk retrieval is further processed by a human.
 In cases where the textual representation of the desired information in the log is unpredictable or varies greatly, KWS is the best technique to choose.
-However, the low precision requires a human to interpret the output of the chunk retrieval.
+However, its low precision requires a human to interpret the output of the chunk retrieval.
 
 \paragraph{Our work contributes:}
 \begin{itemize}
@@ -89,14 +90,14 @@ However, the low precision requires a human to interpret the output of the chunk
 \end{itemize}
 
 This thesis first presents an overview of related research, spanning from CI, build log analysis and augmentation to system log processing.
-Chapter~\ref{sec:rw} also presents existing work on information extraction and retrieval techniques and program synthesis from examples.
+Chapter~\ref{sec:rw} also presents existing work on information extraction and retrieval techniques, as well as program synthesis from examples.
 Next, Chapter~\ref{sec:techniques} characterizes chunk retrieval techniques and retrievable information from CI build logs.
-It also introduces the three investigated techniques: PBE, CTS and KWS\@.
+It also introduces the three investigated techniques PBE, CTS and KWS\@.
 Chapter~\ref{sec:data-set} describes the creation of the \emph{LogChunks} data set collected from failed Travis CI build logs, including the labeling and the validation process.
-Following, Chapter~\ref{sec:implementation} outlines our implementation of the three chosen chunk retrieval techniques and the usage of our unified chunk retrieval tool.
+Chapter~\ref{sec:implementation} outlines our implementation of the three chosen chunk retrieval techniques and the usage of our unified chunk retrieval tool.
 This tool is also used for the comparison described in Chapter~\ref{sec:study}.
 Chapter~\ref{sec:discussion} discusses the implications of the study results and recommendations on when PBE, CTS and KWS are most suitable.
-Lastly, we conclude and give an overview of further research opportunities in Chapter~\ref{sec:conclusion}.
+Lastly, we conclude and give an overview of further research opportunities in Chapter~\ref{sec:conclusion-fw}.
 
 \end{document}
 

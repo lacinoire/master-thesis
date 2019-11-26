@@ -87,9 +87,7 @@ For the selected jobs, the tool queries the Travis API V3 over HTTP to obtains t
 
 We manually inspected the collected build logs and had to discard logs from three repositories.
 One had only one failed build, two others had empty build logs on Travis CI.
-In total we collected 798 \todo{check} logs from 80 repositories.
-
-\todo{image! like in travistorrent paper, /draft 10 mins/}
+In total we collected 797 logs from 80 repositories.
 
 % \section{Collection Process}
 % For our initial data collection to get an impression of build logs from various projects and languages we used the \texttt{LogCollector} to gather from the 30 most popular languages, up to 3 repositories using Travis CI each and 3 logs per state for each of those repositories.
@@ -102,6 +100,7 @@ In total we collected 798 \todo{check} logs from 80 repositories.
 
 
 \section{Data Schema}
+\label{sec:data-schema}
 For each repository, \emph{LogChunks} has a list of \emph{examples}.
 Each example consists of:
 \begin{itemize}
@@ -112,7 +111,6 @@ Each example consists of:
 				The category is relative to the other examples for the same repository.
 \end{itemize}
 Following, this section describes the BuildFailureReason, Keywords and Category in more detail.
-.
 
 \paragraph{BuildFailureReason}
 The \emph{BuildFailureReason} is the substring of the build logs that describes why the build failed.
@@ -170,11 +168,13 @@ For each repository, the structural categories are represented as integers, star
 % For most cases, two build failure reason examples which fall into one category are outputted either within the same build step or by the same build step tool.
 
 \section{Labeling Process}
+\label{sec:labeling-process}
 
 \paragraph{BuildFailureReason}
 For each repository, the labeler skimmed through the build logs and tried to identify the first occurrence of a description why the build failed.
 They copied out the first continuous description as the BuildFailureReason.
 They preserved whitespace and special characters, as they might be crucial to detect the targeted substring.
+To support exact learning of regular expressions identifying the labeled substrings the labeler aimed to start and end the labeled substring at consistent locations around the fault description.
 
 \paragraph{Keywords}
 We presented the BuildFailureReason substring and ten lines above and below to the labeler.
@@ -189,7 +189,6 @@ We asked them to assign numerical categories according to whether the BuildFailu
 The labeler should start the categories with 0 and increase as new ones appear.
 For reproducibility we presented the logs in chronological build order.
 
-
 \section{Validation}
 We validate our collected data points in two different ways.
 A different labeler performed a second pass of labeling the build failure reason, keywords and categories on a subset of the data.
@@ -199,55 +198,53 @@ We asked them whether our retrieval of the log part describing the reason the bu
 This sections describes these two validation studies.
 
 \subsection{Inter-Rater Reliability Study}
-re-labeling of parts of the labels - cohen's kappa
-\subsubsection{Introduction}
-After the manual labeling of the data set we performed a second labeling of a sample of the build logs to validate the labels.
-\subsubsection{Method}
-For each label category: Build Failure Reason, keywords and category, we relabeled 30 randomly sampled logs.
-compared the labels, \todo{discussed about it}.
-\subsubsection{Results}
+To evaluate the validity of our labeled data points we perform a second labeling of a sample from \emph{LogChunks}.
 
-\subsubsection{Discussion}
-main takeaway: overlap yes, but high variation 
+\paragraph{Method}
+A second labeler processed 30 random generated logs for each data point in \emph{LogChunks}.
+We followed the same labeling process as described in Section \ref{labeling-process}.
+For the build failure reason and the keywords, we presented 30 randomly sampled build logs from distinct repositories in \emph{LogChunks}.
+As the structural categories are always relative to the other logs from the same repository we randomly sampled 3 repositories and presented all 10 examples within them to the second labeler.
 
-build failure reason: should we extract the information \emph{that} the build failed as well?
-our data set extracts the parts describing \emph{why}, but leaves out the lines stating that the build failed (e.g. step xy exited with 1).
+\paragraph{Results}
+For the first labeled data point, namely the substring describing why the build failed, the two labelers exactly agreed in six cases.
+In 15 cases the second labeler selected more lines than the first one, in five there was partial overlap and in 4 they completely disagreed.
 
-keywords: first labeler allowed also longer strings with spaces and adhered to capitalization.
-second one ignored captialization and focussed on the keyword.
-so only one word was allowed.
-also the first one labeled always a full repository at a time.
-so could take into consideration patterns and see what keywords are exception specific and would only retrieve the failure reason if this specific exception occured.
-second labeler only one build log excerpt (+ context) per repository.
-also: influene of ansi color codes ``merror'' vs. ``error'' first labeler known as ansi color codes, second one counted it into the word (whole word always)
-first was also more inclined to search for a subpart of a word to make it more generalizeable (``failure`` instead of ``failures'')
+Regarding the keywords the two labelers completely agreed in nine cases and completely disagreed in two cases.
+In nine cases there was partial overlap in the keywords of the two labelers, in two the first labeler selected additional keywords compared to the second, while the second labeler labeled additional keywords in seven cases.
 
-categories: description for the second labeling stated: sort into categories on why build failed.
-was exectued with sorting into test/linter/compilation.
-in the case of the selected repositories everything was labeled as test. mostly correct (one linter), but more importantly no difference was made in which test step failed / how the failed tests were represented.
-the categories are thought as structural categories.
-so the surrounding sturcture and the way a test failure is communicated is important. e.g. if several tests are run then it is important which ones failed
+When classifying the labeled substrings into structural categories, the two labelers agreed in 26 cases and disagreed in four cases.
 
-main influence / implication: the labels we select are not black/white. accurate description of what we do is very very important. mainly influenced how we described our data points in the earlier sections.
-\subsubsection{Threats to Validity}
+\paragraph{Discussion}
+The results of this validation study show that there is overlap in the data from the two labelers, however also a high variation.
+We mainly attribute this to not specific enough instructions to the second labeler.
+There were implicit, inconsistent assumptions both labelers created during their work.
+In the following we describe the inconsistent assumptions between both labelers for each data point and the implications on our description of the data classes.
 
-\subsection{Developer Survey}
-\subsubsection{Introduction}
-For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
-As we are not involved in the development of any of the open source projects within our data set we could only rely on our previous experience with different build logs and systems.
-We only looked into the logs and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
+For the first data class, the reason the build failed, it was ambiguous whether the labeled substring should contain the information \emph{that} the build failed.
+This concerns statements like \texttt{The build exited with 1}.
+The second labeler included such statements, while the first one only focussed on the log parts describing \emph{why} the build failed, e.g. the name of the failing test case.
 
-The person who probably knows best why a build failed is the one committing the changes which triggered the build.
-If the build was e.g.\ part of a pull request then developer likely looked at it and tried to fix it so the pull request could be accepted.
-In this section we describe how we validate the extractions of the build failure reason \emph{LogChunks} describes.
-\subsubsection{Method}
-Using the Travis API, for every build log in the data set we looked up the corresponding build and the committer information.
-We grouped all commits triggered by one developer and sent out an email to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.Figure~\ref{fig:dev-mail} shows one of the mails sent out.
-The email included links to the corresponding commits, build overview and log file.
-We asked the receivers to fill out a short survey in case our extraction was not correct.
-Look at Figure~\ref{fig:dev-survey} to get an impression of the survey.
-In the survey we presented the selected log part and asked the developer to paste in the log part actually describing the failure reason or describe why we were wrong in their own words.
-As some of the extractions we labeled are many lines long, we trimmed all down to 10 lines in order to keep the mail readable.
+While labeling the keywords a developer would use to search for the log part describing why the build failed, the first labeler allowed arbitrary, case-sensitive strings.
+In contrast to that, the second labeler focussed on actual \emph{words}, delimited by spaces or special characters, while ignoring capitalization.
+A second difference was that the first labeler was presented with all substrings from a repository, yielding more general keywords than the second labeler.
+Their keywords were in part specific to the failure itself and therefore would not have caught a log part describing a different reason for the build to fail in the test build log.
+%so could take into consideration patterns and see what keywords are exception specific and would only retrieve the failure reason if this specific exception occured.
+%also: influene of ansi color codes ``merror'' vs. ``error'' first labeler known as ansi color codes, second one counted it into the word (whole word always)
+%first was also more inclined to search for a subpart of a word to make it more generalizeable (``failure`` instead of ``failures'')
+
+For the structural categories this validation study showed a high overlap.
+In our instructions to the second labeler we did not emphasize the \emph{structural} aspect enough.
+They sorted into categories along \emph{why} the build failed, putting failing tests from different test runners into the same category even though the failing tests were presented differently in the log.
+
+% categories: description for the second labeling stated: sort into categories on why build failed.
+% was exectued with sorting into test/linter/compilation.
+% in the case of the selected repositories everything was labeled as test. mostly correct (one linter), but more importantly no difference was made in which test step failed / how the failed tests were represented.
+% the categories are thought as structural categories.
+% so the surrounding sturcture and the way a test failure is communicated is important. e.g. if several tests are run then it is important which ones failed
+
+Our main learning from this study is that adequately communicating all decisions and assumptions on how data is labeled is important and difficult.
+We reviewed the misunderstandings and incorporated more thorough descriptions of our data classes in Secton \ref{sec:data-schema}.
 
 \begin{figure}[h]
 	\centering
@@ -261,6 +258,26 @@ As some of the extractions we labeled are many lines long, we trimmed all down t
 	\caption{Survey for the validation with developers}
 	\label{fig:dev-survey}
 \end{figure}
+
+\subsection{Developer Survey}
+
+\paragraph{Introduction}
+For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
+As we are not involved in the development of any of the open source projects within our data set we could only rely on our previous experience with different build logs and systems.
+We only looked into the logs and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
+
+The person who probably knows best why a build failed is the one committing the changes which triggered the build.
+If the build was e.g.\ part of a pull request then developer likely looked at it and tried to fix it so the pull request could be accepted.
+In this section we describe how we validate the extractions of the build failure reason \emph{LogChunks} describes.
+\paragraph{Method}
+Using the Travis API, for every build log in the data set we looked up the corresponding build and the committer information.
+We grouped all commits triggered by one developer and sent out an email to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.Figure~\ref{fig:dev-mail} shows one of the mails sent out.
+The email included links to the corresponding commits, build overview and log file.
+We asked the receivers to fill out a short survey in case our extraction was not correct.
+Look at Figure~\ref{fig:dev-survey} to get an impression of the survey.
+In the survey we presented the selected log part and asked the developer to paste in the log part actually describing the failure reason or describe why we were wrong in their own words.
+As some of the extractions we labeled are many lines long, we trimmed all down to 10 lines in order to keep the mail readable.
+
 
 
 \begin{figure}[htbp]
@@ -294,7 +311,7 @@ As some of the extractions we labeled are many lines long, we trimmed all down t
 	\end{minipage}
 \end{figure}
 
-\subsubsection{Results}
+\paragraph{Results}
 In total we sent out mails to 246 developers, asking about 3.2 build logs on average.
 32 of these mails could not be delivered, e.g.\ because they were addressed at noreply mail addresses.
 These 32 mails related to 68 of the build logs.
@@ -306,7 +323,7 @@ Of the 144 answers, 132 said our extraction was correct.
 We manually inspected these negative answers and found that extractions were correct after all.
 This yields 12 log extractions in our example set that were not correct, shown in Figure~\ref{fig:mails-extraction-correct}.
 
-\subsubsection{Discussion}
+\paragraph{Discussion}
 This study highly strengthens the trust in the validity of the extracted build failure reasons in \emph{LogChunks}.
 The study received answers about 18\% of the logs labelled in our build log, of which, after manual correction, 91\% said our labelled extractions were accurate.
 
@@ -315,7 +332,5 @@ This is because we had to trim long labeled extractions to keep the emails reada
 
 One of our extractions only showed a warning and the developer propose to also include the line above, stating that warnings are treated as errors in the build.
 In others that were identified as ``incorrect'' we labelled the error message of an error that later ignored and did not lead to the build failing.
-
-\subsubsection{Threats to Validity}
 
 \end{document}
