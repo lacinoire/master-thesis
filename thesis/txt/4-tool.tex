@@ -6,7 +6,7 @@
 
 \chapter{Tool Implementation}
 \label{sec:implementation}
-To evaluate PBE, CTS and KWS on \emph{LogChunks} we implemented them and a unifying interface to retrieve chunks from build logs.
+To evaluate PBE, CTS and KWS on \emph{LogChunks} we implemented them and a unifying interface to retrieve information chunks from build logs.
 
 \begin{figure}[h]
 	\centering
@@ -39,14 +39,13 @@ To evaluate PBE, CTS and KWS on \emph{LogChunks} we implemented them and a unify
 %     -h, --help                       Show this message
 % \end{lstlisting}
 
-The unified interface is implemented in Ruby and gives access to all the CTRs we implemented.
-This section describes how to use it to retrieve chunks for a build log or evaluate a CRT.
-% As we implemented the information retrieval techniques in different languages, choosing one that fits the respective technique each time, we decided to abstract over language differences for cli arguments by creating a unified interface. Our unified interface then in turn calls the various different IE techniques over the command line.
+The unified interface is implemented in Ruby and gives access to all the chunk retrieval techniques we implemented.
+This section describes how to use it to retrieve chunks for a build log or evaluate a chunk retrieval technique.
 
-To retrieve chunks from a build log use the option \texttt{-a analyze} with these options:
+To retrieve an chunk from a build log use the option \texttt{-a analyze} with these options:
 \begin{itemize}
     \item \texttt{-t} \textbf{Technique} \texttt{pbe, ir, keyword or random}. Specify which technique to use for extraction.
-    \item \texttt{-e} \textbf{Examples Set} The example set used to configure the technique. For pbe, ir and random analysis only. See Section \ref{sec:example-set} for the definition of an example set.
+    \item \texttt{-e} \textbf{Examples Set} The example set used to configure the technique. For pbe, ir and random analysis only. See Section~\ref{sec:example-set} for the definition of an example set.
     \item \texttt{-p} \textbf{Build Log Path} The path to the file to be analyzed.
     \item \texttt{-k} \textbf{Keywords} The keywords to search for, only for keyword analysis.
 \end{itemize}
@@ -54,7 +53,7 @@ To retrieve chunks from a build log use the option \texttt{-a analyze} with thes
 To evaluate a CTR use the option \texttt{-a evaluate} with these options:
 \begin{itemize}
     \item \texttt{-t} \textbf{Technique} \texttt{pbe, ir, keyword or random}. Specify which technique to use for extraction.
-    \item \texttt{-e} \textbf{Examples Set} The example set used to configure the technique. See Section \ref{sec:example-set} for the definition of an example set.
+    \item \texttt{-e} \textbf{Examples Set} The example set used to configure the technique. See Section~\ref{sec:example-set} for the definition of an example set.
     \item \texttt{-s} \textbf{Selection Technique} \texttt{chronological, random or manual} How the order of the examples should be selected during learning.
     Manual selects the examples according to the sequence defined in the example set file.
     \item \texttt{-l} \textbf{Learning Step Count} How many learning steps should be evaluated, the maximum number of examples to learn with.
@@ -67,44 +66,5 @@ The unification tool calls the separate chunk retrieval implementations over the
 Our implementation of the PBE chunk retrieval in C\# is based on the Microsoft PROSE library~\cite{prose2019webpage}.
 We implemented the CTS chunk retrieval using R and the text2vec~\cite{text2vec2019webpage} library.
 KWS and RLR are implemented with R.
-
-% We provide two different modes: \emph{analysis} and \emph{evaluation}.
-% The \emph{analysis} takes a path to a file you want to analyze and all the configuration necessary for a specific technique and returns the resulting retrieval on the console output. The \emph{evaluation} takes an 
-
-% unification tool, reference CLI somehow nicely?,
-
-% ruby tool, unifies different syntax command line interfaces of the other tools, easy to switch between different techniques (NOT TOO LONG)
-
-%\section{Overall Implementation Remarks}
-% There are multiple implementation specialities that span over all languages, frameworks and implemented techniques.
-% The following section discusses preprocessing and escaping of the parsed build log files / example sets, as well as\textellipsis \todo{more?}
-
-% \subsection*{Preprocessing Log Text}
-% \label{sec:impl-preprocessing}
-
-%\section*{PBE}
-% \paragraph{Program Synthesis by Example (PBE)}
-% \label{sec:impl-pbe}
-% Our implementation of the PBE chunk retrieval in C\# is based on the Microsoft PROSE library~\cite{prose2019webpage}.
-% % The first technique we implemented was the PROSE regular expression program synthesis. As it is based on the PROSE library from Microsoft provided in C\# we also chose C\# for our tool. 
-% % implementation details :)
-
-% % C\#, based on PROSE Text Extraction DSL, parsing example set files, feeding learning session \& applying learned regex program, can do single string extraction and also sequence extraction \& showing differentiating examples (although not in use)
-
-% \paragraph{Common Text Similarity (CTS)}
-% \label{sec:impl-ts}
-% We implemented the CTS chunk retrieval using R and the text2vec library.
-
-% % impl details,
-
-% % R, text2vec, tokenized vectors, impl of preprocessing?
-
-% % don't repeat from IE models section!
-
-% \paragraph{Keyword Search (KWs)}
-% \label{sec:impl-skws}
-% impl details,
-
-% R, simple!
 
 \end{document}
