@@ -111,7 +111,7 @@ When the representations are from one structural category and the user wishes a 
 
 \begin{figure}[htbp]
 		\centering
-		\includegraphics[width=0.75\textwidth, clip]{img/crt-recommendation.pdf}
+		\includegraphics[width=\textwidth, clip]{img/crt-recommendation.pdf}
 		\caption{Our preliminary recommendation scheme for chunk retrieval techniques}
 		\label{fig:crt-recommendation}
 \end{figure}
@@ -124,7 +124,7 @@ There are several threats to the validity of the conclusions of our work.
 Our results are highly dependent on our implementation of the investigated chunk retrieval techniques and the libraries we used.
 Our implementation of PBE is mainly based on the program synthesis provided by PROSE\@.
 Its limitations are therefore also mainly influenced by this library.
-For example, the need for examples from a single structural category stems from the fact that FlashExtract cannot learn regular expression programs with (too many?) top level OR operators. \mention{CITATION NEEDED}
+For example, the need for examples from a single structural category stems from the fact that FlashExtract cannot learn regular expression programs with arbitrary boolean conjunctions and disjunctions~\cite{mayer2015user}.
 This limitation was necessary to keep the synthesis performance reasonable.
 
 Our implementation of CTS is dependent on the library tex2vec and the way they split strings into word tokens.
@@ -138,8 +138,7 @@ We only collected build logs from Travis CI, however we chose to evaluate on an 
 This is because the reason the build failed is described within the build logs by the tools themselves and not the Travis CI environment.
 
 \paragraph{Training Set Size}
-Especially the results for CTS are influenced by the fact that we only trained on one to five examples.
-Information retrieval techniques commonly learn on larger data sets. \mention{CITATION NEEDED}
+Especially the results for CTS might influenced by the fact that we only trained on one to five examples.
 We chose this small training set size as the training examples have to be provided per repository and we expect a developer to not want to provide more examples than the small numbers we evaluated on.
 
 \paragraph{Few Samples with Many Structural Categories}
