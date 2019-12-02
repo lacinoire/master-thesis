@@ -52,22 +52,18 @@ As oracle in our evaluation, we save the desired lines from the output of the te
 We calculate the following metrics:
 \begin{itemize}
 	\item True positives: $TP = desiredlines \cap retrievedlines$
-	%\item False positives: $FP = retrievedlines - desiredlines$
-	%\item True negatives: $TN = allloglines - (retrievedlines \cup desiredlines)$
-	%\item False negatives: $FN = desiredlines - retrievedlines$
-	\item Precision: $Precision = TP / retrievedlines$
-	\item Recall: $Recall = TP / desiredlines$
-	%\item F-Score:
-	\item Successful Retrieval: $true if Recall == 1$
+	\item Precision: $Precision =  \frac{\# TP}{\# retrievedlines}$
+	\item Recall: $Recall = \frac{\# TP}{\# desiredlines}$
+	\item Successful retrieval: $true\ if\ Recall = 1$
 \end{itemize}
 
 Precision of a chunk retrieval describes which proportion of the retrieved lines were not targeted.
 Recall of a chunk retrieval describes which proportion of the targeted lines were retrieved.
 Throughout the presentation and discussion of our results we keep these two metrics separate, as they might have a different weight when choosing a suitable technique for a task.
+We define a successful retrieval as one where all desired lines were extracted, therefore when recall is one.
 
 Recall and precision of CTS and KWS vary with the number of lines selected for retrieval.
 We evaluate the effect of varying the number of extracted lines by multiplying the average number of lines present in the training examples with a \emph{retrieval size factor} from 0.5 to 2.5 in steps of 0.5.
-
 
 \section{Results}
 This section presents the results for PBE, CTS and KWS separately.
@@ -85,9 +81,9 @@ It shows that the program synthesis is more likely to succeed when there are few
 When two structural categories are present, PROSE could in most cases not synthesize a program consistent with all training examples.
 For three or more present categories PROSE could never synthesize a consistent program.
 
-Figure~\ref{fig:precision-extraction-result-PBE} compares the precision of the PBE chunk retrieval runs with the training set size.
-For one example there is a high number of empty extraction outputs, meaning that the regular expression synthesized from this one training example could not be applied to the test example.
-For two or more training examples the chunk retrieval is in most cases either successful or no consistent program could be synthesized.
+Figure~\ref{fig:recall-precision-examplecount-sythesisworked-PBE} shows precision and recall of runs where PBE could synthesize a program consistent with all training examples.
+When the training set size increases from one to two, recall increases by 24\% and precision increases by 10\%.
+For two or more training examples the recall stays around 75\% and precision around 96\%.
 
 \begin{figure}[htbp]
 		\centering
@@ -105,9 +101,9 @@ For two or more training examples the chunk retrieval is in most cases either su
 
 \begin{figure}[htbp]
 		\centering
-		\includegraphics[width=0.75\textwidth, clip]{img/big-study/precision-extraction-result-PBE.pdf}
-		\caption{Precision of chunk retrieval with PBE for increasing training set size}
-		\label{fig:precision-extraction-result-PBE}
+		\includegraphics[width=0.75\textwidth, clip]{img/big-study/recall-precision-examplecount-sythesisworked-PBE.pdf}
+		\caption{Precision and recall of chunk retrieval when PBE could synthesize a consistent program compared with the size of the training set}
+		\label{fig:recall-precision-examplecount-sythesisworked-PBE}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -139,10 +135,9 @@ Figure~\ref{fig:recall-precision-categorycount-CTS} shows the same measurements 
 With increasing category count, precision and recall decrease.
 Especially for more than four categories present we have no chunk retrieval runs where all desired lines were extracted.
 
-Figure~\ref{fig:contextsizefactor-precision-recall-CTS} shows the effect of the retrieval size factor on precision and accuracy of chunk retrieval runs with CTS\@.
+Figure~\ref{fig:contextsizefactor-precision-recall-CTS} shows the effect of the retrieval size factor on precision and recall of chunk retrieval runs with CTS\@.
 The precision ranges from 52\% when retrieving half expected number of lines to 25\% when 2.5 times the expected number of lines.
 The recall ranges from 30\% to 55\%.
-
 
 \begin{figure}[htbp]
 		\centering
@@ -165,30 +160,18 @@ The recall ranges from 30\% to 55\%.
 		\label{fig:contextsizefactor-precision-recall-KWS}
 \end{figure}
 
-
-\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=0.5\textwidth, clip]{img/big-study/retrievalsizefactor-retrievalratio-KWS.pdf}
-		\caption{Ratio of lines retrieved with KWS compared to retrieval size factor}
-		\label{fig:retrievalsizefactor-retrievalratio-KWS}
-\end{figure}
-
 \subsection{Keyword Search (KWS)}
 Figure~\ref{fig:recall-precision-examplecount-KWS} presents precision and recall of chunk retrieval using KWS for different numbers of training examples.
 The recall increases by about 12\% when increasing the size of the training set to more than one example, while the precision stays constant at around 16\%.
 
 Figure~\ref{fig:recall-precision-categorycount-KWS} shows the same measurements for increasing number of structural categories in the training and test examples.
-There is no clear trend visible in precision and recall for an increasing amount of categories in the training and test examples
+For more than one structural category in the training and test examples the recall decreases about 20\% and the precision decreases about 6\%.
+For more than two structural categories no clear trend visible in precision and recall for an increasing amount of categories in the training and test examples.
 
-Figure~\ref{fig:contextsizefactor-precision-recall-KWS} shows the effect of the retrieval size factor on precision and accuracy of chunk retrieval runs with KWS\@.
-The precision ranges from 19\% when retrieving half expected number of lines to 10\% when 2.5 times the expected number of lines.
+Figure~\ref{fig:contextsizefactor-precision-recall-KWS} shows the effect of the retrieval size factor on precision and recall of chunk retrieval runs with KWS\@.
+The precision is 19\% when retrieving half expected number of lines. On average 9\% of the lines in the build log are retrieved then.
+When 2.5 times the expected number of lines, the precision decreases to 10\% and a quater of the lines in the build log are retrieved on average.
 The recall ranges from 58\% to 75\%.
-
-Figure~\ref{fig:retrievalsizefactor-retrievalratio-KWS} shows the average proportion of the lines in the test log file retrieved for different retrieval size factors with KWS\@.
-When retrieving the average number of lines in the outputs of the training examples, 15\% of the log lines are retrieved on average.
-This proportion goes up to 25\% when retrieving 1.5 times more lines.
-
-
 
 \begin{figure}[htbp]
 		\centering
@@ -196,7 +179,6 @@ This proportion goes up to 25\% when retrieving 1.5 times more lines.
 		\caption{Success of chunk retrievals for all techniques}
 		\label{fig:success-partial-all}
 \end{figure}
-
 
 \begin{figure}[htbp]
 		\centering

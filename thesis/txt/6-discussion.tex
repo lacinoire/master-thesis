@@ -32,7 +32,7 @@ Our study results show that chunk retrieval with PBE gives best results when the
 This means it is suited to retrieve information chunks that always have the same surrounding structure.
 To extract for example the reason a build failed, the log passage describing the failure would always have to be started and ended the same way.
 
-When the training examples are of the same structure, one to three examples are enough input for PROSE to synthesize a regular expression program.
+When the training examples are of the same structure, two examples are enough input for PROSE to synthesize a regular expression program with good recall.
 In our study, additional training examples did not improve the chunk retrieval.
 
 \paragraph{Retrieval Output Usage}
@@ -43,24 +43,24 @@ This makes output from PBE chunk retrieval well suited for consumption of other 
 
 \subsection{Common Text Similarity (CTS)}
 \paragraph{Configuration and Input}
-Chunk retrieval using CTS also yields better results the fewer structural categories are present in the training examples.
-The number of training examples had no noticeable influence on the extraction quality in our study.
+Chunk retrieval using CTS also yields better results the fewer structural categories are present in the training and test examples.
+The number of training examples had no noticeable influence on precision or recall in our study.
 Information retrieval techniques like text similarity commonly learn on a higher number of examples than we used for our study.
 Future work is needed to investigate how many examples yield improvements in the chunk retrieval over a single training example.
 
 Extracting the average number of lines present in the training examples seems to give the best balance of precision and recall for CTS\@.
 
 \paragraph{Retrieval Output Usage}
-CTS has good precision and recall on average, though the quality of a chunk retrieval run is very hard to predict from the given result.
+CTS has good precision and recall on average, though the precision or recall of a chunk retrieval run is very hard to predict from the given result.
 Therefore, retrieval output from CTS is suited to be read by a human.
 
 \subsection{Keyword Search (KWS)}
 \paragraph{Configuration and Input}
-The number of structural categories in the training examples have little impact on the extraction quality of KWS\@.
+KWS has a higher recall than both other techniques for multiple structural categories present in the training and test examples.\@.
 This makes KWS a good technique if there is little prior knowledge on how the desired BLI is represented in the build log to be analyzed.
 For the example of extracting the reason the build failed, KWS is best suited if a build can fail in various steps logged by different tools and no pre-categorization of where the build failed is available.
 
-With at least two training examples KWS achieves good recall.
+With two training examples KWS achieves good recall.
 
 Retrieving the average number of lines present in the outputs of the training examples around every found keyword yields reasonable recall.
 Selecting 1.5 times as many lines around every found keyword does improve the recall within our study but also increases the proportion of lines retrieved overall and therefore decreases precision.
@@ -88,7 +88,7 @@ Then the information chunks in all training examples and the analyzed build log 
 
 If the information chunks are from multiple structural categories, meaning the are not represented in the same structural way within the build logs, and recall is more important than precision we recommend to use KWS\@.
 If the representations are from multiple structural categories and precision is more important than recall to the user we recommend CTS\@.
-We also recommend CTS when the representations are from one structural category, the user does not require a high confidence in the accuracy of the outcome and the user rather have output with low recall instead of no output at all.
+We also recommend CTS when the representations are from one structural category, the user does not require a high confidence in the precision or recall of the outcome and the user rather have output with low recall instead of no output at all.
 When the representations are from one structural category and the user wishes a high confidence in the correctness of the output or prefers no output over output with low recall, we recommend PBE\@.
 
 \begin{table}[htbp]
@@ -97,8 +97,8 @@ When the representations are from one structural category and the user wishes a 
   \toprule
   & PBE & CTS & KWS \\
   \midrule
-  Structural Categories & 1 & less is better & no influence \\
-  Training Set Size & 1 - 3 & no influence & > 2 \\ 
+  Structural Categories & 1 & less is better & \makecell[l]{best 1 \\ multiple okay} \\
+  Training Set Size & 2 & no influence & 2 \\ 
   Precision & \makecell[l]{high \\ (if synthesis succeeds)} & medium & low \\ 
   Recall & \makecell[l]{high \\ (if synthesis succeeds)} & medium & high \\ 
   \makecell[l]{Confidence in \\ Output Correctness} & high & low & \makecell[l]{low (precision) \\ high (recall)} \\ 
