@@ -19,26 +19,26 @@
 }
 \listoffigures{}
 
-\begingroup
-% Temporarly overwriting clearpage command
-% suppresses a new page for figures and listings
-\let\cleardoublepage\relax
-\let\clearpage\relax
-\vspace{1em}
-% Hack to remove ListOfListings from Table of content
-\addtocontents{toc}{%
-  \edef\protect\SavedTocDepth{\protect\the\protect\value{tocdepth}}%
-}%
-\addtocontents{toc}{\protect\setcounter{tocdepth}{-10}}
-\ifthenelse{\equal{\mylanguage}{de}}{%
-\renewcommand{\lstlistlistingname}{Programmverzeichnis\texorpdfstring{\vspace{-0.5em}}{}}
-}{%
-\renewcommand{\lstlistlistingname}{List of Listings\texorpdfstring{\vspace{-0.5em}}{}}
-}
-\lstlistoflistings
-% End of the Hack to remove ListOfListings from Table of content
-\addtocontents{toc}{\protect\setcounter{tocdepth}{\protect\SavedTocDepth}}
-\endgroup
+% \begingroup
+% % Temporarly overwriting clearpage command
+% % suppresses a new page for figures and listings
+% \let\cleardoublepage\relax
+% \let\clearpage\relax
+% \vspace{1em}
+% % Hack to remove ListOfListings from Table of content
+% \addtocontents{toc}{%
+%   \edef\protect\SavedTocDepth{\protect\the\protect\value{tocdepth}}%
+% }%
+% \addtocontents{toc}{\protect\setcounter{tocdepth}{-10}}
+% \ifthenelse{\equal{\mylanguage}{de}}{%
+% \renewcommand{\lstlistlistingname}{Programmverzeichnis\texorpdfstring{\vspace{-0.5em}}{}}
+% }{%
+% \renewcommand{\lstlistlistingname}{List of Listings\texorpDdfstring{\vspace{-0.5em}}{}}
+% }
+% \lstlistoflistings
+% % End of the Hack to remove ListOfListings from Table of content
+% \addtocontents{toc}{\protect\setcounter{tocdepth}{\protect\SavedTocDepth}}
+% \endgroup
 
 \ifthenelse{\equal{\mylanguage}{de}}{
 \pdfbookmark[0]{Tabellenverzeichnis}{listoftables}
