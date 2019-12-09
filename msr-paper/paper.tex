@@ -208,6 +208,8 @@ In addition, we surveyed the developers, whose commits triggered the builds, whe
 Section \ref{sec:validation} presents the two validation studies.
 We conclude with Section \ref{sec:conclusion} and describe limitations as well as potential improvements of \emph{LogChunks}.
 
+You can access \emph{LogChunks} on Zendoo: \todo{insert zendoo link}.
+
 % First, we present related data sets and show how \emph{LogChunks} differs.
 % Second, this chapter describes our log collection process and details the data schema of \emph{LogChunks}.
 % Further, it presents the labeling process and how we validated the obtained data points.
@@ -217,13 +219,36 @@ We conclude with Section \ref{sec:conclusion} and describe limitations as well a
 
 \section{Applications}
 \subsection{Chunk Retrieval Evaluation}
-\todo{short description of our study and results}
+We created \emph{LogChunks} to evaluate and compare different chunk retrieval techniques for build logs.
+The first investigated technique is based on synthesizing programs from examples using the Microsoft PROSE library.
+A user provides a small number of examples to describe which text part the program should extract.
+PROSE then synthesizes a program of regular expressions that is consistent with these examples.
+We compared this extraction technique to a text similarity approach, which selects the lines of a build log which are most similar to the ones in the given user examples.
+Lastly, we investigated searching for keywords that are associated with the given user examples.
 
-\subsection{Future Research Questions}
+The log chunks in this data set provided the examples for these techniques, the keywords were used to configure the keyword search.
+The structural categories enabled us to measure how structurally similar the examples have to be for a technique to be applicable.
+
+Our results show that program synthesis is well suited to retrieve information chunks from build logs when the targeted information is always presented in a structurally identical way and the user requires a high confidence in the precision and recall of the output.
+Using text similarity is advisable when precision is valued higher than recall and we recommend keyword search when recall is valued higher than precision.
+We present more detailed results, background and our study design in \todo{ref (preprint or so?) of full journal paper (or thesis?)}.
+
+\subsection{Potential Use Cases}
+\emph{LogChunks} can be the basis for a wide range of further research inquiries.
+This section presents a selection of further research ideas.
+
+\paragraph{Evaluate Information (Chunk) Retrival Techniques}
+In addition to the three techniques we investigated until now, \emph{LogChunks} can be the basis for evaluation and comparison of other chunk retrieval techniques.
+We can use the data set to investigate how reliable the diff and information retrieval approach of Amar et al.~\cite{amar2019mining} retrieves the reason the build failed.
+
+\paragraph{Train Build Log Classification Algorithms}
+Various researchers are looking into why CI builds fail and use build logs as a data source~\cite{seo2014programmers,vassallo2017a-tale}.
+They write custom parsers and classifiers to categorize why a build failed.
+\todo{more!}
+
+
 \todo{
 \begin{itemize}
-  \item train information chunk retrieval techniques
-  \item train build log classification algorithms
   \item look into what keywords tools use to mark failures / developers use to search for them
 \end{itemize}
 }
@@ -240,15 +265,19 @@ However, these values are obtained through a manually developed parser, which on
 
 \subsection{Travis CI Build Log Data Set}
 Loriot et al.~\cite{loriot2019dataset, loriot2019styler} collected a large amount of Travis CI build logs from 130 github repositories to analyze their use of the Checkstyle plugin.
-They selected Maven repsitories that included the Checkstyle plugin and also used Travis CI\@.
+They selected Maven repositories that included the Checkstyle plugin and also used Travis CI\@.
 Their data set only provides the plain build logs, whereas \emph{LogChunks} provides manually analyzed build logs from Travis CI\@.
 
-\section{Data Schema and Access}
-\todo{data schema explanation: log, reason the build failed, keywords, structural categories
-
-how to obtain and use (import) the data (github repo, csv?, database dump?)}
-
+\section{Data Schema}
 \label{sec:data-schema}
+
+\begin{figure}[tbp]
+	\centering
+	\includegraphics[width=0.45\textwidth, clip]{exampleXml.png}
+	\caption{One example from the php/php-src repository in \emph{LogChunks}}
+	\label{fig:dev-survey}
+\end{figure}
+
 For each repository, \emph{LogChunks} has a list of \emph{examples}.
 Each example consists of:
 \begin{itemize}
@@ -401,10 +430,11 @@ In this section, we describe how we validate the extractions of the build failur
 
 \paragraph{Method}
 Using the Travis API, for every build log in the data set we looked up the corresponding build and the committer information.
-We grouped all commits triggered by one developer and sent out an email to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.Figure~\ref{fig:dev-mail} shows one of the mails sent out.
+We grouped all commits triggered by one developer and sent out an email to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.
+%Figure~\ref{fig:dev-mail} shows one of the mails sent out.
 The email included links to the corresponding commits, build overview and log file.
 We asked the receivers to fill out a short survey in case our extraction was not correct.
-Look at Figure~\ref{fig:dev-survey} to get an impression of the survey.
+%Look at Figure~\ref{fig:dev-survey} to get an impression of the survey.
 In the survey we presented the selected log part and asked the developer to paste in the log part actually describing the failure reason or describe why we were wrong in their own words.
 As some of the extractions we labeled are many lines long, we trimmed all down to 10 lines to keep the mail readable.
 
@@ -413,12 +443,12 @@ In total we sent out mails to 246 developers, asking about 3.2 build logs on ave
 32 of these mails could not be delivered, e.g.\ because they were addressed at noreply mail addresses.
 These 32 mails related to 68 of the build logs.
 We received answers from 61 developers, responding about 144 build logs.
-Figure~\ref{fig:mails-answers-received-mails} and Figure~\ref{fig:mails-answers-received-builds} show the proportions of mails and logs answered about, not delivered and unanswered.
+%Figure~\ref{fig:mails-answers-received-mails} and Figure~\ref{fig:mails-answers-received-builds} show the proportions of mails and logs answered about, not delivered and unanswered.
 
 Of the 144 answers, 132 said our extraction was correct.
 26 answered either ``close, but not quite correct'' or ``no, the build failed for another reason''.
 We manually inspected these negative answers and found that some extractions were correct after all.
-This yields 12 log extractions in our example set that were not correct, shown in Figure~\ref{fig:mails-extraction-correct}.
+This yields 12 log extractions in our example set that were not correct.%, shown in Figure~\ref{fig:mails-extraction-correct}.
 
 \paragraph{Discussion}
 This study highly strengthens the trust in the validity of the extracted build failure reasons in \emph{LogChunks}.
