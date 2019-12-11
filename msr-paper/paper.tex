@@ -171,7 +171,7 @@ Build logs are verbose and long~\cite{beller2017oops}, making them inadequate fo
 Therefore, developers and researchers can only use the information within the build logs if they can adequately retrieve the parts (chunks) of the log that describe the targeted information.
 
 There are different techniques to retrieve information chunks from CI build logs.
-Beller et al.\ use regular expressions to analyze the reasons of build failures from Travis CI logs~\cite{beller2017oops}.
+Beller et al.\ use regular expressions to analyze the reasons for build failures from Travis CI logs~\cite{beller2017oops}.
 Such regular expressions are developed by looking at a few exemplary build logs. Updating them whenever new cases are introduced is a tedious and error-prone task~\cite{michael2019regexes}.
 Vassallo et al.\ wrote a custom parser for build logs to gather information for build repair hints~\cite{vassallo2018un-break}.
 Recently, Amar et al.\ reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and a successful build~\cite{amar2019mining}.
@@ -185,29 +185,32 @@ At the moment there is only anecdotal evidence on the performance of these techn
 In addition, there is currently no data set available to evaluate and compare such chunk retrieval techniques for build logs.
 
 We present \emph{LogChunks}, a collection of 797 Travis CI build logs from 80 GitHub repositories spread over 29 programming languages.
-For each build log we manually labeled which substring describes why the build failed.
+For each build log, we manually labeled which substring describes why the build failed.
 The data set also provides keywords a developer would use to search for the labeled log chunk and categorizes the log chunks according to their format within the log.
 
-In this paper, we illustrate potential use cases of \emph{LogChunks} and present our own comparison of three chunk retrieval techniques using the data set.
-Section \ref{sec:related-data-sets} describes related data sets and how \emph{LogChunks} differs from them.
+In this paper, we illustrate potential use cases of \emph{LogChunks} and past studies using the data set.
+Section~\ref{sec:related-data-sets} describes related data sets and how \emph{LogChunks} differs from them.
 The following section introduces the data schema, how to access the data set, as well as limitations and potential improvements.
-We present our data collection in Section \ref{sec:data-collection}.
+We present our data collection in Section~\ref{sec:data-collection}.
 To validate our labels we performed a second labeling of a sample of the data.
 In addition, we surveyed the developers, whose commits triggered the builds, whether our labeled log chunk describes why their build failed.
-Section \ref{sec:validation} presents the two validation studies.
+Section~\ref{sec:validation} presents the two validation studies.
 To conclude we describe limitations as well as potential improvements of \emph{LogChunks}.
 
 We published \emph{LogChunks} through Zendoo: \todo{insert zendoo link}.
 
-\section{Applications}
-This section possible use cases for \emph{LogChunks} and outlines how we previously applied it to compare different build log analysis techniques.
+%\section{Applications}
+%This section possible use cases for \emph{LogChunks} and outlines how we previously applied it to compare different build log analysis techniques.
+\section{Potential Use Cases}
 
-\subsection{Potential Use Cases}
+%\subsection{Potential Use Cases}
 \emph{LogChunks} can be the basis for a wide range of further studies:
 
-\paragraph{Evaluate Information (Chunk) Retrival Techniques}
-In addition to the three techniques we investigated until now, \emph{LogChunks} can be the basis for evaluation and comparison of other chunk retrieval techniques.
-We can use the data set to investigate how reliable the diff and information retrieval approach of Amar et al.~\cite{amar2019mining} retrieves the reason the build failed.
+\paragraph{Evaluate Information (Chunk) Retrieval Techniques}
+We created \emph{LogChunks} to evaluate and compare different techniques to retrieve information chunks from build logs \todo{cite journal paper (or preprint?)}.
+The techniques we compared are based on program synthesis from examples, text similarity and searching for keywords.
+In addition that, \emph{LogChunks} can be the basis for evaluation and comparison of other chunk retrieval techniques.
+For example, we can use the data set to investigate how reliable the diff and information retrieval approach of Amar et al.~\cite{amar2019mining} retrieves the reason the build failed.
 
 \paragraph{Support Build Log Classification Algorithms}
 Various researchers are looking into why CI builds fail and use build logs as a data source~\cite{seo2014programmers,vassallo2017a-tale}.
@@ -219,24 +222,24 @@ The manually labeled chunk describing why the build failed can show classificati
 Analyzing these could help us understand how developers process build logs and which keywords a tool should use to mark an error description so developers quickly find it through text search.
 
 \paragraph{Studying Conversations about Build Failures}
-Some researchers are looking into conversations of developers surrounding CI builds and pull requests \todo{citation needed: nathan cassee did this in his master thesis (the paper on it is either rejected or not yet published), did not find others yet that do this}.
+Some researchers are looking into conversations of developers surrounding CI builds and pull requests \todo{citation needed: nathan cassee (with Alexander Sebrenik) did this in his master thesis (paper got accepted, will get link when preprint is finished), did not find others yet that do this}.
 The chunks describing why a build failed, or the results of chunk retrieval techniques trained on them, can support these researchers to detect when a conversation participant is referring to the build failure described in the log.
 
 
-\subsection{Chunk Retrieval Evaluation}
-We created \emph{LogChunks} to evaluate and compare different chunk retrieval techniques for build logs.
-The first technique is based on synthesizing programs from examples using the Microsoft PROSE library.
-A user provides a small number of examples to describe which text part the program should extract.
-PROSE then synthesizes a program of regular expressions that is consistent with these examples.
-We compared this extraction technique to a text similarity approach, which selects the lines of a build log which are most similar to the ones in the given user examples.
-Lastly, we investigated searching for keywords that are associated with the given user examples.
+% \subsection{Chunk Retrieval Evaluation}
+% We created \emph{LogChunks} to evaluate and compare different chunk retrieval techniques for build logs.
+% The first technique is based on synthesizing programs from examples using the Microsoft PROSE library.
+% A user provides a small number of examples to describe which text part the program should extract.
+% PROSE then synthesizes a program of regular expressions that is consistent with these examples.
+% We compared this extraction technique to a text similarity approach, which selects the lines of a build log which are most similar to the ones in the given user examples.
+% Lastly, we investigated searching for keywords that are associated with the given user examples.
 
-The log chunks in this data set provided the examples for these techniques, the keywords were used to configure the keyword search.
-The structural categories enabled us to measure how structurally similar the examples have to be for a technique to be applicable.
+% The log chunks in this data set provided the examples for these techniques, the keywords were used to configure the keyword search.
+% The structural categories enabled us to measure how structurally similar the examples have to be for a technique to be applicable.
 
-Our results show that program synthesis is well suited to retrieve information chunks from build logs when the targeted information is always presented in a structurally identical way and the user requires a high confidence in the precision and recall of the output.
-Using text similarity is advisable when precision is valued higher than recall and we recommend keyword search when recall is valued higher than precision.
-We present more detailed results, background and our study design in \todo{ref (preprint or so?) of full journal paper (or thesis?)}.
+% Our results show that program synthesis is well suited to retrieve information chunks from build logs when the targeted information is always presented in a structurally identical way and the user requires a high confidence in the precision and recall of the output.
+% Using text similarity is advisable when precision is valued higher than recall and we recommend keyword search when recall is valued higher than precision.
+% We present more detailed results, background and our study design in \todo{ref (preprint or so?) of full journal paper (or thesis?)}.
 
 \section{Related Data Sets}
 \label{sec:related-data-sets}
@@ -245,39 +248,32 @@ This section presents existing data sets of CI build logs and why \emph{LogChunk
 \subsection{TravisTorrent}
 The \emph{TravisTorrent} data set~\cite{beller2017travistorrent} collects a broad range of metadata about builds on Travis CI\@.
 It combines data accessible through the public Travis CI API~\cite{travisci2019apidoc}, related data from GHTorrent~\cite{gousios2013ghtorrent}, the corresponding git repository and data obtained through analysis of the build logs.
-The data obtained through build logs contains the names of failing test cases, similar to the reason the build failed in \emph{LogChunks}.
+The data obtained through build logs contains the names of failing test cases, similar to the chunk describing why the build failed in \emph{LogChunks}.
 However, these values are obtained through a manually developed parser, which only supports specific Ruby test runners and Java Maven or JUnit logs.
-\emph{LogChunks} provides manually labeled data points on the description of the build failure reason for a much wider selection of programming languages.
+\emph{LogChunks} provides manually labeled data points on the description of why the build failed for a much wider selection of programming languages.
 
 \subsection{Travis CI Build Log Data Set}
-Loriot et al.~\cite{loriot2019dataset, loriot2019styler} collected a large amount of Travis CI build logs from 130 github repositories to analyze their use of the Checkstyle plugin.
+Loriot et al.~\cite{loriot2019dataset, loriot2019styler} collected a large amount of Travis CI build logs from 130 GitHub repositories to analyze their use of the Checkstyle plugin.
 They selected Maven repositories that included the Checkstyle plugin and also used Travis CI\@.
 Their data set only provides the plain build logs, whereas \emph{LogChunks} additionally provides manually labeled data about the chunk describing why a build failed.
 
 \section{Data Schema}
 \label{sec:data-schema}
 
-% \begin{figure}[tbp]
-% 	\centering
-% 	\includegraphics[width=0.45\textwidth, clip]{exampleXml.png}
-% 	\caption{One example from the php/php-src repository in \emph{LogChunks}}
-% 	\label{fig:dev-survey}
-% \end{figure}
-
 This section describes the file structure and the data schema of \emph{LogChunks}.
 We give a detailed explanation for the manually labeled data.
 
-\emph{LogChunks} has two top level folders, \texttt{logs} and \texttt{build-failure-reason}.
+\emph{LogChunks} has two top level folders, \texttt{build-failure-reason} and \texttt{logs}.
 Each contains folders representing the main languages of the repositories in \emph{LogChunks}.
 
-The logs are organized in folders for each repository, identified through the repository slug: \texttt{\textless repository\_owner\textgreater @\textless repository\_name\textgreater }.
+The logs are organized in folders for each repository, identified by \texttt{\textless repository\_owner\textgreater @\textless repository\_name\textgreater }.
 Within each repository folder the logs are separated according to build status.
 Currently \emph{LogChunks} only contains logs from \texttt{failed} builds.
 The build status folder contains the full logs in files named with the ID of the Travis CI build that produced the log.
 
 The folder \texttt{build-failure-reason} contains the manually labeled data of \emph{LogChunks}.
-The data set provides an XML file for each repository \texttt{\textless repository\_owner\textgreater @\textless repository\_name\textgreater .xml}) categorized according to the main language of the repository.
-The schema of these XML files is presented in Listing \ref{lst:examples}.
+The data set provides an XML file for each repository: \texttt{\textless repository\_owner\textgreater @\textless repository\_name\textgreater.xml}.
+Listing~\ref{lst:examples} presents the schema of these XML files.
 
 \lstset{
   language=XML,
@@ -311,15 +307,15 @@ Each \texttt{Example} consists of:
 \end{itemize}
 Following, this section defines in more detail the labeled log chunk, search keywords and structural categories.
 
-\paragraph{Chunk Describing Why The Build Failed}
+\paragraph{Chunk That Describes Why The Build Failed}
 The \texttt{Chunk} is the substring of the build logs that describes why the build failed.
-This could be the failing test case, the description of a failed linter rule or a compiler error.
+This can be the failing test case, the description of a failed linter rule or a compiler error.
 The \texttt{Chunk} is one continuous string cut from the build log.
 If there are multiple errors leading for the build to fail, the substring contains the first appearing continuous error descriptions.
 \emph{Continuous} means that no lines reporting of normal build behavior are interrupting the error descriptions.
 Wherever possible, it does \emph{not} include the log statements describing \emph{that} the build failed, but the description of \emph{why} it failed.
-For a few logs we were unable to define the section detailing why the build failed, e.g.\ because this information was logged in another log file.
-In these instances the \texttt{Chunk} contains the lines describing that the build failed.
+%For a few logs we were unable to define the section detailing why the build failed, e.g.\ because this information was logged in another log file.
+%In these instances the \texttt{Chunk} contains the lines describing that the build failed.
 
 \paragraph{Keywords}
 The \texttt{Keywords} contain a list of one to three keywords appearing within the \texttt{Chunk} or in the area around it in the build log.
@@ -356,14 +352,14 @@ It uses a stratified sampling approach: \texttt{TravisRequester} saves the obtai
 We encountered the following statuses during our data collection: created, started, cancelled, passed, errored and failed.
 The user of \texttt{TravisRequester} configures how many builds should be checked and how many builds per status should be saved.
 
-To sample the builds for \emph{LogChunks} we let \texttt{TravisRequester} check up to a 1000 builds per repository and keep ten for each status.
+To sample the builds for \emph{LogChunks} we let \texttt{TravisRequester} check up to 1000 builds per repository and keep ten for each status.
 We discard all statuses except \emph{failed}~\cite{travis2009buildstatus}.
 A Travis CI build is marked as \emph{failed} when it faults in the \texttt{script} section of the build configuration defined by the user.
 
 \paragraph{Log Sampling}
-For each build the \texttt{TravisRequester} then selects a log to download.
+For each build, the \texttt{TravisRequester} then selects a log to download.
 Travis CI attributes logs to \emph{jobs}.
-A single build can consist of multiple jobs, e.g.\ building the same code version and executing tests in various different testing environments.
+A single build can consist of multiple jobs, e.g.\ building the same code version and executing tests in different testing environments.
 A failed build can have successful job executions, as just one failed job leads to the whole build being marked as failed.
 \texttt{TravisRequester} queries each build for the first job, which has the same state.
 For the selected jobs, the tool queries the Travis API V3 over HTTPS to obtains the corresponding build log.
@@ -377,7 +373,7 @@ In total we collected 797 logs from 80 repositories.
 After collecting a wide range of Travis CI build logs we manually labeled which text chunk describes why the build failed.
 Following that, we assigned search keywords and structural categories to each log chunk.
 
-\paragraph{Chunk Describing Why The Build Failed}
+\paragraph{Chunk That Describes Why The Build Failed}
 For each repository, the labeler skimmed through the build logs and tried to identify the first occurrence of a description why the build failed.
 They copied out the first continuous description as the \texttt{Chunk}.
 They preserved whitespace and special characters, as they might be crucial to detect the targeted substring.
@@ -393,16 +389,17 @@ There are no special limitations on the string itself, especially spaces are als
 To label the \emph{structural categories} we again presented the \texttt{Chunk} and the surrounding context to the labeler for all logs from a repository.
 We asked them to assign numerical categories according to whether the \texttt{Chunk} had the same structural representation, i.e.\ the same surrounding or identifying characters.
 The labeler should start the categories with 0 and increase as new ones appear.
-For reproducibility we presented the logs in chronological build order.
+For reproducibility, we presented the logs in chronological build order.
 
 
 \section{Data Set Validation}
 \label{sec:validation}
-We validate our collected data points in two different ways.
-A different labeler performed a second pass of labeling the build failure reason, keywords and structural categories on a subset of the data.
-In addition, we sent out a survey to the developers, whose commits triggered the builds within our data set.
-We asked them whether our retrieval of the log part describing the reason the build failed was correct.
-This sections describes these two validation studies.
+% We validate our collected data points in two different ways.
+% A different labeler performed a second pass of labeling the build failure reason, keywords and structural categories on a subset of the data.
+% In addition, we sent out a survey to the developers, whose commits triggered the builds within our data set.
+% We asked them whether our retrieval of the log part describing the reason the build failed was correct.
+%This sections describes these two validation studies.
+Following we present the two studies we conduct to validate the labeled data in \emph{LogChunks}.
 
 \subsection{Inter-Rater Reliability Study}
 To evaluate the validity of our labeled data points we perform a second labeling of a sample of the data in \emph{LogChunks}.
@@ -418,7 +415,7 @@ Therefore, we randomly sampled 3 repositories and presented all 10 examples with
 For the first labeled data point, namely the substring describing why the build failed, the two labelers exactly agreed in six cases.
 In 15 cases the second labeler selected more lines than the first one, in five there was partial overlap and in 4 they completely disagreed.
 
-Regarding the keywords the two labelers completely agreed in nine cases and completely disagreed in two cases.
+Regarding the keywords, the two labelers completely agreed in nine cases and completely disagreed in two cases.
 In nine cases there was partial overlap in the keywords of the two labelers, in two the first labeler selected additional keywords compared to the second, while the second labeler proposed additional keywords in seven cases.
 
 When classifying the labeled substrings into structural categories, the two labelers agreed in 26 cases and disagreed in four cases.
@@ -427,43 +424,43 @@ When classifying the labeled substrings into structural categories, the two labe
 The results of this validation study show that there is overlap in the data from both labelers, however also a high variation.
 We believe that the main cause for this is that our explanations to the second labeler were not extensive enough.
 There were implicit, inconsistent assumptions both labelers created during their work.
-In the following we describe these assumptions from both labelers for each data point and the implications on our description of the data classes.
+% In the following we describe these assumptions from both labelers for each data point and the implications on our description of the data classes.
 
-For the first data class, the reason the build failed, it was ambiguous whether the labeled substring should contain the information \emph{that} the build failed.
-This concerns statements like ``\texttt{The build exited with 1}''.
-One labeler included such statements, while the other one only focussed on the log parts describing \emph{why} the build failed, e.g.\ the name of the failing test case.
+% For the first data class, the reason the build failed, it was ambiguous whether the labeled substring should contain the information \emph{that} the build failed.
+% This concerns statements like ``\texttt{The build exited with 1}''.
+% One labeler included such statements, while the other one only focussed on the log parts describing \emph{why} the build failed, e.g.\ the name of the failing test case.
 
-While labeling the keywords a developer would use to search for the log part describing why the build failed, the one labeler allowed arbitrary strings appearing around the presented log part.
-In contrast to that, the other labeler focussed on actual \emph{words}, delimited by spaces or special characters.
-One labeler ignored capitalization, while the other one selected case-sensitive keywords.
-A third difference was that the first labeler was presented with all substrings from a repository, yielding more general keywords than the second labeler.
+% While labeling the keywords a developer would use to search for the log part describing why the build failed, the one labeler allowed arbitrary strings appearing around the presented log part.
+% In contrast to that, the other labeler focussed on actual \emph{words}, delimited by spaces or special characters.
+% One labeler ignored capitalization, while the other one selected case-sensitive keywords.
+% A third difference was that the first labeler was presented with all substrings from a repository, yielding more general keywords than the second labeler.
 
-For the structural categories this validation study showed a high overlap.
-In our instructions to the second labeler we did not emphasize the \emph{structural} aspect enough.
-They sorted into categories along \emph{why} the build failed, putting failing tests from different test runners into the same category even though the failing tests were presented differently in the log.
-
+% For the structural categories this validation study showed a high overlap.
+% In our instructions to the second labeler we did not emphasize the \emph{structural} aspect enough.
+% They sorted into categories along \emph{why} the build failed, putting failing tests from different test runners into the same category even though the failing tests were presented differently in the log.
+%
 Our main learning from this study is that adequately communicating all decisions and assumptions on how data is labeled is important and difficult.
 We reviewed the misunderstandings and incorporated more thorough descriptions of our data classes in Section~\ref{sec:data-schema}.
 
 
 \subsection{Developer Survey}
-For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
+%For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
 As we are not involved in the development of any of the projects within our data set we could only rely on our previous experience with various build logs and systems.
-We only took the logs into accont and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
-
-The person who probably knows best why a build failed is the one committing the changes which triggered the build.
-If the build was e.g.\ part of a pull request then developer likely inspected the failed build and tried to fix the build so the pull request can be accepted.
+%We only took the logs into account and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
+%
+%The person who probably knows best why a build failed is the one committing the changes which triggered the build.
+%If the build was e.g.\ part of a pull request then developer likely inspected the failed build and tried to fix the build so the pull request can be accepted.
 We sent out mails to the original developers whose commits triggered the builds represented in \emph{LogChunks} and asked them whether the log chunk we labeled actually describes why the build failed.
-This section describes out survey and discusses our results.
+This section describes our survey and discusses our results.
 
 \paragraph{Method}
 Using the Travis API, for every build log in the data set we looked up the corresponding build and the committer information.
-We grouped all commits triggered by one developer and sent out a mail to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.
+We grouped all commits triggered by one developer and sent out an mail to each of them, asking whether the log part selected during our labeling was indeed describing the reason the build failed.
 %Figure~\ref{fig:dev-mail} shows one of the mails sent out.
 The mail included links to the corresponding commits, build overview and log file.
 We asked the receivers to fill out a short survey in case our extraction was not correct.
 %Look at Figure~\ref{fig:dev-survey} to get an impression of the survey.
-In the survey we presented the selected log part and asked the developer to paste in the log part actually describing the failure reason or describe why we were wrong in their own words.
+In the survey, we presented the selected log part and asked the developer to paste in the log part actually describing the failure reason or describe why we were wrong in their own words.
 As some of the extractions we labeled are many lines long, we trimmed all down to 10 lines to keep the mail readable.
 
 \paragraph{Results}
@@ -481,18 +478,18 @@ This yields 12 log extractions in our example set that were not correct.%, shown
 \paragraph{Discussion}
 This study highly strengthens the trust in the validity of the extracted build failure reasons in \emph{LogChunks}.
 The study received answers about 18\% of the logs from \emph{LogChunks}.
-After manual correction, 91\% of the received answers said our labelled extractions were accurate.
+After manual correction, 91\% of the received answers said our labeled extractions were accurate.
 
 Most of the initial incorrect answers we adjusted in the manual correction, stated that the proposed extraction did not show the whole description of why the build failed.
 This is because we had to trim long labeled extractions to keep the mails readable.
 
 One of our extractions only showed a warning and the developer proposed to also include the line above, stating that warnings are treated as errors in the build.
-In others that were identified as incorrect, we labelled the error message of an error that later ignored and did not lead to the build failing.
+In others that were identified as incorrect, we labeled the error message of an error that later ignored and did not lead to the build failing.
 
 \section{Conclusion}
-In this paper we introduced the \emph{LogChunks} data set encompassing about 800 build logs from a wide range of projects using Travis CI.
-For each log we annotated the log chunk describing why the build failed and provide keywords a developer would use to search for the log chunk as well as a categorization of the log chunks according to their format within the log.
-Still there are limitations to our data set, which we present in the following.
+In this paper, we introduced the \emph{LogChunks} data set encompassing about 800 build logs from a wide range of projects using Travis CI\@.
+For each log, we annotated the log chunk describing why the build failed and provide keywords a developer would use to search for the log chunk as well as a categorization of the log chunks according to their format within the log.
+Still, there are limitations to our data set, which we present in the following.
 We also propose several improvements and extensions to \emph{LogChunks}.
 \label{sec:conclusion}
 

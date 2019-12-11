@@ -33,12 +33,12 @@ This section presents existing data sets of CI build logs and why \emph{LogChunk
 \subsection{TravisTorrent}
 The \emph{TravisTorrent} data set~\cite{beller2017travistorrent} collects a broad range of metadata about builds on Travis CI\@.
 It combines data accessible through the public Travis CI API~\cite{travisci2019apidoc}, related data from GHTorrent~\cite{gousios2013ghtorrent}, the corresponding git repository and data obtained through analysis of the build logs.
-The data obtained through build logs contains the names of failing test cases, similar to the reason the build failed in \emph{LogChunks}.
+The data obtained through build logs contains the names of failing test cases, similar to the chunk describing why the build failed in \emph{LogChunks}.
 However, these values are obtained through a manually developed parser, which only supports specific Ruby test runners and Java Maven or JUnit logs.
-\emph{LogChunks} provides manually labeled data points on the description of the build failure reason for a much wider selection of programming languages.
+\emph{LogChunks} provides manually labeled data points on the description of why the build failed for a much wider selection of programming languages.
 
 \subsection{Travis CI Build Log Data Set}
-Loriot et al.~\cite{loriot2019dataset, loriot2019styler} collected a large amount of Travis CI build logs from 130 github repositories to analyze their use of the Checkstyle plugin.
+Loriot et al.~\cite{loriot2019dataset, loriot2019styler} collected a large amount of Travis CI build logs from 130 GitHub repositories to analyze their use of the Checkstyle plugin.
 They selected Maven repositories that included the Checkstyle plugin and also used Travis CI\@.
 Their data set only provides the plain build logs, whereas \emph{LogChunks} additionally provides manually labeled data about the chunk describing why a build failed.
 
@@ -91,7 +91,7 @@ Each \texttt{Example} consists of:
 \end{itemize}
 Following, this section defines in more detail the labeled log chunk, search keywords and structural categories.
 
-\paragraph{Chunk Describing Why The Build Failed}
+\paragraph{Chunk That Describes Why The Build Failed}
 The \texttt{Chunk} is the substring of the build logs that describes why the build failed.
 This could be the failing test case, the description of a failed linter rule or a compiler error.
 The \texttt{Chunk} is one continuous string cut from the build log.
@@ -153,7 +153,7 @@ In total we collected 797 logs from 80 repositories.
 After collecting a wide range of Travis CI build logs we manually labeled which text chunk describes why the build failed.
 Following that, we assigned search keywords and structural categories to each log chunk.
 
-\paragraph{Chunk Describing Why The Build Failed}
+\paragraph{Chunk That Describes Why The Build Failed}
 For each repository, the labeler skimmed through the build logs and tried to identify the first occurrence of a description why the build failed.
 They copied out the first continuous description as the \texttt{Chunk}.
 They preserved whitespace and special characters, as they might be crucial to detect the targeted substring.
@@ -235,7 +235,7 @@ We reviewed the misunderstandings and incorporated more thorough descriptions of
 \subsection{Developer Survey}
 For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
 As we are not involved in the development of any of the projects within our data set we could only rely on our previous experience with various build logs and systems.
-We only took the logs into accont and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
+We only took the logs into account and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
 
 The person who probably knows best why a build failed is the one committing the changes which triggered the build.
 If the build was e.g.\ part of a pull request then developer likely inspected the failed build and tried to fix the build so the pull request can be accepted.
