@@ -311,7 +311,7 @@ Each \texttt{Example} consists of:
 \end{itemize}
 Following, this section defines in more detail the labeled log chunk, search keywords and structural categories.
 
-\paragraph{Chunk --- reason the build failed}
+\paragraph{Chunk Describing Why The Build Failed}
 The \texttt{Chunk} is the substring of the build logs that describes why the build failed.
 This could be the failing test case, the description of a failed linter rule or a compiler error.
 The \texttt{Chunk} is one continuous string cut from the build log.
@@ -377,7 +377,7 @@ In total we collected 797 logs from 80 repositories.
 After collecting a wide range of Travis CI build logs we manually labeled which text chunk describes why the build failed.
 Following that, we assigned search keywords and structural categories to each log chunk.
 
-\paragraph{Chunk --- reason the build failed}
+\paragraph{Chunk Describing Why The Build Failed}
 For each repository, the labeler skimmed through the build logs and tried to identify the first occurrence of a description why the build failed.
 They copied out the first continuous description as the \texttt{Chunk}.
 They preserved whitespace and special characters, as they might be crucial to detect the targeted substring.
@@ -445,8 +445,8 @@ They sorted into categories along \emph{why} the build failed, putting failing t
 Our main learning from this study is that adequately communicating all decisions and assumptions on how data is labeled is important and difficult.
 We reviewed the misunderstandings and incorporated more thorough descriptions of our data classes in Section~\ref{sec:data-schema}.
 
-\subsection{Developer Survey}
 
+\subsection{Developer Survey}
 For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
 As we are not involved in the development of any of the projects within our data set we could only rely on our previous experience with various build logs and systems.
 We only took the logs into accont and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
@@ -483,11 +483,11 @@ This study highly strengthens the trust in the validity of the extracted build f
 The study received answers about 18\% of the logs from \emph{LogChunks}.
 After manual correction, 91\% of the received answers said our labelled extractions were accurate.
 
-Most of the initial ``incorrect'' answers we adjusted in the manual correction, stated that the proposed extraction did not show the whole description of why the build failed.
+Most of the initial incorrect answers we adjusted in the manual correction, stated that the proposed extraction did not show the whole description of why the build failed.
 This is because we had to trim long labeled extractions to keep the mails readable.
 
 One of our extractions only showed a warning and the developer proposed to also include the line above, stating that warnings are treated as errors in the build.
-In others that were identified as ``incorrect'', we labelled the error message of an error that later ignored and did not lead to the build failing.
+In others that were identified as incorrect, we labelled the error message of an error that later ignored and did not lead to the build failing.
 
 \section{Conclusion}
 In this paper we introduced the \emph{LogChunks} data set encompassing about 800 build logs from a wide range of projects using Travis CI.
