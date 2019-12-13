@@ -203,11 +203,11 @@ Table~\ref{tab:ctr} shows a comparison of the presented techniques.
 \toprule
 Name                         & Acronym & Identification Technique                                   & Granularity & Configuration             \\ 
 \midrule
-Program Synthesis by Example & PBE     & Regular expression program                                 & Character   & In / Output Examples      \\
-Common Text Similarity       & CTS     & Tf-idf \& cosine similarity, mean number of lines expected & Line        & Output Examples           \\
-Keyword Search               & KWS     & Keywords, mean number of lines expected                    & Line        & Keywords, Context Length  \\
-Random Line Retrieval        & RLR     & Random sample                                              & Line        & Retrieval Length          \\
-Diff Approach                &         & Line not present in successful log, information retrieval  & Line        & Successful Log File       \\
+Program Synthesis by Example & PBE     & Regular expression program                                 & Character   & In / output examples      \\
+Common Text Similarity       & CTS     & Tf-idf \& cosine similarity, mean number of lines expected & Line        & Output examples           \\
+Keyword Search               & KWS     & Keywords, mean number of lines expected                    & Line        & Keywords, context length  \\
+Random Line Retrieval        & RLR     & Random sample                                              & Line        & Retrieval length          \\
+Diff Approach                &         & Line not present in successful log, information retrieval  & Line        & Logs from failing and successful builds      \\
 \bottomrule
 \end{tabularx}
 \label{tab:ctr}
@@ -243,7 +243,7 @@ It then returns the substring of the build log matched by the program or an empt
 Text Similarity approaches are used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
 One common and simple technique is the Vector Space Model~\cite{schutze2008introduction}.
 We investigate when text similarity is a suitable technique to retrieve information chunks from build logs.
-In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs (CTS), the concrete implementation is described in~\ref{sec:impl-ts}.
+In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs, which we refer to as \emph{CTS}\@.
 
 \paragraph{Configuration}
 To configure chunk retrieval though text similarity we chose to use the same concept of examples as for PBE\@.
@@ -263,7 +263,7 @@ The average number of lines in the outputs of the training examples determines h
 When developers are looking for a specific piece of information within a large amount of unstructured information, a first ad-hoc approach they use is searching for related keywords.
 This was one of the most common approaches we took when searching for the reason the build failed within a log while creating our \emph{LogChunks} data set.
 As this is a technique readily available in many tools developers use to view build logs, we study when such a keyword search is suitable for retrieving information chunks from CI build logs.
-In the following we will explain how we use simple keyword search to retrieve information from CI build logs (KWS).
+In the following we will explain how we use simple keyword search to retrieve information from CI build logs, which we refer to as \emph{KWS}\@.
 
 \paragraph{Configuration}
 A set of keywords configures the chunk retrieval with KWS\@.

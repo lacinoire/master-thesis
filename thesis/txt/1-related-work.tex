@@ -33,6 +33,7 @@ Further, we classify build logs as semi-structured data and differentiate our wo
 % Following we classify build logs as semi structured data.  and differentiate our work from system log analysis.
 
 \subsection{Continuous Integration}
+\label{sec:rw-ci}
 The first paragraphs of this section present the results of past research into CI: its influence on the software engineering processes, the reasons for CI builds to fail and the role of testing and static analysis in CI builds.
 Later we describe how these researchers obtain the data sets these works are based on.
 We show how they analyze build logs and why the chunk retrieval techniques we investigate can support them to broaden their studies.
@@ -162,7 +163,9 @@ In contrast to that, this thesis takes a look at techniques to gater a specific,
 \label{sec:log-analysis}
 A related field of log processing is the processing of system log files produced during runtime.
 A main difference between build logs and system logs is that system logs are fundamentally structured through events.
-Each line in the log file represents one event.
+Each line in the log file represents one event with a set of fields: timestamp, verbosity level and raw message content~\cite{he2017towards}.
+Listing \ref{lst:system-log} shows example lines from a system log.
+
 The first goal in parsing system log files is to separate constant and variable parts within a log message~\cite{nagappan2010abstracting,he2017towards}.
 Next, the log messages are clustered into log events, unifying messages with identical constant parts and varying parameters.
 The output of a log parser is a structured log, composed of a list of timed events and the corresponding parameter values~\cite{he2016evaluation}.
@@ -178,6 +181,26 @@ Classic log parsers interpret the whole log file into a sequence of events.
 A similar approach could also be applied to build logs to determine the sequence of executed build steps or phases.
 In this thesis we take a different approach and focus on extracting a single specified information from the build log as a whole with chunk retrieval techniques.
 Chunk retrieval techniques are used as a part of log parsing to retrieve the values of variable parts in a log message, e.g.\ by using regular expressions~\cite{nagappan2010abstracting,xu2009detecting}.
+
+\lstset{
+  morekeywords={INFO, WARN, 2008-11-09},
+  postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
+  showspaces=false,
+  showstringspaces=false,
+  keywordstyle=\color{blue},
+	frame=single,
+  extendedchars=false,
+  texcl=false
+}
+\begin{figure}[]
+  \centering
+  \begin{lstlisting}[breaklines=true]
+2008-11-09 20:46:55,556 INFO dfs.DataNode$Packet- Responder: Received block blk_3587508140051953248 of size 67108864 from /10.251.42.84
+2008-11-09 20:49:46,764 WARN PacketResponder 0 for block blk\_3587508140051953248 terminating
+  \end{lstlisting}  
+  \caption{System Log Statements, adapted example from~\cite{he2017towards}}
+  \label{lst:system-log}
+\end{figure}
 
 \section{Foundational Techniques}
 % \section{Information Extraction and Retrieval Techniques}
@@ -230,12 +253,36 @@ The text instantiation of FlashExtract models the extraction of a single substri
 A position is either specified by an absolute character index or by a pair of two regular expressions.
 The first regular expression matches the substring directly before the characterized position, the second regular expression matches the substring directly after.
 A regular expression in FlashExtract is a concatenation of tokens, e.g.\ standard character classes or string literals frequently occurring in the input examples.
+Listing \ref{lst:prose-program} shows a text extraction program synthesized by FlashExtract.
+This program defines the first position as after a colon followed by a newline character and before a piece of text with all capital letters.
+It defines the second position as before two newline characters.
 
 Apart from automatic completion in Excel spreadsheets~\cite{excel2019flashfill}, FlashExtract is the basis for two other Microsoft product features:
 Microsoft's system log analysis tool Azure Monitor lets users define custom log fields~\cite{azure2019custom}.
 The ConvertFrom-String function in PowerShell allows a user to specify an example template to extract hierarchical data from a text document~\cite{powershell2019convert}.
 
 We apply the text instantiation of FlashExtract to the domain of build logs with our chunk retrieval technique PBE\@.
+
+\lstset{
+  language=caml,
+  morekeywords={PosToEndRegion, RegexPosition, RegexPair, StartToPosRegion},
+  postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
+  showspaces=false,
+  showstringspaces=false,
+  stringstyle=\color{blue},
+  keywordstyle=\bfseries\color{black},
+	frame=single,
+  extendedchars=false,
+  escapeinside=//
+}
+\begin{figure}[]
+  \centering
+  \begin{lstlisting}[breaklines=true]
+let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("Colon/$\circ$/Line Separator", "ALL CAPS"), 1)) in StartToPosRegion(s, RegexPosition(s, RegexPair("/$\varepsilon$/", "Line Separator/{\color{blue}$\circ$}/Line Separator"), 1))
+  \end{lstlisting}  
+  \caption{Text extraction program synthesized by FlashExtract}
+  \label{lst:prose-program}
+\end{figure}
 
 \paragraph{Other Applications of Program Synthesis by Example}
 Gulwani and Harris apply a less generic predecessor of the FlashMeta framework to string manipulation within spreadsheets~\cite{gulwani2011automating} and spreadsheet transformations~\cite{harris2011spreadsheet}.

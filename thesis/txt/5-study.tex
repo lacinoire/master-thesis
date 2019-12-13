@@ -92,6 +92,33 @@ For two or more training examples the recall stays around 75\% and precision aro
 		\label{fig:failure-reason-PBE}
 \end{figure}
 
+\lstset{
+  morekeywords={Test Output, Desired Test Output},
+  postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
+  showspaces=false,
+  showstringspaces=false,
+  keywordstyle=\color{blue},
+	frame=single,
+  extendedchars=false,
+  texcl=false
+}
+\begin{figure}[]
+  \centering
+  \begin{lstlisting}[breaklines=true]
+Test Output:
+Error: Invalid CSS after "2.3em": expected expression (e.g. 1px, bold), was ";"
+        on line 86 of sass/components/dropdown.sass   
+
+Desired Test Output:
+Error: Invalid CSS after "2.3em": expected expression (e.g. 1px, bold), was ";"
+        on line 86 of sass/components/dropdown.sass
+        from line 5 of sass/components/_all.sass
+        from line 6 of bulma.sass
+  \end{lstlisting}  
+  \caption{Example for an unsuccessful retrieval, PBE retrieved only two of the four targeted lines}
+  \label{lst:system-log}
+\end{figure}
+
 \begin{figure}[htbp]
 		\centering
 		\includegraphics[width=\textwidth, clip]{img/big-study/failure-reason-categorycount-PBE.pdf}

@@ -26,7 +26,26 @@ Based on our empirical comparison, we present a decision tree between the three 
 This section discusses the study results for each of the analyzed chunk retrieval techniques separately.
 It gives recommendations on which kind of information chunk targets are best for each technique and for what kind of usage the output is suitable.
 
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\textwidth}{@{}llll@{}}
+  \toprule
+  & PBE & CTS & KWS \\
+  \midrule
+  Structural Categories & 1 & less is better & \makecell[l]{best 1 \\ multiple okay} \\
+  Training Set Size & 2 & no influence & 2 \\ 
+  Precision & \makecell[l]{high \\ (if synthesis succeeds)} & medium & low \\ 
+  Recall & \makecell[l]{high \\ (if synthesis succeeds)} & medium & high \\ 
+  \makecell[l]{Confidence in \\ Output Correctness} & high & low & \makecell[l]{low (precision) \\ high (recall)} \\ 
+  Output Consumption by & program & human & human \\ 
+  \bottomrule
+\end{tabularx}
+\caption{Recommendations for each of the investigated chunk retrieval techniques}
+\label{tab:single-technique-recommendations}
+\end{table}
+
 \subsection{Program Synthesis by Example (PBE)}
+
 \paragraph{Configuration and Input}
 Our study results show that chunk retrieval with PBE gives best results when the training examples are from one structural category.
 This means it is suited to retrieve information chunks that always have the same surrounding structure.
@@ -69,9 +88,14 @@ Selecting 1.5 times as many lines around every found keyword does improve the re
 Even though KWS has the highest recall of all three techniques, its precision is also the lowest.
 The output of a chunk retrieval with KWS is well suited to be read by humans.
 
+\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/crt-recommendation.pdf}
+		\caption{Our preliminary recommendation scheme for chunk retrieval techniques}
+		\label{fig:crt-recommendation}
+\end{figure}
+
 \section{Recommendations of Suitable Techniques}
-% This section unifies our study results of the chunk retrieval techniques PBE, CTS and KWS\@.
-% It recommends which technique to use depending on the available configuration and 
 After discussing three chunk retrieval techniques separately we now want to unify out results into one recommendation scheme.
 We present a decision tree, which asks questions to a developer or researcher who wants to retrieve information chunks from build logs.
 The answers lead the user to more questions or the recommended technique as leaf nodes.
@@ -91,33 +115,7 @@ If the representations are from multiple structural categories and precision is 
 We also recommend CTS when the representations are from one structural category, the user does not require a high confidence in the precision or recall of the outcome and the user rather have output with low recall instead of no output at all.
 When the representations are from one structural category and the user wishes a high confidence in the correctness of the output or prefers no output over output with low recall, we recommend PBE\@.
 
-\begin{table}[htbp]
-\centering
-\begin{tabularx}{\textwidth}{@{}llll@{}}
-  \toprule
-  & PBE & CTS & KWS \\
-  \midrule
-  Structural Categories & 1 & less is better & \makecell[l]{best 1 \\ multiple okay} \\
-  Training Set Size & 2 & no influence & 2 \\ 
-  Precision & \makecell[l]{high \\ (if synthesis succeeds)} & medium & low \\ 
-  Recall & \makecell[l]{high \\ (if synthesis succeeds)} & medium & high \\ 
-  \makecell[l]{Confidence in \\ Output Correctness} & high & low & \makecell[l]{low (precision) \\ high (recall)} \\ 
-  Output Consumption by & program & human & human \\ 
-  \bottomrule
-\end{tabularx}
-\caption{Recommendations for each of the investigated chunk retrieval techniques}
-\label{tab:single-technique-recommendations}
-\end{table}
-
-\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=\textwidth, clip]{img/crt-recommendation.pdf}
-		\caption{Our preliminary recommendation scheme for chunk retrieval techniques}
-		\label{fig:crt-recommendation}
-\end{figure}
-
 \section{Threats to Validity}
-
 There are several threats to the validity of the conclusions of our work.
 
 \paragraph{Implementation}

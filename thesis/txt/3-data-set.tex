@@ -9,7 +9,7 @@
 \includegraphics[page=5, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
 This chapter describes the creation of the \emph{LogChunks} data set that we use in our empirical comparison of chunk retrieval techniques.
 \emph{LogChunks} is a collection of 797 Travis CI build logs from 80 GitHub repositories spread over 29 programming languages.
-For each build log we manually labeled which substring describes why the build failed.
+For each build log we manually label which substring describes why the build failed.
 The data set also provides keywords a developer would use to search for the labeled log chunk and categorizes the log chunks according to their format within the log.
 
 We start this chapter by explaining why we created \emph{LogChunks} and how it enables us to compare the chunk retrieval techniques PBE, CTS and KWS\@.
@@ -20,11 +20,47 @@ Further, it presents the labeling process and how we validated the labeled data,
 %For the second validation study, we sent out mails to the original project developers to determine whether the substring we labeled really describes the reason the build failed.
 
 \section{Motivation}
-\todo{In/output examples (I/O examples) are used to configure two of the information retrieval techniques we are evaluating for this thesis, PROSE regular expression program synthesis by example and text similarity.
-One example set always contains build log in/output examples from the same software repository or project and for one specific build log information. They are all from one repository because we investigate information retrieval techniques which are always configured to the scope of one particular software repository or project.
-Our intuition was that the ability of PROSE to be able to successfully learn a regex program depended on the structural uniformity of the provided in/output examples.
-The regular expressions need a consistent pattern in the build log string at the borders or around the textual representation of a build log information to match on for the retrieval.
-To be able to quantify this intuition in our evaluation we assigned \emph{structural categories} to each of the examples within an example set.}
+We create \emph{LogChunks} as a data set for our empirical comparison study of the three chunk retrieval techniques PBE, CTS and KWS\@.
+In the following, we motivate which repositories and build logs we collect and what data we label for each build log.
+
+\paragraph{Log Collection}
+Existing build log analysis approaches, like writing a custom parser and creating regular expressions, are specific to the build tools which create the targeted log output.
+In contrast to that, our findings about the chunk retrieval techniques should not be specific to a specific build tool.
+As the main development language in a repository influences the build tools, we want our comparison study and \emph{LogChunks} cover a wide array of development languages.
+This is why we selected GitHub repositories from 29 different main development languages for our data set.
+
+Examples configure the chunk retrieval techniques we investigate.
+As the structure of a build log changes from project to project, these examples are specific to one project.
+A user of a chunk retrieval technique has to manually create the examples for for each targeted information and project.
+If the effort of creating examples should not too high, e.g. as high as developing a custom extraction program.
+For that reason, we choose ten logs and examples per repository for \emph{LogChunks}.
+
+\paragraph{Targeted Log Chunk}
+To evaluate chunk retrieval techniques, we have to select an information chunk the techniques should target.
+The targeted information chunk should occur as a realistic use case for developers or researchers and should not be trivial for any of the studied techniques.
+
+As the targeted log chunk we choose the part of the log describing why the build failed.
+Developers examine build logs to identify the cause of a build failure so they can address the issue.
+As we described in Section \ref{sec:rw-ci}, various researchers analyze build logs for the reason the build failed.
+
+In addition, the log chunk describing why a build failed can be represented in different ways in build logs.
+The representation and content of this log chunk depends on the tool reporting the fault and a build can fail in various of the tools involved in the build.
+This makes it non-trivial for any of the three techniques to extract.
+An example of a log chunk easily extractable by all of the three techniques is the \emph{TravisTiming}, described in Section \ref{sec:bli}.
+Travis CI logs its timing statements in a always consistent structure, therefore it would be easy for PBE to synthesize a regular expression program to extract them.
+The same holds for search keywords identifying the lines which contain the \emph{TravisTiming} and selecting lines with similar text content.
+
+\paragraph{Additional Data: Keywords and Structural Categories}
+For each log chunk example we additionally annotated keywords a developer would use to search for this log chunk, as well as a categorization of the chunks into structural categories according to their format within the log.
+The technique KWS is configured by keywords instead of in/output examples like the other techniques.
+To make the evaluation more consistent an comparable we choose to annotate keywords to each log chunk example.
+We can then use these extended examples as a configuration for KWS.
+An increasing number of examples is then comparable to the user basing his given keywords on more previously seen build logs.
+
+For our second research question we want to investigate how structurally similar the training examples have to be for a chunk retrieval technique to be applicable.
+To measure this in our study we choose to categorize the examples according to their format within the log.
+Section \ref{sec:data-schema} gives examples of log chunks from the same and different structural categories.
+As we evaluate the techniques separately for separate projects, the categorization is relative to the project which produced the build log.
 
 \section{Related Data Sets}
 \label{sec:related-data-sets}
@@ -62,10 +98,13 @@ Listing~\ref{lst:examples} presents the schema of these XML files.
 \lstset{
   language=XML,
   morekeywords={Examples, Example, Log, Keywords, Category, Chunk},
-  postbreak=\mbox{\textcolor{blue}{$\hookrightarrow$}\space},
-	frame=single
+  postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
+	frame=single,
+	escapeinside=**
 }
-\begin{lstlisting}[caption={Example XML file from \emph{LogChunks}}, label=lst:examples, breaklines=true]
+\begin{figure}[]
+	\centering
+\begin{lstlisting}[breaklines=true]
 <Examples>
   <Log>C/php@php-src/failed/529279089.log</Log>
     <Keywords>ERROR, FAIL, DIFF</Keywords>
@@ -79,14 +118,18 @@ FAIL Bug #60120 (proc_open hangs when data in stdin/out/err is getting larger or
   ...
 </Examples>
 \end{lstlisting}
+	
+	\caption{Example XML file from \emph{LogChunks}}
+	\label{lst:examples}
+\end{figure}
 
 For each repository, \emph{LogChunks} gives about 10 \texttt{Examples}.
 Each \texttt{Example} consists of:
 \begin{itemize}
-	\item \texttt{Log:} the relative path to the input build log.
-	\item \texttt{Chunk:} the targeted information chunk. We are targeting the substring of the log that describes why the build failed.
-	\item \texttt{Keywords:} keywords a developer would use to search for the log chunk.
-	\item \texttt{Category:} a categorization of the structural representation of the log chunk within the build log.
+	\item \textbf{\texttt{Log:}} the relative path to the input build log.
+	\item \textbf{\texttt{Chunk:}} the targeted information chunk. We are targeting the substring of the log that describes why the build failed.
+	\item \textbf{\texttt{Keywords:}} keywords a developer would use to search for the log chunk.
+	\item \textbf{\texttt{Category:}} a categorization of the structural representation of the log chunk within the build log.
 				The category is relative to the other examples for the same repository.
 \end{itemize}
 Following, this section defines in more detail the labeled log chunk, search keywords and structural categories.
@@ -102,8 +145,9 @@ For a few logs we were unable to define the section detailing why the build fail
 In these instances the \texttt{Chunk} contains the lines describing that the build failed.
 
 \paragraph{Keywords}
-The \texttt{Keywords} contain a list of one to three keywords appearing within the \texttt{Chunk} or in the area around it in the build log.
+The \texttt{Keywords} contain a list of one to three strings appearing within the \texttt{Chunk} or in the area around it in the build log.
 We aim to select keywords a developer would use to search for the \texttt{Chunk} when inspecting the build log.
+Some example keywords from \emph{LogChunks} are: ``\texttt{FAIL}'', ``\texttt{Error}'', ``\texttt{failed}'', ``\texttt{[-]}'', ``\texttt{===================================}'' or ``\texttt{ERR!}''.
 
 \paragraph{Category}
 For each repository, we assign \emph{structural categories} to the examples.
@@ -112,6 +156,38 @@ Build tools highlight their error messages with markings, e.g.\ starting each li
 Two examples fall into the same structural categories if they are surrounded by similar markings.
 For most cases, two \texttt{Chunk} examples that fall into one category are outputted either within the same build phase or by the same build tool.
 For each repository, the structural categories are represented as integers, starting at 0 and increased with the next appearing category in chronological build order.
+
+\begin{figure}[]
+	\centering
+\begin{lstlisting}[breaklines=true]
+[0K$ ./sapi/cli/php run-tests.php -P -d extension=`pwd`/modules/zend_test.so $(if [ $ENABLE_DEBUG == 0 ]; then ...
+*{\color{cyan}-=-=-=-=-=-}*
+Illegal switch 'j' specified!
+*{\color{cyan}-=-=-=-=-=-}*
+Synopsis:
+\end{lstlisting}
+	
+	\caption{Log chunk with one line of context from a \emph{different} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
+	\label{lst:same-category}
+\end{figure}
+
+\begin{figure}[]
+	\centering
+\begin{lstlisting}[breaklines=true]
+========DIFF========
+*{\color{cyan}-=-=-=-=-=-}*
+005+     Parameter #1 [ <optional> $flags ]
+
+005-     Parameter #1 [ <optional> $ar_flags ]
+========DONE========
+FAIL Bug#71412 ArrayIterator reflection parameter info [ext/spl/tests/bug71412.phpt] 
+*{\color{cyan}-=-=-=-=-=-}*
+TEST 9895/13942 [2/2 concurrent test workers running]
+\end{lstlisting}
+	
+	\caption{Log chunk with one line of context from the \emph{same} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
+	\label{lst:different-category}
+\end{figure}
 
 \section{Log Collection}
 We describe how we select the repositories, builds and logs for \emph{LogChunks}.

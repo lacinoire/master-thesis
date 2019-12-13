@@ -8,7 +8,7 @@ all: main.pdf
 
 .ONESHELL:
 %.pdf: %.tex FORCE_MAKE
-	@$(MAKE) -f $(THIS_FILE) inputs
+	#@$(MAKE) -f $(THIS_FILE) inputs
 	latexmk -pdf -pdflatex="pdflatex" -cd -use-make -silent $<
 # For a speed up with standalone tikz-pictures replace the above line with:
 # 	latexmk -pdf -pdflatex="pdflatex -shell-escape" -use-make -silent $<
