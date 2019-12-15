@@ -6,7 +6,7 @@
 
 \chapter{LogChunks Data Set}
 \label{sec:data-set}
-\includegraphics[page=5, width=\textwidth, trim={0.5cm 0.5cm 0.5cm 0.5cm}, clip]{img/flow-of-research.pdf}
+
 This chapter describes the creation of the \emph{LogChunks} data set that we use in our empirical comparison of chunk retrieval techniques.
 \emph{LogChunks} is a collection of 797 Travis CI build logs from 80 GitHub repositories spread over 29 programming languages.
 For each build log we manually label which substring describes why the build failed.
@@ -18,6 +18,13 @@ The chapter describes the data schema of \emph{LogChunks} and our log collection
 Further, it presents the labeling process and how we validated the labeled data, including a survey of the original developers of the projects represented in \emph{LogChunks}.
 %In the first validation study, we compared the labeled data points with those of a second labeler on a sample of the build logs.
 %For the second validation study, we sent out mails to the original project developers to determine whether the substring we labeled really describes the reason the build failed.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[page=3, width=\textwidth, trim={2cm 2cm 2cm 0.5cm}, clip]{img/overview-graphics.pdf}
+	\caption{Overview of \emph{LogChunks}}
+	\label{fig:lc-overview}
+\end{figure}
 
 \section{Motivation}
 We create \emph{LogChunks} as a data set for our empirical comparison study of the three chunk retrieval techniques PBE, CTS and KWS\@.
@@ -86,13 +93,13 @@ We give a detailed explanation for the manually labeled data.
 \emph{LogChunks} has two top level folders, \texttt{build-failure-reason} and \texttt{logs}.
 Each contains folders representing the main languages of the repositories in \emph{LogChunks}.
 
-The logs are organized in folders for each repository, identified by \texttt{\textless repository\_owner\textgreater @\textless repository\_name\textgreater }.
+The logs are organized in folders for each repository.
 Within each repository folder the logs are separated according to build status.
 Currently \emph{LogChunks} only contains logs from \texttt{failed} builds.
 The build status folder contains the full logs in files named with the ID of the Travis CI build that produced the log.
 
 The folder \texttt{build-failure-reason} contains the manually labeled data of \emph{LogChunks}.
-The data set provides an XML file for each repository: \texttt{\textless repository\_owner\textgreater @\textless repository\_name\textgreater.xml}.
+The data set provides an XML file for each repository.
 Listing~\ref{lst:examples} presents the schema of these XML files.
 
 \lstset{
@@ -154,22 +161,10 @@ For each repository, we assign \emph{structural categories} to the examples.
 The structural category compares how the \texttt{Chunk}s are represented within the build logs.
 Build tools highlight their error messages with markings, e.g.\ starting each line with ``\texttt{ERROR}'', surrounding lines filled with special characters or additional empty log lines.
 Two examples fall into the same structural categories if they are surrounded by similar markings.
+Listing \ref{lst:same-category} presents a log chunk from the same category as the log chunk from Listing \ref{lst:examples}.
+In comparison to that, Listing \ref{lst:different-category} presents a log chunk which is formatted differently within the log file.
 For most cases, two \texttt{Chunk} examples that fall into one category are outputted either within the same build phase or by the same build tool.
 For each repository, the structural categories are represented as integers, starting at 0 and increased with the next appearing category in chronological build order.
-
-\begin{figure}[]
-	\centering
-\begin{lstlisting}[breaklines=true]
-[0K$ ./sapi/cli/php run-tests.php -P -d extension=`pwd`/modules/zend_test.so $(if [ $ENABLE_DEBUG == 0 ]; then ...
-*{\color{cyan}-=-=-=-=-=-}*
-Illegal switch 'j' specified!
-*{\color{cyan}-=-=-=-=-=-}*
-Synopsis:
-\end{lstlisting}
-	
-	\caption{Log chunk with one line of context from a \emph{different} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
-	\label{lst:same-category}
-\end{figure}
 
 \begin{figure}[]
 	\centering
@@ -184,8 +179,20 @@ FAIL Bug#71412 ArrayIterator reflection parameter info [ext/spl/tests/bug71412.p
 *{\color{cyan}-=-=-=-=-=-}*
 TEST 9895/13942 [2/2 concurrent test workers running]
 \end{lstlisting}
-	
 	\caption{Log chunk with one line of context from the \emph{same} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
+	\label{lst:same-category}
+\end{figure}
+
+\begin{figure}[]
+	\centering
+\begin{lstlisting}[breaklines=true]
+[0K$ ./sapi/cli/php run-tests.php -P -d extension=`pwd`/modules/zend_test.so $(if [ $ENABLE_DEBUG == 0 ]; then ...
+*{\color{cyan}-=-=-=-=-=-}*
+Illegal switch 'j' specified!
+*{\color{cyan}-=-=-=-=-=-}*
+Synopsis:
+\end{lstlisting}
+	\caption{Log chunk with one line of context from a \emph{different} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
 	\label{lst:different-category}
 \end{figure}
 
@@ -295,18 +302,6 @@ They sorted into categories along \emph{why} the build failed, putting failing t
 Our main learning from this study is that adequately communicating all decisions and assumptions on how data is labeled is important and difficult.
 We reviewed the misunderstandings and incorporated more thorough descriptions of our data classes in Section~\ref{sec:data-schema}.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/dev-mail.png}
-	\caption{An example of the mails we sent out to developers for validation of our labeled log part}
-	\label{fig:dev-mail}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/dev-survey.png}
-	\caption{Survey for the validation with developers}
-	\label{fig:dev-survey}
-\end{figure}
 
 \subsection{Developer Survey}
 For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
@@ -327,37 +322,6 @@ We asked the receivers to fill out a short survey in case our extraction was not
 Look at Figure~\ref{fig:dev-survey} to get an impression of the survey.
 In the survey, we presented the selected log part and asked the developer to paste in the log part actually describing the failure reason or describe why we were wrong in their own words.
 As some of the extractions we labeled are many lines long, we trimmed all down to 10 lines to keep the mail readable.
-
-\begin{figure}[htbp]
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth, clip]{img/dev-mails/answers-received-mails.pdf}
-		\caption{Number of mails answered, unanswered and not delivered}
-		\label{fig:mails-answers-received-mails}
-	\end{minipage}\hfill
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth, clip]{img/dev-mails/answers-received-builds.pdf}
-		\caption{Proportions of logs about which mails were answered, unanswered, not delivered or we could not find a corresponding mail address}
-		\label{fig:mails-answers-received-builds}
-	\end{minipage}
-\end{figure}
-\begin{figure}[htbp]
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth, clip]{img/dev-mails/extraction-correct.pdf}
-		\caption{Label correctness as validated by developers}
-		\label{fig:mails-extraction-correct}
-	\end{minipage}\hfill
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth, clip]{img/dev-mails/logs-per-mail.pdf}
-		\caption{Average number of logs per sent out mail}
-		\label{fig:mails-logs-per-mail}
-	\end{minipage}
-\end{figure}
 
 \paragraph{Results}
 In total we sent out mails to 246 developers, asking about 3.2 build logs per mail on average.
@@ -381,5 +345,51 @@ This is because we had to trim long labeled extractions to keep the mails readab
 
 One of our extractions only showed a warning and the developer proposed to also include the line above, stating that warnings are treated as errors in the build.
 In others that were identified as incorrect, we labeled the error message of an error that later ignored and did not lead to the build failing.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth, clip]{img/dev-mail.png}
+	\caption{An example of the mails we sent out to developers for validation of our labeled log part}
+	\label{fig:dev-mail}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/dev-mails/answers-received-mails.pdf}
+		\caption{Number of mails answered, unanswered and not delivered}
+		\label{fig:mails-answers-received-mails}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/dev-mails/answers-received-builds.pdf}
+		\caption{Proportions of logs about which mails were answered, unanswered, not delivered or we could not find a corresponding mail address}
+		\label{fig:mails-answers-received-builds}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth, clip]{img/dev-survey.png}
+	\caption{Survey for the validation with developers}
+	\label{fig:dev-survey}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/dev-mails/extraction-correct.pdf}
+		\caption{Label correctness as validated by developers}
+		\label{fig:mails-extraction-correct}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/dev-mails/logs-per-mail.pdf}
+		\caption{Average number of logs per sent out mail}
+		\label{fig:mails-logs-per-mail}
+	\end{minipage}
+\end{figure}
 
 \end{document}

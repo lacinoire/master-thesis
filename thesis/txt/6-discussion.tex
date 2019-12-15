@@ -67,7 +67,7 @@ The number of training examples had no noticeable influence on precision or reca
 Information retrieval techniques like text similarity commonly learn on a higher number of examples than we used for our study.
 Future work is needed to investigate how many examples yield improvements in the chunk retrieval over a single training example.
 
-Extracting the average number of lines present in the training examples seems to give the best balance of precision and recall for CTS\@.
+Extracting the average number of lines present in the training examples gives the best retrieval results for CTS, according to the F$_{1}$-score.
 
 \paragraph{Retrieval Output Usage}
 CTS has good precision and recall on average, though the precision or recall of a chunk retrieval run is very hard to predict from the given result.
@@ -76,7 +76,7 @@ Therefore, retrieval output from CTS is suited to be read by a human.
 \subsection{Keyword Search (KWS)}
 \paragraph{Configuration and Input}
 KWS has a higher recall than both other techniques for multiple structural categories present in the training and test examples.\@.
-This makes KWS a good technique if there is little prior knowledge on how the desired BLI is represented in the build log to be analyzed.
+This makes KWS a good technique if there is little prior knowledge on how the targeted log chunk is represented in the build log to be analyzed.
 For the example of extracting the reason the build failed, KWS is best suited if a build can fail in various steps logged by different tools and no pre-categorization of where the build failed is available.
 
 With two training examples KWS achieves good recall.
@@ -114,6 +114,26 @@ If the information chunks are from multiple structural categories, meaning the a
 If the representations are from multiple structural categories and precision is more important than recall to the user we recommend CTS\@.
 We also recommend CTS when the representations are from one structural category, the user does not require a high confidence in the precision or recall of the outcome and the user rather have output with low recall instead of no output at all.
 When the representations are from one structural category and the user wishes a high confidence in the correctness of the output or prefers no output over output with low recall, we recommend PBE\@.
+
+\paragraph{Example of Using the Recommendation Scheme}
+To illustrate how one would use our decision tree to find a suitable chunk retrieval technique we follow with describing two concrete examples: a researcher investigating why CI builds fail and a software team wanting to monitor their build performance.
+
+In our first example, a researcher studies whether there test failures in CI are caused by a small or by a large group of test cases.
+They gather CI build logs from various projects, which are their only available data source.
+The task of the researcher is to extract the name of the failing test case from each build log.
+When they use our recommendation scheme to select a chunk retrieval technique, they first have to estimate how uniform the representation of the failing test case is in the investigated build logs.
+As the researcher is covering a wide range of build tools and development languages, the log chunks they target are in various, not predictable structural representations.
+The next question is whether they value precision over recall.
+As they have to manually inspect the results of both CTS and KWS, they choose recall over precision to avoid having to inspect the whole log in case the relevant information chunk was not retrieved.
+Therefore, our decision tree recommends them to use KWS\@.
+
+In case the researchers want to avoid manually inspecting the retrieval results, they have to first separate the CI build logs according to the test tool responsible for logging the test results.
+Then the targeted log chunks are from one structural category and they can use PBE, trained with examples from each tes tool separately.
+
+In our second example, a software development team wants to monitor the performance of the phases within their CI build.
+They are using Travis CI, which measures the duration of build phases and documents them within the build log.
+As all log statements that report timing measurements are formatted the same way, the targeted log chunks are from one structural category.
+Therefore the development team can use PBE to retrieve the duration of a build phase as well as its name.
 
 \section{Threats to Validity}
 There are several threats to the validity of the conclusions of our work.

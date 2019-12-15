@@ -51,7 +51,7 @@ Figure~\ref{fig:tool-log-contribution} shows how different tools contribute to t
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth, trim={0cm 15cm 0cm 0cm}, clip]{img/tool-log-contribution.pdf}
+	\includegraphics[page=1, width=0.8\textwidth, trim={5cm 0.5cm 0.5cm 0.5cm}, clip]{img/overview-graphics.pdf}
 	\caption{Contribution of different tools to the build log}
 	\label{fig:tool-log-contribution}
 \end{figure}
@@ -60,12 +60,6 @@ When analyzing build logs we do not necessarily have access to the exact build c
 We also do not necessarily have access to a useable definition of the output structure of a specific tool.
 Therefore, build logs are semi-structured, as described in Section~\ref{sec:rw-semi-structured-data}.
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/build-log-information.pdf}
-	\caption{Information retrievable from build logs}
-	\label{fig:build-log-information}
-\end{figure}
 
 \section{Information Chunks in Build Logs}
 \label{sec:bli}
@@ -89,6 +83,13 @@ We inspected them to get an impression of the information one would want to retr
 In the following, we describe examples of information chunks that can be retrieved from Travis CI build logs.
 All information examples containing ``Travis'' in their name are specific to Travis CI build logs, the others can also apply to build logs from another CI environment.
 Figure~\ref{fig:build-log-information} shows an overview of these information examples.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth, clip]{img/build-log-information.pdf}
+	\caption{Information retrievable from build logs}
+	\label{fig:build-log-information}
+\end{figure}
 
 \begin{itemize}
 	\item \textbf{BuildPhase} Build logs can be divided into the sections produced by different tools.
@@ -290,5 +291,11 @@ This technique retrieves the lines from a build log that are not present in the 
 In our evaluation, we want to compare against a baseline of randomly extracted lines.
 The average number of lines in the outputs of the training examples is the configuration for random line retrieval (RLR).
 It retrieves this number of lines randomly sampled from the build log.
+
+\section{Tool Implementation}
+For our comparison study we implemented PBE, CTS, KWS and RLR and a unifying interface.
+The unified interface is implemented in Ruby and calls the separate technique implementations over the command line.
+The implementation of PBE in C\# is based on the Microsoft PROSE library~\cite{prose2019webpage}.
+We implemented CTS, KWS and RLR using R and the text2vec library~\cite{text2vec2019webpage}.
 
 \end{document}
