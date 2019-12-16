@@ -9,21 +9,32 @@ Continuous Integration (CI) has become a common practice in software engineering
 Many software projects use CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect bugs early~\cite{vasilescu2015quality,duvall2007continuous}, improve developer productivity~\cite{miller2008hundred,hilton2016usage} and communication~\cite{downs2012ambient}.
 A build on a CI server typically compiles and packages the software, executes tests~\cite{beller2017oops} and various kinds of static analyses~\cite{zampetti2017open}.
 
-CI builds produce long and verbose build logs~\cite{beller2017oops}, reporting the progress and results of the steps within the build.
-The structure of these logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and the environment used.
-Build logs are a valuable data source for developers and researchers.
-Developers read them to analyze why their build failed or how different stages of the build process perform.
-Researchers can harvest the information contained in the logs to study the software engineering process of a project~\cite{rausch2017empirical,beller2017oops,seo2014programmers,vassallo2017a-tale}.
-However, these two groups can only use the information within the build logs if they can adequately retrieve the information relevant to them.
+CI builds produce logs which report the progress and results of the steps within the build.
+These build logs contain a lot of valuable information for developers and researchers.
+Developers examine log statements of time measurements to track how different stages of the build process perform.
+Researchers collect the commands triggering the build steps to reverse engineer the build configuration when only the log is available to them.
+Both groups analyze build logs for descriptions of compiler errors, linter warnings or failed tests to uncover why a CI build failed~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
 
-There are different techniques to retrieve information from CI build logs. Beller et al.\ use regular expressions to analyze the reasons of build failures from Travis CI logs~\cite{beller2017oops}.
+Build logs are verbose and long~\cite{beller2017oops}, making them inadequate for direct consumption.
+Therefore, developers and researchers can only efficiently use the information within the build logs if they can adequately retrieve the parts (chunks) of the log that describe the targeted information.
+
+% CI builds produce long and verbose build logs~\cite{beller2017oops}, reporting the progress and results of the steps within the build.
+% The structure of these logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and the environment used.
+% Build logs are a valuable data source for developers and researchers.
+% Developers read them to analyze why their build failed or how different stages of the build process perform.
+% Researchers can harvest the information contained in the logs to study the software engineering process of a project~\cite{rausch2017empirical,beller2017oops,seo2014programmers,vassallo2017a-tale}.
+% However, these two groups can only use the information within the build logs if they can adequately retrieve the information relevant to them.
+
+There are different techniques to retrieve information chunks from CI build logs.
+Beller et al.\ use regular expressions to analyze the reasons of build failures from Travis CI logs~\cite{beller2017oops}.
 Such regular expressions are developed by looking at a few exemplary build logs. Updating them whenever new cases are introduced is a tedious and error-prone task~\cite{michael2019regexes}.
 Vassallo et al.\ wrote a custom parser for build logs to gather information for build repair hints~\cite{vassallo2018un-break}.
 Recently, Amar et al.\ reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and a successful build~\cite{amar2019mining}.
 
-These approaches have various downsides and strengths:
+These approaches have various strengths and weaknesses:
 Regular expressions are exact but difficult to maintain~\cite{michael2019regexes}.
 Custom parsers are powerful though fragile towards changes in the log structure.
+The structure of build logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and the environment used.
 Taking a diff between failed and successful logs can reduce the information to be processed, but the imprecise output needs to be interpreted by a developer~\cite{amar2019mining}.
 At the moment there is only anecdotal evidence on the performance of these techniques and when a technique should be preferred over other alternatives.
 Developers and researches currently have little support while choosing which technique to use for a task.

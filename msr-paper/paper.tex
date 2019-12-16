@@ -152,7 +152,7 @@ In addition, the data set categorizes the log chunks according to their format w
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
-\keywords{ci, build log analysis, build failure, chunk retrieval}
+\keywords{CI, Build Log Analysis, Build Failure, Chunk Retrieval}
 
 %%
 %% This command processes the author and affiliation and title
@@ -163,12 +163,12 @@ In addition, the data set categorizes the log chunks according to their format w
 Continuous Integration (CI) has become a common practice in software engineering~\cite{hilton2016usage}.
 CI builds produce logs which report the progress and results of the steps within the build.
 These build logs contain a lot of valuable information for developers and researchers.
-Developers examine timer reports to track how different stages of the build process perform.
-Researchers collect the commands triggering the build steps to reverse engineer the build configuration when only the log is available to them.
+%Developers examine time measurement log statements to track how different stages of the build process perform.
+%Researchers collect the commands triggering the build steps to reverse engineer the build configuration when only the log is available to them.
 Both groups analyze build logs for descriptions of compiler errors, linter warnings or failed test notifications to uncover why a CI build failed~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
 
 Build logs are verbose and long~\cite{beller2017oops}, making them inadequate for direct consumption.
-Therefore, developers and researchers can only use the information within the build logs if they can adequately retrieve the parts (chunks) of the log that describe the targeted information.
+Therefore, developers and researchers can only efficiently use the information within the build logs if they can adequately retrieve the parts (chunks) of the log that describe the targeted information.
 
 There are different techniques to retrieve information chunks from CI build logs.
 Beller et al.\ use regular expressions to analyze the reasons for build failures from Travis CI logs~\cite{beller2017oops}.
@@ -176,7 +176,7 @@ Such regular expressions are developed by looking at a few exemplary build logs.
 Vassallo et al.\ wrote a custom parser for build logs to gather information for build repair hints~\cite{vassallo2018un-break}.
 Recently, Amar et al.\ reduced the number of build log lines for a developer to inspect by creating a diff between the logs from a failed and a successful build~\cite{amar2019mining}.
 
-These approaches have various downsides and strengths:
+These approaches have various strengths and weaknesses:
 Regular expressions are exact but difficult to maintain~\cite{michael2019regexes}.
 Custom parsers are powerful though fragile towards changes in the log structure.
 The structure of build logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and the environment used.
