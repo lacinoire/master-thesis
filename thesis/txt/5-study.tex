@@ -49,23 +49,23 @@ The size of the test set is one.
 To determine how structurally similar the examples for the chunk retrieval techniques need to be, we record the structural categories of the examples in the training and test sets.
 
 \paragraph{RQ2.3: Accuracy Metrics}
-To measure the accuracy of the retrieved chunks we save the output lines of the chunk retrieval run on the input of the test example ($retrievedlines$).
-As oracle in our evaluation, we save the desired lines from the output of the test example ($desiredlines$).
+To measure the accuracy of the retrieved chunks we save the output lines of the chunk retrieval run on the input of the test example ($\mathit{RetrievedLines}$).
+As oracle in our evaluation, we save the desired lines from the output of the test example ($\mathit{DesiredLines}$).
 
 We calculate the following metrics:
 \begin{itemize}
-	 \itemsep0.5em
-	\item True positives: $TP = desiredlines \cap retrievedlines$
-	\item Precision: $Precision =  \frac{\# TP}{\# retrievedlines}$
-	\item Recall: $Recall = \frac{\# TP}{\# desiredlines}$
-	\item F$_{1}$-score: $2 * \frac{Precision * Recall}{Precision + Recall}$
-	\item Successful retrieval: $true\ if\ Recall = 1$
+	 \itemsep0.75em
+	\item True positives: $\mathit{DesiredLines} \cap \mathit{RetrievedLines}$
+	\item Precision: $\dfrac{\# \mathit{TruePositives}}{\# \mathit{RetrievedLines}}$
+	\item Recall: $\dfrac{\# \mathit{TruePositives}}{\# \mathit{DesiredLines}}$
+	\item F$_{1}$-score: $2 \cdot \dfrac{\mathit{Precision} \cdot \mathit{Recall}}{\mathit{Precision} + \mathit{Recall}}$
+	\item Successful retrieval: $\mathit{true}\ \mathit{if}\ \mathit{Recall} = 1$
 \end{itemize}
 
 Precision of a chunk retrieval describes which proportion of the retrieved lines were targeted.
 Recall of a chunk retrieval describes which proportion of the targeted lines were retrieved.
 Throughout the presentation and discussion of our results we show these two metrics separate, as they might have a different weight when choosing a suitable technique for a task.
-In addition, we calculate the F1-Score, the harmonic mean of precision and recall.
+In addition, we calculate the F1-score, the harmonic mean of precision and recall.
 We define a successful retrieval as one where all desired lines were extracted, therefore when recall is one.
 
 Recall and precision of CTS and KWS vary with the number of lines selected for retrieval.
