@@ -96,13 +96,13 @@ The output of a chunk retrieval with KWS is well suited to be read by humans.
 \end{figure}
 
 \section{Recommendations of Suitable Techniques}
-After discussing three chunk retrieval techniques separately we now want to unify out results into one recommendation scheme.
-We present a decision tree, which asks questions to a developer or researcher who wants to retrieve information chunks from build logs.
-The answers lead the user to more questions or the recommended technique as leaf nodes.
+After discussing three chunk retrieval techniques separately we now want to unify our results into one recommendation scheme.
+We present a decision tree, which developers and researchers who want to retrieve information chunks from build logs can follow.
+The decision tree is built up of questions which either lead to more questions or to a leaf node containing a recommended technique.
 Figure~\ref{fig:crt-recommendation} presents the decision tree.
 
 \emph{Caveat!} This is a preliminary theory based on the results from our comparison study.
-The recommendations are therefore likely based on our implementation of the chunk retrieval techniques as well as the logs in the \emph{LogChunks} data set.
+The recommendations are therefore based on our implementation of the chunk retrieval techniques as well as the logs in the \emph{LogChunks} data set.
 This decision tree is the answer to our first research question about which criteria influence the suitability of a chunk retrieval technique.
 The earlier in the decision tree a criterion is noted, the more important it is when distinguishing the techniques.
 
@@ -112,23 +112,23 @@ Then the information chunks in all training examples and the analyzed build log 
 
 If the information chunks are from multiple structural categories, meaning the are not represented in the same structural way within the build logs, and recall is more important than precision we recommend to use KWS\@.
 If the representations are from multiple structural categories and precision is more important than recall to the user we recommend CTS\@.
-We also recommend CTS when the representations are from one structural category, the user does not require a high confidence in the precision or recall of the outcome and the user rather have output with low recall instead of no output at all.
+We also recommend CTS when the representations are from one structural category, the user does not require a high confidence in the precision or recall of the outcome and the user would rather have output with low recall instead of no output at all.
 When the representations are from one structural category and the user wishes a high confidence in the correctness of the output or prefers no output over output with low recall, we recommend PBE\@.
 
 \paragraph{Example of Using the Recommendation Scheme}
 To illustrate how one would use our decision tree to find a suitable chunk retrieval technique we follow with describing two concrete examples: a researcher investigating why CI builds fail and a software team wanting to monitor their build performance.
 
-In our first example, a researcher studies whether there test failures in CI are caused by a small or by a large group of test cases.
+In our first example, a researcher studies whether test failures in CI are caused by a small or by a large group of test cases.
 They gather CI build logs from various projects, which are their only available data source.
-The task of the researcher is to extract the name of the failing test case from each build log.
-When they use our recommendation scheme to select a chunk retrieval technique, they first have to estimate how uniform the representation of the failing test case is in the investigated build logs.
+The task of the researcher is to extract the names of the failing test cases from each build log.
+When they use our recommendation scheme to select a chunk retrieval technique, they first have to estimate how uniform the representation of the failing test cases is in the investigated build logs.
 As the researcher is covering a wide range of build tools and development languages, the log chunks they target are in various, not predictable structural representations.
 The next question is whether they value precision over recall.
 As they have to manually inspect the results of both CTS and KWS, they choose recall over precision to avoid having to inspect the whole log in case the relevant information chunk was not retrieved.
 Therefore, our decision tree recommends them to use KWS\@.
 
 In case the researchers want to avoid manually inspecting the retrieval results, they have to first separate the CI build logs according to the test tool responsible for logging the test results.
-Then the targeted log chunks are from one structural category and they can use PBE, trained with examples from each tes tool separately.
+Then the targeted log chunks are from one structural category and they can use PBE, trained with examples from each test tool separately.
 
 In our second example, a software development team wants to monitor the performance of the phases within their CI build.
 They are using Travis CI, which measures the duration of build phases and documents them within the build log.
@@ -151,17 +151,17 @@ Tuning the text similarity meta-parameters more to the specific use case of chun
 
 \paragraph{Data Set}
 The outcomes of our comparison study are highly dependent on the build logs from the \emph{LogChunks} data set.
-It only consists of build logs from open source and therefore it is not clear whether our results are generalizable to industry projects.
+It only consists of build logs from open source projects and therefore it is not clear whether our results are generalizable to industry projects.
 We only collected build logs from Travis CI, however we chose to evaluate on an information chunk whose format is not dependent on Travis CI\@.
 This is because the reason the build failed is described within the build logs by the tools themselves and not the Travis CI environment.
 
 \paragraph{Training Set Size}
-Especially the results for CTS might influenced by the fact that we only trained on one to five examples.
+Especially the results for CTS might be influenced by the fact that we only trained on one to five examples.
 We chose this small training set size as the training examples have to be provided per repository and we expect a developer to not want to provide more examples than the small numbers we evaluated on.
 
 \paragraph{Few Samples with Many Structural Categories}
 Our comparison study shows fewer measurements with many structural categories than with one category.
-This stems from the fact that we use such a realistic data set which in many cases has only one or few structural categories.
+This stems from the fact that we use a realistic data set which in many cases has only one or few structural categories.
 % \bp{
 % chronologically selected examples -> very specific view, devs/users might pick more representative examples
 

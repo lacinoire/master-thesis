@@ -106,15 +106,12 @@
 %% article.
 \begin{abstract}
 Build failures are common in continuous integration (CI), but identifying the root cause of a failure is difficult.
-Various tools have been proposed to boil down verbose build logs to the specific lines valuable to the developer.
-We present \emph{LogChunks}, a collection of 797 Travis CI build logs from 80 GitHub repositories spread over 29 programming languages.
+To stimulate research in this area, we present \emph{LogChunks}, a collection of 797 Travis CI build logs from 80 GitHub repositories spread over 29 programming languages.
 For each build log we manually labeled the log part (chunk) describing why the build failed.
 We validated the data set by surveying the developers of the projects which produced the builds.
-In addition, the data set categorizes the log chunks according to their format within the log text and provides keywords that a developer would use to search for the log chunks.
-The width and depth of the \emph{LogChunks} data set makes it an ideal basis to further explore build log analysis, which can ultimately increase our understanding of CI build failures.
-\emph{LogChunks} can be the basis to assess further build log analysis techniques and studies about why CI builds fail.
-
-
+Various tools have been proposed to boil down verbose build logs to the specific lines valuable to the developer.
+The width and depth of the \emph{LogChunks} data set makes it an ideal basis to benchmark build log analysis techniques.
+Benchmarking different techniques will advance this research area and ultimately increase our understanding of CI build failures.
 \end{abstract}
 
 %%
@@ -164,14 +161,13 @@ The width and depth of the \emph{LogChunks} data set makes it an ideal basis to 
 \section{Introduction}
 Continuous Integration (CI) has become a common practice in software engineering~\cite{hilton2016usage}.
 Many software projects use CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect bugs early~\cite{vasilescu2015quality,duvall2007continuous}, improve developer productivity~\cite{miller2008hundred,hilton2016usage} and communication~\cite{downs2012ambient}.
-A build on a CI server typically compiles and packages the software, executes tests~\cite{beller2017oops} and various kinds of static analyses~\cite{zampetti2017open}.
-
 CI builds produce logs which report the results of the steps within the build.
 These build logs contain a lot of valuable information for developers and researchers.
 %Developers examine time measurement log statements to track how different stages of the build process perform.
 %Researchers collect the commands triggering the build steps to reverse engineer the build configuration when only the log is available to them.
 Both groups analyze build logs for descriptions of compiler errors, linter warnings or failed test notifications to uncover why a CI build failed~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
-Build logs are verbose and long~\cite{beller2017oops}, making them inadequate for direct consumption.
+
+The problem is, that build logs are verbose and long~\cite{beller2017oops}, making them inadequate for direct consumption.
 Therefore, developers and researchers can only efficiently use the information within the build logs if they can adequately retrieve the parts (chunks) of the log that describe the targeted information.
 
 There are different techniques to retrieve information chunks from CI build logs.
@@ -186,20 +182,21 @@ Custom parsers are powerful though fragile towards changes in the log structure.
 The structure of build logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and the environment used.
 Taking a diff between failed and successful logs can reduce the information to be processed, but the imprecise output needs to be interpreted by a developer~\cite{amar2019mining}.
 At the moment there is only anecdotal evidence on the performance of these techniques and when a technique should be preferred over other alternatives.
-In addition, there is currently no data set available to evaluate and compare such chunk retrieval techniques for build logs.
+In addition, there is currently no data set available to benchmark such build log analysis techniques.
 
 We present \emph{LogChunks}, a collection of 797 Travis CI build logs from 80 GitHub repositories spread over 29 programming languages.
 For each build log, we manually labeled which substring describes why the build failed.
 The data set also provides keywords a developer would use to search for the labeled log chunk and categorizes the log chunks according to their format within the log.
 
-In this paper, we illustrate potential use cases of \emph{LogChunks}.% and our past study using the data set.
-Section~\ref{sec:related-data-sets} describes related data sets and how \emph{LogChunks} differs from them.
-The following section introduces the data schema, how to access the data set, as well as limitations and potential improvements.
-We present our data collection in Section~\ref{sec:data-collection}.
-To validate our labels we performed a second labeling of a sample of the data.
-In addition, we surveyed the developers, whose commits triggered the builds, whether our labeled log chunk describes why their build failed.
-Section~\ref{sec:validation} presents the two validation studies.
-To conclude we describe limitations as well as potential improvements of \emph{LogChunks}.
+% andy: okay if no structure overview in 4 page paper, place too valuable
+% In this paper, we illustrate potential use cases of \emph{LogChunks}.% and our past study using the data set.
+% Section~\ref{sec:related-data-sets} describes related data sets and how \emph{LogChunks} differs from them.
+% The following section introduces the data schema, how to access the data set, as well as limitations and potential improvements.
+% We present our data collection in Section~\ref{sec:data-collection}.
+% To validate our labels we performed a second labeling of a sample of the data.
+% In addition, we surveyed the developers, whose commits triggered the builds, whether our labeled log chunk describes why their build failed.
+% Section~\ref{sec:validation} presents the two validation studies.
+% To conclude we describe limitations as well as potential improvements of \emph{LogChunks}.
 
 We published \emph{LogChunks} through Zenodo: \todo{insert zenodo link}.
 
@@ -332,7 +329,7 @@ Following, this section defines in more detail the labeled log chunk, search key
   \toprule
   & Description & Unit & Example \\
   \midrule
-  Log & relative path to the input build log & Path to Text File & Haskell/koalaman@shellcheck/failed/501296412.log \\
+  Log & relative path to the input build log & Path to Log File & Haskell/koalaman@shellcheck/failed/501296412.log \\
   Chunk & log chunk that describes why the build failed & String & shellcheck.hs:442:19: error:
     Variable not in scope: doesPathExist :: [Char] -> IO Bool \\ 
   Keywords & keywords a developer would use to search for the log chunk & Strings & Failures, FAILURE, FAILED \\ 
@@ -556,7 +553,7 @@ This is because we had to trim long labeled extractions to keep the mails readab
 One of our extractions only showed a warning and the developer proposed to also include the line above, stating that warnings are treated as errors in the build.
 In others that were identified as incorrect, we labeled the error message of an error that later ignored and did not lead to the build failing.
 
-\section{Conclusion}
+\section{Summary}
 In this paper, we introduced the \emph{LogChunks} data set encompassing about 800 build logs from a wide range of projects using Travis CI\@.
 For each log, we annotated the log chunk describing why the build failed and provide keywords a developer would use to search for the log chunk as well as a categorization of the log chunks according to their format within the log.
 Still, there are limitations to our data set, which we present in the following.

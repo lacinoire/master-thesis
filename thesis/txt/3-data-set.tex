@@ -28,18 +28,18 @@ Further, it presents the labeling process and how we validated the labeled data,
 
 \section{Motivation}
 We create \emph{LogChunks} as a data set for our empirical comparison study of the three chunk retrieval techniques PBE, CTS and KWS\@.
-In the following, we motivate which repositories and build logs we collect and what data we label for each build log.
+In the following, we motivate which repositories and build logs we collect and which data we label for each build log.
 
 \paragraph{Log Collection}
 Existing build log analysis approaches, like writing a custom parser and creating regular expressions, are specific to the build tools which create the targeted log output.
-In contrast to that, our findings about the chunk retrieval techniques should not be specific to a specific build tool.
-As the main development language in a repository influences the build tools, we want our comparison study and \emph{LogChunks} cover a wide array of development languages.
+In contrast to that, our findings about the chunk retrieval techniques should not be specific to a particular build tool.
+As the main development language in a repository influences the build tools, we want our comparison study and \emph{LogChunks} to cover a wide array of development languages.
 This is why we selected GitHub repositories from 29 different main development languages for our data set.
 
 Examples configure the chunk retrieval techniques we investigate.
 As the structure of a build log changes from project to project, these examples are specific to one project.
 A user of a chunk retrieval technique has to manually create the examples for for each targeted information and project.
-If the effort of creating examples should not too high, e.g. as high as developing a custom extraction program.
+The effort of creating these examples should not be too high, e.g. as high as developing a custom extraction program.
 For that reason, we choose ten logs and examples per repository for \emph{LogChunks}.
 
 \paragraph{Targeted Log Chunk}
@@ -178,7 +178,7 @@ FAIL Bug#71412 ArrayIterator reflection parameter info [ext/spl/tests/bug71412.p
 *{\color{cyan}-=-=-=-=-=-}*
 TEST 9895/13942 [2/2 concurrent test workers running]
 \end{lstlisting}
-	\caption{Log chunk with one line of context from the \emph{same} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
+	\caption[Log chunk from the \emph{same} structural category than the log chunk presented in Listing \ref{lst:examples}]{Log chunk from the \emph{same} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from one line of context}
 	\label{lst:same-category}
 \end{figure}
 
@@ -191,7 +191,7 @@ Illegal switch 'j' specified!
 *{\color{cyan}-=-=-=-=-=-}*
 Synopsis:
 \end{lstlisting}
-	\caption{Log chunk with one line of context from a \emph{different} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
+	\caption[Log chunk from a \emph{different} structural category than the log chunk presented in Listing \ref{lst:examples}]{Log chunk from a \emph{different} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk one line of context}
 	\label{lst:different-category}
 \end{figure}
 
