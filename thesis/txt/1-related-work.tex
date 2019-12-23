@@ -13,8 +13,8 @@ In the second section we describe the existing methods which are the foundation 
 
 \section{Continuous Integration and Build Logs}
 We describe existing studies about CI to show that CI is a relevant topic within the software engineering research community.
-We explain how the researchers gather information about CI usage in software projects through build log analysis and why the chunk retrieval techniques we investigate simplifies their data collection.
-Next, this section moves on to past works about augmenting build logs to make it easier for developers to inspect them.
+We explain how researchers gather information about CI usage in software projects through build log analysis and why the chunk retrieval techniques we investigate simplifys their data collection.
+This section moves on to past works about augmenting build logs to make it easier for developers to inspect them.
 The presented approaches are related to and can benefit from the techniques we analyze in this thesis.
 Further, we classify build logs as semi-structured data and differentiate our work from system log analysis.
 % CI describes the practice of integrating, building and testing source code changes often and fast.
@@ -34,26 +34,25 @@ Further, we classify build logs as semi-structured data and differentiate our wo
 
 \subsection{Continuous Integration}
 \label{sec:rw-ci}
-The first paragraphs of this section present the results of past research into CI: its influence on the software engineering processes, the reasons for CI builds to fail and the role of testing and static analysis in CI builds.
-Later we describe how these researchers obtain the data sets these works are based on.
+The first paragraphs of this section present the results of past research into CI: its influence on the software engineering processes, the reasons for CI builds to fail and the role of testing and of static analysis in CI builds.
+Later we describe how researchers obtain the data sets these works are based on.
 We show how they analyze build logs and why the chunk retrieval techniques we investigate can support them to broaden their studies.
 % This section starts with an overview on research into why CI is used and its impact on development.
 % It presents analyses on why CI builds fail and how testing and static analysis tools are used within CI\@.
 % We explain how researchers compose data sets for their work on CI and how chunk retrieval techniques can support them.
 
 \paragraph{Motivation for CI and Impact of CI}
-Why teams choose to use CI and its impac on the software development process is explored by several existing works.
+Why teams choose to use CI and its impact on the software development process is explored by several existing works.
 Hilton et al.~\cite{hilton2017trade-offs} investigate the motivations of developers to use CI through several surveys.
-Developers use CI to ensure consistency and quality across different execution environments and increase confidence into the code they deploy.
+They find that, developers use CI to ensure consistency and quality across different execution environments and increase confidence in the code they deploy.
 Hilton et al.~\cite{hilton2016usage} also analyze how and why open source projects use CI\@.
-They observe CI usage in a broad range of projects, it supports them to catch bugs earlier and have more confidence in a successful build and shorten release cycles.
-Stahl and Bosch~\cite{staahl2014modeling} provide a holistic review of literature on automatic build environments in industry projects.
+They observe CI usage in a broad range of projects, it supports developers to catch bugs earlier and to shorten release cycles.
+Stahl and Bosch~\cite{staahl2014modeling} provide a review of literature on automatic build environments in industry projects.
 They propose a descriptive structure to model build flows, which they found to be highly different from project to project.
 Vasilescu et al.~\cite{vasilescu2015quality} analyze a broad rage of open source projects written in popular languages on GitHub.
-They compare their usage of CI with the successful merges of pull requests and find that CI increase the number of successful merges, internal as well as external contributions, and allows the team members to uncover more bugs.
-In a recent study, Vasallo et al.~\cite{vassallo2019every} interview developers on how they determine why a CI build failed.
-They model how these developers resolve failures.
-The first and most important steps when developers want to fix a build failure is to locate the error within the build log.
+They compare the usage of CI with the successful merges of pull requests and find that CI increase the number of successful merges and allows the team members to uncover more bugs.
+In a recent study, Vasallo et al.~\cite{vassallo2019every} interview developers on how they determine why a CI build failed and model how these developers resolve failures.
+Vasallo et al. find that, the first and most important steps when developers want to fix a build failure is to locate the error within the build log.
 Then the developers use the additional information provided with and around the error message to understand the details of the failures.
 This shows that the build log is a central source of information about a CI build.
 % Vassallo et al.~\cite{vassallo2018continuous} conducted a survey study on how ci influences developers to continuously refactor their code to fix ci quality analysis warnings.
@@ -62,31 +61,30 @@ This shows that the build log is a central source of information about a CI buil
 % Vassallo et al.~\cite{vassallo2019automated} analyzed build logs, source code repository content and build metadata of open source repositories for CI anti-patterns.
 
 \paragraph{Build Failures in CI}
-Various researchers look into why CI builds fail and the impact of build failures on the development workflow.
+Various researchers look into why CI builds fail and into the impact of build failures on the development workflow.
 Seo et al.~\cite{seo2014programmers} find that a small group of error types such as dependency mismatches are the most prominent cause of build failures at Google.
-In addition, most failures are resolved within two builds.
-Rausch et al.~\cite{rausch2017empirical} analyze CI builds of open source Java projects and categorize why builds failed.
-Most builds fail because of failing tests.
-For most projects, over half of the failed builds follow another failed build.
-Their data shows that most failures occur in the second half of the build runtime, which can cause long delays in the feedback loop, especially when builds are automatically retried upon failure.
+In addition, they notice that most failures are resolved within two builds.
+Rausch et al.~\cite{rausch2017empirical} analyze CI builds of open source Java projects and find that most builds fail because of failing tests.
+For most projects, over half of the failed builds follow a previous failed build.
+Rausch et al.'s data shows that most failures occur in the second half of the build runtime, which can cause long delays in the feedback loop, especially when builds are automatically retried upon failure.
 Vassallo et al.~\cite{vassallo2017a-tale} compare open source projects in Java to industrial ones.
 They determine that testing failures are more common than compilation errors.
-Open source builds fail most often because of unit tests, whereas release preparations is the primary cause in industrial projects.
+Open source builds fail most often because of unit tests, whereas release preparations are the primary cause in industrial projects.
 
 \paragraph{Static Analysis and Testing in CI}
-Automated static analysis tools are the focus of Zampetti et al.~\cite{zampetti2017open} in their study of java projects from GitHub.
+Automated static analysis tools are the focus of Zampetti et al.~\cite{zampetti2017open} in their study of Java projects from GitHub.
 Their results show that static analysis is responsible for a small amount of build failures and mainly responsible for warned builds.
 Almost all analyzed projects use custom configurations for the static analysis, however the configuration rarely changes.
-Failures because of static analysis warnings are fixed in a short time frame.
-Beller et al.~\cite{beller2017oops} show that testing is central to continuous integration when evaluating Travis CI logs for Java and ruby builds.
-They observe a high variety between programming langues, i.e. in the kind and number of tests which are run, as well as how often tests fail.
+Failures because of static analysis warnings are observed to be fixed in a short time frame.
+Beller et al.~\cite{beller2017oops} show that testing is central to continuous integration when evaluating Travis CI logs for Java and Ruby builds.
+They observe a high variation between programming langues, in the kind and number of tests which are run, as well as how often tests fail.
 The low failure rates on the CI server hint at code being tested before it is sent to the server.
 
 \paragraph{Data Sets Powering CI Research}
-The works presented in this section are based on either developer surveys or data sets, containing build metadata or build logs.
+The works presented in this section are based on either developer surveys or data setsa containing build metadata or build logs.
 Seo et al.~\cite{seo2014programmers} and Vassallo et al.~\cite{vassallo2017a-tale} based their analyses on sets of build logs collected from industry partners.
 Beller et al.~\cite{beller2017travistorrent} created the \emph{TravisTorrent} data set providing access to build metadata from more than 1,000 projects from Travis CI~\cite{travisci2019webpage}.
-TravisTorrent was the basis for several of the works mentioned in this section~\cite{rausch2017empirical,zampetti2017open,vassallo2017a-tale,beller2017oops}.
+\emph{TravisTorrent} was the basis for several of the works mentioned in this section~\cite{rausch2017empirical,zampetti2017open,vassallo2017a-tale,beller2017oops}.
 Ghaleb et al.~\cite{ghaleb2019studying} aim to identify noise in build breakage data.
 They classify build failures from \emph{TravisTorrent} according to whether they were caused by an environmental failure or caused by a developer change.
 They also identify cascading build failures created by existing unfixed errors and allowed failures, whose results were later labeled by developers to be ignored.
