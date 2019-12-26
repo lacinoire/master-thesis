@@ -6,14 +6,14 @@
 
 \chapter{Introduction}
 Continuous Integration (CI) has become a common practice in software engineering~\cite{hilton2016usage}.
-Many software projects use CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect defects early~\cite{vasilescu2015quality,duvall2007continuous}, improve developer productivity~\cite{miller2008hundred,hilton2016usage} and communication~\cite{downs2012ambient}.
+Many software projects use CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect defects early~\cite{vasilescu2015quality,duvall2007continuous} and to improve developer productivity~\cite{miller2008hundred,hilton2016usage} and communication~\cite{downs2012ambient}.
 A build on a CI server typically compiles and packages the software, executes tests~\cite{beller2017oops} and performs various kinds of static analyses~\cite{zampetti2017open}.
 
 CI builds produce logs which report the results of the steps within the build.
 These build logs contain valuable information for developers and researchers.
 Developers examine log statements of time measurements to track how steps of the build process perform.
 Researchers collect the commands triggering different build steps to reverse engineer the build configuration when only the log is available to them.
-Both groups analyze build logs for descriptions of compiler errors, linter warnings or failed tests to uncover why a CI build failed~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
+Both groups analyze build logs for descriptions of compiler errors or failed tests to uncover why a CI build failed~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
 
 The problem is, that build logs are verbose and long~\cite{beller2017oops}, making them inadequate for direct consumption.
 Therefore, developers and researchers can only efficiently use the information within build logs if they can adequately retrieve those parts (chunks) of the log that describe the targeted information.
@@ -25,7 +25,8 @@ Recently, Amar et al.\ reduced the number of build log lines for a developer to 
 
 These approaches have various strengths and weaknesses:
 Regular expressions are exact but difficult to maintain.
-They are developed by looking at a few exemplary build logs. Updating them whenever new cases are introduced is a tedious and error-prone task~\cite{michael2019regexes}.
+They are developed by looking at a few exemplary build logs.
+Updating regular expressions whenever new cases are introduced is a tedious and error-prone task~\cite{michael2019regexes}.
 Custom parsers are powerful though fragile towards changes in the log structure.
 The structure of build logs changes from project to project~\cite{staahl2014modeling} as it depends on the tools and the environment used.
 Taking a diff between the logs of failed and successful builds can reduce the information to be processed, but the imprecise output needs to be interpreted by a developer~\cite{amar2019mining}.
@@ -36,6 +37,7 @@ Developers and researches currently have little support when choosing which tech
 The goal of this thesis is to investigate different chunk retrieval techniques for build logs and describe under which circumstances certain techniques can be recommended over others.
 We aim to characterize different chunk retrieval techniques, as well as the information retrievable from CI build logs.
 For \textbf{Research Question 1} (\textbf{RQ1}), we analyze which criteria influence the suitability of a chunk retrieval technique for CI build logs.
+
 We implement and evaluate three chunk retrieval techniques:
 \begin{itemize}
   \item program synthesis by example using the Microsoft PROSE library (referred to as PBE),

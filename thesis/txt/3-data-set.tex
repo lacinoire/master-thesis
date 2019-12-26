@@ -72,14 +72,14 @@ As we evaluate the techniques separately for separate projects, the categorizati
 \label{sec:related-data-sets}
 This section presents existing data sets of CI build logs and why \emph{LogChunks} is unique among them.
 
-\subsection{TravisTorrent}
+\paragraph{TravisTorrent}
 The \emph{TravisTorrent} data set~\cite{beller2017travistorrent} collects a broad range of metadata about builds on Travis CI\@.
 It combines data accessible through the public Travis CI API~\cite{travisci2019apidoc}, related data from GHTorrent~\cite{gousios2013ghtorrent}, the corresponding git repository and data obtained through analysis of build logs.
 The data obtained through build logs contains the names of failing test cases, similar to the chunk describing why the build failed in \emph{LogChunks}.
 However, these values are obtained through a manually developed parser, which only supports specific Ruby test runners and Java Maven or JUnit logs.
 \emph{LogChunks} provides manually labeled data on the description of why the build failed for a much wider selection of programming languages.
 
-\subsection{Travis CI Build Log Data Set}
+\paragraph{Travis CI Build Log Data Set}
 Loriot et al.~\cite{loriot2019dataset, loriot2019styler} collected a large amount of Travis CI build logs from 130 GitHub repositories to analyze their use of the Checkstyle plugin.
 They selected Maven repositories that included the Checkstyle plugin and also used Travis CI\@.
 Their data set only provides the plain build logs, whereas \emph{LogChunks} additionally provides manually labeled data about the chunk describing why a build failed.
@@ -151,7 +151,7 @@ When the reason \emph{why} the build failed was described in an external log, th
 \paragraph{Keywords}
 The \texttt{Keywords} contain a list of one to three strings appearing within the \texttt{Chunk} or in the area around it in the build log.
 We selected keywords we would use to search for the log \texttt{Chunk} after analyzing about 800 build logs manually.
-Some example keywords from \emph{LogChunks} are: ``\texttt{FAIL}'', ``\texttt{Error}'', ``\texttt{failed}'', ``\texttt{[-]}'', ``\texttt{===================================}'' or ``\texttt{ERR!}''.
+Some example keywords from \emph{LogChunks} are: ``\texttt{FAIL}'', ``\texttt{Error}'', ``\texttt{failed}'', ``\texttt{[-]}'', ``\texttt{===================}'' or ``\texttt{ERR!}''.
 
 \paragraph{Category}
 For each repository, we assign \emph{structural categories} to the examples.
@@ -338,38 +338,7 @@ After manual correction, 91\% of the received answers said our labeled chunks we
 One of our chunks only showed a warning and the developer proposed to also include the line above, stating that warnings are treated as errors in the build.
 In others that were identified as incorrect, we labeled the error message of an error that was later ignored and did not lead to the build failing.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/dev-mail.png}
-	\caption{An example of the mails we sent out to developers for validation of our labeled log part.}
-	\label{fig:dev-mail}
-\end{figure}
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/dev-survey.png}
-	\caption{Survey for the validation with developers.}
-	\label{fig:dev-survey}
-\end{figure}
-
-\begin{figure}[htbp]
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth, clip]{img/dev-mails/extraction-correct.pdf}
-		\caption{Label correctness as validated by developers.}
-		\label{fig:mails-extraction-correct}
-	\end{minipage}\hfill
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth, clip]{img/dev-mails/logs-per-mail.pdf}
-		\caption{Average number of logs per mail sent out.}
-		\label{fig:mails-logs-per-mail}
-	\end{minipage}
-\end{figure}
-
-\begin{figure}[htbp]
+\begin{figure}[p]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
@@ -379,10 +348,43 @@ In others that were identified as incorrect, we labeled the error message of an 
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
+		\includegraphics[width=\textwidth, clip]{img/dev-mails/logs-per-mail.pdf}
+		\caption{Average number of logs per mail sent out.}
+		\label{fig:mails-logs-per-mail}
+	\end{minipage}
+\end{figure}
+
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=\textwidth, clip]{img/dev-mail.png}
+	\caption{An example of the mails we sent out to developers for validation of our labeled log part.}
+	\label{fig:dev-mail}
+\end{figure}
+
+
+\begin{figure}[p]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, clip]{img/dev-mails/extraction-correct.pdf}
+		\caption{Label correctness as validated by developers.}
+		\label{fig:mails-extraction-correct}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
 		\includegraphics[width=\textwidth, clip]{img/dev-mails/answers-received-builds.pdf}
 		\caption{Proportions of logs about which mails were answered, unanswered, not delivered or we could not find a corresponding mail address.}
 		\label{fig:mails-answers-received-builds}
 	\end{minipage}
 \end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=\textwidth, clip]{img/dev-survey.png}
+	\caption{Survey for the validation with developers.}
+	\label{fig:dev-survey}
+\end{figure}
+
 
 \end{document}

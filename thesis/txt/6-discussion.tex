@@ -19,12 +19,12 @@ This chapter presents the answers to our research questions:
 
 The first section discusses for PBE, CTS and KWS separately in which cases they perform best.
 It details for which types of input build logs, available training examples and consumption of the retrieved output each technique is suited.
-In the following section we discuss which of these criteria should influence the decision on a technique most.
+In the following section we discuss which of these criteria should influence the decision to use a certain technique most.
 Based on our empirical comparison, we present a decision tree between the three techniques we investigated.
 
 \section{Interpretation of Study Results}
 This section discusses the study results for each of the analyzed chunk retrieval techniques separately.
-It gives recommendations on which kind of information chunk targets are best for each technique and for what kind of usage the output is suitable.
+It gives recommendations which kind of information chunk targets are best for each technique and for what kind of usage the respective output is suitable.
 
 \begin{table}[htbp]
 \centering
@@ -55,16 +55,17 @@ When the training examples are of the same structure, two examples are enough in
 In our study, additional training examples did not improve the chunk retrieval.
 
 \paragraph{Retrieval Output Usage}
-If the program synthesis succeeds and applying the regular expression program yields an output, PBE shows a high precision and high recall.
-The tool clearly identifies a failing program synthesis or no output from the program applied to a build log.
-Therefore, if there is an output, the user can have high confidence it is the correct output.
-This makes output from PBE chunk retrieval well suited for consumption of other software components.
+If the program synthesis succeeds and applying the regular expression program yields an output, PBE shows a high precision and a high recall.
+The tool clearly identifies a failing program synthesis or when no output from the program applied to a build log is obtained.
+Therefore, if there is an output, the user can have high confidence that it is the correct output.
+This makes output from PBE chunk retrieval well suited for consumption by other software components.
 
 \subsection{Common Text Similarity (CTS)}
 \paragraph{Configuration and Input}
 Chunk retrieval using CTS also yields better results the fewer structural categories are present in the training and test examples.
+
 The number of training examples had no noticeable influence on precision or recall in our study.
-Information retrieval techniques like text similarity commonly learn on a higher number of examples than we used for our study.
+Information retrieval techniques like text similarity commonly learn on a higher number of examples than used for our study.
 Future work is needed to investigate how many examples yield improvements in the chunk retrieval over a single training example.
 
 Extracting the average number of lines present in the training examples gives the best retrieval results for CTS, according to the F$_{1}$-score.
@@ -75,7 +76,7 @@ Therefore, retrieval output from CTS is suited to be read by a human.
 
 \subsection{Keyword Search (KWS)}
 \paragraph{Configuration and Input}
-KWS has a higher recall than both other techniques for multiple structural categories present in the training and test examples.\@.
+KWS has a higher recall than the two other techniques for multiple structural categories present in the training and test examples.\@.
 This makes KWS a good technique if there is little prior knowledge on how the targeted log chunk is represented in the build log to be analyzed.
 For the example of extracting the reason the build failed, KWS is best suited if a build can fail in various steps logged by different tools and no pre-categorization of where the build failed is available.
 
@@ -96,13 +97,14 @@ The output of a chunk retrieval with KWS is well suited to be read by humans.
 \end{figure}
 
 \section{Recommendations of Suitable Techniques}
-After discussing three chunk retrieval techniques separately we now want to unify our results into one recommendation scheme.
+After discussing the three chunk retrieval techniques separately we now want to unify our results into one recommendation scheme.
 We present a decision tree, which developers and researchers who want to retrieve information chunks from build logs can follow.
 The decision tree is built up of questions which either lead to more questions or to a leaf node containing a recommended technique.
 Figure~\ref{fig:crt-recommendation} presents the decision tree.
 
 \emph{Caveat!} This is a preliminary theory based on the results from our comparison study.
 The recommendations are therefore based on our implementation of the chunk retrieval techniques as well as the logs in the \emph{LogChunks} data set.
+
 This decision tree is the answer to our first research question about which criteria influence the suitability of a chunk retrieval technique.
 The earlier in the decision tree a criterion is noted, the more important it is when distinguishing the techniques.
 
@@ -110,24 +112,24 @@ The first and most important aspect are the structural categories.
 Are the information chunks you would like to retrieve always presented in the same structural way within the build logs?
 Then the information chunks in all training examples and the analyzed build log are in the same structural category.
 
-If the information chunks are from multiple structural categories, meaning the are not represented in the same structural way within the build logs, and recall is more important than precision we recommend to use KWS\@.
+If the information chunks are from multiple structural categories, i.e. they are not represented in the same structural way within the build logs, and recall is more important than precision we recommend to use KWS\@.
 If the representations are from multiple structural categories and precision is more important than recall to the user we recommend CTS\@.
-We also recommend CTS when the representations are from one structural category, the user does not require a high confidence in the precision or recall of the outcome and the user would rather have output with low recall instead of no output at all.
+We also recommend CTS when the representations are from one structural category, when the user does not require a high confidence in the precision or recall of the outcome and when the user would rather have output with low recall instead of no output at all.
 When the representations are from one structural category and the user wishes a high confidence in the correctness of the output or prefers no output over output with low recall, we recommend PBE\@.
 
 \paragraph{Example of Using the Recommendation Scheme}
-To illustrate how one would use our decision tree to find a suitable chunk retrieval technique we follow with describing two concrete examples: a researcher investigating why CI builds fail and a software team wanting to monitor their build performance.
+To illustrate how one would use our decision tree to find a suitable chunk retrieval technique we describe two concrete examples: a researcher investigating why CI builds fail and a software team wanting to monitor their build performance.
 
 In our first example, a researcher studies whether test failures in CI are caused by a small or by a large group of test cases.
 They gather CI build logs from various projects, which are their only available data source.
 The task of the researcher is to extract the names of the failing test cases from each build log.
 When they use our recommendation scheme to select a chunk retrieval technique, they first have to estimate how uniform the representation of the failing test cases is in the investigated build logs.
-As the researcher is covering a wide range of build tools and development languages, the log chunks they target are in various, not predictable structural representations.
+As the researcher is covering a wide range of build tools and development languages, the log chunks they target are in various, non-predictable structural representations.
 The next question is whether they value precision over recall.
 As they have to manually inspect the results of both CTS and KWS, they choose recall over precision to avoid having to inspect the whole log in case the relevant information chunk was not retrieved.
 Therefore, our decision tree recommends them to use KWS\@.
 
-In case the researchers want to avoid manually inspecting the retrieval results, they have to first separate the CI build logs according to the test tool responsible for logging the test results.
+In case the researcher wants to avoid manually inspecting the retrieval results, they have to first separate the CI build logs according to the test tool responsible for logging the test results.
 Then the targeted log chunks are from one structural category and they can use PBE, trained with examples from each test tool separately.
 
 In our second example, a software development team wants to monitor the performance of the phases within their CI build.
@@ -140,7 +142,7 @@ There are several threats to the validity of the conclusions of our work.
 
 \paragraph{Implementation}
 Our results are highly dependent on our implementation of the investigated chunk retrieval techniques and the libraries we used.
-Our implementation of PBE is mainly based on the program synthesis provided by PROSE\@.
+Our implementation of PBE is severely based on the program synthesis provided by PROSE\@.
 Its limitations are therefore also mainly influenced by this library.
 For example, the need for examples from a single structural category stems from the fact that FlashExtract cannot learn regular expression programs with arbitrary boolean conjunctions and disjunctions~\cite{mayer2015user}.
 This limitation was necessary to keep the synthesis performance reasonable.
@@ -162,10 +164,5 @@ We chose this small training set size as the training examples have to be provid
 \paragraph{Few Samples with Many Structural Categories}
 Our comparison study shows fewer measurements with many structural categories than with one category.
 This stems from the fact that we use a realistic data set which in many cases has only one or few structural categories.
-% \bp{
-% chronologically selected examples -> very specific view, devs/users might pick more representative examples
 
-% very few evaluation runs with a high number of categories in configuring I/O examples -> because we chose to create such a ``realistic'' data set, from data set we see that many structural categories uncommon
-
-% some errors are not shown inside the log: we always choose an extraction, if we did not see the actual reason for the error reported, we chose the part stating that an error occured / the build failed}
 \end{document}

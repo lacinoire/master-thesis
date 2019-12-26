@@ -7,33 +7,33 @@
 
 \chapter{Conclusion and Future Work}
 \label{sec:conclusion-fw}
-The goal of this thesis is to support researchers and developers when they decide how to analyze build logs.
-We implemented and compared three different chunk retrieval techniques on our \emph{LogChunks} data set.
+The goal of this thesis was to support researchers and developers in their decision on how to analyze build logs.
+We implemented and compared three different chunk retrieval techniques on our data set \emph{LogChunks}, composed of 797 manually labeled build logs from a broad range of 80 repositories.
 Our results show that the structural representation of the targeted information in the build logs is the main factor to consider when choosing a suitable technique.
-Secondary factors are confidence into recall and precision of the produced output and whether precision or recall is more important for the task at hand.
+Secondary factors are the desired confidence into recall and precision of the produced output and whether precision or recall is more important for the task at hand.
 
 There are various future research opportunities based on our work:
 \begin{itemize}
-  \item \textbf{Further Analysis of the \emph{LogChunks} Data Set} We created the \emph{LogChunks} data set specifically for our comparison study, though it can be the basis for various further analyses of build log data.
-  The keywords, for example, can be investigated to answer which keywords developers use to search for the reason the build failed within build logs.
+  \item \textbf{Further Analysis of \emph{LogChunks}} We created the \emph{LogChunks} data set specifically for our comparative study, though it can be the basis for various further analyses of build log data.
+  The keywords, for example, can be investigated to answer which keywords are used to search for the reason the build failed within build logs.
   \item \textbf{Cross-Repository Build Log Analysis} We trained and tested each chunk retrieval technique on examples from the same repository.
-  We propose to analyze how techniques could be trained across repositories, building the cornerstones for build environment agnostic analysis tools.
+  We propose to analyze how techniques could be trained across repositories, building the cornerstones for build environment-agnostic analysis tools.
   \item \textbf{Comparison with more Chunk Retrieval Techniques} This thesis investigates the three chunk retrieval techniques PBE, CTS and KWS\@.
-  Our study design can be reused to evaluate other build log analysis techniques.
+  Our study design can be reused to evaluate other build log analysis techniques, such as the diff and information retrieval approach by Amar et al.~\cite{amar2019mining}.
   \item \textbf{Refinement of Retrieval Quality for each Technique} We investigated basic configurations of existing techniques applied to chunk retrieval from build logs.
-  In a next step, each of these techniques could be refined and configured to better approach the domain of build logs.
-  The \emph{LogChunks} data set and our study results act as a baseline to evaluate further technique improvements.
+  In a next step, each of these techniques could be refined to better approach the domain of build logs.
+  The \emph{LogChunks} data set and our study results act as a baseline to benchmark such technique improvements.
   We propose the following improvements:
     \begin{itemize}
       \item \textbf{Custom Ranking and Tokens for PBE} The program synthesis through PROSE ranks possible programs according to what the user most likely intended.
-      We could adapt the ranking rules provided by the FlashExtract DSL to fit common build log chunk retrieval tasks.
+      One could adapt the ranking rules provided by the FlashExtract DSL to fit common build log chunk retrieval tasks.
       FlashExtract includes special tokens when enumerating possible regular expressions.
-      We could extend these with tokens found in build logs, such as ``-'',``='',``ERROR'' or ``[OK''.
+      One could extend these with tokens found in build logs, such as ``-'',``='',``ERROR'' or ``[OK''.
       \item \textbf{Meta-Parameter Optimization for CTS} Information retrieval techniques have various meta-parameters which can be optimized for the specific use case~\cite{panichella2016parameterizing}.
-      We propose to further investigate improvements in preprocessing of the log text, tokenization of the log lines into terms and stop words lists.
+      We propose to further investigate improvements in preprocessing of the log text, in tokenization of the log lines into terms and in stop words lists.
     \end{itemize}
   \item \textbf{Usability Analysis of Chunk Retrieval Output} Our analysis of the output produced by the chunk retrieval focuses on precision and recall.
-  In addition to precision and recall, we propose to investigate how useful these outputs are to developers through controlled experiments.
+  We propose to investigate how useful these outputs are to developers through controlled experiments.
 \end{itemize}
 
 \end{document}

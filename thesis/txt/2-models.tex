@@ -185,7 +185,7 @@ The following sections of this chapter introduce the three chunk retrieval techn
 Lastly we describe other techniques which can also be treated as chunk retrieval techniques.
 Table~\ref{tab:ctr} shows a comparison of the presented techniques.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Overview of the described chunk retrieval techniques.}
 \begin{tabularx}{\textwidth}{@{}XlXlX@{}} 
@@ -193,8 +193,8 @@ Table~\ref{tab:ctr} shows a comparison of the presented techniques.
 Name                         & Acronym & Identification Technique                                   & Granularity & Configuration             \\ 
 \midrule
 Program Synthesis by Example & PBE     & Regular expression program                                 & Character   & In/output examples      \\
-Common Text Similarity       & CTS     & TF-IDF \& cosine similarity, mean number of lines expected & Line        & Output examples           \\
-Keyword Search               & KWS     & Keywords, mean number of lines expected                    & Line        & Keywords, context length  \\
+Common Text Similarity       & CTS     & TF-IDF \& cosine similarity, expected number of lines & Line        & Output examples           \\
+Keyword Search               & KWS     & Keywords, expected number of lines                    & Line        & Keywords, context length  \\
 Random Line Retrieval        & RLR     & Random sample                                              & Line        & Retrieval length          \\
 Diff Approach                & ---        & Line not present in successful log, information retrieval  & Line        & Logs from failing and successful builds      \\
 \bottomrule
@@ -267,8 +267,8 @@ The number of surrounding lines retrieved is the average of lines in the output 
 
 \subsection{Other Techniques}
 \label{sec:expl-rlr}
-Literature mentions further build log analysis techniques.
-This section describes them with our notion of chunk retrieval techniques.
+%Literature mentions further build log analysis techniques.
+%This section describes them with our notion of chunk retrieval techniques.
 
 \paragraph{Log Diff}
 Amar et al.\ use a technique based on line diffs and information retrieval to identify relevant lines from a failed build log~\cite{amar2019mining}, as we describe in more detail in Section~\ref{sec:rw-bl-analysis}.

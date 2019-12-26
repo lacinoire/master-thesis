@@ -122,8 +122,7 @@ The chunk retrieval techniques we compare in this thesis can be used to fill sim
 As they simplify the construction of parsers they would enable developers and researchers to cover a wider array of build tools, which is the main influence factor on the structure of a build log.
 
 Amar et al.~\cite{amar2019mining} compare different approaches to reduce the portions of a log that a developer has to inspect.
-Their techniques remove lines that appear both in passing and failing build logs and use a modified \emph{Term Frequency Inverse Document Frequency} (TF-IDF) weighting to identify term vectors likely to occur with failures.
-They use term vectors and cosine similarity to further filter the log portions only present in failing build logs.
+Their techniques remove lines that appear both in logs from passing and failing builds and use a modified \emph{Term Frequency Inverse Document Frequency} (TF-IDF) weighting to identify term vectors likely to occur with failures.
 Their diff technique can be interpreted as a chunk retrieval technique, where the targeted information is defined by the past failures used as basis for the weighted term vectors.
 
 Travis itself already provides build log augmentation in the form of a basic structuring of the build logs within their log viewer using \emph{log folds}~\cite{travis2019logfolds}.
@@ -157,16 +156,16 @@ Abiteboul proposes an approach to overlay the semi-structured data with a struct
 The additional layer can answer queries and give access to the semi-structured data relevant to a query.
 In contrast to that, this thesis takes a look at techniques to gather a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth, clip]{img/log42.png}
 	\caption{Excerpt from a build log showing a WarningMessage chunk.}
 	\label{fig:log-4}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth, clip]{img/log52.png}
-	\caption{Excerpt from a build log showing another WarningMessage chunk.}
+	\caption{Excerpt from a build log showing a differently formatted WarningMessage chunk.}
 	\label{fig:log-5}
 \end{figure}
 
@@ -215,8 +214,8 @@ Chunk retrieval techniques are used as a part of log parsing to retrieve the val
 
 \section{Foundational Techniques}
 % \section{Information Extraction and Retrieval Techniques}
-The techniques we investigate in this thesis are based on existing methods of Programming by Example, information extraction and information retrieval.
-This section presents different Programming by Example resources surrounding Microsoft's work on the PROSE library.
+The techniques we investigate are based on existing methods of Programming by Example, information extraction and information retrieval.
+This section presents different Programming by Example resources surrounding the PROSE library.
 We explain its generic program synthesis algorithm and how PROSE synthesizes text extraction programs, the foundation of PBE\@.
 In addition, we describe how chunk retrieval can be employed as a part of presented information extraction approaches.
 We introduce how information retrieval techniques, the basis for CTS, are used to improve software development.
@@ -341,7 +340,7 @@ Parentheses are used to infer hierarchical structure information.
 The system guesses grammar operators unifying single tokens or subexpressions, scores the resulting grammars and applies appropriate rewrite rules to refine the candidate grammars.
 
 The IEPAD tool created by Chang et al.~\cite{chang2003automatic} automatically identifies data extraction patterns in semi-structured web pages, without requiring user-labeled training examples.
-They split the semi-structured documents into tokens, discover repetitive patterns using occurrence-counting suffix trees and select the most regular and compact patterns to define extraction.
+They split the documents into tokens, discover repetitive patterns using occurrence-counting suffix trees and select the most regular and compact patterns to define extraction.
 
 Smith and Lopez~\cite{smith1997information} extract structured information from sets of semi-structured documents that contain similar information but which are structured differently.
 The user provides rules for each piece of information, detailing in which section of the document it might be present.
