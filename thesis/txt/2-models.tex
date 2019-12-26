@@ -9,22 +9,22 @@
 This chapter introduces the concept of chunk retrieval techniques.
 We use these techniques to extract text chunks from build logs that represent a specific, targeted information.
 This chapter first presents how a build log, which we take as input to the chunk retrieval, is created by a continuous integration (CI) build.
-Next, it describes retrievable information chunks in build logs and gives examples found in Travis CI build logs.
+Next, the chapter describes retrievable information chunks in build logs and gives examples found in Travis CI build logs.
 We illustrate why it is useful to extract the presented information chunks.
 The following section introduces our concept of chunk retrieval techniques.
 We present the three chunk retrieval techniques we investigate in this thesis:
-Program synthesis by example (PBE), common text similarity (CTS) and keyword search (KWS).
+program synthesis by example (PBE), common text similarity (CTS) and keyword search (KWS).
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth, clip]{img/build-overview.pdf}
-	\caption{The different entities related to a CI build}
+	\caption{The different entities related to a CI build.}
 	\label{fig:build-overview}
 \end{figure}
 
 \section{Characteristics of a Build Log}
 \label{sec:bl-characteristics}
-The idea of CI is to catch errors early, by integrating new software changes fast and often~\cite{humble2010continuous}.
+The idea of CI is to catch errors early by integrating software changes fast and often~\cite{humble2010continuous}.
 Companies link a CI server, e.g.\ Travis CI, to their source code repository.
 After making a change, the developer commits and pushes the new version of the code to the repository.
 A push on specific branches or the creation of a pull request triggers a CI build.
@@ -43,7 +43,7 @@ Some smaller projects might use CI to just ensure their code compiles as a minim
 Other projects might have various stages of extensive automated testing.
 
 Software tools involved in the build write out log messages to the console.
-They communicate progress updates, error and warning messages to the user~\cite{yuan2012characterizing}.
+They communicate progress updates, error messages and warning messages to the user~\cite{yuan2012characterizing}.
 We refer to to the concatenation of this output as \emph{build log}.
 The structure of their output is chosen by every tool themselves.
 Many have implicit or explicit structuring rules, some adhere to predefined standards like RSpec or PHPUnit~\cite{phpunit2019logging,rspec2019format}.
@@ -52,7 +52,7 @@ Figure~\ref{fig:tool-log-contribution} shows how different tools contribute to t
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[page=1, width=0.8\textwidth, trim={5cm 0.5cm 0.5cm 0.5cm}, clip]{img/overview-graphics.pdf}
-	\caption{Contribution of different tools to the build log}
+	\caption{Contribution of different tools to a build log.}
 	\label{fig:tool-log-contribution}
 \end{figure}
 
@@ -65,7 +65,7 @@ Therefore, build logs are semi-structured, as described in Section~\ref{sec:rw-s
 \label{sec:bli}
 CI build logs contain a great amount of information about the CI build they correspond to.
 This section defines our concept of information retrievable from a CI build log.
-We use the introduced terms throughout the following sections and chapters to talk about the characteristics of chunk retrieval techniques.
+We use the introduced terms throughout the following sections and chapters to discuss about the characteristics of chunk retrieval techniques.
 To illustrate why chunk retrieval from build logs is useful, we present examples of information contained in Travis CI build logs and describe use cases for developers and researchers to retrieve them.
 
 Central to this explanation is the piece of \emph{information} possibly retrievable from a build log.
@@ -75,8 +75,8 @@ Each chunk is always contained in a specific build log.
 Figure~\ref{fig:build-overview} presents the relation between an information, a chunk and other entities involved in a CI build.
 
 Chunks can be hierarchically ordered, determined by how their textual representations contain each other.
-As this is an ad-hoc and a-posteriori structuring schema, as we describe in Section~\ref{sec:rw-semi-structured-data}, this section only presents hierarchical containment for chunks whose hierarchy we definitely know.
-Most chunks can appear in various hierarchical arrangements and are therefore not contained in any other type in our explanation.
+As this is an ad-hoc and a-posteriori structuring schema, as described in Section~\ref{sec:rw-semi-structured-data}, this section only presents hierarchical containment for chunks whose hierarchy is known.
+Most chunks can appear in various hierarchical arrangements and are therefore not contained in any other chunk.
 
 During our initial exploration and log data collection for the \emph{LogChunks} data set, we collected a broad set of build logs from 29 languages and 87 repositories from Travis CI~\cite{travisci2019webpage}.
 We inspected them to get an impression of the information one would want to retrieve from a build log.
@@ -87,22 +87,22 @@ Figure~\ref{fig:build-log-information} shows an overview of these information ex
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth, clip]{img/build-log-information.pdf}
-	\caption{Information retrievable from build logs}
+	\caption{Information retrievable from build logs.}
 	\label{fig:build-log-information}
 \end{figure}
 
 \begin{itemize}
 	\item \textbf{BuildPhase} Build logs can be divided into the sections produced by different tools.
-	      These build steps could be for example be a \textbf{TestPhase}, \textbf{LinterPhase}, \textbf{TravisWorker} or \textbf{GitFetch} are some that we encountered in the logs.
+	      These build steps could, for example, be a \textbf{TestPhase}, \textbf{LinterPhase}, \textbf{TravisWorker} or \textbf{GitFetch}.
 
-	\item \textbf{TravisPhase} Travis CI build logs consist of several build phases defined within the Travis CI configuration language. Within the build log each of these phases is framed by \lstinline{travis_fold:start:<travis phase name>} and \\ \lstinline{travis_fold:end:<travis phase name>}.
+	\item \textbf{TravisPhase} Travis CI build logs consist of several build phases defined within the Travis CI configuration language. Within the build log each phase is framed by \lstinline{travis_fold:start:<phase name>} and \lstinline{travis_fold:end:<phase name>}.
 
 	      A TravisPhase contains:
 	      \begin{itemize}
-		      \item \textbf{TravisPhaseName} The string Travis CI uses to identify the phase within start and end statements.
+		      \item \textbf{TravisPhaseName} The string Travis CI uses to identify the phase in start and end statements.
 		      \item \textbf{TravisPhaseOutput} The output generated during the TravisPhase. The chunk presenting the \texttt{TravisPhaseOutput} is the string between the start and end statements.
 	      \end{itemize}
-				 Retrieving the names of the phases of a Travis CI build log could be used to afterward reconstruct an overview of the executed steps within a build.
+				 Retrieving the names of the phases of a Travis CI build log could be used to later reconstruct an overview of the executed steps within a build.
 	       Figure~\ref{fig:log-1} shows an example of a TravisPhase chunk and its components within a build log.
 
 	\item \textbf{TravisTiming} Travis can measure the time of specified sections of the build process.
@@ -110,7 +110,7 @@ Figure~\ref{fig:build-log-information} shows an overview of these information ex
 	      Figure~\ref{fig:log-1} shows an example of a TravisTiming chunk.
 	      %It represents those by \lstinline{travis_time:start:<timing section id>} and \\ \lstinline{travis_time:end:<timing section id>:start=<start time>,finish=<finish time>,duration=<duration>}
 
-	\item \textbf{TravisWorker} Travis CI mentions for each build which machine is executing the build.
+	\item \textbf{TravisWorker} Travis CI logs which machine is executing each build.
 	      Retrieving this information from multiple build logs can help visualize the impact of the build server assignment algorithm.
 	      The TravisWorker is a good example that chunks belonging to the same information can have different textual representations in different build logs.
 	      Figure~\ref{fig:log-0} and Figure~\ref{fig:log-2} show examples of different TravisWorker chunks.
@@ -129,50 +129,38 @@ Figure~\ref{fig:build-log-information} shows an overview of these information ex
 	      Figure~\ref{fig:log-3} shows an example of a TravisExitCode chunk within a build log.
 
 	\item \textbf{ErrorMessage} Various tools involved in the build process output messages of errors that occurred during their execution.
-	      A developer can retrieve them understand why the build failed.
-	      Figure~\ref{fig:log-3} shows an example of and ErrorMessage chunk.
+	      A developer can retrieve them to understand why the build failed.
+	      Figure~\ref{fig:log-3} shows an example of an ErrorMessage chunk.
 
 	\item \textbf{WarningMessage} In addition to errors, tools also print warning messages.
 				Developers can collect and count them to encourage their team to resolve them.
-	      Figure~\ref{fig:log-4} and Figure~\ref{fig:log-5} show examples of WarningMessage chunks within build logs.
+	      Figure~\ref{fig:log-4} and Figure~\ref{fig:log-5} show two examples of WarningMessage chunks formatted differently in two build logs.
 
 \end{itemize}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth, clip]{img/log02.png}
-	\caption{Excerpt from a build log showing a long TravisWorker chunk and a TravisSystemInfo chunk}
-	\label{fig:log-0}
-\end{figure}
-\begin{figure}[htbp]
-	\centering
 	\includegraphics[width=\textwidth, clip]{img/log12.png}
-	\caption{Excerpt from a build log showing a TravisTiming chunk and a TravisPhase chunk, containing the TravisPhaseName chunk and the TravisPhaseOutput chunk}
+	\caption{Excerpt from a build log showing a TravisTiming chunk and a TravisPhase chunk, containing the TravisPhaseName chunk and the TravisPhaseOutput chunk.}
 	\label{fig:log-1}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
+	\includegraphics[width=\textwidth, clip]{img/log02.png}
+	\caption{Excerpt from a build log showing a long TravisWorker chunk and a TravisSystemInfo chunk.}
+	\label{fig:log-0}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
 	\includegraphics[width=\textwidth, clip]{img/log22.png}
-	\caption{Excerpt from a build log showing a short TravisWorker chunk}
+	\caption{Excerpt from a build log showing a short TravisWorker chunk.}
 	\label{fig:log-2}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth, clip]{img/log32.png}
-	\caption{Excerpt from a build log showing chunk an ErrorMessage, an ExitCode chunk and a TravisTriggeringCommand chunk}
+	\caption{Excerpt from a build log showing an ErrorMessage chunk, an ExitCode chunk and a TravisTriggeringCommand chunk.}
 	\label{fig:log-3}
-\end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/log42.png}
-	\caption{Excerpt from a build log showing a WarningMessage chunk}
-	\label{fig:log-4}
-\end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\textwidth, clip]{img/log52.png}
-	\caption{Excerpt from a build log showin another WarningMessage chunk}
-	\label{fig:log-5}
 \end{figure}
 
 
@@ -199,16 +187,16 @@ Table~\ref{tab:ctr} shows a comparison of the presented techniques.
 
 \begin{table}[htbp]
 \centering
-\caption{Chunk Retrieval Techniques}
+\caption{Overview of the described chunk retrieval techniques.}
 \begin{tabularx}{\textwidth}{@{}XlXlX@{}} 
 \toprule
 Name                         & Acronym & Identification Technique                                   & Granularity & Configuration             \\ 
 \midrule
-Program Synthesis by Example & PBE     & Regular expression program                                 & Character   & In / output examples      \\
-Common Text Similarity       & CTS     & Tf-idf \& cosine similarity, mean number of lines expected & Line        & Output examples           \\
+Program Synthesis by Example & PBE     & Regular expression program                                 & Character   & In/output examples      \\
+Common Text Similarity       & CTS     & TF-IDF \& cosine similarity, mean number of lines expected & Line        & Output examples           \\
 Keyword Search               & KWS     & Keywords, mean number of lines expected                    & Line        & Keywords, context length  \\
 Random Line Retrieval        & RLR     & Random sample                                              & Line        & Retrieval length          \\
-Diff Approach                &         & Line not present in successful log, information retrieval  & Line        & Logs from failing and successful builds      \\
+Diff Approach                & ---        & Line not present in successful log, information retrieval  & Line        & Logs from failing and successful builds      \\
 \bottomrule
 \end{tabularx}
 \label{tab:ctr}
@@ -216,7 +204,7 @@ Diff Approach                &         & Line not present in successful log, inf
 
 \subsection{Program Synthesis by Example (PBE)}
 \label{sec:expl-pbe}
-\emph{Programming by Example} is a technique which synthesizes programs according to in and output examples provided by the user.
+\emph{Programming by Example} is a technique which synthesizes programs according to in- and output examples provided by the user.
 It enables users to create programs without a priori programming knowledge~\cite{mayer2015user}.
 In the context of text extraction through regular expressions, Programming by Example relieves the developer from having to understand the whole document structure to solve a single extraction task~\cite{le2014flashextract:}.
 In this work, we refer to our interpretation of Programming by Example as \emph{PBE}\@.
@@ -232,7 +220,7 @@ One or multiple examples, the training examples, configure a chunk retrieval wit
 The PROSE program synthesis then tries to construct a regular expression program consistent with all training examples.
 A program is consistent with an example if it returns the defined output when executed on the defined input~\cite{mitchell1982generalization}.
 PBE reports an error back to the user if it could not synthesize a consistent program.
-The program synthesis builds on the Flash Extract DSL, which in turn uses the FlashMeta algorithm.
+The program synthesis builds on the FlashExtract DSL, which in turn uses the FlashMeta algorithm.
 Both are described in Section~\ref{sec:rw-prose}.
 
 \paragraph{Application}
@@ -251,10 +239,10 @@ To configure chunk retrieval though text similarity we chose to use the same con
 The lines of the output strings of the training examples define our search query.
 The algorithm splits the search query into single lines and identifies tokens, in our case words.
 Then we build a document-term-frequency matrix over the lines from the search query and prune very often or very rarely appearing words.
-Next, the algorithm applies term frequency inverse document frequency to the matrix, a best practice for natural language queries~\cite{lee1997document}.
+Next, the algorithm applies TF-IDF to the matrix, a best practice for natural language queries~\cite{lee1997document}.
 
 \paragraph{Application}
-To retrieve the desired information from a build log, we parse the whole text and process it in the same way as the search query.
+To retrieve the desired information from a build log, we parse the whole text and process it in the same way as the output of the training examples.
 The algorithm calculates the cosine similarity~\cite{korenius2007principal} to compare each line of the build log with each line of the search query.
 After summing up the similarities of each build log line to all search query lines, we sort the build log lines in decreasing similarity.
 The average number of lines in the outputs of the training examples determines how many of the most similar lines are returned as the output of the retrieval run.
@@ -262,14 +250,14 @@ The average number of lines in the outputs of the training examples determines h
 \subsection{Keyword Search (KWS)}
 \label{sec:expl-skws}
 When developers are looking for a specific piece of information within a large amount of unstructured information, a first ad-hoc approach they use is searching for related keywords.
-This was one of the most common approaches we took when searching for the reason the build failed within a log while creating our \emph{LogChunks} data set.
+Indeed, this was one of the most common approaches we took when searching for the reason the build failed within a log while creating our \emph{LogChunks} data set.
 As this is a technique readily available in many tools developers use to view build logs, we study when such a keyword search is suitable for retrieving information chunks from CI build logs.
 In the following we will explain how we use simple keyword search to retrieve information from CI build logs, which we refer to as \emph{KWS}\@.
 
 \paragraph{Configuration}
 A set of keywords configures the chunk retrieval with KWS\@.
 To better compare KWS with PBE and CTS, we also configure it through examples.
-We link each example with keywords, which appear in the desired output or close to it in the input build log.
+We link each example with keywords, which appear in the targeted chunk or close to it in the input build log.
 The configuring keywords for KWS are the ones that appear most often in the keywords of all training examples.
 
 \paragraph{Application}

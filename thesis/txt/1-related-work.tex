@@ -98,15 +98,15 @@ They develop a custom parser to classify error messages reported by Java and C++
 Vassallo et al.~\cite{vassallo2017a-tale} analyze collected build logs by extracting error messages using regular expressions.
 The regular expressions search for keywords identified in a manual analysis.
 The analysis of Ghaleb et al.~\cite{ghaleb2019studying} starts with manual categorization of build logs.
-They select keywords and strings that identify their noise categories and code a script to automatically classify logs based on these keywords.
+They select keywords and strings that identify their targeted categories and code a script to automatically classify logs based on these keywords.
 %To validate the script results, they performed another manual classification.
 Beller et al.~\cite{beller2017oops} focus their analysis on Java and Ruby build logs for which they build custom parsers with regular expressions to extract the reason a build failed.
 
 \paragraph{Supporting Log Analysis with Chunk Retrieval}
-To leverage the valuable information within build logs these researchers build parsers and regular expression based programs.
+To leverage the valuable information within build logs the researchers presented in this section build parsers and regular expression-based programs.
 This task of retrieving specific chunks of text from the build logs can be solved by the chunk retrieval techniques we compare in this thesis.
 Our results can support researchers in choosing a suitable technique for their data set of build logs and the chunks they want to retrieve.
-By relieving them from building custom parsers we enable them to cover more languages and build tools in their studies.
+By relieving them from building custom parsers we enable them to cover a much wider range of languages and build tools in their studies.
 
 \subsection{Augmentation of Build Logs}
 \label{sec:rw-bl-analysis}
@@ -122,11 +122,11 @@ The chunk retrieval techniques we compare in this thesis can be used to fill sim
 As they simplify the construction of parsers they would enable developers and researchers to cover a wider array of build tools, which is the main influence factor on the structure of a build log.
 
 Amar et al.~\cite{amar2019mining} compare different approaches to reduce the portions of a log that a developer has to inspect.
-Their techniques remove lines that appear both in passing and failing build logs and use a modified term frequency inverse document frequency weighting to identify term vectors likely to occur with failures.
-They use the term vectors and cosine similarity to further filter the log portions only present in failing build logs.
+Their techniques remove lines that appear both in passing and failing build logs and use a modified \emph{Term Frequency Inverse Document Frequency} (TF-IDF) weighting to identify term vectors likely to occur with failures.
+They use term vectors and cosine similarity to further filter the log portions only present in failing build logs.
 Their diff technique can be interpreted as a chunk retrieval technique, where the targeted information is defined by the past failures used as basis for the weighted term vectors.
 
-Travis itself already provides build logs augmentation in the form of a basic structuring of the build logs within their log viewer using \emph{log folds}~\cite{travis2019logfolds}.
+Travis itself already provides build log augmentation in the form of a basic structuring of the build logs within their log viewer using \emph{log folds}~\cite{travis2019logfolds}.
 They add fold identifiers around common commands and setup or teardown build phases and collapse the contained lines by default.
 
 \subsection{Build Logs as Semi-Structured Data}
@@ -144,25 +144,38 @@ The structure of build logs
   Changes in the build process or execution environment might change the structure of a build log.
   We observed this in the logs we collected for the \emph{LogChunks} data set, where for the same repository and build configuration some logs had double new line characters without any noticeable explanation.
   Figure~\ref{fig:log-4} and Figure~\ref{fig:log-5} present an example of this.
-  \item \textbf{is partial}. Some parts are highly structured by e.g.\ structure indicating special characters and others are unstructured, such as natural language text in error messages.
+  \item \textbf{is partial}. Some parts are highly structured by e.g.\ special characters. Other parts are unstructured, such as natural language text in error messages.
   \item can be described with an \textbf{analytical data guide} rather than a predefined schema.
   There is no fixed specification on how build tools structure their output.
-  We afterwards extract structuring patterns in the produced output.
+  We later extract structuring patterns in the produced output.
   \item \textbf{has a rapidly evolving schema}.
   Modifications in the build configuration can change the tools involved in the build and therefore the composition of the build log.
-  Previous work indicates that some projects change their CI configuration often~\cite{hilton2016usage} and software tools adopt their log messages over time~\cite{yuan2012characterizing}.
+  Previous work indicates that some projects change their CI configuration often~\cite{hilton2016usage} and software tools adapt their log messages over time~\cite{yuan2012characterizing}.
 \end{itemize}
 
 Abiteboul proposes an approach to overlay the semi-structured data with a structured layer.
-The additional layer can answer queries and give access to the semi-structured data relevant to the query.
-In contrast to that, this thesis takes a look at techniques to gater a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
+The additional layer can answer queries and give access to the semi-structured data relevant to a query.
+In contrast to that, this thesis takes a look at techniques to gather a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth, clip]{img/log42.png}
+	\caption{Excerpt from a build log showing a WarningMessage chunk.}
+	\label{fig:log-4}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth, clip]{img/log52.png}
+	\caption{Excerpt from a build log showing another WarningMessage chunk.}
+	\label{fig:log-5}
+\end{figure}
 
 \subsection{System Log Analysis}
 \label{sec:log-analysis}
 A related field of log processing is the processing of system log files produced during runtime.
 A main difference between build logs and system logs is that system logs are fundamentally structured through events.
-Each line in the log file represents one event with a set of fields: timestamp, verbosity level and raw message content~\cite{he2017towards}.
-Listing \ref{lst:system-log} shows example lines from a system log.
+Each line in a log file represents one event with a set of fields: timestamp, verbosity level and raw message content~\cite{he2017towards}.
+Figure \ref{lst:system-log} shows example lines from a system log.
 
 The first goal in parsing system log files is to separate constant and variable parts within a log message~\cite{nagappan2010abstracting,he2017towards}.
 Next, the log messages are clustered into log events, unifying messages with identical constant parts and varying parameters.
@@ -196,15 +209,15 @@ Chunk retrieval techniques are used as a part of log parsing to retrieve the val
 2008-11-09 20:46:55,556 INFO dfs.DataNode$Packet- Responder: Received block blk_3587508140051953248 of size 67108864 from /10.251.42.84
 2008-11-09 20:49:46,764 WARN PacketResponder 0 for block blk\_3587508140051953248 terminating
   \end{lstlisting}  
-  \caption{System Log Statements, adapted example from~\cite{he2017towards}}
+  \caption{System Log Statements. Example adapted from~\cite{he2017towards}.}
   \label{lst:system-log}
 \end{figure}
 
 \section{Foundational Techniques}
 % \section{Information Extraction and Retrieval Techniques}
 The techniques we investigate in this thesis are based on existing methods of Programming by Example, information extraction and information retrieval.
-This section presents different Programming by Example resources surrounding Microsoft's work on the PROSE library
-We explain its generic program synthesis algorithm and how PROSE synthesize text extraction programs, the foundation of PBE\@.
+This section presents different Programming by Example resources surrounding Microsoft's work on the PROSE library.
+We explain its generic program synthesis algorithm and how PROSE synthesizes text extraction programs, the foundation of PBE\@.
 In addition, we describe how chunk retrieval can be employed as a part of presented information extraction approaches.
 We introduce how information retrieval techniques, the basis for CTS, are used to improve software development.
 
@@ -224,7 +237,7 @@ Finally, we cover additional applications and extensions of the PROSE program sy
 \paragraph{FlashMeta: Inductive Program Synthesis}
 The FlashMeta framework presented by Polozov and Gulwani~\cite{polozov2015flashmeta:} is the backbone of the program synthesis in the Microsoft PROSE framework.
 FlashMeta separates the inductive synthesis algorithm from the domain specific capabilities of the desired program by encoding the possible program space in a domain specific language (DSL).
-The user specifies the desired program behavior by providing in / output examples (I/O examples).
+The user specifies the desired program behavior by providing in/output examples (I/O examples).
 FlashMeta uses \emph{witness functions}, provided by the DSL, to divide the synthesis into smaller subtasks.
 For each of these subtasks it enumerates all possible programs that solve the subtask consistent with the set of I/O examples.
 A program is consistent with a set of I/O examples if, for each input example, it produces the corresponding output~\cite{mitchell1982generalization}.
@@ -232,7 +245,7 @@ The possible subprograms are joined and stored in a \emph{version space algebra}
 This a tree structure, which space-efficiently saves candidate programs for tasks by sharing common subexpressions.
 Next, FlashMeta ranks the enumerated programs according to which ones the user most likely intended.
 The DSL also provides the ranking characteristics.
-From the ranked VSA, FlashMeta can then return a ranked list of complete programs consistent with the users example.
+From the ranked VSA, FlashMeta can then return a ranked list of complete programs consistent with the user's example.
 
 In addition to I/O examples of the intended program, the user can also provide examples with only input or negative input examples.
 Negative input examples should not be processed by the synthesized program.
@@ -251,7 +264,7 @@ The text instantiation of FlashExtract models the extraction of a single substri
 A position is either specified by an absolute character index or by a pair of two regular expressions.
 The first regular expression matches the substring directly before the characterized position, the second regular expression matches the substring directly after.
 A regular expression in FlashExtract is a concatenation of tokens, e.g.\ standard character classes or string literals frequently occurring in the input examples.
-Listing \ref{lst:prose-program} shows a text extraction program synthesized by FlashExtract.
+Figure \ref{lst:prose-program} shows a text extraction program synthesized by FlashExtract.
 This program defines the first position as after a colon followed by a newline character and before a piece of text with all capital letters.
 It defines the second position as before two newline characters.
 
@@ -278,7 +291,7 @@ We apply the text instantiation of FlashExtract to the domain of build logs with
   \begin{lstlisting}[breaklines=true]
 let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("Colon/$\circ$/Line Separator", "ALL CAPS"), 1)) in StartToPosRegion(s, RegexPosition(s, RegexPair("/$\varepsilon$/", "Line Separator/{\color{blue}$\circ$}/Line Separator"), 1))
   \end{lstlisting}  
-  \caption{Text extraction program synthesized by FlashExtract}
+  \caption{Text extraction program synthesized by FlashExtract.}
   \label{lst:prose-program}
 \end{figure}
 
@@ -287,22 +300,22 @@ Gulwani and Harris apply a less generic predecessor of the FlashMeta framework t
 
 Rolim et al.~\cite{rolim2017learning} use code edits as examples to learn automatic program transformations.
 Their DSL for PROSE abstracts over variables and subexpressions by describing rewrite rules applied to the abstract syntax tree.
-These synthesized transformations propose fixes for student assignments based on corrections from other students and to automate repetitive refactoring tasks.
+These synthesized transformations can be used to propose fixes for student assignments based on corrections from other students and can also be used to automate repetitive refactoring tasks.
 
-Raza and Gulwani~\cite{raza2017automated} present an automated algorithm that attempts to predict data extraction programs from only input examples.
+Raza and Gulwani~\cite{raza2017automated} present an automated algorithm that attempts to predict data extraction programs only from input examples.
 Their tool can split system log statements into table columns or extract data from lists on webpages into spreadsheets.
 
-In a program synthesis shorter and simpler program often receive a better ranking.
+In program synthesis shorter and simpler program often receive a better ranking.
 By also taking the execution traces of the program candidates into account, Ellis and Gulwani~\cite{ellis2017learning} improve the accuracy of the PROSE program learner even further.
 For example, a program that extracts overlapping substrings is ranked lower than a program without overlapping extractions.
-They also weigh the produced output of applying a program to input only examples and prefer programs which produces output structurally similar to provided output examples.
+They also weigh the produced output of applying a program to input only examples and prefer programs which produce output structurally similar to provided output examples.
 
 \paragraph{User Interaction with Programming by Example}
 I/O examples are an ambiguous specification of a program.
-As such, user confidence in the correctness of the synthesized program is important for a wide adoption of Programming by Example based systems~\cite{lau2009why-programming-by-demonstration}.
+As such, user confidence in the correctness of the synthesized program is important for a wide adoption of Programming by Example-based systems~\cite{lau2009why-programming-by-demonstration}.
 Miller and Myers~\cite{miller2001outlier} uncover outliers in input data provided to a Programming by Example text editing task.
 For the PROSE framework, Mayer et al.~\cite{mayer2015user} compare two approaches for disambiguation by the user.
-With their first approach, the user can browse lower ranked program candidates in a tree like natural language transformation of the constructed VSA\@.
+With their first approach, the user can browse lower ranked program candidates in a tree-like natural language transformation of the constructed VSA\@.
 The second approach actively asks the user to resolve ambiguous output possibilities for input only examples.
 
 
@@ -311,7 +324,7 @@ Bartoli et al.~\cite{bartoli2012automatic} leverage genetic programming to gener
 Their approach also represents the regular expressions in a tree structure and mutates them to maximize extraction accuracy on the provided examples while minimizing the length of the regular expression.
 Their evaluation shows that their algorithm is on average faster and more accurate than humans~\cite{bartoli2016on-the-automatic}.
 The WHISK system by Stephen Soderland~\cite{soderland1999learning} learns text extraction regular expressions for semi-structured text.
-The system interleaves the learning process with the example annotation and reduces the number of required examples by presenting examples that eliminate ambiguities between learning candidates.
+The system interleaves the learning process with example annotation and reduces the number of required examples by presenting examples that eliminate ambiguities between learning candidates.
 
 \subsection{Information Extraction} %from Semi-Structured Documents
 \emph{Information extraction} techniques aim at structuring unstructured information to support subsequent processing.
@@ -323,7 +336,7 @@ This includes tools such as format converters, e.g.\ to XML, data adaptors to ot
 Manually defined PADS grammars eliminate the need to develop a custom data extraction parser.
 Xi and Walker developed ANNE~\cite{xi2010a-context-free}, which can infer context-free PADS grammars from a few user annotations and the raw document data.
 Fisher et al.~\cite{fisher2008from} fully automated the generation of PADS grammars.
-They split the data into chunks, lines or documents, and further into tokens.
+They split the data into chunks, documents or lines, and further into tokens.
 Parentheses are used to infer hierarchical structure information.
 The system guesses grammar operators unifying single tokens or subexpressions, scores the resulting grammars and applies appropriate rewrite rules to refine the candidate grammars.
 
@@ -341,8 +354,8 @@ Instead, chunk retrieval focusses on extracting one specific information charact
 \subsection{Information Retrieval}% in Software Engineering Research
 The process of automatically selecting unstructured documents related to a given \emph{search query} is called \emph{information retrieval}~\cite{schutze2008introduction}.
 In information retrieval, algorithms try to determine the general topic or conceptual information of a document.
-Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix and weighing the terms with tf-idf~\cite{lee1997document}.
-On the matrix the algorithms apply a similarity comparison like, for example,vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}.
+Usually this is done by preprocessing the documents, transforming them to a term-by-document matrix and weighing the terms with TF-IDF~\cite{lee1997document}.
+On the matrix the algorithms apply a similarity comparison such as, for example, vector space models to calculate the similarity of the different documents to each other~\cite{panichella2016parameterizing}.
 
 Information retrieval techniques are leveraged to improve software engineering in various areas.
 Antoniol et al.~\cite{antoniol2002recovering} query manual pages and requirements with program identifiers to create trace links between code and documentation.

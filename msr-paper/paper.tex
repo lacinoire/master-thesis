@@ -311,10 +311,11 @@ Following, this section defines in more detail the labeled log chunk, search key
 	\centering
 \begin{lstlisting}[breaklines=true]
 <Examples>
-  <Log>C/php@php-src/failed/529279089.log</Log>
-    <Keywords>ERROR, FAIL, DIFF</Keywords>
-    <Category>0</Category>
-    <Chunk>001+ ** ERROR: process timed out **
+  <Example>
+    <Log>C/php@php-src/failed/529279089.log</Log>
+      <Keywords>ERROR, FAIL, DIFF</Keywords>
+      <Category>0</Category>
+      <Chunk>001+ ** ERROR: process timed out **
 001- OK.
 ========DONE========
 FAIL Bug #60120 (proc_open hangs)</Chunk>
@@ -379,7 +380,7 @@ FAIL Bug#71412 ArrayIterator reflection
 *{\color{cyan}-=-=-=-=-=-}*
 TEST 9895/13942 [2/2 test workers running]
 \end{lstlisting}
-	\caption{Log chunk from the \emph{same} structural category than the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
+	\caption{Log chunk from the \emph{same} structural category as the log chunk presented in Listing \ref{lst:examples}, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
 	\label{lst:same-category}
 \end{figure}
 
@@ -403,7 +404,7 @@ This section presents how we gathered the logs for \emph{LogChunks} and our manu
 
 \subsection{Log Collection}
 We describe how we select the repositories, builds and logs for \emph{LogChunks}.
-To collect the build logs we built the  \texttt{GHTorrentParser} and \texttt{TravisRequester} using Ruby.
+To collect the build logs we built the \texttt{GHTorrentParser} and \texttt{TravisRequester} using Ruby.
 
 \paragraph{Repository Sampling}
 %First, we determine a set of repositories to query logs from.
@@ -413,7 +414,7 @@ We define \emph{Popularity} as the number of watches.
 The \texttt{TravisRequester}, our tool querying the Travis API~\cite{travisci2019apidoc}, then checks whether a given repository uses Travis CI\@.
 
 For \emph{LogChunks} we queried GHTorrent on 01/04/2018 for the three most popular repositories of each of the 30 most popular languages.
-Among the resulting repositories are, for example, \texttt{git/git},  \texttt{Microsoft/TypeScript} and \texttt{jwilm/alacritty}.
+Among the resulting repositories are, for example, \texttt{git/git}, \texttt{Microsoft/TypeScript} and \texttt{jwilm/alacritty}.
 
 \paragraph{Build Sampling}
 The \texttt{TravisRequester} obtains the newest builds for a given repository.
@@ -469,7 +470,7 @@ We asked them to assign numerical categories according to whether the \texttt{Ch
 Following we present the two studies we conduct to validate the labeled data in \emph{LogChunks}.
 
 \subsection{Inter-Rater Reliability Study}
-To evaluate the validity of our labeled data points we perform a second labeling of a sample of the data in \emph{LogChunks}.
+To evaluate the validity of our labeled data we perform a second labeling of a sample of the data in \emph{LogChunks}.
 
 \paragraph{Method}
 We followed the same labeling process as described in Section~\ref{sec:labeling-process}.
@@ -481,7 +482,7 @@ Therefore, we randomly sampled 3 repositories and presented all 10 examples with
 For the substring describing why the build failed, the two labelers exactly agreed in six cases.
 In 15 cases the second labeler selected more lines, in five their selections overlapped and in four they completely disagreed.
 Regarding the keywords, the two labelers completely agreed in nine cases and completely disagreed in two cases.
-In nineteen cases there was  overlap in the keywords of the two labelers.%, in two the first labeler selected additional keywords compared to the second, while the second labeler proposed additional keywords in seven cases.
+In nineteen cases there was overlap in the keywords of the two labelers.%, in two the first labeler selected additional keywords compared to the second, while the second labeler proposed additional keywords in seven cases.
 When classifying the chunks into structural categories, the two labelers agreed in 26 cases and disagreed in four cases.
 
 % TODO Moritz: this is to answer questions 'why did you not do this standard thing': maybe there is a better position and/or way of saying this?
@@ -526,9 +527,9 @@ Using the Travis API, we collect the commit information for each build represent
 We grouped all commits triggered by one developer and sent out an mail to them.%, asking whether the log part selected during our labeling was indeed describing the reason the build failed.
 %Figure~\ref{fig:dev-mail} shows one of the mails sent out.
 The mail included links to the corresponding commits, build overview and log file.
-We asked the receivers to fill out a short survey in case our extraction was not correct.
+We asked the developers to fill out a short survey in case our extraction was not correct.
 %Look at Figure~\ref{fig:dev-survey} to get an impression of the survey.
-In the survey, we asked the developer to paste in the log part actually describing the failure reason or describe why we were wrong in their own words.
+In the survey, we asked the developer to paste in the log part actually describing the failure reason or describe in their own words why we were wrong.
 As some of the chunks we labeled are many lines long, we trimmed all down to 10 lines to keep the mail readable.
 
 \paragraph{Results}
