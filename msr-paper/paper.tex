@@ -310,56 +310,15 @@ We asked them to assign numerical categories according to whether the \texttt{Ch
 \subsection{Validation}
 \label{sec:validation}
 \todo{how is the validation embedded in the data set? is there a special flag for validated entries?}
-\todo{how many entries are validated?}
 
-We validate our collected data points via an initial inter-rater
-reliability study, and a cross-validation with developers.
+We validated our collected data points in an iterative fashion. First,
+we performed an initial inter-rater reliability study with a
+co-author, which informed the design of a cross-validation study in
+which we contacted over 200 developers.  Our main learning from the
+initial internal study was that it is important and difficult to
+adequately communicate all decisions and assumptions on how data is
+labeled. 
 
-\subsection{Inter-Rater Reliability Study}
-\todo{I am thinking to cut this ... it does not give much, results are a bit underwhelming (why not calculate kappa?), and the meat lies in the developer study anyway}
-
-\paragraph{Method}
-The second author of this paper performed the same labeling process as described in \Cref{sec:labeling-process}, on 30 randomly sampled build logs from distinct repostories.
-He extracted the build failure reason and the keywords.
-The structural categories are relative to other logs from the same repository.
-Therefore, we randomly sampled 3 repositories and presented all 10 examples within them to the second labeler.
-
-\paragraph{Results}
-\todo{Can we shorten this?}
-For the substring describing why the build failed, the two labelers exactly agreed in six cases.
-In 15 cases the second labeler selected more lines, in five their selections overlapped and in four they completely disagreed.
-Regarding the keywords, the two labelers completely agreed in nine cases and completely disagreed in two cases.
-In nineteen cases was there overlap in the keywords of the two labelers.
-When classifying the chunks into structural categories, the two labelers agreed in 26 cases and disagreed in four cases.
-
-% TODO Moritz: this is to answer questions 'why did you not do this standard thing': maybe there is a better position and/or way of saying this?
-We found that calculating the standard measure for inter-rater agreement, Cohen's Kappa, is not applicable here.
-For the log chunk it cannot represent the impact of overlapping selections of the labelers and for the keywords and structural categories the values the labelers could assign were not fixed.
-
-\paragraph{Discussion}
-The results of this validation study show that there is overlap in the data from both labelers, however also a high variation.
-We believe that the main cause for this is that our explanations to the second labeler were not extensive enough.
-There were implicit, inconsistent assumptions both labelers created during their work.
-% In the following we describe these assumptions from both labelers for each data point and the implications on our description of the data classes.
-
-% For the first data class, the reason the build failed, it was ambiguous whether the labeled substring should contain the information \emph{that} the build failed.
-% This concerns statements like ``\texttt{The build exited with 1}''.
-% One labeler included such statements, while the other one only focussed on the log parts describing \emph{why} the build failed, e.g.\ the name of the failing test case.
-
-% While labeling the keywords a developer would use to search for the log part describing why the build failed, the one labeler allowed arbitrary strings appearing around the presented log part.
-% In contrast to that, the other labeler focussed on actual \emph{words}, delimited by spaces or special characters.
-% One labeler ignored capitalization, while the other one selected case-sensitive keywords.
-% A third difference was that the first labeler was presented with all substrings from a repository, yielding more general keywords than the second labeler.
-
-% For the structural categories this validation study showed a high overlap.
-% In our instructions to the second labeler we did not emphasize the \emph{structural} aspect enough.
-% They sorted into categories along \emph{why} the build failed, putting failing tests from different test runners into the same category even though the failing tests were presented differently in the log.
-%
-Our main learning from this study is that it is important and difficult to adequately communicate all decisions and assumptions on how data is labeled.
-We reviewed the misunderstandings and incorporated more thorough descriptions in \cref{sec:data-schema} to guide the design for our external validation.
-
-
-\subsection{Developer Validation}
 %For \emph{LogChunks} we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
 %As we are not involved in the development of any of the projects within our data set we could only rely on our previous experience with various build logs and systems.
 %We only took the logs into account and did not check the related configurations, so it is well possible that we extracted parts that do describe errors but the respective step failing is ignored by the configuration and the build failed for another reason.
@@ -398,10 +357,10 @@ After adjusting for these answers, 12 answers remained that stated that our labe
 We believe that our developer survey highly strengthens the trust in
 the validity of the labeled log chunks.  The study received answers
 for about 18\% of the data in \emph{LogChunks}.  After manual
-correction, 91\% of the received answers said our labeled chunks were
-accurate.  One possible threat regarding the high number of correct
-answers is that, since we show the error message we extracted, it
-might be operationally easier for developers to validate it, rather
+correction, 91\% of the received answers indicated our labeled chunks
+were accurate.  One possible threat regarding the high number of
+correct answers is that, since we show the error message we extracted,
+it might be operationally easier for developers to validate it, rather
 than search for it in a long log file. To alleviate this problem, we
 made it as easy to confirm as to reject an extracted log chunk. We
 only ask for more details (the correct log chunk) in a second step.
@@ -434,14 +393,6 @@ The top-level folder \texttt{build-failure-reason} contains the manually labeled
 The data set contains an XML file for each repository: \texttt{\textless repository\_owner\textgreater @\textless repository\_name\textgreater.xml}.
 Listing~\ref{lst:examples} presents the schema of these XML files.
 
-% Each \texttt{Example} consists of:
-% \begin{itemize}
-% 	\item \texttt{Log:} the relative path to the input build log.
-% 	\item \texttt{Chunk:} the log chunk that describes why the build failed.
-% 	\item \texttt{Keywords:} keywords the authors would use to search for the log chunk.
-% 	\item \texttt{Category:} a categorization of the structural representation of the log chunk within the build log.
-% 				The category is relative to the other examples for the same repository.
-% \end{itemize}
 Following, this section defines in more detail the labeled log chunk, search keywords and structural categories.
 
 \lstset{
@@ -490,17 +441,19 @@ FAIL Bug #60120 (proc_open hangs)</Chunk>
 \label{tab:data-in-example}
 \end{figure*}
 
+\todo{Including Figure 3 as a running example}
 \paragraph{Chunk That Describes Why The Build Failed}
 The \texttt{Chunk} is the substring of the build log that describes why the build failed.
-This can, for example, be the failing test case or a compiler error and is one continuous substring of the build log.
-In cases where the reason \emph{why} the build failed was described in an external log, the \texttt{Chunk} includes only the fact \emph{that} the build failed.
+This can, for example, be the failing test case or a compiler error.
+In cases where the reason \emph{why} the build failed is contained in a log file external to the main build log, the \texttt{Chunk} includes only the fact \emph{that} the build failed.\todo{what does this look like?} In \Cref{tab:data-in-example}, this is a compile error where a variable did not exist in the current scope.
+
 %Wherever possible, it does \emph{not} include the log statements describing \emph{that} the build failed, but the description of \emph{why} it failed.
 %For a few logs we were unable to define the section detailing why the build failed, e.g.\ because this information was logged in another log file.
 %In these instances the \texttt{Chunk} contains the lines describing that the build failed.
 
 \paragraph{Keywords}
-The \texttt{Keywords} contain a list of one to three keywords appearing within the \texttt{Chunk} or in the area around it in the build log.
-We selected keywords the authors would use to search for the log \texttt{Chunk} after analyzing about 800 build logs manually.
+The \texttt{Keywords} contain a list of one to three \todo{find different word to explain it with} keywords appearing within the \texttt{Chunk} or in the area around it in the build log.
+We selected keywords the authors would use to search for the log \texttt{Chunk} after analyzing about 800 build logs manually.\todo{This needs more explanation! Why these keywords (as opposed to others?)}
 Some keywords from \emph{LogChunks} are: ``\texttt{FAIL}'', ``\texttt{Error}'', ``\texttt{=DIFF=}'' or ``\texttt{ERR!}''.
 
 \paragraph{Category}
@@ -619,16 +572,9 @@ Their data set only provides the plain build logs, whereas \emph{LogChunks} addi
 
 \todo{What about the related data set I showed you and Georgios also mentioned? (Forgot exact name but don't have Internet so cannot look it up.)}
 
+\section{Future Extensions to LogChunks}
 
-
-\section{Summary}
-\label{sec:conclusion}
-In this paper, we introduced the \emph{LogChunks} data set encompassing 797 build logs from 80 projects using Travis CI\@.
-For each log, we annotated the log chunk describing why the build failed and provide keywords a developer would use to search for the log chunk as well as a categorization of the log chunks according to their format within the log.
-
-\emph{LogChunks} advances the research field of build log analysis by introducing a benchmark to rigorously examine research contributions~\cite{sim2003using}.
-
-Still, there are limitations to our data set, which we present in the following, together with improvements and extensions to \emph{LogChunks}.
+In this section, we describe LogChunk's current limitations and future improvements and extensions we are planning.
 
 \paragraph{Chunk as One Consecutive Substring}
 The manually labeled \texttt{Chunk} contains only one continuous substring of the log text.
@@ -643,14 +589,31 @@ Including more logs and repositories into \emph{LogChunks} will strengthen it as
 \paragraph{Classification of the Build Failure Cause}
 Our data set contains no further classification according to the cause of the failure.
 As researchers are investigating why CI builds fail, a useful extension is to annotate cause of the build failure for each log.
+\todo{Example: such as this is due to tests, compilation, ...?}
 
 \paragraph{Other Targeted Information Chunks}
 Build log analysis is not limited to retrieving the chunk describing why a build failed.
 \emph{LogChunks} can be extended with further information targets such as descriptions of warnings, build infrastructure and more.
+\todo{a rich description of all info contained in a build log?}
 
 \paragraph{Validation of Search Keywords}
 The keywords \emph{LogChunks} provides are based on the experience of the authors gained from analyzing around 800 build logs.
 Next, we propose to evaluate whether these keywords would also be used by developers to find the log chunk describing why a build failed.
+
+
+
+\section{Summary}
+\label{sec:conclusion}
+In this paper, we introduce\emph{LogChunks}, a cross-validated data
+set encompassing 797 build logs from 80 projects using Travis CI\@.
+For each log, we annotated the log chunk describing why the build
+failed and provide keywords a developer would use to search for the
+log chunk as well as a categorization of the log chunks according to
+their format within the log. \emph{LogChunks} advances the research
+field of build log analysis by introducing a benchmark to rigorously
+examine research contributions~\cite{sim2003using} and opening various
+research possibilites that previously required tedious manual
+classification.
 
 %%
 %% The acknowledgments section is defined using the "acks" environment
