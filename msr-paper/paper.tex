@@ -91,9 +91,26 @@
 \title{LogChunks: A Data Set for Build Log Analysis}
 
 \author{Carolin Brandt}
+\affiliation{
+  \institution{Delft University of Technology}
+  \country{The Netherlands}
+}
+\email{c.e.brandt@tudelft.nl}
 \author{Annibale Panichella}
+\affiliation{
+  \institution{Delft University of Technology}
+  \country{The Netherlands}
+}
+\email{a.panichella@tudelft.nl}
 \author{Andy Zaidman}
+\affiliation{
+  \institution{Delft University of Technology}
+  \country{The Netherlands}
+}
+\email{a.e.zaidman@tudelft.nl}
 \author{Moritz Beller}
+\affiliation{Inventitech}
+\email{mmb@inventitech.com}
 
 %%
 %% By default, the full list of authors will be used in the page
@@ -107,11 +124,11 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Build logs are the textual by-products that a software build processes
+Build logs are textual by-products that a software build process
 creates, often as part of its Continuous Integration (CI)
 pipeline. Build logs are a paramount source of information for
 developers when debugging into and understanding a build
-failures. Recently, attempts to partly automate this time-consuming,
+failure. Recently, attempts to partly automate this time-consuming,
 purely manual activity have come up, such as rule- or
 information-retrieval-based techniques.
 
@@ -241,7 +258,7 @@ This section presents how we gathered the logs and our manual labeling process.
 \subsection{Log Collection}
 In this section, we describe how we created \emph{LogChunks} along the
 overview in \Cref{fig:lc-overview}. All steps are automatized as Ruby
-scripts\todo{link to repo?} and highly configurable.
+scripts\footnote{Data collection scripts avaliable on GitHub: http://tiny.cc/data-collection} and highly configurable.
 
 \paragraph{Repository Sampling}
 We target mature GitHub repositories that are using Travis CI\@.
@@ -485,8 +502,7 @@ They write custom parsers and classifiers to categorize builds according to why 
 The manually labeled chunk can help researchers locate the source for their classification algorithms and cross-validate their data.
 
 \paragraph{Research about Build Logs}
-The data from \emph{LogChunks} can support research around the topic of build logs such as how users use keywords to retrieve information about build failures from logs or how they discuss failures of CI builds within pull requests. \todo{citation pending}
-%TODO Caro: nathan cassee (with Alexander Sebrenik) did this in his master thesis (paper got accepted, will get link when preprint is finished), did not find others yet that do this}.
+The data from \emph{LogChunks} can support research around the topic of build logs such as how users use keywords to retrieve information about build failures from logs or how they discuss failures of CI builds within pull requests~\cite{cassee2019silent}.
 
 % \paragraph{Analysis of Keywords Used to Search for Build Failure Descriptions}
 % \emph{LogChunks} provides keywords that the authors would use to search for the chunk describing why the build failed.
