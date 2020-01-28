@@ -308,10 +308,11 @@ We asked them to assign numerical categories according to whether the \texttt{Ch
 We validated our collected data points in an iterative fashion. First,
 we performed an initial inter-rater reliability study with a
 co-author, which informed the design of a cross-validation study in
-which we contacted over 200 developers.  Our main learning from the
-initial internal study was that it is important and difficult to
-adequately communicate all decisions and assumptions on how data is
-labeled. 
+which we contacted over 200 developers.  Our learnings from the
+initial internal study are that  1) it is important and difficult to
+adequately communicate all decisions and assumptions on how and which data is
+labeled and 2) that can be different legitimate view points on
+what log chunk consitutes the cardinal error and which key words best to use.
 
 %For \logchunks we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
 %As we are not involved in the development of any of the projects within our data set we could only rely on our previous experience with various build logs and systems.
@@ -383,6 +384,7 @@ FAIL Bug \#60120 (proc\_open hangs)} \\
 \end{tabularx}
 \caption{Exemplary, complete data excerpt from \logchunks for a failed build in \tt{php@php-src}.}
 \label{tab:data-in-example}
+\vspace{-0.5cm}
 \end{table*}
 
 \section{Data Schema}
@@ -390,13 +392,13 @@ FAIL Bug \#60120 (proc\_open hangs)} \\
 
 This section presents the internal structure and data schema of
 \logchunks. In principle, \logchunks comprises automatically
-retrieved logs, as well as manually labeled and cross-validated data.
+retrieved and manually labeled and cross-validated logs.
 
 %We give a description of the manually labeled data.
 %\logchunks has two top level folders, \texttt{build-failure-reason} and \texttt{logs}.
 %Each contains folders representing the main languages of the repositories in \logchunks.
 \logchunks comprises information on 797 build logs, which are organized in folders for each language and repository.
-For each repository, \logchunks has about 10 \texttt{Examples}. Within a repository folder, there is a folder \todo{foldername} \texttt{} for the general build status (`failed'), which contains the full log files in plain text.
+For each repository, \logchunks has about 10 \texttt{Examples}. Every repository folder, contains the full log files for the build status `failed' in plain text.
 % the logs are separated according to build status.
 %Currently, \logchunks only contains logs from \texttt{failed} builds.
 %The build status folder contains the full logs in files named with the ID of the build that produced the log.
@@ -408,7 +410,7 @@ data of \logchunks, one XML file for each repository: \\
 an overview of the data within these XML files on the example of one
 build from \texttt{php@php-src}. The remainder of this section defines
 in more detail the data embedded in the XML files, that is, the
-labeled log chunk, search keywords and structural categories.
+labeled log chunk, search keywords and structural categories. Data from the developer validation study is in the file \texttt{developer-crossvalidation.csv}, the build id can be used as a unique identifier to match it with the other data.
 
 \paragraph{Chunk That Describes Why The Build Failed}
 The \texttt{Chunk} is the substring of the build log that describes why the build failed.
@@ -454,7 +456,8 @@ FAIL Bug#71412 ArrayIterator reflection
 *{\color{cyan}-=-=-=-=-=-}*
 TEST 9895/13942 [2/2 test workers running]
 \end{lstlisting}
-	\caption{Log chunk from the \emph{same} structural category (\todo{name structural category}) as the log chunk presented in \Cref{tab:data-in-example}. \todo{We inserted the special marker} ``{\color{cyan}-=-=-=-=-=-}'' to separate the log chunk from its context.}
+\vspace{-0.3cm}
+	\caption{Log chunk from the \emph{same} structural category as the log chunk presented in \Cref{tab:data-in-example}. \todo{We inserted the special marker} ``{\color{cyan}-=-=-=-=-=-}'' to separate the log chunk from its context.}
 	\label{lst:same-category}
 \end{figure}
 
@@ -467,9 +470,11 @@ Illegal switch 'j' specified!
 *{\color{cyan}-=-=-=-=-=-}*
 Synopsis:
 \end{lstlisting}
-	\caption{Log chunk from a \emph{different} structural category (\todo{name structural category}) than the log chunk presented in \Cref{tab:data-in-example}.}
+\vspace{-0.3cm}
+	\caption{Log chunk from a \emph{different} structural category than the log chunk presented in \Cref{tab:data-in-example}.}
   %, ``{\color{cyan}-=-=-=-=-=-}'' separates the log chunk from the context}
 	\label{lst:different-category}
+        \vspace{-0.3cm}
 \end{figure}
 
 
@@ -568,7 +573,7 @@ We propose to extend \logchunks to contain multiple substrings of the log text.
 \paragraph{Include More Repositories and Logs}
 \logchunks encompasses a range of repositories from various main development languages, though only 10 logs from each repository.
 %This stems from the high effort necessary for the manual data labeling process.
-Including more logs and repositories into \logchunks will strengthen it as a benchmark to compare build log analysis techniques.
+Including more logs and repositories will strengthen \logchunks as the go-to benchmark.
 
 \paragraph{Classification of the Build Failure Cause}
 Our data set contains no further classification according to the cause of the failure, such as due to tests, compilation or linter errors.
