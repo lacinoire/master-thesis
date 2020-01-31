@@ -85,7 +85,7 @@
 \title{LogChunks: A Data Set for Build Log Analysis}
 
 \author{Carolin E. Brandt, Annibale Panichella, Andy Zaidman, Moritz Beller}
-\email{{c.e.brandt,a.panichella,a.e.zaidman,m.m.beller}@tudelft.nl}
+\email{{c.e.brandt, a.panichella, a.e.zaidman, m.m.beller}@tudelft.nl}
 \affiliation{
   \institution{Delft University of Technology}
   \country{The Netherlands}
@@ -111,7 +111,7 @@ failure. Recently, attempts to partly automate this time-consuming,
 purely manual activity have come up, such as rule- or
 information-retrieval-based techniques.
 
-We believe that having a common dataset to be able to fairly compare
+We believe that having a common data set to be able to fairly compare
 different build log analysis techniques will advance the research
 area. It will ultimately increase our understanding of CI build
 failures. In this paper, we present \logchunks, a collection of 797
@@ -214,13 +214,15 @@ Following Sim et al., a benchmark gives us the chance to ``increase
 the scientific maturity of the area''~\cite{sim2003using} of build log
 analysis by evaluating and comparing research contributions.
 
-Thus, in this paper, we present \logchunks,\footnote{\logchunks
-  is openly available on Zenodo: https://zenodo.org/record/3632351} a
-collection of 797 Travis CI build logs from 80 highly popular GitHub repositories in
-29 programming languages.  For each build log, we manually labeled
-the chunk describing why the build failed.  The data set also provides
-keywords the authors would use to search for the labeled log chunk and
-categorizes the log chunks according to their format within the log.
+Thus, in this paper, we present
+\logchunks~\cite{brandt_carolin_2020_3632351},\footnote{\logchunks is
+  openly available on Zenodo: https://zenodo.org/record/3632351} a
+collection of 797 labeled Travis CI build logs from 80 highly popular GitHub
+repositories in 29 programming languages with  we
+manually labeled the chunk describing why the build failed.  The data
+set also provides keywords the authors would use to search for the
+labeled log chunk and categorizes the log chunks according to their
+format within the log.
 
 
 \begin{figure*}[tbp]
@@ -237,8 +239,7 @@ This section presents how we gathered the logs and our manual labeling process.
 \subsection{Log Collection}
 In this section, we describe along the overview in
 \Cref{fig:lc-overview} how we created \logchunks. All steps are
-automatized as Ruby scripts\footnote{Data collection scripts avaliable
-  on GitHub: http://tiny.cc/data-collection} and highly configurable.
+automatized as Ruby scripts\footnote{Data collection scripts and their original parametrization are included in the data set.} and highly configurable.
 
 \paragraph{Repository Sampling}
 We target mature GitHub repositories that are using Travis CI\@.
@@ -331,7 +332,7 @@ In the survey, we asked the developer to paste in the log part actually describi
 \paragraph{Results}
 In total, from 2020-10-15 to 2020-10-17, we sent out mails to 246 developers. 32 of these mails could
 not be delivered. We performed the sending out in three batches and used the first author's academic email address as the sender. All emails were specific to each recipient, and we only sent one mail per recipient. We received answers from 61 developers, corresponding to
-144 build logs (response rate: 24.8\%). When comparing this response rate with other typical response rates known from Software Engineering, it is extremely high. We believe that our personalization and the ease of use for the responder are the main reasons for this---simply clicking on a link to confirm or refute an answer is enough, there is no need to craft an answer. Indeed, we only received seven replies from developers along the lines of ``done''.
+144 build logs (response rate: 24.8\%). Compared to typical response rates known from Software Engineering~\cite{smith2013improving}, this is very high. We believe that our personalization and the ease of use for the responder are the main reasons for this---simply clicking on a link to confirm or refute an answer is enough, there is no need to craft an answer. Indeed, we only received seven replies from developers along the lines of ``done''.
 
 Of the 144 answers, 132 indicated our extraction was correct.
 %26 answered either ``close, but not quite correct'' or ``no, the build failed for another reason''.
@@ -548,7 +549,7 @@ empower research with a benchmark to compare different build log analysis techni
 
 % \subsection{Travis CI Build Log Data Set}
 % \todo{I would remove this as it is not really related because it does not contain labels?}
-% Loriot et al.~\cite{loriot2019dataset, loriot2019styler} collected Travis CI build logs from 130 GitHub repositories to analyze their use of the Checkstyle plugin.
+% Loriot et al.~\cite{loriot2019data set, loriot2019styler} collected Travis CI build logs from 130 GitHub repositories to analyze their use of the Checkstyle plugin.
 % They selected Maven repositories that included the Checkstyle plugin.
 % Their data set only provides the plain build logs, whereas \logchunks additionally provides manually labeled data about the chunk describing why a build failed.
 
