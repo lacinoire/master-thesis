@@ -273,7 +273,7 @@ languages.
 \subsection{Manual Labeling}
 \label{sec:labeling-process}
 After collecting build logs, the first author manually labeled which
-text chunk describes why the build failed.  Following that, she
+text chunk describes why the build failed. Following that, she
 assigned search keywords and structural categories to each log chunk.
 
 \paragraph{Chunk That Describes Why The Build Failed}
@@ -283,10 +283,10 @@ They preserved whitespace and special characters, as they might be crucial to de
 To support learning of regular expressions identifying the labeled substrings the labeler aimed to start and end the labeled substring at consistent locations around the fault description.
 
 \paragraph{Search Keywords}
-We presented the \texttt{Chunk} and ten lines above and below to the labeler.
-Their task was to note down three strings they would put into a search field to find this failure description.
+To extract the search keywords, we considered the \texttt{Chunk} and ten lines above and below.
+The labeler's task was to note down three strings they would search for (``grep'') to find this failure description.
 The strings should appear in or around the \texttt{Chunk} and are case-sensitive.
-There are no limitations on the search string, especially spaces are allowed.
+We made no limitations on the search string; particularly, spaces are allowed.
 
 \paragraph{Structural Category}
 To label the \emph{structural categories} we presented the \texttt{Chunk} and the surrounding context to the labeler for all logs from a repository.
@@ -299,13 +299,11 @@ We asked them to assign numerical categories according to whether the \texttt{Ch
 \label{sec:validation}
 
 We validated our collected data points in an iterative fashion. First,
-we performed an initial inter-rater reliability study with a
-co-author, which informed the design of a cross-validation study in
-which we contacted over 200 developers.  Our learnings from the
+we performed an initial inter-rater reliability study with the second author of this paper. Our learnings from this
 initial internal study are that  1) it is important and difficult to
-adequately communicate all decisions and assumptions on how and which data is
-labeled and 2) that there can be different legitimate view points on
-what log chunk constitutes the cardinal error and which keywords best to use.
+adequately communicate all decisions and assumptions on how to and which data to
+lable and 2) there can be different legitimate viewpoints on
+which log chunk constitute the cardinal error and which keywords best to use. These learning informed the design of a seocnd, larger cross-validation study for which we contacted over 200 developers.
 
 %For \logchunks we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
 %As we are not involved in the development of any of the projects within our data set we could only rely on our previous experience with various build logs and systems.
@@ -330,16 +328,14 @@ We asked the developers to fill out a short form in case our extraction was not 
 In the survey, we asked the developer to paste in the log part actually describing the failure reason or describe in their own words why our original extraction was incorrect.
 
 \paragraph{Results}
-In total, from 2020-10-15 to 2020-10-17, we sent out mails to 246 developers. 32 of these mails could
-not be delivered. We performed the sending out in three batches and used the first author's academic email address as the sender. All emails were specific to each recipient, and we only sent one mail per recipient. We received answers from 61 developers, corresponding to
-144 build logs (response rate: 24.8\%). Compared to typical response rates known from Software Engineering~\cite{smith2013improving}, this is very high. We believe that our personalization and the ease of use for the responder are the main reasons for this---simply clicking on a link to confirm or refute an answer is enough, there is no need to craft an answer. Indeed, we only received seven replies from developers along the lines of ``done''.
+In total, from 2020-10-15 to 2020-10-17, we sent out mails to 246 developers. Of these, 32 could
+not be delivered. We performed the sending out in three batches and used the first author's academic email address as the sender. All emails were specific to each recipient. We only sent one mail per recipient. We received answers from 61 developers, corresponding to
+144 build logs with a response rate of 24.8\%. Compared to typical response rates to cold calling known from Software Engineering~\cite{smith2013improving}, this is very high. We believe that our personalization and the ease of use for the responder are the main reasons for this---simply clicking on a link to confirm or refute an answer is enough, there is no need to craft an answer. Indeed, we only received seven replies from developers along the lines of ``done.''
 
-Of the 144 answers, 132 indicated our extraction was correct.
+Of the 144 answers, 118 initially indicated that our extraction was correct.
 %26 answered either ``close, but not quite correct'' or ``no, the build failed for another reason''.
 We manually inspected the 26 negative answers and found that some stated that the proposed extraction did not show the whole description of why the build failed.
-This is because we had to trim long chunks to keep the mails readable.
-
-After adjusting for these answers, 12 answers remained that stated that our labeled log chunk was not correct.
+This was because we chose to trim long chunks to keep the mails readable, and not a fault in our extraction per se. After adjusting for these answers, only 12 answers remained that stated that our labeled log chunk was not correct. This validates our dataset with an externally validated consensus on 94.4\% of the extracted data.
 
 \paragraph{Discussion}
 We believe that our developer survey highly strengthens the trust in
@@ -391,7 +387,7 @@ retrieved and manually labeled and cross-validated logs.
 %\logchunks has two top level folders, \texttt{build-failure-reason} and \texttt{logs}.
 %Each contains folders representing the main languages of the repositories in \logchunks.
 \logchunks comprises information on 797 build logs, which are organized in folders for each language and repository.
-For each repository, \logchunks has about 10 \texttt{Examples}. Every repository folder, contains the full log files for the build status `failed' in plain text.
+For each repository, \logchunks has about 10 \texttt{Examples}. Every repository folder contains the full log files for the build status `failed' in plain text.
 % the logs are separated according to build status.
 %Currently, \logchunks only contains logs from \texttt{failed} builds.
 %The build status folder contains the full logs in files named with the ID of the build that produced the log.
@@ -559,7 +555,7 @@ empower research with a benchmark to compare different build log analysis techni
 In this section, we describe current limitations and future improvements of \logchunks and extensions we are planning.
 
 \paragraph{Chunk as One Consecutive Substring}
-The manually labeled \texttt{Chunk} contains only one continuous substring of the log text.
+The \texttt{Chunk} contains only one continuous substring of the log text.
 The reason a build failed could be described at multiple locations within the log.
 We propose to extend \logchunks to contain multiple substrings of the log text.
 
@@ -572,8 +568,8 @@ Including more logs and repositories will strengthen \logchunks as the go-to ben
 Our data set contains no further classification according to the cause of the failure, such as due to tests, compilation or linter errors.
 As researchers are investigating why CI builds fail, a useful extension is to annotate cause of the build failure for each log.
 
-\paragraph{Other Targeted Information Chunks}
-Build log analysis is not limited to retrieving the chunk describing why a build failed.
+\paragraph{Other Information Chunks}
+Build log analysis is not limited to the chunk that describes why a build failed.
 \logchunks can be extended with labels for all information that is contained in the build log, such as descriptions of warnings, build infrastructure and more.
 
 \paragraph{Validation of Search Keywords}
