@@ -239,7 +239,7 @@ This section presents how we gathered the logs and our manual labeling process.
 \subsection{Log Collection}
 In this section, we describe along the overview in
 \Cref{fig:lc-overview} how we created \logchunks. All steps are
-automatized as Ruby scripts\footnote{Data collection scripts and their original parametrization are included in the data set.} and highly configurable.
+automatized as Ruby scripts\footnote{Data collection scripts and their original parameterization are included in the data set.} and highly configurable.
 
 \paragraph{Repository Sampling}
 We target mature GitHub repositories that are using Travis CI\@.
@@ -279,7 +279,7 @@ assigned search keywords and structural categories to each log chunk.
 \paragraph{Chunk That Describes Why The Build Failed}
 For each repository, the labeler skimmed through the build logs and copied out the first occurrence of a description why the build failed.
 %They copied out the first continuous description as the \texttt{Chunk}.
-They preserved whitespace and special characters, as they might be crucial to detect the targeted substring.
+They preserved whitespaces and special characters, as they might be crucial to detect the targeted substring.
 To support learning of regular expressions identifying the labeled substrings the labeler aimed to start and end the labeled substring at consistent locations around the fault description.
 
 \paragraph{Search Keywords}
@@ -302,8 +302,8 @@ We validated our collected data points in an iterative fashion. First,
 we performed an initial inter-rater reliability study with the second author of this paper. Our learnings from this
 initial internal study are that  1) it is important and difficult to
 adequately communicate all decisions and assumptions on how to and which data to
-lable and 2) there can be different legitimate viewpoints on
-which log chunk constitute the cardinal error and which keywords best to use. These learning informed the design of a seocnd, larger cross-validation study for which we contacted over 200 developers.
+label and 2) there can be different legitimate viewpoints on
+which log chunk constitute the cardinal error and which keywords best to use. These learning informed the design of a second, larger cross-validation study for which we contacted over 200 developers.
 
 %For \logchunks we analyzed around 800 build logs from different repositories and tried to extract the part of the log which describes why the respective build failed.
 %As we are not involved in the development of any of the projects within our data set we could only rely on our previous experience with various build logs and systems.
@@ -330,12 +330,12 @@ In the survey, we asked the developer to paste in the log part actually describi
 \paragraph{Results}
 In total, from 2020-10-15 to 2020-10-17, we sent out mails to 246 developers. Of these, 32 could
 not be delivered. We performed the sending out in three batches and used the first author's academic email address as the sender. All emails were specific to each recipient. We only sent one mail per recipient. We received answers from 61 developers, corresponding to
-144 build logs with a response rate of 24.8\%. Compared to typical response rates to cold calling known from Software Engineering~\cite{smith2013improving}, this is very high. We believe that our personalization and the ease of use for the responder are the main reasons for this---simply clicking on a link to confirm or refute an answer is enough, there is no need to craft an answer. Indeed, we only received seven replies from developers along the lines of ``done.''
+144 build logs with a response rate of 24.8\%. Compared to typical response rates to cold calling known from Software Engineering~\cite{smith2013improving}, this is very high. We believe that our personalization and the ease of use for the participant are the main reasons for this---simply clicking on a link to confirm or refute an answer is enough, there is no need to craft an answer. Indeed, we only received seven replies from developers along the lines of ``done.''
 
 Of the 144 answers, 118 initially indicated that our extraction was correct.
 %26 answered either ``close, but not quite correct'' or ``no, the build failed for another reason''.
 We manually inspected the 26 negative answers and found that some stated that the proposed extraction did not show the whole description of why the build failed.
-This was because we chose to trim long chunks to keep the mails readable, and not a fault in our extraction per se. After adjusting for these answers, only 12 answers remained that stated that our labeled log chunk was not correct. This validates our dataset with an externally validated consensus on 94.4\% of the extracted data.
+This was because we chose to trim long chunks to keep the mails readable, and not a fault in our extraction per se. After adjusting for these answers, only 12 answers remained that stated that our labeled log chunk was not correct. This validates our data set with an externally validated consensus on 94.4\% of the extracted data.
 
 \paragraph{Discussion}
 We believe that our developer survey highly strengthens the trust in
@@ -475,7 +475,7 @@ Synopsis:
 \logchunks can be the basis for a range of further studies:
 
 \paragraph{Benchmarking Build Log Analysis Techniques}
-\logchunks is a spin-off from research in which we compared three different log chunk retrieval techniques prototypically. %\todo{cite journal paper (or preprint?)}.
+\logchunks is a spin-off from the first author's Master's Thesis in which she compared three different log chunk retrieval techniques prototypically. %\todo{cite journal paper (or preprint?)}.
 \logchunks can be a benchmark to evaluate other build log analysis techniques.
 For example, we can use the data set to investigate how reliably the diff-based approach of Amar et al.~\cite{amar2019mining} retrieves a build failure reason.
 
@@ -588,7 +588,7 @@ log chunk as well as a categorization of the log chunks according to
 their format within the log. \logchunks advances the research
 field of build log analysis by introducing a benchmark to rigorously
 examine research contributions~\cite{sim2003using} and opening various
-research possibilites that previously required tedious manual
+research possibilities that previously required tedious manual
 classification.
 
 %%
