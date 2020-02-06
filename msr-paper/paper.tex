@@ -111,7 +111,7 @@ failure. Recently, attempts to partly automate this time-consuming,
 purely manual activity have come up, such as rule- or
 information-retrieval-based techniques.
 
-We believe that having a common data set to be able to compare
+We believe that having a common data set to compare
 different build log analysis techniques fairly will advance the research
 area. It will ultimately increase our understanding of CI build
 failures. In this paper, we present \logchunks, a collection of 797
@@ -177,9 +177,8 @@ CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect
 bugs early~\cite{vasilescu2015quality,duvall2007continuous}, improve
 developer productivity~\cite{miller2008hundred,hilton2016usage} and
 communication~\cite{downs2012ambient}.  CI builds produce logs which
-report the results of the steps within the build.  These build logs
-contain a lot of valuable information for developers and researchers,
-for example: descriptions of compile errors, linter warnings or failed
+report results of various sub-steps within the build.  These build logs
+contain a lot of valuable information for developers and researchers---for example, descriptions of compile errors, linter warnings or failed
 tests~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
 
 However, build logs can be verbose and large---sometimes in excess of
@@ -206,10 +205,10 @@ though fragile in light of changes in the log structure. Diffing
 between failed and successful logs can reduce the information to be
 processed, but is at best semi-automatic~\cite{amar2019mining}.
 
-At the moment there is only anecdotal evidence on the performance of
-these techniques and when a technique should be preferred over its
+At the moment, there is only anecdotal evidence on the performance of
+these techniques, and when a technique should be preferred over its
 alternatives.  In fact, there is no data set available to support the
-creation of such a benchmark of build log analysis techniques.
+creation of such a benchmark for build log analysis techniques.
 Following Sim et al., a benchmark gives us the chance to ``increase
 the scientific maturity of the area''~\cite{sim2003using} of build log
 analysis by evaluating and comparing research contributions.
@@ -279,7 +278,7 @@ assigned search keywords and structural categories to each log chunk.
 \paragraph{Chunk That Describes Why The Build Failed}
 For each repository, the labeler skimmed through the build logs and copied out the first occurrence of a description why the build failed.
 %They copied out the first continuous description as the \texttt{Chunk}.
-They preserved whitespaces and special characters, as they might be crucial to detect the targeted substring.
+She preserved whitespaces and special characters, as these might be crucial to detect the targeted substring.
 To support learning of regular expressions identifying the labeled substrings the labeler aimed to start and end the labeled substring at consistent locations around the fault description.
 
 \paragraph{Search Keywords}
@@ -290,7 +289,7 @@ We made no limitations on the search string; particularly, spaces are allowed.
 
 \paragraph{Structural Category}
 To label the \emph{structural categories} we presented the \texttt{Chunk} and the surrounding context to the labeler for all logs from a repository.
-We asked them to assign numerical categories according to whether the \texttt{Chunk} had the same structural representation.
+We asked the labeler to assign numerical categories according to whether the \texttt{Chunk} had the same structural representation.
 %The labeler should start the categories with 0 and increase as new ones appear.
 %For reproducibility, we presented the logs in chronological build order.
 
@@ -328,7 +327,7 @@ We asked the developers to fill out a short form in case our extraction was not 
 In the survey, we asked the developer to paste in the log part actually describing the failure reason or describe in their own words why our original extraction was incorrect.
 
 \paragraph{Results}
-In total, from 2020-10-15 to 2020-10-17, we sent out mails to 246 developers. Of these, 32 could
+In total, from 2020-10-15 to 2020-10-17, we sent out emails to 246 developers. Of these, 32 could
 not be delivered. We performed the sending out in three batches and used the first author's academic email address as the sender. All emails were specific to each recipient. We only sent one mail per recipient. We received answers from 61 developers, corresponding to
 144 build logs with a response rate of 24.8\%. Compared to typical response rates to cold calling known from Software Engineering~\cite{smith2013improving}, this is very high. We believe that our personalization and the ease of use for the participant are the main reasons for this---simply clicking on a link to confirm or refute an answer is enough, there is no need to craft an answer. Indeed, we only received seven replies from developers along the lines of ``done.''
 
@@ -583,7 +582,7 @@ Next, we propose to evaluate whether these keywords would also be used by develo
 In this paper, we introduce \logchunks, a cross-validated data
 set encompassing 797 build logs from 80 projects using Travis CI\@.
 For each log, we annotated the log chunk describing why the build
-failed and provide keywords a developer would use to search for the
+failed and provided keywords a developer would use to search for the
 log chunk as well as a categorization of the log chunks according to
 their format within the log. \logchunks advances the research
 field of build log analysis by introducing a benchmark to rigorously
