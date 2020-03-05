@@ -238,7 +238,8 @@ This section presents how we gathered the logs and our manual labeling process.
 \subsection{Log Collection}
 In this section, we describe along the overview in
 \Cref{fig:lc-overview} how we created \logchunks. All steps are
-automatized as Ruby scripts\footnote{Data collection scripts and their original parameterization are included in the data set.} and highly configurable.
+automatized as Ruby scripts\footnote{Data collection scripts and their original 
+parameterization are included in the data set.} and highly configurable.
 
 \paragraph{Repository Sampling}
 We target mature GitHub repositories that are using Travis CI\@.
@@ -248,13 +249,16 @@ We query \emph{GHTorrent}~\cite{gousios2013ghtorrent} for the
 most popular languages on GitHub, and subsequently, the most popular
 repositories for a given language.
 
-For \logchunks, we queried GHTorrent on 2018-04-01 for the three
-most popular repositories of each of the 30 most popular languages.
+For \logchunks, we queried GHTorrent from 2018-04-01 for the three
+most popular repositories of each of the 30 most popular languages
+to cover a broad range of development languages.
 Among the resulting repositories are, for example, \texttt{git/git},
 \texttt{Microsoft/TypeScript} and \texttt{jwilm/alacritty}.
 
 \paragraph{Build Sampling}
-To sample the builds for \logchunks we check up to 1,000 builds per repository and keep ten of the status \emph{failed}~\cite{travis2009buildstatus}.
+To sample the builds for \logchunks we keep the most recent ten of the status 
+\emph{failed}~\cite{travis2009buildstatus}. We check up to 1,000 builds per 
+repository to ensure predictable termination of the log collection.
 %A Travis CI build is marked as \emph{failed} when it faults in the \texttt{script} section of the build configuration defined by the user.
 
 \paragraph{Log Sampling}
@@ -327,7 +331,7 @@ We asked the developers to fill out a short form in case our extraction was not 
 In the survey, we asked the developer to paste in the log part actually describing the failure reason or describe in their own words why our original extraction was incorrect.
 
 \paragraph{Results}
-In total, from 2020-10-15 to 2020-10-17, we sent out emails to 246 developers. Of these, 32 could
+In total, from 2019-10-15 to 2019-10-17, we sent out emails to 246 developers. Of these, 32 could
 not be delivered. We performed the sending out in three batches and used the first author's academic email address as the sender. All emails were specific to each recipient. We only sent one mail per recipient. We received answers from 61 developers, corresponding to
 144 build logs with a response rate of 24.8\%. Compared to typical response rates to cold calling known from Software Engineering~\cite{smith2013improving}, this is very high. We believe that our personalization and the ease of use for the participant are the main reasons for this---simply clicking on a link to confirm or refute an answer is enough, there is no need to craft an answer. Indeed, we only received seven replies from developers along the lines of ``done.''
 
