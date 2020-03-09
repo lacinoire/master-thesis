@@ -67,7 +67,7 @@ We implement and evaluate three chunk retrieval techniques:
 \textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited to retrieve information from continuous integration build logs.
 \textbf{RQ2} is refined into sub-questions along with the criteria resulting from \textbf{RQ1} and compares their instantiations for the three techniques:
 how many training examples a technique needs to perform best (\textbf{RQ2.1}), how structurally diverse the examples can be (\textbf{RQ2.2}) and how accurate the retrieved output is (\textbf{RQ2.3}).
-To evaluate PBE, CTS and KWS we create a data set, called \emph{LogChunks}, which encompasses about 800 log files from 80 repositories.
+To evaluate PBE, CTS and KWS we use the \emph{LogChunks} data set, which encompasses about 800 log files from 80 repositories.
 Each log is labeled with the log part describing the reason a build failed, keywords to search for this log part and a categorization of the labeled log part according to its structural representation within the log.
 
 Our study of the three techniques on \emph{LogChunks} shows that
@@ -93,22 +93,29 @@ Our study of the three techniques on \emph{LogChunks} shows that
   \item Guidelines on choosing a suitable chunk retrieval technique.
 \end{itemize}
 
-We recommend PBE for use cases where the desired information is always represented in the same structural way and high confidence in precision and recall of the chunk retrieval is required.
-CTS is well suited when the representation of the desired information varies slightly and the output of the chunk retrieval is further processed by a human.
-In cases where the textual representation of the desired information in the log is unpredictable or varies greatly, KWS is the best technique to choose.
-However, its low precision requires a human to interpret the output of the chunk retrieval.
+We recommend PBE for use cases where the desired information is always
+represented in the same structural way and high confidence in precision and
+recall of the chunk retrieval is required.
+CTS is well suited when the representation of the desired information varies
+slightly and the output of the chunk retrieval is further processed by a human.
+In cases where the textual representation of the desired information in the log
+is unpredictable or varies greatly, KWS is the best technique to choose.
+However, its low precision requires a human to interpret the output of the chunk
+retrieval.
 
 \todo{structure overview of article}
 
 \section{Related Work}
 \label{sec:rw}
-We explain how researchers gather information about CI usage in software projects through build log analysis and why the chunk retrieval techniques we investigate simplifies their data collection.
-This section moves on to past works about augmenting build logs to make it easier for developers to inspect them.
-The presented approaches are related to and can benefit from the techniques we analyze in this paper.
-Further, we classify build logs as semi-structured data and differentiate our work from system log analysis.
-% In this section we cover previous works on CI and how resarchers use the
-% information within build logs to investigate software engineering processes and
-% support developers.
+We explain how researchers gather information about CI usage in software projects
+through build log analysis and why the chunk retrieval techniques we investigate
+simplifies their data collection.
+This section moves on to past works about augmenting build logs to make it easier
+for developers to inspect them.
+The presented approaches are related to and can benefit from the techniques we
+analyze in this paper.
+Further, we classify build logs as semi-structured data and differentiate our
+work from system log analysis.
 
 \subsection{Build Failures in CI}
 Various researchers look into why CI builds fail and into the impact of build failures on the development workflow.
@@ -134,10 +141,14 @@ They select keywords and strings that identify their targeted categories and cod
 
 \noindent
 \textbf{Supporting Log Analysis with Chunk Retrieval}
-To leverage the valuable information within build logs the researchers presented in this section build parsers and regular expression-based programs.
-This task of retrieving specific chunks of text from the build logs can be solved by the chunk retrieval techniques we compare in this paper.
-Our results can support researchers in choosing a suitable technique for their data set of build logs and the chunks they want to retrieve.
-By relieving them from building custom parsers we enable them to cover a much wider range of languages and build tools in their studies.
+To leverage the valuable information within build logs the researchers presented
+in this section create parsers and regular expression-based programs.
+This task of retrieving specific chunks of text from the build logs can be
+solved by the chunk retrieval techniques we compare in this paper.
+Our results can support researchers in choosing a suitable technique for their
+data set of build logs and the chunks they want to retrieve.
+By relieving them from building custom parsers we enable them to cover a much
+wider range of languages and build tools in their studies.
 
 
 \subsection{Augmentation of Build Logs}
@@ -146,10 +157,10 @@ Build logs are a valuable data source for developers to find out why their build
 Several researchers are looking into supporting developers to process the verbose build logs.
 Vassallo et al.~\cite{vassallo2018un-break} try to shorten the time it takes developers to understand build logs.
 They parse Maven~\cite{maven2019website} build logs into a structured representation and create hint generators.
-The hint generators leverage this structured access to the information within the build log to propose fixes.
+%The hint generators leverage this structured access to the information within the build log to propose fixes.
 For example, one of the hint generators queries stack overflow for discussions related to why the build failed.
 In a qualitative study they observed that highlighting the locality and context of an issue is helpful to programmers.
-Their tool BART is published as a Jenkins Plugin~\cite{bart2019plugin}.
+%Their tool BART is published as a Jenkins Plugin~\cite{bart2019plugin}.
 The chunk retrieval techniques we compare in this paper can be used to fill similar structured representations with information from build logs.
 As they simplify the construction of parsers they would enable developers and researchers to cover a wider array of build tools, which is the main influence factor on the structure of a build log.
 
@@ -159,49 +170,6 @@ Their diff technique can be interpreted as a chunk retrieval technique, where th
 
 Travis itself already provides build log augmentation in the form of a basic structuring of the build logs within their log viewer using \emph{log folds}~\cite{travis2019logfolds}.
 They add fold identifiers around common commands and setup or teardown build phases and collapse the contained lines by default.
-
-
-\subsection{Build Logs as Semi-Structured Data}
-\label{sec:rw-semi-structured-data}
-Serge Abiteboul introduces a theory of semi-structured data in his report from 1997 about integrating data from several sources~\cite{abiteboul1997querying}.
-He proposes essential characteristics of semi-structured data.
-In this section, we show how five of these map to the context of build logs.
-
-The structure of build logs
-\begin{itemize}
-  \item \textbf{is implicit}.
-  We might not have access to explicit structuring elements or an explicit structure description.
-  Computation is required to infer the present structure.
-  \item \textbf{is irregular}.
-  Changes in the build process or execution environment might change the structure of a build log.
-  We observed this in the logs we collected for the \emph{LogChunks} data set, where for the same repository and build configuration some logs had double new line characters without any noticeable explanation.
-  Figure~\ref{fig:log-4} and Figure~\ref{fig:log-5} present an example of this.
-  \item \textbf{is partial}. Some parts are highly structured by e.g.\ special characters. Other parts are unstructured, such as natural language text in error messages.
-  \item can be described with an \textbf{analytical data guide} rather than a predefined schema.
-  There is no fixed specification on how build tools structure their output.
-  We later extract structuring patterns in the produced output.
-  \item \textbf{has a rapidly evolving schema}.
-  Modifications in the build configuration can change the tools involved in the build and therefore the composition of the build log.
-  Previous work indicates that some projects change their CI configuration often~\cite{hilton2016usage} and software tools adapt their log messages over time~\cite{yuan2012characterizing}.
-\end{itemize}
-
-Abiteboul proposes an approach to overlay the semi-structured data with a structured layer.
-The additional layer can answer queries and give access to the semi-structured data relevant to a query.
-In contrast to that, this paper takes a look at techniques to gather a specific, pre-specified information without the need to parse, understand or estimate the whole structure of a log.
-
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=\columnwidth, clip]{img/log42.png}
-	\caption{Excerpt from a build log showing a WarningMessage chunk.}
-	\label{fig:log-4}
-\end{figure}
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=\columnwidth, clip]{img/log52.png}
-	\caption{Excerpt from a build log showing a differently formatted WarningMessage chunk.}
-	\label{fig:log-5}
-\end{figure}
-
 
 \subsection{System Log Analysis}
 \label{sec:log-analysis}
@@ -214,20 +182,20 @@ The first goal in parsing system log files is to separate constant and variable 
 Next, the log messages are clustered into log events, unifying messages with identical constant parts and varying parameters.
 The output of a log parser is a structured log, composed of a list of timed events and the corresponding parameter values~\cite{he2016evaluation}.
 This structured log is then the input to various machine learning and data mining processes.
-Researchers mine patterns for operational profiling~\cite{nagappan2009efficiently}, debugging~\cite{oliner2012advances}, performance analytics or anomaly detection~\cite{nagappan2010abstracting}.
-Xu et al.~\cite{xu2009detecting} leverage the connection of log statements to the source code producing them to separate messages into constant and variable parts more accurately.
+%Researchers mine patterns for operational profiling~\cite{nagappan2009efficiently}, debugging~\cite{oliner2012advances}, performance analytics or anomaly detection~\cite{nagappan2010abstracting}.
+%Xu et al.~\cite{xu2009detecting} leverage the connection of log statements to the source code producing them to separate messages into constant and variable parts more accurately.
 
 The techniques developed for system log analysis can also be applied to build logs.
 One example is comparing execution traces to reference traces of intended behavior to detect anomalies.
 Amar et al.~\cite{amar2019mining} employed a similar approach to detect relevant lines in build logs.
-
-Classic log parsers interpret the whole log file into a sequence of events.
-A similar approach could also be applied to build logs to determine the sequence of executed build steps or phases.
-In this paper we take a different approach and focus on extracting a single specified information from the build log as a whole with chunk retrieval techniques.
+%Classic log parsers interpret the whole log file into a sequence of events.
+%A similar approach could also be applied to build logs to determine the sequence of executed build steps or phases.
+In this paper we focus on extracting a single specified information from the build log as a whole with chunk retrieval techniques.
 Chunk retrieval techniques are used as a part of log parsing to retrieve the values of variable parts in a log message, e.g.\ by using regular expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 
 \lstset{
   morekeywords={INFO, WARN, 2008-11-09},
+	basicstyle=\scriptsize,
   postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
   showspaces=false,
   showstringspaces=false,
@@ -247,17 +215,20 @@ Chunk retrieval techniques are used as a part of log parsing to retrieve the val
 \end{figure}
 
 \subsection{Program Synthesis by Example}
-% \section{Information Extraction and Retrieval Techniques}
-The techniques we investigate are based on existing methods of Programming by Example, information extraction and information retrieval.
-This section presents different Programming by Example resources surrounding the PROSE library.
-We explain its generic program synthesis algorithm and how PROSE synthesizes text extraction programs, the foundation of PBE\@.
 \label{sec:rw-prose}
+% \section{Information Extraction and Retrieval Techniques}
+%The techniques we investigate are based on existing methods of Programming by Example.%, information extraction and information retrieval.
+%This section presents different Programming by Example resources surrounding the PROSE library.
+%We explain its generic program synthesis algorithm and how PROSE synthesizes text extraction programs, the foundation of PBE\@.
+
 Programming by Example enables end users to automate repetitive tasks.
-The user provides examples for the input and the corresponding output and a synthesis algorithm tries to create the program intended by the user.
-This section introduces the theoretical foundations of the program synthesis algorithm of the \emph{PROgram Synthesis using Examples} (PROSE) framework~\cite{prose2019webpage}.
+The user provides examples for the input and the corresponding output and a
+synthesis algorithm tries to create the program intended by the user.
+This section introduces the theoretical foundations of the program synthesis
+algorithm of the \emph{PROgram Synthesis using Examples} (PROSE) framework~\cite{prose2019webpage}.
 The PROSE framework is developed by Microsoft Research.
-Next, this section presents the FlashExtract DSL, which defines text extraction tasks within PROSE and is the basis for the implementation of our chunk retrieval technique PBE\@.
-Finally, we cover additional applications and extensions of the PROSE program synthesis and alternative research on generating regular expressions from examples.
+Next, this section presents the FlashExtract DSL, which defines text extraction
+tasks within PROSE and is the basis for the implementation of our chunk retrieval technique PBE\@.
 
 \subsubsection{FlashMeta: Inductive Program Synthesis}
 The FlashMeta framework presented by Polozov and Gulwani~\cite{polozov2015flashmeta:} is the backbone of the program synthesis in the Microsoft PROSE framework.
@@ -272,20 +243,20 @@ Next, FlashMeta ranks the enumerated programs according to which ones the user m
 The DSL also provides the ranking characteristics.
 From the ranked VSA, FlashMeta can then return a ranked list of complete programs consistent with the user's example.
 
-In addition to I/O examples of the intended program, the user can also provide examples with only input or negative input examples.
-Negative input examples should not be processed by the synthesized program.
+% In addition to I/O examples of the intended program, the user can also provide examples with only input or negative input examples.
+% Negative input examples should not be processed by the synthesized program.
 
-The different applications of PROSE presented in the following paragraphs were all eventually implemented as DSLs for the FlashMeta synthesis algorithm.
+% The different applications of PROSE presented in the following paragraphs were all eventually implemented as DSLs for the FlashMeta synthesis algorithm.
 
 \subsubsection{FlashExtract: Data Extraction by Example}
 Le et al.~\cite{le2014flashextract:} developed FlashExtract as a DSL for the Microsoft PROSE framework.
-It enables a user to define text extraction programs for text, websites and spreadsheets by giving I/O examples.
+% It enables a user to define text extraction programs for text, websites and spreadsheets by giving I/O examples.
 FlashExtract's instantiation for text synthesizes extraction programs from semi-structured text based on regular expressions.
 Users can extract multiple fields and structure them with hierarchy and sequence.
-FlashExtract synthesizes programs to extract each of the fields leveraging the information about hierarchical containment and sequentiality.
-It eliminates the need for the user to understand the entire structure of the processed document and decreases the effort of developing a suitable extraction program.
+% FlashExtract synthesizes programs to extract each of the fields leveraging the information about hierarchical containment and sequentiality.
+% It eliminates the need for the user to understand the entire structure of the processed document and decreases the effort of developing a suitable extraction program.
 
-The text instantiation of FlashExtract models the extraction of a single substring as a pair of two cut positions.
+FlashExtract models the extraction of a single substring as a pair of two cut positions.
 A position is either specified by an absolute character index or by a pair of two regular expressions.
 The first regular expression matches the substring directly before the characterized position, the second regular expression matches the substring directly after.
 A regular expression in FlashExtract is a concatenation of tokens, e.g.\ standard character classes or string literals frequently occurring in the input examples.
@@ -301,6 +272,7 @@ We apply the text instantiation of FlashExtract to the domain of build logs with
 
 \lstset{
   language=caml,
+	basicstyle=\scriptsize,
   morekeywords={PosToEndRegion, RegexPosition, RegexPair, StartToPosRegion},
   postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
   showspaces=false,
@@ -322,19 +294,15 @@ let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("Colon/$\circ$
 
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
-This chapter introduces the concept of chunk retrieval techniques.
+This section introduces the concept of chunk retrieval techniques.
 We use these techniques to extract text chunks from build logs that represent a specific, targeted information.
-This chapter first presents how a build log, which we take as input to the chunk retrieval, is created by a continuous integration (CI) build.
-Next, the chapter describes retrievable information chunks in build logs and gives examples found in Travis CI build logs.
-We illustrate why it is useful to extract the presented information chunks.
-The following section introduces our concept of chunk retrieval techniques.
 We present the three chunk retrieval techniques we investigate in this paper:
 program synthesis by example (PBE), common text similarity (CTS) and keyword search (KWS).
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=\columnwidth, clip]{img/build-overview.pdf}
-	\caption{The different entities related to a CI build.}
+	\caption{The different entities related to a CI build. \todo{mention in text or remove}}
 	\label{fig:build-overview}
 \end{figure}
 
@@ -349,7 +317,7 @@ Each configuration addresses a specific \textit{scope}.
 The scope can be a specific project, a tool involved in the build, a programming language or global, when configuring a retrieval technique for all possible build logs.
 A \emph{run} of a chunk retrieval technique consumes a build log as a plain text file and produces a string output, which consists of substrings of the build log text.
 
-The following sections of this chapter introduce the three chunk retrieval techniques we investigate: program synthesis by example (PBE), common text similarity (CTS), and keyword search (KWS).
+The following sections of this section introduce the three chunk retrieval techniques we investigate: program synthesis by example (PBE), common text similarity (CTS), and keyword search (KWS).
 Lastly we describe other techniques which can also be treated as chunk retrieval techniques.
 Table~\ref{tab:ctr} shows a comparison of the presented techniques.
 
@@ -372,24 +340,26 @@ Diff Approach                & ---     & Line not present in successful log, inf
 
 \subsection{Program Synthesis by Example (PBE)}
 \label{sec:expl-pbe}
-\emph{Programming by Example} is a technique which synthesizes programs according to in- and output examples provided by the user.
-It enables users to create programs without a priori programming knowledge~\cite{mayer2015user}.
-In the context of text extraction through regular expressions, Programming by Example relieves the developer from having to understand the whole document structure to solve a single extraction task~\cite{le2014flashextract:}.
-In this work, we refer to our interpretation of Programming by Example as \emph{PBE}\@.
-We investigate the suitability of PBE to retrieve information chunks from build logs.
-In the following, we explain the configuration and application of PBE to chunk retrieval from CI build logs.
+% \emph{Programming by Example} is a technique which synthesizes programs according
+% to in- and output examples provided by the user.
+% It enables users to create programs without a priori programming knowledge~\cite{mayer2015user}.
+% In the context of text extraction through regular expressions, Programming by Example relieves the developer from having to understand the whole document structure to solve a single extraction task~\cite{le2014flashextract:}.
+% In this work, we refer to our interpretation of Programming by Example as \emph{PBE}\@.
+% We investigate the suitability of PBE to retrieve information chunks from build logs.
+% In the following, we explain the configuration and application of PBE to chunk retrieval from CI build logs.
 
 \subsubsection{Configuration}
-In/output examples are the main driver of Programming by Example.
-We refer to in/output examples as \emph{examples}.
-When retrieving information chunks from build logs the \emph{input} is a whole build log, i.e.\ the whole text of the build log file.
+In/output examples are the main driver of Programming by Example, we refer to them
+as \emph{examples}.
+The \emph{input} is a whole build log, i.e.\ the whole text of the build log file.
 The \emph{output} is a substring of the log file text, representing the substring that should be retrieved by the synthesized program when given the corresponding input file.
-One or multiple examples, the training examples, configure a chunk retrieval with PBE: they define the substring of a build log that should be extracted.
+One or multiple examples, the training set, configure a chunk retrieval with PBE:
+they define the substring of a build log that should be extracted.
 The PROSE program synthesis then tries to construct a regular expression program consistent with all training examples.
-A program is consistent with an example if it returns the defined output when executed on the defined input~\cite{mitchell1982generalization}.
+% A program is consistent with an example if it returns the defined output when executed on the defined input~\cite{mitchell1982generalization}.
 PBE reports an error back to the user if it could not synthesize a consistent program.
-The program synthesis builds on the FlashExtract DSL, which in turn uses the FlashMeta algorithm.
-Both are described in Section~\ref{sec:rw-prose}.
+% The program synthesis builds on the FlashExtract DSL, which in turn uses the FlashMeta algorithm.
+% Both are described in Section~\ref{sec:rw-prose}.
 
 \subsubsection{Application}
 A run of PBE takes a build log file as input and applies the synthesized regular expression program.
@@ -397,13 +367,13 @@ It then returns the substring of the build log matched by the program or an empt
 
 \subsection{Common Text Similarity (CTS)}
 \label{sec:expl-ts}
-Text Similarity approaches are used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
-One common and simple technique is the Vector Space Model~\cite{schutze2008introduction}.
-We investigate when text similarity is a suitable technique to retrieve information chunks from build logs.
-In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs, which we refer to as \emph{CTS}\@.
+% Text Similarity approaches are used to filter unstructured textual software artifacts~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
+% One common and simple technique is the Vector Space Model.
+% We investigate when text similarity is a suitable technique to retrieve information chunks from build logs.
+% In the following we will explain the concept of how we apply text similarity to information retrieval from CI build logs, which we refer to as \emph{CTS}\@.
 
 \subsubsection{Configuration}
-To configure chunk retrieval though text similarity we chose to use the same concept of examples as for PBE\@.
+To configure chunk retrieval though text similarity we chose to use the same concept of examples as for PBE\@ and apply the Vector Space Model~\cite{schutze2008introduction}.
 The lines of the output strings of the training examples define our search query.
 The algorithm splits the search query into single lines and identifies tokens, in our case words.
 Then we build a document-term-frequency matrix over the lines from the search query and prune very often or very rarely appearing words.
@@ -418,9 +388,9 @@ The average number of lines in the outputs of the training examples determines h
 \subsection{Keyword Search (KWS)}
 \label{sec:expl-skws}
 When developers are looking for a specific piece of information within a large amount of unstructured information, a first ad-hoc approach they use is searching for related keywords.
-Indeed, this was one of the most common approaches we took when searching for the reason the build failed within a log while creating our \emph{LogChunks} data set.
-As this is a technique readily available in many tools developers use to view build logs, we study when such a keyword search is suitable for retrieving information chunks from CI build logs.
-In the following we will explain how we use simple keyword search to retrieve information from CI build logs, which we refer to as \emph{KWS}\@.
+Indeed, this was one of the most common approaches we took when searching for the reason the build failed within a log while creating the \emph{LogChunks} data set.
+% As this is a technique readily available in many tools developers use to view build logs, we study when such a keyword search is suitable for retrieving information chunks from CI build logs.
+% In the following we will explain how we use simple keyword search to retrieve information from CI build logs, which we refer to as \emph{KWS}\@.
 
 \subsubsection{Configuration}
 A set of keywords configures the chunk retrieval with KWS\@.
@@ -438,12 +408,14 @@ The number of surrounding lines retrieved is the average of lines in the output 
 %Literature mentions further build log analysis techniques.
 %This section describes them with our notion of chunk retrieval techniques.
 
-\subsubsection{Log Diff}
+\noindent
+\textbf{Log Diff}
 Amar et al.\ use a technique based on line diffs and information retrieval to identify relevant lines from a failed build log~\cite{amar2019mining}, as we describe in more detail in Section~\ref{sec:rw-bl-analysis}.
 The configuration for the technique is the log from the last successful build and relevant past failures.
 This technique retrieves the lines from a build log that are not present in the successful build log and contain terms related to the given past failures.
 
-\subsubsection{Random Line Retrieval (RLR)}
+\noindent
+\textbf{Random Line Retrieval (RLR)}
 In our evaluation, we want to compare against a baseline of randomly extracted lines.
 The average number of lines in the outputs of the training examples is the configuration for random line retrieval (RLR).
 It retrieves this number of lines randomly sampled from the build log.
@@ -460,7 +432,7 @@ We implemented CTS, KWS and RLR using R and the text2vec library~\cite{text2vec2
 To investigate when PBE, CTS and KWS are suited to retrieve chunks from CI build logs we evaluate them on the \emph{LogChunks} data set.
 \todo{cite dataset}
 \todo{adapt glue text}
-This chapter describes our study design and which metrics we measure to answer our research questions.
+This section describes our study design and which metrics we measure to answer our research questions.
 In the presentation of the results, we first focus on each of the three techniques and later compare them against each other.
 
 
@@ -484,9 +456,10 @@ In the presentation of the results, we first focus on each of the three techniqu
 
 For the comparison, we evaluate the three chunk retrieval techniques PBE, CTS and KWS, described in Sections~\ref{sec:expl-pbe}, \ref{sec:expl-ts} and \ref{sec:expl-skws}.
 Random Line Retrieval (RLR), explained in Section~\ref{sec:expl-rlr}, acts as a baseline for the comparison.
-We run four techniques on the examples from \emph{LogChunks}.
+% We run four techniques on the examples from \emph{LogChunks}.
 
-\paragraph{Training and Test Set}
+\noindent
+\textbf{Training and Test Set}
 We use \emph{LogChunks} as the data set for our study.
 For each one of 80 repositories it contains about 10 build logs, manually labeled with the substring describing the reason the build failed.
 In addition to that, it contains keywords to search for that substring and which structural category the substring belongs to.
@@ -494,15 +467,18 @@ In addition to that, it contains keywords to search for that substring and which
 For each repository in \emph{LogChunks}, we split the examples chronologically into training and test set.
 Therefore, we train on examples from past build logs and test on more recent build logs.
 
-\paragraph{RQ 2.1: Size of Training and Test Set}
+\noindent
+\textbf{RQ 2.1: Size of Training and Test Set}
 To analyze how many examples the chunk retrieval techniques need to perform best, we evaluate the techniques with different training set sizes.
 We train each technique with one to five examples from each of the repositories within \emph{LogChunks}.
 The size of the test set is one.
 
-\paragraph{RQ 2.2: Recording Structural Categories}
+\noindent
+\textbf{RQ 2.2: Recording Structural Categories}
 To determine how structurally similar the examples for the chunk retrieval techniques need to be, we record the structural categories of the examples in the training and test sets.
 
-\paragraph{RQ2.3: Accuracy Metrics}
+\noindent
+\textbf{RQ2.3: Accuracy Metrics}
 To measure the accuracy of the retrieved chunks we save the output lines of the chunk retrieval run on the input of the test example ($\mathit{RetrievedLines}$).
 As oracle in our evaluation, we save the desired lines from the output of the test example ($\mathit{DesiredLines}$).
 
@@ -518,12 +494,12 @@ We calculate the following metrics:
 
 Precision of a chunk retrieval describes which proportion of the retrieved lines were desired.
 Recall of a chunk retrieval describes which proportion of the targeted lines were retrieved.
-Throughout the presentation and discussion of our results we show these two metrics separately, as they might have a different weight when choosing a suitable technique for a task.
+% Throughout the presentation and discussion of our results we show these two metrics separately, as they might have a different weight when choosing a suitable technique for a task.
 In addition, we calculate the F$_{1}$-score, the harmonic mean of precision and recall.
 We define a successful retrieval as one where all desired lines were extracted, therefore when recall is one.
 
-Recall and precision of CTS and KWS vary with the number of lines selected for retrieval.
-We evaluate the effect of varying the number of extracted lines by multiplying the average number of lines present in the training examples with a \emph{retrieval size factor} from 0.5 to 2.5 in steps of 0.5.
+% Recall and precision of CTS and KWS vary with the number of lines selected for retrieval.
+% We evaluate the effect of varying the number of extracted lines by multiplying the average number of lines present in the training examples with a \emph{retrieval size factor} from 0.5 to 2.5 in steps of 0.5.
 
 
 \section{Results}
@@ -539,6 +515,7 @@ Afterwards we compare the three techniques with each other and RLR as baseline.
 
 \lstset{
   morekeywords={Test Output, Desired Test Output},
+	basicstyle=\scriptsize,
   postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
   showspaces=false,
   showstringspaces=false,
@@ -591,10 +568,10 @@ Figure~\ref{fig:recall-precision-categorycount-CTS} shows the same measurements 
 With increasing category count, precision, recall and F$_{1}$-score decrease.
 Especially for more than three categories present we have no chunk retrieval runs where all desired lines were extracted.
 
-Figure~\ref{fig:contextsizefactor-precision-recall-CTS} shows the effect of the retrieval size factor on precision, recall and F$_{1}$-score of chunk retrieval runs with CTS\@.
-The precision ranges from 52\% when retrieving half expected number of lines to 25\% when 2.5 times the expected number of lines.
-The recall ranges from 30\% to 55\%.
-A retrieval size factor of 1 gives the best average F$_{1}$-score with 51\%.
+% Figure~\ref{fig:contextsizefactor-precision-recall-CTS} shows the effect of the retrieval size factor on precision, recall and F$_{1}$-score of chunk retrieval runs with CTS\@.
+% The precision ranges from 52\% when retrieving half expected number of lines to 25\% when 2.5 times the expected number of lines.
+% The recall ranges from 30\% to 55\%.
+% A retrieval size factor of 1 gives the best average F$_{1}$-score with 51\%.
 
 \begin{figure}[!t]
 		\centering
@@ -624,12 +601,12 @@ A retrieval size factor of 1 gives the best average F$_{1}$-score with 51\%.
 		\label{fig:recall-precision-categorycount-CTS}
 \end{figure}
 
-\begin{figure}[!t]
-		\centering
-		\includegraphics[width=\columnwidth, clip]{img/big-study/contextsizefactor-precision-recall-CTS.pdf}
-		\caption{Precision, recall and F$_{1}$-score of chunk retrieval with CTS compared to retrieval size factors.}
-		\label{fig:contextsizefactor-precision-recall-CTS}
-\end{figure}
+% \begin{figure}[!t]
+% 		\centering
+% 		\includegraphics[width=\columnwidth, clip]{img/big-study/contextsizefactor-precision-recall-CTS.pdf}
+% 		\caption{Precision, recall and F$_{1}$-score of chunk retrieval with CTS compared to retrieval size factors.}
+% 		\label{fig:contextsizefactor-precision-recall-CTS}
+% \end{figure}
 
 
 \subsection{Keyword Search (KWS)}
@@ -641,10 +618,10 @@ Figure~\ref{fig:recall-precision-categorycount-KWS} shows the same measurements 
 For more than one structural category in the training and test examples the recall decreases by about 20\% and the precision decreases about 6\%.
 For more than two structural categories no clear trend is visible in precision, recall or F$_{1}$-score for an increasing amount of categories in the training and test examples.
 
-Figure~\ref{fig:contextsizefactor-precision-recall-KWS} shows the effect of the retrieval size factor on precision, recall and F$_{1}$-score of chunk retrieval runs with KWS\@.
-The precision is 19\% when retrieving half of the expected number of lines. On average 9\% of the lines in the build log are retrieved then.
-When 2.5 times the expected number of lines are retrieved, the precision decreases to 10\% and a quarter of the lines in the build log are retrieved on average.
-The recall ranges from 58\% to 75\% and the F$_{1}$-score shows a constant decrease from 29\% to 17\%.
+% Figure~\ref{fig:contextsizefactor-precision-recall-KWS} shows the effect of the retrieval size factor on precision, recall and F$_{1}$-score of chunk retrieval runs with KWS\@.
+% The precision is 19\% when retrieving half of the expected number of lines. On average 9\% of the lines in the build log are retrieved then.
+% When 2.5 times the expected number of lines are retrieved, the precision decreases to 10\% and a quarter of the lines in the build log are retrieved on average.
+% The recall ranges from 58\% to 75\% and the F$_{1}$-score shows a constant decrease from 29\% to 17\%.
 
 \begin{figure}[!t]
 		\centering
@@ -660,12 +637,12 @@ The recall ranges from 58\% to 75\% and the F$_{1}$-score shows a constant decre
 		\label{fig:recall-precision-categorycount-KWS}
 \end{figure}
 
-\begin{figure}[!t]
-		\centering
-		\includegraphics[width=\columnwidth, clip]{img/big-study/contextsizefactor-precision-recall-KWS.pdf}
-		\caption{Precision, recall and F$_{1}$-score of chunk retrieval with KWS compared to retrieval size factor.}
-		\label{fig:contextsizefactor-precision-recall-KWS}
-\end{figure}
+% \begin{figure}[!t]
+% 		\centering
+% 		\includegraphics[width=\columnwidth, clip]{img/big-study/contextsizefactor-precision-recall-KWS.pdf}
+% 		\caption{Precision, recall and F$_{1}$-score of chunk retrieval with KWS compared to retrieval size factor.}
+% 		\label{fig:contextsizefactor-precision-recall-KWS}
+% \end{figure}
 
 \subsection{Comparison of All Techniques}
 Figure~\ref{fig:success-partial-all} compares the success of all chunk retrieval by the different techniques in our study.
@@ -673,13 +650,13 @@ CTS and KWS extract some of the desired lines in 79\% and 88.5\% of the chunk re
 With 38.25\%, KWS also has the highest number of fully successful extractions, followed by PBE with 34.5\%.
 PBE has the lowest number of partial retrievals with only 18 out of 400 chunk retrieval runs.
 
-The averaged precision, recall and F$_{1}$-score f all techniques is compared in Figure~\ref{fig:recall-precision-all}.
-The recall of PBE has a high skew towards one and zero, meaning in most cases either the retrieval is successful or no relevant lines are extracted at all.
-PBE has the highest average precision with 95\%.
-Chunk retrieval with CTS has the highest average F$_{1}$-score with 51\% and the second highest recall with 46\%.
-KWS has the smallest precision of the three chunk retrieval techniques.
-With 16\% it is still higher than the precision of the RLR baseline with 7\%.
-KWS has the highest recall of all techniques with 70\%.
+% The averaged precision, recall and F$_{1}$-score f all techniques is compared in Figure~\ref{fig:recall-precision-all}.
+% The recall of PBE has a high skew towards one and zero, meaning in most cases either the retrieval is successful or no relevant lines are extracted at all.
+% PBE has the highest average precision with 95\%.
+% Chunk retrieval with CTS has the highest average F$_{1}$-score with 51\% and the second highest recall with 46\%.
+% KWS has the smallest precision of the three chunk retrieval techniques.
+% With 16\% it is still higher than the precision of the RLR baseline with 7\%.
+% KWS has the highest recall of all techniques with 70\%.
 
 Figure~\ref{fig:recall-precision-singlecategory-all} and Figure~\ref{fig:recall-precision-multicategory-all} show the influence of a single structural category present in the training examples compared to multiple categories present.
 For more than one present category, the recall of PBE decreases greatly.
@@ -692,12 +669,12 @@ For CTS and KWS the values also decrease, while RLR is not affected by the numbe
 		\label{fig:success-partial-all}
 \end{figure}
 
-\begin{figure}[!t]
-		\centering
-		\includegraphics[width=\columnwidth, clip]{img/big-study/recall-precision-all.pdf}
-		\caption{Precision, recall and F$_{1}$-score of all techniques compared.}
-		\label{fig:recall-precision-all}
-\end{figure}
+% \begin{figure}[!t]
+% 		\centering
+% 		\includegraphics[width=\columnwidth, clip]{img/big-study/recall-precision-all.pdf}
+% 		\caption{Precision, recall and F$_{1}$-score of all techniques compared.}
+% 		\label{fig:recall-precision-all}
+% \end{figure}
 
 \begin{figure}[!t]
 	\centering
@@ -717,7 +694,7 @@ For CTS and KWS the values also decrease, while RLR is not affected by the numbe
 \section{Discussion}
 \label{sec:discussion}
 
-This chapter presents the answers to our research questions:
+This section presents the answers to our research questions:
 \begin{simplebox}{Research Questions}
 \begin{itemize}
  \item[\textbf{RQ1:}] Which criteria influence the suitability of a chunk retrieval technique for CI build logs?
@@ -815,9 +792,8 @@ The output of a chunk retrieval with KWS is well suited to be read by humans.
 
 \subsection{Recommendations of Suitable Techniques}
 After discussing the three chunk retrieval techniques separately we now want to unify our results into one recommendation scheme.
-We present a decision tree, which developers and researchers who want to retrieve information chunks from build logs can follow.
-The decision tree is built up of questions which either lead to more questions or to a leaf node containing a recommended technique.
-Figure~\ref{fig:crt-recommendation} presents the decision tree.
+In Figure~\ref{fig:crt-recommendation}, we present a decision tree, which developers and researchers who want to retrieve information chunks from build logs can follow.
+The decision tree is built up of questions which either lead to more questions or to a leaf node containing a recommended technique. 
 
 \noindent
 \textbf{Caveat!} This is a preliminary theory based on the results from our comparison study.
