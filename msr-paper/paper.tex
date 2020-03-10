@@ -112,7 +112,7 @@ purely manual activity have come up, such as rule- or
 information-retrieval-based techniques.
 
 We believe that having a common data set to compare
-different build log analysis techniques fairly will advance the research
+different build log analysis techniques will advance the research
 area. It will ultimately increase our understanding of CI build
 failures. In this paper, we present \logchunks, a collection of 797
 annotated Travis CI build logs from 80 GitHub repositories in 29
@@ -238,8 +238,7 @@ This section presents how we gathered the logs and our manual labeling process.
 \subsection{Log Collection}
 In this section, we describe along the overview in
 \Cref{fig:lc-overview} how we created \logchunks. All steps are
-automatized as Ruby scripts\footnote{Data collection scripts and their original 
-parameterization are included in the data set.} and highly configurable.
+automatized as Ruby scripts\footnote{Data collection scripts and their original parameterization are included in the data set.} and highly configurable.
 
 \paragraph{Repository Sampling}
 We target mature GitHub repositories that are using Travis CI\@.
@@ -256,7 +255,7 @@ Among the resulting repositories are, for example, \texttt{git/git},
 \texttt{Microsoft/TypeScript} and \texttt{jwilm/alacritty}.
 
 \paragraph{Build Sampling}
-To sample the builds for \logchunks we keep the most recent ten of the status 
+To sample builds for \logchunks we keep the ten most recent builds of the status 
 \emph{failed}~\cite{travis2009buildstatus}. We check up to 1,000 builds per 
 repository to ensure predictable termination of the log collection.
 %A Travis CI build is marked as \emph{failed} when it faults in the \texttt{script} section of the build configuration defined by the user.
@@ -431,6 +430,7 @@ For each repository, the structural categories are represented as integers, star
 
 \lstset{
   language=XML,
+  basicstyle=\footnotesize,
   morekeywords={Examples, Example, Log, Keywords, Category, Chunk},
   postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
 	frame=single,
@@ -502,7 +502,9 @@ The data from \logchunks can support research around the topic of build logs suc
 % \todo{Similar comment: This is a bit too narrow. But perhaps we can merge the two in one and say researchers doing research around the topic of build logs, such as ... user studies on keyword retrievala and conversations?}
 
 \paragraph{Automatic Processing of Build Results}
-\logchunks enables researchers to train algorithms that retrieve build failure descriptions from build logs. It can provide the basis for further automatic on-ward processing of the retrieved log chunks.
+\logchunks enables researchers to train algorithms that retrieve build failure
+descriptions from build logs. It can provide the basis for further automatic
+on-ward processing of the retrieved log chunks.
 
 % \todo{ Andy also proposed: automatic creation of issue reports on GitHub with extracted info: sounds okay, but build failures are to be fixed faster than a GH issue I would say}
 % \todo{I think this proposal is again too narrow: but what about further automatic on-ward processing? Even if small, perhaps reinforcement learning might be feasible ...}
