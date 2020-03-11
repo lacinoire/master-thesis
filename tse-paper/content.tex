@@ -429,12 +429,20 @@ We implemented CTS, KWS and RLR using R and the text2vec library~\cite{text2vec2
 
 \section{Study Design}
 \label{sec:study}
-To investigate when PBE, CTS and KWS are suited to retrieve chunks from CI build logs we evaluate them on the \emph{LogChunks} data set.
-\todo{cite dataset}
-\todo{adapt glue text}
+To investigate when PBE, CTS and KWS are suited to retrieve chunks from CI build
+logs we evaluate them on the \emph{LogChunks}~\cite{brandt2020logchunks} data set.
 This section describes our study design and which metrics we measure to answer our research questions.
 In the presentation of the results, we first focus on each of the three techniques and later compare them against each other.
 
+\subsection{LogChunks}
+For this study we created the previously published data set \emph{LogChunks}.
+It encompasses 797 build logs from Travis CI, stemming from a broad range of 80
+GitHub repositories and 29 programming languages. For each file, the authors
+manually ``labeled the log part (chunk) describing why the build failed''~\cite{brandt2020logchunks}.
+We include keywords, which we would use to search for the selected chunk
+within the log. In addition, we categorized the log chunks according to their
+format within the log. If the chunks are surrounded by the same markings within
+the log we assign them the same structural category.
 
 \begin{figure}[!t]
 	\centering
