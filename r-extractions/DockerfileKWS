@@ -24,10 +24,10 @@ RUN find /r-extractions/. -type f -exec sed -i -e 's|main_path <<- "/Users/Laci/
     find /evaluation/. -type f -exec sed -i -e 's|setwd(paste0(main_path, "/evaluation/results/", technique))|setwd(paste0(main_path, "/master-thesis/evaluation/results/", technique))|g' {} \; &&\
     /bin/bash -l -c "Rscript r-extractions/install_packages.R"
 
-RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|random|g' {} \;
+RUN find /evaluation/. -type f -exec sed -i -e 's|<technique>|keyword|g' {} \;
 
 RUN find /r-extractions/. -type f -exec sed -i -e 's|context_size_factor <- 1|context_size_factor <- 0.5|g' {} \;
 
 WORKDIR "/evaluation"
 
-CMD ["ruby run-evaluation.rb"]
+CMD ruby run-evaluation.rb
