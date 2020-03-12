@@ -32,7 +32,7 @@ all: paper.pdf
 # -interaction=nonstopmode keeps the pdflatex backend from stopping at a
 # missing file reference and interactively asking you for an alternative.
 
-paper.pdf: paper.tex
+paper.pdf: content.tex paper.tex
 
 clean:
 	latexmk -CA
