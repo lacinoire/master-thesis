@@ -54,7 +54,7 @@ processed, but is at best semi-automatic~\cite{amar2019mining}.
 At the moment there is only anecdotal evidence on the performance of these techniques and on when a technique should be preferred over other alternatives.
 Developers and researches currently have little support when choosing which technique to use for a task.
 
-The goal of this paper is to investigate different chunk retrieval techniques for build logs and describe under which circumstances certain techniques can be recommended over others.
+The goal of this article is to investigate different chunk retrieval techniques for build logs and describe under which circumstances certain techniques can be recommended over others.
 We aim to characterize different chunk retrieval techniques.
 For \textbf{Research Question 1} (\textbf{RQ1}), we analyze which criteria influence the suitability of a chunk retrieval technique for CI build logs.
 
@@ -64,11 +64,16 @@ We implement and evaluate three chunk retrieval techniques:
   \item a common text similarity approach (referred to as CTS), and
   \item keyword search (referred to as KWS).
 \end{itemize}
+% TODO: Shortly describe each of these techniques
+
 \textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited to retrieve information from continuous integration build logs.
 \textbf{RQ2} is refined into sub-questions along with the criteria resulting from \textbf{RQ1} and compares their instantiations for the three techniques:
 how many training examples a technique needs to perform best (\textbf{RQ2.1}), how structurally diverse the examples can be (\textbf{RQ2.2}) and how accurate the retrieved output is (\textbf{RQ2.3}).
 To evaluate PBE, CTS and KWS we use the \emph{LogChunks} data set, which encompasses about 800 log files from 80 repositories.
 Each log is labeled with the log part describing the reason a build failed, keywords to search for this log part and a categorization of the labeled log part according to its structural representation within the log.
+
+% TODO: Add structural category explanation
+% TODO: Add running example
 
 Our study of the three techniques on \emph{LogChunks} shows that
 \begin{itemize}
@@ -99,9 +104,7 @@ recall of the chunk retrieval is required.
 CTS is well suited when the representation of the desired information varies
 slightly and the output of the chunk retrieval is further processed by a human.
 In cases where the textual representation of the desired information in the log
-is unpredictable or varies greatly, KWS is the best technique to choose.
-However, its low precision requires a human to interpret the output of the chunk
-retrieval.
+is unpredictable or varies greatly, KWS ssems to be the best choice. However, its low precision---it extracts a context of multiple lines around a find---makes it generally unsuited for automatic on-ward processing and instead requires a human to interpret the output chunk.
 
 %\todo{structure overview of article}
 
@@ -113,12 +116,12 @@ simplifies their data collection.
 This section moves on to past works about augmenting build logs to make it easier
 for developers to inspect them.
 The presented approaches are related to and can benefit from the techniques we
-analyze in this paper.
+analyze in this article.
 Further, we classify build logs as semi-structured data and differentiate our
 work from system log analysis.
 
 \subsection{Build Failures in CI}
-Various researchers look into why CI builds fail and into the impact of build failures on the development workflow.
+Various researchers studied why CI builds fail and into the impact of build failures on the development workflow.
 
 Seo et al.~\cite{seo2014programmers} find that a small group of error types such as dependency mismatches are the most prominent cause of build failures at Google.
 In addition, they notice that most failures are resolved within two builds.
@@ -144,7 +147,7 @@ They select keywords and strings that identify their targeted categories and cod
 To leverage the valuable information within build logs the researchers presented
 in this section create parsers and regular expression-based programs.
 This task of retrieving specific chunks of text from the build logs can be
-solved by the chunk retrieval techniques we compare in this paper.
+solved by the chunk retrieval techniques we compare in this article.
 Our results can support researchers in choosing a suitable technique for their
 data set of build logs and the chunks they want to retrieve.
 By relieving them from building custom parsers we enable them to cover a much
@@ -161,7 +164,7 @@ They parse Maven~\cite{maven2019website} build logs into a structured representa
 For example, one of the hint generators queries stack overflow for discussions related to why the build failed.
 In a qualitative study they observed that highlighting the locality and context of an issue is helpful to programmers.
 %Their tool BART is published as a Jenkins Plugin~\cite{bart2019plugin}.
-The chunk retrieval techniques we compare in this paper can be used to fill similar structured representations with information from build logs.
+The chunk retrieval techniques we compare in this article can be used to fill similar structured representations with information from build logs.
 As they simplify the construction of parsers they would enable developers and researchers to cover a wider array of build tools, which is the main influence factor on the structure of a build log.
 
 Amar et al.~\cite{amar2019mining} compare different approaches to reduce the portions of a log that a developer has to inspect.
@@ -178,9 +181,9 @@ A main difference between build logs and system logs is that system logs are fun
 Each line in a log file represents one event with a set of fields: timestamp, verbosity level and raw message content~\cite{he2017towards}.
 Figure \ref{lst:system-log} shows example lines from a system log.
 
-The first goal in parsing system log files is to separate constant and variable parts within a log message~\cite{nagappan2010abstracting,he2017towards}.
+The first goal in analyzing system log files is ubiquitously to separate constant and variable parts within a log message~\cite{nagappan2010abstracting,he2017towards}.
 Next, the log messages are clustered into log events, unifying messages with identical constant parts and varying parameters.
-The output of a log parser is a structured log, composed of a list of timed events and the corresponding parameter values~\cite{he2016evaluation}.
+The output of a log parser is an ordered list of timed events and their corresponding parameter values~\cite{he2016evaluation}.
 This structured log is then the input to various machine learning and data mining processes.
 %Researchers mine patterns for operational profiling~\cite{nagappan2009efficiently}, debugging~\cite{oliner2012advances}, performance analytics or anomaly detection~\cite{nagappan2010abstracting}.
 %Xu et al.~\cite{xu2009detecting} leverage the connection of log statements to the source code producing them to separate messages into constant and variable parts more accurately.
@@ -190,8 +193,8 @@ One example is comparing execution traces to reference traces of intended behavi
 Amar et al.~\cite{amar2019mining} employed a similar approach to detect relevant lines in build logs.
 %Classic log parsers interpret the whole log file into a sequence of events.
 %A similar approach could also be applied to build logs to determine the sequence of executed build steps or phases.
-In this paper we focus on extracting a single specified information from the build log as a whole with chunk retrieval techniques.
-Chunk retrieval techniques are used as a part of log parsing to retrieve the values of variable parts in a log message, e.g.\ by using regular expressions~\cite{nagappan2010abstracting,xu2009detecting}.
+In this article, we focus on extracting a single specified information from the build log as a whole with chunk retrieval techniques.
+Chunk retrieval techniques are used as a part of log parsing to retrieve the values of variable parts in a log message, e.g. by using regular expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 
 \lstset{
   morekeywords={INFO, WARN, 2008-11-09},
@@ -204,15 +207,15 @@ Chunk retrieval techniques are used as a part of log parsing to retrieve the val
   extendedchars=false,
   texcl=false
 }
-\begin{figure}[!t]
+\begin{figure*}[!t]
   \centering
   \begin{lstlisting}[breaklines=true]
 2008-11-09 20:46:55,556 INFO dfs.DataNode$Packet- Responder: Received block blk_3587508140051953248 of size 67108864 from /10.251.42.84
 2008-11-09 20:49:46,764 WARN PacketResponder 0 for block blk\_3587508140051953248 terminating
   \end{lstlisting}  
-  \caption{System Log Statements. Example adapted from~\cite{he2017towards}.}
+  \caption{System Log excerpt. Example adapted from~\cite{he2017towards}.}
   \label{lst:system-log}
-\end{figure}
+\end{figure*}
 
 \subsection{Program Synthesis by Example}
 \label{sec:rw-prose}
@@ -221,9 +224,8 @@ Chunk retrieval techniques are used as a part of log parsing to retrieve the val
 %This section presents different Programming by Example resources surrounding the PROSE library.
 %We explain its generic program synthesis algorithm and how PROSE synthesizes text extraction programs, the foundation of PBE\@.
 
-Programming by Example enables end users to automate repetitive tasks.
-The user provides examples for the input and the corresponding output and a
-synthesis algorithm tries to create the program intended by the user.
+Programming by Example (PBE) is a form of generalized program synthesis that enables users to automate repetitive tasks, without them having to explicitly code a program. The users provide examples for the input and the desired output and a
+synthesis algorithm tries to create a program that transforms the input to the output, hopefully as close as possbile to the user's intention.
 This section introduces the theoretical foundations of the program synthesis
 algorithm of the \emph{PROgram Synthesis using Examples} (PROSE) framework~\cite{prose2019webpage}.
 The PROSE framework is developed by Microsoft Research.
@@ -294,10 +296,8 @@ let s = v in let s = PosToEndRegion(s, RegexPosition(s, RegexPair("Colon/$\circ$
 
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
-This section introduces the concept of chunk retrieval techniques.
+This section introduces key concepts of the three chunk retrieval techniques we study in this article, namely program synthesis by example (PBE), common text similarity (CTS), and keyword search (KWS).
 We use these techniques to extract text chunks from build logs that represent a specific, targeted information.
-We present the three chunk retrieval techniques we investigate in this paper:
-program synthesis by example (PBE), common text similarity (CTS) and keyword search (KWS).
 
 \begin{figure}[!t]
 	\centering
@@ -310,13 +310,12 @@ program synthesis by example (PBE), common text similarity (CTS) and keyword sea
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 \label{sec:blirt}
-For this paper, we want to evaluate different techniques to retrieve information chunks from build logs, which we call \emph{chunk retrieval techniques}.
-The techniques we investigate do not require to parse the structure of a whole build log, but focus on extracting just one specific information.
+In this article, we evaluate different techniques to automatically retrieve pieces of information that appear literally in the build logs, i.e., techniques that do not aggreagte, combine, or deducted information. We call such pieces of information from build logs \emph{chunks}, and the techniques \emph{chunk retrieval techniques}.
+The techniques we investigate here do not require to parse the entire structure of build logs, but focus on extracting just one specific piece of information per configuration.
 
+With the term \textit{configuration,} we want to abstract over the training and parametrization that techniques require in different forms.
 The user provides a \textit{configuration} that specifies which information the chunk retrieval should target and supplies the necessary information for the technique to identify the targeted information chunk in a build log.
-Each chunk retrieval has a specific \textit{granularity}, i.e.\ the smallest retrievable text piece and uses a specific \textit{identification technique} to select the log parts it retrieves.
-Each configuration addresses a specific \textit{scope}.
-The scope can be a specific project, a tool involved in the build, a programming language or global, when configuring a retrieval technique for all possible build logs.
+Each chunk retrieval has a specific \textit{granularity}, i.e.,\ the smallest retrievable text piece and uses a specific \textit{identification technique} to select the log parts it retrieves. The granularity might be adjustable by configuration.
 A \emph{run} of a chunk retrieval technique consumes a build log as a plain text file and produces a string output, which consists of substrings of the build log text.
 
 The following sections of this section introduce the three chunk retrieval techniques we investigate: program synthesis by example (PBE), common text similarity (CTS), and keyword search (KWS).
@@ -471,9 +470,11 @@ Random Line Retrieval (RLR), explained in Section~\ref{sec:expl-rlr}, acts as a 
 \noindent
 \textbf{Training and Test Set}
 We use \emph{LogChunks} as the data set for our study.
-For each one of 80 repositories it contains about 10 build logs, manually labeled with the substring describing the reason the build failed.
-In addition to that, it contains keywords to search for that substring and which structural category the substring belongs to.
+For each of the 80 repositories in it, it contains 10 build logs, manually labeled with the substring describing the reason the build failed.
+Additionally, it contains keywords to search for that substring and which structural category the substring belongs to.
+% TODO (Caro): Add details how key words were extracted
 
+% TODO (Caro): Add more details. How was the split in numbers?
 For each repository in \emph{LogChunks}, we split the examples chronologically into training and test set.
 Therefore, we train on examples from past build logs and test on more recent build logs.
 
