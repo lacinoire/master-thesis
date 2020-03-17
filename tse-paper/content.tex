@@ -1,6 +1,3 @@
-
-
-\textbf{Motivation.}
 Continuous Integration (CI) has become a common practice in software
 engineering~\cite{hilton2016usage}.  Many software projects use
 CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect
@@ -426,6 +423,60 @@ For our comparison study we implemented PBE, CTS, KWS and RLR and a unifying int
 The unified interface is implemented in Ruby and calls the separate technique implementations over the command line.
 The implementation of PBE in C\# is based on the Microsoft PROSE library~\cite{prose2019webpage}.
 We implemented CTS, KWS and RLR using R and the text2vec library~\cite{text2vec2019webpage}.
+
+
+\section{Systematic Literature Survey}
+\label{sec:survey}
+From our own experience, we know that the field of analyzing build
+logs is relatively young, with perhaps the work on TravisTorrent the
+most cited and central one. We also know there have been scattered
+research efforts on build log analysis prior to it, mostly where the
+log analysis was a side-part of the article. To the best of our
+knowledge, there has not been an attempt to systematically overview
+and survey them, despite their forseeable future and current practical
+importance.
+
+
+\subsection{Methodology}
+In this first overview, we therefore want to survey as broad a
+population of papers, books, and other scientific publications as
+possible. One challenge is that no common nomenclature has been
+established yet (in fact, this is one of the goals of this
+article).
+
+Since we cannot take for granted that ``analyzing build logs'' is the
+cannonical term that other, isolated works have used, we instead
+decdided to leave out the potentially variable ``analysis'' part and
+instead focus on variations of the term ``build log''. This has the
+advantage of being biunique: We explicitly decided to include systems
+or event logs (see \Cref{sec:rw}). On the other hand, a Google Scholar
+search for ``build log'' returns more than 2.2 million results
+(2020-03-15). We therefore refined our search criterions for the four
+different spelling possibilities of ``build log'' to exclude obvious
+non-related works. This left us with 1,552 combined search results
+(2020-03-15).
+
+To make handling so many search results feasible, the authors of the
+paper employed a two-pass filtering strategy:
+
+First, we filtered out articles based on 1) their title and 2) the
+contextual information Google Scholar displayed. Our strategy was to
+err on the side of caution, that is rather including a paper than
+not. We then unified the search results, removing duplicates. After
+this process, we were left with 271 (17\%) of the original search
+results.
+
+We did a second filter phase by downloading the remaining papers,
+reading their abstracts, and searching the full text for the
+occurrence of ``log''. If these papers contained traces of working
+with build logs, we included them in our survey.
+
+%todo: fill-in number
+Wtih these X remaining articles, we followed a limited backward
+snowball sampling for articles referenced in the paragraphs that
+mention the technique. Having added these papers to our literature
+set, we performed a full forward-snowball sampling for all papers in
+the set.
 
 
 \section{Study Design}
