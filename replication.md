@@ -26,7 +26,7 @@ docker image build -t pbe -f pbe-extraction-buildlogs/DockerfilePBE .
 
 run (from within this folder):
 ``` bash
-docker run --rm -it --mount type=bind,source=(pwd),target=/master-thesis pbe
+docker run --rm -it --mount type=bind,source=$(pwd),target=/master-thesis pbe
 ```
 
 ## Run Evaluation of CTS
@@ -37,7 +37,7 @@ docker image build -t cts -f r-extractions/DockerfileCTS .
 
 run (from within this folder):
 ``` bash
-docker run --rm -it --mount type=bind,source=(pwd),target=/master-thesis cts
+docker run --rm -it --mount type=bind,source=$(pwd),target=/master-thesis cts
 ```
 
 # TODO replace 'master-thesis' with better name for whole folder
@@ -50,7 +50,7 @@ docker image build -t kws -f r-extractions/DockerfileKWS .
 
 run (from within this folder):
 ``` bash
-docker run --rm -it --mount type=bind,source=(pwd),target=/master-thesis kws
+docker run --rm -it --mount type=bind,source=$(pwd),target=/master-thesis kws
 ```
 ## Run Evaluation of CTS
 build (from within this folder):
@@ -60,5 +60,13 @@ docker image build -t rlr -f r-extractions/DockerfileRLR .
 
 run (from within this folder):
 ``` bash
-docker run --rm -it --mount type=bind,source=(pwd),target=/master-thesis rlr
+docker run --rm -it --mount type=bind,source=$(pwd),target=/master-thesis rlr
 ```
+
+## Runtimes
+We executed our evaluation on a server with these specs: Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz.
+The rough runtimes were:
+PBE: 
+CTS: 15 mins
+KWS: 25 mins
+RLR: 5 mins
