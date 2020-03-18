@@ -376,8 +376,14 @@
 \usepackage{todonotes}
 %\setuptodonotes{inline, color=cyan!50}
 \usepackage{cleveref}
-\usepackage{subfigure}
+%\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mdframed,xcolor}
 
+\newenvironment{figureax}[1][htbp]% Redefine figure
+  {\oldfigure[#1]\mdframed[backgroundcolor=blue!15]}
+  {\endmdframed\endoldfigure}
 
 % *** Do not adjust lengths that control margins, column widths, etc. ***
 % *** Do not use packages that alter fonts (such as pslatex).         ***
