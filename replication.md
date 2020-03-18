@@ -66,7 +66,8 @@ docker run --rm -it --mount type=bind,source=$(pwd),target=/master-thesis rlr
 ## Runtimes
 We executed our evaluation on a server with these specs: Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz.
 The rough runtimes were:
-PBE: 
-CTS: 15 mins
-KWS: 25 mins
-RLR: 5 mins
+PBE: 19 h
+CTS: 15 min
+KWS: 25 min
+RLR: 5 min
+
