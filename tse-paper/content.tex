@@ -469,11 +469,18 @@ To make handling so many search results feasible, the authors of the
 paper employed a two-pass filtering strategy:
 
 First, we filtered out articles based on 1) their title and 2) the
-contextual information Google Scholar displayed. Our strategy was to
-err on the side of caution, that is rather including a paper than
-not. We then unified the search results, removing duplicates. After
-this process, we were left with 271 (17\%) of the original search
-results.
+contextual information Google Scholar displayed. We inlcuded only
+publications written in a language intelligible to the authors (that
+is, English or German), but only disregarded fewer than 1\% of search
+hits due to this criterion. Our strategy was to err on the side of
+caution, that is rather including a paper than not. We then unified
+the results of the four search queries based on the link as the
+identifying element, removing 60 articles that appeared in more than
+one search query. We noticed that some publishers (ACM, Springer,
+Google Books) augment a link to an article with a cutomized ID, which
+specifies the link source ({\tt casa\_token, oid}). We automatically
+removed it to find all true duplicates. After this process, we were
+left with 259 (17\%) of the original search results.
 
 We did a second filter phase by downloading the remaining papers,
 reading their abstracts, and searching the full text for the
@@ -771,9 +778,9 @@ For CTS and KWS the values also decrease, while RLR is not affected by the numbe
 
 This section presents the answers to our research questions:
 \begin{simplebox}{Research Questions}
-\begin{itemize}
- \item[\textbf{RQ1:}] Which criteria influence the suitability of a chunk retrieval technique for CI build logs?
-  \item[\textbf{RQ2:}] Under which conditions are PBE, CTS, and KWS suited to retrieve information from CI build logs?
+\begin{itemize}  
+  \item[\textbf{RQ1:}] Which build log analysis techniques exist?
+  \item[\textbf{RQ2:}] Which criteria influence the suitability of a chunk retrieval technique for build logs?
 
   {\small \item[\textbf{~~ RQ2.1:}] How many examples do PBE, CTS, and KWS need to perform best?
   \item[\textbf{~~ RQ2.2:}] How structurally similar do the examples for PBE, CTS and KWS need to be for the techniques to be applicable?
