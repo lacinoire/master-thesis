@@ -2,7 +2,9 @@
 
 # Our research prototype for you! To try all our analyses yourself :)
 
-This folder should contain all the necessary out & input for you to try out our build log information extraction tool.
+This folder contains all the necessary in &- output for you to try out our build log information extraction tool.
+The ruby tool is essentially a wrapper to call R and Python programs under ../r-extractions, so make sure you have the appropriate
+dependencies for each installed.
 
 ## Input
 
