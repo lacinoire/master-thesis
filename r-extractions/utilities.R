@@ -1,7 +1,6 @@
 suppressPackageStartupMessages({
   library(stringr)
   library(stringi)
-  library(wordcloud)
   library(NLP)
   library(XML)
 })
