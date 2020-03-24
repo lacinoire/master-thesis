@@ -34,8 +34,6 @@ build (from within this folder):
 docker image build --network host -t cts -f r-extractions/DockerfileCTS .
 ```
 
-Should an error occurr ("")
-
 run (from within this folder):
 ``` bash
 docker run --rm -it --mount type=bind,source=$(pwd),target=/chunk-retrieval-replication cts
@@ -61,8 +59,6 @@ run (from within this folder):
 ``` bash
 docker run --rm -it --mount type=bind,source=$(pwd),target=/chunk-retrieval-replication rlr
 ```
-
-# TODO 
 
 ## Runtimes
 We executed our evaluation on a server with these specs: Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz.
