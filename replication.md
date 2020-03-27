@@ -28,7 +28,7 @@ KWS: 25 min
 RLR: 5 min  
 
 <details>
-  <summary> <h2>Run Evaluation of PBE</h2> </summary>
+  <summary> <b>Run Evaluation of PBE</b> </summary>
 
 build (from within this folder):
 ``` bash
@@ -47,7 +47,7 @@ The results of evaluating each project in the data set are directly written out 
 </details>
 
 <details>
-  <summary>## Run Evaluation of CTS</summary>
+  <summary> <b>Run Evaluation of CTS</b> </summary>
 
 build (from within this folder):
 ``` bash
@@ -62,7 +62,7 @@ docker run --rm -it --mount type=bind,source=$(pwd),target=/chunk-retrieval-repl
 </details>
 
 <details>
-  <summary>## Run Evaluation of KWS</summary>
+  <summary> <b>Run Evaluation of KWS</b> </summary>
 
 build (from within this folder):
 ``` bash
@@ -77,7 +77,7 @@ docker run --rm -it --mount type=bind,source=$(pwd),target=/chunk-retrieval-repl
 </details>
 
 <details>
-  <summary>## Run Evaluation of RLR</summary>
+  <summary> <b>Run Evaluation of RLR</b> </summary>
 
 build (from within this folder):
 ``` bash
