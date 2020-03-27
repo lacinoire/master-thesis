@@ -3,19 +3,33 @@
 # Our research prototype for you! To try all our analyses yourself 😊
 
 This folder contains all the necessary in &- output for you to try out our build log information extraction tool.
-The ruby tool is essentially a wrapper to call R and Python programs under ../r-extractions, so make sure you have the appropriate dependencies for each installed.
+The ruby tool is essentially a wrapper to call R programs under ../r-extractions (ir, keyword, random) or C# programs under ../pbe-extractions (pbe), so make sure you have the appropriate dependencies for each installed.
+Alternatively you can run our retrieval techniques within their respecitve docker images ([instructions](https://github.com/lacinoire/chunk-retrieval-replication)), we also provide pre-built images on docker hub 🐳 (search for `chunk-retrieval-replication`).
 
 ## Input
 
 - Some [sample buildlogs](samples) for the extraction.  
   If you want to run analyses on your own logs please add them accordingly.
 - Predefined [example sets](example-sets) you can use for learning.  
-  Each contain input paths and in/output examples for extraction of one meta-model information object from a certain kind of build log.  
-  For example: [`android-failure-with-dependencies`](example-sets/android-failure-with-dependencies.xml) extract the meta-model information `BuildFailureReason` from the kind of logs created from a `java` build log building for/with `android`
+  Each contain input paths and in/output examples for extraction of one chunk from a certain kind of build log.  
+  For example: [`android-failure-with-dependencies`](example-sets/android-failure-with-dependencies.xml) extract the chunk `BuildFailureReason` from the kind of logs created from a `java` build log building for/with `android`
 
 ## Output
 
 - A `results` folder containing all the data tables and plots generated when running the evaluation for the various extraction techniques
+
+
+## Naming incosistencies compared to paper
+This tool uses slightly different names for the chunk retrieval techniques than our paper:  
+```
+(this tool → paper)  
+pbe → PBE
+ir → CTS
+keyword → KWS
+random → RLR
+```
+
+In addition the technique `regex` enables you to provide a regular expression which is then applied on the respective file to analyze.
 
 ## Usage
 
