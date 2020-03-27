@@ -596,12 +596,6 @@ We define a successful retrieval as one where all desired lines were extracted, 
 This section presents the results for PBE, CTS and KWS separately.
 Afterwards we compare the three techniques with each other and RLR as baseline.
 
-\begin{figure}[!t]
-		\centering
-		\includegraphics[width=0.75\columnwidth, clip]{img/big-study/failure-reason-pbe.pdf}
-		\caption{Results of chunk retrieval with PBE.}
-		\label{fig:failure-reason-PBE}
-\end{figure}
 
 \lstset{
   morekeywords={Test Output, Desired Test Output},
@@ -632,21 +626,26 @@ Error: Invalid CSS after "2.3em": expected expression (e.g. 1px, bold), was ";"
 
 
 \newpage
+\pagebreak
 \subsection{Common Text Similarity (CTS)}
 
-\begin{figure}[!t]
+
+\begin{figure*}
+\begin{subfigure}[t]{\columnwidth}
 		\centering
-		\includegraphics[width=\columnwidth, clip]{img/big-study/recall-precision-examplecount-CTS.pdf}
+                \includegraphics[width=\columnwidth, clip]{img/big-study/recall-precision-examplecount-CTS.pdf}
 		\caption{Precision, recall and F$_{1}$-score of chunk retrieval with CTS for an increasing training set size.}
 		\label{fig:recall-precision-examplecount-CTS}
-\end{figure}
-
-\begin{figure}[!t]
+                
+\end{subfigure}\hspace{\fill}
+\begin{subfigure}[t]{\columnwidth}
 		\centering
-		\includegraphics[width=\columnwidth, clip]{img/big-study/recall-precision-categorycount-CTS.pdf}
+                		\includegraphics[width=\columnwidth, clip]{img/big-study/recall-precision-categorycount-CTS.pdf}
 		\caption{Precision, recall and F$_{1}$-score of chunk retrieval with CTS for an increasing number of structural categories in the training and test sets.}
 		\label{fig:recall-precision-categorycount-CTS}
-\end{figure}
+\end{subfigure}
+\caption{Results of chunk retrieval with Common Text Similarity (CTS)}
+\end{figure*}
 
 \Cref{fig:recall-precision-examplecount-CTS} presents precision, recall and F$_{1}$-score of chunk retrieval using CTS for an increasing number of training examples.
 When using one to five training examples, the size of the training set has no noticeable influence on precision, recall or F$_{1}$-score of the chunk retrieval with CTS.
@@ -671,6 +670,7 @@ Especially for more than three categories present we have no chunk retrieval run
 
 
 \newpage
+\newpage
 \subsection{Keyword Search (KWS)}
 
 \begin{figure*}
@@ -686,7 +686,7 @@ Especially for more than three categories present we have no chunk retrieval run
 		\caption{Precision, recall and F$_{1}$-score for an increasing number of structural categories in the training and test sets.}
 		\label{fig:recall-precision-categorycount-KWS}
 \end{subfigure}
-\caption{Results of chunk retrieval with  (KWS)}
+\caption{Results of chunk retrieval with Keyword Search (KWS)}
 \end{figure*}
 
 
@@ -711,25 +711,33 @@ For more than two structural categories no clear trend is visible in precision, 
 % \end{figure}
 
 \newpage
+\newpage
 \subsection{Program Synthesis by Example (PBE)}
 
 \begin{figure*}
-\begin{subfigure}[!t]{\textwidth}
+\begin{subfigure}[b]{\columnwidth}
 		\centering
-		\includegraphics[width=\textwidth, clip]{img/big-study/recall-precision-examplecount-sythesisworked-PBE.pdf}
-		\caption{Precision, recall and F$_{1}$-score when PBE could synthesize a consistent program compared with the size of the training set.}
-		\label{fig:recall-precision-examplecount-sythesisworked-PBE}
-\end{subfigure}
-
-\begin{subfigure}[!t]{\textwidth}
+		\includegraphics[width=\columnwidth, clip]{img/big-study/recall-precision-examplecount-sythesisworked-PBE.pdf}
+                		\caption{Precision, recall and F$_{1}$-score when PBE could synthesize a consistent program compared with the size of the training set.}
+                \label{fig:recall-precision-examplecount-sythesisworked-PBE}
+\end{subfigure}\hspace{\fill}
+\begin{subfigure}[b]{\columnwidth}
 		\centering
-		\includegraphics[width=\textwidth, clip]{img/big-study/failure-reason-categorycount-PBE.pdf}
-		\caption{Increasing number of structural categories in the training and test sets.}
-		\label{fig:failure-reason-categorycount-PBE}
-\end{subfigure}
+		\includegraphics[width=\columnwidth, clip]{img/big-study/failure-reason-categorycount-PBE.pdf}
+                		\caption{Increasing number of structural categories in the training and test sets.}
 
-\caption{Results of chunk retrieval with Program Synthesis by Example (PBE)}
+                \label{fig:failure-reason-categorycount-PBE}
+\end{subfigure}
+\caption{Results of chunk retrieval with  Program Synthesis by Example (PBE)}
 \end{figure*}
+
+
+\begin{figure}[!t]
+		\centering
+		\includegraphics[width=0.75\columnwidth, clip]{img/big-study/failure-reason-pbe.pdf}
+		\caption{Results of chunk retrieval with PBE.}
+		\label{fig:failure-reason-PBE}
+\end{figure}
 
 \Cref{fig:failure-reason-PBE} shows the results of the PBE runs in our evaluation.
 Out of the 400 runs, 5 per each one of the 80 example sets, PBE extracted all the desired lines in 138 cases.
@@ -748,7 +756,7 @@ For three or more present categories PROSE could never synthesize a consistent p
 When the training set size increases from one to two, recall and F$_{1}$-score increase by about 25\%, precision increases by about 10\%.
 For two or more training examples, recall and F$_{1}$-score stay around 75\% and precision around 96\%.
 
-
+\pagebreak
 \subsection{Comparison of All Techniques}
 \Cref{fig:success-partial-all} compares the success of chunk retrievals differentiated by techniques in our study.
 CTS and KWS extract some of the desired lines in 79\% and 88.5\% of the chunk retrieval runs.
@@ -763,7 +771,7 @@ PBE has the lowest number of partial retrievals with only 18 out of 400 chunk re
 % With 16\% it is still higher than the precision of the RLR baseline with 7\%.
 % KWS has the highest recall of all techniques with 70\%.
 
-\Cref{fig:recall-precision-singlecategory-all} and Figure~\ref{fig:recall-precision-multicategory-all} show the influence of a single structural category present in the training examples compared to multiple categories present.
+\Cref{fig:recall-precision-singlecategory-all} and \Cref{fig:recall-precision-multicategory-all} show the influence of a single structural category present in the training examples compared to multiple categories present.
 For more than one present category, the recall of PBE decreases greatly.
 For CTS and KWS the values also decrease, while RLR is not affected by the number of structural categories present.
 
@@ -821,8 +829,9 @@ This section discusses the study results for each of the analyzed chunk retrieva
 It gives recommendations which kind of information chunk targets are best for each technique and for what kind of usage the respective output is suitable.
 
 \begin{table}[tbp]
+\resizebox{\columnwidth}{!}{%
 \centering
-\begin{tabularx}{\columnwidth}{@{}llll@{}}
+\begin{tabular}{llll}
   \toprule
   & PBE & CTS & KWS \\
   \midrule
@@ -833,7 +842,8 @@ It gives recommendations which kind of information chunk targets are best for ea
   \makecell[l]{Confidence in \\ Output Correctness} & high & low & \makecell[l]{low (precision) \\ high (recall)} \\ 
   Output Consumption by & program & human & human \\ 
   \bottomrule
-\end{tabularx}
+\end{tabular}%
+}
 \caption{Recommendations for each of the investigated chunk retrieval techniques.}
 \label{tab:single-technique-recommendations}
 \end{table}
