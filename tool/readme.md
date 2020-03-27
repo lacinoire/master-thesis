@@ -1,10 +1,9 @@
 <!-- <script src="https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab.js"></script> -->
 
-# Our research prototype for you! To try all our analyses yourself :)
+# Our research prototype for you! To try all our analyses yourself 😊
 
 This folder contains all the necessary in &- output for you to try out our build log information extraction tool.
-The ruby tool is essentially a wrapper to call R and Python programs under ../r-extractions, so make sure you have the appropriate
-dependencies for each installed.
+The ruby tool is essentially a wrapper to call R and Python programs under ../r-extractions, so make sure you have the appropriate dependencies for each installed.
 
 ## Input
 
@@ -16,7 +15,7 @@ dependencies for each installed.
 
 ## Output
 
-- The [results folder](results) containing all the data tables and plots generated when running the evaluation for the various extraction techniques
+- A `results` folder containing all the data tables and plots generated when running the evaluation for the various extraction techniques
 
 ## Usage
 
