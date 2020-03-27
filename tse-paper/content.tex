@@ -330,12 +330,12 @@ The following sections of this section introduce the three chunk retrieval techn
 Lastly we describe other techniques which can also be treated as chunk retrieval techniques.
 Table~\ref{tab:ctr} shows a comparison of the presented techniques.
 
-\begin{table}[]
+\begin{table*}[]
 \centering
 \caption{Overview of the described chunk retrieval techniques.}
-\begin{tabularx}{\columnwidth}{@{}XlXlX@{}} 
+\begin{tabularx}{\textwidth}{@{}XlXlXX@{}} 
 \toprule
-Name                         & Acronym & Identification Technique                                   & Granularity & Configuration             \\ 
+Name                         & Acronym & Identification Technique                                   & Granularity & Configuration & Source            \\ 
 \midrule
 Program Synthesis by Example & PBE     & Regular expression program                                 & Character   & In/output examples      \\
 Common Text Similarity       & CTS     & TF-IDF \& cosine similarity, expected number of lines & Line        & Output examples           \\
@@ -345,7 +345,7 @@ Diff Approach                & ---     & Line not present in successful log, inf
 \bottomrule
 \end{tabularx}
 \label{tab:ctr}
-\end{table}
+\end{table*}
 
 \subsection{Program Synthesis by Example (PBE)}
 \label{sec:expl-pbe}
@@ -445,21 +445,30 @@ most cited and central one. We also know there have been scattered
 research efforts on build log analysis prior to it, mostly where the
 log analysis was a side-part of the article. To the best of our
 knowledge, there has not been an attempt to systematically overview
-and survey them, despite their forseeable future and current practical
-importance.
+and survey them, despite their forseeable future and current importance.
 
 
-\subsection{Selection Protocol}
-In this first overview, we therefore want to survey as broad a
-population of scientific material as possible. Note that we do not
-limit our sources to a handful of Software Engineering venues, as is
-often done, but survey all sources monitored by Google Scholar,
-including Bachelor's and Master's theses, academic slide decks, and
-books. We use Google Scholar as opposed to Scopus or other databases,
-as it is the search engine for acdemic articles with the broadest and
-most current index, including preprints from sources such as
-arXiv. One challenge is that no common nomenclature has been
-established yet (in fact, this is one of the goals of this article).
+\subsection{Study Selection}
+
+
+\begin{figure}[htb]
+		\centering
+		\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
+		\caption{Our literature selection process, following \cite{petersen2015guidelines}.}
+		\label{fig:lit-survey}
+\end{figure}
+\Cref{fig:lit-survey} presents an overview of our study selection.
+In this first literature overview study on analyzing build logs, we
+therefore want to survey as broad a population of scientific material
+as possible. Note that we do not limit our sources to specific
+Software Engineering venues, as is often done, but survey all sources
+monitored by Google Scholar, including Bachelor's and Master's theses,
+academic slide decks, and books. We use Google Scholar as opposed to
+Scopus or other databases, as it is the search engine for acdemic
+articles with the broadest and most current index, including preprints
+from sources such as arXiv. One challenge is that no common
+nomenclature has been established yet (in fact, this is one of the
+goals of this article).
 
 Since we cannot take for granted that ``analyzing build logs'' is the
 cannonical term that other, isolated works have used, we instead
@@ -473,8 +482,8 @@ different spelling possibilities of ``build log'' to exclude obvious
 non-related works. This left us with 1,552 combined search results
 (2020-03-15).
 
-To make handling so many search results feasible, the authors of the
-paper employed a two-pass filtering strategy:
+To make handling so many search results feasible, we employed a
+two-pass filtering strategy:
 
 First, we filtered out articles based on 1) their title and 2) the
 contextual information Google Scholar displayed. We inlcuded only
