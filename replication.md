@@ -28,7 +28,7 @@ KWS: 25 min
 RLR: 5 min  
 
 <details>
-  <summary>## Run Evaluation of PBE</summary>
+  <summary> <h2>Run Evaluation of PBE</h2> </summary>
 
 build (from within this folder):
 ``` bash
