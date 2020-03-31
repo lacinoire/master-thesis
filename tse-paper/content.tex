@@ -60,18 +60,49 @@ though fragile in light of changes in the log structure. Diffing
 between failed and successful logs can reduce the information to be
 processed, but is at best semi-automatic~\cite{amar2019mining}.
 
-At the moment there is only anecdotal evidence on the performance of these techniques and on when a technique should be preferred over other alternatives.
-Developers and researches currently have little support when choosing which technique to use for a task.
+\dots
 
-The goal of this article is to investigate different chunk retrieval techniques for build logs and describe under which circumstances certain techniques can be recommended over others.
-We aim to characterize different chunk retrieval techniques.
-For \textbf{Research Question 1} (\textbf{RQ1}), we analyze which criteria influence the suitability of a chunk retrieval technique for CI build logs.
+build logs valuable data source, but semi-structured and verbose,
+therefore need (automated) processing
+
+To gain an impression on how researchers are using information from build logs
+within their research and how they are gathering chunks from them to support
+developers in understanding build outcomes, we conducted a systematic mapping
+study.
+Our goal was to classify how and what for researchers use build logs as a source
+of data (\textbf{RQ1}).
+
+The outcomes of our study shows that there are various attempts to retrieve
+specific information from buildlogs. The resulting implementations are rarely
+available and therefore rarely reused. Because of the high development overhead
+of the custom parsers, many implementations are limited to small number of supported
+build tools.
+
+To address this, we implement three promising techniques for build log analysis.
+They retrieve specific chunks of targeted information and are configured by
+examples provided by the user.
+We conduct an empirical study on the \emph{LogChunks} \todo{cite} data set to
+gauge the performance of these chunk retrieval techniques and characterize
+when one of the techniques should be preferred over other alternatives (\textbf{RQ2}).
+
+% At the moment there is only anecdotal evidence on the performance of these
+% techniques and on when a technique should be preferred over other alternatives.
+% Developers and researches currently have little support when choosing which
+% technique to use for a task.
+
+% The goal of this article is to investigate different chunk retrieval techniques
+% for build logs and describe under which circumstances certain techniques can be
+% recommended over others.
+% We aim to characterize different chunk retrieval techniques.
+% For \textbf{Research Question 1} (\textbf{RQ1}), we analyze which criteria
+% influence the suitability of a chunk retrieval technique for CI build logs.
 
 We implement and evaluate three chunk retrieval techniques:
 \begin{itemize}
-  \item program synthesis by example using the Microsoft PROSE library (referred to as PBE),
-  \item a common text similarity approach (CTS), and
-  \item keyword search (KWS), an ad-hoc method for finding fitting passages by searching the whole text for the occurrence of a specific trigger word.
+  \item \textbf{Program Synthesis by Example (referred to as PBE)}
+  Based on 
+  \item \textbf{a common text similarity approach (CTS)}
+  \item \textbf{keyword search (KWS), an ad-hoc method for finding fitting passages by searching the whole text for the occurrence of a specific trigger word}
 \end{itemize}
 % TODO: Shortly describe each of these techniques
 
@@ -87,7 +118,8 @@ Each log is labeled with the log part describing the reason a build failed, keyw
 \begin{simplebox}{Research Questions}
 \begin{itemize}
   \item[\textbf{RQ1:}] Which build log analysis techniques exist?
-  \item[\textbf{RQ2:}] Which criteria influence the suitability of a chunk retrieval technique for build logs?
+  \item[\textbf{RQ2:}] Which criteria influence the suitability of a chunk
+  retrieval technique for build logs?
 \end{itemize}
 \end{simplebox}
 
