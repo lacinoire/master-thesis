@@ -37,7 +37,8 @@ contain a lot of valuable information for developers and researchers---for
 example, descriptions of compile errors, linter warnings or failed
 tests~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
 
-CI builds produce logs which report the results of the steps within the build. The information stored in build logs can and has
+CI builds produce logs which report the results of the steps within the build.
+The information stored in build logs can and has
 already been used for a variety of applications. One prominent dataset
 in the space, TravisTorrent, was featured as the MSR Data Challenge
 2017~\cite{msr17challenge}. To date, scientist and practitioners alike
@@ -172,12 +173,8 @@ Execution failed for task ':app:connectedAndroidTest'.
   \label{lst:chunk-example-2}
 \end{figure}
 
-\lstset{
-  language=caml,
-  morekeywords={StartExtraction, RegexPosition, RegexPair, EndExtraction},
-  keywordstyle=\bfseries\color{black},
-  escapeinside=//
-}
+\lstset{language=caml, morekeywords={StartExtraction, RegexPosition, RegexPair,
+  EndExtraction}, keywordstyle=\bfseries\color{black}, escapeinside=//}
 \begin{figure}[!t]
   \centering
   \begin{lstlisting}[breaklines=true]
@@ -215,17 +212,25 @@ StartExtraction(RegexPair("Colon/{\color{Plum}$\circ$}/Line Separator", "ALL CAP
 The results of our empirical comparison study on the chunk retrieval techniques
 show that the structural representation of the targeted chunk greatly influences
 the performance of the chunk retrieval techinques.
-\Cref{lst:chunk-example-1,lst:chunk-example-2} show two exemplary log chunks
-from Android/Gradle build logs. Both chunks contain the information on why the
+\Cref{lst:chunk-example-1,lst:chunk-e:xample-2} show two exemplary log chunks
+from Android/Gradle build logs marked in blue.
+Both chunks contain the information on why the
 corresponding build failed. When PBE is trained on these two examples it produces
 a regular expression similar to \Cref{lst:prose-program-simplified}. The retrieval
 starts after a colon followed by a line separator and before a capital letter.
 It ends before two line separators, consistent with the two example chunks from
 \Cref{lst:chunk-example-1,lst:chunk-example-2}.
-This shows, that the characters structuring the text around the chunk are cruicial
-for regular expressions to identify the targeted log chunk. In fact, if the third
-example from \Cref{lst:chunk-example-3} with a different structural representation is added,
-PBE is not able to syntesize a program and returns ``\texttt{no program found}''
+This shows, that the characters structuring the text around the chunk are
+cruicial for regular expressions to identify the targeted log chunk.
+In fact, if the third
+example from \Cref{lst:chunk-example-3} with a different structural
+representation is added, PBE is not able to syntesize a program and returns
+``\texttt{no program found}''.
+We express this difference in structural representation through dividing log
+chunks into structural categories. The chunks from
+\Cref{lst:chunk-example-1,lst:chunk-example-2} are in the same structural
+category, while the chunk from \Cref{lst:chunk-example-3} is in a different one.
+
 
 % \textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited to retrieve information from continuous integration build logs.
 % \textbf{RQ2} is refined into sub-questions along with the criteria resulting from \textbf{RQ1} and compares their instantiations for the three techniques:
@@ -233,18 +238,17 @@ PBE is not able to syntesize a program and returns ``\texttt{no program found}''
 % To evaluate PBE, CTS and KWS we use the \emph{LogChunks} data set, which encompasses about 800 log files from 80 repositories.
 % Each log is labeled with the log part describing the reason a build failed, keywords to search for this log part and a categorization of the labeled log part according to its structural representation within the log.
 
-
-% TODO: Add structural category explanation
-% TODO: Add running example
-
 Our study of the three techniques on \emph{LogChunks} shows that
 \begin{itemize}
-  \item PBE yields very accurate results when trained with two examples from a single structural category.
-  \item CTS shows the best average precision, though precision and recall of a retrieval is hard to determine from the given result.
+  \item PBE yields very accurate results when trained with two examples from a
+  single structural category.
+  \item CTS shows the best average precision, though precision and recall of a
+  retrieval is hard to determine from the given result.
   A small increase in the number of training examples has no noticeable influence.
   Fewer structural categories improve precision and recall of the retrieval.
   \item KWS has the highest recall of all techniques, however much lower precision.
-  It is the technique with the best recall when multiple structural categories are present in the training examples.
+  It is the technique with the best recall when multiple structural categories
+  are present in the training examples.
 \end{itemize}
 
 % \noindent
@@ -266,8 +270,10 @@ recall of the chunk retrieval is required.
 CTS is well suited when the representation of the desired information varies
 slightly and the output of the chunk retrieval is further processed by a human.
 In cases where the textual representation of the desired information in the log
-is unpredictable or varies greatly, KWS ssems to be the best choice. However, its low precision---it extracts a context of multiple lines around a finding---makes it generally unsuited for automatic on-ward processing and instead requires a human to further inspect and interpret the output chunk.
-
+is unpredictable or varies greatly, KWS seems to be the best choice. However,
+its low precision---it extracts a context of multiple lines around a
+finding---makes it generally unsuited for automatic on-ward processing and
+instead requires a human to further inspect and interpret the output chunk.
 
 \section{Systematic Literature Survey and Mapping}
 \label{sec:survey}
@@ -287,7 +293,6 @@ research efforts on build log analysis prior to it, mostly where the
 log analysis was a side-part of the article. To the best of our
 knowledge, there has not been an attempt to systematically overview
 and survey them, despite their forseeable future and current importance.
-
 
 \subsection{Study Selection}
 % TODO shorten
