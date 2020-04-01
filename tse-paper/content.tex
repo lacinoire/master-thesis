@@ -212,7 +212,7 @@ StartExtraction(RegexPair("Colon/{\color{Plum}$\circ$}/Line Separator", "ALL CAP
 The results of our empirical comparison study on the chunk retrieval techniques
 show that the structural representation of the targeted chunk greatly influences
 the performance of the chunk retrieval techinques.
-\Cref{lst:chunk-example-1,lst:chunk-e:xample-2} show two exemplary log chunks
+\Cref{lst:chunk-example-1,lst:chunk-example-2} show two exemplary log chunks
 from Android/Gradle build logs marked in blue.
 Both chunks contain the information on why the
 corresponding build failed. When PBE is trained on these two examples it produces
@@ -244,7 +244,7 @@ Our study of the three techniques on \emph{LogChunks} shows that
   single structural category.
   \item CTS shows the best average precision, though precision and recall of a
   retrieval is hard to determine from the given result.
-  A small increase in the number of training examples has no noticeable influence.
+  A small increase in the number of training examples has no noticeable influence. 
   Fewer structural categories improve precision and recall of the retrieval.
   \item KWS has the highest recall of all techniques, however much lower precision.
   It is the technique with the best recall when multiple structural categories
@@ -285,7 +285,7 @@ instead requires a human to further inspect and interpret the output chunk.
 	\label{fig:lit-survey}
 \end{figure}
 
-% TODO (Caro): Integrate Kitchenham's guidelines
+% TODO (Caro): Integrate Petersen's guidelines
 From our own experience, we know that the field of analyzing build
 logs is relatively young, with perhaps the work on TravisTorrent the
 most cited and central one. We also know there have been scattered
@@ -343,7 +343,7 @@ left with 259 (17\%) of the original search results.
 With these 259 remaining articles, we followed a backward snowball
 sampling for related work. This added three papers (five before
 duplicate elimination) to our literature set, coming to a total of 261
-articles. % TODO Caro: update
+articles. % TODO: update numbers
 
 On the surviving artciles, we did a second filter phase by downloading the
 full articles, reading their abstracts, and searching the full text
@@ -355,7 +355,6 @@ called build logs from the Linux kernel ``build traces.'' In total, we
 were left with 90 articles after this search.
 
 \subsection{Article Classification}
-% TODO Caro: please write a draft for this :-)
 Having trimmed down the set of articles, we investigated them in depth.
 kept all articles that use logs from software builds as input to some kind of process.
 we wanted to characterize how researchers use buildlogs as input to any processes.
@@ -742,6 +741,57 @@ Diff Approach                & ---     & Line not present in successful log, inf
 \label{tab:ctr}
 \end{table*}
 
+\subsection{Program Synthesis by Example (PBE)}
+\label{sec:expl-pbe}
+% \emph{Programming by Example} is a technique which synthesizes
+% programs according to in- and output examples provided by the user.
+% It enables users to create programs without a priori programming
+% knowledge~\cite{mayer2015user}. In the context of text extraction
+% through regular expressions, Programming by Example relieves the
+% developer from having to understand the whole document structure to
+% solve a single extraction task~\cite{le2014flashextract:}. In this
+% work, we refer to our interpretation of Programming by Example as
+% \emph{PBE}\@. We investigate the suitability of PBE to retrieve
+% information chunks from build logs. In the following, we explain the
+% configuration and application of PBE to chunk retrieval from CI
+% build logs.
+
+% TODO later: we should make sure to at least mention PROSE
+% _somewhere_, it's crucial for why PBE is how it is
+\subsubsection{Configuration}
+In- and output example pairs are the main driver of Programming by
+Example, we refer to them in short as \emph{examples}. The
+\emph{input} is the text of the build log file. The \emph{output} is
+an array of substrings of the log file text, representing the
+substrings that should be retrieved by the synthesized program when
+given the corresponding input file. One or multiple examples, the
+training set, \emph{configure} a specific chunk retrieval with PBE:
+they define the substring of a build log that should be extracted. The
+PROSE program synthesis then tries to construct a program consistent
+with all training examples.
+% A program is consistent with an example if it returns the defined
+% output when executed on the defined
+% input~\cite{mitchell1982generalization}.
+PBE reports an error back to the user if it could not synthesize a
+consistent program.
+% The program synthesis builds on the FlashExtract DSL, which in turn
+% uses the FlashMeta algorithm. Both are described in
+% Section~\ref{sec:rw-prose}.
+
+
+% TODO Moritz: you said: The following is very obvious and could apply to any
+% technique. 
+% kinda. It does give a descriptive error message on no match (and
+% that is not possible in other techniques)
+% otherwise yes, nothing interesting happens in the application of pbe
+% though for consistency we might need this section? or merge config/application?
+\subsubsection{Application}
+A run of PBE takes a build log file as input and applies the
+synthesized regular expression program. It then returns the substring
+of the build log matched by the program or an error message if the
+program found no match.
+
+
 \subsection{Common Text Similarity (CTS)}
 \label{sec:expl-ts}
 % Text Similarity approaches are used to filter unstructured textual
@@ -755,9 +805,14 @@ Diff Approach                & ---     & Line not present in successful log, inf
 
 \subsubsection{Configuration}
 To configure chunk retrieval though text similarity we chose to use
-the same concept of examples as for PBE\@
-% TODO Caro: More details on this. How do you 'apply' VSM? On what?
-and apply the Vector Space Model~\cite{schutze2008introduction}. The
+the same concept of examples as for PBE
+% TODO Moritz: your question was: More details on this. How do you
+% 'apply' VSM? On what?
+% all the following sentences in this subsubsection describe our way
+% of determining text similarity which as far as I understand and
+% Annibale said is the VSM. word tokens, tf-idf, similarity measure
+% I added a "as follows", think that is enough for explanation? 
+and apply the Vector Space Model~\cite{schutze2008introduction} as follows. The
 lines of the output strings of the training examples define our search
 query. The algorithm splits the search query into single lines and
 identifies tokens, in our case words. Then we build a
@@ -797,9 +852,12 @@ set~\cite{brandt2020logchunks}.
 A set of keywords configures the chunk retrieval with KWS\@. To better
 compare KWS with PBE and CTS, we also configure it through examples.
 We associate each example with keywords which appear in the targeted
-chunk or close to it. The configuring keywords for KWS are the ones
-that appear most often in the keywords of all training examples.
-% TODO Caro Please explain above sentence more precisely
+chunk or close to it. 
+KWS then searches for those keywords which are tied to the greatest
+number of examples in the training set.
+If several keywords are associated with the same number of training
+examples, and no other keywords are associated with more training
+examples, KWS searches for all of these keywords.
 
 \subsubsection{Application}
 For a retrieval run, we take a whole build log file as input and
@@ -810,54 +868,8 @@ around the found keyword. The number of surrounding lines retrieved is
 the average of lines in the output of the training examples.
 
 
-\subsection{Program Synthesis by Example (PBE)}
-\label{sec:expl-pbe}
-% \emph{Programming by Example} is a technique which synthesizes
-% programs according to in- and output examples provided by the user.
-% It enables users to create programs without a priori programming
-% knowledge~\cite{mayer2015user}. In the context of text extraction
-% through regular expressions, Programming by Example relieves the
-% developer from having to understand the whole document structure to
-% solve a single extraction task~\cite{le2014flashextract:}. In this
-% work, we refer to our interpretation of Programming by Example as
-% \emph{PBE}\@. We investigate the suitability of PBE to retrieve
-% information chunks from build logs. In the following, we explain the
-% configuration and application of PBE to chunk retrieval from CI
-% build logs.
-
-\subsubsection{Configuration}
-In- and output example pairs are the main driver of Programming by
-Example, we refer to them in short as \emph{examples}. The
-\emph{input} is the text of the build log file. The \emph{output} is
-an array of substrings of the log file text, representing the
-substrings that should be retrieved by the synthesized program when
-given the corresponding input file. One or multiple examples, the
-training set, \emph{configure} a specific chunk retrieval with PBE:
-they define the substring of a build log that should be extracted. The
-PROSE program synthesis then tries to construct a program consistent
-with all training examples.
-% A program is consistent with an example if it returns the defined
-% output when executed on the defined
-% input~\cite{mitchell1982generalization}.
-PBE reports an error back to the user if it could not synthesize a
-consistent program.
-% The program synthesis builds on the FlashExtract DSL, which in turn
-% uses the FlashMeta algorithm. Both are described in
-% Section~\ref{sec:rw-prose}.
-
-
-% TODO Caro: The following is very obvious and could apply to any
-% technique. 
-\subsubsection{Application}
-A run of PBE takes a build log file as input and applies the
-synthesized regular expression program. It then returns the substring
-of the build log matched by the program or an empty string if the
-program found no match.
-
-
 \subsection{Random Line Retrieval}
 \label{sec:expl-rlr}
-
 In our evaluation, we want to compare against a baseline of randomly
 picking lines from the build log. RLR essentially mimicks the
 situation of guessing purely blindly which lines might be interesting.
@@ -865,7 +877,8 @@ The only configuration option for RLR is the number of lines it should
 return. For a fair comparison to the other techniques (whose number of
 returned lines is dynamic), we configure RLR to return the average
 number of lines in the chunks of the training examples. 
-% TODO Caro: some more details here?
+% TODO Moritz: you said: some more details here?
+% I would not know of any details to add. It's really all we are doing
 
 \subsection{Other Techniques}
 %Literature mentions further build log analysis techniques. This
@@ -881,6 +894,8 @@ is the log from the last successful build and relevant past failures.
 This technique retrieves the lines from a build log that are not
 present in the successful build log and contain terms related to the
 given past failures.
+
+% TODO: we could add more techniques from the lit. survey here
 
 \subsection{Tool Implementation}
 For our comparison study we implemented PBE, CTS, KWS and RLR and a
@@ -933,20 +948,25 @@ the comparison.
 \textbf{Training and Test Set}
 We use \emph{LogChunks} as the data set for our study. For each of the
 80 repositories in it, \emph{LogChunks} contains 10 build logs,
-manually labeled with the substring or \emph{chunk} describing the
+manually labeled with the \emph{chunk} describing the
 reason the build failed. Additionally, it contains (1) keywords useful
-to
-% TODO Caro uniquely?
-identify the substring in the log  and (2) which structural category
+to identify the substring in the log  and (2) which structural category
 the substring belongs to.
-% TODO (Caro): Add details how key words were extracted. Add example?
+% TODO Moritz: You said: Add details how key words were extracted. Add example?
+% how the keywords were put in logchunks does not fit here, that is
+% maybe answered 2 paragraphs above already?
+% how KWS uses the keywords is already described in the section
+% introducing the technique => I would scrap everything but the first
+% sentence directly above here :)
 
-% TODO (Caro): Add more details. How was the split in numbers?
+% TODO Moritz: You said: Add more details. How was the split in numbers?
+% this is described in the following paragraph, should we merge them
+% (bc there are also no sub-RQs now) or is it close enough? :)
 For each repository in \emph{LogChunks}, we split the examples
 chronologically into training and test set. Therefore, we train on
 examples from past build logs and test on more recent build logs.
 
-\noindent
+\noindent % TODO: adapt if we change the research questions
 \textbf{RQ 2.1: Size of Training and Test Set}
 To analyze how many examples the chunk retrieval techniques need to
 perform best, we evaluate the techniques with different training set
@@ -978,8 +998,10 @@ evaluation.
         True positives are lines that appear both in the output of a
         tool as well as what \textit{LogChunks} contains for each
         example. 
-        % TODO (Caro) What about when a line is replicated twice?
-        % I.e., Are line numbers part of this?
+        % What about when a line is replicated twice?
+        % I.e., Are line numbers part of this? => no.
+        % not checked, but if lines are identical they also contain
+        % the same information so if someone asks we can defend I think
 	\item $\mbox{Precision} = \dfrac{|\mathit{True\
 	Positives}|}{|\mathit{RetrievedLines}|}$ \vspace{0.21cm} \\
         Precision of a chunk retrieval describes which proportion of
@@ -1010,12 +1032,10 @@ evaluation.
 % present in the training examples with a \emph{retrieval size factor}
 % from 0.5 to 2.5 in steps of 0.5.
 
-
 \section{Results}
 This section presents the results for PBE, CTS and KWS separately.
 Afterwards we compare the three techniques with each other and RLR as
 baseline.
-
 
 \lstset{
   language=,
@@ -1079,8 +1099,6 @@ training and test examples. With increasing category count, precision,
 recall and F$_{1}$-score decrease. Especially for more than three
 categories present we have no chunk retrieval runs where all desired
 lines were extracted.
-
-
 
 \subsection{Keyword Search (KWS)}
 \label{sec:r:kws}
@@ -1198,12 +1216,18 @@ precision around 96\%.
 \subsection{Random Line Retrieval}
 \label{sec:r:rlr}
 
-In our evaluation, we want to compare against a baseline of randomly
-picking lines from the build log. Due to the fact no one would
-seriously consider RLR in real-world scenarios, we are omitting its
-detailed graphs here. However, its results follow intuitive
+In our evaluation, we compare against a baseline of randomly
+picking lines from the build log. Its results follow intuitive
 expectations:
-% TODO Caro: shortly descibre RLR graphs ommitted
+The precision ranges between 8\% and 5\%, the recall between 6\% and
+8\%. The size of the training set has no visible impact on either.
+An greater number of structural categories within the training and
+test sets decreased the precision of RLR from 7\% to 0\%, the recall
+increases from 6\%, for one structural category present, to 11\%, for
+three sturctural categories present and also drops to 0\% for more
+structural categories.
+Graphs of the results of the chunk retrieval with RLR from our study
+are included in our replication package~\cite{brandt2020chunk-replication}. 
 
 \subsection{Comparison of All Techniques}
 In this section, we aggregate the results from
@@ -1265,7 +1289,8 @@ the number of structural categories present.
 \section{Discussion}
 \label{sec:discussion}
 
-% TODO Rather than giving them once (``friss und stirb''), better to incorporate these RQs into the text where they are being answered
+% TODO update RQs
+% TODO incorporate these RQs into the text where they are being answered
 
 This section presents the answers to our research questions:
 \begin{simplebox}{Research Questions}
@@ -1357,18 +1382,11 @@ than used for our study. Future work is needed to investigate how many
 examples yield improvements in the chunk retrieval over a single
 training example.
 
-% TODO Caro: I do not understand the following sentence.
-Extracting the average number of lines present in the training
-examples gives the best retrieval results for CTS, according to the
-F$_{1}$-score.
-
 \noindent
 \textbf{Retrieval Output Usage}
-% TODO Caro: reforumlate this please
-CTS has good precision and recall on average, though the precision or
-recall of a chunk retrieval run is very hard to predict from the given
-result. Therefore, retrieval output from CTS is suited to be read by a
-human. This could include semi-automated procedures such as sending
+CTS has good precision and recall on average, though with a high
+variation. This means that the quality of an output by CTS is hard to
+determine, which makes it unsuited for automatic  processing and requires a human to further inspect and interpret the output. This could include semi-automated procedures such as sending
 developers an email with the extracted build failure reason.
 
 \subsubsection{Keyword Search (KWS)}
@@ -1552,8 +1570,9 @@ Our comparison study shows fewer measurements with many structural
 categories than with one category.
 % TODO Caro: Please explain the following further. Why does a
 % realistic data set only have one or few structural categories?
-This stems from the fact that we use a realistic data set which in
-many cases has only one or few structural categories.
+This stems from the fact that we investigated the chunk retrieval
+techniques on a realistic data set, which showed to often have few
+structural categories within one project.
 
 \section{Future Work}
 \todo{survey build logs tools in industry}
@@ -1561,7 +1580,7 @@ many cases has only one or few structural categories.
 There are various future research opportunities based on our work:
 \begin{itemize}
   \item \textbf{Further Analysis of \emph{LogChunks}} We created the
-  \emph{LogChunks} data set \cite{} specifically for the comparative
+  \emph{LogChunks} data set \cite{brandt2020logchunks} specifically for the comparative
   study in this paper, though it can be the basis for various further
   analyses of build log data. The keywords, for example, can be
   investigated to answer which keywords are used to search for the
