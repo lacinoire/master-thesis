@@ -1,0 +1,51 @@
+
+\section{Future Work}
+\todo{survey build logs tools in industry}
+
+There are various future research opportunities based on our work:
+\begin{itemize}
+  \item \textbf{Further Analysis of \emph{LogChunks}} We created the
+  \emph{LogChunks} data set \cite{brandt2020logchunks} specifically for the comparative
+  study in this paper, though it can be the basis for various further
+  analyses of build log data. The keywords, for example, can be
+  investigated to answer which keywords are used to search for the
+  reason the build failed within build logs.
+  \item \textbf{Cross-Repository Build Log Analysis} We trained and
+  tested each chunk retrieval technique on examples from the same
+  repository. We propose to analyze how techniques could be trained
+  across repositories, building the cornerstones for build
+  environment-agnostic analysis tools.
+  \item \textbf{Comparison with more Chunk Retrieval Techniques} This
+  paper investigates the three chunk retrieval techniques PBE, CTS and
+  KWS\@. Our study design can be reused to evaluate other build log
+  analysis techniques, such as the diff and information retrieval
+  approach by Amar et al.~\cite{amar2019mining}.
+  \item \textbf{Refinement of Retrieval Quality for each Technique} We
+  investigated basic configurations of existing techniques applied to
+  chunk retrieval from build logs. In a next step, each of these
+  techniques could be refined to better approach the domain of build
+  logs. The \emph{LogChunks} data set and our study results act as a
+  baseline to benchmark such technique improvements. We propose the
+  following improvements:
+    \begin{itemize}
+      \item \textbf{Custom Ranking and Tokens for PBE} The program
+      synthesis through PROSE ranks possible programs according to
+      what the user most likely intended. One could adapt the ranking
+      rules provided by the FlashExtract DSL to fit common build log
+      chunk retrieval tasks. FlashExtract includes special tokens when
+      enumerating possible regular expressions. One could extend these
+      with tokens found in build logs, such as ``-'',``='',``ERROR''
+      or ``[OK''.
+      \item \textbf{Meta-Parameter Optimization for CTS} Information
+      retrieval techniques have various meta-parameters which can be
+      optimized for the specific use
+      case~\cite{panichella2016parameterizing}. We propose to further
+      investigate improvements in preprocessing of the log text, in
+      tokenization of the log lines into terms and in stop words
+      lists.
+    \end{itemize}
+  \item \textbf{Usability Analysis of Chunk Retrieval Output} Our
+  analysis of the output produced by the chunk retrieval focuses on
+  precision and recall. We propose to investigate how useful these
+  outputs are to developers through controlled experiments.
+\end{itemize}

@@ -1,0 +1,59 @@
+
+\section{Threats to Validity}
+There are several threats to the validity of the conclusions of our
+work.
+
+\noindent
+\textbf{Implementation}
+\label{sec:prose:impl}
+% TODO we need to say something about why we think that these
+% limtiations do not actually harm our results
+Our results depend on the implementation of the investigated chunk
+retrieval techniques and the libraries we used. Our implementation of
+PBE is based on the program synthesis provided by PROSE\@. The
+idiosyncrazies of this framework influence our PBE results. Other
+frameworks similar to PROSE might have somewhat different strengths
+and weaknesses. For example, the need for examples from a single
+structural category stems from the fact that PROSE cannot learn
+regular expression programs with arbitrary boolean conjunctions and
+disjunctions~\cite{mayer2015user}. PROSE introduced this constraint to
+keep the synthesis performance reasonable. At the same time, this is
+clearly a current theoretical challenge of all PBE implementations,
+and we therefore attribute it to the technique itself, rather than the
+specific implementation.
+
+% TODO cite http://text2vec.org/
+Our implementation of CTS is dependent on the library {\tt text2vec}
+and the way it splits strings into word tokens. On the other hand,
+{\tt text2vec} is the de-facto standard library to do word embeddings
+in R. We intentionally chose a simple, minimally configured and tuned
+approach to compare against. Tuning the text similarity
+meta-parameters more to the specific use case of chunk retrieval from
+build logs would yield better chunk retrieval results.
+
+\noindent
+\textbf{Data Set}
+The outcomes of our comparison study are highly dependent on the build
+logs from the \emph{LogChunks} data set. It only consists of build
+logs from open source projects and therefore it is not clear whether
+our results are generalizable to industry projects. We only collected
+build logs from Travis CI, however we chose to evaluate on an
+information chunk whose format is not dependent on Travis CI\@. This
+is because the reason the build failed is described within the build
+logs by the tools themselves and not the Travis CI environment.
+
+\noindent
+\textbf{Training Set Size}
+Especially the results for CTS might be influenced by the fact that we
+only trained on one to five examples. We chose this small training set
+size as the training examples have to be provided per repository and
+we expect a developer to not want to provide more examples than the
+small numbers we evaluated on.
+
+\noindent
+\textbf{Few Samples with Many Structural Categories}
+Our comparison study shows fewer measurements with many structural
+categories than with one category.
+This stems from the fact that we investigated the chunk retrieval
+techniques on a realistic data set, which showed to often have few
+structural categories within one project.

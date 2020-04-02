@@ -1,0 +1,276 @@
+% TODO: Introduction structure
+% 0) we introduce & define the problem 1) we survey which techniques exist 2) we implement (for a lack of readily available implementations) and compare the most promising ones 3) we draw conclusions for when to use which technique
+
+
+% TODO: Include term predictive CI, link to FB paper and https://www-sciencedirect-com.tudelft.idm.oclc.org/science/article/pii/S0164121218301730
+
+% TODO: What about the alternate solution, installing plugins to report precise data? Ie., maven plugins
+% - Lots of effort
+% - not a generic solution
+% - how to analyze history where such plugins were not installed
+% - unclear which information you want
+
+% TODO It would be futile to compare our techniques with one of the existing manual regex parsers, as (a) as our literature survey showed, their scope is mainly limited to the Java ecosystem and (b) whether they would work or not would be randomly based on whether the project we select exhibits features their regular expressions were trained for. Finally, they are not really automatic     
+
+\lstset{
+  morekeywords={},
+	basicstyle=\ttfamily\scriptsize,
+  postbreak=\mbox{\textcolor{blue}{$\hookrightarrow$}\space},
+  showspaces=false,
+  showstringspaces=false,
+  stringstyle=\color{Plum},
+	frame=single,
+  extendedchars=false,
+  texcl=false,
+  aboveskip=\baselineskip,
+  belowskip=0pt
+}
+
+Continuous Integration (CI) has become a common practice in software
+engineering~\cite{hilton2016usage}.  Many software projects use
+CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect
+bugs early~\cite{vasilescu2015quality,duvall2007continuous}, improve
+developer productivity~\cite{miller2008hundred,hilton2016usage} and
+communication~\cite{downs2012ambient}.  CI builds produce logs which
+report results of various sub-steps within the build.  These build logs
+contain a lot of valuable information for developers and researchers---for
+example, descriptions of compile errors, linter warnings or failed
+tests~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
+
+CI builds produce logs which report the results of the steps within the build.
+The information stored in build logs can and has
+already been used for a variety of applications. One prominent dataset
+in the space, TravisTorrent, was featured as the MSR Data Challenge
+2017~\cite{msr17challenge}. To date, scientist and practitioners alike
+have used it and other, proprietary datasets to understand and
+cateogrize Continuous Integration build
+failures~\cite{islam2017insights}, to do research on testing
+practices~\cite{orellana2017differences}, to train classifiers to
+predict the build outcome and
+duration~\cite{ni2017cost,bisong2017built,machalica2019predictive},
+and to investigate static analysis tools in CI
+builds~\cite{zampetti2017open}. Therefore, being able to efficiently
+and correctly extract information from build logs is paramount to the
+future of a variety of fields depending on it.
+
+However, build logs can be verbose and large---sometimes in excess of
+50 MB of ASCII text ~\cite{beller2017oops}---making them inadequate
+for direct human consumption. Therefore, to support developers and
+researchers in efficiently making use of the information within build
+logs, we must at least semi-automatically retrieve the chunks of the
+log that describe the targeted information.
+
+There are different techniques to retrieve information chunks from CI
+build logs. Beller et al. use a rule-based system of regular
+expressions to analyze logs from Travis CI~\cite{beller2017oops}.
+Such regular expressions are developed by looking at exemplary build
+logs.  Vassallo et al.\ wrote a custom parser to gather information
+for build repair hints~\cite{vassallo2018un-break}.  Recently, Amar et
+al.\ reduced the number of lines for a developer to inspect by
+creating a diff between logs from failed and successful
+builds~\cite{amar2019mining}.
+
+These approaches have various strengths and weaknesses: Regular
+expressions are exact, but tedious and error-prone to
+maintain~\cite{michael2019regexes}.  Custom parsers are powerful
+though fragile in light of changes in the log structure. Diffing
+between failed and successful logs can reduce the information to be
+processed, but is at best semi-automatic~\cite{amar2019mining}.
+
+To gain an impression on how researchers are using information from build logs
+within their research and how they are gathering chunks from them to support
+developers in understanding build outcomes, we conducted a systematic mapping
+study.
+Our goal was to classify how and what for researchers use build logs as a source
+of data (\textbf{RQ1}).
+
+The outcomes of our study shows that there are various attempts to retrieve
+specific information from buildlogs. The resulting implementations are rarely
+available and therefore rarely reused. Because of the high development overhead
+of the custom parsers, many implementations are limited to small number of supported
+build tools.
+
+To address this, we implement three promising techniques for build log analysis.
+They retrieve specific chunks of targeted information and are configured by
+examples provided by the user.
+We conduct an empirical study on the \emph{LogChunks} data set~\cite{brandt2020logchunks} to
+gauge the performance of these chunk retrieval techniques and characterize
+when one of the techniques should be preferred over other alternatives (\textbf{RQ2}).
+
+\begin{simplebox}{Research Questions}
+\begin{itemize}
+  \item[\textbf{RQ1:}] Which build log analysis techniques exist?
+  \item[\textbf{RQ2:}] Which criteria influence the suitability of a chunk
+  retrieval technique for build logs?
+\end{itemize}
+\end{simplebox}
+
+% At the moment there is only anecdotal evidence on the performance of these
+% techniques and on when a technique should be preferred over other alternatives.
+% Developers and researches currently have little support when choosing which
+% technique to use for a task.
+
+% The goal of this article is to investigate different chunk retrieval techniques
+% for build logs and describe under which circumstances certain techniques can be
+% recommended over others.
+% We aim to characterize different chunk retrieval techniques.
+% For \textbf{Research Question 1} (\textbf{RQ1}), we analyze which criteria
+% influence the suitability of a chunk retrieval technique for CI build logs.
+
+We implement and evaluate three chunk retrieval techniques:
+\begin{itemize}
+  \item \textbf{Program Synthesis by Example (referred to as PBE)}
+  Based on user examples of build logs and targeted log chunks, PBE synthesizes
+  a regular expression matching the given chunks within the build logs.
+  \item \textbf{Common Text Similarity (CTS)}
+  Using the Vector Space Model, CTS selects those lines of a log which are
+  most similar to the lines present in example chunks provided by the user.
+  \item \textbf{Keyword Search (KWS)}
+  Ad-hoc method for finding fitting passages by searching the whole text for
+  the occurrence of specific trigger words.
+\end{itemize}
+
+\begin{figure}[!t]
+  \centering
+  \begin{lstlisting}[breaklines=true,frame=tlr]
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
+Could not determine the dependencies of task `:app:jacocoTestDebugReport'.
+> Task with path 'testDebug' not found in project ':app'.
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[breaklines=true,frame=blr]
+
+* Try:
+  \end{lstlisting}  
+  \caption{Example of a log chunk explaining why an Android/Gradle build failed.}
+  % TODO Moritz: we can relate this to travistorrent maybe, you told me long ago that this was something your analyzer cannot extract
+  \label{lst:chunk-example-1}
+\end{figure}
+
+\begin{figure}[!t]
+  \centering
+  \begin{lstlisting}[breaklines=true,frame=tlr]
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
+Execution failed for task ':app:connectedAndroidTest'.
+> com.android.builder.testing.api.DeviceException: java.lang.RuntimeException: ...
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[breaklines=true,frame=blr]
+
+* Try:
+  \end{lstlisting}  
+  \caption{Another example of a log chunk explaining why an Android/Gradle build failed.}
+  \label{lst:chunk-example-2}
+\end{figure}
+
+\lstset{language=caml, morekeywords={StartExtraction, RegexPosition, RegexPair,
+  EndExtraction}, keywordstyle=\bfseries\color{black}, escapeinside=//}
+\begin{figure}[!t]
+  \centering
+  \begin{lstlisting}[breaklines=true]
+StartExtraction(RegexPair("Colon/{\color{Plum}$\circ$}/Line Separator", "ALL CAPS")) in EndExtraction(RegexPair("/{\color{Plum}$\varepsilon$}/", "Line Separator/{\color{Plum}$\circ$}/Line Separator"))
+  \end{lstlisting}  
+  \caption{Simiplified regular expression produced by PBE when trained
+  with examples from \Cref{lst:chunk-example-1,lst:chunk-example-2}}
+  \label{lst:prose-program-simplified}
+\end{figure}
+
+\lstset{
+  language=,
+  morekeywords={},
+  texcl=false
+}
+\begin{figure}[!t]
+  \centering
+  \begin{lstlisting}[breaklines=true,frame=tlr]
+=== RUN   TestSeparator
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
+--- FAIL: TestSeparator (0.03s)
+    repo\_test.go:75: expected entry to be in form of `* [link] - description.`, got '* ...
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[breaklines=true,frame=blr]
+=== RUN   TestGenerateHTML
+  \end{lstlisting}  
+  \caption{Example of a log chunk. \todo{which build tool?}
+  \todo{move to where structural category explanation}}
+  \label{lst:chunk-example-3}
+\end{figure}
+
+The results of our empirical comparison study on the chunk retrieval techniques
+show that the structural representation of the targeted chunk greatly influences
+the performance of the chunk retrieval techinques.
+\Cref{lst:chunk-example-1,lst:chunk-example-2} show two exemplary log chunks
+from Android/Gradle build logs marked in blue.
+Both chunks contain the information on why the
+corresponding build failed. When PBE is trained on these two examples it produces
+a regular expression similar to \Cref{lst:prose-program-simplified}. The retrieval
+starts after a colon followed by a line separator and before a capital letter.
+It ends before two line separators, consistent with the two example chunks from
+\Cref{lst:chunk-example-1,lst:chunk-example-2}.
+This shows, that the characters structuring the text around the chunk are
+cruicial for regular expressions to identify the targeted log chunk.
+In fact, if the third
+example from \Cref{lst:chunk-example-3} with a different structural
+representation is added, PBE is not able to syntesize a program and returns
+``\texttt{no program found}''.
+We express this difference in structural representation through dividing log
+chunks into structural categories. The chunks from
+\Cref{lst:chunk-example-1,lst:chunk-example-2} are in the same structural
+category, while the chunk from \Cref{lst:chunk-example-3} is in a different one.
+
+
+% \textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited to retrieve information from continuous integration build logs.
+% \textbf{RQ2} is refined into sub-questions along with the criteria resulting from \textbf{RQ1} and compares their instantiations for the three techniques:
+% how many training examples a technique needs to perform best (\textbf{RQ2.1}), how structurally diverse the examples can be (\textbf{RQ2.2}) and how accurate the retrieved output is (\textbf{RQ2.3}).
+% To evaluate PBE, CTS and KWS we use the \emph{LogChunks} data set, which encompasses about 800 log files from 80 repositories.
+% Each log is labeled with the log part describing the reason a build failed, keywords to search for this log part and a categorization of the labeled log part according to its structural representation within the log.
+
+Our study of the three techniques on \emph{LogChunks} shows that
+\begin{itemize}
+  \item PBE yields very accurate results when trained with two examples from a
+  single structural category.
+  \item CTS shows the best average precision, though precision and recall of a
+  retrieval is hard to determine from the given result.
+  A small increase in the number of training examples has no noticeable influence. 
+  Fewer structural categories improve precision and recall of the retrieval.
+  \item KWS has the highest recall of all techniques, however much lower precision.
+  It is the technique with the best recall when multiple structural categories
+  are present in the training examples.
+\end{itemize}
+
+% \noindent
+% \textbf{Our work contributes:}
+% \begin{itemize}
+%   \item A tool with three prototypical implementations of chunk retrieval techniques:
+%         \begin{itemize}
+%           \item program synthesis from examples using the Microsoft PROSE library (PBE),
+%           \item a common information retrieval approach using text similarity (CTS), and
+%           \item a keyword search approach (KWS).
+%         \end{itemize}
+%   \item Recommendations for the configuration of each of the investigated chunk retrieval techniques.
+%   \item Guidelines on choosing a suitable chunk retrieval technique.
+% \end{itemize}
+
+We recommend PBE for use cases where the desired information is always
+represented in the same structural way and high confidence in precision and
+recall of the chunk retrieval is required.
+CTS is well suited when the representation of the desired information varies
+slightly and the output of the chunk retrieval is further processed by a human.
+In cases where the textual representation of the desired information in the log
+is unpredictable or varies greatly, KWS seems to be the best choice. However,
+its low precision---it extracts a context of multiple lines around a
+finding---makes it generally unsuited for automatic on-ward processing and
+instead requires a human to further inspect and interpret the output chunk.
