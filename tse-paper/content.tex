@@ -416,25 +416,19 @@ package~\cite{brandt2020chunk-replication}.
 To make handling so many search results feasible, we employed a
 two-pass filtering strategy:
 
-First, we filtered out articles based on 1) their title and 2) the
+First, we filtered out articles based on (1) their title and (2) the
 contextual information Google Scholar displayed.
 We inlcuded only
 publications written in a language intelligible to the authors (that
-is, English or German), but only disregarded fewer than 1\% of search
-hits due to this criterion.
+is, English or German), which disregarded fewer than 1\% of search
+hits.
 Our strategy was to err on the side of
 caution, that is rather including a paper than not.
 We then unified
 the results of the four search queries based on the link as the
 identifying element, removing 60 articles that appeared in more than
 one search query.
-We noticed that some publishers (ACM, Springer,
-Google Books) augment a link to an article with a cutomized ID, which
-specifies the link source ({\tt casa\_token, oid}).
-% TODO: {overly specific?}
-We automatically
-removed it to find all true duplicates.
-After this process, we were
+We automatically removed all duplicates and were
 left with 259 (17\%) of the original search results.
 
 With these 259 remaining articles, we followed a backward snowball
@@ -448,20 +442,16 @@ On the surviving artciles, we did a second filter phase by downloading the
 full articles, reading their abstracts, and searching the full text
 for the occurrence of ``log''.
 If these papers showed traces of
-working with build logs, we included them in our survey.
-For the
-snowballed set, we included two of the three articles, both of which
-stem from the same first author, were borderline-includes, and had
-called build logs from the Linux kernel ``build traces.'' In total, we
+working with build logs, we included them in our survey. In total, we
 were left with 90 articles after this search.
 
 \subsection{Article Classification}
 Having trimmed down the set of articles, we investigated them in depth.
-kept all articles that use logs from software builds as input to some
-kind of process.
+We kept all articles that use logs from software builds as input to
+some kind of process.
 we wanted to characterize how researchers use buildlogs as input to
 any processes.
-Interesed in
+We were interesed in
 \begin{itemize}
   \item what kind of build logs they are using and the source of these
   logs.
@@ -473,25 +463,22 @@ Interesed in
   tools
 \end{itemize}
 To objecifiy our data extraction we created a template of the targeted
-factors
-and performed a pilot on five articles.
-Two authors extracted the data from the
-five pilot articles and we held a consensus meeting to unify our
-understanding
-of the factors in the data extraction templates.
+factors and performed a pilot.
+Two authors extracted the data from five articles and we held a
+consensus meeting to unify our understanding
+of the data extraction template.
 The remaining articles were
 divided over these two authors.
-We inspected the articles as closesly as necessary,
+We inspected the articles as closely as necessary,
 starting from occurences of ``log'' or ``build'' within the text.
 The full data extraction template and our results of this step can be
-found in
-our replication package % TODO: {cite}.
+found in our replication package~\cite{brandt2020chunk-replication}.
 
 In this pass we further identified x duplicate articles % TODO: {do we push
 % those to the last pass?}.
 For several cases, multiple articles extended others, though still
 reported on
-the same work with the respect to analyzing build logs.
+the same work with the respect to processing build logs.
 Of these we only considered the earliest article which reported on
 the processing
 of build logs.
