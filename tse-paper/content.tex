@@ -718,7 +718,7 @@ Example adapted from~\cite{he2017towards}.}
 
 \subsection{Program Synthesis by Example}
 \label{sec:rw-prose}
-% % \section{Information Extraction and Retrieval Techniques} The
+% % \section){Information Extraction and Retrieval Techniques} The
 % % techniques we investigate are based on existing methods of
 % % Programming by Example.%, information extraction and information
 % % retrieval.
@@ -862,6 +862,7 @@ StartToPosRegion(s, RegexPosition(s, RegexPair("/$\varepsilon$/",
 
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
+% TODO: rework! extend / relate to further techniques
 This section introduces key concepts of the three chunk retrieval
 techniques we study in this article, namely program synthesis by
 example (PBE), common text similarity (CTS), and keyword search (KWS).
@@ -1138,9 +1139,7 @@ R and the text2vec library~\cite{text2vec2019webpage}.
 \section{Study Design}
 \label{sec:study}
 
-% TODO Caro: I find this figure still very confusing :'(, due to a lack
-of structure.
-If you want me to, I can give it a go?
+% TODO Caro: redo
 \begin{figure*}[tb]
 	\centering
 	\includegraphics[width=\textwidth, trim={0.4cm 8.4cm 1.2cm 0.3cm},
@@ -1149,9 +1148,13 @@ If you want me to, I can give it a go?
 	\label{fig:study}
 \end{figure*}
 
-To investigate which techqnique is best suited to retrieve chunks from
-CI build logs we evaluate them on the
-\emph{LogChunks}~\cite{brandt2020logchunks} data set.
+To investigate which technique is best suited to retrieve chunks from
+CI build logs we evaluate the three chunk retrieval techniques
+PBE, CTS and KWS, described in Sections~\ref{sec:expl-pbe},
+\ref{sec:expl-ts} and \ref{sec:expl-skws}.
+Random Line Retrieval
+(RLR), explained in Section~\ref{sec:expl-rlr}, acts as a baseline for
+the comparison.
 This section
 describes our study design and which metrics we measure to answer our
 research questions.
@@ -1176,24 +1179,10 @@ within the log.
 If the chunks are surrounded by the same markings
 within the log we assign them the same structural category.
 
-For the comparison, we evaluate the three chunk retrieval techniques
-PBE, CTS and KWS, described in Sections~\ref{sec:expl-pbe},
-\ref{sec:expl-ts} and \ref{sec:expl-skws}.
-Random Line Retrieval
-(RLR), explained in Section~\ref{sec:expl-rlr}, acts as a baseline for
-the comparison.
 % We run four techniques on the examples from \emph{LogChunks}.
 
 \noindent
 \textbf{Training and Test Set}
-We use \emph{LogChunks} as the data set for our study.
-For each of the
-80 repositories in it, \emph{LogChunks} contains 10 build logs,
-manually labeled with the \emph{chunk} describing the
-reason the build failed.
-Additionally, it contains (1) keywords useful
-to identify the substring in the log  and (2) which structural category
-the substring belongs to.
 % TODO Moritz: You said: Add details how key words were extracted.
 % Add example?
 % how the keywords were put in logchunks does not fit here, that is
@@ -1213,25 +1202,25 @@ examples from past build logs and test on more recent build logs.
 
 \noindent % TODO: adapt if we change the research questions
 \textbf{RQ 2.1: Size of Training and Test Set}
-To analyze how many examples the chunk retrieval techniques need to
-perform best, we evaluate the techniques with different training set
-sizes.
+We evaluate the techniques with different training set
+sizes, to analyze how many examples the chunk retrieval techniques need to
+perform best.
 We train each technique with one to five examples from each of
 the repositories within \emph{LogChunks}.
-The size of the test set is
-one.
+The size of the test set is one.
 
 \noindent
 \textbf{RQ 2.2: Recording Structural Categories}
-To determine how structurally similar the examples for the chunk
-retrieval techniques need to be, we record the structural categories
-of the examples in the training and test sets.
+We record the structural categories
+of the examples in the training and test sets, to determine how
+structurally similar the examples for the chunk
+retrieval techniques need to be.
 
 \noindent
 \textbf{RQ2.3: Accuracy Metrics}
-To measure the accuracy of the retrieved chunks we save the output
-lines of the chunk retrieval run on the input of the test example
-($\mathit{RetrievedLines}$).
+we save the output lines of the chunk retrieval run on the input
+of the test example ($\mathit{RetrievedLines}$), to measure the
+accuracy of the retrieved chunks 
 As oracle in our evaluation, we save the
 desired lines from the output of the test example
 ($\mathit{DesiredLines}$).
@@ -1241,11 +1230,11 @@ evaluation.
 
 \vspace{0.2cm}
 \begin{itemize}[leftmargin=0.4cm] \itemsep1em
-	\item $|\mbox{True positives}| = \mathit{DesiredLines} \cap
+	\item $|\mbox{True\ Positives}| = \mathit{DesiredLines} \cap
 	\mathit{RetrievedLines}$ \vspace{0.2cm}\\
 	True positives are lines that appear both in the output of a
-	tool as well as what \textit{LogChunks} contains for each
-	example.
+	tool as well as what \textit{LogChunks} contains for the
+  test example.
 
 	% What about when a line is replicated twice?
 	% I.e., Are line numbers part of this? => no.
@@ -1257,7 +1246,7 @@ evaluation.
 	the retrieved lines were actually desired.
 
 	\item $\mbox{Recall} =
-	\dfrac{|\mathit{TruePositives}|}{|\mathit{DesiredLines}|}$
+	\dfrac{|\mathit{True\ Positives}|}{|\mathit{DesiredLines}|}$
 	\vspace{0.2cm} \\
 	Recall of a chunk retrieval describes which proportion of the
 	desired lines were retrieved.
@@ -1278,29 +1267,19 @@ We prefer F$_{1}$ to other aggregate
 	extracted, therefore when recall is one.
 \end{itemize}
 
-% Recall and precision of CTS and KWS vary with the number of lines
-% selected for retrieval.
-% We evaluate the effect of varying the number
-% of extracted lines by multiplying the average number of lines
-% present in the training examples with a \emph{retrieval size factor}
-% from 0.5 to 2.5 in steps of 0.5.
 
 \section{Results}
-This section presents the results for PBE, CTS and KWS separately.
+This section presents the separate results for each chunk retrieval
+technique. We start with CTS, KWS and RLR, as their results are easiest to
+understand.
 Afterwards we compare the three techniques with each other and RLR as
 baseline.
 
 \lstset{
   language=,
   morekeywords={Test, Output, Desired},
-	basicstyle=\ttfamily\scriptsize,
-  postbreak=\mbox{\textcolor{cyan}{$\hookrightarrow$}\space},
-  showspaces=false,
-  showstringspaces=false,
   keywordstyle=\textbf,
-	frame=single,
-  extendedchars=false,
-  texcl=false
+	frame=single
 }
 \begin{figure}[!t]
   \centering
@@ -1330,8 +1309,7 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/recall-precision-examplecount-CTS.pdf}
-		\caption{Precision, recall and F$_{1}$-score for an
-		increasing training set size.}
+		\caption{Compared with the training set size.}
 		\label{fig:recall-precision-examplecount-CTS}
 
 \end{subfigure}\hspace{\fill}
@@ -1339,12 +1317,12 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 		\centering
 				\includegraphics[width=\columnwidth,
 				clip]{img/big-study/recall-precision-categorycount-CTS.pdf}
-		\caption{Precision, recall and F$_{1}$-score for
-		an increasing number of structural categories in the
+		\caption{Compared with the number of structural categories in the
 		training and test sets.}
 		\label{fig:recall-precision-categorycount-CTS}
 \end{subfigure}
-\caption{Results of chunk retrieval with Common Text Similarity (CTS)}
+\caption{Precision, recall and F$_{1}$-score of chunk
+retrieval with Common Text Similarity (CTS)}
 \end{figure*}
 
 \Cref{fig:recall-precision-examplecount-CTS} presents precision,
@@ -1373,20 +1351,19 @@ lines were extracted.
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/recall-precision-examplecount-KWS.pdf}
-		\caption{Precision, recall and F$_{1}$-score for an
-		increasing training set size.}
+		\caption{Compared with the training set size.}
 		\label{fig:recall-precision-examplecount-KWS}
 \end{subfigure}\hspace{\fill}
 \begin{subfigure}[b]{\columnwidth}
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/recall-precision-categorycount-KWS.pdf}
-		\caption{Precision, recall and F$_{1}$-score for
-		an increasing number of structural categories in the
+		\caption{Compared with the number of structural categories in the
 		training and test sets.}
 		\label{fig:recall-precision-categorycount-KWS}
 \end{subfigure}
-\caption{Results of chunk retrieval with Keyword Search (KWS)}
+\caption{Precision, recall and F$_{1}$-score of chunk retrieval with
+Keyword Search (KWS)}
 \end{figure*}
 
 
@@ -1410,28 +1387,24 @@ categories no clear trend is visible in precision, recall or
 F$_{1}$-score for an increasing amount of categories in the training
 and test examples.
 
-% Figure~\ref{fig:contextsizefactor-precision-recall-KWS} shows the
-% effect of the retrieval size factor on precision, recall and
-% F$_{1}$-score of chunk retrieval runs with KWS\@.
-%The precision is
-% 19\% when retrieving half of the expected number of lines.
-%On
-% average 9\% of the lines in the build log are retrieved then.
-%When
-% 2.5 times the expected number of lines are retrieved, the precision
-% decreases to 10\% and a quarter of the lines in the build log are
-% retrieved on average.
-%The recall ranges from 58\% to 75\% and the
-% F$_{1}$-score shows a constant decrease from 29\% to 17\%.
+\subsection{Random Line Retrieval}
+\label{sec:r:rlr}
 
-% \begin{figure}[!t]
-%		\centering
-%		\includegraphics[width=\columnwidth,
-%clip]{img/big-study/contextsizefactor-precision-recall-KWS.pdf}
-%		\caption{Precision, recall and F$_{1}$-score of chunk
-%retrieval with KWS compared to retrieval size factor.}
-%		\label{fig:contextsizefactor-precision-recall-KWS}
-% \end{figure}
+In our evaluation, we compare against a baseline of randomly
+picking lines from the build log.
+Its results follow intuitive
+expectations:
+The precision ranges between 8\% and 5\%, the recall between 6\% and
+8\%.
+The size of the training set has no visible impact on either.
+An larger number of structural categories within the training and
+test sets decreased the precision of RLR from 7\% to 0\%, the recall
+increases from 6\%, for one structural category present, to 11\%, for
+three sturctural categories present and also drops to 0\% for more
+structural categories.
+Graphs of the results of the chunk retrieval with RLR from our study
+are included in our replication
+package~\cite{brandt2020chunk-replication}.
 
 \subsection{Program Synthesis by Example (PBE)}
 \label{sec:r:pbe}
@@ -1452,8 +1425,8 @@ and test examples.
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/failure-reason-categorycount-PBE.pdf}
-				\caption{Increasing number of structural
-				categories in the training and test sets.}
+				\caption{Successfulness of retrieval compared with the number of
+        structural categories in the training and test sets.}
 		\label{fig:failure-reason-categorycount-PBE}
 \end{subfigure}
 \caption{Results of chunk retrieval with  Program Synthesis by Example
@@ -1511,30 +1484,9 @@ For two or more
 training examples, recall and F$_{1}$-score stay around 75\% and
 precision around 96\%.
 
-\subsection{Random Line Retrieval}
-\label{sec:r:rlr}
-
-In our evaluation, we compare against a baseline of randomly
-picking lines from the build log.
-Its results follow intuitive
-expectations:
-The precision ranges between 8\% and 5\%, the recall between 6\% and
-8\%.
-The size of the training set has no visible impact on either.
-An greater number of structural categories within the training and
-test sets decreased the precision of RLR from 7\% to 0\%, the recall
-increases from 6\%, for one structural category present, to 11\%, for
-three sturctural categories present and also drops to 0\% for more
-structural categories.
-Graphs of the results of the chunk retrieval with RLR from our study
-are included in our replication
-package~\cite{brandt2020chunk-replication}.
-
-
 \subsection{Comparison of All Techniques}
-In this section, we aggregate the results from
-\Cref{sec:r:kws,sec:r:pbe,sec:r:cts,sec:r:rlr} and put them next to it
-each other.
+Next, we aggregate the results from
+\Cref{sec:r:kws,sec:r:pbe,sec:r:cts,sec:r:rlr}.
 
 \Cref{fig:success-partial-all} compares the success of chunk
 retrievals differentiated by techniques in our study.
@@ -1587,8 +1539,7 @@ the number of structural categories present.
 		\centering
 				\includegraphics[width=\columnwidth,
 				clip]{img/big-study/recall-precision-singlecategory-all.pdf}
-		\caption{Precision, recall and F$_{1}$-score of all
-		techniques when training examples are in \emph{one}
+		\caption{Training and test examples are in \emph{one}
 		structural category.}
 		\label{fig:recall-precision-singlecategory-all}
 \end{subfigure}\hspace{\fill}
@@ -1597,13 +1548,12 @@ the number of structural categories present.
 				\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/recall-precision-multicategory-all.pdf}
-		\caption{Precision, recall and F$_{1}$-score of all
-		techniques when training examples are in \emph{more than
+		\caption{Training and test examples are in \emph{more than
 		one} structural categories.}
 		\label{fig:recall-precision-multicategory-all}
 \end{subfigure}
-\caption{Comparison of all chunk retrieval techniques, split by structural
-category count.}
+\caption{Precision, recall and F$_{1}$-score of all
+techniques compared, split by structural category count.}
 \end{figure*}
 
 \section{Discussion}
