@@ -102,31 +102,22 @@ between failed and successful logs can reduce the information to be
 processed, but is at best semi-automatic~\cite{amar2019mining}.
 
 To gain an impression on how researchers are using information from
-build logs
-within their research and how they are gathering chunks from them
-to support
-developers in understanding build outcomes, we conducted a systematic
-mapping
-study.
-Our goal was to classify how and what for researchers use build logs as
-a source
-of data (\textbf{RQ1}).
+build logs within their research to support
+developers, we conducted a systematic mapping study.
+Our goal was to classify how, and what for, researchers use build logs as
+a source of data (\textbf{RQ1}).
 
 The outcomes of our study shows that there are various attempts to
-retrieve
-specific information from buildlogs.
-The resulting implementations are rarely
-available and therefore rarely reused.
+retrieve specific information from buildlogs.
+The resulting implementations are rarely available and therefore rarely reused.
 Because of the high development overhead
 of the custom parsers, many implementations are limited to small number
-of supported
-build tools.
+of supported build tools.
 
 To address this, we implement three promising techniques for build
 log analysis.
-They retrieve specific chunks of targeted information and are configured
-by
-examples provided by the user.
+They retrieve specific chunks of targeted information and are trained
+with examples provided by the user.
 We conduct an empirical study on the \emph{LogChunks} data
 set~\cite{brandt2020logchunks} to
 gauge the performance of these chunk retrieval techniques and characterize
@@ -164,7 +155,7 @@ when one of the techniques should be preferred over other alternatives
 We implement and evaluate three chunk retrieval techniques:
 \begin{itemize}
   \item \textbf{Program Synthesis by Example (referred to as PBE)}
-  Based on user examples of build logs and targeted log chunks, PBE
+  Based on user examples of build logs and chunks, PBE
   synthesizes
   a regular expression matching the given chunks within the build logs.
   \item \textbf{Common Text Similarity (CTS)}
@@ -194,7 +185,7 @@ Could not determine the dependencies of task `:app:jacocoTestDebugReport'.
 
 * Try:
   \end{lstlisting}
-  \caption{Example of a log chunk explaining why an Android/Gradle
+  \caption{Example of a log chunk explaining why an Android
   build failed.}
   % TODO Moritz: we can relate this to travistorrent maybe, you told me
   % long ago that this was something your analyzer cannot extract
@@ -219,7 +210,7 @@ java.lang.RuntimeException: ...
 
 * Try:
   \end{lstlisting}
-  \caption{Another example of a log chunk explaining why an Android/Gradle
+  \caption{Another example of a log chunk explaining why an Android
   build failed.}
   \label{lst:chunk-example-2}
 \end{figure}
@@ -230,9 +221,9 @@ RegexPair,
 \begin{figure}[!t]
   \centering
   \begin{lstlisting}[breaklines=true]
-StartExtraction(RegexPair("Colon/{\color{Plum}$\circ$}/Line Separator",
+StartExtraction(RegexPair("Colon/$\circ$/Line Separator",
 "ALL CAPS")) in EndExtraction(RegexPair("/{\color{Plum}$\varepsilon$}/",
-"Line Separator/{\color{Plum}$\circ$}/Line Separator"))
+"Line Separator/$\circ$/Line Separator"))
   \end{lstlisting}
   \caption{Simiplified regular expression produced by PBE when trained
   with examples from \Cref{lst:chunk-example-1,lst:chunk-example-2}}
@@ -259,10 +250,7 @@ StartExtraction(RegexPair("Colon/{\color{Plum}$\circ$}/Line Separator",
   \begin{lstlisting}[breaklines=true,frame=blr]
 === RUN   TestGenerateHTML
   \end{lstlisting}
-  \caption{Example of a log chunk.
-% TODO: which build tool?
-% TODO: move to where structural category explanation
-}
+  \caption{Example of a log chunk showing a linter error}
   \label{lst:chunk-example-3}
 \end{figure}
 
@@ -272,32 +260,28 @@ show that the structural representation of the targeted chunk greatly
 influences
 the performance of the chunk retrieval techinques.
 \Cref{lst:chunk-example-1,lst:chunk-example-2} show two exemplary
-log chunks
-from Android/Gradle build logs marked in blue.
+log chunks from Android build logs marked in blue.
 Both chunks contain the information on why the
 corresponding build failed.
-When PBE is trained on these two examples it produces
-a regular expression similar to \Cref{lst:prose-program-simplified}.
+When PBE is trained with these two examples it produces
+a regular expression program similar to the one presented in
+\Cref{lst:prose-program-simplified}.
 The retrieval
-starts after a colon followed by a line separator and before a capital
+starts after a colon and a line separator and before a capital
 letter.
 It ends before two line separators, consistent with the two example
-chunks from
-\Cref{lst:chunk-example-1,lst:chunk-example-2}.
+chunks from \Cref{lst:chunk-example-1,lst:chunk-example-2}.
 This shows, that the characters structuring the text around the chunk are
-cruicial for regular expressions to identify the targeted log chunk.
-In fact, if the third
-example from \Cref{lst:chunk-example-3} with a different structural
-representation is added, PBE is not able to syntesize a program and
-returns
+cruicial for regular expressions to identify a log chunk.
+In fact, if the third example from \Cref{lst:chunk-example-3} with a
+different structural representation is added to the training set,
+PBE is not able to syntesize a program and returns
 ``\texttt{no program found}''.
 We express this difference in structural representation through
-dividing log
-chunks into structural categories.
-The chunks from
-\Cref{lst:chunk-example-1,lst:chunk-example-2} are in the same structural
-category, while the chunk from \Cref{lst:chunk-example-3} is in a
-different one.
+dividing log chunks into structural categories.
+The chunks from \Cref{lst:chunk-example-1,lst:chunk-example-2}
+are in the \emph{same structural category}, while the chunk from
+\Cref{lst:chunk-example-3} is in a \emph{different structural category}.
 
 
 % % \textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited
@@ -316,25 +300,25 @@ different one.
 % the labeled log part according to its structural representation within
 % the log.
 
-Our study of the three techniques on \emph{LogChunks} shows that
-\begin{itemize}
-  \item PBE yields very accurate results when trained with two examples
-  from a
-  single structural category.
-  \item CTS shows the best average precision, though precision and recall
-  of a
-  retrieval is hard to determine from the given result.
-  A small increase in the number of training examples has no noticeable
-  influence.
+% Our study of the three techniques on \emph{LogChunks} shows that
+% \begin{itemize}
+%   \item PBE yields very accurate results when trained with two examples
+%   from a
+%   single structural category.
+%   \item CTS shows the best average precision, though precision and recall
+%   of a
+%   retrieval is hard to determine from the given result.
+%   A small increase in the number of training examples has no noticeable
+%   influence.
 
-  Fewer structural categories improve precision and recall of the
-  retrieval.
-  \item KWS has the highest recall of all techniques, however much
-  lower precision.
-  It is the technique with the best recall when multiple structural
-  categories
-  are present in the training examples.
-\end{itemize}
+%   Fewer structural categories improve precision and recall of the
+%   retrieval.
+%   \item KWS has the highest recall of all techniques, however much
+%   lower precision.
+%   It is the technique with the best recall when multiple structural
+%   categories
+%   are present in the training examples.
+% \end{itemize}
 
 % % \noindent
 % % \textbf{Our work contributes:}
@@ -353,10 +337,11 @@ Our study of the three techniques on \emph{LogChunks} shows that
 % %   \item Guidelines on choosing a suitable chunk retrieval technique.
 % % \end{itemize}
 
-We recommend PBE for use cases where the desired information is always
+Following the results from our comparison study,
+recommend PBE for use cases where the desired information is always
 represented in the same structural way and high confidence in precision
-and
-recall of the chunk retrieval is required.
+and recall of the chunk retrieval is required.
+Results produced by PBE are suited for automatic on-ward processing.
 CTS is well suited when the representation of the desired information
 varies
 slightly and the output of the chunk retrieval is further processed by
@@ -387,11 +372,12 @@ From our own experience, we know that the field of analyzing build
 logs is relatively young, with perhaps the work on TravisTorrent the
 most cited and central one.
 We also know there have been scattered
-research efforts on build log analysis prior to it, mostly where the
+research efforts on build log analysis, mostly where the
 log analysis was a side-part of the article.
 To the best of our
 knowledge, there has not been an attempt to systematically overview
-and survey them, despite their forseeable future and current importance.
+and survey approaches for processing build logs,
+despite their forseeable future and current importance.
 
 \subsection{Study Selection}
 % TODO shorten
@@ -400,31 +386,28 @@ In this first literature overview study on analyzing build logs, we
 therefore want to survey as broad a population of scientific material
 as possible.
 Note that we do not limit our sources to specific
-Software Engineering venues, as is often done, but survey all sources
+Software Engineering venues, as is often
+done~\cite{petersen2015guidelines}, but survey all sources
 monitored by Google Scholar, including Bachelor's and Master's theses,
 academic slide decks, and books.
 We use Google Scholar as opposed to
 Scopus or other databases, as it is the search engine for acdemic
 articles with the broadest and most current index, including preprints
 from sources such as arXiv.
+% TODO: maybe remove. this screams snowballing needed
 One challenge is that no common
 nomenclature has been established yet (in fact, this is one of the
 goals of this article).
 
 % TODO Caro cite guidelines
-Since we cannot take for granted that ``analyzing build logs'' is the
-cannonical term that other, isolated works have used, we instead
-decdided to leave out the potentially variable ``analysis'' part and
-instead focus on variations of the term ``build log''.
-This has the
-advantage of being biunique: We explicitly decided to exclude systems
-or event logs (see \Cref{sec:rw}).
-On the other hand, a Google Scholar
-search for ``build log'' returns more than 2.2 million results
+Our Google Scholar
+search for variations ``build log'' returns more than 2.2 million results
 (2020-03-15).
 We therefore refined our search criterions for the four
 different spelling possibilities of ``build log'' to exclude obvious
 non-related works.
+We explicitly decided to exclude systems
+or event logs (see \Cref{sec:rw}).
 This left us with 1,552 combined search results
 (2020-03-15).
 The full search queries are documented in our replication
