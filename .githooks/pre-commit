@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Auto-formatting paper pre-commit hook"
+
+cat tse-paper/content.tex |
+# Remove carriage returns (keeping line feeds)
+tr -d \\r |
+# Start sentences on a new line
+sed 's/\.  */.\n/g' |
+# Fold (but don't join) remaining long lines
+fmt -s > output.tex
+
+mv output.tex tse-paper/content.tex
