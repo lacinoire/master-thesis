@@ -2,13 +2,14 @@ sudo: required
 dist: trusty
 env:
   global:
-  - TEXMFLOCAL=/var/lib/texmf/
+  #- TEXMFLOCAL=/tmp/texmf/
 before_install:
 - cd tse-paper
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latexmk latex-xcolor pgf
-- wget -q http://mirrors.ctan.org/macros/latex/contrib/tcolorbox.zip
-- unzip -qq tcolorbox.zip    -d $TEXMFLOCAL
-- texhash
+- tlmgr install tcolorbox
+#- wget -q http://mirrors.ctan.org/macros/latex/contrib/tcolorbox.zip
+#- unzip -qq tcolorbox.zip    -d $TEXMFLOCAL
+#- texhash
 script:
 - make
 deploy:
