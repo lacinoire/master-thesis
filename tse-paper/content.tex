@@ -110,7 +110,8 @@ a source of data (\textbf{RQ1}).
 
 The outcomes of our study shows that there are various attempts to
 retrieve specific information from buildlogs.
-The resulting implementations are rarely available and therefore rarely reused.
+The resulting implementations are rarely available and therefore rarely
+reused.
 Because of the high development overhead
 of the custom parsers, many implementations are limited to small number
 of supported build tools.
@@ -306,7 +307,8 @@ are in the \emph{same structural category}, while the chunk from
 %   \item PBE yields very accurate results when trained with two examples
 %   from a
 %   single structural category.
-%   \item CTS shows the best average precision, though precision and recall
+%   \item CTS shows the best average precision, though precision and
+recall
 %   of a
 %   retrieval is hard to determine from the given result.
 %   A small increase in the number of training examples has no noticeable
@@ -395,7 +397,7 @@ We use Google Scholar as opposed to
 Scopus or other databases, as it is the search engine for acdemic
 articles with the broadest and most current index, including preprints
 from sources such as arXiv.
-% TODO: maybe remove. this screams snowballing needed
+% TODO: maybe remove, this screams snowballing needed
 One challenge is that no common
 nomenclature has been established yet (in fact, this is one of the
 goals of this article).
@@ -429,28 +431,37 @@ We then unified
 the results of the four search queries based on the link as the
 identifying element, removing 60 articles that appeared in more than
 one search query.
-We automatically removed all duplicates and were
-left with 259 (17\%) of the original search results.
+We removed further duplicates based on the title and were
+left with 256 (16\%) of the original search results.
+% removed duplicates of data extraction pass already here
 
-With these 259 remaining articles, we followed a backward snowball
+With these 256 remaining articles, we followed a backward snowball
 sampling for related work.
-This added three papers (five before
+This added five papers (eight before
 duplicate elimination) to our literature set, coming to a total of 261
 articles.
-% TODO: update numbers
 
 On the surviving artciles, we did a second filter phase by downloading the
 full articles, reading their abstracts, and searching the full text
 for the occurrence of ``log''.
 If these papers showed traces of
-working with build logs, we included them in our survey. In total, we
-were left with 90 articles after this search.
+working with build logs, we included them in our survey.
+In total, we
+were left with 87 articles after this search.
 
 \subsection{Article Classification}
 Having trimmed down the set of articles, we investigated them in depth.
 We kept all articles that use logs from software builds as input to
-some kind of process.
-we wanted to characterize how researchers use buildlogs as input to
+some kind of process and excluded another 15 articles.
+For several cases, multiple articles extended others, though still
+reported on
+the same work with the respect to processing build logs.
+Of these we only considered the earliest article which reported on
+the processing of build logs.
+This excluded 11 articles from our survey.
+In sum, we further classify 61 articles.
+
+We wanted to characterize how researchers use buildlogs as input to
 any processes.
 We were interesed in
 \begin{itemize}
@@ -468,21 +479,12 @@ factors and performed a pilot.
 Two authors extracted the data from five articles and we held a
 consensus meeting to unify our understanding
 of the data extraction template.
-The remaining articles were
-divided over these two authors.
+The remaining articles were divided over these two authors.
 We inspected the articles as closely as necessary,
 starting from occurences of ``log'' or ``build'' within the text.
+
 The full data extraction template and our results of this step can be
 found in our replication package~\cite{brandt2020chunk-replication}.
-
-In this pass we further identified x duplicate articles % TODO: {do we push
-% those to the last pass?}.
-For several cases, multiple articles extended others, though still
-reported on
-the same work with the respect to processing build logs.
-Of these we only considered the earliest article which reported on
-the processing
-of build logs.
 
 \subsection{Results}
 lots of:
@@ -1221,7 +1223,7 @@ retrieval techniques need to be.
 \textbf{RQ2.3: Accuracy Metrics}
 we save the output lines of the chunk retrieval run on the input
 of the test example ($\mathit{RetrievedLines}$), to measure the
-accuracy of the retrieved chunks 
+accuracy of the retrieved chunks
 As oracle in our evaluation, we save the
 desired lines from the output of the test example
 ($\mathit{DesiredLines}$).
@@ -1271,7 +1273,8 @@ We prefer F$_{1}$ to other aggregate
 
 \section{Results}
 This section presents the separate results for each chunk retrieval
-technique. We start with CTS, KWS and RLR, as their results are easiest to
+technique.
+We start with CTS, KWS and RLR, as their results are easiest to
 understand.
 Afterwards we compare the three techniques with each other and RLR as
 baseline.
@@ -1318,7 +1321,8 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 		\centering
 				\includegraphics[width=\columnwidth,
 				clip]{img/big-study/recall-precision-categorycount-CTS.pdf}
-		\caption{Compared with the number of structural categories in the
+		\caption{Compared with the number of structural categories
+		in the
 		training and test sets.}
 		\label{fig:recall-precision-categorycount-CTS}
 \end{subfigure}
@@ -1359,7 +1363,8 @@ lines were extracted.
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/recall-precision-categorycount-KWS.pdf}
-		\caption{Compared with the number of structural categories in the
+		\caption{Compared with the number of structural categories
+		in the
 		training and test sets.}
 		\label{fig:recall-precision-categorycount-KWS}
 \end{subfigure}
@@ -1426,8 +1431,9 @@ package~\cite{brandt2020chunk-replication}.
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/failure-reason-categorycount-PBE.pdf}
-				\caption{Successfulness of retrieval compared with the number of
-        structural categories in the training and test sets.}
+				\caption{Successfulness of retrieval
+				compared with the number of
+	structural categories in the training and test sets.}
 		\label{fig:failure-reason-categorycount-PBE}
 \end{subfigure}
 \caption{Results of chunk retrieval with  Program Synthesis by Example
