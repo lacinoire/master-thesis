@@ -308,7 +308,7 @@ are in the \emph{same structural category}, while the chunk from
 %   from a
 %   single structural category.
 %   \item CTS shows the best average precision, though precision and
-recall
+% recall
 %   of a
 %   retrieval is hard to determine from the given result.
 %   A small increase in the number of training examples has no noticeable
@@ -485,10 +485,17 @@ starting from occurences of ``log'' or ``build'' within the text.
 
 The full data extraction template and our results of this step can be
 found in our replication package~\cite{brandt2020chunk-replication}.
+Note that for most questions we allowed assigning multiple values, e.g.
+if
+two kinds of informations were targeted during a build log analysis.
 
 \subsection{Results}
-lots of:
-- categories + frequencies of answers
+In the following, we will present the results of our literature survey.
+Starting with the information that was targeted and what it was employed
+for, over the techniques used until the origin of the build logs
+which were
+analyzed.
+
 \begin{figure}[tbp]
 		\centering
 		\includegraphics[width=\columnwidth,
@@ -498,11 +505,102 @@ lots of:
 		\label{fig:litsur:techniques}
 \end{figure}
 
+\begin{figure}[tbp]
+		\centering
+		\includegraphics[width=\columnwidth,
+		clip]{img/lit-sur/info_target.pdf}
+		\caption{Frequency of different targeted information
+		labels for
+		labels $>1$ occurence.}
+		\label{fig:litsur:info_target}
+\end{figure}
+
+\begin{figure}[tbp]
+		\centering
+		\includegraphics[width=\columnwidth,
+		clip]{img/lit-sur/use.pdf}
+		\caption{Frequency of different usage of output labels for
+		labels $>1$ occurence.}
+		\label{fig:litsur:use}
+\end{figure}
+
+\begin{figure}[tbp]
+		\centering
+		\includegraphics[width=\columnwidth,
+		clip]{img/lit-sur/log_producer.pdf}
+		\caption{Frequency of different log producer labels for
+		labels $>1$ occurence.}
+		\label{fig:litsur:log_producer}
+\end{figure}
+
 \subsubsection{Retrieved Information}
+The information that was targeted is presented in
+\Cref{fig:litsur:info_target} varied from article to article.
+Most prominent was the search for errors (39\%) that occured within
+the build process, followed by extracting the executed or the failing
+tests
+(both 11\%).
+
+In most cases (51\%), a chunk was retrieved from the log, whereas 36\%
+of the articles classified the articles into categories.
+Other types of processing (e.g.
+counting lines, summarization) were only
+done in one case each.
+
+The majority of articles (46\%) used the outcome of their build log
+analysis
+for research purpopses, as shown in \Cref{fig:litsur:use}.
+Further uses were giving feedback to developers (10\%) or automatic
+on-ward
+processing of the retrieved information (8\%).
 
 \subsubsection{Retrieval Technique}
+\Cref{fig:lisur:techniques} presents the techniques which the articles
+described for processing build logs.
+43 of the 61 articles we inspected touched on how they are analyzing build
+logs.
+However, only 16 of these described their method in detail.
+
+The most mentioned method (34\%) was using a parser, where we also
+included
+rather unprecise statements like ``we parse the build logs''.
+25\% of the articles described the use of regular expressions and 20\%
+inspected the logs manually.
+Another 8\% employed machine learning techniques such as natural language
+processing or information retrieval techniques.
+
+25\% of the articles claimed their implementation is available, however we
+saw very low reuse of build log analysis tools within our survey.
+Five articles employed the tools used to create
+\emph{TravisTorrent}~\cite{beller2017travistorrent}, two used the
+\emph{Maven Log Analyzer}, % TODO: cite
+another two the \emph{MAKAO} tool.
+% TODO: cite
 
 \subsubsection{Build Logs}
+Of the articles we surveyed, 30\% analyzed build logs produced by
+Maven~\cite{maven2019website}, 16\% ones produced by Gradle % TODO: cite
+and 10\% logs produced by Ant.
+% TODO: cite
+The distribution of supported build tools is shown in
+\Cref{fig:litsur:log_producer}.
+Only 7\% of the proposed methods claimed to be language-agnostic, while
+several described they are covering multiple source build tools.
+The majority of articles (42\%) targeted logs from a source which was not
+targeted by any second article.
+
+The main platform that build logs were collected from is Travis
+CI, % TODO cite.
+which was used in 38\% of cases.
+18\% of the articles processed logs from TravisTorrent and 8\% included
+build logs from industrial projects.
+
+The number of logs analyzed varied greatly and we were not always able to
+extract it confidently.
+Articles reported processing from two up to 122 million logs.
+
+31\% of the surveyed articles claimed to have published their data to
+enable further research.
 
 \subsection{Discussion}
 various researchers analyzing build logs to support their research,
