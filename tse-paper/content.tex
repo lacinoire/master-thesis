@@ -388,6 +388,24 @@ To the best of our
 knowledge, there has not been an attempt to systematically overview
 and survey approaches for processing build logs.
 
+\lstset{
+  morekeywords={INFO, WARN, 2008-11-09},
+  keywordstyle=\color{Plum},
+  escapeinside=**
+}
+\begin{figure*}[!t]
+  \centering
+  \begin{lstlisting}[breaklines=true]
+2008-11-09 20:46:55,556 INFO dfs.DataNode$Packet Responder: Received
+block blk_3587508140 of size 67108 from /10.251.42.84
+2008-11-09 20:49:46,764 WARN PacketResponder 0 for block blk\_3587508140
+terminating
+  \end{lstlisting}
+  \caption{System Log excerpt.
+Example adapted from~\cite{he2017towards}.}
+  \label{lst:system-log}
+\end{figure*}
+
 \subsection{Study Selection}
 % TODO shorten
 \Cref{fig:lit-survey} presents an overview of our study selection.
@@ -416,7 +434,7 @@ We therefore refined our search criterions for the four
 different spelling possibilities of ``build log'' to exclude obvious
 non-related works.
 We explicitly decided to exclude systems
-or event logs (see \Cref{sec:rw}).
+or event logs (see \Cref{sec:system-log-analysis}).
 This left us with 1,552 combined search results
 (2020-03-15).
 The full search queries are documented in our replication
@@ -457,6 +475,58 @@ If these papers showed traces of
 working with build logs, we included them in our survey.
 In total, we
 were left with 87 articles after this search.
+
+\subsection{Distinction from System Log Analysis}
+\label{sec:system-log-analysis}
+A related field of build log analysis is the processing of system log
+files produced during runtime.
+A main difference between build logs
+and system logs is that system logs are fundamentally structured
+through events.
+Each line in a log file represents one event with a
+set of fields: timestamp, verbosity level and raw message
+content~\cite{he2017towards}.
+Figure \ref{lst:system-log} shows
+example lines from a system log.
+
+The first goal in analyzing system log files is ubiquitously to
+separate constant and variable parts within a log
+message~\cite{nagappan2010abstracting,he2017towards}.
+Next, the log
+messages are clustered into log events, unifying messages with
+identical constant parts and varying parameters.
+The output of a log
+parser is an ordered list of timed events and their corresponding
+parameter values~\cite{he2016evaluation}.
+This structured log is then
+the input to various machine learning and data mining processes.
+%Researchers mine patterns for operational
+%profiling~\cite{nagappan2009efficiently},
+%debugging~\cite{oliner2012advances}, performance analytics or anomaly
+%detection~\cite{nagappan2010abstracting}.
+% Xu et
+%al.~\cite{xu2009detecting} leverage the connection of log statements
+%to the source code producing them to separate messages into constant
+%and variable parts more accurately.
+
+The techniques developed for system log analysis can also be applied
+to build logs.
+One example is comparing execution traces to reference
+traces of intended behavior to detect anomalies.
+Amar et
+al.~\cite{amar2019mining} employed a similar approach to detect
+relevant lines in build logs.
+%Classic log parsers interpret the whole log file into a sequence of
+%events.
+% A similar approach could also be applied to build logs to
+%determine the sequence of executed build steps or phases.
+In this article, we focus on extracting a single specified information
+from the build log as a whole with chunk retrieval techniques.
+Chunk
+retrieval techniques are used as a part of log parsing to retrieve the
+values of variable parts in a log message, e.g.
+by using regular
+expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 
 \subsection{Article Classification}
 Having trimmed down the set of articles, we investigated them in depth.
@@ -500,8 +570,7 @@ two kinds of informations were targeted during a build log analysis.
 In the following, we will present the results of our literature survey.
 Starting with the information that was targeted and what it was employed
 for, over the techniques used until the origin of the build logs
-which were
-analyzed.
+which were analyzed.
 
 
 \begin{table*}[]
@@ -576,8 +645,7 @@ The information that was targeted is presented in
 \Cref{fig:litsur:info_target} varied from article to article.
 Most prominent was the search for errors (39\%) that occured within
 the build process, followed by extracting the executed or the failing
-tests
-(both 11\%).
+tests (both 11\%).
 
 In most cases (51\%), a chunk was retrieved from the log, whereas 36\%
 of the articles classified the articles into categories.
@@ -586,11 +654,9 @@ counting lines, summarization) were only
 done in one case each.
 
 The majority of articles (46\%) used the outcome of their build log
-analysis
-for research purpopses, as shown in \Cref{fig:litsur:use}.
+analysis for research purpopses, as shown in \Cref{fig:litsur:use}.
 Further uses were giving feedback to developers (10\%) or automatic
-on-ward
-processing of the retrieved information (8\%).
+on-ward processing of the retrieved information (8\%).
 
 \subsubsection{Retrieval Technique}
 \Cref{fig:lisur:techniques} presents the techniques which the articles
@@ -616,12 +682,16 @@ another two the \emph{MAKAO} tool.
 % TODO: cite
 
 \subsubsection{Build Logs}
+The distribution of supported build tools is shown in
+\Cref{fig:litsur:log_producer}.
 Of the articles we surveyed, 30\% analyzed build logs produced by
 Maven~\cite{maven2019website}, 16\% ones produced by Gradle % TODO: cite
 and 10\% logs produced by Ant.
 % TODO: cite
-The distribution of supported build tools is shown in
-\Cref{fig:litsur:log_producer}.
+Sometimes this limitation to a specific build tool is motivated by
+% TODO: PIT tool, often: much variety in log format only time for
+one parser
+
 Only 7\% of the proposed methods claimed to be language-agnostic, while
 several described they are covering multiple source build tools.
 The majority of articles (42\%) targeted logs from a source which was not
@@ -641,8 +711,21 @@ Articles reported processing from two up to 122 million logs.
 enable further research.
 
 \subsection{Discussion}
-various researchers analyzing build logs to support their research,
-tools developed to help developers % TODO: {motivational reference}.
+Our literature survey sheds light on how build log analysis is used within
+computer science research.
+We saw that various researchers process build logs to support their
+research, often because the logs provide more or the necessary information
+to the researchers.
+% TODO cite 'Autmoated localization for unreproducible builds
+Automated approaches are necessary as many studies target a large
+number of
+builds.
+Most of the articles which explicitly mention a manual analysis of
+the logs
+only restrict their work to few logs or take a ``representative sample to
+make manual analysis feasible''.
+% TODO cite: a study of build inflation in 30 mil CPAN builds
+
 
 \subsubsection{Retrieved Information}
 why from build logs? not avaliable in cleaner format much use for
@@ -685,6 +768,7 @@ Further, we classify build logs as semi-structured data and differentiate
 our
 work from system log analysis.
 
+% TODO Caro: integrate as anecdotes in lit results
 \subsection{Build Failures in CI}
 Various researchers studied why CI builds fail and into the impact of
 build failures on the development workflow.
@@ -793,76 +877,7 @@ They add fold identifiers
 around common commands and setup or teardown build phases and collapse
 the contained lines by default.
 
-\subsection{System Log Analysis}
-\label{sec:log-analysis}
-A related field of log processing is the processing of system log
-files produced during runtime.
-A main difference between build logs
-and system logs is that system logs are fundamentally structured
-through events.
-Each line in a log file represents one event with a
-set of fields: timestamp, verbosity level and raw message
-content~\cite{he2017towards}.
-Figure \ref{lst:system-log} shows
-example lines from a system log.
-
-The first goal in analyzing system log files is ubiquitously to
-separate constant and variable parts within a log
-message~\cite{nagappan2010abstracting,he2017towards}.
-Next, the log
-messages are clustered into log events, unifying messages with
-identical constant parts and varying parameters.
-The output of a log
-parser is an ordered list of timed events and their corresponding
-parameter values~\cite{he2016evaluation}.
-This structured log is then
-the input to various machine learning and data mining processes.
-%Researchers mine patterns for operational
-%profiling~\cite{nagappan2009efficiently},
-%debugging~\cite{oliner2012advances}, performance analytics or anomaly
-%detection~\cite{nagappan2010abstracting}.
-% Xu et
-%al.~\cite{xu2009detecting} leverage the connection of log statements
-%to the source code producing them to separate messages into constant
-%and variable parts more accurately.
-
-The techniques developed for system log analysis can also be applied
-to build logs.
-One example is comparing execution traces to reference
-traces of intended behavior to detect anomalies.
-Amar et
-al.~\cite{amar2019mining} employed a similar approach to detect
-relevant lines in build logs.
-%Classic log parsers interpret the whole log file into a sequence of
-%events.
-% A similar approach could also be applied to build logs to
-%determine the sequence of executed build steps or phases.
-In this article, we focus on extracting a single specified information
-from the build log as a whole with chunk retrieval techniques.
-Chunk
-retrieval techniques are used as a part of log parsing to retrieve the
-values of variable parts in a log message, e.g.
-by using regular
-expressions~\cite{nagappan2010abstracting,xu2009detecting}.
-
-\lstset{
-  morekeywords={INFO, WARN, 2008-11-09},
-  keywordstyle=\color{Plum},
-  escapeinside=**
-}
-\begin{figure*}[!t]
-  \centering
-  \begin{lstlisting}[breaklines=true]
-2008-11-09 20:46:55,556 INFO dfs.DataNode$Packet Responder: Received
-block blk_3587508140 of size 67108 from /10.251.42.84
-2008-11-09 20:49:46,764 WARN PacketResponder 0 for block blk\_3587508140
-terminating
-  \end{lstlisting}
-  \caption{System Log excerpt.
-Example adapted from~\cite{he2017towards}.}
-  \label{lst:system-log}
-\end{figure*}
-
+% TODO: Caro: integrate into pbe description
 \subsection{Program Synthesis by Example}
 \label{sec:rw-prose}
 % % \section){Information Extraction and Retrieval Techniques} The
@@ -1010,6 +1025,7 @@ StartToPosRegion(s, RegexPosition(s, RegexPair("/$\varepsilon$/",
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
 % TODO: rework! extend / relate to further techniques
+% (should follow from discussion)
 This section introduces key concepts of the three chunk retrieval
 techniques we study in this article, namely program synthesis by
 example (PBE), common text similarity (CTS), and keyword search (KWS).
@@ -1271,7 +1287,7 @@ present in the successful build log and contain terms related to the
 given past failures.
 
 % TODO: we could add more techniques from the lit.
-survey here
+% survey here
 
 \subsection{Tool Implementation}
 For our comparison study we implemented PBE, CTS, KWS and RLR and a
