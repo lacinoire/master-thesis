@@ -380,32 +380,27 @@ chunk.
 \end{figure}
 
 % TODO (Caro): Integrate Petersen's guidelines
-From our own experience, we know that the field of analyzing build
-logs is relatively young, with perhaps the work on TravisTorrent the
-most cited and central one.
-We also know there have been scattered
+The field of analyzing build
+logs is relatively young; we know there have been scattered
 research efforts on build log analysis, mostly where the
 log analysis was a side-part of the article.
 To the best of our
 knowledge, there has not been an attempt to systematically overview
-and survey approaches for processing build logs,
-despite their forseeable future and current importance.
+and survey approaches for processing build logs.
 
 \subsection{Study Selection}
 % TODO shorten
 \Cref{fig:lit-survey} presents an overview of our study selection.
 In this first literature overview study on analyzing build logs, we
-therefore want to survey as broad a population of scientific material
-as possible.
-Note that we do not limit our sources to specific
-Software Engineering venues, as is often
-done~\cite{petersen2015guidelines}, but survey all sources
-monitored by Google Scholar, including Bachelor's and Master's theses,
-academic slide decks, and books.
-We use Google Scholar as opposed to
-Scopus or other databases, as it is the search engine for acdemic
-articles with the broadest and most current index, including preprints
-from sources such as arXiv.
+ survey as broad a population of scientific material as possible. We
+ do not limit our sources to specific Software Engineering venues, as
+ is often done~\cite{petersen2015guidelines}, but survey all sources
+ monitored by Google Scholar, including Bachelor's and Master's
+ theses, academic slide decks, and books, since the field of build log
+ analysis is so young.  We use Google Scholar as opposed to Scopus or
+ other databases, as it is the search engine for acdemic articles with
+ the broadest and most current index, including preprints from sources
+ such as arXiv.
 % TODO: maybe remove, this screams snowballing needed
 One challenge is that no common
 nomenclature has been established yet (in fact, this is one of the
@@ -428,13 +423,13 @@ package~\cite{brandt2020chunk-replication}.
 To make handling so many search results feasible, we employed a
 two-pass filtering strategy:
 
-First, we filtered out articles based on (1) their title and (2) the
+First, we filtered articles based on (1) their title and (2) the
 contextual information Google Scholar displayed.
 We inlcuded only
 publications written in a language intelligible to the authors (that
 is, English or German), which disregarded fewer than 1\% of search
 hits.
-Our strategy was to err on the side of
+Our strategy for this round was to err on the side of
 caution, that is rather including a paper than not.
 We then unified
 the results of the four search queries based on the link as the
@@ -445,12 +440,12 @@ left with 256 (16\%) of the original search results.
 % removed duplicates of data extraction pass already here
 
 With these 256 remaining articles, we followed a backward snowball
-sampling for related work.
+sampling for related work. This meant that we added an article if referred in them in the context of log analysis. 
 This added five papers (eight before
 duplicate elimination) to our literature set, coming to a total of 261
 articles.
 
-On the surviving artciles, we did a second filter phase by downloading the
+Subsequently, we did a second, finer filter phase by downloading the
 full articles, reading their abstracts, and searching the full text
 for the occurrence of ``log''.
 If these papers showed traces of
@@ -462,13 +457,11 @@ were left with 87 articles after this search.
 Having trimmed down the set of articles, we investigated them in depth.
 We kept all articles that use logs from software builds as input to
 some kind of process and excluded another 15 articles.
-For several cases, multiple articles extended others, though still
-reported on
-the same work with the respect to processing build logs.
+For several cases, multiple articles were extensions of others.
 Of these we only considered the earliest article which reported on
 the processing of build logs.
 This excluded 11 articles from our survey.
-In sum, we further classify 61 articles.
+In sum, we further classified 61 articles.
 
 We wanted to characterize how researchers use buildlogs as input to
 any processes.
@@ -1578,7 +1571,8 @@ package~\cite{brandt2020chunk-replication}.
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/failure-reason-categorycount-PBE.pdf}
 				\caption{Successfulness of retrieval
-				compared by structural category count in training and test sets.}
+				compared by structural category count
+				in training and test sets.}
 		\label{fig:failure-reason-categorycount-PBE}
 \end{subfigure}
 \caption{Results of chunk retrieval with  Program Synthesis by Example
@@ -1691,7 +1685,7 @@ the number of structural categories present.
 		\centering
 				\includegraphics[width=\columnwidth,
 				clip]{img/big-study/recall-precision-singlecategory-all.pdf}
-		\caption{Training and test examples are in \emph{one}
+		\caption{Training and test examples in \emph{one}
 		structural category.\\ \,}
     % top-aligning captions
 		\label{fig:recall-precision-singlecategory-all}
@@ -1701,7 +1695,7 @@ the number of structural categories present.
 				\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/recall-precision-multicategory-all.pdf}
-		\caption{Training and test examples are in $>1$ structural
+		\caption{Training and test examples in $>1$ structural
 		category.}
 		\label{fig:recall-precision-multicategory-all}
 \end{subfigure}
