@@ -698,6 +698,68 @@ Five articles employed the tools used to create
 another two the
 \emph{MAKAO}~\cite{wen2018blimp,adams2007design,adams2007makao} tool.
 
+Seo et al.~\cite{seo2014programmers}
+They based their analyses on sets of
+build logs collected from industry partners.
+They develop a custom
+parser to classify error messages reported by Java and C++ builds.
+
+Rausch et al.~\cite{rausch2017empirical} analyze CI builds of open
+source Java projects
+
+Vassallo et al.~\cite{vassallo2017a-tale} compare open source projects
+in Java to industrial ones.
+Their data stems from analyzing
+build logs from \emph{TravisTorrent}~\cite{beller2017travistorrent}
+with regular expressions.
+
+Ghaleb et al.~\cite{ghaleb2019studying} aim to identify noise in build
+breakage data.
+They classify build failures from \emph{TravisTorrent}
+Their analysis starts with manual
+categorization of build logs.
+They select keywords and strings that
+identify their targeted categories and code a script to automatically
+classify logs based on these keywords.
+% TODO note which technique words we assined here
+
+This task of retrieving specific chunks of text from the
+build logs can be solved by the chunk retrieval techniques we compare
+in this article.
+Our results can support researchers in choosing a
+suitable technique for their data set of build logs and the chunks
+they want to retrieve.
+By relieving them from building custom parsers
+we enable them to cover a much wider range of languages and build
+tools in their studies.
+
+
+Vassallo et
+al.~\cite{vassallo2018un-break}
+They parse
+Maven~\cite{maven2019website} build logs into a structured
+representation and create hint generators.
+For example, one of the hint generators queries stack overflow for
+discussions related to why the build failed.
+The chunk retrieval techniques we compare in this article can be used
+to fill similar structured representations with information from build
+logs.
+As they simplify the construction of parsers they would enable
+developers and researchers to cover a wider array of build tools,
+which is the main influence factor on the structure of a build log.
+
+Amar et al.~\cite{amar2019mining} compare different approaches to
+reduce the portions of a log that a developer has to inspect.
+Their
+techniques remove lines that appear both in logs from passing and
+failing builds and use a modified \emph{Term Frequency Inverse
+Document Frequency} (TF-IDF) weighting to identify term vectors likely
+to occur with failures.
+Their diff technique can be interpreted as a
+chunk retrieval technique, where the targeted information is defined
+by the past failures used as basis for the weighted term vectors.
+
+
 \subsubsection{Build Logs}
 The distribution of supported build tools is shown in
 \Cref{fig:litsur:log_producer}.
@@ -801,279 +863,6 @@ For this reason, we are focussing % TODO: less development time,
 % many focus on maven because of it's prevalence also in respect
 % to other tools much research done on travis ci logs b/c of their
 % abundance and open availability
-
-\section{Related Work}
-% TODO reorder rw by build retrieval technique rather than by paper
-\label{sec:rw}
-We explain how researchers gather information about CI usage in software
-projects
-through build log analysis and why the chunk retrieval techniques we
-investigate
-simplifies their data collection.
-This section moves on to past works about augmenting build logs to make
-it easier
-for developers to inspect them.
-The presented approaches are related to and can benefit from the
-techniques we
-analyze in this article.
-Further, we classify build logs as semi-structured data and differentiate
-our
-work from system log analysis.
-
-% TODO Caro: integrate as anecdotes in lit results
-\subsection{Build Failures in CI}
-Various researchers studied why CI builds fail and into the impact of
-build failures on the development workflow.
-
-Seo et al.~\cite{seo2014programmers} find that a small group of error
-types such as dependency mismatches are the most prominent cause of
-build failures at Google.
-In addition, they notice that most failures
-are resolved within two builds.
-They based their analyses on sets of
-build logs collected from industry partners.
-They develop a custom
-parser to classify error messages reported by Java and C++ builds.
-
-Rausch et al.~\cite{rausch2017empirical} analyze CI builds of open
-source Java projects and find that most builds fail because of failing
-tests.
-For most projects, over half of the failed builds follow a
-previous failed build.
-Rausch et al.'s data shows that most failures
-occur in the second half of the build runtime, which can cause long
-delays in the feedback loop, especially when builds are automatically
-retried upon failure.
-
-Vassallo et al.~\cite{vassallo2017a-tale} compare open source projects
-in Java to industrial ones.
-They determine that testing failures are
-more common than compilation errors.
-Open source builds fail most
-often because of unit tests, whereas release preparations are the
-primary cause in industrial projects.
-Their data stems from analyzing
-build logs from \emph{TravisTorrent}~\cite{beller2017travistorrent}
-with regular expressions.
-
-Ghaleb et al.~\cite{ghaleb2019studying} aim to identify noise in build
-breakage data.
-They classify build failures from \emph{TravisTorrent}
-according to whether they were caused by an environmental failure or
-caused by a developer change.
-Their analysis starts with manual
-categorization of build logs.
-They select keywords and strings that
-identify their targeted categories and code a script to automatically
-classify logs based on these keywords.
-
-\noindent
-\textbf{Supporting Log Analysis with Chunk Retrieval}
-To leverage the valuable information within build logs the researchers
-presented in this section create parsers and regular expression-based
-programs.
-This task of retrieving specific chunks of text from the
-build logs can be solved by the chunk retrieval techniques we compare
-in this article.
-Our results can support researchers in choosing a
-suitable technique for their data set of build logs and the chunks
-they want to retrieve.
-By relieving them from building custom parsers
-we enable them to cover a much wider range of languages and build
-tools in their studies.
-
-
-\subsection{Augmentation of Build Logs}
-\label{sec:rw-bl-analysis}
-Build logs are a valuable data source for developers to find out why
-their build failed.
-Several researchers investigate how to support
-developers in working with verbose build logs.
-Vassallo et
-al.~\cite{vassallo2018un-break} try to shorten the time it takes
-developers to understand build logs.
-They parse
-Maven~\cite{maven2019website} build logs into a structured
-representation and create hint generators.
-%The hint generators leverage this structured access to the
-%information within the build log to propose fixes.
-For example, one of the hint generators queries stack overflow for
-discussions related to why the build failed.
-In a qualitative study
-they observed that highlighting the locality and context of an issue
-is helpful to programmers.
-%Their tool BART is published as a Jenkins
-%Plugin~\cite{bart2019plugin}.
-The chunk retrieval techniques we compare in this article can be used
-to fill similar structured representations with information from build
-logs.
-As they simplify the construction of parsers they would enable
-developers and researchers to cover a wider array of build tools,
-which is the main influence factor on the structure of a build log.
-
-Amar et al.~\cite{amar2019mining} compare different approaches to
-reduce the portions of a log that a developer has to inspect.
-Their
-techniques remove lines that appear both in logs from passing and
-failing builds and use a modified \emph{Term Frequency Inverse
-Document Frequency} (TF-IDF) weighting to identify term vectors likely
-to occur with failures.
-Their diff technique can be interpreted as a
-chunk retrieval technique, where the targeted information is defined
-by the past failures used as basis for the weighted term vectors.
-
-Travis itself already provides build log augmentation in the form of a
-basic structuring of the build logs within their log viewer using
-\emph{log folds}~\cite{travis2019logfolds}.
-They add fold identifiers
-around common commands and setup or teardown build phases and collapse
-the contained lines by default.
-
-% TODO: Caro: integrate into pbe description
-\subsection{Program Synthesis by Example}
-\label{sec:rw-prose}
-% % \section){Information Extraction and Retrieval Techniques} The
-% % techniques we investigate are based on existing methods of
-% % Programming by Example.%, information extraction and information
-% % retrieval.
-% This section presents different Programming by Example
-% % resources surrounding the PROSE library.
-% We explain its generic
-% % program synthesis algorithm and how PROSE synthesizes text
-% % extraction programs, the foundation of PBE\@.
-
-Programming by Example (PBE) is a form of generalized program
-synthesis that enables users to automate repetitive tasks, without
-them having to explicitly codify a computer program.
-One has to
-provide prototypical examples of the input and the desired output.
-A
-synthesis algorithm tries to create a program (based on a regular
-language) that transforms the input to the output.
-The minimum working
-condition is for this when replayed on the examples inputs is to
-provide the specified output, but, hopefully, PBE is as close as
-possbile to the user's intention and thus also works on a different
-and larger set of inputs.
-This section introduces the theoretical
-foundations of the program synthesis algorithm of the \emph{PROgram
-Synthesis using Examples} (PROSE) framework~\cite{prose2019webpage}.
-The PROSE framework is developed by Microsoft Research.
-Next, this
-section presents the FlashExtract DSL, which defines text extraction
-tasks within PROSE and is the basis for the implementation of our
-chunk retrieval technique PBE\@.
-
-\subsubsection{FlashMeta: Inductive Program Synthesis}
-The FlashMeta framework presented by Polozov and
-Gulwani~\cite{polozov2015flashmeta:} is the backbone of the program
-synthesis in the Microsoft PROSE framework.
-FlashMeta separates the
-inductive synthesis algorithm from the domain specific capabilities of
-the desired program by encoding the possible program space in a domain
-specific language (DSL).
-The user specifies the desired program
-behavior by providing in/output examples (I/O examples).
-FlashMeta
-uses \emph{witness functions}, provided by the DSL, to divide the
-synthesis into smaller subtasks.
-For each of these subtasks it
-enumerates all possible programs that solve the subtask consistent
-with the set of I/O examples.
-A program is consistent with a set of
-I/O examples if, for each input example, it produces the corresponding
-output~\cite{mitchell1982generalization}.
-The possible subprograms are
-joined and stored in a \emph{version space algebra}
-(VSA)~\cite{mitchell1982generalization}.
-This a tree structure, which
-space-efficiently saves candidate programs for tasks by sharing common
-subexpressions.
-Next, FlashMeta ranks the enumerated programs
-according to which ones the user most likely intended.
-The DSL also
-provides the ranking characteristics.
-From the ranked VSA, FlashMeta
-can then return a ranked list of complete programs consistent with the
-user's example.
-
-% In addition to I/O examples of the intended program, the user can
-% also provide examples with only input or negative input examples.
-% Negative input examples should not be processed by the synthesized
-% program.
-
-% The different applications of PROSE presented in the following
-% paragraphs were all eventually implemented as DSLs for the FlashMeta
-% synthesis algorithm.
-
-\subsubsection{FlashExtract: Data Extraction by Example}
-Le et al.~\cite{le2014flashextract:} developed FlashExtract as a DSL
-for the Microsoft PROSE framework.
-% It enables a user to define text extraction programs for text,
-% websites and spreadsheets by giving I/O examples.
-FlashExtract's instantiation for text synthesizes extraction programs
-from semi-structured text based on regular expressions.
-Users can
-extract multiple fields and structure them with hierarchy and
-sequence.
-% FlashExtract synthesizes programs to extract each of the fields
-% leveraging the information about hierarchical containment and
-% sequentiality.
-% It eliminates the need for the user to understand the
-% entire structure of the processed document and decreases the effort
-% of developing a suitable extraction program.
-
-FlashExtract models the extraction of a single substring as a pair of
-two cut positions.
-A position is either specified by an absolute
-character index or by a pair of two regular expressions.
-The first
-regular expression matches the substring directly before the
-characterized position, the second regular expression matches the
-substring directly after.
-A regular expression in FlashExtract is a
-concatenation of tokens, e.g.\ standard character classes or string
-literals frequently occurring in the input examples.
-Figure
-\ref{lst:prose-program} shows a text extraction program synthesized by
-FlashExtract.
-This program defines the first position as after a colon
-followed by a newline character and before a piece of text with all
-capital letters.
-It defines the second position as before two newline
-characters.
-
-Apart from automatic completion in Excel
-spreadsheets~\cite{excel2019flashfill}, FlashExtract is the basis for
-two other Microsoft product features: Microsoft's system log analysis
-tool Azure Monitor lets users define custom log
-fields~\cite{azure2019custom}.
-The ConvertFrom-String function in
-PowerShell allows a user to specify an example template to extract
-hierarchical data from a text document~\cite{powershell2019convert}.
-
-We apply the text instantiation of FlashExtract to the domain of build
-logs with our chunk retrieval technique PBE\@.
-
-\lstset{
-  language=caml,
-  morekeywords={PosToEndRegion, RegexPosition, RegexPair,
-  StartToPosRegion},
-  keywordstyle=\bfseries\color{black},
-  escapeinside=//
-}
-\begin{figure}[!t]
-  \centering
-  \begin{lstlisting}[breaklines=true]
-let s = v in let s = PosToEndRegion(s, RegexPosition(s,
-RegexPair("Colon/$\circ$/Line Separator", "ALL CAPS"), 1)) in
-StartToPosRegion(s, RegexPosition(s, RegexPair("/$\varepsilon$/",
-"Line Separator/{\color{blue}$\circ$}/Line Separator"), 1))
-  \end{lstlisting}
-  \caption{Text extraction program synthesized by FlashExtract.}
-  \label{lst:prose-program}
-\end{figure}
-
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
 % TODO: rework! extend / relate to further techniques
@@ -1342,6 +1131,9 @@ number of lines in the chunks of the training examples.
 %It's really all we are doing
 
 \subsection{Other Techniques}
+% TODO: we could add more techniques from the lit.
+% survey here
+% TODO: probably remove
 %Literature mentions further build log analysis techniques.
 %This
 %section describes them with our notion of chunk retrieval techniques.
@@ -1350,16 +1142,13 @@ number of lines in the chunks of the training examples.
 \textbf{Log Diff}
 Amar et al.\ use a technique based on line diffs and information
 retrieval to identify relevant lines from a failed build
-log~\cite{amar2019mining}, as we describe in more detail in
-Section~\ref{sec:rw-bl-analysis}.
+log~\cite{amar2019mining}.
 The configuration for the technique
 is the log from the last successful build and relevant past failures.
 This technique retrieves the lines from a build log that are not
 present in the successful build log and contain terms related to the
 given past failures.
 
-% TODO: we could add more techniques from the lit.
-% survey here
 
 \subsection{Tool Implementation}
 For our comparison study we implemented PBE, CTS, KWS and RLR and a
@@ -2240,3 +2029,63 @@ As a final recommendation, one could create a ``super analyzer'' by
 combining the different build log analysis techniques studied in this
 paper.
 
+Seo et al.~\cite{seo2014programmers}
+They based their analyses on sets of
+build logs collected from industry partners.
+They develop a custom
+parser to classify error messages reported by Java and C++ builds.
+
+Rausch et al.~\cite{rausch2017empirical} analyze CI builds of open
+source Java projects
+
+Vassallo et al.~\cite{vassallo2017a-tale} compare open source projects
+in Java to industrial ones.
+Their data stems from analyzing
+build logs from \emph{TravisTorrent}~\cite{beller2017travistorrent}
+with regular expressions.
+
+Ghaleb et al.~\cite{ghaleb2019studying} aim to identify noise in build
+breakage data.
+They classify build failures from \emph{TravisTorrent}
+Their analysis starts with manual
+categorization of build logs.
+They select keywords and strings that
+identify their targeted categories and code a script to automatically
+classify logs based on these keywords.
+% TODO note which technique words we assined here
+
+This task of retrieving specific chunks of text from the
+build logs can be solved by the chunk retrieval techniques we compare
+in this article.
+Our results can support researchers in choosing a
+suitable technique for their data set of build logs and the chunks
+they want to retrieve.
+By relieving them from building custom parsers
+we enable them to cover a much wider range of languages and build
+tools in their studies.
+
+
+Vassallo et
+al.~\cite{vassallo2018un-break}
+They parse
+Maven~\cite{maven2019website} build logs into a structured
+representation and create hint generators.
+For example, one of the hint generators queries stack overflow for
+discussions related to why the build failed.
+The chunk retrieval techniques we compare in this article can be used
+to fill similar structured representations with information from build
+logs.
+As they simplify the construction of parsers they would enable
+developers and researchers to cover a wider array of build tools,
+which is the main influence factor on the structure of a build log.
+
+Amar et al.~\cite{amar2019mining} compare different approaches to
+reduce the portions of a log that a developer has to inspect.
+Their
+techniques remove lines that appear both in logs from passing and
+failing builds and use a modified \emph{Term Frequency Inverse
+Document Frequency} (TF-IDF) weighting to identify term vectors likely
+to occur with failures.
+Their diff technique can be interpreted as a
+chunk retrieval technique, where the targeted information is defined
+by the past failures used as basis for the weighted term vectors.
