@@ -72,7 +72,7 @@ and correctly extract information from build logs is paramount to the
 future of a variety of fields depending on it.
 
 However, build logs can be verbose and large---sometimes in excess of
-50 MB of ASCII text ~\cite{beller2017oops}---making them inadequate
+50 MB of ASCII text~\cite{beller2017oops}---making them inadequate
 for direct human consumption.
 Therefore, to support developers and
 researchers in efficiently making use of the information within build
@@ -81,8 +81,7 @@ log that describe the targeted information.
 
 There are different techniques to retrieve information chunks from CI
 build logs.
-Beller et al.
-use a rule-based system of regular
+Beller et al.\ use a rule-based system of regular
 expressions to analyze logs from Travis CI~\cite{beller2017oops}.
 Such regular expressions are developed by looking at exemplary build
 logs.
@@ -190,7 +189,7 @@ FAILURE: Build failed with an exception.
   \end{lstlisting}
   \vspace{-\baselineskip}
   \begin{lstlisting}[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
-Could not determine the dependencies of task `:app:jacocoTestDebugReport'.
+Could not determine the dependencies of task ':app:jacocoTestDebugReport'.
 > Task with path 'testDebug' not found in project ':app'.
   \end{lstlisting}
   \vspace{-\baselineskip}
@@ -484,7 +483,7 @@ through events.
 Each line in a log file represents one event with a
 set of fields: timestamp, verbosity level and raw message
 content~\cite{he2017towards}.
-Figure \ref{lst:system-log} shows
+\Cref{lst:system-log} shows
 example lines from a system log.
 
 The first goal in analyzing system log files is ubiquitously to
@@ -522,8 +521,7 @@ In this article, we focus on extracting a single specified information
 from the build log as a whole with chunk retrieval techniques.
 Chunk
 retrieval techniques are used as a part of log parsing to retrieve the
-values of variable parts in a log message, e.g.
-by using regular
+values of variable parts in a log message, e.g.\ by using regular
 expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 
 \subsection{Article Classification}
@@ -560,8 +558,8 @@ starting from occurences of ``log'' or ``build'' within the text.
 
 The full data extraction template and our results of this step can be
 found in our replication package~\cite{brandt2020chunk-replication}.
-Note that for most questions we allowed assigning multiple values, e.g.
-if
+Note that for most questions we allowed assigning multiple values,
+e.g.\ if
 two kinds of informations were targeted during a build log analysis.
 
 \subsection{Results}
@@ -584,7 +582,7 @@ Parser	&
 &
 \includegraphics[width=0.55\columnwidth]{img/lit-sur/techniques-no-guidelines-cropped_21.pdf}
 \\
-Regular expression  
+Regular expression
 &\cite{beller2017oops,hassan2017change,macho2018automatically,vassallo2017a-tale,lou2019history,hassan2017automatic,rott2019empirische,zampetti2019study,zhao2018comparing,rausch2017empirical,ghaleb2019studying,zampetti2017open,zhang2019large,kavaler2019tool,morris2010experience}
 &
 \includegraphics[width=0.55\columnwidth]{img/lit-sur/techniques-no-guidelines-cropped_15.pdf}
@@ -690,8 +688,8 @@ distuinguish failures caused by
 developers from those caused by infrastructure, while
 Kavaler et al.~\cite{kavaler2019tool} idenfity projects that use
 automated static analysis tools.
-Other types of information (e.g.
-counting lines, summarization) were only retrieved
+Other types of information (e.g.\ counting
+lines, summarization) were only retrieved
 in one case each.
 
 The majority of articles (46\%) used the outcome of their build log
@@ -1030,8 +1028,8 @@ program found no match.
 \subsection{Common Text Similarity (CTS)}
 \label{sec:expl-ts}
 Text Similarity approaches are widely used to filter unstructured
-textual software artifacts
-~\cite{runeson2007detection,marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
+textual software artifacts~\cite{runeson2007detection,
+marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
 We investigate a chunk retrieval technique based on the common
 and simple Vector Space Model~\cite{schutze2008introduction}.
 The aim is to retrieve those lines from a build log which are most
@@ -1497,7 +1495,7 @@ of the 89 cases did the synthesized program only partially extract a
 subset of the desired lines.
 For these 30 cases, the average recall
 was 28\%.
-Listing \ref{lst:pbe-unsuccessful} shows an example of such
+\Cref{lst:pbe-unsuccessful} shows an example of such
 an \emph{unsuccessful retrieval}, where the synthesized program only
 retrieved two of the four targeted lines.
 In 173 of the 400 cases
@@ -1804,8 +1802,7 @@ chunks in all training examples and the analyzed build log are in the
 same structural category.
 
 If the information chunks are from multiple structural categories,
-i.e.
-they are not represented in the same structural way within the
+i.e.\ they are not represented in the same structural way within the
 build logs, and recall is more important than precision we recommend
 to use KWS\@.
 If the representations are from multiple structural
@@ -1824,7 +1821,7 @@ combining the different build log analysis techniques studied in this
 paper.
 Such a super analyzer would likely always first employ PBE
 (because of its high accuracy), followed by a combination of CTS and
-KWS.
+KWS\@.
 Other than initial setup and training time, there should be no
 downside to this approach if it is implemented in a transparent way to
 the underlying technique: the output of the super analyzer could
