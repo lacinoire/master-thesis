@@ -704,10 +704,10 @@ None identified  &
 \end{figure*}
 
 \subsubsection{Retrieved Information}
-The information that was targeted is presented in
-\Cref{fig:litsur:info_target} varied from article to article.
-Most prominent was the search for errors (39\%) that occured within
-the build process, followed by extracting the executed or the failing
+The information that was targeted varied from article to article.
+Most prominent was the search for errors (39\%) which occured within
+the build process, as presented in \Cref{fig:litsur:info_target}.
+This is followed by extracting the executed or the failing
 tests (both 11\%).
 There were also numerous cases which targeted more specialized
 information, such as the environments used during the
@@ -716,18 +716,15 @@ installed~\cite{selberg2012use} or hints to source files which are
 related to build failures~\cite{ren2018automated}.
 
 In most cases (51\%), a chunk was retrieved from the log.
-Cemencic and Couturier~\cite{clemencic2014new}, for example,
-scan build logs for compilation errors, while Zhang et
-al.~\cite{zhang2016android} retrieve the duration of
-tasks within the build.
-
-The articles classified the build logs into categories in 36\% of
-the cases.
-Didrik Lindqvist~\cite{lindqvist2019detection} used build logs to
-distuinguish failures caused by
-developers from those caused by infrastructure, while
-Kavaler et al.~\cite{kavaler2019tool} idenfity projects that use
-automated static analysis tools.
+Build logs were scanned for compilation
+errors~\cite{clemencic2014new} or
+the duration of tasks within the build~\cite{zhang2016android}.
+36\% of the articles classified the build logs into categories.
+For instance distinguishing failures caused by developers from
+failures casued
+by infrastructure errors~\cite{lindqvist2019detection} or
+whether projects use automated statc analysis
+tools~\cite{kavaler2019tool}.
 Other types of information (e.g.\ counting
 lines, summarization) were only retrieved
 in one case each.
@@ -738,9 +735,9 @@ Further uses were giving feedback to developers (10\%) or automatic
 on-ward processing of the retrieved information (8\%).
 
 \subsubsection{Retrieval Technique}
-\Cref{tab:litsur:techniques} presents the techniques which the articles
+\Cref{tab:litsur:techniques} presents the techniques that the articles
 described for processing build logs.
-43 of the 61 articles we inspected touched on how they are analyzing build
+43 of the 61 articles we inspected mentioned how they are analyzing build
 logs.
 However, only 16 of these described their method in detail.
 
@@ -751,7 +748,7 @@ rather unprecise statements like ``we parse the build logs''.
 inspected the logs manually.
 Another 8\% employed machine learning techniques such as natural language
 processing or information retrieval techniques.
-For example,
+To give examples,
 Seo et al.~\cite{seo2014programmers} developed a custom
 parser to classify error messages, while Vassallo et
 al.~\cite{vassallo2017a-tale} analyzed build logs with regular
@@ -761,17 +758,16 @@ They start with manual categorization of the build logs and select
 search strings that identify their targeted categories.
 Based on the search strings they create a script which automatically
 classifies the remaining logs.
-%TODO: they are not actually in our survey, the talk about 'test logs'
-Amar et al.~\cite{amar2019mining} compare different approaches to
-reduce the number of lines to be inspected by the developer.
-Their best performing technique creates a diff between the logs from a
-successful and a failed build and ranks the remaining lines using
-Information Retrieval (IR) techniques.
 
-25\% of the articles claimed their implementation is available, however we
+25\% of the articles claimed their implementation is available,
+however we
 saw very low reuse of build log analysis tools within our survey.
 Five articles employed the tools used to create
-\emph{TravisTorrent}~\cite{beller2017travistorrent}, two used the
+\emph{TravisTorrent}~\cite{beller2017travistorrent,beller2017oops,
+orellana2017differences,zhao2018comparing} or
+an extended version of them~\cite{rott2019empirische,
+shi2018evaluating},
+two used the
 \emph{Maven Log Analyzer}~\cite{macho2018automatically,gallaba2018noise},
 another two the
 \emph{MAKAO}~\cite{wen2018blimp,adams2007design,adams2007makao} tool.
@@ -803,9 +799,9 @@ another two the
 The distribution of supported build tools is shown in
 \Cref{fig:litsur:log_producer}.
 Of the articles we surveyed, 30\% analyzed build logs produced by
-Maven~\cite{maven2019website}, 16\% ones produced by
+Maven~\cite{maven2019website}, 16\% analyzed logs produced by
 Gradle~\cite{gradle2020website}
-and 10\% logs produced by Ant~\cite{ant2020website}.
+and 10\% analyzed logs produced by Ant~\cite{ant2020website}.
 
 Sometimes this limitation to a specific build tool is motivated by
 aspects separate from the build log analysis.
