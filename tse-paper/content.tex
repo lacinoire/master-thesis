@@ -101,11 +101,19 @@ Diffing
 between failed and successful logs can reduce the information to be
 processed, but is at best semi-automatic~\cite{amar2019mining}.
 
-To gain an impression on how researchers are using information from
-build logs within their research to support
-developers, we conducted a systematic mapping study.
-Our goal was to classify how, and what for, researchers use build logs as
-a source of data (\textbf{RQ1}).
+% TODO: 4 sentence description of the steps in graphic?
+\Cref{fig:overview} gives an overview of our research steps.
+We conducted a systematic mapping study,
+to gain an impression on how researchers are using information from
+build logs within their research or to support
+developers.
+% We implemented three promising techniques that retrieve
+% chunks of text from build logs and can be adapted to
+% a specific project and use case by giving examples of build logs and
+% correpsonding chunks.
+% We evaluated the
+Our goal was to clarify the state-of-research on build log
+analysis (\textbf{RQ1}).
 
 The outcomes of our study shows that there are various attempts to
 retrieve specific information from buildlogs.
@@ -133,27 +141,39 @@ gauge the performance of these chunk retrieval techniques and characterize
 when one of the techniques should be preferred over other alternatives
 (\textbf{RQ2}).
 
-\Cref{fig:overview} gives an overview of our research steps.
-
-\begin{simplebox}{\textbf{RQ1:} What is the state-of-research on build
-log analysis?}
+\begin{simplebox}[minipage boxed title*=-5cm]{Research Questions}
 \begin{itemize}
-  \item[\textbf{RQ1.1:}] Which information is targeted?
-  \item[\textbf{RQ1.2:}] Which techniques are used?
-  \item[\textbf{RQ1.3:}] Which build logs are analyzed?
+  \item[\textbf{RQ1:}] What is the state-of-research on build
+  log analysis?
+  \item[\textbf{RQ2:}] When are PBE, CTS or KWS suited to
+  retrieve chunks from build logs?
 \end{itemize}
 \end{simplebox}
 
-\begin{simplebox}{\textbf{RQ2:} When are PBE\, CTS or KWS suited to
-retrieve chunks from build logs?}
-\begin{itemize}
-  \item[\textbf{RQ2.1:}] How many examples does a technique need to
-  perform best?
-  \item[\textbf{RQ2.2:}] How structurally similar do the examples
-  need for a technique to be applicable?
-  \item[\textbf{RQ2.3:}] How accurate are the retrievals of a technique?
-\end{itemize}
-\end{simplebox}
+% TODO: move down to where mentioned in detail
+% \begin{simplebox}[attach boxed title to top center={yshift=-6mm}]
+% {\textbf{RQ1:} What is the state-of-research on build
+% log analysis?}
+% \begin{itemize}
+%   \item[\textbf{RQ1.1:}] Which information is targeted?
+%   \item[\textbf{RQ1.2:}] Which techniques are used?
+%   \item[\textbf{RQ1.3:}] Which build logs are analyzed?
+% \end{itemize}
+% \end{simplebox}
+
+% \begin{simplebox}[minipage boxed title*=-2.5cm,
+% attach boxed title to top center={yshift=-6mm}]
+% {\textbf{RQ2:} When are PBE{,} CTS or KWS suited to
+% retrieve chunks from build logs?}
+% \begin{itemize}
+%   \item[\textbf{RQ2.1:}] How many examples does a technique need to
+%   perform best?
+%   \item[\textbf{RQ2.2:}] How structurally similar do the examples
+%   need for a technique to be applicable?
+%   \item[\textbf{RQ2.3:}] How accurate are the retrievals of a technique?
+% \end{itemize}
+% \end{simplebox}
+
 
 % % At the moment there is only anecdotal evidence on the performance
 % of these
@@ -190,6 +210,24 @@ We implement and evaluate three chunk retrieval techniques:
   text for
   the occurrence of specific trigger words.
 \end{itemize}
+
+Following the results from our comparison study,
+recommend PBE for use cases where the desired information is always
+represented in the same structural way and high confidence in precision
+and recall of the chunk retrieval is required.
+Results produced by PBE are suited for automatic on-ward processing.
+CTS is well suited when the representation of the desired information
+varies
+slightly and the output of the chunk retrieval is further processed by
+a human.
+In cases where the textual representation of the desired information in
+the log
+is unpredictable or varies greatly, KWS seems to be the best choice.
+However,
+its low precision---it extracts a context of multiple lines around a
+finding---makes it generally unsuited for automatic on-ward processing and
+instead requires a human to further inspect and interpret the output
+chunk.
 
 \begin{figure*}[!t]
   \centering
@@ -275,6 +313,7 @@ StartExtraction(RegexPair("Colon/$\circ$/Line Separator",
   \label{lst:chunk-example-3}
 \end{figure}
 
+% TODO: this could move to the chunk retrieval techniques section
 The results of our empirical comparison study on the chunk retrieval
 techniques
 show that the structural representation of the targeted chunk greatly
@@ -359,23 +398,6 @@ are in the \emph{same structural category}, while the chunk from
 % %   \item Guidelines on choosing a suitable chunk retrieval technique.
 % % \end{itemize}
 
-Following the results from our comparison study,
-recommend PBE for use cases where the desired information is always
-represented in the same structural way and high confidence in precision
-and recall of the chunk retrieval is required.
-Results produced by PBE are suited for automatic on-ward processing.
-CTS is well suited when the representation of the desired information
-varies
-slightly and the output of the chunk retrieval is further processed by
-a human.
-In cases where the textual representation of the desired information in
-the log
-is unpredictable or varies greatly, KWS seems to be the best choice.
-However,
-its low precision---it extracts a context of multiple lines around a
-finding---makes it generally unsuited for automatic on-ward processing and
-instead requires a human to further inspect and interpret the output
-chunk.
 
 \section{Systematic Literature Mapping Survey}
 \label{sec:survey}
@@ -388,14 +410,20 @@ chunk.
 	\label{fig:lit-survey}
 \end{figure}
 
-% TODO (Caro): Integrate Petersen's guidelines
 The field of analyzing build
-logs is relatively young; we know there have been scattered
-research efforts on build log analysis, mostly where the
-log analysis was a side-part of the article.
+logs is relatively young; We have seen scattered
+research efforts on build log analysis.
+However,the processing of build logs was often
+a side-part of the article.
 To the best of our
 knowledge, there has not been an attempt to systematically overview
 and survey approaches for processing build logs.
+We conducted a systematic mapping study to determine the
+state-of-research on build log analysis following the guidelines
+by Petersen et al.~\cite{petersen2015guidelines}.
+
+In the following section, we explain how build log analysis differs
+from system log analysis.
 
 \lstset{
   morekeywords={INFO, WARN, 2008-11-09},
@@ -414,6 +442,47 @@ terminating
 Example adapted from~\cite{he2017towards}.}
   \label{lst:system-log}
 \end{figure*}
+
+
+\subsection{Distinction from System Log Analysis}
+\label{sec:system-log-analysis}
+A related field of build log analysis is the processing of system log
+files produced during runtime.
+A main difference between build logs
+and system logs is that system logs are fundamentally structured
+through events.
+Each line in a log file represents one event with a
+set of fields: timestamp, verbosity level and raw message
+content~\cite{he2017towards}.
+\Cref{lst:system-log} shows
+example lines from a system log.
+
+The first goal in analyzing system log files is ubiquitously to
+separate constant and variable parts within a log
+message~\cite{nagappan2010abstracting,he2017towards}.
+Next, the log
+messages are clustered into log events, unifying messages with
+identical constant parts and varying parameters.
+The output of a log
+parser is an ordered list of timed events and their corresponding
+parameter values~\cite{he2016evaluation}.
+This structured log is then
+the input to various machine learning and data mining processes.
+
+The techniques developed for system log analysis can also be applied
+to build logs.
+One example is comparing execution traces to reference
+traces of intended behavior to detect anomalies.
+Amar et
+al.~\cite{amar2019mining} employed a similar approach to detect
+relevant lines in build logs.
+In this article, we focus on extracting a single specified information
+from the build log as a whole with chunk retrieval techniques.
+Chunk
+retrieval techniques are used as a part of log parsing to retrieve the
+values of variable parts in a log message, e.g.\ by using regular
+expressions~\cite{nagappan2010abstracting,xu2009detecting}.
+
 
 \subsection{Study Selection}
 % TODO shorten
@@ -484,57 +553,6 @@ If these papers showed traces of
 working with build logs, we included them in our survey.
 In total, we
 were left with 87 articles after this search.
-
-\subsection{Distinction from System Log Analysis}
-\label{sec:system-log-analysis}
-A related field of build log analysis is the processing of system log
-files produced during runtime.
-A main difference between build logs
-and system logs is that system logs are fundamentally structured
-through events.
-Each line in a log file represents one event with a
-set of fields: timestamp, verbosity level and raw message
-content~\cite{he2017towards}.
-\Cref{lst:system-log} shows
-example lines from a system log.
-
-The first goal in analyzing system log files is ubiquitously to
-separate constant and variable parts within a log
-message~\cite{nagappan2010abstracting,he2017towards}.
-Next, the log
-messages are clustered into log events, unifying messages with
-identical constant parts and varying parameters.
-The output of a log
-parser is an ordered list of timed events and their corresponding
-parameter values~\cite{he2016evaluation}.
-This structured log is then
-the input to various machine learning and data mining processes.
-%Researchers mine patterns for operational
-%profiling~\cite{nagappan2009efficiently},
-%debugging~\cite{oliner2012advances}, performance analytics or anomaly
-%detection~\cite{nagappan2010abstracting}.
-% Xu et
-%al.~\cite{xu2009detecting} leverage the connection of log statements
-%to the source code producing them to separate messages into constant
-%and variable parts more accurately.
-
-The techniques developed for system log analysis can also be applied
-to build logs.
-One example is comparing execution traces to reference
-traces of intended behavior to detect anomalies.
-Amar et
-al.~\cite{amar2019mining} employed a similar approach to detect
-relevant lines in build logs.
-%Classic log parsers interpret the whole log file into a sequence of
-%events.
-% A similar approach could also be applied to build logs to
-%determine the sequence of executed build steps or phases.
-In this article, we focus on extracting a single specified information
-from the build log as a whole with chunk retrieval techniques.
-Chunk
-retrieval techniques are used as a part of log parsing to retrieve the
-values of variable parts in a log message, e.g.\ by using regular
-expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 
 \subsection{Article Classification}
 Having trimmed down the set of articles, we investigated them in depth.
