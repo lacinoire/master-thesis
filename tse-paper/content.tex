@@ -915,20 +915,19 @@ tools in their studies.
 % abundance and open availability
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
-% TODO: rework! extend / relate to further techniques
-% (should follow from discussion)
 This section introduces key concepts of the three chunk retrieval
 techniques we study in this article, namely program synthesis by
 example (PBE), common text similarity (CTS), and keyword search (KWS).
-We use these techniques to extract text chunks from build logs that
-represent a specific, targeted information.
+
+\Cref{tab:ctr} shows a comparison of the presented techniques.
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 \label{sec:blirt}
 In this article, we evaluate different techniques to automatically
 retrieve pieces of information that appear literally in the build
-logs, i.e., techniques that do not aggreagte, combine, or deducted
-information.
+logs.
+%, i.e., techniques that do not aggreagte, combine, or deducted
+%information.
 We call such pieces of information from build logs
 \emph{chunks}, and the techniques \emph{chunk retrieval techniques}.
 The techniques we investigate here do not require a formal lexer and
@@ -957,7 +956,6 @@ produce an array as output.
 The array consists of substrings of the
 build log text.
 
-\Cref{tab:ctr} shows a comparison of the presented techniques.
 
 \begin{table*}[]
 \centering
@@ -975,9 +973,6 @@ Keyword Search		     & KWS     & Keywords, expected number of
 lines			 & Line        & Keywords, context length  \\
 Random Line Retrieval	     & RLR     & Random sample
 & Line	      & Retrieval length	  \\
-Diff Approach		     & ---     & Line not present in successful
-log, information retrieval  & Line	  & Logs from failing and
-successful builds      \\
 \bottomrule
 \end{tabularx}
 \label{tab:ctr}
@@ -986,7 +981,7 @@ successful builds      \\
 
 \subsection{Program Synthesis by Example (PBE)}
 \label{sec:expl-pbe}
-The area of \emph{Programming by Example} aims to capture the
+The concept of \emph{Programming by Example} aims to capture the
 intent of the user through examples which they provide.
 Leveraging this apprach, we implemented a chunk retrieval technique
 for build logs.
@@ -1001,47 +996,27 @@ and output examples given by the user.
 The usage of example enables the user to configure a chunk
 retrieval without understanding the whole structure of
 the build log.
-% % It enables users to create programs without a priori programming
-% % knowledge~\cite{mayer2015user}.
-% In the context of text extraction
-% % through regular expressions, Programming by Example relieves the
-% % developer from having to understand the whole document structure to
-% % solve a single extraction task~\cite{le2014flashextract:}.
-% In this
-% % work, we refer to our interpretation of Programming by Example as
-% % \emph{PBE}\@.
-% We investigate the suitability of PBE to retrieve
-% % information chunks from build logs.
-% In the following, we explain the
-% % configuration and application of PBE to chunk retrieval from CI
-% % build logs.
 
-% TODO later: we should make sure to at least mention PROSE
-% _somewhere_, it's crucial for why PBE is how it is
 \subsubsection{Configuration}
 In- and output example pairs are the main driver of Programming by
 Example, we refer to them in short as \emph{examples}.
 The \emph{input} is the text of the build log file.
 The \emph{output} is
-an array of substrings of the log file text, representing the
-substrings that should be retrieved by the synthesized program when
+a substring of the log file text, representing the
+substring that should be retrieved by the synthesized program when
 given the corresponding input file.
 One or multiple examples, the
 training set, \emph{configure} a specific chunk retrieval with PBE:
 they define the substring of a build log that should be extracted.
 The PROSE program synthesis then tries to construct a program
 consistent with all training examples.
+If PROSE cannot synthesize a program, e.g.\
+because the regular expression
+necessary would be too complicated to synthesize, PBE returns the
+error message ``no program found''.
 \Cref{lst:prose-program-simplified} presents a simplified version
 of a program learned from the examples in \Cref{lst:chunk-example}.
-% % A program is consistent with an example if it returns the defined
-% % output when executed on the defined
-% % input~\cite{mitchell1982generalization}.
-% PBE reports an error back to the user if it could not synthesize a
-% consistent program.
-% % The program synthesis builds on the FlashExtract DSL, which in turn
-% % uses the FlashMeta algorithm.
-% Both are described in
-% % Section~\ref{sec:rw-prose}.
+% TODO Caro: check that these figures are latest inserted here
 
 
 % TODO Moritz: you said: The following is very obvious and could apply
@@ -1067,21 +1042,9 @@ Text Similarity approaches are widely used to filter unstructured
 textual software artifacts~\cite{runeson2007detection,
 marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
 We investigate a chunk retrieval technique based on the common
-and simple Vector Space Model~\cite{schutze2008introduction}.
+Vector Space Model~\cite{schutze2008introduction}.
 The aim is to retrieve those lines from a build log which are most
 similar to examples given by the user.
-% Text Similarity approaches are used to filter unstructured textual
-% software artifacts.
-% One common technique
-% %
-%artifacts.
-% % One common and simple technique is the Vector Space Model.
-% We
-% % investigate when text similarity is a suitable technique to retrieve
-% % information chunks from build logs.
-% In the following we will explain
-% % the concept of how we apply text similarity to information retrieval
-% % from CI build logs, which we refer to as \emph{CTS}\@.
 
 \subsubsection{Configuration}
 To configure chunk retrieval though text similarity we chose to use
@@ -1095,10 +1058,9 @@ the same concept of examples as for PBE
 % word tokens, tf-idf, similarity measure
 % I added a "as follows", think that is enough for explanation?
 and apply the Vector Space Model~\cite{schutze2008introduction}
-as follows.
-The
-lines of the output strings of the training examples define our search
-query.
+as follows:
+The lines of the output strings of the training examples define our
+search query.
 The algorithm splits the search query into single lines and
 identifies tokens, in our case words.
 Then we build a
@@ -1110,8 +1072,7 @@ language queries~\cite{lee1997document}.
 
 \subsubsection{Application}
 To retrieve the desired information from a build log, we parse the
-whole text and process it in the same way as the output of the
-training examples.
+whole text and process it in the same way as the search query.
 The algorithm calculates the cosine
 similarity~\cite{korenius2007principal} to compare each line of the
 build log with each line of the search query.
@@ -1129,16 +1090,9 @@ When developers scavenge for a specific piece of information within a
 large amount of unstructured information, a first ad-hoc approach they
 use is to search for related keywords.
 Indeed, this was one of the
-most common approaches we took when searching for the reason the build
-failed within a log while creating the \emph{LogChunks} data
+most common approaches we took when searching for the reason a build
+failed while creating the \emph{LogChunks} data
 set~\cite{brandt2020logchunks}.
-% As this is a technique readily available in many tools developers
-% use to view build logs, we study when such a keyword search is
-% suitable for retrieving information chunks from CI build logs.
-% In
-% the following we will explain how we use simple keyword search to
-% retrieve information from CI build logs, which we refer to as
-% \emph{KWS}\@.
 
 \subsubsection{Configuration}
 A set of keywords configures the chunk retrieval with KWS\@.
@@ -1168,8 +1122,8 @@ the average of lines in the output of the training examples.
 \label{sec:expl-rlr}
 In our evaluation, we want to compare against a baseline of randomly
 picking lines from the build log.
-RLR essentially mimicks the
-situation of guessing purely blindly which lines might be interesting.
+RLR mimicks the
+situation of guessing blindly which lines might be interesting.
 The only configuration option for RLR is the number of lines it should
 return.
 For a fair comparison to the other techniques (whose number of
@@ -1180,29 +1134,9 @@ number of lines in the chunks of the training examples.
 % I would not know of any details to add.
 %It's really all we are doing
 
-\subsection{Other Techniques}
-% TODO: we could add more techniques from the lit.
-% survey here
-% TODO: probably remove
-%Literature mentions further build log analysis techniques.
-%This
-%section describes them with our notion of chunk retrieval techniques.
-
-\noindent
-\textbf{Log Diff}
-Amar et al.\ use a technique based on line diffs and information
-retrieval to identify relevant lines from a failed build
-log~\cite{amar2019mining}.
-The configuration for the technique
-is the log from the last successful build and relevant past failures.
-This technique retrieves the lines from a build log that are not
-present in the successful build log and contain terms related to the
-given past failures.
-
-
 \subsection{Tool Implementation}
-For our comparison study we implemented PBE, CTS, KWS and RLR and a
-unifying interface.
+For our comparison study we implemented each of the chunk retrieval
+techniques and a unifying interface.
 The unified interface is implemented in Ruby and
 calls the separate technique implementations over the command line.
 The implementation of PBE in C\# is based on the Microsoft PROSE
@@ -1238,12 +1172,10 @@ retrieve chunks from build logs?}
 
 To investigate which technique is best suited to retrieve chunks from
 CI build logs we evaluate the three chunk retrieval techniques
-PBE, CTS and KWS, described in Sections~\ref{sec:expl-pbe},
-\ref{sec:expl-ts} and \ref{sec:expl-skws}.
-Random Line Retrieval
-(RLR), explained in Section~\ref{sec:expl-rlr}, acts as a baseline for
+PBE, CTS and KWS.
+Random Line Retrieval (RLR), acts as a baseline for
 the comparison.
-This section
+The following section
 describes our study design and which metrics we measure to answer our
 research questions.
 In the presentation of the results, we first focus
