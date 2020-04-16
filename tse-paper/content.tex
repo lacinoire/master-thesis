@@ -1276,10 +1276,21 @@ We prefer F$_{1}$ to other aggregate
 \section{Results}
 This section presents the separate results for each chunk retrieval
 technique.
-We start with CTS, KWS and RLR, as their results are easiest to
-understand.
 Afterwards we compare the three techniques with each other and RLR as
 baseline.
+
+
+
+\subsection{Program Synthesis by Example (PBE)}
+\label{sec:r:pbe}
+
+\begin{figure}[tbp]
+		\centering
+		\includegraphics[width=\columnwidth,
+		clip]{img/big-study/failure-reason-pbe.pdf}
+		\caption{Results of chunk retrieval with PBE.}
+		\label{fig:failure-reason-PBE}
+\end{figure}
 
 \lstset{
   language=,
@@ -1306,12 +1317,77 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
   \label{lst:pbe-unsuccessful}
 \end{figure}
 
+\begin{figure*}
+\centering
+    \textbf{Program Synthesis by Example (PBE)}\par\medskip
+\begin{subfigure}[b]{\columnwidth}
+		\centering
+		\includegraphics[width=\columnwidth,
+		clip]{img/big-study/failure-reason-categorycount-PBE.pdf}
+				\caption{Successfulness of retrieval
+				compared by structural category count
+				in training and test sets.}
+		\label{fig:failure-reason-categorycount-PBE}
+\end{subfigure}\hspace{\fill}
+\begin{subfigure}[b]{\columnwidth}
+		\centering
+		\includegraphics[width=\columnwidth,
+		clip]{img/big-study/recall-precision-examplecount-sythesisworked-PBE.pdf}
+				\caption{Precision, recall and
+				F$_{1}$-score when PBE could synthesize
+				a consistent program compared with the
+				size of the training set.}
+		\label{fig:recall-precision-examplecount-sythesisworked-PBE}
+\end{subfigure}
+\caption{Results of chunk retrieval with  Program Synthesis by Example
+(PBE)}
+\end{figure*}
+
+\Cref{fig:failure-reason-PBE} presents the results of the chunk
+retrieval with PBE.
+Out of the 400 runs, 5 per each one of the 80 example
+sets, PBE extracted all the desired lines successfully in 138 cases.
+In 59 cases, a regular expression program could be synthesized, though
+it did not find a match on the test build log.
+In 30 cases the synthesized program only extracted a
+subset of the desired lines.
+For these 30 cases, the average recall
+was 28\%.
+\Cref{lst:pbe-unsuccessful} shows how an example of such
+an \emph{unsuccessful retrieval}, where the synthesized program only
+retrieved two of the four targeted lines.
+In 173 of the 400 cases
+could PROSE not synthesize program consistent with all of the training
+examples.
+
+\Cref{fig:failure-reason-categorycount-PBE} shows the results of PBE
+runs depend on the number of structural categories in the training and
+test examples.
+The figure demonstrates that program synthesis mostly
+returns exactly the desired output when there are is only one
+structural category present in the training and test examples.
+However, when
+two or more structural categories are simultaneously present,
+PROSE could in most cases not synthesize a program.
+For four or more present
+categories PROSE could never synthesize a consistent program.
+
+\Cref{fig:recall-precision-examplecount-sythesisworked-PBE} shows
+precision and recall of the 227 runs where PBE could synthesize a
+program consistent with all training examples.
+When the training set
+size increases from one to two, recall and F$_{1}$-score increase by
+about 25\%, precision increases by about 10\%.
+For two or more
+training examples, recall and F$_{1}$-score stay around 75\% and
+precision around 96\%.
+
 \subsection{Common Text Similarity (CTS)}
 \label{sec:r:cts}
 \begin{figure*}
 \centering
     \textbf{Common Text Similarity (CTS)}\par\medskip
-\begin{subfigure}[t]{\columnwidth}
+\begin{subfigure}[tb]{\columnwidth}
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/recall-precision-examplecount-CTS.pdf}
@@ -1319,7 +1395,7 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 		\label{fig:recall-precision-examplecount-CTS}
 
 \end{subfigure}\hspace{\fill}
-\begin{subfigure}[t]{\columnwidth}
+\begin{subfigure}[tb]{\columnwidth}
 		\centering
 				\includegraphics[width=\columnwidth,
 				clip]{img/big-study/recall-precision-categorycount-CTS.pdf}
@@ -1344,9 +1420,9 @@ measurements for an increasing number of structural categories in the
 training and test examples.
 With increasing category count, precision,
 recall and F$_{1}$-score decrease.
-Especially for more than three
-categories present we have no chunk retrieval runs where all desired
-lines were extracted.
+% Especially for more than four
+% categories present we have no chunk retrieval runs where all desired
+% lines were extracted.
 
 \subsection{Keyword Search (KWS)}
 \label{sec:r:kws}
@@ -1390,8 +1466,7 @@ the training and test examples the recall decreases by about 20\% and
 the precision decreases about 6\%.
 For more than two structural
 categories no clear trend is visible in precision, recall or
-F$_{1}$-score for an increasing amount of categories in the training
-and test examples.
+F$_{1}$-score.
 
 \subsection{Random Line Retrieval}
 \label{sec:r:rlr}
@@ -1406,90 +1481,11 @@ The size of the training set has no visible impact on either.
 An larger number of structural categories within the training and
 test sets decreased the precision of RLR from 7\% to 0\%, the recall
 increases from 6\%, for one structural category present, to 11\%, for
-three sturctural categories present and also drops to 0\% for more
+three structural categories present and also drops to 0\% for more
 structural categories.
-Graphs of the results of the chunk retrieval with RLR from our study
+Graphs of these results of the chunk retrieval with RLR
 are included in our replication
 package~\cite{brandt2020chunk-replication}.
-
-\subsection{Program Synthesis by Example (PBE)}
-\label{sec:r:pbe}
-\begin{figure*}
-\centering
-    \textbf{Program Synthesis by Example (PBE)}\par\medskip
-\begin{subfigure}[b]{\columnwidth}
-		\centering
-		\includegraphics[width=\columnwidth,
-		clip]{img/big-study/recall-precision-examplecount-sythesisworked-PBE.pdf}
-				\caption{Precision, recall and
-				F$_{1}$-score when PBE could synthesize
-				a consistent program compared with the
-				size of the training set.}
-		\label{fig:recall-precision-examplecount-sythesisworked-PBE}
-\end{subfigure}\hspace{\fill}
-\begin{subfigure}[b]{\columnwidth}
-		\centering
-		\includegraphics[width=\columnwidth,
-		clip]{img/big-study/failure-reason-categorycount-PBE.pdf}
-				\caption{Successfulness of retrieval
-				compared by structural category count
-				in training and test sets.}
-		\label{fig:failure-reason-categorycount-PBE}
-\end{subfigure}
-\caption{Results of chunk retrieval with  Program Synthesis by Example
-(PBE)}
-\end{figure*}
-
-
-\begin{figure}[tbp]
-		\centering
-		\includegraphics[width=0.75\columnwidth,
-		clip]{img/big-study/failure-reason-pbe.pdf}
-		\caption{Results of chunk retrieval with PBE.}
-		\label{fig:failure-reason-PBE}
-\end{figure}
-
-\Cref{fig:failure-reason-PBE} shows the results of the PBE runs in our
-evaluation.
-Out of the 400 runs, 5 per each one of the 80 example
-sets, PBE extracted all the desired lines in 138 cases.
-In 89 further
-cases, an extraction program was also successfully synthesized, though
-in 59 of the 89 cases the synthesized program yielded no output.
-In 30
-of the 89 cases did the synthesized program only partially extract a
-subset of the desired lines.
-For these 30 cases, the average recall
-was 28\%.
-\Cref{lst:pbe-unsuccessful} shows an example of such
-an \emph{unsuccessful retrieval}, where the synthesized program only
-retrieved two of the four targeted lines.
-In 173 of the 400 cases
-could PROSE not synthesize program consistent with all of the training
-examples.
-
-\Cref{fig:failure-reason-categorycount-PBE} shows the results of PBE
-runs depend on the number of structural categories in the training and
-test examples.
-The figure demonstrates that program synthesis mostly
-returns exactly the desired output when there are is only one
-structural category present in the training examples.
-However, when
-two or more structural categories are simultaneously present in the
-examlpe set, PROSE could in most cases not synthesize a program
-consistent with all training examples.
-For four or more present
-categories PROSE could never synthesize a consistent program.
-
-\Cref{fig:recall-precision-examplecount-sythesisworked-PBE} shows
-precision and recall of the 227 runs where PBE could synthesize a
-program consistent with all training examples.
-When the training set
-size increases from one to two, recall and F$_{1}$-score increase by
-about 25\%, precision increases by about 10\%.
-For two or more
-training examples, recall and F$_{1}$-score stay around 75\% and
-precision around 96\%.
 
 \subsection{Comparison of All Techniques}
 Next, we aggregate the results from
@@ -1498,9 +1494,9 @@ Next, we aggregate the results from
 \Cref{fig:success-partial-all} compares the success of chunk
 retrievals differentiated by techniques in our study.
 CTS and KWS
-extract some of the desired lines in 79\% and 88.5\% of the chunk
-retrieval runs.
-With 38.25\%, KWS also has the highest number of fully
+extract at least some of the desired lines in 79\% and 88.5\%
+of the chunk retrieval runs.
+With 38.25\%, KWS also has the highest proportion of fully
 successful extractions, followed by PBE with 34.5\%.
 PBE has the
 lowest number of partial retrievals with only 18 out of 400 chunk
@@ -1546,7 +1542,7 @@ the number of structural categories present.
 		\centering
 				\includegraphics[width=\columnwidth,
 				clip]{img/big-study/recall-precision-singlecategory-all.pdf}
-		\caption{Training and test examples in \emph{one}
+		\caption{Training and test examples in 1
 		structural category.}
 		\label{fig:recall-precision-singlecategory-all}
 \end{subfigure}\hspace{\fill}
@@ -1555,7 +1551,8 @@ the number of structural categories present.
 				\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/recall-precision-multicategory-all.pdf}
-		\caption{Training and test examples in $>1$ structural
+		\caption{Training and test examples in \textgreater
+		1 structural
 		category.}
 		\label{fig:recall-precision-multicategory-all}
 \end{subfigure}
