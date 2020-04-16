@@ -392,7 +392,7 @@ are in the \emph{same structural category}, while the chunk from
 \section{Systematic Literature Mapping Survey}
 \label{sec:survey}
 
-\begin{figure}[hb]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
 	\caption{Our literature selection process, following
@@ -416,8 +416,8 @@ In the following section, we explain how build log analysis differs
 from system log analysis.
 Further, we describe how we selected the articles for our literature
 survey and the data extraction from the resulting articles.
-We present our results on how buildlogs are analyzed in literature
-and discuss the implecations of these findings on our research.
+We present our results on how build logs are analyzed in literature
+and discuss the implications of these findings on our research.
 
 \lstset{
   morekeywords={INFO, WARN, 2008, 11, 09},
@@ -425,7 +425,7 @@ and discuss the implecations of these findings on our research.
   keywordstyle=\bfseries\color{Plum},
   escapeinside=**
 }
-\begin{figure*}[!tb]
+\begin{figure*}[htbp]
   \centering
   \lstinputlisting[breaklines=true]{listings/syslog.txt}
   \caption{System Log excerpt.
@@ -468,7 +468,7 @@ al.~\cite{amar2019mining} employed a similar approach to detect
 relevant lines in build logs.
 However, many of the techniques developed to analyze system logs
 leverage their inherent event structure.
-As build logs lack this sturcture, we focussed our literature
+As build logs lack this structure, we focussed our literature
 survey on articles that as a source of information.
 % In this article, we focus on extracting a single specified information
 % from the build log as a whole with chunk retrieval techniques.
@@ -488,7 +488,7 @@ is often done~\cite{petersen2015guidelines}, but survey all sources
 monitored by Google Scholar, including Bachelor's and Master's
 theses and academic slide decks.
 We use Google Scholar as opposed to Scopus or
-other databases, as it is the search engine for acdemic articles with
+other databases, as it is the search engine for academic articles with
 the broadest and most current index, including preprints.
 
 Our Google Scholar search for variations of ``build log''
@@ -507,7 +507,7 @@ two-pass filtering strategy:
 
 First, we filtered articles based on (1) their title and (2) the
 contextual information Google Scholar displayed.
-We inlcuded only
+We included only
 publications written in a language intelligible to the authors (that
 is, English or German), which disregarded fewer than 1\% of search
 hits.
@@ -538,9 +538,9 @@ were left with 87 articles after the two filtering phases.
 \subsection{Article Classification}
 Having trimmed down the set of articles, we investigated them in depth.
 
-We wanted to characterize how researchers use buildlogs as input to
+We wanted to characterize how researchers use build logs as input to
 any processes.
-We were interesed in
+We were interested in
 \begin{itemize}
   \item what information they are retrieving from the logs and
   what they use the retrieved information for (\textbf{RQ1.1})
@@ -551,15 +551,15 @@ We were interesed in
   logs.
 (\textbf{RQ1.3})
 \end{itemize}
-To objecifiy our data extraction we created a template of the targeted
-factors and performed a pilot, as reccommended by Petersen et
+To objectifiy our data extraction we created a template of the targeted
+factors and performed a pilot, as recommended by Petersen et
 al.~\cite{petersen2015guidelines}.
 Two authors extracted the data from five articles and we held a
 consensus meeting to unify our understanding
 of the data extraction template.
 The remaining articles were divided over these two authors.
 We inspected the articles as closely as necessary,
-starting from occurences of ``log'' or ``build'' within the text.
+starting from occurrences of ``log'' or ``build'' within the text.
 
 Relevant for our survey were all articles that
 use logs from software builds as input to
@@ -586,12 +586,6 @@ log analysis?}
   \item[\textbf{RQ1.3:}] Which build logs are analyzed?
 \end{itemize}
 \end{simplebox}
-
-\subsection{Results}
-In the following, we will present the results of our literature survey.
-We present the information within the build logs that was targeted,
-the retrieval techniques used and the origin of the build logs
-which were analyzed.
 
 \addtolength{\tabcolsep}{-5pt}
 \begin{table*}[tbhp]
@@ -679,18 +673,24 @@ None identified  &
 \caption{Multi-label categorization of the 61 relevant articles.}
 \end{figure}
 
-\begin{figure*}[tbhp]
+\begin{figure}[tbhp]
 		\centering
-		\includegraphics[width=0.7\textwidth, trim={1.1cm 0.4cm
+		\includegraphics[width=\columnwidth, trim={1.1cm 0.4cm
 		1.5cm 0.5cm},
 		clip]{img/lit-sur/log_producer_annotated.pdf}
 		\caption{Frequency of supported log producers.}
 		\label{fig:litsur:log_producer}
-\end{figure*}
+\end{figure}
+
+\subsection{Results}
+In the following, we will present the results of our literature survey.
+We present the information within the build logs that was targeted,
+the retrieval techniques used and the origin of the build logs
+which were analyzed.
 
 \subsubsection{Retrieved Information}
 The information that was targeted varied from article to article.
-Most prominent was the search for errors (39\%) which occured within
+Most prominent was the search for errors (39\%) which occurred within
 the build process, as presented in \Cref{fig:litsur:info_target}.
 This is followed by extracting the executed or the failing
 tests (both 11\%).
@@ -706,16 +706,16 @@ errors~\cite{clemencic2014new} or
 the duration of tasks within the build~\cite{zhang2016android}.
 36\% of the articles classified the build logs into categories.
 For instance distinguishing failures caused by developers from
-failures casued
+failures caused
 by infrastructure errors~\cite{lindqvist2019detection} or
-whether projects use automated statc analysis
+whether projects use automated static analysis
 tools~\cite{kavaler2019tool}.
 Other types of information (e.g.\ counting
 lines, summarization) were only retrieved
 in one case each.
 
 The majority of articles (46\%) used the outcome of their build log
-analysis for research purpopses, as shown in \Cref{fig:litsur:use}.
+analysis for research purposes, as shown in \Cref{fig:litsur:use}.
 Further uses were giving feedback to developers (10\%) or automatic
 on-ward processing of the retrieved information (8\%).
 
@@ -728,7 +728,7 @@ However, only 16 of these described their method in detail.
 
 The most mentioned method (34\%) was using a parser, where we also
 included
-rather unprecise statements like ``we parse the build logs''.
+rather imprecise statements like ``we parse the build logs''.
 25\% of the articles described the use of regular expressions and 20\%
 inspected the logs manually.
 Another 8\% employed machine learning techniques such as natural language
@@ -756,29 +756,6 @@ two used the
 \emph{Maven Log Analyzer}~\cite{macho2018automatically,gallaba2018noise},
 another two the
 \emph{MAKAO}~\cite{wen2018blimp,adams2007design,adams2007makao} tool.
-
-% Seo et al.~\cite{seo2014programmers}
-% They based their analyses on sets of
-% build logs collected from industry partners.
-% They	reported by Java and C++ builds.
-
-% Rausch et al.~\cite{rausch2017empirical} analyze CI builds of open
-% source Java projects
-
-% Vassallo et al.~\cite{vassallo2017a-tale} compare open source projects
-% in Java to industrial ones.
-% Their data stems from analyzing
-% build logs from \emph{TravisTorrent}~\cite{beller2017travistorrent}
-% with regular expressions.
-
-% Vassallo et
-% al.~\cite{vassallo2018un-break}
-% They parse
-% Maven~\cite{maven2019website} build logs into a structured
-% representation and create hint generators.
-% For example, one of the hint generators queries stack overflow for
-% discussions related to why the build failed.
-
 
 \subsubsection{Build Logs}
 The distribution of supported build tools is shown in
@@ -823,7 +800,7 @@ Ghaleb et al.~\cite{ghaleb2019studying} and several other studies.
 \subsection{Discussion}
 Our literature survey sheds light on how build log analysis is used within
 computer science research.
-In this section we will summarize our findings and relate them to the
+Hereafter we will summarize our findings and relate them to the
 approach we are taking to improve build log analysis with chunk
 retrieval techniques.
 
@@ -847,57 +824,83 @@ build environments and targeted information.
 Several articles noted the variety in log formats for different build
 environments, which requires customizing build log techniques for
 every supported build environment.
-We implement build environment agonostic build log analysis
+\Cref{fig:litsur:log_producer} shows that few build environments are
+targeted by many studies and tools (A).
+The majority of build environments was however only targeted by one
+article each (B).
+From this we follow that, while custom parsers are beneficial for the
+small group of environments targeted by many (A), all and especially
+the rarer investigated environments (B) would benefit from a generic
+solution.
+We implement build environment agnostic build log analysis
 techniques, which are customized to a specific project by
 the training examples which the user provides.
 In addition, the \emph{LogChunks}~\cite{brandt2020logchunks}
 data set we chose for our evaluation covers a broad range of build
 environments.
-Further, the training examples also specify the log chunk targeted by the
-retrieval, which enable our chunk retrieval techniques to retrieve a
-broad range of information from build logs.
+% Further, the training examples also specify the log chunk targeted
+by the
+% retrieval, which enable our chunk retrieval techniques to retrieve a
+% broad range of information from build logs.
+
+The articles within our study mainly tried to retrieve or classify
+errors or reasons for the build to fail from the logs.
+Therefore we chose the log chunk ``describing why the build failed''
+~\cite{brandt2020logchunks} for our empirical comparison study
+of chunk retrieval techniques.
+The techniques we implement are in principle agnostic to the targeted
+log chunk, thus we believe our results can be generalized to other
+kinds of log chunks.
 
 Urli et al.~\cite{urli2018design} strongly discouraged from parsing
 build logs for information as it is ``too error prone'', other
 articles pointed to the effort of developing a custom tool.
 Regular expressions are known to be tedious to
 maintain~\cite{michael2019regexes}.
-For this reason, we are focussing % TODO: less development time,
-% only giving examples
+For this reason, we are focussing on techniques that are configured
+through examples consisting of logs and corresponding chunks.
+These examples are provided by the user and can simply be
+exchanged whenever new cases are introduced.
+
+% This task of retrieving specific chunks of text from the
+% build logs can be solved by the chunk retrieval techniques we compare
+% in this article.
+% Our results can support researchers in choosing a
+% suitable technique for their data set of build logs and the chunks
+% they want to retrieve.
+% By relieving them from building custom parsers
+% we enable them to cover a much wider range of languages and build
+% tools in their studies.
+
+In summary, this literature study shows the need for build log
+analysis techniques that are build-environment agnostic, automated
+and can be configured with small effort.
+We achieve this by developing three techniques for which the
+information to be retrieved is specified through examples or keywords.
+
+We propose the notion of chunk retrieval techniques which retrieve
+a substring, that describes a specific information, from a build log.
+Generally these can also be used to classify build logs and therefore
+cover the great majority of the type of log analysis we saw within
+our survey.
+
+We implement three chunk retrieval techniques based on approaches
+described by several articles:
+PBE mimics regular expressions and parsers while simplifying
+their development.
+We chose text similarity (CTS) as a common information retrieval
+technique, and implement the ad-hoc approach of
+searching for specific strings or keywords within KWS\@.
+
+Our evaluation of the three chunk retrieval techniques is done on the
+\emph{LogChunks} data set, because it encompasses a broad range of
+build environments which enables us to measure the generic
+applicability of our techniques.
+The targeted chunks are describing error messages or
+``the reason the build failed'', which was also the information
+most targeted by the articles in our survey.
 
 
-This task of retrieving specific chunks of text from the
-build logs can be solved by the chunk retrieval techniques we compare
-in this article.
-Our results can support researchers in choosing a
-suitable technique for their data set of build logs and the chunks
-they want to retrieve.
-By relieving them from building custom parsers
-we enable them to cover a much wider range of languages and build
-tools in their studies.
-
-% \subsubsection{Retrieved Information}
-% why from build logs? not avaliable in cleaner format much use for
-% research, a bit of developer information / tools following: research
-% so many logs that unfeasible to do manually, less focus on tools for
-% devs (caveat! we excluded books and documentation on industrial tools
-% -> many approaches there to make build logs digestible, tough many
-% focus on general minimizing of the data presented, not retrieving
-% specific chunks)
-
-% \subsubsection{Retrieval Technique}
-% broadly mentioned shortly, rarely explained in detail we follow that
-% researchers often see this as an unimportant side fact work needed to
-% be done to get the big work done
-
-% \subsubsection{Build Logs}
-% often focussed on specific logs, sometimes mentioned because of effort
-% developing a parser other times also because other tools used in
-% further research are limiting the scope (reference paper with PIT
-% tool).
-% many focus on maven because of it's prevalence also in respect
-% to other tools much research done on travis ci logs b/c of their
-% abundance and open availability
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
 This section introduces key concepts of the three chunk retrieval
@@ -906,49 +909,13 @@ example (PBE), common text similarity (CTS), and keyword search (KWS).
 
 \Cref{tab:ctr} shows a comparison of the presented techniques.
 
-\subsection{Characteristics of Chunk Retrieval Techniques}
-\label{sec:blirt}
-In this article, we evaluate different techniques to automatically
-retrieve pieces of information that appear literally in the build
-logs.
-%, i.e., techniques that do not aggreagte, combine, or deducted
-%information.
-We call such pieces of information from build logs
-\emph{chunks}, and the techniques \emph{chunk retrieval techniques}.
-The techniques we investigate here do not require a formal lexer and
-parser to analyze the entire structure of build logs, but focus on
-ad-hoc extracting just one specific piece of information per
-configuration.
-
-With the term \textit{configuration}, we abstract over the training
-and parametrization that different techniques require in different
-forms.
-A configuration can be explicitly stated or implicitly dervied
-by learning through provided examples.
-It is therefore a manual
-specification of which information the chunk retrieval should target.
-It also supplies the necessary information for the technique to
-identify the targeted information chunk in a build log.
-Each chunk
-retrieval technqiue has a specific \textit{granularity}, i.e.,\ the
-smallest piece of text it can return (e.g., a line, or a word).
-The
-granularity might be adjustable by configuration.
-\emph{Running a
-chunk retrieval technique} means to execute a fully configured
-technique to consumes as input a build log in plain text format and to
-produce an array as output.
-The array consists of substrings of the
-build log text.
-
-
-\begin{table*}[]
+\begin{table*}[htbp]
 \centering
 \caption{Chunk retrieval techniques.}
-\begin{tabularx}{\textwidth}{@{}XlXlXX@{}}
+\begin{tabularx}{\textwidth}{@{}llXll@{}}
 \toprule
 Name			     & Acronym & Identification Technique
-& Granularity & Configuration & Source		  \\
+& Granularity & Configuration \\
 \midrule
 Program Synthesis by Example & PBE     & Regular expression program
 & Character   & In/output examples	\\
@@ -963,12 +930,46 @@ Random Line Retrieval	     & RLR     & Random sample
 \label{tab:ctr}
 \end{table*}
 
+\subsection{Characteristics of Chunk Retrieval Techniques}
+\label{sec:blirt}
+In this article, we evaluate different techniques to automatically
+retrieve pieces of information that appear literally in the build
+logs.
+%, i.e., techniques that do not aggregate, combine, or deducted
+%information.
+We call such pieces of information from build logs
+\emph{chunks}, and the techniques \emph{chunk retrieval techniques}.
+The techniques we investigate here do not require a formal lexer and
+parser to analyze the entire structure of build logs, but focus on
+ad-hoc extracting just one specific piece of information per
+configuration.
+
+With the term \textit{configuration}, we abstract over the training
+and parametrization that different techniques require in different
+forms.
+A configuration can be explicitly stated or implicitly derived
+by learning through provided examples.
+It is therefore a manual
+specification of which information the chunk retrieval should target.
+It also supplies the necessary information for the technique to
+identify the targeted information chunk in a build log.
+Each chunk
+retrieval technique has a specific \textit{granularity}, i.e.,\ the
+smallest piece of text it can return (e.g., a line, or a word).
+The
+granularity might be adjustable by configuration.
+\emph{Running a
+chunk retrieval technique} means to execute a fully configured
+technique to consumes as input a build log in plain text format and to
+produce an array as output.
+The array consists of substrings of the
+build log text.
 
 \subsection{Program Synthesis by Example (PBE)}
 \label{sec:expl-pbe}
 The concept of \emph{Programming by Example} aims to capture the
 intent of the user through examples which they provide.
-Leveraging this apprach, we implemented a chunk retrieval technique
+Leveraging this approach, we implemented a chunk retrieval technique
 for build logs.
 Our implementation is based and highly influenced by the
 \emph{Microsoft PROSE library}~\cite{prose2019webpage}.
@@ -1107,7 +1108,7 @@ the average of lines in the output of the training examples.
 \label{sec:expl-rlr}
 In our evaluation, we want to compare against a baseline of randomly
 picking lines from the build log.
-RLR mimicks the
+RLR mimics the
 situation of guessing blindly which lines might be interesting.
 The only configuration option for RLR is the number of lines it should
 return.
