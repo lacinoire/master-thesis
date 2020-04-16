@@ -593,7 +593,9 @@ We present the information within the build logs that was targeted,
 the retrieval techniques used and the origin of the build logs
 which were analyzed.
 
+\addtolength{\tabcolsep}{-5pt}
 \begin{table*}[tbhp]
+\tinyish
 \centering
 \caption{Overview of build log analysis techniques.}
 \begin{tabularx}{\textwidth}{@{}lXl@{}}
@@ -601,8 +603,7 @@ which were analyzed.
 Name			     & Sources	& Frequency	  \\
 \midrule
 Parser	&
-~{\smallish
-\cite{vassallo2018un-break,zhang2016android,seo2014programmers,hassan2019tackling,hassan2017automatic,chromy2007integration,mesbah2019deepdelta,wen2018blimp,kwon2018prioritizing,adams2007design,rahman2018impact,brandyberry2006continuous,tomassi2019bugswarm,ren2018automated,vassallo2019automated,cavalcanti2019impact,sippola2013qt,felipe2012towards,shi2018evaluating,urli2018design,selberg2012use}}
+\cite{vassallo2018un-break,zhang2016android,seo2014programmers,hassan2019tackling,hassan2017automatic,chromy2007integration,mesbah2019deepdelta,wen2018blimp,kwon2018prioritizing,adams2007design,rahman2018impact,brandyberry2006continuous,tomassi2019bugswarm,ren2018automated,vassallo2019automated,cavalcanti2019impact,sippola2013qt,felipe2012towards,shi2018evaluating,urli2018design,selberg2012use}
 &
 \includegraphics[width=0.55\columnwidth]{img/lit-sur/techniques-no-guidelines-cropped_21.pdf}
 \\
@@ -621,7 +622,7 @@ Machine Learning  &
 &
 \includegraphics[width=0.55\columnwidth]{img/lit-sur/techniques-no-guidelines-cropped_5.pdf}
 \\
-\makecell[cl]{{\smallish Natural Language Processing}}	&
+\makecell[cl]{Natural Language Processing}	&
 \cite{hassan2017change,lou2019history,schulz2017active} &
 \includegraphics[width=0.55\columnwidth]{img/lit-sur/techniques-no-guidelines-cropped_3.pdf}
 \\
@@ -653,7 +654,7 @@ None identified  &
 \end{tabularx}
 \label{tab:litsur:techniques}
 \end{table*}
-
+\addtolength{\tabcolsep}{5pt}
 % TODO one source might contribute multiple times to 'other'
 
 \begin{figure}
@@ -1826,9 +1827,8 @@ PBE to retrieve the duration of a build phase as well as its name.
 There are several threats to the validity of the conclusions of our
 work.
 
-\noindent
+
 \textbf{Implementation}
-\label{sec:prose:impl}
 % TODO we need to say something about why we think that these
 % limtiations do not actually harm our results
 Our results depend on the implementation of the investigated chunk
@@ -1863,21 +1863,22 @@ Tuning the text similarity
 meta-parameters more to the specific use case of chunk retrieval from
 build logs would yield better chunk retrieval results.
 
-\noindent
 \textbf{Data Set}
 The outcomes of our comparison study are highly dependent on the build
 logs from the \emph{LogChunks} data set.
-It only consists of build
+It consists of build
 logs from open source projects and therefore it is not clear whether
-our results are generalizable to industry projects.
-We only collected
-build logs from Travis CI, however we chose to evaluate on an
-information chunk whose format is not dependent on Travis CI\@.
+our results apply to industry projects that use build tools
+not popular in open source development.
+However, \emph{LogChunks} covers a wide array of build tools,
+we believe that our findings can be generalized.
+We collected build logs from Travis CI.
+Yet, the format of the log chunk we chose
+for our evaluation is not dependent on Travis CI\@.
 This
 is because the reason the build failed is described within the build
 logs by the tools themselves and not the Travis CI environment.
 
-\noindent
 \textbf{Training Set Size}
 Especially the results for CTS might be influenced by the fact that we
 only trained on one to five examples.
@@ -1885,14 +1886,21 @@ We chose this small training set
 size as the training examples have to be provided per repository and
 we expect a developer to not want to provide more examples than the
 small numbers we evaluated on.
+The fact that PBE and CTS performed best with already two training
+examples shows that our training set size is large enough to
+compare the three techniques we presented.
 
-\noindent
 \textbf{Few Samples with Many Structural Categories}
 Our comparison study shows fewer measurements with many structural
-categories than with one category.
+categories than with one structural category category
+(50.25\% one, 33.75\% two, 13.75\% more than two).
 This stems from the fact that we investigated the chunk retrieval
-techniques on a realistic data set, which showed to often have few
+techniques on a real-world data set, where there were mostly few
 structural categories within one project.
+In addition, a third of the measurements were conducted with two
+structural categories present and these already showed the negative
+effect of the number of structural categories on the performance
+of the chunk retrieval techniques.
 
 \section{Future Work}
 
@@ -1961,7 +1969,7 @@ There are various future research opportunities based on our work:
   \item \textbf{Usability Analysis of Chunk Retrieval Output} Our
   analysis of the output produced by the chunk retrieval focuses on
   precision and recall.
-We propose to investigate how useful these
+  The next step would be to investigate how useful these
   outputs are to developers through controlled experiments.
 \end{itemize}
 
@@ -1970,8 +1978,10 @@ We propose to investigate how useful these
 \label{sec:conclusion-fw}
 The goal of this paper was to support researchers and developers in
 their decision on how to analyze build logs.
-We implemented and
-compared three different chunk retrieval techniques on our data set
+We conducted a systematic mapping study to uncover the
+state-of-research on build log analysis.
+We implemented	three promising chunk retrieval techniques and
+compared them on our data set
 \emph{LogChunks}, composed of 797 manually labeled build logs from a
 broad range of 80 repositories.
 Our results show that the structural
