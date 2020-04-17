@@ -874,7 +874,7 @@ exchanged whenever new cases are introduced.
 
 In summary, this literature study shows the need for build log
 analysis techniques that are build-environment agnostic, automated
-and can be configured with small effort.
+and can be configured by the user with little effort.
 We achieve this by developing three techniques for which the
 information to be retrieved is specified through examples or keywords.
 
@@ -931,7 +931,7 @@ Random Line Retrieval	     & RLR     & Random sample
 \end{table*}
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
-\label{sec:blirt}
+\label{sec:crt-characteristics}
 In this article, we evaluate different techniques to automatically
 retrieve pieces of information that appear literally in the build
 logs.
@@ -1134,6 +1134,15 @@ R and the text2vec library~\cite{text2vec2019webpage}.
 \section{Study Design}
 \label{sec:study}
 
+To investigate when our chunk retrieval techniques are suited to
+analyze build logs (\textbf{RQ2}), we perform an empirical comparison
+study on the \emph{LogChunks} data set~\cite{brandt2020logchunks}.
+In particular we are interested in how many examples a technique
+should be trained with for best performance (\textbf{RQ2.1}),
+how similar the structural representation of the targeted log chunks
+has to be (\textbf{RQ2.2}) and how reliable the quality of the
+produced outputs are (\textbf{RQ2.3}).
+
 \begin{simplebox}[minipage boxed title*=-2.5cm,
 attach boxed title to top center={yshift=-6mm}]
 {\textbf{RQ2:} When are PBE{,} CTS or KWS suited to
@@ -1147,7 +1156,10 @@ retrieve chunks from build logs?}
 \end{itemize}
 \end{simplebox}
 
-% TODO Caro: redo
+In the following we present the data set we created for this study,
+our study process (presented in \Cref{fig:study}) and the metrics
+we measure to answer our research questions.
+
 \begin{figure*}[tb]
 	\centering
 	\includegraphics[width=\textwidth, trim={1.6cm 1.6cm 0.2cm 5.6cm},
@@ -1155,18 +1167,6 @@ retrieve chunks from build logs?}
 	\caption{Design of our technique comparison study.}
 	\label{fig:study}
 \end{figure*}
-
-To investigate which technique is best suited to retrieve chunks from
-CI build logs we evaluate the three chunk retrieval techniques
-PBE, CTS and KWS.
-Random Line Retrieval (RLR), acts as a baseline for
-the comparison.
-The following section
-describes our study design and which metrics we measure to answer our
-research questions.
-In the presentation of the results, we first focus
-on each of the three techniques and later compare them against each
-other.
 
 \subsection{LogChunks}
 For this study we created the previously published data set
@@ -1177,62 +1177,48 @@ programming languages.
 For each file, the authors manually ``labeled
 the log part (chunk) describing why the build
 failed''~\cite{brandt2020logchunks}.
-We include keywords, which we
+We included keywords, which we
 would use to search for the selected chunk within the log.
 In
 addition, we categorized the log chunks according to their format
 within the log.
-If the chunks are surrounded by the same markings
-within the log we assign them the same structural category.
+If the chunks were surrounded by the same markings
+within the log we assigned them the same structural category.
 
-% We run four techniques on the examples from \emph{LogChunks}.
+\subsection{Study Process}
+We begin by selecting all examples in \emph{LogChunks}
+that correspond to one GitHub repository---end therefore the
+same build environment (1).
+One to five examples make up the training set (2).
+We vary its size to measure how many examples are needed to
+confidently configure a technique.
+The training set is so small, because the examples have to be
+manually created by a user.
+A larger training set would oppose our goal of providing techniques
+that can be configured with little effort.
+The example chronologically after the training set makes up the
+test set (3).
+In this way, we train on examples from past build logs and test on
+more recent logs.
+We chose a training set size of 1, as users of our techniques
+should receive reliable results on every build log they analyze.
+As a next step, we configure the chunk retrieval technique with
+the examples from the training set (4) and apply the technique to the
+training set (5), which produces the retrieval output (6).
+Based on this, we collect the following measurements (7):
+\begin{itemize}
+  \item The size of training set (\textbf{RQ2.1}),
+  \item the number of structural categories in the training set
+  (\textbf{RQ2.2})
+  \item the lines of the retrieval output ($\mathit{RetrievedLines}$),
+  and our oracle, the output defined in the test example
+  ($\mathit{DesiredLines}$).
+  From these we calculate accuracy metrics (\textbf{RQ2.1}).
+\end{itemize}
 
-\noindent
-\textbf{Training and Test Set}
-% TODO Moritz: You said: Add details how key words were extracted.
-% Add example?
-% how the keywords were put in logchunks does not fit here, that is
-% maybe answered 2 paragraphs above already?
-% how KWS uses the keywords is already described in the section
-% introducing the technique => I would scrap everything but the first
-% sentence directly above here :)
-
-% TODO Moritz: You said: Add more details.
-% How was the split in numbers?
-% this is described in the following paragraph, should we merge them
-% (bc there are also no sub-RQs now) or is it close enough? :)
-For each repository in \emph{LogChunks}, we split the examples
-chronologically into training and test set.
-Therefore, we train on
-examples from past build logs and test on more recent build logs.
-
-\noindent % TODO: adapt if we change the research questions
-\textbf{RQ 2.1: Size of Training and Test Set}
-We evaluate the techniques with different training set
-sizes, to analyze how many examples the chunk retrieval techniques need to
-perform best.
-We train each technique with one to five examples from each of
-the repositories within \emph{LogChunks}.
-The size of the test set is one.
-
-\noindent
-\textbf{RQ 2.2: Recording Structural Categories}
-We record the structural categories
-of the examples in the training and test sets, to determine how
-structurally similar the examples for the chunk
-retrieval techniques need to be.
-
-\noindent
-\textbf{RQ2.3: Accuracy Metrics}
-we save the output lines of the chunk retrieval run on the input
-of the test example ($\mathit{RetrievedLines}$), to measure the
-accuracy of the retrieved chunks
-As oracle in our evaluation, we save the
-desired lines from the output of the test example
-($\mathit{DesiredLines}$).
-
-We calculate and define a number of metrics for the context of our
-evaluation.
+\textbf{Accuracy Metrics}
+We calculate a number of accuracy metrics to measure how well
+the chunk retrieval techniques perform in our evaluation:
 
 \vspace{0.2cm}
 \begin{itemize}[leftmargin=0.4cm] \itemsep1em
@@ -1246,6 +1232,7 @@ evaluation.
 	% I.e., Are line numbers part of this? => no.
 	% not checked, but if lines are identical they also contain
 	% the same information so if someone asks we can defend I think
+
 	\item $\mbox{Precision} = \dfrac{|\mathit{True\
 	Positives}|}{|\mathit{RetrievedLines}|}$ \vspace{0.21cm} \\
 	Precision of a chunk retrieval describes which proportion of
@@ -1256,23 +1243,36 @@ evaluation.
 	\vspace{0.2cm} \\
 	Recall of a chunk retrieval describes which proportion of the
 	desired lines were retrieved.
+
 	\item $\mbox{F$_{1}$-score} = 2 \cdot \dfrac{\mathit{Precision}
 	\cdot \mathit{Recall}}{\mathit{Precision} + \mathit{Recall}}$
 	\vspace{0.2cm}\\
 	In addition, we calculate the F$_{1}$-score, the harmonic mean
 	of precision and recall.
-We prefer F$_{1}$ to other aggregate
+  We prefer F$_{1}$ to other aggregate
 	measures such as accuracy because for a
-	``needle-in-the-haystack'' scenario, we do not want to bloat
+	``needle-in-the-haystack'' scenario, we want to avoid bloating
 	our results by correctly not finding lots of irrelevant log
 	lines.
+
 	\item Successful retrieval = $\mathit{true}\ \mathit{iff}\
-	\mathit{Recall} = 1, \mathit{false\ otherwise}$  \vspace{0.2cm} \\
+	\mathit{Recall} = 1, \mathit{false\ otherwise}$ \vspace{0.05cm}\\
 	We define a successful retrieval as one where all desired
 	lines were
 	extracted, therefore when recall is one.
 \end{itemize}
 
+This concludes one execution within our evaluation.
+We conduct one run for each of the four chunk retrieval techniques,
+for each of the eighty repositories in \emph{LogChunks} (8)
+and for each of the five training set sizes (2).
+In total we perform 1600 runs, 400 for each of the chunk retrieval
+techniques PBE, CTS, KWS and RLR.
+
+Our implementation of the techniques, as well as our evaluation
+harness and the code we used to process our results is offered
+for inspection and reproduction in our replication package
+~\cite{brandt2020chunk-replication}.
 
 \section{Results}
 This section presents the separate results for each chunk retrieval
