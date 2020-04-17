@@ -79,6 +79,7 @@ However, despite its paramount role, the process of how to analyze
 build logs has so far received little attention, bringing us to our
 first research question:
 \begin{simplebox}[minipage boxed title*=-5cm]{Research Question}
+
 \begin{itemize}
   \item[\textbf{RQ1:}] What are the state-of-the-art techniques on build
   log analysis?
@@ -92,7 +93,7 @@ alone made their implementation available.
 Even so, the literature
 survey finds three main strategies to extract information chunks from
 build logs: Using 1) a set of manually curated regular expressions,
-similar to TravisTorrentI~\cite{beller2017oops}, 2) a list of keywords
+similar to TravisTorrent~\cite{beller2017oops}, 2) a list of keywords
 to identify regions of interest in the build log, and 3)
 % TODO (Caro): Provide better description
 doing text-similarity.
@@ -165,110 +166,6 @@ However, its low precision---it extracts a
 context of multiple lines around a finding---makes it generally
 unsuited for automatic on-ward processing and instead requires a human
 to further inspect and interpret the output chunk.
-
-\begin{figure*}[!t]
-  \centering
-\begin{subfigure}[t]{\columnwidth}
-  \begin{lstlisting}[breaklines=true,frame=tlr]
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-  \end{lstlisting}
-  \vspace{-\baselineskip}
-  \begin{lstlisting}[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
-Could not determine the dependencies of task ':app:jacocoTestDebugReport'.
-> Task with path 'testDebug' not found in project ':app'.
-  \end{lstlisting}
-  \vspace{-\baselineskip}
-  \begin{lstlisting}[breaklines=true,frame=blr]
-
-* Try:
-  \end{lstlisting}
-\end{subfigure}\hspace{\fill}
-\begin{subfigure}[t]{\columnwidth}
-  \centering
-  \begin{lstlisting}[breaklines=true,frame=tlr]
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-  \end{lstlisting}
-  \vspace{-\baselineskip}
-  \lstinputlisting[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]{listings/chunk1.txt}
-  \vspace{-\baselineskip}
-  \begin{lstlisting}[breaklines=true,frame=blr]
-
-* Try:
-  \end{lstlisting}
-\end{subfigure}
-  \caption{Two examples of log chunks explaining why an Android
-  build failed.}
-  % TODO Moritz: we can relate this to travistorrent maybe, you told me
-  % long ago that this was something your analyzer cannot extract
-  \label{lst:chunk-example}
-\end{figure*}
-
-\lstset{language=caml, morekeywords={StartExtraction, RegexPosition,
-RegexPair,
-  EndExtraction}, keywordstyle=\bfseries\color{black}, escapeinside=//}
-\begin{figure}[!t]
-  \centering
-  \lstinputlisting[breaklines=true]{listings/prose.txt}
-  \caption{Simiplified regular expression produced by PBE when trained
-  with examples from \Cref{lst:chunk-example}}
-  \label{lst:prose-program-simplified}
-\end{figure}
-
-\lstset{
-  language=,
-  morekeywords={},
-  texcl=false
-}
-\begin{figure}[!t]
-  \centering
-  \begin{lstlisting}[breaklines=true,frame=tlr]
-=== RUN   TestSeparator
-  \end{lstlisting}
-  \vspace{-\baselineskip}
-  \lstinputlisting[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]{listings/chunk2.txt}
-  \vspace{-\baselineskip}
-  \begin{lstlisting}[breaklines=true,frame=blr]
-=== RUN   TestGenerateHTML
-  \end{lstlisting}
-  \caption{Example of a log chunk showing a linter error}
-  \label{lst:chunk-example-3}
-\end{figure}
-
-\subsection{Not intro anymore}
-% TODO: this could move to the chunk retrieval techniques section
-The results of our empirical comparison study on the chunk retrieval
-techniques
-show that the structural representation of the targeted chunk greatly
-influences
-the performance of the chunk retrieval techinques.
-\Cref{lst:chunk-example} shows two exemplary
-log chunks from Android build logs marked in blue.
-Both chunks contain the information on why the
-corresponding build failed.
-When PBE is trained with these two examples it produces
-a regular expression program similar to the one presented in
-\Cref{lst:prose-program-simplified}.
-The retrieval
-starts after a colon and a line separator and before a capital
-letter.
-It ends before two line separators, consistent with the two example
-chunks from \Cref{lst:chunk-example}.
-This shows, that the characters structuring the text around the chunk are
-cruicial for regular expressions to identify a log chunk.
-In fact, if the third example from \Cref{lst:chunk-example-3} with a
-different structural representation is added to the training set,
-PBE is not able to syntesize a program and returns
-``\texttt{no program found}''.
-We express this difference in structural representation through
-dividing log chunks into structural categories.
-The chunks from \Cref{lst:chunk-example}
-are in the \emph{same structural category}, while the chunk from
-\Cref{lst:chunk-example-3} is in a \emph{different structural category}.
-
 
 % % \textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited
 % to retrieve information from continuous integration build logs.
@@ -734,6 +631,7 @@ analyzed by Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying} and several other studies.
 
 \subsection{Discussion}
+\label{sec:lit-sur:discussion}
 Our literature survey sheds light on how build log analysis is used within
 computer science research.
 Hereafter we will summarize our findings and relate them to the
@@ -743,20 +641,21 @@ retrieval techniques.
 We saw that various researchers process build logs to support their
 research, often because the logs provide more or the necessary information
 to the researchers~\cite{ren2018automated}.
-Most of the articles which explicitly mention a manual analysis of
-the logs only restrict their work to few logs or take a
+Articles which explicitly mention a manual analysis of
+the logs, mostly restrict their work to few logs or take a
 ``representative sample to make manual analysis
 feasible''~\cite{zolfagharinia2017not}.
 Automated approaches are necessary as many studies target a large
 number of builds.
-The chunk retrieval techniques we investigate within this article are
-automated, apart from their configuration through training examples.
+% The chunk retrieval techniques we investigate within this article are
+% automated, apart from their configuration through training examples.
 
 We have observed very little reuse of build log analysis tools.
 This can stem from the fact that publishing replication packages and
 research prototypes became popular only in recent years or from the
 high specialization of the developed tools in regards to supported
 build environments and targeted information.
+
 Several articles noted the variety in log formats for different build
 environments, which requires customizing build log techniques for
 every supported build environment.
@@ -768,35 +667,22 @@ From this we follow that, while custom parsers are beneficial for the
 small group of environments targeted by many (A), all and especially
 the rarer investigated environments (B) would benefit from a generic
 solution.
-We implement build environment agnostic build log analysis
-techniques, which are customized to a specific project by
-the training examples which the user provides.
-In addition, the \emph{LogChunks}~\cite{brandt2020logchunks}
-data set we chose for our evaluation covers a broad range of build
-environments.
-% Further, the training examples also specify the log chunk targeted
-by the
-% retrieval, which enable our chunk retrieval techniques to retrieve a
-% broad range of information from build logs.
-
-The articles within our study mainly tried to retrieve or classify
-errors or reasons for the build to fail from the logs.
-Therefore we chose the log chunk ``describing why the build failed''
-~\cite{brandt2020logchunks} for our empirical comparison study
-of chunk retrieval techniques.
-The techniques we implement are in principle agnostic to the targeted
-log chunk, thus we believe our results can be generalized to other
-kinds of log chunks.
+% We implement build environment agnostic build log analysis
+% techniques, which are customized to a specific project by
+% the training examples which the user provides.
+% In addition, the \emph{LogChunks}~\cite{brandt2020logchunks}
+% data set we chose for our evaluation covers a broad range of build
+% environments.
+% % Further, the training examples also specify the log chunk targeted
+% by the
+% % retrieval, which enable our chunk retrieval techniques to retrieve
+% % a broad range of information from build logs.
 
 Urli et al.~\cite{urli2018design} strongly discouraged from parsing
 build logs for information as it is ``too error prone'', other
 articles pointed to the effort of developing a custom tool.
 Regular expressions are known to be tedious to
 maintain~\cite{michael2019regexes}.
-For this reason, we are focussing on techniques that are configured
-through examples consisting of logs and corresponding chunks.
-These examples are provided by the user and can simply be
-exchanged whenever new cases are introduced.
 
 % This task of retrieving specific chunks of text from the
 % build logs can be solved by the chunk retrieval techniques we compare
@@ -809,10 +695,16 @@ exchanged whenever new cases are introduced.
 % tools in their studies.
 
 In summary, this literature study shows the need for build log
-analysis techniques that are build-environment agnostic, automated
-and can be configured with small effort.
-We achieve this by developing three techniques for which the
-information to be retrieved is specified through examples or keywords.
+analysis techniques that are automated, build-environment agnostic
+and can be configured by the user with little effort.
+% We achieve this by developing three techniques for which the
+% information to be retrieved is specified through examples or keywords.
+
+For this reason, we are focussing on techniques that run automatic
+after being configured through examples or keywords.
+Examples consist of logs and corresponding chunks.
+The examples and keywords are provided by the user and can simply be
+exchanged whenever new cases are introduced.
 
 We propose the notion of chunk retrieval techniques which retrieve
 a substring, that describes a specific information, from a build log.
@@ -836,12 +728,23 @@ The targeted chunks are describing error messages or
 ``the reason the build failed'', which was also the information
 most targeted by the articles in our survey.
 
+% The articles within our study mainly tried to retrieve or classify
+% errors or reasons for the build to fail from the logs.
+% Therefore we chose the log chunk ``describing why the build failed''
+% ~\cite{brandt2020logchunks} for our empirical comparison study
+% of chunk retrieval techniques.
+% The techniques we implement are in principle agnostic to the targeted
+% log chunk, thus we believe our results can be generalized to other
+% kinds of log chunks.
 
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
 This section introduces key concepts of the three chunk retrieval
 techniques we study in this article, namely program synthesis by
 example (PBE), common text similarity (CTS), and keyword search (KWS).
+In addition we present our comparison baseline of random line
+retrieval (RLR), illustrate the techniques on a concrete example
+of log chunks and sketch out implementation.
 
 \Cref{tab:ctr} shows a comparison of the presented techniques.
 
@@ -867,7 +770,7 @@ Random Line Retrieval	     & RLR     & Random sample
 \end{table*}
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
-\label{sec:blirt}
+\label{sec:crt-characteristics}
 In this article, we evaluate different techniques to automatically
 retrieve pieces of information that appear literally in the build
 logs.
@@ -1040,7 +943,7 @@ The number of surrounding lines retrieved is
 the average of lines in the output of the training examples.
 
 
-\subsection{Random Line Retrieval}
+\subsection{Random Line Retrieval (RLR)}
 \label{sec:expl-rlr}
 In our evaluation, we want to compare against a baseline of randomly
 picking lines from the build log.
@@ -1056,6 +959,134 @@ number of lines in the chunks of the training examples.
 % I would not know of any details to add.
 %It's really all we are doing
 
+\subsection{Chunk Retrieval Example}
+\label{seC:crt-example}
+
+\begin{figure*}[!htbp]
+  \centering
+\begin{subfigure}[!htbp]{\columnwidth}
+  \begin{lstlisting}[breaklines=true,frame=tlr]
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
+Could not determine the dependencies of task ':app:jacocoTestDebugReport'.
+> Task with path 'testDebug' not found in project ':app'.
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[breaklines=true,frame=blr]
+
+* Try:
+  \end{lstlisting}
+\end{subfigure}\hspace{\fill}
+\begin{subfigure}[!htbp]{\columnwidth}
+  \centering
+  \begin{lstlisting}[breaklines=true,frame=tlr]
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \lstinputlisting[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]{listings/chunk1.txt}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[breaklines=true,frame=blr]
+
+* Try:
+  \end{lstlisting}
+\end{subfigure}
+  \caption{Two examples of log chunks explaining why an Android
+  build failed.}
+  % TODO Moritz: we can relate this to travistorrent maybe, you told me
+  % long ago that this was something your analyzer cannot extract
+  \label{lst:chunk-example}
+\end{figure*}
+
+\lstset{language=caml, morekeywords={StartExtraction, RegexPosition,
+RegexPair,
+  EndExtraction}, keywordstyle=\bfseries\color{black}, escapeinside=//}
+\begin{figure}[!htbp]
+  \centering
+  \lstinputlisting[breaklines=true]{listings/prose.txt}
+  \caption{Simplified regular expression produced by PBE when trained
+  with examples from \Cref{lst:chunk-example}}
+  \label{lst:prose-program-simplified}
+\end{figure}
+
+\lstset{
+  language=,
+  morekeywords={},
+  texcl=false
+}
+\begin{figure}[!htbp]
+  \centering
+  \begin{lstlisting}[breaklines=true,frame=tlr]
+=== RUN   TestSeparator
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \lstinputlisting[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]{listings/chunk2.txt}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[breaklines=true,frame=blr]
+=== RUN   TestGenerateHTML
+  \end{lstlisting}
+  \caption{Example of a log chunk showing a linter error}
+  \label{lst:chunk-example-3}
+\end{figure}
+
+To illustrate the chunk retrieval techniques further, we want to give
+an example of real-world log LogChunks.
+\Cref{lst:chunk-example} shows two excerpts
+from Android build logs.
+Marked in blue are the chunks
+which contain the information on why the
+corresponding build failed.
+
+When PBE is trained with these two examples, it produces
+a regular expression program similar to the one presented in
+\Cref{lst:prose-program-simplified}.
+The retrieval
+starts after a colon and a line separator and before a capital
+letter.
+It ends before two line separators,
+which is consistent with the two example
+chunks from \Cref{lst:chunk-example}.
+This shows, that the characters structuring the text around the chunk are
+crucial for regular expressions to identify a log chunk.
+In fact, if the third example from \Cref{lst:chunk-example-3},
+which has a
+different structural representation, is added to the training set,
+PBE is not able to synthesize a program and returns
+``\texttt{no program found}''.
+We later express this difference in structural representation through
+dividing log chunks into \emph{structural categories}.
+The chunks from \Cref{lst:chunk-example}
+are in the \emph{same structural category}, while the chunk from
+\Cref{lst:chunk-example-3} is in a
+\emph{different structural category}.
+The results of our empirical comparison study on the chunk retrieval
+techniques
+show that the structural representation of the targeted chunk greatly
+influences
+the performance of the chunk retrieval techniques.
+
+CTS will rank the lines from an analyzed build log which are most
+similar to the chunks in the training examples
+from \Cref{lst:chunk-example}.
+It will then return the two lines ranked highest, as the chunks in
+the training examples have on average two lines.
+
+KWS is configured with keywords that appear close to the chunk within
+the build log.
+For the examples from \Cref{lst:chunk-example} these could be
+``FAILURE'', ``wrong'' or ``failed''.
+The example from \Cref{lst:chunk-example-3} could be found
+by searching for ``FAIL''.
+If KWS would be trained with all three examples and the aforementioned
+associated keywords, it would search for the three keywords from
+\Cref{lst:chunk-example}, as they appear twice---most often within
+the training set of three examples.
+
 \subsection{Tool Implementation}
 For our comparison study we implemented each of the chunk retrieval
 techniques and a unifying interface.
@@ -1065,10 +1096,21 @@ The implementation of PBE in C\# is based on the Microsoft PROSE
 library~\cite{prose2019webpage}.
 We implemented CTS, KWS and RLR using
 R and the text2vec library~\cite{text2vec2019webpage}.
-
+They can be found in our replication
+package~\cite{brandt2020chunk-replication} together which have
+our techniques installed and ready to use.
 
 \section{Study Design}
 \label{sec:study}
+
+To investigate when our chunk retrieval techniques are suited to
+analyze build logs (\textbf{RQ2}), we perform an empirical comparison
+study on the \emph{LogChunks} data set~\cite{brandt2020logchunks}.
+In particular we are interested in how many examples a technique
+should be trained with (\textbf{RQ2.1}),
+how similar the structural representation of the targeted log chunks
+has to be (\textbf{RQ2.2}) and how reliable the quality of the
+produced outputs is (\textbf{RQ2.3}).
 
 \begin{simplebox}[minipage boxed title*=-2.5cm,
 attach boxed title to top center={yshift=-6mm}]
@@ -1083,7 +1125,10 @@ retrieve chunks from build logs?}
 \end{itemize}
 \end{simplebox}
 
-% TODO Caro: redo
+In the following we present the data set we created for this study,
+our study process (presented in \Cref{fig:study}) and the metrics
+we measure to answer our research questions.
+
 \begin{figure*}[tb]
 	\centering
 	\includegraphics[width=\textwidth, trim={1.6cm 1.6cm 0.2cm 5.6cm},
@@ -1091,18 +1136,6 @@ retrieve chunks from build logs?}
 	\caption{Design of our technique comparison study.}
 	\label{fig:study}
 \end{figure*}
-
-To investigate which technique is best suited to retrieve chunks from
-CI build logs we evaluate the three chunk retrieval techniques
-PBE, CTS and KWS.
-Random Line Retrieval (RLR), acts as a baseline for
-the comparison.
-The following section
-describes our study design and which metrics we measure to answer our
-research questions.
-In the presentation of the results, we first focus
-on each of the three techniques and later compare them against each
-other.
 
 \subsection{LogChunks}
 For this study we created the previously published data set
@@ -1113,62 +1146,44 @@ programming languages.
 For each file, the authors manually ``labeled
 the log part (chunk) describing why the build
 failed''~\cite{brandt2020logchunks}.
-We include keywords, which we
+We included keywords, which we
 would use to search for the selected chunk within the log.
 In
 addition, we categorized the log chunks according to their format
 within the log.
-If the chunks are surrounded by the same markings
-within the log we assign them the same structural category.
+If the chunks were surrounded by the same markings
+within the log we assigned them the \emph{same structural category},
+as described in \Cref{sec:crt-example}.
 
-% We run four techniques on the examples from \emph{LogChunks}.
-
-\noindent
-\textbf{Training and Test Set}
-% TODO Moritz: You said: Add details how key words were extracted.
-% Add example?
-% how the keywords were put in logchunks does not fit here, that is
-% maybe answered 2 paragraphs above already?
-% how KWS uses the keywords is already described in the section
-% introducing the technique => I would scrap everything but the first
-% sentence directly above here :)
-
-% TODO Moritz: You said: Add more details.
-% How was the split in numbers?
-% this is described in the following paragraph, should we merge them
-% (bc there are also no sub-RQs now) or is it close enough? :)
-For each repository in \emph{LogChunks}, we split the examples
-chronologically into training and test set.
-Therefore, we train on
-examples from past build logs and test on more recent build logs.
-
-\noindent % TODO: adapt if we change the research questions
-\textbf{RQ 2.1: Size of Training and Test Set}
-We evaluate the techniques with different training set
-sizes, to analyze how many examples the chunk retrieval techniques need to
-perform best.
-We train each technique with one to five examples from each of
-the repositories within \emph{LogChunks}.
-The size of the test set is one.
-
-\noindent
-\textbf{RQ 2.2: Recording Structural Categories}
-We record the structural categories
-of the examples in the training and test sets, to determine how
-structurally similar the examples for the chunk
-retrieval techniques need to be.
-
-\noindent
-\textbf{RQ2.3: Accuracy Metrics}
-we save the output lines of the chunk retrieval run on the input
-of the test example ($\mathit{RetrievedLines}$), to measure the
-accuracy of the retrieved chunks
-As oracle in our evaluation, we save the
-desired lines from the output of the test example
+\subsection{Study Process}
+We begin by selecting all examples in \emph{LogChunks}
+that correspond to one GitHub repository---and thus the
+same build environment (1).
+One to five examples make up the training set (2).
+We vary its size to measure how many examples are needed to
+confidently configure a technique.
+The training set is so small, because the examples have to be
+manually created by a user.
+A larger training set would oppose our goal of providing techniques
+that can be configured with little effort
+(see \Cref{sec:lit-sur:discussion}).
+The example chronologically after the training set makes up the
+test set (3).
+In this way, we train on examples from past build logs and test on
+more recent logs.
+We chose a test set size of 1, as users of our techniques
+should receive reliable results on every build log they analyze.
+In the next step, we configure a chunk retrieval technique with
+the examples from the training set (4) and apply the technique to the
+training set (5), which produces the retrieval output (6).
+Based on this, we collect the following measurements (7):
+the size of training set (\textbf{RQ2.1}),
+the number of structural categories in the training
+set (\textbf{RQ2.2}),
+the lines of the retrieval output ($\mathit{RetrievedLines}$),
+and our oracle: the output defined in the test example
 ($\mathit{DesiredLines}$).
-
-We calculate and define a number of metrics for the context of our
-evaluation.
+From these we calculate accuracy metrics (\textbf{RQ2.3}):
 
 \vspace{0.2cm}
 \begin{itemize}[leftmargin=0.4cm] \itemsep1em
@@ -1182,6 +1197,7 @@ evaluation.
 	% I.e., Are line numbers part of this? => no.
 	% not checked, but if lines are identical they also contain
 	% the same information so if someone asks we can defend I think
+
 	\item $\mbox{Precision} = \dfrac{|\mathit{True\
 	Positives}|}{|\mathit{RetrievedLines}|}$ \vspace{0.21cm} \\
 	Precision of a chunk retrieval describes which proportion of
@@ -1192,23 +1208,36 @@ evaluation.
 	\vspace{0.2cm} \\
 	Recall of a chunk retrieval describes which proportion of the
 	desired lines were retrieved.
+
 	\item $\mbox{F$_{1}$-score} = 2 \cdot \dfrac{\mathit{Precision}
 	\cdot \mathit{Recall}}{\mathit{Precision} + \mathit{Recall}}$
 	\vspace{0.2cm}\\
 	In addition, we calculate the F$_{1}$-score, the harmonic mean
 	of precision and recall.
-We prefer F$_{1}$ to other aggregate
+  We prefer F$_{1}$ to other aggregate
 	measures such as accuracy because for a
-	``needle-in-the-haystack'' scenario, we do not want to bloat
+	``needle-in-the-haystack'' scenario, we want to avoid bloating
 	our results by correctly not finding lots of irrelevant log
 	lines.
+
 	\item Successful retrieval = $\mathit{true}\ \mathit{iff}\
-	\mathit{Recall} = 1, \mathit{false\ otherwise}$  \vspace{0.2cm} \\
+	\mathit{Recall} = 1, \mathit{false\ otherwise}$ \vspace{0.05cm}\\
 	We define a successful retrieval as one where all desired
 	lines were
 	extracted, therefore when recall is one.
 \end{itemize}
 
+This concludes one execution within our evaluation.
+We conduct one run for each of the four chunk retrieval techniques,
+for each of the eighty repositories in \emph{LogChunks} (8)
+and for each of the five training set sizes (2).
+In total we perform 1600 runs, 400 for each of the chunk retrieval
+techniques PBE, CTS, KWS and RLR.
+
+Our implementation of the techniques, as well as our evaluation
+harness and the code we used to process our results is offered
+for inspection and reproduction in our replication package
+~\cite{brandt2020chunk-replication}.
 
 \section{Results}
 This section presents the separate results for each chunk retrieval
@@ -1871,7 +1900,7 @@ The \emph{LogChunks} data set and our study results act as a
 baseline to benchmark such technique improvements.
 We propose the
 following improvements:
-\begin{itemize}
+\begin{itemize}[leftmargin=0.4cm] \itemsep1em
   \item \textbf{Custom Ranking and Tokens for PBE} The program
   synthesis through PROSE ranks possible programs according to
   what the user most likely intended.
