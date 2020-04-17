@@ -37,167 +37,74 @@
   belowskip=0pt
 }
 
-Continuous Integration (CI) has become a common practice in software
-engineering~\cite{hilton2016usage}.
-Many software projects use
-CI~\cite{hilton2016usage,staahl2014modeling,beller2017oops} to detect
-bugs early~\cite{vasilescu2015quality,duvall2007continuous}, improve
-developer productivity~\cite{miller2008hundred,hilton2016usage} and
-communication~\cite{downs2012ambient}.
-CI builds produce logs which
-report results of various sub-steps within the build.
-These build logs
-contain a lot of valuable information for developers and researchers---for
-example, descriptions of compile errors, linter warnings or failed
-tests~\cite{beller2017oops,seo2014programmers,vassallo2017a-tale}.
+Within the past two decades, Continuous Integration (CI) has become a
+ubiquitous best practice to streamline the build process of software
+projects~\cite{hilton2016usage,beller2017oops,staahl2014modeling}. Build
+logs are a textual by-product that automatic software build processes
+create. As a ``treasure trove'' of information, they contain results
+not only of the elemntary steps to ``make'' a project---such as
+retrieving and resolving dependencies, compiling, and testing the
+software---but also about anciliary quality assurance steps such as
+automated, static analysis tools.
 
-CI builds produce logs which report the results of the steps within
-the build.
-The information stored in build logs can and has
-already been used for a variety of applications.
-One prominent dataset
-in the space, TravisTorrent, was featured as the MSR Data Challenge
-2017~\cite{msr17challenge}.
-To date, scientist and practitioners alike
-have used it and other, proprietary datasets to understand and
-cateogrize Continuous Integration build
-failures~\cite{islam2017insights}, to do research on testing
-practices~\cite{orellana2017differences}, to train classifiers to
-predict the build outcome and
-duration~\cite{ni2017cost,bisong2017built,machalica2019predictive},
-and to investigate static analysis tools in CI
-builds~\cite{zampetti2017open}.
-Therefore, being able to efficiently
-and correctly extract information from build logs is paramount to the
-future of a variety of fields depending on it.
+When a build or one of its sub steps fails, developers typically
+scavenge the log for the source of the error. This manual activity is
+tedious and prone to error~\cite{santolucito2018statically}. As a
+single build log can be over 50 megabytes large~\cite{beller2017oops},
+it finding a piece of information in it is akin to searching for a
+needle in a haystack.  In addition, due to their information richness,
+build logs enable a plethora of other applications: with the help of
+build logs, we can better understand and cateogrize Continuous
+Integration failures and compile
+errors~\cite{islam2017insights,seo2014programmers}, differentiate
+testing practices~\cite{orellana2017differences,vassallo2017a-tale},
+train classifiers to predict the build outcome and
+duration~\cite{ni2017cost,bisong2017built,machalica2019predictive}, or
+investigate static analysis tools in CI
+builds~\cite{zampetti2017open}. Manual analysis of build logs does not
+scale to the number of build logs and amount of information that such
+sophisticated applications require. Therefore, being able to
+automatically extract pieces of information from build logs
+is not only paramount to such applications, but can also help
+developers debug a broken build.
 
-However, build logs can be verbose and large---sometimes in excess of
-50 MB of ASCII text~\cite{beller2017oops}---making them inadequate
-for direct human consumption.
-Therefore, to support developers and
-researchers in efficiently making use of the information within build
-logs, we must at least semi-automatically retrieve the chunks of the
-log that describe the targeted information.
-
-There are different techniques to retrieve information chunks from CI
-build logs.
-Beller et al.\ use a rule-based system of regular
-expressions to analyze logs from Travis CI~\cite{beller2017oops}.
-Such regular expressions are developed by looking at exemplary build
-logs.
-Vassallo et al.\ wrote a custom parser to gather information
-for build repair hints~\cite{vassallo2018un-break}.
-Recently, Amar et
-al.\ reduced the number of lines for a developer to inspect by
-creating a diff between logs from failed and successful
-builds~\cite{amar2019mining}.
-
-These approaches have various strengths and weaknesses: Regular
-expressions are exact, but tedious and error-prone to
-maintain~\cite{michael2019regexes}.
-Custom parsers are powerful
-though fragile in light of changes in the log structure.
-Diffing
-between failed and successful logs can reduce the information to be
-processed, but is at best semi-automatic~\cite{amar2019mining}.
-
-% TODO: 4 sentence description of the steps in graphic?
-\Cref{fig:overview} gives an overview of our research steps.
-We conducted a systematic mapping study,
-to gain an impression on how researchers are using information from
-build logs within their research or to support
-developers.
-% We implemented three promising techniques that retrieve
-% chunks of text from build logs and can be adapted to
-% a specific project and use case by giving examples of build logs and
-% correpsonding chunks.
-% We evaluated the
-Our goal was to clarify the state-of-research on build log
-analysis (\textbf{RQ1}).
-
-The outcomes of our study shows that there are various attempts to
-retrieve specific information from buildlogs.
-The resulting implementations are rarely available and therefore rarely
-reused.
-Because of the high development overhead
-of the custom parsers, many implementations are limited to small number
-of supported build tools.
-
-\begin{figure*}[htb]
-	\centering
-	\includegraphics[width=\textwidth, trim={1.2cm 10.5cm 1.2cm 0cm},
-	clip]{img/overview.pdf}
-	\caption{Our Research Workflow.}
-	\label{fig:overview}
-\end{figure*}
-
-To address this, we implement three promising techniques for build
-log analysis.
-They retrieve specific chunks of targeted information and are trained
-with examples provided by the user.
-We conduct an empirical study on the \emph{LogChunks} data
-set~\cite{brandt2020logchunks} to
-gauge the performance of these chunk retrieval techniques and characterize
-when one of the techniques should be preferred over other alternatives
-(\textbf{RQ2}).
-
-\begin{simplebox}[minipage boxed title*=-5cm]{Research Questions}
+However, despite its paramount role, the process of how to analyze
+build logs has so far received little attention, bringing us to our first research question:
+\begin{simplebox}[minipage boxed title*=-5cm]{Research Question}
 \begin{itemize}
-  \item[\textbf{RQ1:}] What is the state-of-research on build
+  \item[\textbf{RQ1:}] What are the state-of-the-art techniques on build
   log analysis?
-  \item[\textbf{RQ2:}] When are PBE, CTS or KWS suited to
-  retrieve chunks from build logs?
+ \end{itemize}
+\end{simplebox}
+
+In this article, as first step (\Cref{fig:overview}), we show that
+less than half of the 61 works which rely on build log analysis
+describe how they performed it, and even fewer did so in detail, let
+alone made their implementation available. Even so, the literature
+survey finds three main strategies to extract information chunks from
+build logs: Using 1) a set of manually curated regular expressions,
+similar to TravisTorrentI~\cite{beller2017oops}, 2) a list of keywords
+to identify regions of interest in the build log, and 3)
+% TODO (Caro): Provide better description
+doing text-similarity.
+
+Even though these three approaches to retrieve information chunks from
+build logs have different strengths and weaknesses, the literature
+survey shows that their use is often arbitrary and that there is
+usually no discussion on why to use one over the other. Developers and
+researchers not only seem to lack awareness of which techniques exist
+(RQ1), but also guidelines on when to employ which. As a consequence,
+in RQ2 we ask:
+
+\begin{simplebox}[minipage boxed title*=-5cm]{Research Question}
+\begin{itemize}
+  \item[\textbf{RQ2:}] What are the comparative strengths and weaknesses of the top-3 build log anaylsis techniques?
 \end{itemize}
 \end{simplebox}
 
-% also moved down to where mentioned in detail
-% left copy here for convenience
+To answer this question, we implement three automatic techniques for
+build log analysis based on the three stratgies at large (step 2):
 
-% \begin{simplebox}[attach boxed title to top center={yshift=-6mm}]
-% {\textbf{RQ1:} What is the state-of-research on build
-% log analysis?}
-% \begin{itemize}
-%   \item[\textbf{RQ1.1:}] Which information is targeted?
-%   \item[\textbf{RQ1.2:}] Which techniques are used?
-%   \item[\textbf{RQ1.3:}] Which build logs are analyzed?
-% \end{itemize}
-% \end{simplebox}
-
-% \begin{simplebox}[minipage boxed title*=-2.5cm,
-% attach boxed title to top center={yshift=-6mm}]
-% {\textbf{RQ2:} When are PBE{,} CTS or KWS suited to
-% retrieve chunks from build logs?}
-% \begin{itemize}
-%   \item[\textbf{RQ2.1:}] How many examples does a technique need to
-%   perform best?
-%   \item[\textbf{RQ2.2:}] How structurally similar do the examples
-%   need for a technique to be applicable?
-%   \item[\textbf{RQ2.3:}] How accurate are the retrievals of a technique?
-% \end{itemize}
-% \end{simplebox}
-
-
-% % At the moment there is only anecdotal evidence on the performance
-% of these
-% % techniques and on when a technique should be preferred over other
-% alternatives.
-% % Developers and researches currently have little support when choosing
-% which
-% % technique to use for a task.
-
-% % The goal of this article is to investigate different chunk retrieval
-% techniques
-% % for build logs and describe under which circumstances certain
-% techniques
-% can be
-% % recommended over others.
-% % We aim to characterize different chunk retrieval techniques.
-% % For \textbf{Research Question 1} (\textbf{RQ1}), we analyze which
-% criteria
-% % influence the suitability of a chunk retrieval technique for CI
-% build logs.
-
-We implement and evaluate three chunk retrieval techniques:
 \begin{itemize}
   \item \textbf{Program Synthesis by Example (referred to as PBE)}
   Based on user examples of build logs and chunks, PBE
@@ -213,23 +120,34 @@ We implement and evaluate three chunk retrieval techniques:
   the occurrence of specific trigger words.
 \end{itemize}
 
-Following the results from our comparison study,
-recommend PBE for use cases where the desired information is always
-represented in the same structural way and high confidence in precision
-and recall of the chunk retrieval is required.
-Results produced by PBE are suited for automatic on-ward processing.
-CTS is well suited when the representation of the desired information
-varies
+
+In step 3, we conduct an empirical study to gauge the performance of
+these chunk retrieval techniques under a variety of conditions in
+real-world projects. Finally, we develop guidelines (step 4) on when
+one of the techniques might be perferrential to its alternatives.
+
+
+\begin{figure*}[htb]
+	\centering
+	\includegraphics[width=\textwidth, trim={1.2cm 10.5cm 1.2cm 0cm},
+	clip]{img/overview.pdf}
+	\caption{Research Design.}
+	\label{fig:overview}
+\end{figure*}
+
+
+We recommend PBE for use cases where the desired information is always
+represented in the same structural way and high confidence in
+precision and recall of the chunk retrieval is required.  Results
+produced by PBE are suited for automatic on-ward processing.  CTS is
+well suited when the representation of the desired information varies
 slightly and the output of the chunk retrieval is further processed by
-a human.
-In cases where the textual representation of the desired information in
-the log
-is unpredictable or varies greatly, KWS seems to be the best choice.
-However,
-its low precision---it extracts a context of multiple lines around a
-finding---makes it generally unsuited for automatic on-ward processing and
-instead requires a human to further inspect and interpret the output
-chunk.
+a human.  In cases where the textual representation of the desired
+information in the log is unpredictable or varies greatly, KWS seems
+to be the best choice.  However, its low precision---it extracts a
+context of multiple lines around a finding---makes it generally
+unsuited for automatic on-ward processing and instead requires a human
+to further inspect and interpret the output chunk.
 
 \begin{figure*}[!t]
   \centering
@@ -303,6 +221,7 @@ RegexPair,
   \label{lst:chunk-example-3}
 \end{figure}
 
+\subsection{Not intro anymore}
 % TODO: this could move to the chunk retrieval techniques section
 The results of our empirical comparison study on the chunk retrieval
 techniques
@@ -395,7 +314,7 @@ are in the \emph{same structural category}, while the chunk from
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
-	\caption{Our literature selection process, following
+	\caption{Literature selection process, following
 	\cite{petersen2015guidelines}.}
 	\label{fig:lit-survey}
 \end{figure}
