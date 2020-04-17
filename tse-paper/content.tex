@@ -39,20 +39,25 @@
 
 Within the past two decades, Continuous Integration (CI) has become a
 ubiquitous best practice to streamline the build process of software
-projects~\cite{hilton2016usage,beller2017oops,staahl2014modeling}. Build
+projects~\cite{hilton2016usage,beller2017oops,staahl2014modeling}.
+Build
 logs are a textual by-product that automatic software build processes
-create. As a ``treasure trove'' of information, they contain results
+create.
+As a ``treasure trove'' of information, they contain results
 not only of the elemntary steps to ``make'' a project---such as
 retrieving and resolving dependencies, compiling, and testing the
 software---but also about anciliary quality assurance steps such as
 automated, static analysis tools.
 
 When a build or one of its sub steps fails, developers typically
-scavenge the log for the source of the error. This manual activity is
-tedious and prone to error~\cite{santolucito2018statically}. As a
+scavenge the log for the source of the error.
+This manual activity is
+tedious and prone to error~\cite{santolucito2018statically}.
+As a
 single build log can be over 50 megabytes large~\cite{beller2017oops},
 it finding a piece of information in it is akin to searching for a
-needle in a haystack.  In addition, due to their information richness,
+needle in a haystack.
+In addition, due to their information richness,
 build logs enable a plethora of other applications: with the help of
 build logs, we can better understand and cateogrize Continuous
 Integration failures and compile
@@ -61,15 +66,18 @@ testing practices~\cite{orellana2017differences,vassallo2017a-tale},
 train classifiers to predict the build outcome and
 duration~\cite{ni2017cost,bisong2017built,machalica2019predictive}, or
 investigate static analysis tools in CI
-builds~\cite{zampetti2017open}. Manual analysis of build logs does not
+builds~\cite{zampetti2017open}.
+Manual analysis of build logs does not
 scale to the number of build logs and amount of information that such
-sophisticated applications require. Therefore, being able to
+sophisticated applications require.
+Therefore, being able to
 automatically extract pieces of information from build logs
 is not only paramount to such applications, but can also help
 developers debug a broken build.
 
 However, despite its paramount role, the process of how to analyze
-build logs has so far received little attention, bringing us to our first research question:
+build logs has so far received little attention, bringing us to our
+first research question:
 \begin{simplebox}[minipage boxed title*=-5cm]{Research Question}
 \begin{itemize}
   \item[\textbf{RQ1:}] What are the state-of-the-art techniques on build
@@ -80,7 +88,8 @@ build logs has so far received little attention, bringing us to our first resear
 In this article, as first step (\Cref{fig:overview}), we show that
 less than half of the 61 works which rely on build log analysis
 describe how they performed it, and even fewer did so in detail, let
-alone made their implementation available. Even so, the literature
+alone made their implementation available.
+Even so, the literature
 survey finds three main strategies to extract information chunks from
 build logs: Using 1) a set of manually curated regular expressions,
 similar to TravisTorrentI~\cite{beller2017oops}, 2) a list of keywords
@@ -91,14 +100,17 @@ doing text-similarity.
 Even though these three approaches to retrieve information chunks from
 build logs have different strengths and weaknesses, the literature
 survey shows that their use is often arbitrary and that there is
-usually no discussion on why to use one over the other. Developers and
+usually no discussion on why to use one over the other.
+Developers and
 researchers not only seem to lack awareness of which techniques exist
-(RQ1), but also guidelines on when to employ which. As a consequence,
+(RQ1), but also guidelines on when to employ which.
+As a consequence,
 in RQ2 we ask:
 
 \begin{simplebox}[minipage boxed title*=-5cm]{Research Question}
 \begin{itemize}
-  \item[\textbf{RQ2:}] What are the comparative strengths and weaknesses of the top-3 build log anaylsis techniques?
+  \item[\textbf{RQ2:}] What are the comparative strengths and weaknesses
+  of the top-3 build log anaylsis techniques?
 \end{itemize}
 \end{simplebox}
 
@@ -123,7 +135,8 @@ build log analysis based on the three stratgies at large (step 2):
 
 In step 3, we conduct an empirical study to gauge the performance of
 these chunk retrieval techniques under a variety of conditions in
-real-world projects. Finally, we develop guidelines (step 4) on when
+real-world projects.
+Finally, we develop guidelines (step 4) on when
 one of the techniques might be perferrential to its alternatives.
 
 
@@ -138,13 +151,17 @@ one of the techniques might be perferrential to its alternatives.
 
 We recommend PBE for use cases where the desired information is always
 represented in the same structural way and high confidence in
-precision and recall of the chunk retrieval is required.  Results
-produced by PBE are suited for automatic on-ward processing.  CTS is
+precision and recall of the chunk retrieval is required.
+Results
+produced by PBE are suited for automatic on-ward processing.
+CTS is
 well suited when the representation of the desired information varies
 slightly and the output of the chunk retrieval is further processed by
-a human.  In cases where the textual representation of the desired
+a human.
+In cases where the textual representation of the desired
 information in the log is unpredictable or varies greatly, KWS seems
-to be the best choice.  However, its low precision---it extracts a
+to be the best choice.
+However, its low precision---it extracts a
 context of multiple lines around a finding---makes it generally
 unsuited for automatic on-ward processing and instead requires a human
 to further inspect and interpret the output chunk.
