@@ -44,23 +44,23 @@ Build
 logs are a textual by-product that automatic software build processes
 create.
 As a ``treasure trove'' of information, they contain results
-not only of the elemntary steps to ``make'' a project---such as
+not only of the elementary steps to ``make'' a project---such as
 retrieving and resolving dependencies, compiling, and testing the
-software---but also about anciliary quality assurance steps such as
-automated, static analysis tools.
+software---but also about ancillary quality assurance steps such as
+automated static analysis tools.
 
-When a build or one of its sub steps fails, developers typically
+When a build or one of its steps fails, developers typically
 scavenge the log for the source of the error.
 This manual activity is
 tedious and prone to error~\cite{santolucito2018statically}.
 As a
 single build log can be over 50 megabytes large~\cite{beller2017oops},
-it finding a piece of information in it is akin to searching for a
+finding a piece of information in it is akin to searching for a
 needle in a haystack.
 In addition, due to their information richness,
 build logs enable a plethora of other applications: with the help of
-build logs, we can better understand and cateogrize Continuous
-Integration failures and compile
+build logs, we can better understand and categorize CI
+failures and compile
 errors~\cite{islam2017insights,seo2014programmers}, differentiate
 testing practices~\cite{orellana2017differences,vassallo2017a-tale},
 train classifiers to predict the build outcome and
@@ -72,10 +72,9 @@ scale to the number of build logs and amount of information that such
 sophisticated applications require.
 Therefore, being able to
 automatically extract pieces of information from build logs
-is not only paramount to such applications, but can also help
+is not only paramount to applications such as the above mentioned
+ones, but can also help
 developers debug a broken build.
-
-
 
 \begin{figure*}[htb]
 	\centering
@@ -85,28 +84,28 @@ developers debug a broken build.
 	\label{fig:overview}
 \end{figure*}
 
-However, despite its paramount role, the process of how to analyze
+Despite its paramount role, the process of analyzing
 build logs has so far received little attention, bringing us to our
 first research question:
-\begin{simplebox}[minipage boxed title*=-5cm]{Research Question}
-
-\begin{itemize}
-  \item[\textbf{RQ1:}] What are the state-of-the-art techniques on build
-  log analysis?
- \end{itemize}
+\begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
+1}}
+What are the state-of-the-research techniques on build log analysis?
 \end{simplebox}
 
 In this article, as first step (\Cref{fig:overview}), we show that
 less than half of the 61 works which rely on build log analysis
-describe how they performed it, and even fewer did so in detail, let
-alone made their implementation available.
-Even so, the literature
-survey finds three main strategies to extract information chunks from
-build logs: Using 1) a set of manually curated regular expressions,
-similar to TravisTorrent~\cite{beller2017oops}, 2) a list of keywords
-to identify regions of interest in the build log, and 3)
-% TODO (Caro): Provide better description
-doing text-similarity.
+describe how they performed it.
+Even fewer did so in detail or
+made their implementation available.
+Through the literature
+survey we identify three prevalent strategies to
+analyze build logs: Using 1) a set of
+manually curated regular expressions,
+similar to TravisTorrent~\cite{beller2017oops},
+2) information
+retrieval techniques,
+and 3) a list of search keywords
+to identify regions of interest in the build log.
 
 Even though these three approaches to retrieve information chunks from
 build logs have different strengths and weaknesses, the literature
@@ -118,15 +117,14 @@ researchers not only seem to lack awareness of which techniques exist
 As a consequence,
 in RQ2 we ask:
 
-\begin{simplebox}[minipage boxed title*=-5cm]{Research Question}
-\begin{itemize}
-  \item[\textbf{RQ2:}] What are the comparative strengths and weaknesses
-  of the top-3 build log anaylsis techniques?
-\end{itemize}
+\begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
+2}}
+What are the comparative strengths and weaknesses
+of promising build log analysis techniques?
 \end{simplebox}
 
 To answer this question, we implement three automatic techniques for
-build log analysis based on the three stratgies at large (step 2):
+build log analysis based on the identified strategies (step 2):
 
 \begin{itemize}
   \item \textbf{Program Synthesis by Example (referred to as PBE)}
@@ -145,10 +143,14 @@ build log analysis based on the three stratgies at large (step 2):
 
 
 In step 3, we conduct an empirical study to gauge the performance of
-these chunk retrieval techniques under a variety of conditions in
-real-world projects.
+these chunk retrieval techniques in
+real-world projects under a variety of conditions.
+Our study is based on the \emph{LogChunks} data
+set~\cite{brandt2020logchunks} which encompasses build logs from
+80 popular open source projects and a broad range of
+build environments.
 Finally, we develop guidelines (step 4) on when
-one of the techniques might be perferrential to its alternatives.
+one of the techniques might be preferential to its alternatives.
 
 
 
@@ -169,71 +171,11 @@ context of multiple lines around a finding---makes it generally
 unsuited for automatic on-ward processing and instead requires a human
 to further inspect and interpret the output chunk.
 
-% % \textbf{RQ2} asks under which conditions PBE, CTS and KWS are suited
-% to retrieve information from continuous integration build logs.
-% % \textbf{RQ2} is refined into sub-questions along with the criteria
-% resulting from \textbf{RQ1} and compares their instantiations for the
-% three techniques:
-% % how many training examples a technique needs to perform best
-% (\textbf{RQ2.1}), how structurally diverse the examples can
-% be (\textbf{RQ2.2}) and how accurate the retrieved output is
-% (\textbf{RQ2.3}).
-% % To evaluate PBE, CTS and KWS we use the \emph{LogChunks} data set,
-% which encompasses about 800 log files from 80 repositories.
-% % Each log is labeled with the log part describing the reason a build
-% failed, keywords to search for this log part and a categorization of
-% the labeled log part according to its structural representation within
-% the log.
-
-% Our study of the three techniques on \emph{LogChunks} shows that
-% \begin{itemize}
-%   \item PBE yields very accurate results when trained with two examples
-%   from a
-%   single structural category.
-%   \item CTS shows the best average precision, though precision and
-% recall
-%   of a
-%   retrieval is hard to determine from the given result.
-%   A small increase in the number of training examples has no noticeable
-%   influence.
-
-%   Fewer structural categories improve precision and recall of the
-%   retrieval.
-%   \item KWS has the highest recall of all techniques, however much
-%   lower precision.
-%   It is the technique with the best recall when multiple structural
-%   categories
-%   are present in the training examples.
-% \end{itemize}
-
-% % \noindent
-% % \textbf{Our work contributes:}
-% % \begin{itemize}
-% %   \item A tool with three prototypical implementations of chunk
-% retrieval techniques:
-% %	  \begin{itemize}
-% %	    \item program synthesis from examples using the Microsoft
-% PROSE library (PBE),
-% %	    \item a common information retrieval approach using text
-% similarity (CTS), and
-% %	    \item a keyword search approach (KWS).
-% %	  \end{itemize}
-% %   \item Recommendations for the configuration of each of the
-% investigated chunk retrieval techniques.
-% %   \item Guidelines on choosing a suitable chunk retrieval technique.
-% % \end{itemize}
-
+To enable retracing of our research, we provide a detailed replication
+package~\cite{brandt2020chunk-replication}.
 
 \section{Systematic Literature Mapping Survey}
 \label{sec:survey}
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
-	\caption{Literature selection process, following
-	\cite{petersen2015guidelines}.}
-	\label{fig:lit-survey}
-\end{figure}
 
 The field of analyzing build
 logs is relatively young; We have seen scattered
@@ -254,20 +196,28 @@ survey and the data extraction from the resulting articles.
 We present our results on how build logs are analyzed in literature
 and discuss the implications of these findings on our research.
 
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
+	\caption{Literature selection process, following
+	\cite{petersen2015guidelines}.}
+	\label{fig:lit-survey}
+\end{figure}
+
+
 \lstset{
   morekeywords={INFO, WARN, 2008, 11, 09},
   alsoletter=-20819,
   keywordstyle=\bfseries\color{Plum},
   escapeinside=**
 }
-\begin{figure*}[htbp]
+\begin{figure}[b]
   \centering
   \lstinputlisting[breaklines=true]{listings/syslog.txt}
   \caption{System Log excerpt.
 Example adapted from~\cite{he2017towards}.}
   \label{lst:system-log}
-\end{figure*}
-
+\end{figure}
 
 \subsection{Distinction from System Log Analysis}
 \label{sec:system-log-analysis}
@@ -386,7 +336,7 @@ We were interested in
   logs.
 (\textbf{RQ1.3})
 \end{itemize}
-To objectifiy our data extraction we created a template of the targeted
+To objectify our data extraction we created a template of the targeted
 factors and performed a pilot, as recommended by Petersen et
 al.~\cite{petersen2015guidelines}.
 Two authors extracted the data from five articles and we held a
@@ -413,9 +363,9 @@ e.g.\ if
 two kinds of information were targeted during a build log analysis.
 
 \begin{simplebox}[attach boxed title to top center={yshift=-6mm}]
-{\textbf{RQ1:} What is the state-of-research on build
-log analysis?}
-\begin{itemize}
+{\textbf{RQ1:} What are the state-of-the-research
+techniques on build log analysis?}
+\begin{itemize}[leftmargin=2cm]
   \item[\textbf{RQ1.1:}] Which information is targeted?
   \item[\textbf{RQ1.2:}] Which techniques are used?
   \item[\textbf{RQ1.3:}] Which build logs are analyzed?
@@ -484,7 +434,6 @@ None identified  &
 \label{tab:litsur:techniques}
 \end{table*}
 \addtolength{\tabcolsep}{5pt}
-% TODO one source might contribute multiple times to 'other'
 
 \begin{figure}
 \centering
@@ -506,15 +455,6 @@ None identified  &
 \end{subfigure}
 
 \caption{Multi-label categorization of the 61 relevant articles.}
-\end{figure}
-
-\begin{figure}[tbhp]
-		\centering
-		\includegraphics[width=\columnwidth, trim={1.1cm 0.4cm
-		1.5cm 0.5cm},
-		clip]{img/lit-sur/log_producer_annotated.pdf}
-		\caption{Frequency of supported log producers.}
-		\label{fig:litsur:log_producer}
 \end{figure}
 
 \subsection{Results}
@@ -580,7 +520,7 @@ Based on the search strings they create a script which automatically
 classifies the remaining logs.
 
 25\% of the articles claimed their implementation is available,
-however we
+however, we
 saw very low reuse of build log analysis tools within our survey.
 Five articles employed the tools used to create
 \emph{TravisTorrent}~\cite{beller2017travistorrent,beller2017oops,
@@ -631,6 +571,15 @@ However we found no clear reuse of build log data sets with the
 exception of TravisTorrent~\cite{beller2017travistorrent}, which was
 analyzed by Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying} and several other studies.
+
+\begin{figure}[tbhp]
+		\centering
+		\includegraphics[width=\columnwidth, trim={1.1cm 0.4cm
+		1.5cm 0.5cm},
+		clip]{img/lit-sur/log_producer_annotated.pdf}
+		\caption{Frequency of supported log producers.}
+		\label{fig:litsur:log_producer}
+\end{figure}
 
 \subsection{Discussion}
 \label{sec:lit-sur:discussion}
@@ -741,16 +690,8 @@ most targeted by the articles in our survey.
 
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
-This section introduces key concepts of the three chunk retrieval
-techniques we study in this article, namely program synthesis by
-example (PBE), common text similarity (CTS), and keyword search (KWS).
-In addition we present our comparison baseline of random line
-retrieval (RLR), illustrate the techniques on a concrete example
-of log chunks and sketch out implementation.
 
-\Cref{tab:ctr} shows a comparison of the presented techniques.
-
-\begin{table*}[htbp]
+\begin{table*}[htb]
 \centering
 \caption{Chunk retrieval techniques.}
 \begin{tabularx}{\textwidth}{@{}llXll@{}}
@@ -770,6 +711,16 @@ Random Line Retrieval	     & RLR     & Random sample
 \end{tabularx}
 \label{tab:ctr}
 \end{table*}
+
+This section introduces key concepts of the three chunk retrieval
+techniques we study in this article, namely program synthesis by
+example (PBE), common text similarity (CTS), and keyword search (KWS).
+In addition we present our comparison baseline of random line
+retrieval (RLR), illustrate the techniques on a concrete example
+of log chunks and sketch out implementation.
+
+\Cref{tab:ctr} shows a comparison of the presented techniques.
+
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 \label{sec:crt-characteristics}
@@ -843,8 +794,6 @@ necessary would be too complicated to synthesize, PBE returns the
 error message ``no program found''.
 \Cref{lst:prose-program-simplified} presents a simplified version
 of a program learned from the examples in \Cref{lst:chunk-example}.
-% TODO Caro: check that these figures are latest inserted here
-
 
 % TODO Moritz: you said: The following is very obvious and could apply
 % to any
@@ -962,11 +911,11 @@ number of lines in the chunks of the training examples.
 %It's really all we are doing
 
 \subsection{Chunk Retrieval Example}
-\label{seC:crt-example}
+\label{sec:crt-example}
 
-\begin{figure*}[!htbp]
+\begin{figure}[tbp]
   \centering
-\begin{subfigure}[!htbp]{\columnwidth}
+\begin{subfigure}[tbp]{\columnwidth}
   \begin{lstlisting}[breaklines=true,frame=tlr]
 FAILURE: Build failed with an exception.
 
@@ -983,7 +932,7 @@ Could not determine the dependencies of task ':app:jacocoTestDebugReport'.
 * Try:
   \end{lstlisting}
 \end{subfigure}\hspace{\fill}
-\begin{subfigure}[!htbp]{\columnwidth}
+\begin{subfigure}[tbp]{\columnwidth}
   \centering
   \begin{lstlisting}[breaklines=true,frame=tlr]
 FAILURE: Build failed with an exception.
@@ -1003,12 +952,12 @@ FAILURE: Build failed with an exception.
   % TODO Moritz: we can relate this to travistorrent maybe, you told me
   % long ago that this was something your analyzer cannot extract
   \label{lst:chunk-example}
-\end{figure*}
+\end{figure}
 
 \lstset{language=caml, morekeywords={StartExtraction, RegexPosition,
 RegexPair,
   EndExtraction}, keywordstyle=\bfseries\color{black}, escapeinside=//}
-\begin{figure}[!htbp]
+\begin{figure}[tbp]
   \centering
   \lstinputlisting[breaklines=true]{listings/prose.txt}
   \caption{Simplified regular expression produced by PBE when trained
@@ -1021,7 +970,7 @@ RegexPair,
   morekeywords={},
   texcl=false
 }
-\begin{figure}[!htbp]
+\begin{figure}[tbp]
   \centering
   \begin{lstlisting}[breaklines=true,frame=tlr]
 === RUN   TestSeparator
@@ -1114,11 +1063,11 @@ how similar the structural representation of the targeted log chunks
 has to be (\textbf{RQ2.2}) and how reliable the quality of the
 produced outputs is (\textbf{RQ2.3}).
 
-\begin{simplebox}[minipage boxed title*=-2.5cm,
+\begin{simplebox}[minipage boxed title*=-1.5cm,
 attach boxed title to top center={yshift=-6mm}]
-{\textbf{RQ2:} When are PBE{,} CTS or KWS suited to
-retrieve chunks from build logs?}
-\begin{itemize}
+{\textbf{RQ2:} What are the comparative strengths and weaknesses
+of promising build log analysis techniques?}
+\begin{itemize}[leftmargin=1.2cm]
   \item[\textbf{RQ2.1:}] How many examples does a technique need to
   perform best?
   \item[\textbf{RQ2.2:}] How structurally similar do the examples
@@ -1223,12 +1172,12 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	lines.
 
 	\item Successful retrieval = $\mathit{true}\ \mathit{iff}\
-	\mathit{Recall} = 1, \mathit{false\ otherwise}$ \vspace{0.05cm}\\
+	\mathit{Recall} = 1, \mathit{false\ otherwise}\vspace{0.1cm}$
+
 	We define a successful retrieval as one where all desired
 	lines were
 	extracted, therefore when recall is one.
 \end{itemize}
-
 This concludes one execution within our evaluation.
 We conduct one run for each of the four chunk retrieval techniques,
 for each of the eighty repositories in \emph{LogChunks} (8)
@@ -1594,7 +1543,7 @@ expression program with good recall.
 In our study, additional training
 examples did not improve the chunk retrieval.
 % In fact, unless they
-% were in some sense redudant, adding training examples above that even
+% were in some sense redundant, adding training examples above that even
 % hindered the applicability of PBE.
 
 \noindent
@@ -1688,7 +1637,7 @@ recommended technique.
 This is a preliminary hypothesis based on the results
 from our comparison study.
 The recommendations could therefore be
-influenced by idiosyncrazies of our specific implementation of the
+influenced by idiosyncrasies of our specific implementation of the
 chunk retrieval techniques as well as the \emph{LogChunks}
 data set.
 \end{simplebox}
@@ -1778,14 +1727,12 @@ work.
 
 
 \textbf{Implementation}
-% TODO we need to say something about why we think that these
-% limtiations do not actually harm our results
 Our results depend on the implementation of the investigated chunk
 retrieval techniques and the libraries we used.
 Our implementation of
 PBE is based on the program synthesis provided by PROSE\@.
 The
-idiosyncrazies of this framework influence our PBE results.
+idiosyncrasies of this framework influence our PBE results.
 Other
 frameworks similar to PROSE might have somewhat different strengths
 and weaknesses.
@@ -1902,7 +1849,7 @@ The \emph{LogChunks} data set and our study results act as a
 baseline to benchmark such technique improvements.
 We propose the
 following improvements:
-\begin{itemize}[leftmargin=0.4cm] \itemsep1em
+\begin{itemize}[leftmargin=0.4cm]
   \item \textbf{Custom Ranking and Tokens for PBE} The program
   synthesis through PROSE ranks possible programs according to
   what the user most likely intended.
