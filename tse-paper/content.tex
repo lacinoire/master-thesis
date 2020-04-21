@@ -89,10 +89,10 @@ build logs has so far received little attention, bringing us to our
 first research question:
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 1}}
-What are the state-of-the-research techniques on build log analysis?
+What are the state-of-the-research techniques for build log analysis?
 \end{simplebox}
 
-In this article, as first step (\Cref{fig:overview}), we show that
+In this article, as the first step (\Cref{fig:overview}), we show that
 less than half of the 61 works which rely on build log analysis
 describe how they performed it.
 Even fewer did so in detail or
@@ -147,7 +147,7 @@ these chunk retrieval techniques in
 real-world projects under a variety of conditions.
 Our study is based on the \emph{LogChunks} data
 set~\cite{brandt2020logchunks} which encompasses build logs from
-80 popular open source projects and a broad range of
+80 popular open-source projects and a broad range of
 build environments.
 Finally, we develop guidelines (step 4) on when
 one of the techniques might be preferential to its alternatives.
@@ -171,7 +171,7 @@ context of multiple lines around a finding---makes it generally
 unsuited for automatic on-ward processing and instead requires a human
 to further inspect and interpret the output chunk.
 
-To enable retracing of our research, we provide a detailed replication
+To enable the retracing of our research, we provide a detailed replication
 package~\cite{brandt2020chunk-replication}.
 
 \section{Systematic Literature Mapping Survey}
@@ -180,7 +180,7 @@ package~\cite{brandt2020chunk-replication}.
 The field of analyzing build
 logs is relatively young; We have seen scattered
 research efforts on build log analysis.
-However,the processing of build logs was often
+However, the processing of build logs was often
 a side-part of the article.
 To the best of our
 knowledge, there has not been an attempt to systematically overview
@@ -223,7 +223,7 @@ Example adapted from~\cite{he2017towards}.}
 \label{sec:system-log-analysis}
 A related field of build log analysis is the processing of system log
 files produced during runtime.
-A main difference between build logs
+The main difference between build logs
 and system logs is that system logs are fundamentally structured
 through events.
 Each line in a log file represents one event with a
@@ -278,7 +278,7 @@ the broadest and most current index, including preprints.
 
 Our Google Scholar search for variations of ``build log''
 returns more than 2.2 million results (2020-03-15).
-We refined our search criterions to exclude obvious
+We refined our search criteria to exclude obvious
 non-related works.
 For example, we decided to exclude systems
 or event logs (see \Cref{sec:system-log-analysis}).
@@ -306,14 +306,14 @@ left with 256 (16\%) of the original search results.
 
 With these 256 remaining articles, we followed a backward snowball
 sampling for related work.
-If one one of the articles referenced a new article in the context
+If one of the articles referenced a new article in the context
 of build log analysis we added the new to our literature set.
 This added five papers (eight before
 duplicate elimination), coming to a total of 261
 articles.
 
 Subsequently, we performed a second, finer filter phase by downloading the
-full articles, reading their abstracts, and searching the full text
+full articles, reading their abstracts and searching the full text
 for the occurrence of ``log''.
 If these papers showed traces of
 working with build logs, we included them in our survey.
@@ -350,7 +350,7 @@ Relevant for our survey were all articles that
 use logs from software builds as input to
 some kind of process.
 This excluded 15 articles from our study.
-For several cases, multiple articles were extensions of others.
+In several cases, multiple articles were extensions of others.
 Of these, we only considered the earliest article which reported on
 the processing of build logs.
 This excluded another 11 articles.
@@ -364,7 +364,7 @@ two kinds of information were targeted during a build log analysis.
 
 \begin{simplebox}[attach boxed title to top center={yshift=-6mm}]
 {\textbf{RQ1:} What are the state-of-the-research
-techniques on build log analysis?}
+techniques for build log analysis?}
 \begin{itemize}[leftmargin=2cm]
   \item[\textbf{RQ1.1:}] Which information is targeted?
   \item[\textbf{RQ1.2:}] Which techniques are used?
@@ -480,7 +480,7 @@ Build logs were scanned for compilation
 errors~\cite{clemencic2014new} or
 the duration of tasks within the build~\cite{zhang2016android}.
 36\% of the articles classified the build logs into categories.
-For instance distinguishing failures caused by developers from
+For instance, distinguishing failures caused by developers from
 failures caused
 by infrastructure errors~\cite{lindqvist2019detection} or
 whether projects use automated static analysis
@@ -516,12 +516,12 @@ expressions.
 Ghaleb et al.~\cite{ghaleb2019studying} used a compound approach.
 They start with manual categorization of the build logs and select
 search strings that identify their targeted categories.
-Based on the search strings they create a script which automatically
+Based on the search strings they create a script that automatically
 classifies the remaining logs.
 
 25\% of the articles claimed their implementation is available,
 however, we
-saw very low reuse of build log analysis tools within our survey.
+saw a very low reuse of build log analysis tools within our survey.
 Five articles employed the tools used to create
 \emph{TravisTorrent}~\cite{beller2017travistorrent,beller2017oops,
 orellana2017differences,zhao2018comparing} or
@@ -552,12 +552,12 @@ framework''~\cite{tomassi2019bugswarm}.
 
 Only 7\% of the proposed methods claimed to be language-agnostic, while
 several described they are covering multiple source build tools.
-The majority of articles (42\%) targeted logs from a source which was not
+The majority of articles (42\%) targeted logs from a source that was not
 targeted by any second article.
 
 The main platform that build logs were collected from is Travis
 CI~\cite{travisci2019webpage},
-which was used in 38\% of cases.
+which was used in 38\% cases.
 18\% of the articles processed logs from TravisTorrent and 8\% included
 build logs from industrial projects.
 
@@ -567,7 +567,7 @@ Articles reported processing from two up to 122 million logs.
 
 31\% of the surveyed articles claimed to have published their data to
 enable further research.
-However we found no clear reuse of build log data sets with the
+However, we found no clear reuse of build log data sets with the
 exception of TravisTorrent~\cite{beller2017travistorrent}, which was
 analyzed by Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying} and several other studies.
@@ -614,7 +614,7 @@ every supported build environment.
 targeted by many studies and tools (A).
 The majority of build environments was however only targeted by one
 article each (B).
-From this we follow that, while custom parsers are beneficial for the
+From this, we follow that, while custom parsers are beneficial for the
 small group of environments targeted by many (A), all and especially
 the rarer investigated environments (B) would benefit from a generic
 solution.
@@ -651,7 +651,7 @@ and can be configured by the user with little effort.
 % We achieve this by developing three techniques for which the
 % information to be retrieved is specified through examples or keywords.
 
-For this reason, we are focussing on techniques that run automatic
+For this reason, we are focussing on techniques that run automatically
 after being configured through examples or keywords.
 Examples consist of logs and corresponding chunks.
 The examples and keywords are provided by the user and can simply be
@@ -659,7 +659,7 @@ exchanged whenever new cases are introduced.
 
 We propose the notion of chunk retrieval techniques which retrieve
 a substring, that describes a specific information, from a build log.
-Generally these can also be used to classify build logs and therefore
+Generally, these can also be used to classify build logs and therefore
 cover the great majority of the type of log analysis we saw within
 our survey.
 
@@ -672,7 +672,7 @@ technique, and implement the ad-hoc approach of
 searching for specific strings or keywords within KWS\@.
 
 Our evaluation of the three chunk retrieval techniques is done on the
-\emph{LogChunks} data set, because it encompasses a broad range of
+\emph{LogChunks} data set because it encompasses a broad range of
 build environments which enables us to measure the generic
 applicability of our techniques.
 The targeted chunks are describing error messages or
@@ -715,7 +715,7 @@ Random Line Retrieval	     & RLR     & Random sample
 This section introduces key concepts of the three chunk retrieval
 techniques we study in this article, namely program synthesis by
 example (PBE), common text similarity (CTS), and keyword search (KWS).
-In addition we present our comparison baseline of random line
+In addition, we present our comparison baseline of random line
 retrieval (RLR), illustrate the techniques on a concrete example
 of log chunks and sketch out implementation.
 
@@ -751,14 +751,13 @@ smallest piece of text it can return (e.g., a line, or a word).
 The
 granularity might be adjustable by configuration.
 \emph{Running a
-chunk retrieval technique} means to execute a fully configured
+chunk retrieval technique} means executing a fully configured
 technique to consumes as input a build log in plain text format and to
 produce an array as output.
 The array consists of substrings of the
 build log text.
 
 \subsection{Program Synthesis by Example (PBE)}
-\label{sec:expl-pbe}
 The concept of \emph{Programming by Example} aims to capture the
 intent of the user through examples which they provide.
 Leveraging this approach, we implemented a chunk retrieval technique
@@ -813,7 +812,6 @@ program found no match.
 
 
 \subsection{Common Text Similarity (CTS)}
-\label{sec:expl-ts}
 Text Similarity approaches are widely used to filter unstructured
 textual software artifacts~\cite{runeson2007detection,
 marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
@@ -823,7 +821,7 @@ The aim is to retrieve those lines from a build log which are most
 similar to examples given by the user.
 
 \subsubsection{Configuration}
-To configure chunk retrieval though text similarity we chose to use
+To configure chunk retrieval through text similarity we chose to use
 the same concept of examples as for PBE
 % TODO Moritz: your question was: More details on this.
 % How do you
@@ -861,7 +859,6 @@ the most similar lines are returned as the output of the retrieval
 run.
 
 \subsection{Keyword Search (KWS)}
-\label{sec:expl-skws}
 When developers scavenge for a specific piece of information within a
 large amount of unstructured information, a first ad-hoc approach they
 use is to search for related keywords.
@@ -1039,7 +1036,7 @@ associated keywords, it would search for the three keywords from
 the training set of three examples.
 
 \subsection{Tool Implementation}
-For our comparison study we implemented each of the chunk retrieval
+For our comparison study, we implemented each of the chunk retrieval
 techniques and a unifying interface.
 The unified interface is implemented in Ruby and
 calls the separate technique implementations over the command line.
@@ -1048,7 +1045,8 @@ library~\cite{prose2019webpage}.
 We implemented CTS, KWS and RLR using
 R and the text2vec library~\cite{text2vec2019webpage}.
 They can be found in our replication
-package~\cite{brandt2020chunk-replication} together which have
+package~\cite{brandt2020chunk-replication} together
+with Docker images which have
 our techniques installed and ready to use.
 
 \section{Study Design}
@@ -1057,7 +1055,7 @@ our techniques installed and ready to use.
 To investigate when our chunk retrieval techniques are suited to
 analyze build logs (\textbf{RQ2}), we perform an empirical comparison
 study on the \emph{LogChunks} data set~\cite{brandt2020logchunks}.
-In particular we are interested in how many examples a technique
+In particular, we are interested in how many examples a technique
 should be trained with (\textbf{RQ2.1}),
 how similar the structural representation of the targeted log chunks
 has to be (\textbf{RQ2.2}) and how reliable the quality of the
@@ -1076,7 +1074,7 @@ of promising build log analysis techniques?}
 \end{itemize}
 \end{simplebox}
 
-In the following we present the data set we created for this study,
+In the following, we present the data set we created for this study,
 our study process (presented in \Cref{fig:study}) and the metrics
 we measure to answer our research questions.
 
@@ -1089,7 +1087,7 @@ we measure to answer our research questions.
 \end{figure*}
 
 \subsection{LogChunks}
-For this study we created the previously published data set
+For this study, we created the previously published data set
 \emph{LogChunks}.
 It encompasses 797 build logs from Travis CI,
 stemming from a broad range of 80 GitHub repositories and 29
@@ -1103,7 +1101,7 @@ In
 addition, we categorized the log chunks according to their format
 within the log.
 If the chunks were surrounded by the same markings
-within the log we assigned them the \emph{same structural category},
+within the log, we assigned them the \emph{same structural category},
 as described in \Cref{sec:crt-example}.
 
 \subsection{Study Process}
@@ -1113,7 +1111,7 @@ same build environment (1).
 One to five examples make up the training set (2).
 We vary its size to measure how many examples are needed to
 confidently configure a technique.
-The training set is so small, because the examples have to be
+The training set is so small because the examples have to be
 manually created by a user.
 A larger training set would oppose our goal of providing techniques
 that can be configured with little effort
@@ -1128,7 +1126,7 @@ In the next step, we configure a chunk retrieval technique with
 the examples from the training set (4) and apply the technique to the
 training set (5), which produces the retrieval output (6).
 Based on this, we collect the following measurements (7):
-the size of training set (\textbf{RQ2.1}),
+the size of the training set (\textbf{RQ2.1}),
 the number of structural categories in the training
 set (\textbf{RQ2.2}),
 the lines of the retrieval output ($\mathit{RetrievedLines}$),
@@ -1193,7 +1191,7 @@ for inspection and reproduction in our replication package
 \section{Results}
 This section presents the separate results for each chunk retrieval
 technique.
-Afterwards we compare the three techniques with each other and RLR as
+Afterwards, we compare the three techniques with each other and RLR as
 baseline.
 
 
@@ -1395,7 +1393,7 @@ expectations:
 The precision ranges between 8\% and 5\%, the recall between 6\% and
 8\%.
 The size of the training set has no visible impact on either.
-An larger number of structural categories within the training and
+A larger number of structural categories within the training and
 test sets decreased the precision of RLR from 7\% to 0\%, the recall
 increases from 6\%, for one structural category present, to 11\%, for
 three structural categories present and also drops to 0\% for more
@@ -1480,7 +1478,7 @@ techniques compared, split by structural category count.}
 \section{Discussion}
 \label{sec:discussion}
 
-For the interpretation of our study results we look at each chunk
+For the interpretation of our study results, we look at each chunk
 retrieval technique separately and give recommendations for
 which types of input build
 logs, available training examples and consumption of the retrieved
@@ -1592,7 +1590,7 @@ developers an email with the extracted build failure reason.
 KWS has a higher recall than the two other techniques for multiple
 structural categories present in the training and test examples.
 This
-makes KWS a good technique if there is little prior knowledge on how
+makes KWS a good technique if there is little prior knowledge of how
 the targeted log chunk is represented in the build log.
 For the
 example of extracting the reason the build failed, KWS is best suited
@@ -1654,11 +1652,11 @@ to use KWS\@.
 If precision is more important than recall to the user we
 recommend CTS\@.
 We also recommend CTS when the log chunks are
-from one structural category, when the user does not require a high
+from one structural category, when the user does not require high
 confidence in the precision or recall of the outcome and when one
 would rather have output with low recall instead of no output at all.
 When the representations are from one structural category and the user
-wishes a high confidence in the correctness of the output or prefers
+wishes high confidence in the correctness of the output or prefers
 no output over output with low recall, we recommend PBE\@.
 
 As a final recommendation, one could create a ``super analyzer'' by
@@ -1667,7 +1665,7 @@ paper.
 Such a super analyzer would likely always first employ PBE
 (because of its high accuracy), followed by a combination of CTS and
 KWS\@.
-Other than initial setup and training time, there should be no
+Other than initial setup and training time, there is no
 downside to this approach if it is implemented in a transparent way to
 the underlying technique: the output of the super analyzer could
 include from which sub-tool it originated and thus facilitate
@@ -1859,7 +1857,8 @@ following improvements:
   FlashExtract includes special tokens when
   enumerating possible regular expressions.
   One could extend these
-  with tokens found in build logs, such as ``-'',``='',``ERROR''
+  with tokens found in build logs, such as ``-'',
+	``='', ``ERROR''
   or ``[OK''.
   \item \textbf{Meta-Parameter Optimization for CTS} Information
   retrieval techniques have various meta-parameters which can be
