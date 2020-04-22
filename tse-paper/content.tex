@@ -40,25 +40,27 @@
 Within the past two decades, Continuous Integration (CI) has become a
 ubiquitous best practice to streamline the build process of software
 projects~\cite{hilton2016usage,beller2017oops,staahl2014modeling}.
-Build
-logs are a textual by-product that automatic software build processes
-create.
-As a ``treasure trove'' of information, they contain results
-not only of the elementary steps to ``make'' a project---such as
-retrieving and resolving dependencies, compiling, and testing the
-software---but also about ancillary quality assurance steps such as
-automated static analysis tools.
+Build logs are a textual by-product that automatic software build
+processes create.  As a treasure trove of information~\cite{meyer},
+build logs contain trace outputs of not only the elementary steps to
+``make'' a project---such as retrieving and resolving dependencies and
+compiling---but also about ancillary quality assurance steps---such as
+testing the software and running automated static analysis tools. The
+contents of build logs can be highly variable depending on which tools
+are involved in the build process and how they are
+configured. The format of logs changes as projects and build tools evolve over time. Typically, though, they are at least a semi-structured and
+somewhat stable journal of the commands executed during the build and
+their results.
 
 When a build or one of its steps fails, developers typically
-scavenge the log for the source of the error.
+scavenge the logs for information related to the source of the error.
 This manual activity is
 tedious and prone to error~\cite{santolucito2018statically}.
 As a
 single build log can be over 50 megabytes large~\cite{beller2017oops},
-finding a piece of information in it is akin to searching for a
+finding the small chunk of information in it which is linked to the error, is akin to searching for a
 needle in a haystack.
-In addition, due to their information richness,
-build logs enable a plethora of other applications: with the help of
+In addition to helping understand and fix build failures, the information richness of build logs enables a plethora of other applications: with the help of
 build logs, we can better understand and categorize CI
 failures and compile
 errors~\cite{islam2017insights,seo2014programmers}, differentiate
@@ -67,14 +69,12 @@ train classifiers to predict the build outcome and
 duration~\cite{ni2017cost,bisong2017built,machalica2019predictive}, or
 investigate static analysis tools in CI
 builds~\cite{zampetti2017open}.
-Manual analysis of build logs does not
+
+However, manual analysis of build logs does not
 scale to the number of build logs and amount of information that such
-sophisticated applications require.
-Therefore, being able to
-automatically extract pieces of information from build logs
-is not only paramount to applications such as the above mentioned
-ones, but can also help
-developers debug a broken build.
+sophisticated applications require. Moreover, being able to
+automatically extract relevant pieces of information from build logs can also help
+developers debug a broken build more quickly without having to browse the entire build log.
 
 \begin{figure*}[htb]
 	\centering
@@ -84,36 +84,35 @@ developers debug a broken build.
 	\label{fig:overview}
 \end{figure*}
 
-Despite its paramount role, the process of analyzing
-build logs has so far received little attention, bringing us to our
-first research question:
+Despite its central role for helping developers and the enablement of
+on-ward applications of build logs, the process of how to
+automatically analyze build logs has thus far received little
+attention as a separate research topic, bringing us to our first
+research question:
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 1}}
-What are the state-of-the-research techniques for build log analysis?
+What are the state-of-the-research techniques to analyze build logs?
 \end{simplebox}
 
-In this article, as the first step (\Cref{fig:overview}), we show that
+To answer this question, we start our investigation by performing an extensive literature study (\Cref{fig:overview}).
+It shows that
 less than half of the 61 works which rely on build log analysis
-describe how they performed it.
-Even fewer did so in detail or
+describe in detail how they performed it, and even fewer
 made their implementation available.
-Through the literature
-survey we identify three prevalent strategies to
+The literature
+survey identifies three prevalent strategies to
 analyze build logs: Using 1) a set of
 manually curated regular expressions,
 similar to TravisTorrent~\cite{beller2017oops},
 2) information
 retrieval techniques,
+% TODO: Can you shortly explain the technique here?
 and 3) a list of search keywords
 to identify regions of interest in the build log.
 
 Even though these three approaches to retrieve information chunks from
 build logs have different strengths and weaknesses, the literature
-survey shows that their use is often arbitrary and that there is
-usually no discussion on why to use one over the other.
-Developers and
-researchers not only seem to lack awareness of which techniques exist
-(RQ1), but also guidelines on when to employ which.
+survey shows that their use often seems arbitrary.
 As a consequence,
 in RQ2 we ask:
 
@@ -123,44 +122,44 @@ What are the comparative strengths and weaknesses
 of promising build log analysis techniques?
 \end{simplebox}
 
-To answer this question, we implement three automatic techniques for
-build log analysis based on the identified strategies (step 2):
+To answer this question, in the second step of our study
+(\Cref{fig:overview}), we build and compare three
+implementations that each stand protoypical for one of the idenitied
+strategies to analyze build logs:
 
 \begin{itemize}
   \item \textbf{Program Synthesis by Example (referred to as PBE)}
-  Based on user examples of build logs and chunks, PBE
+  Based on manually supplied example pairs of build logs and chunks, PBE automatically
   synthesizes
-  a regular expression matching the given chunks within the build logs.
+  a regular expression extracting the given chunks within the build logs.
   \item \textbf{Common Text Similarity (CTS)}
-  Using the Vector Space Model, CTS selects those lines of a log which are
-  most similar to the lines present in example chunks provided by
-  the user.
+  % TODO what is the vector space model
+  Using the Vector Space Model, CTS selects lines of a log which are
+  most similar to the lines present in manually supplied example chunks.
   \item \textbf{Keyword Search (KWS)}
+  % TODO what is an ad-hoc method?
   Ad-hoc method for finding fitting passages by searching the whole
-  text for
+  text of a build log for
   the occurrence of specific trigger words.
 \end{itemize}
 
 
-In step 3, we conduct an empirical study to gauge the performance of
+In the third step, we conduct an empirical study to gauge the performance of
 these chunk retrieval techniques in
 real-world projects under a variety of conditions.
 Our study is based on the \emph{LogChunks} data
-set~\cite{brandt2020logchunks} which encompasses build logs from
-80 popular open-source projects and a broad range of
-build environments.
-Finally, we develop guidelines (step 4) on when
-one of the techniques might be preferential to its alternatives.
+set~\cite{brandt2020logchunks}, which encompasses build logs from
+80 popular open-source projects and a broad range of different
+build tools and programming languages.
 
-
-
+Finally, we develop a set of guidelines (step 4) on how to choose a technique given a goal.
 We recommend PBE for use cases where the desired information is always
 represented in the same structural way and high confidence in
 precision and recall of the chunk retrieval is required.
 Results
 produced by PBE are suited for automatic on-ward processing.
 CTS is
-well suited when the representation of the desired information varies
+well-suited when the representation of the desired information varies
 slightly and the output of the chunk retrieval is further processed by
 a human.
 In cases where the textual representation of the desired
@@ -169,32 +168,27 @@ to be the best choice.
 However, its low precision---it extracts a
 context of multiple lines around a finding---makes it generally
 unsuited for automatic on-ward processing and instead requires a human
-to further inspect and interpret the output chunk.
+to further inspect and interpret the output chunk. A hybrid-solution combining the three techniques might be the best allround solution.
 
-To enable the retracing of our research, we provide a detailed replication
-package~\cite{brandt2020chunk-replication}.
+In short, this article contributes
+\begin{itemize}
+\item the first systematic study of the emerging field of build log analysis.
+\item three prototypical open-sourced implementations of the most promising chunk retrieval techniques.
+\item a large-scale empirical study comparing the three techniques.
+\item systematic guidelines on when to use which technique.
+\item a detailed replication package~\cite{brandt2020chunk-replication}.
+\end{itemize}
 
 \section{Systematic Literature Mapping Survey}
 \label{sec:survey}
 
-The field of analyzing build
-logs is relatively young; We have seen scattered
-research efforts on build log analysis.
-However, the processing of build logs was often
-a side-part of the article.
-To the best of our
-knowledge, there has not been an attempt to systematically overview
-and survey approaches for processing build logs.
-We conducted a systematic mapping study to determine the
-state-of-research on build log analysis following the guidelines
-by Petersen et al.~\cite{petersen2008systematic,petersen2015guidelines}.
-
-In the following section, we explain how build log analysis differs
-from system log analysis.
-Further, we describe how we selected the articles for our literature
-survey and the data extraction from the resulting articles.
-We present our results on how build logs are analyzed in literature
-and discuss the implications of these findings on our research.
+In this section, we survey the emerging field of build log
+analysis. We first start with a differentiation to the related field of general system log analysis. Then, we describe the methodology and results of a systematic mapping study to
+determine the state-of-research on build log analysis following the
+guidelines by Petersen et
+al.~\cite{petersen2008systematic,petersen2015guidelines}. 
+We close by summarizing how build logs are commonly
+analyzed in literature and discuss the implications of these findings.
 
 \begin{figure}[tb]
 	\centering
@@ -221,40 +215,37 @@ Example adapted from~\cite{he2017towards}.}
 
 \subsection{Distinction from System Log Analysis}
 \label{sec:system-log-analysis}
-A related field of build log analysis is the processing of system log
-files produced during runtime.
-The main difference between build logs
-and system logs is that system logs are fundamentally structured
+A field related to build log analysis is the processing of system log
+files produced during runtime of the system. The first difference here is that build logs are produced during runtime of the build of the system, not the system itself.
+In terms of the contents of the logs, the main difference is that system logs are fundamentally structured
 through events.
 Each line in a log file represents one event with a
 set of fields: timestamp, verbosity level and raw message
 content~\cite{he2017towards}.
 \Cref{lst:system-log} shows
-example lines from a system log.
+example lines from a system log. 
 
-The first goal in analyzing system log files is ubiquitously to
+The first goal in analyzing system log files is generally to
 separate constant and variable parts within a log
 message~\cite{nagappan2010abstracting,he2017towards}.
 Next, the log
 messages are clustered into log events, unifying messages with
-identical constant parts and varying parameters.
-The output of a log
-parser is an ordered list of timed events and their corresponding
+identical constant parts and varying parameters. Then, a log parser works on this intermediate representation.
+Its output is an ordered list of timed events and their corresponding
 parameter values~\cite{he2016evaluation}.
-This structured log is then
-the input to various machine learning and data mining processes.
+This structured log can serve as input to various machine learning and data mining processes.
 
-The techniques developed for system log analysis can also be applied
-to build logs.
+In principle, one can apply the techniques developed for system log analysis
+to parts of the build logs that have this same structure.
+% TODO this explanation is not understandable. It needs to better embedded in the surrounding text
 One example is comparing execution traces to reference
 traces of intended behavior to detect anomalies.
 Amar et
 al.~\cite{amar2019mining} employed a similar approach to detect
 relevant lines in build logs.
-However, many of the techniques developed to analyze system logs
+However, almost all of the techniques developed to analyze system logs
 leverage their inherent event structure.
-As build logs lack this structure, we focussed our literature
-survey on articles that as a source of information.
+Build logs generally lack this structure and thus require different bespoke approaches.
 % In this article, we focus on extracting a single specified information
 % from the build log as a whole with chunk retrieval techniques.
 % Chunk
@@ -263,38 +254,36 @@ survey on articles that as a source of information.
 % expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 
 
+% TODO In general, we should reference petersen2015guidelines a bit
+% more. I.e., following the suggestions by Petersen or something, to
+% show how we followed their protocol. This comment applies to the rest of this section
+
 \subsection{Study Selection}
 \Cref{fig:lit-survey} presents an overview of our study selection
 process.
-Since the field of build log analysis is so young, we
-surveyed a population of scientific material as broad as possible.
-We did not limit our sources to specific Software Engineering venues, as
-is often done~\cite{petersen2015guidelines}, but survey all sources
+Since the field of build log analysis is relatively young, we
+surveyed as broad a population of scientific material as possible.
+We did not limit our sources to specific Software Engineering venues~\cite{petersen2015guidelines}, but survey all sources
 monitored by Google Scholar, including Bachelor's and Master's
 theses and academic slide decks.
 We use Google Scholar as opposed to Scopus or
-other databases, as it is the search engine for academic articles with
+other databases because it is the search engine for academic articles with
 the broadest and most current index, including preprints.
 
-Our Google Scholar search for variations of ``build log''
-returns more than 2.2 million results (2020-03-15).
-We refined our search criteria to exclude obvious
-non-related works.
-For example, we decided to exclude systems
+An initial Google Scholar search for variations of ``build log''
+returned more than 2.2 million results (2020-03-15), many of which stem from unrelated fields such as construction and wood working.
+We refined our search criteria to exclude such obvious
+non-related fields and also to exclude works on systems
 or event logs (see \Cref{sec:system-log-analysis}).
 This left us with 1,552 search results
 (2020-03-15).
-The full search queries are documented in our replication
-package~\cite{brandt2020chunk-replication}.
-
+Our replication package documents the full search queries~\cite{brandt2020chunk-replication}.
 To make handling so many search results feasible, we employed a
-two-pass filtering strategy:
+three-pass filtering strategy:
 
-First, we filtered articles based on (1) their title and (2) the
+First, we filtered articles based on (a) their title and (b) the
 contextual information Google Scholar displayed.
-We included only
-publications written in a language intelligible to the authors (that
-is, English or German), which disregarded fewer than 1\% of search
+We included works at large that seemed to bear a resemblence to software engineering and building software. We excluded wroks written in a language unintelligible to the authors (i.e., not English or German), which disregarded fewer than 1\% of search
 hits.
 We then unified
 the results of the four search queries based on the link as the
@@ -303,74 +292,72 @@ one search query.
 We removed further duplicates based on the title and were
 left with 256 (16\%) of the original search results.
 % removed duplicates of data extraction pass already here
-
 With these 256 remaining articles, we followed a backward snowball
 sampling for related work.
-If one of the articles referenced a new article in the context
-of build log analysis we added the new to our literature set.
-This added five papers (eight before
-duplicate elimination), coming to a total of 261
-articles.
+If an article referenced a new work in the context
+of build log analysis, we added the new one to our literature set.
+This added five articles (eight before
+duplicate elimination), leading to a total of 261
+works. 
 
 Subsequently, we performed a second, finer filter phase by downloading the
-full articles, reading their abstracts and searching the full text
-for the occurrence of ``log''.
-If these papers showed traces of
-working with build logs, we included them in our survey.
+full text of the works, reading their abstracts, and searching the full text
+for the occurrence of ``log.''
+If a work showed traces of
+working with build logs, we included it in our survey.
 In total, we
-were left with 87 articles after the two filtering phases.
+were left with 87 works after the second filtering phases.
 
 \subsection{Article Classification}
-Having trimmed down the set of articles, we investigated them in depth.
+Having trimmed down the set of articles by 95\%, we investigated the remaining ones in depth.
+We wanted to characterize how research uses build logs.
 
-We wanted to characterize how researchers use build logs as input to
-any processes.
-We were interested in
+% TODO (resolved): RQs mentioned before explicitly stated
+Specifically, we were interested in
 \begin{itemize}
-  \item what information they are retrieving from the logs and
-  what they use the retrieved information for (\textbf{RQ1.1})
-  \item which technique they are using to process the build logs,
-  in how much detail it is described and whether they published their
-  tools (\textbf{RQ1.2})
-  \item what kind of build logs they are using and the origin of these
+  \item what information is retrieved from the logs and
+  what the retrieved information is used for (\textbf{RQ1.1})
+  \item which techniques are used to process the build logs,
+  in how much detail they are described, and whether they are published as tools (\textbf{RQ1.2})
+  \item what kind of build logs are used and the origin of these
   logs.
 (\textbf{RQ1.3})
 \end{itemize}
-To objectify our data extraction we created a template of the targeted
-factors and performed a pilot, as recommended by Petersen et
-al.~\cite{petersen2015guidelines}.
-Two authors extracted the data from five articles and we held a
-consensus meeting to unify our understanding
-of the data extraction template.
-The remaining articles were divided over these two authors.
-We inspected the articles as closely as necessary,
-starting from occurrences of ``log'' or ``build'' within the text.
 
-Relevant for our survey were all articles that
-use logs from software builds as input to
-some kind of process.
-This excluded 15 articles from our study.
-In several cases, multiple articles were extensions of others.
-Of these, we only considered the earliest article which reported on
-the processing of build logs.
-This excluded another 11 articles.
-In sum, we further extracted data from 61 articles.
-
-The full data extraction template and our results of this step can be
-found in our replication package~\cite{brandt2020chunk-replication}.
-Note that for most questions we allowed assigning multiple values,
-e.g.\ if
-two kinds of information were targeted during a build log analysis.
-
+This lead us to the following research questions:
 \begin{simplebox}[attach boxed title to top center={yshift=-6mm}]
 {\textbf{RQ1:} What are the state-of-the-research
-techniques for build log analysis?}
+techniques to analyze build logs?}
 \begin{itemize}[leftmargin=2cm]
   \item[\textbf{RQ1.1:}] Which information is targeted?
   \item[\textbf{RQ1.2:}] Which techniques are used?
   \item[\textbf{RQ1.3:}] Which build logs are analyzed?
 \end{itemize}
 \end{simplebox}
+
+Since we had been careful to include rather than exclude borderline works, this deeper evaluation excluded another 15 articles from the 87 works left after the second filter phase.
+Multiple articles were extensions of others.
+Of these, we only considered the earliest article which reported on
+the processing of build logs.
+This excluded another 11 articles.
+In sum, we extracted data from 61 articles.
+
+To guide the data extraction we created a template. The template form contained questions to answer RQ 1.1 through RQ 1.3, for example ``Is the technique explained in sufficient detail?'' and ``What is the source of the build logs?'' As recommended by Petersen et
+al.~\cite{petersen2015guidelines}, we started the mapping study with a pilot study:
+both authors extracted  data from the same five articles and held a
+consensus meeting to unify their understanding
+of the data extraction template.
+We divided the remaining 46 articles evenly between the two authors and inspected them as closely as necessary to fill out the template with confidence,
+starting from occurrences of ``log'' or ``build'' within the article's text. For questions that did not require a boolean answer, we allowed assigning multiple tags or categories as the first part (``preparation phase'') of a virtual open card sorting~\cite{zimmermann2016card}. 
+% TODO: add more concrete example, such as use of retrieved x: developer feedback, build data set
+Once we had classified all works, we went into the second phase (``execution phase'') in which we found synonyms, and grouped tags together.
+
+%The full data extraction template and our results of this step can be
+%found in our replication package~\cite{brandt2020chunk-replication}.
+
+
+% TODO (resolved): RQs just appeared unconnected out of the blue
+
 
 \addtolength{\tabcolsep}{-5pt}
 \begin{table*}[tbhp]
@@ -458,23 +445,23 @@ None identified  &
 \end{figure}
 
 \subsection{Results}
-In the following, we will present the results of our literature survey.
-We present the information within the build logs that was targeted,
-the retrieval techniques used and the origin of the build logs
-which were analyzed.
+In this section, we present the results of the analysis phase of the
+literature mapping along RQ 1.1 through RQ 1.3.
 
-\subsubsection{Retrieved Information}
-The information that was targeted varied from article to article.
-Most prominent was the search for errors (39\%) which occurred within
-the build process, as presented in \Cref{fig:litsur:info_target}.
-This is followed by extracting the executed or the failing
+% TODO repeat the question in the subsection title?
+\subsubsection{Retrieved Information (RQ 1.1)}
+% TODO General ref to Figure 4 missing: We answer this question along data in Figure 4, and ... ?
+
+The precise information targeted in the build logs varied from article to article.
+\Cref{fig:litsur:info_target} gives an overview over the frequency of the targeted information. Most prominent was the search for errors (39\%), followed by extracting the executed or the failing
 tests (both 11\%).
-There were also numerous cases which targeted more specialized
+There were also numerous works which targeted more specialized
 information, such as the environments used during the
 build~\cite{zolfagharinia2017not}, packages
-installed~\cite{selberg2012use} or hints to source files which are
-related to build failures~\cite{ren2018automated}.
+installed~\cite{selberg2012use}, or hints to source files which 
+relate to build failures~\cite{ren2018automated}.
 
+% TODO It is unclear where this comes from. Also, wouldn't it perhaps be better to continue with Figure 4.b directly?
 In most cases (51\%), a chunk was retrieved from the log.
 Build logs were scanned for compilation
 errors~\cite{clemencic2014new} or
@@ -485,54 +472,65 @@ failures caused
 by infrastructure errors~\cite{lindqvist2019detection} or
 whether projects use automated static analysis
 tools~\cite{kavaler2019tool}.
-Other types of information (e.g.\ counting
+Other types of information (e.g.,\ counting
 lines, summarization) were only retrieved
 in one case each.
 
 The majority of articles (46\%) used the outcome of their build log
 analysis for research purposes, as shown in \Cref{fig:litsur:use}.
+% TOOD What does this mean? Give an example: to drive further research, for example to categorize the types of compile errors encountered at Google~\cite{}.
 Further uses were giving feedback to developers (10\%) or automatic
-on-ward processing of the retrieved information (8\%).
+on-ward processing of the retrieved information (8\%)
+% TODO for example to ...
+.
 
-\subsubsection{Retrieval Technique}
+% TODO repeat the question in the subsection title?
+\subsubsection{Retrieval Technique (RQ 1.2)}
 \Cref{tab:litsur:techniques} presents the techniques that the articles
+% TODO: lets use analyzing build logs canonically? Please search text to eliminate occurrences of processing?
 described for processing build logs.
+% TODO This is weird. Last number we have from above is 51.
 43 of the 61 articles we inspected mentioned how they are analyzing build
 logs.
 However, only 16 of these described their method in detail.
 
 The most mentioned method (34\%) was using a parser, where we also
 included
-rather imprecise statements like ``we parse the build logs''.
+rather imprecise statements like ``we parse the build logs.''
+% TODO include citation?
+% TOOD maybe make the point here that it is questionable whether this includes a comprehensive tokenizer, lexer etc. based solution and that parsing in many cases really meant regexp. If we could figure that out, then we would assign it to regexp instead.
 25\% of the articles described the use of regular expressions and 20\%
 inspected the logs manually.
-Another 8\% employed machine learning techniques such as natural language
+Another 8\% employed machine learning such as natural language
 processing or information retrieval techniques.
-To give examples,
+For example,
 Seo et al.~\cite{seo2014programmers} developed a custom
 parser to classify error messages, while Vassallo et
 al.~\cite{vassallo2017a-tale} analyzed build logs with regular
 expressions.
 Ghaleb et al.~\cite{ghaleb2019studying} used a compound approach.
-They start with manual categorization of the build logs and select
-search strings that identify their targeted categories.
-Based on the search strings they create a script that automatically
+They started with manual categorizing build logs and selecting
+search strings that identify the target category.
+Based on the search strings they created a script that automatically
 classifies the remaining logs.
 
-25\% of the articles claimed their implementation is available,
-however, we
-saw a very low reuse of build log analysis tools within our survey.
+Only 25\% of the articles claimed their implementation is available. Moreover, we
+saw some reuse of the few available build log analysis tools.
 Five articles employed the tools used to create
 \emph{TravisTorrent}~\cite{beller2017travistorrent,beller2017oops,
 orellana2017differences,zhao2018comparing} or
 an extended version of them~\cite{rott2019empirische,
-shi2018evaluating},
+shi2018evaluating} (based on regular expressions),
 two used the
-\emph{Maven Log Analyzer}~\cite{macho2018automatically,gallaba2018noise},
+\emph{Maven Log Analyzer}~\cite{macho2018automatically,gallaba2018noise}
+% TODO: based on which technique?,
 another two the
-\emph{MAKAO}~\cite{wen2018blimp,adams2007design,adams2007makao} tool.
+\emph{MAKAO}~\cite{wen2018blimp,adams2007design,adams2007makao} tool
+% TODO: based on which technique?
+.
 
 \subsubsection{Build Logs}
+% TODO using passive where it is unneccessary
 The distribution of supported build tools is shown in
 \Cref{fig:litsur:log_producer}.
 Of the articles we surveyed, 30\% analyzed build logs produced by
@@ -540,6 +538,7 @@ Maven~\cite{maven2019website}, 16\% analyzed logs produced by
 Gradle~\cite{gradle2020website}
 and 10\% analyzed logs produced by Ant~\cite{ant2020website}.
 
+% TODO remove first part of this paragraph?
 Sometimes this limitation to a specific build tool is motivated by
 aspects separate from the build log analysis.
 For example, Shi et al.~\cite{shi2018evaluating} focussed on Maven
@@ -552,15 +551,17 @@ framework''~\cite{tomassi2019bugswarm}.
 
 Only 7\% of the proposed methods claimed to be language-agnostic, while
 several described they are covering multiple source build tools.
-The majority of articles (42\%) targeted logs from a source that was not
-targeted by any second article.
+The majority of articles (42\%) targeted logs from a source that no second article
+targeted.
 
+% TODO death by passive
 The main platform that build logs were collected from is Travis
 CI~\cite{travisci2019webpage},
 which was used in 38\% cases.
 18\% of the articles processed logs from TravisTorrent and 8\% included
 build logs from industrial projects.
 
+% perhaps remove?
 The number of logs analyzed varied greatly and we were not always able to
 extract it confidently.
 Articles reported processing from two up to 122 million logs.
@@ -568,10 +569,11 @@ Articles reported processing from two up to 122 million logs.
 31\% of the surveyed articles claimed to have published their data to
 enable further research.
 However, we found no clear reuse of build log data sets with the
-exception of TravisTorrent~\cite{beller2017travistorrent}, which was
-analyzed by Vassallo et al.~\cite{vassallo2017a-tale},
-Ghaleb et al.~\cite{ghaleb2019studying} and several other studies.
+exception of TravisTorrent~\cite{beller2017travistorrent}, which 
+Vassallo et al.~\cite{vassallo2017a-tale},
+Ghaleb et al.~\cite{ghaleb2019studying}, and several other studies reused.
 
+% TODO A and B should possibly be overlapping, otherwise there is an area where neither A nor B makes sense?
 \begin{figure}[tbhp]
 		\centering
 		\includegraphics[width=\columnwidth, trim={1.1cm 0.4cm
@@ -581,27 +583,30 @@ Ghaleb et al.~\cite{ghaleb2019studying} and several other studies.
 		\label{fig:litsur:log_producer}
 \end{figure}
 
+
 \subsection{Discussion}
 \label{sec:lit-sur:discussion}
-Our literature survey sheds light on how build log analysis is used within
-computer science research.
-Hereafter we will summarize our findings and relate them to the
-approach we are taking to improve build log analysis with chunk
-retrieval techniques.
 
-We saw that various researchers process build logs to support their
-research, often because the logs provide more or the necessary information
-to the researchers~\cite{ren2018automated}.
-Articles which explicitly mention a manual analysis of
-the logs, mostly restrict their work to few logs or take a
-``representative sample to make manual analysis
-feasible''~\cite{zolfagharinia2017not}.
-Automated approaches are necessary as many studies target a large
-number of builds.
+% TODO: this section is crucial. maybe we can highlight important findings, by categorizing them either as further subsubsections or making it bold in the text?
+% TODO: find values for X and Y
+Our literature survey shows that despite its relatively young age
+(first occurrence of a paper on the topic in X), \textbf{build log analysis is
+a widely established technique} in the literature, with Y articles on it. 
+
+% TODO: this reads very hands-off and researchy.
+% I don't understand the first sentence and would simply cut it.
+We saw that various researchers process build logs, often because the logs  provide more or the necessary
+information to the researchers~\cite{ren2018automated}.  \textbf{Most log analysis is automated.} Automated approaches are necessary as many studies target a large
+number of builds. Articles
+which explicitly mention a manual analysis of the logs, mostly
+restrict their work to few logs or take a ``representative sample to
+make manual analysis feasible''~\cite{zolfagharinia2017not}.
 % The chunk retrieval techniques we investigate within this article are
 % automated, apart from their configuration through training examples.
 
-We have observed very little reuse of build log analysis tools.
+% TODO: draw a conclusion together with figure 5: if reuse were higher, lots of effort could be saved?
+% discussion about popularity of replication packages adds nothing to this paper.
+We observed very little reuse of build log analysis tools.
 This can stem from the fact that publishing replication packages and
 research prototypes became popular only in recent years or from the
 high specialization of the developed tools in regards to supported
@@ -610,13 +615,12 @@ build environments and targeted information.
 Several articles noted the variety in log formats for different build
 environments, which requires customizing build log techniques for
 every supported build environment.
-\Cref{fig:litsur:log_producer} shows that few build environments are
-targeted by many studies and tools (A).
+\Cref{fig:litsur:log_producer} shows that many studies and tools target only a few distinct build environments (roughly, area A).
+% TODO: passive ...
 The majority of build environments was however only targeted by one
 article each (B).
-From this, we follow that, while custom parsers are beneficial for the
-small group of environments targeted by many (A), all and especially
-the rarer investigated environments (B) would benefit from a generic
+From this, we follow: (a) there is a nichè for custom parsers or even specialized plugins integrated into the build process to make post-factum parsing of logs redundant. Plugins  similar to, for example, the Maven plugin to report test executions Bell et al. wrote, still have the disadvantage of not being able to work on historic builds.
+(b) the large tail of seldomly-investigated environments would benefit from the existance of a more generic
 solution.
 % We implement build environment agnostic build log analysis
 % techniques, which are customized to a specific project by
@@ -629,6 +633,7 @@ solution.
 % % retrieval, which enable our chunk retrieval techniques to retrieve
 % % a broad range of information from build logs.
 
+% TODO this is disconnected, at least here
 Urli et al.~\cite{urli2018design} strongly discouraged from parsing
 build logs for information as it is ``too error prone'', other
 articles pointed to the effort of developing a custom tool.
@@ -645,12 +650,16 @@ maintain~\cite{michael2019regexes}.
 % we enable them to cover a much wider range of languages and build
 % tools in their studies.
 
-In summary, this literature study shows the need for build log
+In summary, the results of the literature study show the need for build log
 analysis techniques that are automated, build-environment agnostic
+% TODO who is the user?
 and can be configured by the user with little effort.
 % We achieve this by developing three techniques for which the
 % information to be retrieved is specified through examples or keywords.
 
+
+% TODO: the following paragraphs have nothing to do with a discussion of the literature survey results.
+% what we need is some derivation of the three techniques 1) regex 2) cts 3) kws, best repeated here in the discussion and then from the lit survey above, section 2.4.2
 For this reason, we are focussing on techniques that run automatically
 after being configured through examples or keywords.
 Examples consist of logs and corresponding chunks.
