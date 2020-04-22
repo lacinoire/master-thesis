@@ -41,14 +41,18 @@ Within the past two decades, Continuous Integration (CI) has become a
 ubiquitous best practice to streamline the build process of software
 projects~\cite{hilton2016usage,beller2017oops,staahl2014modeling}.
 Build logs are a textual by-product that automatic software build
-processes create.  As a treasure trove of information~\cite{meyer},
+processes create.
+As a treasure trove of information~\cite{meyer},
 build logs contain trace outputs of not only the elementary steps to
 ``make'' a project---such as retrieving and resolving dependencies and
 compiling---but also about ancillary quality assurance steps---such as
-testing the software and running automated static analysis tools. The
+testing the software and running automated static analysis tools.
+The
 contents of build logs can be highly variable depending on which tools
 are involved in the build process and how they are
-configured. The format of logs changes as projects and build tools evolve over time. Typically, though, they are at least a semi-structured and
+configured.
+The format of logs changes as projects and build tools evolve over time.
+Typically, though, they are at least a semi-structured and
 somewhat stable journal of the commands executed during the build and
 their results.
 
@@ -58,9 +62,12 @@ This manual activity is
 tedious and prone to error~\cite{santolucito2018statically}.
 As a
 single build log can be over 50 megabytes large~\cite{beller2017oops},
-finding the small chunk of information in it which is linked to the error, is akin to searching for a
+finding the small chunk of information in it which is linked to the error,
+is akin to searching for a
 needle in a haystack.
-In addition to helping understand and fix build failures, the information richness of build logs enables a plethora of other applications: with the help of
+In addition to helping understand and fix build failures, the information
+richness of build logs enables a plethora of other applications: with
+the help of
 build logs, we can better understand and categorize CI
 failures and compile
 errors~\cite{islam2017insights,seo2014programmers}, differentiate
@@ -72,9 +79,12 @@ builds~\cite{zampetti2017open}.
 
 However, manual analysis of build logs does not
 scale to the number of build logs and amount of information that such
-sophisticated applications require. Moreover, being able to
-automatically extract relevant pieces of information from build logs can also help
-developers debug a broken build more quickly without having to browse the entire build log.
+sophisticated applications require.
+Moreover, being able to
+automatically extract relevant pieces of information from build logs
+can also help
+developers debug a broken build more quickly without having to browse
+the entire build log.
 
 \begin{figure*}[htb]
 	\centering
@@ -94,7 +104,8 @@ research question:
 What are the state-of-the-research techniques to analyze build logs?
 \end{simplebox}
 
-To answer this question, we start our investigation by performing an extensive literature study (\Cref{fig:overview}).
+To answer this question, we start our investigation by performing an
+extensive literature study (\Cref{fig:overview}).
 It shows that
 less than half of the 61 works which rely on build log analysis
 describe in detail how they performed it, and even fewer
@@ -129,11 +140,12 @@ strategies to analyze build logs:
 
 \begin{itemize}
   \item \textbf{Program Synthesis by Example (referred to as PBE)}
-  Based on manually supplied example pairs of build logs and chunks, PBE automatically
+  Based on manually supplied example pairs of build logs and chunks,
+  PBE automatically
   synthesizes
   a regular expression extracting the given chunks within the build logs.
   \item \textbf{Common Text Similarity (CTS)}
-  % TODO what is the vector space model
+  % TODO what is the vector space model?
   Using the Vector Space Model, CTS selects lines of a log which are
   most similar to the lines present in manually supplied example chunks.
   \item \textbf{Keyword Search (KWS)}
@@ -144,7 +156,8 @@ strategies to analyze build logs:
 \end{itemize}
 
 
-In the third step, we conduct an empirical study to gauge the performance of
+In the third step, we conduct an empirical study to gauge the performance
+of
 these chunk retrieval techniques in
 real-world projects under a variety of conditions.
 Our study is based on the \emph{LogChunks} data
@@ -152,7 +165,8 @@ set~\cite{brandt2020logchunks}, which encompasses build logs from
 80 popular open-source projects and a broad range of different
 build tools and programming languages.
 
-Finally, we develop a set of guidelines (step 4) on how to choose a technique given a goal.
+Finally, we develop a set of guidelines (step 4) on how to choose a
+technique given a goal.
 We recommend PBE for use cases where the desired information is always
 represented in the same structural way and high confidence in
 precision and recall of the chunk retrieval is required.
@@ -168,13 +182,17 @@ to be the best choice.
 However, its low precision---it extracts a
 context of multiple lines around a finding---makes it generally
 unsuited for automatic on-ward processing and instead requires a human
-to further inspect and interpret the output chunk. A hybrid-solution combining the three techniques might be the best allround solution.
+to further inspect and interpret the output chunk.
+A hybrid-solution combining the three techniques might be the best
+allround solution.
 
 In short, this article contributes
 \begin{itemize}
-\item the first systematic study of the emerging field of build log analysis.
-\item three prototypical open-sourced implementations of the most promising chunk retrieval techniques.
-\item a large-scale empirical study comparing the three techniques.
+\item the first systematic study of the emerging field of build log
+analysis.
+\item three prototypical open-sourced implementations of the most
+promising chunk retrieval techniques.
+\item a large empirical study comparing the three techniques.
 \item systematic guidelines on when to use which technique.
 \item a detailed replication package~\cite{brandt2020chunk-replication}.
 \end{itemize}
@@ -183,10 +201,15 @@ In short, this article contributes
 \label{sec:survey}
 
 In this section, we survey the emerging field of build log
-analysis. We first start with a differentiation to the related field of general system log analysis. Then, we describe the methodology and results of a systematic mapping study to
+analysis.
+We first start with a differentiation to the related field of general
+system log analysis.
+Then, we describe the methodology and results of a systematic mapping
+study to
 determine the state-of-research on build log analysis following the
 guidelines by Petersen et
-al.~\cite{petersen2008systematic,petersen2015guidelines}. 
+al.~\cite{petersen2008systematic,petersen2015guidelines}.
+
 We close by summarizing how build logs are commonly
 analyzed in literature and discuss the implications of these findings.
 
@@ -215,29 +238,36 @@ Example adapted from~\cite{he2017towards}.}
 
 \subsection{Distinction from System Log Analysis}
 \label{sec:system-log-analysis}
-A field related to build log analysis is the processing of system log
-files produced during runtime of the system. The first difference here is that build logs are produced during runtime of the build of the system, not the system itself.
-In terms of the contents of the logs, the main difference is that system logs are fundamentally structured
+A field related to build log analysis is the processing of system logs produced during runtime of the system.
+The first difference here is that build logs are produced during runtime
+of the build of the system, not the system itself.
+In terms of the contents of the logs, the main difference is that system
+logs are fundamentally structured
 through events.
 Each line in a log file represents one event with a
 set of fields: timestamp, verbosity level and raw message
 content~\cite{he2017towards}.
 \Cref{lst:system-log} shows
-example lines from a system log. 
+example lines from a system log.
+
 
 The first goal in analyzing system log files is generally to
 separate constant and variable parts within a log
 message~\cite{nagappan2010abstracting,he2017towards}.
 Next, the log
 messages are clustered into log events, unifying messages with
-identical constant parts and varying parameters. Then, a log parser works on this intermediate representation.
+identical constant parts and varying parameters.
+Then, a log parser works on this intermediate representation.
 Its output is an ordered list of timed events and their corresponding
 parameter values~\cite{he2016evaluation}.
-This structured log can serve as input to various machine learning and data mining processes.
+This structured log can serve as input to various machine learning and
+data mining processes.
 
-In principle, one can apply the techniques developed for system log analysis
+In principle, one can apply the techniques developed for system log
+analysis
 to parts of the build logs that have this same structure.
-% TODO this explanation is not understandable. It needs to better embedded in the surrounding text
+% TODO this explanation is not understandable.
+It needs to better embedded in the surrounding text
 One example is comparing execution traces to reference
 traces of intended behavior to detect anomalies.
 Amar et
@@ -245,7 +275,8 @@ al.~\cite{amar2019mining} employed a similar approach to detect
 relevant lines in build logs.
 However, almost all of the techniques developed to analyze system logs
 leverage their inherent event structure.
-Build logs generally lack this structure and thus require different bespoke approaches.
+Build logs generally lack this structure and thus require different
+bespoke approaches.
 % In this article, we focus on extracting a single specified information
 % from the build log as a whole with chunk retrieval techniques.
 % Chunk
@@ -254,16 +285,13 @@ Build logs generally lack this structure and thus require different bespoke appr
 % expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 
 
-% TODO In general, we should reference petersen2015guidelines a bit
-% more. I.e., following the suggestions by Petersen or something, to
-% show how we followed their protocol. This comment applies to the rest of this section
-
 \subsection{Study Selection}
 \Cref{fig:lit-survey} presents an overview of our study selection
 process.
 Since the field of build log analysis is relatively young, we
 surveyed as broad a population of scientific material as possible.
-We did not limit our sources to specific Software Engineering venues~\cite{petersen2015guidelines}, but survey all sources
+We did not limit our sources to specific Software Engineering
+venues~\cite{petersen2015guidelines}, but survey all sources
 monitored by Google Scholar, including Bachelor's and Master's
 theses and academic slide decks.
 We use Google Scholar as opposed to Scopus or
@@ -271,19 +299,24 @@ other databases because it is the search engine for academic articles with
 the broadest and most current index, including preprints.
 
 An initial Google Scholar search for variations of ``build log''
-returned more than 2.2 million results (2020-03-15), many of which stem from unrelated fields such as construction and wood working.
+returned more than 2.2 million results (2020-03-15), many of which stem
+from unrelated fields such as construction and wood working.
 We refined our search criteria to exclude such obvious
 non-related fields and also to exclude works on systems
 or event logs (see \Cref{sec:system-log-analysis}).
 This left us with 1,552 search results
 (2020-03-15).
-Our replication package documents the full search queries~\cite{brandt2020chunk-replication}.
+Our replication package documents the full search
+queries~\cite{brandt2020chunk-replication}.
 To make handling so many search results feasible, we employed a
 three-pass filtering strategy:
 
 First, we filtered articles based on (a) their title and (b) the
 contextual information Google Scholar displayed.
-We included works at large that seemed to bear a resemblence to software engineering and building software. We excluded wroks written in a language unintelligible to the authors (i.e., not English or German), which disregarded fewer than 1\% of search
+We included works at large that seemed to bear a resemblence to software
+engineering and building software.
+We excluded wroks written in a language unintelligible to the authors
+(i.e., not English or German), which disregarded fewer than 1\% of search
 hits.
 We then unified
 the results of the four search queries based on the link as the
@@ -298,10 +331,12 @@ If an article referenced a new work in the context
 of build log analysis, we added the new one to our literature set.
 This added five articles (eight before
 duplicate elimination), leading to a total of 261
-works. 
+works.
+
 
 Subsequently, we performed a second, finer filter phase by downloading the
-full text of the works, reading their abstracts, and searching the full text
+full text of the works, reading their abstracts, and searching the
+full text
 for the occurrence of ``log.''
 If a work showed traces of
 working with build logs, we included it in our survey.
@@ -309,7 +344,8 @@ In total, we
 were left with 87 works after the second filtering phases.
 
 \subsection{Article Classification}
-Having trimmed down the set of articles by 95\%, we investigated the remaining ones in depth.
+Having trimmed down the set of articles by 95\%, we investigated the
+remaining ones in depth.
 We wanted to characterize how research uses build logs.
 
 % TODO (resolved): RQs mentioned before explicitly stated
@@ -318,7 +354,8 @@ Specifically, we were interested in
   \item what information is retrieved from the logs and
   what the retrieved information is used for (\textbf{RQ1.1})
   \item which techniques are used to process the build logs,
-  in how much detail they are described, and whether they are published as tools (\textbf{RQ1.2})
+  in how much detail they are described, and whether they are published
+  as tools (\textbf{RQ1.2})
   \item what kind of build logs are used and the origin of these
   logs.
 (\textbf{RQ1.3})
@@ -335,22 +372,38 @@ techniques to analyze build logs?}
 \end{itemize}
 \end{simplebox}
 
-Since we had been careful to include rather than exclude borderline works, this deeper evaluation excluded another 15 articles from the 87 works left after the second filter phase.
+Since we had been careful to include rather than exclude borderline
+works, this deeper evaluation excluded another 15 articles from the 87
+works left after the second filter phase.
 Multiple articles were extensions of others.
 Of these, we only considered the earliest article which reported on
 the processing of build logs.
 This excluded another 11 articles.
 In sum, we extracted data from 61 articles.
 
-To guide the data extraction we created a template. The template form contained questions to answer RQ 1.1 through RQ 1.3, for example ``Is the technique explained in sufficient detail?'' and ``What is the source of the build logs?'' As recommended by Petersen et
-al.~\cite{petersen2015guidelines}, we started the mapping study with a pilot study:
-both authors extracted  data from the same five articles and held a
+To guide the data extraction we created a template.
+The template form contained questions to answer RQ 1.1 through RQ 1.3,
+for example ``Is the technique explained in sufficient detail?'' and
+``What is the source of the build logs?'' As recommended by Petersen et
+al.~\cite{petersen2015guidelines}, we started the mapping study with a
+pilot study:
+both authors extracted	data from the same five articles and held a
 consensus meeting to unify their understanding
 of the data extraction template.
-We divided the remaining 46 articles evenly between the two authors and inspected them as closely as necessary to fill out the template with confidence,
-starting from occurrences of ``log'' or ``build'' within the article's text. For questions that did not require a boolean answer, we allowed assigning multiple tags or categories as the first part (``preparation phase'') of a virtual open card sorting~\cite{zimmermann2016card}. 
-% TODO: add more concrete example, such as use of retrieved x: developer feedback, build data set
-Once we had classified all works, we went into the second phase (``execution phase'') in which we found synonyms, and grouped tags together.
+We divided the remaining 46 articles evenly between the two authors
+and inspected them as closely as necessary to fill out the template
+with confidence,
+starting from occurrences of ``log'' or ``build'' within the article's
+text.
+For questions that did not require a boolean answer, we allowed assigning
+multiple tags or categories as the first part (``preparation phase'')
+of a virtual open card sorting~\cite{zimmermann2016card}.
+
+% TODO: add more concrete example, such as use of retrieved x: developer
+feedback, build data set
+Once we had classified all works, we went into the second phase
+(``execution phase'') in which we  grouped tags
+together and found synonyms.
 
 %The full data extraction template and our results of this step can be
 %found in our replication package~\cite{brandt2020chunk-replication}.
@@ -359,6 +412,7 @@ Once we had classified all works, we went into the second phase (``execution pha
 % TODO (resolved): RQs just appeared unconnected out of the blue
 
 
+% TODO: vertical alignment of rows with text to middle so they are aligned with pictograms on the right?
 \addtolength{\tabcolsep}{-5pt}
 \begin{table*}[tbhp]
 \tinyish
@@ -450,18 +504,25 @@ literature mapping along RQ 1.1 through RQ 1.3.
 
 % TODO repeat the question in the subsection title?
 \subsubsection{Retrieved Information (RQ 1.1)}
-% TODO General ref to Figure 4 missing: We answer this question along data in Figure 4, and ... ?
+% TODO General ref to Figure 4 missing: We answer this question along
+% data in Figure 4, and ...
+% ?
 
-The precise information targeted in the build logs varied from article to article.
-\Cref{fig:litsur:info_target} gives an overview over the frequency of the targeted information. Most prominent was the search for errors (39\%), followed by extracting the executed or the failing
+The precise information targeted in the build logs varied from article
+to article.
+\Cref{fig:litsur:info_target} gives an overview over the frequency of
+the targeted information.
+Most prominent was the search for errors (39\%), followed by extracting
+the executed or the failing
 tests (both 11\%).
 There were also numerous works which targeted more specialized
 information, such as the environments used during the
 build~\cite{zolfagharinia2017not}, packages
-installed~\cite{selberg2012use}, or hints to source files which 
+installed~\cite{selberg2012use}, or hints to source files which
 relate to build failures~\cite{ren2018automated}.
 
-% TODO It is unclear where this comes from. Also, wouldn't it perhaps be better to continue with Figure 4.b directly?
+% TODO It is unclear where this comes from.
+% TODO Also, wouldn't it perhaps be better to continue with Figure 4.b directly?
 In most cases (51\%), a chunk was retrieved from the log.
 Build logs were scanned for compilation
 errors~\cite{clemencic2014new} or
@@ -478,7 +539,9 @@ in one case each.
 
 The majority of articles (46\%) used the outcome of their build log
 analysis for research purposes, as shown in \Cref{fig:litsur:use}.
-% TOOD What does this mean? Give an example: to drive further research, for example to categorize the types of compile errors encountered at Google~\cite{}.
+% TOOD What does this mean? Give an example: to drive further research,
+for example to categorize the types of compile errors encountered at
+Google~\cite{}.
 Further uses were giving feedback to developers (10\%) or automatic
 on-ward processing of the retrieved information (8\%)
 % TODO for example to ...
@@ -487,9 +550,11 @@ on-ward processing of the retrieved information (8\%)
 % TODO repeat the question in the subsection title?
 \subsubsection{Retrieval Technique (RQ 1.2)}
 \Cref{tab:litsur:techniques} presents the techniques that the articles
-% TODO: lets use analyzing build logs canonically? Please search text to eliminate occurrences of processing?
+% TODO: lets use analyzing build logs canonically? Please search text
+to eliminate occurrences of processing?
 described for processing build logs.
-% TODO This is weird. Last number we have from above is 51.
+% TODO This is weird.
+Last number we have from above is 51.
 43 of the 61 articles we inspected mentioned how they are analyzing build
 logs.
 However, only 16 of these described their method in detail.
@@ -498,7 +563,10 @@ The most mentioned method (34\%) was using a parser, where we also
 included
 rather imprecise statements like ``we parse the build logs.''
 % TODO include citation?
-% TOOD maybe make the point here that it is questionable whether this includes a comprehensive tokenizer, lexer etc. based solution and that parsing in many cases really meant regexp. If we could figure that out, then we would assign it to regexp instead.
+% TOOD maybe make the point here that it is questionable whether this
+includes a comprehensive tokenizer, lexer etc.
+based solution and that parsing in many cases really meant regexp.
+If we could figure that out, then we would assign it to regexp instead.
 25\% of the articles described the use of regular expressions and 20\%
 inspected the logs manually.
 Another 8\% employed machine learning such as natural language
@@ -514,7 +582,8 @@ search strings that identify the target category.
 Based on the search strings they created a script that automatically
 classifies the remaining logs.
 
-Only 25\% of the articles claimed their implementation is available. Moreover, we
+Only 25\% of the articles claimed their implementation is available.
+Moreover, we
 saw some reuse of the few available build log analysis tools.
 Five articles employed the tools used to create
 \emph{TravisTorrent}~\cite{beller2017travistorrent,beller2017oops,
@@ -551,7 +620,8 @@ framework''~\cite{tomassi2019bugswarm}.
 
 Only 7\% of the proposed methods claimed to be language-agnostic, while
 several described they are covering multiple source build tools.
-The majority of articles (42\%) targeted logs from a source that no second article
+The majority of articles (42\%) targeted logs from a source that no
+second article
 targeted.
 
 % TODO death by passive
@@ -561,7 +631,7 @@ which was used in 38\% cases.
 18\% of the articles processed logs from TravisTorrent and 8\% included
 build logs from industrial projects.
 
-% perhaps remove?
+% TODO perhaps remove this paragraph?
 The number of logs analyzed varied greatly and we were not always able to
 extract it confidently.
 Articles reported processing from two up to 122 million logs.
@@ -569,11 +639,12 @@ Articles reported processing from two up to 122 million logs.
 31\% of the surveyed articles claimed to have published their data to
 enable further research.
 However, we found no clear reuse of build log data sets with the
-exception of TravisTorrent~\cite{beller2017travistorrent}, which 
+exception of TravisTorrent~\cite{beller2017travistorrent}, which
 Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying}, and several other studies reused.
 
-% TODO A and B should possibly be overlapping, otherwise there is an area where neither A nor B makes sense?
+% TODO A and B should possibly be overlapping, otherwise there is an
+% area where neither A nor B makes sense?
 \begin{figure}[tbhp]
 		\centering
 		\includegraphics[width=\columnwidth, trim={1.1cm 0.4cm
@@ -586,26 +657,38 @@ Ghaleb et al.~\cite{ghaleb2019studying}, and several other studies reused.
 
 \subsection{Discussion}
 \label{sec:lit-sur:discussion}
+% TODO we are extracting failures in the following studies, which is mainly what
+% literature does, too, right? Highlight here and mention later again
 
-% TODO: this section is crucial. maybe we can highlight important findings, by categorizing them either as further subsubsections or making it bold in the text?
+% TODO: this section is crucial.
+% maybe we can highlight important findings, by categorizing them either
+% as further subsubsections or making it bold in the text?
 % TODO: find values for X and Y
 Our literature survey shows that despite its relatively young age
-(first occurrence of a paper on the topic in X), \textbf{build log analysis is
-a widely established technique} in the literature, with Y articles on it. 
+(first occurrence of a paper on the topic in 2001, vast majority after
+2016), \textbf{build log analysis is a widely established technique}
+in the literature, with Y articles on it.
+
 
 % TODO: this reads very hands-off and researchy.
 % I don't understand the first sentence and would simply cut it.
-We saw that various researchers process build logs, often because the logs  provide more or the necessary
-information to the researchers~\cite{ren2018automated}.  \textbf{Most log analysis is automated.} Automated approaches are necessary as many studies target a large
-number of builds. Articles
+We saw that various researchers process build logs, often because the
+logs  provide more or the necessary
+information to the researchers~\cite{ren2018automated}.
+\textbf{Most log analysis is automated.} Automated approaches are
+necessary as many studies target a large
+number of builds.
+Articles
 which explicitly mention a manual analysis of the logs, mostly
 restrict their work to few logs or take a ``representative sample to
 make manual analysis feasible''~\cite{zolfagharinia2017not}.
 % The chunk retrieval techniques we investigate within this article are
 % automated, apart from their configuration through training examples.
 
-% TODO: draw a conclusion together with figure 5: if reuse were higher, lots of effort could be saved?
-% discussion about popularity of replication packages adds nothing to this paper.
+% TODO: draw a conclusion together with figure 5: if reuse were higher,
+lots of effort could be saved?
+% discussion about popularity of replication packages adds nothing to
+this paper.
 We observed very little reuse of build log analysis tools.
 This can stem from the fact that publishing replication packages and
 research prototypes became popular only in recent years or from the
@@ -615,12 +698,20 @@ build environments and targeted information.
 Several articles noted the variety in log formats for different build
 environments, which requires customizing build log techniques for
 every supported build environment.
-\Cref{fig:litsur:log_producer} shows that many studies and tools target only a few distinct build environments (roughly, area A).
+\Cref{fig:litsur:log_producer} shows that many studies and tools target
+only a few distinct build environments (roughly, area A).
 % TODO: passive ...
 The majority of build environments was however only targeted by one
 article each (B).
-From this, we follow: (a) there is a nichè for custom parsers or even specialized plugins integrated into the build process to make post-factum parsing of logs redundant. Plugins  similar to, for example, the Maven plugin to report test executions Bell et al. wrote, still have the disadvantage of not being able to work on historic builds.
-(b) the large tail of seldomly-investigated environments would benefit from the existance of a more generic
+From this, we follow: (a) there is a nichè for custom parsers or even
+specialized plugins integrated into the build process to make post-factum
+parsing of logs redundant.
+Plugins  similar to, for example, the Maven plugin to report test
+executions Bell et al.
+wrote, still have the disadvantage of not being able to work on historic
+builds.
+(b) the large tail of seldomly-investigated environments would benefit
+from the existance of a more generic
 solution.
 % We implement build environment agnostic build log analysis
 % techniques, which are customized to a specific project by
@@ -635,7 +726,7 @@ solution.
 
 % TODO this is disconnected, at least here
 Urli et al.~\cite{urli2018design} strongly discouraged from parsing
-build logs for information as it is ``too error prone'', other
+build logs for information as it is ``too error prone,'' other
 articles pointed to the effort of developing a custom tool.
 Regular expressions are known to be tedious to
 maintain~\cite{michael2019regexes}.
@@ -650,7 +741,8 @@ maintain~\cite{michael2019regexes}.
 % we enable them to cover a much wider range of languages and build
 % tools in their studies.
 
-In summary, the results of the literature study show the need for build log
+In summary, the results of the literature study show the need for
+build log
 analysis techniques that are automated, build-environment agnostic
 % TODO who is the user?
 and can be configured by the user with little effort.
@@ -658,8 +750,11 @@ and can be configured by the user with little effort.
 % information to be retrieved is specified through examples or keywords.
 
 
-% TODO: the following paragraphs have nothing to do with a discussion of the literature survey results.
-% what we need is some derivation of the three techniques 1) regex 2) cts 3) kws, best repeated here in the discussion and then from the lit survey above, section 2.4.2
+% TODO: the following paragraphs have nothing to do with a discussion
+of the literature survey results.
+% what we need is some derivation of the three techniques 1) regex 2)
+cts 3) kws, best repeated here in the discussion and then from the lit
+survey above, section 2.4.2
 For this reason, we are focussing on techniques that run automatically
 after being configured through examples or keywords.
 Examples consist of logs and corresponding chunks.
@@ -685,7 +780,7 @@ Our evaluation of the three chunk retrieval techniques is done on the
 build environments which enables us to measure the generic
 applicability of our techniques.
 The targeted chunks are describing error messages or
-``the reason the build failed'', which was also the information
+``the reason the build failed,'' which was also the information
 most targeted by the articles in our survey.
 
 % The articles within our study mainly tried to retrieve or classify
@@ -728,8 +823,15 @@ In addition, we present our comparison baseline of random line
 retrieval (RLR), illustrate the techniques on a concrete example
 of log chunks and sketch out implementation.
 
-\Cref{tab:ctr} shows a comparison of the presented techniques.
+% TODO this is not enough for Table 3. Where does it come from?
+% How did it originate? Also: never single sentence abstracts
+\Cref{tab:ctr} shows a comparison of the implemented techniques.
 
+% TODO Somehow, we have to find a better place for this. We have been
+% using the term 'chunk retrieval' beforehand already -- this
+% definition now comes to late. The first paragraph should already
+% apply to the literature mapping, the second of course only applies
+% here.
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 \label{sec:crt-characteristics}
@@ -771,8 +873,8 @@ The concept of \emph{Programming by Example} aims to capture the
 intent of the user through examples which they provide.
 Leveraging this approach, we implemented a chunk retrieval technique
 for build logs.
-Our implementation is based and highly influenced by the
-\emph{Microsoft PROSE library}~\cite{prose2019webpage}.
+Our implementation is based on the
+\emph{PROSE library}~\cite{prose2019webpage}.
 The PROSE library is powered by the generic program synthesis framework
 \emph{FlashMeta}~\cite{polozov2015flashmeta:} and the specialized
 text extraction DSL \emph{FlashExtract}~\cite{le2014flashextract:}.
@@ -785,7 +887,7 @@ the build log.
 
 \subsubsection{Configuration}
 In- and output example pairs are the main driver of Programming by
-Example, we refer to them in short as \emph{examples}.
+Example; we refer to them in short as \emph{examples}.
 The \emph{input} is the text of the build log file.
 The \emph{output} is
 a substring of the log file text, representing the
@@ -796,10 +898,15 @@ training set, \emph{configure} a specific chunk retrieval with PBE:
 they define the substring of a build log that should be extracted.
 The PROSE program synthesis then tries to construct a program
 consistent with all training examples.
-If PROSE cannot synthesize a program, e.g.\
+If PROSE cannot synthesize a program, e.g.,\
 because the regular expression
 necessary would be too complicated to synthesize, PBE returns the
-error message ``no program found''.
+error message ``no program found.''
+% TODO Figure 7 should not come before Figure 6. Figure 6 and 7 should be
+% introduced first. This is best-practice anyway: Whenever you mention
+% a figure/table the standard sentence should always be: Figure X shows Y,
+% on the vertical axis Z and on the horizontal axis D.
+
 \Cref{lst:prose-program-simplified} presents a simplified version
 of a program learned from the examples in \Cref{lst:chunk-example}.
 
@@ -812,12 +919,15 @@ of a program learned from the examples in \Cref{lst:chunk-example}.
 % % otherwise yes, nothing interesting happens in the application of pbe
 % % though for consistency we might need this section? or merge
 % config/application?
+% TODO Why does it return an error message? Shouldn't it also return
+% <empty string>? Does it not rather return an error message if no
+% program can be synthesized?
 \subsubsection{Application}
 A run of PBE takes a build log file as input and applies the
 synthesized regular expression program.
 It then returns the substring
 of the build log matched by the program or an error message if the
-program found no match.
+program found no match. 
 
 
 \subsection{Common Text Similarity (CTS)}
@@ -825,6 +935,7 @@ Text Similarity approaches are widely used to filter unstructured
 textual software artifacts~\cite{runeson2007detection,
 marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
 We investigate a chunk retrieval technique based on the common
+% TODO: the ominuous Vector Space Model again ...
 Vector Space Model~\cite{schutze2008introduction}.
 The aim is to retrieve those lines from a build log which are most
 similar to examples given by the user.
@@ -840,6 +951,8 @@ the same concept of examples as for PBE
 % Annibale said is the VSM.
 % word tokens, tf-idf, similarity measure
 % I added a "as follows", think that is enough for explanation?
+% TODO: I think it is good, but the VSM is still unexplained. We need a
+% (at least) 1-sentence introduction to it, at its first reference
 and apply the Vector Space Model~\cite{schutze2008introduction}
 as follows:
 The lines of the output strings of the training examples define our
@@ -902,20 +1015,27 @@ the average of lines in the output of the training examples.
 
 \subsection{Random Line Retrieval (RLR)}
 \label{sec:expl-rlr}
-In our evaluation, we want to compare against a baseline of randomly
-picking lines from the build log.
+% TODO: could you add two-three more references to the results of RLR in
+% the discussion, to show how even seemingly low numbers are much better
+% than RLR?
+
+To fully comprehend how difficult a task build log analysis really is without any a-priori knowledge, we include a comparison with a base line generated by Random Line Retrieval (RLR), that is,
+picking lines randomly from the build log.
 RLR mimics the
 situation of guessing blindly which lines might be interesting.
 The only configuration option for RLR is the number of lines it should
-return.
+retrieve.
 For a fair comparison to the other techniques (whose number of
 returned lines is dynamic), we configure RLR to return the average
-number of lines in the chunks of the training examples.
+number of lines in the chunks of the training examples, thus arguably giving it a slight advantage.
 
 % TODO Moritz: you said: some more details here?
 % I would not know of any details to add.
 %It's really all we are doing
+% TODO: You are right, nothing more is necessary
 
+
+% TODO: these next two sections do not belong under this section -- they are not a chunk retrieval technique. One way to fix it would be to rename the section.
 \subsection{Chunk Retrieval Example}
 \label{sec:crt-example}
 
@@ -1014,7 +1134,7 @@ In fact, if the third example from \Cref{lst:chunk-example-3},
 which has a
 different structural representation, is added to the training set,
 PBE is not able to synthesize a program and returns
-``\texttt{no program found}''.
+``\texttt{no program found}.''
 We later express this difference in structural representation through
 dividing log chunks into \emph{structural categories}.
 The chunks from \Cref{lst:chunk-example}
@@ -1036,10 +1156,10 @@ the training examples have on average two lines.
 KWS is configured with keywords that appear close to the chunk within
 the build log.
 For the examples from \Cref{lst:chunk-example} these could be
-``FAILURE'', ``wrong'' or ``failed''.
+``FAILURE,'' ``wrong,'' or ``failed''.
 The example from \Cref{lst:chunk-example-3} could be found
-by searching for ``FAIL''.
-If KWS would be trained with all three examples and the aforementioned
+by searching for ``FAIL.''
+If KWS was to be trained with all three examples and the aforementioned
 associated keywords, it would search for the three keywords from
 \Cref{lst:chunk-example}, as they appear twice---most often within
 the training set of three examples.
@@ -1049,26 +1169,37 @@ For our comparison study, we implemented each of the chunk retrieval
 techniques and a unifying interface.
 The unified interface is implemented in Ruby and
 calls the separate technique implementations over the command line.
-The implementation of PBE in C\# is based on the Microsoft PROSE
-library~\cite{prose2019webpage}.
-We implemented CTS, KWS and RLR using
+We implemented PBE in C\# based on the Microsoft PROSE
+library~\cite{prose2019webpage} and CTS, KWS, and RLR using
 R and the text2vec library~\cite{text2vec2019webpage}.
-They can be found in our replication
+% TODO and passive again ...
+The source code of the implementation can be found in our replication
 package~\cite{brandt2020chunk-replication} together
-with Docker images which have
-our techniques installed and ready to use.
+with ready-to-use Docker images.
 
 \section{Study Design}
+
+% TODO This section is not structured well. First, it misses an
+% explanation of the bigger study design.  Second, What is the difference between Study Process and
+% Study Design? Third, the LogChunks section appears out of nowhere
+% and is not related to the section title (different abstraction
+% level).  Perhaps a solution would be to be a bit inspired by this
+% paper:
+% https://inventitech.com/publications/2018_beller_spruit_spinellis_zaidman_on_the_dichotomy_of_debugging_behavior_among_programmers.pdf
+% There is a research design section (which we are missing) and a
+% Research Method section (which is a mixture of the current section
+% titled Log Chunks and Study Process)
+
 \label{sec:study}
 
-To investigate when our chunk retrieval techniques are suited to
+To investigate when the chunk retrieval techniques are suited to
 analyze build logs (\textbf{RQ2}), we perform an empirical comparison
 study on the \emph{LogChunks} data set~\cite{brandt2020logchunks}.
 In particular, we are interested in how many examples a technique
 should be trained with (\textbf{RQ2.1}),
 how similar the structural representation of the targeted log chunks
 has to be (\textbf{RQ2.2}) and how reliable the quality of the
-produced outputs is (\textbf{RQ2.3}).
+produced outputs is (\textbf{RQ2.3}). This leads us to the following research questions:
 
 \begin{simplebox}[minipage boxed title*=-1.5cm,
 attach boxed title to top center={yshift=-6mm}]
@@ -1095,15 +1226,16 @@ we measure to answer our research questions.
 	\label{fig:study}
 \end{figure*}
 
+
 \subsection{LogChunks}
-For this study, we created the previously published data set
-\emph{LogChunks}.
+To conduct the study in this paper, we created the 
+\emph{LogChunks}  data set~\cite{brandt2020logchunks}.
 It encompasses 797 build logs from Travis CI,
 stemming from a broad range of 80 GitHub repositories and 29
 programming languages.
 For each file, the authors manually ``labeled
 the log part (chunk) describing why the build
-failed''~\cite{brandt2020logchunks}.
+failed''.
 We included keywords, which we
 would use to search for the selected chunk within the log.
 In
@@ -1114,10 +1246,19 @@ within the log, we assigned them the \emph{same structural category},
 as described in \Cref{sec:crt-example}.
 
 \subsection{Study Process}
+% TODO: I think you need to introduce a concept that makes clear what one
+% ``folder'' consists of ...
+% TODO: What does this mean -- we begin by? Aren't we perhaps missing that
+% we operate on all repos in LogChunks?
 We begin by selecting all examples in \emph{LogChunks}
 that correspond to one GitHub repository---and thus the
+% TODO () is meant to reference the figure, but this the figure is not actually mentioned.
 same build environment (1).
+% TODO: What does this mean? Of what nature are the examples? How were they chosen?
+% Isn't it rather the case that for each repository, we built traning sets of size 1, 2,
+% ... 5 build logs?
 One to five examples make up the training set (2).
+% TODO passive ...
 We vary its size to measure how many examples are needed to
 confidently configure a technique.
 The training set is so small because the examples have to be
@@ -1125,12 +1266,15 @@ manually created by a user.
 A larger training set would oppose our goal of providing techniques
 that can be configured with little effort
 (see \Cref{sec:lit-sur:discussion}).
+% TODO: The example? why only one? And what is an example? An example build log?
+% Then it would be good to say so.
 The example chronologically after the training set makes up the
 test set (3).
 In this way, we train on examples from past build logs and test on
 more recent logs.
 We chose a test set size of 1, as users of our techniques
 should receive reliable results on every build log they analyze.
+% TODO and why is this important? Doesn't everyone want such stability of results?
 In the next step, we configure a chunk retrieval technique with
 the examples from the training set (4) and apply the technique to the
 training set (5), which produces the retrieval output (6).
@@ -1185,22 +1329,21 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	lines were
 	extracted, therefore when recall is one.
 \end{itemize}
+
+% This is a weird position for this paragraph
+% TODO What is ``this'' referring to? You just defined a bunch of equations.
 This concludes one execution within our evaluation.
+% TODO run vs. execution above.
 We conduct one run for each of the four chunk retrieval techniques,
 for each of the eighty repositories in \emph{LogChunks} (8)
 and for each of the five training set sizes (2).
-In total we perform 1600 runs, 400 for each of the chunk retrieval
-techniques PBE, CTS, KWS and RLR.
-
-Our implementation of the techniques, as well as our evaluation
-harness and the code we used to process our results is offered
-for inspection and reproduction in our replication package
-~\cite{brandt2020chunk-replication}.
+In total we perform 1600 runs, 400 for each of the implemented chunk retrieval
+technique.
 
 \section{Results}
-This section presents the separate results for each chunk retrieval
-technique.
-Afterwards, we compare the three techniques with each other and RLR as
+This section first presents the results for each chunk retrieval
+technique separately.
+Afterwards, we compare the three techniques with each other and to RLR as a
 baseline.
 
 
@@ -1267,22 +1410,28 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 (PBE)}
 \end{figure*}
 
-\Cref{fig:failure-reason-PBE} presents the results of the chunk
+% TODO Say something about this being a pecularity of PBE ...
+\Cref{fig:failure-reason-PBE} shows the results of chunk
 retrieval with PBE.
-Out of the 400 runs, 5 per each one of the 80 example
-sets, PBE extracted all the desired lines successfully in 138 cases.
+Out of the overall 400 runs, 5 per each one of the 80 example
+sets, PBE extracted all desired lines successfully in 138 cases.
 In 59 cases, a regular expression program could be synthesized, though
-it did not find a match on the test build log.
-In 30 cases the synthesized program only extracted a
+it did not find match on the test build log.
+In 30 cases, the synthesized program only extracted a
 subset of the desired lines.
 For these 30 cases, the average recall
 was 28\%.
+% TODO: Perhaps we should call it partially successful? Let's
+% discuss this in a meeting
 \Cref{lst:pbe-unsuccessful} shows how an example of such
-an \emph{unsuccessful retrieval}, where the synthesized program only
+an \emph{unsuccessful retrieval} looks like. In it, the synthesized program only
 retrieved two of the four targeted lines.
 In 173 of the 400 cases
-could PROSE not synthesize program consistent with all of the training
+could PROSE not synthesize a program consistent with all of the training
 examples.
+
+% TODO introudce this fig at large. Soemthing like: Zooming in
+% on only the successful retrievals from (...), Fig ... shows ...
 
 \Cref{fig:failure-reason-categorycount-PBE} shows the results of PBE
 runs depend on the number of structural categories in the training and
@@ -1331,6 +1480,8 @@ precision around 96\%.
 retrieval with Common Text Similarity (CTS) compared by \ldots}
 \end{figure*}
 
+% TODO what about referencing the combined figure at first: something like shows the results of CTS on two beanplots of ... and ...., and then the subfigure
+% TODO this goes for all techniques
 \Cref{fig:recall-precision-examplecount-CTS} presents precision,
 recall and F$_{1}$-score of chunk retrieval using CTS for an
 increasing number of training examples.
@@ -1389,34 +1540,40 @@ For more than one structural category in
 the training and test examples the recall decreases by about 20\% and
 the precision decreases about 6\%.
 For more than two structural
-categories no clear trend is visible in precision, recall or
+categories no clear trend is visible in precision, recall, or
 F$_{1}$-score.
 
+% TODO Perhaps, above in our section about logchunks, we would need some
+% basic empirical stats -- e.g., how long are the files and how much
+% do we usually extract from the log
 \subsection{Random Line Retrieval}
 \label{sec:r:rlr}
 
-In our evaluation, we compare against a baseline of randomly
-picking lines from the build log.
-Its results follow intuitive
-expectations:
-The precision ranges between 8\% and 5\%, the recall between 6\% and
+The baseline of randomly
+picking lines from build logs delivers the expected low and ``random'' results: precision ranges between 8\% and 5\% and recall between 6\% and
 8\%.
-The size of the training set has no visible impact on either.
-A larger number of structural categories within the training and
-test sets decreased the precision of RLR from 7\% to 0\%, the recall
+% TODO (resolved) visible is a tricky word here since the reader can specifically
+% NOT see this
+% TODO impact on what?
+As expected, the size of the training set has no impact on.
+% TODO (resolved) this explanation implies causality where there is none. 
+With a larger number of structural categories within the training and
+test sets, the precision of RLR decreases from 7\% to 0\%. Its recall
 increases from 6\%, for one structural category present, to 11\%, for
-three structural categories present and also drops to 0\% for more
-structural categories.
+three structural categories present and drops to 0\% again for more
+structural categories. 
 Graphs of these results of the chunk retrieval with RLR
 are included in our replication
 package~\cite{brandt2020chunk-replication}.
 
 \subsection{Comparison of All Techniques}
-Next, we aggregate the results from
+In this section, we aggreagte and compare the results from
 \Cref{sec:r:kws,sec:r:pbe,sec:r:cts,sec:r:rlr}.
 
+% TODO 
 \Cref{fig:success-partial-all} compares the success of chunk
 retrievals differentiated by techniques in our study.
+% TODO It shows on the vertical axis the number of ?runs? ... and on the horizontal ...
 CTS and KWS
 extract at least some of the desired lines in 79\% and 88.5\%
 of the chunk retrieval runs.
@@ -1443,11 +1600,15 @@ retrieval runs.
 % KWS
 % % has the highest recall of all techniques with 70\%.
 
+% TODO ``being present'' sounds cumbersome (and the other one is grammatically flawed)
+% , what about just removing it?
 \Cref{fig:recall-precision-singlecategory-all,fig:recall-precision-multicategory-all}
-show the influence of a single structural category present in the
-training examples compared to multiple categories present.
+show the influence of a single structural category being present in the
+training examples compared to multiple categories being present.
 For more
 than one category being present, the recall of PBE decreases greatly.
+% TODO this is not a meaningful comparsion to RLR. One would be to say that
+% all of these techniques beat RLR handsdown
 For CTS and KWS the values also decrease, while RLR is not affected by
 the number of structural categories present.
 
@@ -1487,6 +1648,10 @@ techniques compared, split by structural category count.}
 \section{Discussion}
 \label{sec:discussion}
 
+% TODO This sentence is too long and complicated for an intro (and something
+% is broken in it, too)
+% TODO decision tree -> recommendation schema? You can use the more specific decision
+% tree when referencing the figure.
 For the interpretation of our study results, we look at each chunk
 retrieval technique separately and give recommendations for
 which types of input build
@@ -1499,6 +1664,9 @@ Based on our empirical comparison, we present a
 decision tree between the three techniques we investigated.
 
 \subsection{Interpretation of Study Results}
+% TODO This is bad style. Begin the section by saying what you do in there
+% Then at the end, say that you summarized it in Table 3 (or include Table 3
+% in the discussion throughout the text.)
 \Cref{tab:single-technique-recommendations} summarizes the
 recommendations which we discuss
 in this section.
@@ -1508,18 +1676,22 @@ in this section.
 \centering
 \begin{tabular}{llll}
   \toprule
-  & PBE & CTS & KWS \\
+  & \textbf{PBE} & \textbf{CTS} & \textbf{KWS} \\
   \midrule
-  Structural Categories & 1 & less is better & \makecell[l]{best 1 \\
+  \textbf{Structural categories} & 1 & less is better & \makecell[l]{best 1 \\
   multiple okay} \\
-  Training Set Size & 2 & no influence & 2 \\
-  Precision & \makecell[l]{high \\ (if synthesis succeeds)} & medium &
+  \midrule
+  \textbf{Training set size} & 2 & no influence & 2 \\
+    \midrule
+  \textbf{Precision} & \makecell[l]{high \\ (if synthesis succeeds)} & medium &
   low \\
-  Recall & \makecell[l]{high \\ (if synthesis succeeds)} & medium &
+    \midrule
+  \textbf{Recall} & \makecell[l]{high \\ (if synthesis succeeds)} & medium &
   high \\
-  \makecell[l]{Confidence in \\ Output Correctness} & high & low &
-  \makecell[l]{low (precision) \\ high (recall)} \\
-  Output Consumption by & program & human & human \\
+    \midrule
+  \makecell[l]{\textbf{Confidence in} \\ \textbf{Output correctness}} & high & low &
+  \makecell[l]{low (precision) \\ high (recall)} \\     \midrule 
+  \textbf{Output consumer} & program & human & human \\
   \bottomrule
 \end{tabular}%
 }
@@ -1531,7 +1703,7 @@ techniques.}
 \subsubsection{Program Synthesis by Example (PBE)}
 
 \noindent
-\textbf{Configuration and Input}
+\textbf{Configuration and Input.}
 Our study results show that chunk retrieval with PBE gives best
 results when the training examples are structurally identical.
 This is
@@ -1549,12 +1721,13 @@ two examples are enough input for PROSE to synthesize a regular
 expression program with good recall.
 In our study, additional training
 examples did not improve the chunk retrieval.
+% TODO: Why uncomment the following? Is it not true? I think it is crucial.
 % In fact, unless they
 % were in some sense redundant, adding training examples above that even
 % hindered the applicability of PBE.
 
 \noindent
-\textbf{Retrieval Output Usage}
+\textbf{Retrieval Output Usage.}
 If the program synthesis succeeds and applying the regular expression
 program yields an output, PBE has high precision and recall.
 The tool
@@ -1569,7 +1742,7 @@ processing.
 
 \subsubsection{Common Text Similarity (CTS)}
 \noindent
-\textbf{Configuration and Input}
+\textbf{Configuration and Input.}
 Similar to PBE, chunk retrieval using CTS yields better results the
 fewer structural categories are present in the training and test
 examples.
@@ -1584,7 +1757,7 @@ examples yield improvements in the chunk retrieval over a single
 training example.
 
 \noindent
-\textbf{Retrieval Output Usage}
+\textbf{Retrieval Output Usage.}
 CTS has good precision and recall on average, though with a high
 variation.
 This means that the quality of an output by CTS is hard to
@@ -1595,7 +1768,7 @@ developers an email with the extracted build failure reason.
 
 \subsubsection{Keyword Search (KWS)}
 \noindent
-\textbf{Configuration and Input}
+\textbf{Configuration and Input.}
 KWS has a higher recall than the two other techniques for multiple
 structural categories present in the training and test examples.
 This
@@ -1613,7 +1786,7 @@ does not lead to further improvements.
 
 \noindent
 \textbf{Retrieval Output Usage}
-While KWS has the highest recall of all three techniques, its
+While KWS has the highest reca.ll of all three techniques, its
 precision is the lowest.
 The output of a chunk retrieval with KWS is
 well-suited to be read by humans, but ill-suited for consumption by
@@ -1629,9 +1802,15 @@ automated tools.
 \end{figure}
 
 \subsection{Recommendation of Suitable Techniques}
+% TODO Make intor less generic?
 After discussing the three chunk retrieval techniques separately we
 now want to unify our results into one recommendation scheme.
-Figure~\ref{fig:crt-recommendation} presents a decision tree
+% TODO Try to inductiviely let the figure emerge from the text, not this
+% ``here is the figure; eat it''.
+% C: ``How should I do this?''
+% Already a better solution would be at the end of this section: We
+% summarized these conditions in the decision tree in Fig ...
+\Cref{fig:crt-recommendation} presents a decision tree
 to answer our second research question;
 If researchers or developers want to retrieve chunks from build logs,
 they can follow the decision tree to identify the technique
@@ -1640,6 +1819,8 @@ The decision tree is built up of questions
 which either lead to more questions or to a leaf node containing a
 recommended technique.
 
+% TODO this is too prominent and the style is reserved for RQs ...
+% shouldn't it also better be in threats to validity?
 \begin{simplebox}[minipage boxed title*=-7cm]{Caveat!}
 This is a preliminary hypothesis based on the results
 from our comparison study.
@@ -1649,6 +1830,7 @@ chunk retrieval techniques as well as the \emph{LogChunks}
 data set.
 \end{simplebox}
 
+% TODO for what?
 The first and most important aspect are the structural categories.
 Are the targeted log chunks always presented in
 the same structural way within the build logs? Then the information
@@ -1658,7 +1840,7 @@ same structural category.
 If the information chunks are from multiple structural categories
 and recall is more important than precision we recommend
 to use KWS\@.
-If precision is more important than recall to the user we
+If precision is more important than recall, we
 recommend CTS\@.
 We also recommend CTS when the log chunks are
 from one structural category, when the user does not require high
@@ -1681,7 +1863,11 @@ include from which sub-tool it originated and thus facilitate
 automatic on-ward processing or interpretation of the result.
 
 
-\subsection{Examples of Using the Recommendation Scheme}
+\subsection{Using the Recommendation Scheme}
+% TODO Perhaps add introduction from recommendation scheme here?
+
+% TODO this is very nice again, perhaps a tiny bit on the trivial side.
+% Do reference Figure 17 more, thoguh
 To illustrate how one would use our decision tree to find a suitable
 chunk retrieval technique we describe two concrete examples: a software
 team
@@ -1696,16 +1882,17 @@ this within the build log.
 As all log statements that report timing
 measurements are formatted the same way, the targeted log chunks are
 from one structural category.
-Therefore the development team can use
+Therefore, the development team can use
 PBE to retrieve the duration of a build phase.
 
-In our second example, a researcher studies whether test failures
-are caused by a small or by a large group of test cases.
+In our second example, a researcher wants to investigate whether a small or large group of test cases
+causes build failures.
+% TODO They?
 They gather
-CI build logs from various projects, which are their only available
-data source.
+CI build logs from various projects.
 The task of the researcher is to extract the names of the
 failing test cases from each build log.
+% TODO They?
 When they use our
 recommendation scheme to select a chunk retrieval technique, they
 first have to estimate how uniform the representation of the failing
@@ -1720,7 +1907,7 @@ As they have to manually inspect the results of both CTS
 and KWS, they choose recall over precision to avoid having to inspect
 the whole log in case the relevant information chunk was not
 retrieved.
-Therefore, our decision tree recommends to the researcher to use KWS\@.
+Therefore, our decision tree recommends the researcher to use KWS\@.
 
 In case the researcher wants to avoid manually inspecting the
 retrieval results, they have to first separate the CI build logs
@@ -1733,7 +1920,7 @@ There are several threats to the validity of the conclusions of our
 work.
 
 
-\textbf{Implementation}
+\textbf{Implementation.}
 Our results depend on the implementation of the investigated chunk
 retrieval techniques and the libraries we used.
 Our implementation of
@@ -1766,23 +1953,27 @@ Tuning the text similarity
 meta-parameters more to the specific use case of chunk retrieval from
 build logs would yield better chunk retrieval results.
 
-\textbf{Data Set}
+% TODO something like overall, we argue that our implementations and their
+% weaknesses stand prototypical for the techniques and tried to limit
+% idiosyncrazies as much as possible (give example)
+
+\textbf{Data Set.}
 The outcomes of our comparison study are highly dependent on the build
 logs from the \emph{LogChunks} data set.
 It consists of build
 logs from open source projects and therefore it is not clear whether
 our results apply to industry projects that use build tools
 not popular in open source development.
-However, \emph{LogChunks} covers a wide array of build tools,
-we believe that our findings can be generalized.
+However, since \emph{LogChunks} covers a wide array of build tools and programming languages,
+we believe that our findings do generalize.
 We collected build logs from Travis CI.
 Yet, the format of the log chunk we chose
-for our evaluation is not dependent on Travis CI\@.
+for our evaluation is largely independent of Travis CI\@.
 This
 is because the reason the build failed is described within the build
 logs by the tools themselves and not the Travis CI environment.
 
-\textbf{Training Set Size}
+\textbf{Training Set Size.}
 Especially the results for CTS might be influenced by the fact that we
 only trained on one to five examples.
 We chose this small training set
@@ -1806,11 +1997,16 @@ effect of the number of structural categories on the performance
 of the chunk retrieval techniques.
 
 \section{Future Work}
+% TODO Actually, this future work is very, *very* good. It might be
+% the best future work I have ever read in an article.
+% One idea would be to sell it as such and tie a bit back to our
+% first literature sruvey. You can say you give a roadmap to guide
+% future research in the field, and sell it in abstract and intro!
 
 There are various future research opportunities based on our work:
 
 \textbf{Systematic Survey of Industry Approaches for Build
-Log Analysis}
+Log Analysis.}
 Our survey is limited to academic work and articles.
 However, handling build logs is a challenge for a wide range of
 practitioners as well.
@@ -1820,7 +2016,7 @@ An example is the Jenkins \emph{build-failure-analyzer}
 plugin~\cite{jenkins2020failure-analyzer} or automatically
 inferred test results in Azure~\cite{azure2020inferred}.
 
-\textbf{Further Analysis of \emph{LogChunks}}
+\textbf{Further Analysis of \emph{LogChunks}.}
 We created the
 \emph{LogChunks} data set \cite{brandt2020logchunks} specifically for
 the comparative
@@ -1830,15 +2026,16 @@ The keywords, for example, can be
 investigated to answer which keywords are used to search for the
 reason the build failed within build logs.
 
-\textbf{Cross-Repository Build Log Analysis}
+\textbf{Cross-Repository Build Log Analysis.}
 We trained and
 tested each chunk retrieval technique on examples from the same
 repository.
 We propose to analyze how techniques could be trained
 across repositories, building the cornerstones for build
-environment-agnostic analysis tools.
+environment-agnostic analysis tools. This has the advantage of creating
+a default build log analyzer that would work without any pre-training.
 
-\textbf{Comparison with more Chunk Retrieval Techniques}
+\textbf{Comparison with more Chunk Retrieval Techniques.}
 This
 paper investigates the three chunk retrieval techniques PBE, CTS and
 KWS\@.
@@ -1846,7 +2043,7 @@ Our study design can be reused to evaluate other build log
 analysis techniques, such as the diff and information retrieval
 approach by Amar et al.~\cite{amar2019mining}.
 
-\textbf{Refinement of Retrieval Quality for each Technique} We
+\textbf{Refinement of Retrieval Quality for each Technique.} We
 investigated basic configurations of existing techniques applied to
 chunk retrieval from build logs.
 In a next step, each of these
@@ -1857,7 +2054,7 @@ baseline to benchmark such technique improvements.
 We propose the
 following improvements:
 \begin{itemize}[leftmargin=0.4cm]
-  \item \textbf{Custom Ranking and Tokens for PBE} The program
+  \item \textbf{Custom Ranking and Tokens for PBE.} The program
   synthesis through PROSE ranks possible programs according to
   what the user most likely intended.
   One could adapt the ranking
@@ -1866,10 +2063,10 @@ following improvements:
   FlashExtract includes special tokens when
   enumerating possible regular expressions.
   One could extend these
-  with tokens found in build logs, such as ``-'',
-	``='', ``ERROR''
+  with tokens found in build logs, such as ``-,''
+	``=,'' ``ERROR,''
   or ``[OK''.
-  \item \textbf{Meta-Parameter Optimization for CTS} Information
+  \item \textbf{Meta-Parameter Optimization for CTS.} Information
   retrieval techniques have various meta-parameters which can be
   optimized for the specific use
   case~\cite{panichella2016parameterizing}.
@@ -1879,23 +2076,27 @@ following improvements:
   lists.
 \end{itemize}
 
-\textbf{Usability Analysis of Chunk Retrieval Output}
+\textbf{Usability Analysis of Chunk Retrieval Output.}
 Our
 analysis of the output produced by the chunk retrieval focuses on
 precision and recall.
-The next step would be to investigate how useful these
-outputs are to developers through controlled experiments.
+A next step could be to investigate how useful these
+outputs really are to developers through controlled experiments or user studies.
 
 \section{Conclusion}
 \label{sec:conclusion-fw}
+% TODO conclusion should be a bit longer and a little bit more in
+% detail. Mention general accuracy measures (techniques performed
+% up to in F1 score, which is x times better than RLR)
+% TODO could also mention future research here: Finally, we gave an
+% outline to guide future research efforts in the area of build log
+% analysis.
 The goal of this paper was to support researchers and developers in
 their decision on how to analyze build logs.
-We conducted a systematic mapping study to uncover the
+To this end, we conducted a systematic mapping study to uncover the
 state-of-research on build log analysis.
 We implemented	three promising chunk retrieval techniques and
-compared them on our data set
-\emph{LogChunks}, composed of 797 manually labeled build logs from a
-broad range of 80 repositories.
+compared their performance on the \emph{LogChunks} data set.
 Our results show that the structural
 representation of the targeted information in the build logs is the
 main factor to consider when choosing a suitable technique.
@@ -1904,6 +2105,3 @@ factors are the desired confidence into recall and precision of the
 produced output and whether precision or recall is more important for
 the task at hand.
 
-As a final recommendation, one could create a ``super analyzer'' by
-combining the different build log analysis techniques studied in this
-paper.
