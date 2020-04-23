@@ -91,14 +91,14 @@ Despite its central role for helping developers and for enabling
 applications for on-ward processing of build logs,
 the process of how to
 automatically analyze build logs has thus far received little
-attention as a separate research topic, bringing us to our first
+attention as a separate research topic, bringing us to the first
 research question:
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 1}}
 What are the state-of-the-research techniques to analyze build logs?
 \end{simplebox}
 
-To answer this question, we start our investigation by performing an
+To answer this question, we start the investigation by performing an
 extensive literature study (\Cref{fig:overview}).
 It shows that
 less than half of the 61 works which rely on build log analysis
@@ -128,7 +128,7 @@ What are the comparative strengths and weaknesses
 of promising build log analysis techniques?
 \end{simplebox}
 
-To answer this question, in the second step of our study
+To answer this question, in the second step of the study
 (\Cref{fig:overview}), we build and compare three
 implementations that each stand protoypical for one of the idenitied
 strategies to analyze build logs:
@@ -281,11 +281,11 @@ bespoke approaches.
 
 
 \subsection{Study Selection}
-\Cref{fig:lit-survey} presents an overview of our study selection
+\Cref{fig:lit-survey} presents an overview of the study selection
 process.
 Since the field of build log analysis is relatively young, we
 surveyed as broad a population of scientific material as possible.
-We did not limit our sources to specific Software Engineering
+We did not limit the sources to specific Software Engineering
 venues~\cite{petersen2015guidelines}, but survey all sources
 monitored by Google Scholar, including Bachelor's theses, Master's
 theses, and academic slide decks.
@@ -296,7 +296,7 @@ the broadest and most current index, including preprints.
 An initial Google Scholar search for variations of ``build log''
 returned more than 2.2 million results (2020-03-15), many of which stem
 from unrelated fields such as construction and wood working.
-We refined our search criteria to exclude such obvious
+We refined the search criteria to exclude such obvious
 non-related fields and also to exclude works on systems
 or event logs (see \Cref{sec:system-log-analysis}).
 This left us with 1,552 search results
@@ -323,7 +323,7 @@ left with 256 (16\%) of the original search results.
 With these 256 remaining articles, we followed a backward snowball
 sampling for related work.
 If an article referenced a new work in the context
-of build log analysis, we added the new one to our literature set.
+of build log analysis, we added the new one to the literature set.
 This added five articles (eight before
 duplicate elimination), leading to a total of 261
 works.
@@ -334,7 +334,7 @@ full text of the works, reading their abstracts, and searching the
 full text
 for the occurrence of ``log.''
 If a work showed traces of
-working with build logs, we included it in our survey.
+working with build logs, we included it in the survey.
 In total, we
 were left with 87 works after the second filtering phases.
 
@@ -636,7 +636,7 @@ this limitation to a specific build tool.
 For example, Shi et al.~\cite{shi2018evaluating} focussed on Maven
 build logs because they also chose the PIT tool to calculate coverage
 and mutation score.
-A larger amount of the articles within our survey, however, limit
+A larger amount of the articles within the survey, however, limit
 themselves to few build tools because their log format varies and
 therefore ``parsers must be specialized to each build and test
 framework''~\cite{tomassi2019bugswarm}.
@@ -803,7 +803,7 @@ searching for specific strings or keywords within KWS\@.
 Our evaluation of the three chunk retrieval techniques is done on the
 \emph{LogChunks} data set because it encompasses a broad range of
 build environments which enables us to measure the generic
-applicability of our techniques.
+applicability of the techniques.
 The targeted chunks are describing error messages or
 ``the reason the build failed,'' which was also the information
 most targeted by the articles in our survey.
@@ -844,12 +844,12 @@ Random Line Retrieval	     & RLR     & Random sample
 This section introduces key concepts of the three chunk retrieval
 techniques we study in this article, namely program synthesis by
 example (PBE), common text similarity (CTS), and keyword search (KWS).
-In addition, we present our comparison baseline of random line
+In addition, we present a comparison baseline of random line
 retrieval (RLR), illustrate the techniques on a concrete example
 of log chunks and sketch out their implementation.
 
 % TODO this is not enough for Table 3.
-Where does it come from?
+%Where does it come from?
 % How did it originate? Also: never single sentence abstracts
 \Cref{tab:ctr} shows a comparison of the implemented techniques.
 
@@ -975,7 +975,7 @@ the same concept of examples as for PBE
 % word tokens, tf-idf, similarity measure
 % I added a "as follows", think that is enough for explanation?
 % Moritz: I think it is good, but the VSM is still unexplained.
-We need a
+%We need a
 % (at least) 1-sentence introduction to it, at its first reference
 % TODO Moritz: I removed all other references, this is now the first one.
 % I hope I got your comment right and now the first and only reference
@@ -985,7 +985,7 @@ as follows:
 The lines of the output strings of the training examples define our
 search query.
 The algorithm splits the search query into single lines and
-identifies tokens, in our case words.
+identifies tokens, in this case words.
 Then we build a
 document-term-frequency matrix over the lines from the search query
 and prune very often or very rarely appearing words.
@@ -1165,7 +1165,7 @@ The chunks from \Cref{lst:chunk-example}
 are in the \emph{same structural category}, while the chunk from
 \Cref{lst:chunk-example-3} is in a
 \emph{different structural category}.
-The results of our empirical comparison study on the chunk retrieval
+The results of the empirical comparison study on the chunk retrieval
 techniques
 show that the structural representation of the targeted chunk greatly
 influences
@@ -1189,7 +1189,7 @@ associated keywords, it would search for the three keywords from
 the training set of three examples.
 
 \subsection{Tool Implementation}
-For our comparison study, we implemented each of the chunk retrieval
+For the comparison study, we implemented each of the chunk retrieval
 techniques and a unifying interface.
 The unified interface is implemented in Ruby and
 calls the separate technique implementations over the command line.
@@ -1246,7 +1246,7 @@ we measure to answer our research questions.
 	\centering
 	\includegraphics[width=\textwidth, trim={1.6cm 1.6cm 0.2cm 5.6cm},
   clip]{img/study.pdf}
-	\caption{Design of our technique comparison study.}
+	\caption{Design of the technique comparison study.}
 	\label{fig:study}
 \end{figure*}
 
@@ -1301,10 +1301,10 @@ The example chronologically after the training set makes up the
 test set (3).
 In this way, we train on examples from past build logs and test on
 more recent logs.
-We chose a test set size of 1, as users of our techniques
+We chose a test set size of 1, as users of the techniques
 should receive reliable results on every build log they analyze.
 % TODO and why is this important? Doesn't everyone want such stability
-of results?
+%of results?
 In the next step, we configure a chunk retrieval technique with
 the examples from the training set (4) and apply the technique to the
 training set (5), which produces the retrieval output (6).
@@ -1313,7 +1313,7 @@ the size of the training set (\textbf{RQ2.1}),
 the number of structural categories in the training
 set (\textbf{RQ2.2}),
 the lines of the retrieval output ($\mathit{RetrievedLines}$),
-and our oracle: the output defined in the test example
+and the oracle: the output defined in the test example
 ($\mathit{DesiredLines}$).
 From these we calculate accuracy metrics (\textbf{RQ2.3}):
 
@@ -1668,7 +1668,7 @@ techniques compared, split by structural category count.}
 % TODO decision tree -> recommendation schema? You can use the more
 %specific decision
 % tree when referencing the figure.
-For the interpretation of our study results, we look at each chunk
+For the interpretation of the study results, we look at each chunk
 retrieval technique separately.
 We give recommendations for
 which types of log chunks and how many training examples
@@ -1677,7 +1677,7 @@ how their output can be used further.
 Following that, we discuss
 which of these criteria should influence the decision to use a certain
 chunk retrieval technique most.
-Based on our empirical comparison, we present a
+Based on the empirical comparison, we present a
 decision tree between the three techniques we investigated.
 
 \subsection{Interpretation of Study Results}
@@ -1742,7 +1742,7 @@ ended the same way.
 When the training examples are of the same structure, one or two
 two training examples are enough input for PROSE to synthesize a regular
 expression program with good recall.
-In our study, additional training
+In the study, additional training
 examples from the same structural category
 did not improve the chunk retrieval.
 % Moritz: Why uncomment the following? Is it not true?
@@ -1776,11 +1776,11 @@ fewer structural categories are present in the training and test
 examples.
 
 The number of training examples had no noticeable influence on
-precision or recall in our study.
+precision or recall.
 Information retrieval techniques
 like text similarity commonly learn on a higher number of examples
-than used for our study.
-Future work is needed to investigate how many
+than we chose in the study.
+Future work should investigate how many
 examples yield improvements in the chunk retrieval over a single
 training example.
 
@@ -1832,14 +1832,14 @@ automated tools.
 \subsection{Recommendation of Suitable Techniques}
 % TODO Make intro less generic?
 After discussing the three chunk retrieval techniques separately we
-now want to unify our results into one recommendation scheme.
+now want to unify the results into one recommendation scheme.
 % TODO Try to inductiviely let the figure emerge from the text, not this
 % ``here is the figure; eat it''.
 % C: ``How should I do this?''
 % Already a better solution would be at the end of this section: We
 % summarized these conditions in the decision tree in Fig ...
 \Cref{fig:crt-recommendation} presents a decision tree
-to answer our second research question;
+to answer the second research question;
 If researchers or developers want to retrieve chunks from build logs,
 they can follow the decision tree to identify the technique
 suited best for their use case.
@@ -1900,13 +1900,13 @@ automatic on-ward processing or interpretation of the result.
 
 % TODO this is very nice again, perhaps a tiny bit on the trivial side.
 % Do reference Figure 17 more, thoguh
-To illustrate how one would use our decision tree to find a suitable
+To illustrate how one would use the decision tree to find a suitable
 chunk retrieval technique we describe two concrete examples: a software
 team
 wanting to monitor their build performance and a
 researcher investigating why builds fail.
 
-In our first example, a software development team wants to monitor
+In the first example, a software development team wants to monitor
 the performance of the phases within their CI build.
 They are using
 Travis CI, which measures the duration of build phases and documents
@@ -1917,7 +1917,7 @@ from one structural category.
 Therefore, the development team can use
 PBE to retrieve the duration of a build phase.
 
-In our second example, a researcher wants to investigate whether a small
+In the second example, a researcher wants to investigate whether a small
 or large group of test cases
 causes build failures.
 They gather
@@ -1938,7 +1938,7 @@ As they have to manually inspect the results of both CTS
 and KWS, they choose recall over precision to avoid having to inspect
 the whole log in case the relevant information chunk was not
 retrieved.
-Therefore, our decision tree recommends the researcher to use KWS\@.
+Therefore, the decision tree recommends the researcher to use KWS\@.
 
 In case the researcher wants to avoid manually inspecting the
 retrieval results, they have to first separate the CI build logs
@@ -1956,7 +1956,7 @@ retrieval techniques and the libraries we used.
 Our implementation of
 PBE is based on the program synthesis provided by PROSE\@.
 The
-idiosyncrasies of this framework influence our PBE results.
+idiosyncrasies of this framework influence the PBE results.
 Other
 frameworks similar to PROSE might have somewhat different strengths
 and weaknesses.
@@ -1988,7 +1988,7 @@ build logs would yield better chunk retrieval results.
 % idiosyncrazies as much as possible (give example)
 
 \textbf{Data Set.}
-The outcomes of our comparison study are highly dependent on the build
+The outcomes of the comparison study are highly dependent on the build
 logs from the \emph{LogChunks} data set.
 It consists of build
 logs from open source projects and therefore it is not clear whether
@@ -1996,10 +1996,10 @@ our results apply to industry projects that use build tools
 not popular in open source development.
 However, since \emph{LogChunks} covers a wide array of build tools and
 programming languages,
-we believe that our findings do generalize.
+we believe that the findings do generalize.
 We collected build logs from Travis CI.
 Yet, the format of the log chunk we chose
-for our evaluation is largely independent of Travis CI\@.
+for the evaluation is largely independent of Travis CI\@.
 This
 is because the reason the build failed is described within the build
 logs by the tools themselves and not the Travis CI environment.
@@ -2012,7 +2012,7 @@ size as the training examples have to be provided per repository and
 we expect a developer to not want to provide more examples than the
 small numbers we evaluated on.
 The fact that PBE and CTS performed best with already two training
-examples shows that our training set size is large enough to
+examples shows that the training set size is large enough to
 compare the three techniques we presented.
 
 \textbf{Few Samples with Many Structural Categories}
@@ -2036,7 +2036,8 @@ of the chunk retrieval techniques.
 %You can say you give a roadmap to guide
 % future research in the field, and sell it in abstract and intro!
 
-There are various future research opportunities based on our work:
+There are various future research opportunities based on the
+work we presented:
 
 \textbf{Systematic Survey of Industry Approaches for Build
 Log Analysis.}
