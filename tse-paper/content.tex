@@ -75,7 +75,7 @@ scale to the number of build logs and amount of information that such
 sophisticated applications require.
 Moreover, being able to
 automatically extract relevant pieces of information from build logs
-can also help
+can help
 developers debug a broken build more quickly without having to browse
 the entire build log.
 
@@ -87,30 +87,29 @@ the entire build log.
 	\label{fig:overview}
 \end{figure*}
 
-Despite its central role for helping developers and for enabling
-applications for on-ward processing of build logs,
+Despite its central role in helping developers and in enabling
+novel, on-ward processing applications,
 the process of how to
-automatically analyze build logs has thus far received little
-attention as a separate research topic, bringing us to the first
+automatically analyze build logs has thus far not been systematically overviewed as a research topic, bringing us to the first
 research question:
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 1}}
-What are the state-of-the-research techniques to analyze build logs?
+What is the state-of-the-research on analyzing build logs?
 \end{simplebox}
 
-To answer this question, we start the investigation by performing an
-extensive literature study (\Cref{fig:overview}).
-It shows that
-less than half of the 61 works which rely on build log analysis
-describe in detail how they performed it.
-Even fewer
-made their implementation available.
+To answer this question, we start our investigation---pictured in \Cref{fig:overview}---with an
+extensive literature study (step 1).
 The literature
 survey identifies various strategies to
-analyze build logs such as:
-custom built parsers, regular expressions, manual inspection,
-natural language processing, information retrieval or searching
+analyze build logs, among which are developing
+custom parsers, using regular expressions, doing manual inspections,
+natural language processing, information retrieval, or searching
 for keywords.
+Unfortunately, our survey also shows that
+less than half of the 61 works which rely on build log analysis
+describe it in sufficient detail and that
+% TODO fill-in X
+only X independent implementations are available, one of which stems from the second author of this paper. Out of these implementations, all are based on either a custom parser or regular expressions.
 %Using 1) a set of
 % manually curated regular expressions,
 % similar to TravisTorrent~\cite{beller2017oops},
@@ -120,6 +119,33 @@ for keywords.
 % and 3) a list of search keywords
 % to identify regions of interest in the build log.
 
+%% \begin{itemize}
+%%   \item \textbf{(referred to as PBE)}
+%%   Based on manually supplied example pairs of build logs and chunks,
+%%   PBE automatically synthesizes
+%%   a regular expression extracting the given chunks within the build logs.
+%%   % these second sentences about what the techniques stand for could
+%%   % also be merged to a paragraph after the itemize
+%%   PBE mimics regular expressions and parsers while
+%%   simplifying their development.
+%%   \item \textbf{Common Text Similarity (CTS)}
+%%   Text similarity is a common information retrieval technique.
+%%   CTS selects lines of a log which are
+%%   most similar to the lines present in manually supplied example chunks.
+%%   As a common information retrieval technique, our text similarity
+%%   approach stands for the machine learning approaches identified in
+%%   the literature survey.
+%%   \item \textbf{Keyword Search (KWS)}
+%%   KWS finds fitting passages by searching the whole
+%%   text of a build log for
+%%   the occurrence of specific trigger words.
+%%   Keyword Search was explicitly mentioned by several articles in the
+%%   literature survey.
+%% \end{itemize}
+
+% TODO caro: maybe convert this into a proper ordered list?
+As a consequence, we took it upon ourselves (step 2) to provide implementations of the three most promising automatic build log analysis techniques we observed in the literature survey:
+a technique 1) able to automatically synthesize regular expressions, called \emph{Program Synthesis by Example (PBE)}, 2) based on natural language processing, doing \emph{Common Text Similarity (CTS)}  and 3) inspired by information-retrieval employing \emph{Keyword Search (KWS)}.
 Even though these three approaches to analyze
 build logs have different strengths and weaknesses, the literature
 survey shows that their use often seems arbitrary.
@@ -131,51 +157,20 @@ in the second research question we ask:
 How do build log analysis techniques compare against each other?
 \end{simplebox}
 
-To answer this question, in the second step of the study
-(\Cref{fig:overview}), we choose three promising
-techniques to analyze build logs by retrieving substrings
-(chunks) that describe a specific information.
 
-We build and compare three
-implementations that each stand prototypical for one of the identified
-strategies to analyze build logs:
-
-\begin{itemize}
-  \item \textbf{Program Synthesis by Example (referred to as PBE)}
-  Based on manually supplied example pairs of build logs and chunks,
-  PBE automatically synthesizes
-  a regular expression extracting the given chunks within the build logs.
-  % these second sentences about what the techniques stand for could
-  % also be merged to a paragraph after the itemize
-  PBE mimics regular expressions and parsers while
-  simplifying their development.
-  \item \textbf{Common Text Similarity (CTS)}
-  Text similarity is a common information retrieval technique.
-  CTS selects lines of a log which are
-  most similar to the lines present in manually supplied example chunks.
-  As a common information retrieval technique, our text similarity
-  approach stands for the machine learning approaches identified in
-  the literature survey.
-  \item \textbf{Keyword Search (KWS)}
-  KWS finds fitting passages by searching the whole
-  text of a build log for
-  the occurrence of specific trigger words.
-  Keyword Search was explicitly mentioned by several articles in the
-  literature survey.
-\end{itemize}
-
-In the third step (\Cref{fig:overview}),
-we conduct an empirical study to gauge the performance
+To answer this question, in the third step  of \Cref{fig:overview},
+we conduct an empirical study assessing the performance
 of these chunk retrieval techniques in
 real-world projects under a variety of conditions.
 Our study is based on the \emph{LogChunks} data
 set~\cite{brandt2020logchunks}, which encompasses build logs from
 80 popular open-source projects and a broad range of different
-build tools and programming languages.
+build tools and programming languages. Our results show that there is no technique that in general outperforms the others. However, 
+% TODO 1-2 sentences about results, inclduing some accuracy measures
 
-We develop a set of guidelines (step 4, \Cref{fig:overview})
-on how to choose a
-technique given a goal.
+Finally, due to this ambiguity, we develop a set of guidelines (\Cref{fig:overview}, step 4)
+on how to choose the most suitable build log analysis
+technique for the task at hand.
 We recommend PBE for use cases where the desired information is always
 represented in the same structural way and high confidence in
 precision and recall of the chunk retrieval is required.
@@ -205,8 +200,8 @@ analysis.
 promising chunk retrieval techniques.
 \item a large empirical study comparing the three techniques.
 \item systematic guidelines on when to use which technique.
-% TODO: is the future work good enough to put in contributions?
-\item a detailed replication package~\cite{brandt2020chunk-replication}.
+\item a detailed research map to inspire future contributions to the field.
+\item a replication package~\cite{brandt2020chunk-replication}.
 \end{itemize}
 
 \section{Systematic Literature Mapping Survey}
@@ -375,11 +370,12 @@ This lead us to the following research questions:
 \begin{simplebox}[attach boxed title to top center={yshift=-6mm}]
 {\textbf{RQ1:} What is the state-of-the-research on analyzing build logs?}
 % TODO (resolved): All of these are passive
-% TODO Swap RQ 1.2 and RQ 1.1 (logical order?)
-\begin{itemize}[leftmargin=2cm]
-  \item[\textbf{RQ1.1:}] Which information in build logs is of interest?
+% TODO (resolved) Swap RQ 1.2 and RQ 1.1 (logical order?)
+\begin{itemize}[leftmargin=1cm]
+  \item[\textbf{RQ1.1:}] What information is extracted from build logs?
   \item[\textbf{RQ1.2:}] Which extraction techniques exist?
-  \item[\textbf{RQ1.3:}] Which kinds of build logs are subject to analysis?
+  \item[\textbf{RQ1.3:}] Which kinds of build logs are subject to
+  analysis?
 \end{itemize}
 \end{simplebox}
 
@@ -478,7 +474,7 @@ Name			     & Sources	& Frequency	  \\
 } &
 \includegraphics[width=0.55\columnwidth]{img/lit-sur/techniques-no-guidelines-cropped_3.pdf}
 \\
-
+% TODO: We need to mention in the text describing the Table what we mean by ``Analysis''
 \raisebox{0.8mm}{Analysis} &
 \raisebox{0.8mm}{
 \cite{sulir2016quantitative,haghighatkhah2018test,durieux2019critical}
@@ -981,8 +977,10 @@ error message ``no program found.''
 % TODO Moritz: a regular expression can match an empty string
 % and that is different from not finding a match
 % it returns error messages in both cases
-% TODO: Ok, but what is the point of matching on an empty string (if I understand what you mean)? you would not normally define such an extraction?
-% If this distinction is important it needs to be made more clear 
+% TODO: Ok, but what is the point of matching on an empty string
+(if I understand what you mean)? you would not normally define such
+an extraction?
+% If this distinction is important it needs to be made more clear
 \subsubsection{Application}
 A run of PBE takes a build log file as input and applies the
 synthesized regular expression program.
@@ -1270,7 +1268,8 @@ This leads us to the following research questions:
 
 \begin{simplebox}[minipage boxed title*=-1.5cm,
 attach boxed title to top center={yshift=-6mm}]
-{\textbf{RQ2:} How do build log analysis techniques compare against each other?}
+{\textbf{RQ2:} How do build log analysis techniques compare against
+each other?}
 \begin{itemize}[leftmargin=1.2cm]
   \item[\textbf{RQ2.1:}] How many examples does a technique need to
   perform best?
@@ -1793,7 +1792,8 @@ two training examples are enough input for PROSE to synthesize a regular
 expression program with good recall.
 In the study, additional training
 examples from the same structural category
-did not improve the chunk retrieval. In fact, unless they
+did not improve the chunk retrieval.
+In fact, unless they
 were in some sense redundant, adding more training examples even
 hindered the applicability of PBE.
 
@@ -1899,6 +1899,8 @@ recommended technique.
 % directly here to make it more prominent avoid angry critics
 % I think it's good here
 % but it's also self-contained so feel free to comment it out
+
+% TODO we can't just have a paragraph in a scientific paper start with Caveat, I think ;-) Also, we should say why we THINK this is not the case. Otherwise we weaken our work unduly
 \textbf{Caveat!}
 This is a preliminary hypothesis based on the results
 from our comparison study.
@@ -2068,7 +2070,8 @@ compare the three techniques.
 \textbf{Few Samples with Many Structural Categories.}
 Our comparison study shows fewer measurements with many structural
 categories than with one structural category category (50.25\% one,
-33.75\% two, 13.75\% more than two).  This stems from the fact that we
+33.75\% two, 13.75\% more than two).
+This stems from the fact that we
 investigated the chunk retrieval techniques on a real-world data set,
 where there were mostly few structural categories within one project.
 In addition, the third of the measurements we conducted with two
@@ -2180,14 +2183,19 @@ user studies.
 % outline to guide future research efforts in the area of build log
 % analysis.
 The goal of this paper is to support practitioners and researchers in
-their decision on how to analyze build logs. To this end, we first
+their decision on how to analyze build logs.
+To this end, we first
 conducted a systematic mapping study to map out the available build
-log analysis techniques.  We then
+log analysis techniques.
+We then
 implemented three promising chunk retrieval techniques and compared
-their performance on the \emph{LogChunks} data set.  Our results show
+their performance on the \emph{LogChunks} data set.
+Our results show
 that the structural representation of the targeted information in the
 build logs is the main factor to consider when choosing a suitable
-technique.  Secondary factors are the desired confidence in recall and
+technique.
+Secondary factors are the desired confidence in recall and
 precision of the produced output and whether precision or recall is
-more important for the task at hand. 
+more important for the task at hand.
+
 
