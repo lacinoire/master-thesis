@@ -1,7 +1,3 @@
-% \section{Introduction}
-% TODO: Include term predictive CI, link to FB paper and
-%https://www-sciencedirect-com.tudelft.idm.oclc.org/science/article/pii/S0164121218301730
-
 % TODO: What about the alternate solution, installing plugins to report
 % precise data? Ie., maven plugins
 % - Lots of effort
@@ -49,25 +45,22 @@ Typically, though, they are at least a semi-structured and
 somewhat stable journal of the commands executed during the build and
 their results.
 
-When a build or one of its steps fails, developers typically
-scavenge the logs for information related to the source of the error.
-This manual activity is
-tedious and prone to error~\cite{santolucito2018statically}.
-As a
-single build log can be over 50 megabytes large~\cite{beller2017oops},
-finding the small chunk of information in it which is linked to the error,
-is akin to searching for a
-needle in a haystack.
-In addition to helping understand and fix build failures, the information
-richness of build logs enables a plethora of other applications: with
-the help of
-build logs, we can better understand and categorize CI
-failures and compile
+When a build or one of its steps fails, developers typically scavenge
+the logs for information related to the source of the error.  This
+manual activity is tedious and prone to
+error~\cite{santolucito2018statically}.  As a single build log can be
+over 50 megabytes large~\cite{beller2017oops}, finding the small chunk
+of information in it which is linked to the error, is akin to
+searching for a needle in a haystack.  In addition to helping
+understand and fix build failures, the information richness of build
+logs enables a plethora of other applications: with the help of build
+logs, we can better understand and categorize CI failures and compile
 errors~\cite{islam2017insights,seo2014programmers}, differentiate
 testing practices~\cite{orellana2017differences,vassallo2017a-tale},
-train classifiers to predict the build outcome and
-duration~\cite{ni2017cost,bisong2017built,machalica2019predictive}, or
-investigate static analysis tools in CI
+train classifiers to do ``predictive CI'' on the build or test outcome
+and
+duration~\cite{ni2017cost,bisong2017built,haghighatkhah2018test,machalica2019predictive},
+or investigate static analysis tools in CI
 builds~\cite{zampetti2017open}.
 
 However, manual analysis of build logs does not
@@ -155,11 +148,10 @@ As a consequence, we took it upon ourselves (step 2) to provide
 implementations of the three most promising automatic build log analysis
 techniques we observed in the literature survey:
 a technique 1) able to automatically synthesize regular expressions,
-called \emph{Program Synthesis by Example (PBE)}, 2) based on natural
-language processing, doing \emph{Common Text Similarity (CTS)}	and 3)
-inspired by information-retrieval employing \emph{Keyword Search (KWS)}.
-Even though these three approaches to analyze
-build logs have different strengths and weaknesses, the literature
+called \emph{Program Synthesis by Example (PBE)}, 2) based on information retrieval, using \emph{Common Text Similarity (CTS)}	and 3)
+inspired by the manual adhoc-search for key parts in the log, employing \emph{Keyword Search (KWS)}.
+Even though these three approaches---regular expressions, text similarity, keyword search---
+have different strengths and weaknesses, the literature
 survey shows that their use often seems arbitrary.
 As a consequence,
 in the second research question we ask:
@@ -169,8 +161,7 @@ in the second research question we ask:
 How do build log analysis techniques compare against each other?
 \end{simplebox}
 
-
-To answer this question, in the third step  of \Cref{fig:overview},
+To answer this question, as a third step,
 we conduct an empirical study assessing the performance
 of these chunk retrieval techniques in
 real-world projects under a variety of conditions.
@@ -408,7 +399,7 @@ In sum, we extracted data from 61 articles.
 To guide the data extraction we created a template.
 The template form contained questions to answer RQ 1.1 through RQ 1.3,
 for example ``Is the technique explained in detail?'' and
-``What is the source of the build logs?''.
+``What is the source of the build logs?''
 As recommended by Petersen et
 al.~\cite{petersen2015guidelines}, we started the mapping study with a
 pilot study:
@@ -727,9 +718,9 @@ Ghaleb et al.~\cite{ghaleb2019studying}, and several other studies reused.
 % as further subsubsections or making it bold in the text?
 % TODO: find values for X and Y
 Our literature survey shows that despite its relatively young age
-(first occurrence of a paper on the topic in 2001, vast majority after
-2016), \textbf{build log analysis is a widely established technique}
-in the literature, with Y articles on it.
+(first mentioned in a paper in 2001, vast majority after
+2016), \textbf{build log analysis is an established technique}
+in the literature, with 61 articles making use of it.
 
 
 % TODO: this reads very hands-off and researchy.
@@ -764,7 +755,7 @@ only a few distinct build environments (roughly, area A).
 % TODO: passive ...
 The majority of build environments was however only targeted by one
 article each (B).
-From this, we follow: (a) there is a nichè for custom parsers or even
+From this, we follow: (a) there is a niche for custom parsers or even
 specialized plugins integrated into the build process to make
 post-factum
 parsing of logs redundant.
@@ -995,7 +986,7 @@ error message ``no program found.''
 % TODO Moritz: a regular expression can match an empty string
 % and that is different from not finding a match
 % it returns error messages in both cases
-% TODO: Ok, but what is the point of matching on an empty string
+% TODO: Ok, but what is the point of matching on an empty string?
 (if I understand what you mean)? you would not normally define such
 an extraction?
 % If this distinction is important it needs to be made more clear
@@ -1033,6 +1024,10 @@ the same concept of examples as for PBE
 % TODO Moritz: I removed all other references, this is now the first one.
 % I hope I got your comment right and now the first and only reference
 % is explained :)
+% TODO Slightly better, but I still have a problem with this -- what
+% exactly is the vector
+% space model here?
+% At a minimum, the text should mention what the vector is and how the model is used
 and apply the Vector Space Model~\cite{schutze2008introduction}
 as follows:
 The lines of the output strings of the training examples define our
@@ -1213,9 +1208,8 @@ which is consistent with the two example
 chunks from \Cref{lst:chunk-example}.
 This shows, that the characters structuring the text around the chunk are
 crucial for regular expressions to identify a log chunk.
-In fact, if we add the third example from \Cref{lst:chunk-example-3},
-which has a
-different structural representation, to the training set,
+In fact, if we add the third example from \Cref{lst:chunk-example-3} (which has a
+different structural representation) to the training set,
 PBE is not able to synthesize a program and returns
 ``\texttt{no program found}.''
 We later express this difference in structural representation through
@@ -1254,7 +1248,7 @@ The unified interface is written in Ruby and
 calls the separate technique implementations over the command line.
 We implemented PBE in C\# based on the Microsoft PROSE
 library~\cite{prose2019webpage} and CTS, KWS, and RLR using
-R and the text2vec library~\cite{text2vec2019webpage}.
+R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 
 \section{Study Design}
 
@@ -1364,7 +1358,7 @@ should receive reliable results on every build log they analyze.
 % TODO and why is this important? Doesn't everyone want such stability
 %of results?
 % motivation why only one test example.
-we can also leave that out
+%we can also leave that out
 % and answer if we are asked about it
 In the next step, we configure a chunk retrieval technique with
 the examples from the training set (4) and apply the technique to the
@@ -1581,6 +1575,9 @@ retrieval with Common Text Similarity (CTS) compared by \ldots}
 % TODO QUESTION: yes, though then we have more redundant text
 % that repeats everywhere and is already in the captions
 % -> should we add it for the first time we include a type of figure?
+% TODO Yes, that sounds good. You might even say Figure 12-15 show two
+% plots in the short text under the section heading. It just makes the
+% text flow so much better.
 \Cref{fig:recall-precision-examplecount-CTS} presents precision,
 recall, and F$_{1}$-score of chunk retrieval using CTS for an
 increasing number of training examples.
@@ -1874,7 +1871,7 @@ However, further enlarging the training set
 does not lead to further improvements.
 
 \noindent
-\textbf{Retrieval Output Usage}
+\textbf{Retrieval Output Usage.}
 While KWS has the highest recall of all three techniques, its
 precision is the lowest.
 The output of a chunk retrieval with KWS is
@@ -1919,8 +1916,8 @@ recommended technique.
 % but it's also self-contained so feel free to comment it out
 
 % TODO we can't just have a paragraph in a scientific paper start with
-Caveat, I think ;-) Also, we should say why we THINK this is not the case.
-Otherwise we weaken our work unduly
+% Caveat, I think ;-) Also, we should say why we THINK this is not the case.
+% Otherwise we weaken our work unduly
 \textbf{Caveat!}
 This is a preliminary hypothesis based on the results
 from our comparison study.
@@ -2217,5 +2214,10 @@ technique.
 Secondary factors are the desired confidence in recall and
 precision of the produced output and whether precision or recall is
 more important for the task at hand.
+
+Finally, we gave an
+outline to guide future research efforts in the area of build log
+analysis. Important themes are
+% TODO Caro complete :-)
 
 
