@@ -90,14 +90,16 @@ the entire build log.
 Despite its central role in helping developers and in enabling
 novel, on-ward processing applications,
 the process of how to
-automatically analyze build logs has thus far not been systematically overviewed as a research topic, bringing us to the first
+automatically analyze build logs has thus far not been systematically
+overviewed as a research topic, bringing us to the first
 research question:
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 1}}
 What is the state-of-the-research on analyzing build logs?
 \end{simplebox}
 
-To answer this question, we start our investigation---pictured in \Cref{fig:overview}---with an
+To answer this question, we start our investigation---pictured in
+\Cref{fig:overview}---with an
 extensive literature study (step 1).
 The literature
 survey identifies various strategies to
@@ -109,7 +111,10 @@ Unfortunately, our survey also shows that
 less than half of the 61 works which rely on build log analysis
 describe it in sufficient detail and that
 % TODO fill-in X
-only X independent implementations are available, one of which stems from the second author of this paper. Out of these implementations, all are based on either a custom parser or regular expressions.
+only X independent implementations are available, one of which stems
+from the second author of this paper.
+Out of these implementations, all are based on either a custom parser
+or regular expressions.
 %Using 1) a set of
 % manually curated regular expressions,
 % similar to TravisTorrent~\cite{beller2017oops},
@@ -123,7 +128,8 @@ only X independent implementations are available, one of which stems from the se
 %%   \item \textbf{(referred to as PBE)}
 %%   Based on manually supplied example pairs of build logs and chunks,
 %%   PBE automatically synthesizes
-%%   a regular expression extracting the given chunks within the build logs.
+%%   a regular expression extracting the given chunks within the build
+%% logs.
 %%   % these second sentences about what the techniques stand for could
 %%   % also be merged to a paragraph after the itemize
 %%   PBE mimics regular expressions and parsers while
@@ -131,7 +137,8 @@ only X independent implementations are available, one of which stems from the se
 %%   \item \textbf{Common Text Similarity (CTS)}
 %%   Text similarity is a common information retrieval technique.
 %%   CTS selects lines of a log which are
-%%   most similar to the lines present in manually supplied example chunks.
+%%   most similar to the lines present in manually supplied example
+%% chunks.
 %%   As a common information retrieval technique, our text similarity
 %%   approach stands for the machine learning approaches identified in
 %%   the literature survey.
@@ -144,8 +151,13 @@ only X independent implementations are available, one of which stems from the se
 %% \end{itemize}
 
 % TODO caro: maybe convert this into a proper ordered list?
-As a consequence, we took it upon ourselves (step 2) to provide implementations of the three most promising automatic build log analysis techniques we observed in the literature survey:
-a technique 1) able to automatically synthesize regular expressions, called \emph{Program Synthesis by Example (PBE)}, 2) based on natural language processing, doing \emph{Common Text Similarity (CTS)}  and 3) inspired by information-retrieval employing \emph{Keyword Search (KWS)}.
+As a consequence, we took it upon ourselves (step 2) to provide
+implementations of the three most promising automatic build log analysis
+techniques we observed in the literature survey:
+a technique 1) able to automatically synthesize regular expressions,
+called \emph{Program Synthesis by Example (PBE)}, 2) based on natural
+language processing, doing \emph{Common Text Similarity (CTS)}	and 3)
+inspired by information-retrieval employing \emph{Keyword Search (KWS)}.
 Even though these three approaches to analyze
 build logs have different strengths and weaknesses, the literature
 survey shows that their use often seems arbitrary.
@@ -163,12 +175,16 @@ we conduct an empirical study assessing the performance
 of these chunk retrieval techniques in
 real-world projects under a variety of conditions.
 Our study is based on the \emph{LogChunks} data
-set~\cite{brandt2020logchunks}, which encompasses build logs from
+set~\cite{brandt2020logchunks}, which encompasses 797 build logs from
 80 popular open-source projects and a broad range of different
-build tools and programming languages. Our results show that there is no technique that in general outperforms the others. However, 
+build tools and programming languages.
+Our results show that there is no technique that in general outperforms
+the others.
+However,
 % TODO 1-2 sentences about results, inclduing some accuracy measures
 
-Finally, due to this ambiguity, we develop a set of guidelines (\Cref{fig:overview}, step 4)
+Finally, due to this ambiguity, we develop a set of guidelines
+(\Cref{fig:overview}, step 4)
 on how to choose the most suitable build log analysis
 technique for the task at hand.
 We recommend PBE for use cases where the desired information is always
@@ -200,7 +216,8 @@ analysis.
 promising chunk retrieval techniques.
 \item a large empirical study comparing the three techniques.
 \item systematic guidelines on when to use which technique.
-\item a detailed research map to inspire future contributions to the field.
+\item a detailed research map to inspire future contributions to the
+field.
 \item a replication package~\cite{brandt2020chunk-replication}.
 \end{itemize}
 
@@ -474,7 +491,8 @@ Name			     & Sources	& Frequency	  \\
 } &
 \includegraphics[width=0.55\columnwidth]{img/lit-sur/techniques-no-guidelines-cropped_3.pdf}
 \\
-% TODO: We need to mention in the text describing the Table what we mean by ``Analysis''
+% TODO: We need to mention in the text describing the Table what we mean
+by ``Analysis''
 \raisebox{0.8mm}{Analysis} &
 \raisebox{0.8mm}{
 \cite{sulir2016quantitative,haghighatkhah2018test,durieux2019critical}
@@ -1900,7 +1918,9 @@ recommended technique.
 % I think it's good here
 % but it's also self-contained so feel free to comment it out
 
-% TODO we can't just have a paragraph in a scientific paper start with Caveat, I think ;-) Also, we should say why we THINK this is not the case. Otherwise we weaken our work unduly
+% TODO we can't just have a paragraph in a scientific paper start with
+Caveat, I think ;-) Also, we should say why we THINK this is not the case.
+Otherwise we weaken our work unduly
 \textbf{Caveat!}
 This is a preliminary hypothesis based on the results
 from our comparison study.
