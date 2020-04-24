@@ -106,21 +106,25 @@ describe in detail how they performed it.
 Even fewer
 made their implementation available.
 The literature
-survey identifies three prevalent strategies to
-analyze build logs: Using 1) a set of
-manually curated regular expressions,
-similar to TravisTorrent~\cite{beller2017oops},
-2) information
-retrieval techniques,
-% TODO: Can you shortly explain the technique here?
-and 3) a list of search keywords
-to identify regions of interest in the build log.
+survey identifies various strategies to
+analyze build logs such as:
+custom built parsers, regular expressions, manual inspection,
+natural language processing, information retrieval or searching
+for keywords.
+%Using 1) a set of
+% manually curated regular expressions,
+% similar to TravisTorrent~\cite{beller2017oops},
+% 2) information
+% retrieval techniques,
+% % todo: Can you shortly explain the technique here?
+% and 3) a list of search keywords
+% to identify regions of interest in the build log.
 
-Even though these three approaches to retrieve information chunks from
+Even though these three approaches to analyze
 build logs have different strengths and weaknesses, the literature
 survey shows that their use often seems arbitrary.
 As a consequence,
-in RQ2 we ask:
+in the second research question we ask:
 
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 2}}
@@ -129,42 +133,54 @@ of promising build log analysis techniques?
 \end{simplebox}
 
 To answer this question, in the second step of the study
-(\Cref{fig:overview}), we build and compare three
+(\Cref{fig:overview}), we choose three promising
+techniques to analyze build logs by retrieving substrings
+(chunks) that describe a specific information.
+
+We build and compare three
 implementations that each stand prototypical for one of the identified
 strategies to analyze build logs:
 
 \begin{itemize}
   \item \textbf{Program Synthesis by Example (referred to as PBE)}
   Based on manually supplied example pairs of build logs and chunks,
-  PBE automatically
-  synthesizes
+  PBE automatically synthesizes
   a regular expression extracting the given chunks within the build logs.
+  % these second sentences about what the techniques stand for could
+  % also be merged to a paragraph after the itemize
+  PBE mimics regular expressions and parsers while
+  simplifying their development.
   \item \textbf{Common Text Similarity (CTS)}
+  Text similarity is a common information retrieval technique.
   CTS selects lines of a log which are
   most similar to the lines present in manually supplied example chunks.
+  As a common information retrieval technique, our text similarity
+  approach stands for the machine learning approaches identified in
+  the literature survey.
   \item \textbf{Keyword Search (KWS)}
   KWS finds fitting passages by searching the whole
   text of a build log for
   the occurrence of specific trigger words.
+  Keyword Search was explicitly mentioned by several articles in the
+  literature survey.
 \end{itemize}
 
-
-In the third step, we conduct an empirical study to gauge the performance
-of
-these chunk retrieval techniques in
+In the third step (\Cref{fig:overview}),
+we conduct an empirical study to gauge the performance
+of these chunk retrieval techniques in
 real-world projects under a variety of conditions.
 Our study is based on the \emph{LogChunks} data
 set~\cite{brandt2020logchunks}, which encompasses build logs from
 80 popular open-source projects and a broad range of different
 build tools and programming languages.
 
-Finally, we develop a set of guidelines (step 4) on how to choose a
+We develop a set of guidelines (step 4, \Cref{fig:overview})
+on how to choose a
 technique given a goal.
 We recommend PBE for use cases where the desired information is always
 represented in the same structural way and high confidence in
 precision and recall of the chunk retrieval is required.
-Results
-produced by PBE are suited for automatic on-ward processing.
+The results PBE produces are suited for automatic on-ward processing.
 CTS is
 well-suited when the representation of the desired information varies
 slightly and the output of the chunk retrieval is further processed by
@@ -179,15 +195,18 @@ Instead, KWS requires a human
 to further inspect and interpret the output chunk.
 A hybrid-solution combining the three techniques might be the best
 all-round solution.
+Finally, we give a roadmap to guide future research in the field
+of build log analysis.
 
 In short, this article contributes
 \begin{itemize}
 \item the first systematic study of the emerging field of build log
 analysis.
-\item three prototypical open-sourced implementations of the most
+\item three prototypical open-sourced implementations of
 promising chunk retrieval techniques.
 \item a large empirical study comparing the three techniques.
 \item systematic guidelines on when to use which technique.
+% TODO: is the future work good enough to put in contributions?
 \item a detailed replication package~\cite{brandt2020chunk-replication}.
 \end{itemize}
 
@@ -2032,7 +2051,7 @@ effect of the number of structural categories on the performance
 of the chunk retrieval techniques.
 
 \section{Future Work}
-% TODO Actually, this future work is very, *very* good.
+% Actually, this future work is very, *very* good.
 %It might be
 % the best future work I have ever read in an article.
 % One idea would be to sell it as such and tie a bit back to our
