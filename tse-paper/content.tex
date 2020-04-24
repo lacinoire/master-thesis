@@ -215,7 +215,7 @@ promising chunk retrieval techniques.
 
 In this section, we survey the emerging field of build log
 analysis.
-We first start with a differentiation to the related field of general
+We start with a differentiation to the related field of general
 system log analysis.
 Then, we describe the methodology and results of a systematic mapping
 study to
@@ -254,7 +254,7 @@ Example adapted from~\cite{he2017towards}.}
 A field related to build log analysis is the analysis of system
 logs which are produced during runtime of the system.
 The first difference here is that build logs are produced during runtime
-of the build of the system, not the system itself.
+of the build of the system, not during runtime of the system itself.
 In terms of the contents of the logs, the main difference is that system
 logs are fundamentally structured
 through events.
@@ -263,7 +263,6 @@ set of fields: timestamp, verbosity level, and raw message
 content~\cite{he2017towards}.
 \Cref{lst:system-log} shows
 example lines from a system log.
-
 
 The first goal in analyzing system log files is generally to
 separate constant and variable parts within a log
@@ -277,27 +276,27 @@ parameter values~\cite{he2016evaluation}.
 This structured log can serve as input to various machine learning and
 data mining processes.
 
-In principle, one can apply the techniques developed for system log
-analysis
-to parts of the build logs that have this same structure.
-% TODO this explanation is not understandable.
-%It needs to better embedded in the surrounding text
-One example is comparing execution traces to reference
-traces of intended behavior to detect anomalies.
-Amar et
-al.~\cite{amar2019mining} employed a similar approach to detect
-relevant lines in build logs.
+Some of the techniques developed to parse system logs can operate
+on build logs as well, such as methods to retrieve the
+values of variable parts in a log message, e.g.\ by using regular
+expressions~\cite{nagappan2010abstracting,xu2009detecting}.
+% This is the easiest example matching here
+% amar et al are not in our literature survey
 However, almost all of the techniques developed to analyze system logs
 leverage their inherent event structure.
 Build logs generally lack this structure and thus require different
 bespoke approaches.
+% if included: this explanation is not understandable.
+% It needs to better embedded in the surrounding text
+% One example is comparing execution traces to reference
+% traces of intended behavior to detect anomalies.
+% Amar et
+% al.~\cite{amar2019mining} employed a similar approach to detect
+% relevant lines in build logs.
 % In this article, we focus on extracting a single specified information
 % from the build log as a whole with chunk retrieval techniques.
 % Chunk
-% retrieval techniques are used as a part of log parsing to retrieve the
-% values of variable parts in a log message, e.g.\ by using regular
-% expressions~\cite{nagappan2010abstracting,xu2009detecting}.
-
+% retrieval techniques are used as a part of log parsing
 
 \subsection{Study Selection}
 \Cref{fig:lit-survey} presents an overview of the study selection
@@ -346,7 +345,6 @@ of build log analysis, we added the new one to the literature set.
 This added five articles (eight before
 duplicate elimination), leading to a total of 261
 works.
-
 
 Subsequently, we performed a second, finer filter phase by downloading the
 full text of the works, reading their abstracts, and searching the
@@ -412,15 +410,20 @@ text.
 For questions that did not require a boolean answer, we allowed assigning
 multiple tags or categories as the first part (``preparation phase'')
 of a virtual open card sorting~\cite{zimmermann2016card}.
-
-% TODO: add more concrete example, such as use of retrieved x: developer
-%feedback, build data set
+An example for this is the source of the analyzed build logs,
+where we assigned tags such as ``Travis CI'',
+``Industrial'', ``Google'', or
+``self built''.
 Once we had classified all works, we went into the second phase
 (``execution phase'') in which we grouped tags
 together and found synonyms.
+% the following adds to the example but is maybe unneeded / too much
+For instance, in the case of the build log source we grouped
+``Travis'' and ``travis ci'' together and assigned ``Industrial'' to
+all articles that used build logs provided by a company.
 
-%The full data extraction template and our results of this step can be
-%found in our replication package~\cite{brandt2020chunk-replication}.
+The full data extraction template and our results of this step can be
+found in our replication package~\cite{brandt2020chunk-replication}.
 
 
 \addtolength{\tabcolsep}{-5pt}
@@ -702,7 +705,7 @@ Ghaleb et al.~\cite{ghaleb2019studying}, and several other studies reused.
 \subsection{Discussion}
 \label{sec:lit-sur:discussion}
 % TODO we are extracting failures in the following studies, which is
-mainly what
+%mainly what
 % literature does, too, right? Highlight here and mention later again
 
 % TODO: this section is crucial.
@@ -860,6 +863,13 @@ Random Line Retrieval	     & RLR     & Random sample
 \label{tab:ctr}
 \end{table*}
 
+% TODO CARO
+% start by defining in more detail what a chunk retrieval technique is
+% or: characteristics that distinguishe them / to specify them further
+% (To Moritz: we have short definitions before, the first time we use
+% 'chunk', this is far to detailed to be earlier than here)
+% Following that we present each of the techniques in detail.
+
 This section introduces key concepts of the three chunk retrieval
 techniques we study in this article, namely program synthesis by
 example (PBE), common text similarity (CTS), and keyword search (KWS).
@@ -867,12 +877,15 @@ In addition, we present a comparison baseline of random line
 retrieval (RLR), illustrate the techniques on a concrete example
 of log chunks and sketch out their implementation.
 
-% TODO this is not enough for Table 3.
+% TODO CARO this is not enough for Table 3.
 %Where does it come from?
 % How did it originate? Also: never single sentence abstracts
 \Cref{tab:ctr} shows a comparison of the implemented techniques.
+% TODO CARO move to end of characteristics section and say that it is
+% summary of the techniques along the aspects introducted
+% can lead reading / understanding of the future sections
 
-% TODO Somehow, we have to find a better place for this.
+% TODO QUESTION Somehow, we have to find a better place for this.
 %We have been
 % using the term 'chunk retrieval' beforehand already -- this
 % definition now comes to late.
@@ -1064,6 +1077,9 @@ the average of lines in the output of the training examples.
 % TODO: could you add two-three more references to the results of RLR in
 % the discussion, to show how even seemingly low numbers are much better
 % than RLR?
+% TODO QUESTION: should I add those here? as references to the disc?
+% or in the discussion? (you also already added some)
+% In general: I think we talk a lot about RLR and it gets wordy.
 
 To fully comprehend how difficult a task build log analysis really
 is without any a-priori knowledge, we include a comparison with a
@@ -1081,6 +1097,9 @@ giving it a slight advantage.
 % TODO: these next two sections do not belong under this section --
 %they are not a chunk retrieval technique.
 %One way to fix it would be to rename the section.
+% TODO QUESTION: Caro show whole structure
+% -> introduction to crts, investigated techniques, ???
+
 \subsection{Chunk Retrieval Example}
 \label{sec:crt-example}
 
@@ -1305,8 +1324,7 @@ same build environment (1).
 % ...
 %5 build logs?
 One to five examples make up the training set (2).
-% TODO passive ...
-We vary its size to measure how many examples are needed to
+We vary its size to measure how many examples we need to
 confidently configure a technique.
 The training set is so small because the examples have to be
 manually created by a user.
@@ -1324,6 +1342,9 @@ We chose a test set size of 1, as users of the techniques
 should receive reliable results on every build log they analyze.
 % TODO and why is this important? Doesn't everyone want such stability
 %of results?
+% motivation why only one test example.
+we can also leave that out
+% and answer if we are asked about it
 In the next step, we configure a chunk retrieval technique with
 the examples from the training set (4) and apply the technique to the
 training set (5), which produces the retrieval output (6).
@@ -1382,9 +1403,7 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 % This is a weird position for this paragraph
 % TODO What is ``this'' referring to? You just defined a bunch of
 %equations.
-This concludes one execution within our evaluation.
-% TODO run vs.
-%execution above.
+This concludes one run within our evaluation.
 We conduct one run for each of the four chunk retrieval techniques,
 for each of the eighty repositories in \emph{LogChunks} (8)
 and for each of the five training set sizes (2).
@@ -1473,6 +1492,7 @@ For these 30 cases, the average recall
 was 28\%.
 % TODO: Perhaps we should call it partially successful? Let's
 % discuss this in a meeting
+% TODO QUESTION: yes we can :)
 \Cref{lst:pbe-unsuccessful} shows how an example of such
 an \emph{unsuccessful retrieval} looks like.
 In it, the synthesized program only
@@ -1537,6 +1557,9 @@ retrieval with Common Text Similarity (CTS) compared by \ldots}
 %like shows the results of CTS on two beanplots of ...
 %and ...., and then the subfigure
 % TODO this goes for all techniques
+% TODO QUESTION: yes, though then we have more redundant text
+% that repeats everywhere and is already in the captions
+% -> should we add it for the first time we include a type of figure?
 \Cref{fig:recall-precision-examplecount-CTS} presents precision,
 recall, and F$_{1}$-score of chunk retrieval using CTS for an
 increasing number of training examples.
@@ -1620,14 +1643,15 @@ structural categories.
 
 \subsection{Comparison of All Techniques}
 %TODO too short
+% TODO CARO give outlook on results here
 In this section, we aggregate and compare the results from
 \Cref{sec:r:kws,sec:r:pbe,sec:r:cts,sec:r:rlr}.
 
-% TODO
+% TODO CARO? check type of graph introduced
 \Cref{fig:success-partial-all} compares the success of chunk
 retrievals differentiated by techniques in our study.
 % TODO It shows on the vertical axis the number of ?runs? ...
-and on the horizontal ...
+% and on the horizontal ...
 CTS and KWS
 extract at least some of the desired lines in 79\% and 88.5\%
 of the chunk retrieval runs.
@@ -1644,7 +1668,9 @@ For more
 than one category being present, the recall of PBE decreases greatly.
 % TODO this is not a meaningful comparsion to RLR.
 %One would be to say that
-% all of these techniques beat RLR handsdown
+% all of these techniques beat RLR handsdown -> discussion!
+% TODO QUESTOIN: well they don't in this picture (PBE, multiple sc)
+% maybe we can say that one figure earlier?
 For CTS and KWS the values also decrease, while RLR is not affected by
 the number of structural categories present.
 
@@ -1700,7 +1726,7 @@ Based on the empirical comparison, we present a
 decision tree between the three techniques we investigated.
 
 \subsection{Interpretation of Study Results}
-% TODO This is bad style.
+% TODO CARO
 %Begin the section by saying what you do in there
 % Then at the end, say that you summarized it in Table 3 (or include
 %Table 3
@@ -1764,13 +1790,14 @@ expression program with good recall.
 In the study, additional training
 examples from the same structural category
 did not improve the chunk retrieval.
+% TODO QUESTION: maybe discuss this
 % Moritz: Why uncomment the following? Is it not true?
 % I think it is crucial.
 % In fact, unless they
 % were in some sense redundant, adding training examples above that even
 % hindered the applicability of PBE.
 % TODO: it's true.
-Though this is because of the structural categories
+% Though this is because of the structural categories
 % which we discuss not in this paragraph but the one above.
 
 \noindent
@@ -1849,14 +1876,16 @@ automated tools.
 \end{figure}
 
 \subsection{Recommendation of Suitable Techniques}
-% TODO Make intro less generic?
+% TODO CARO Make intro less generic?
 After discussing the three chunk retrieval techniques separately we
 now want to unify the results into one recommendation scheme.
 % TODO Try to inductiviely let the figure emerge from the text, not this
 % ``here is the figure; eat it''.
 % C: ``How should I do this?''
+% TODO CARO
 % Already a better solution would be at the end of this section: We
 % summarized these conditions in the decision tree in Fig ...
+% also reference to the parts of the figure during the explanation
 \Cref{fig:crt-recommendation} presents a decision tree
 to answer the second research question;
 If researchers or developers want to retrieve chunks from build logs,
@@ -1866,7 +1895,7 @@ The decision tree is built up of questions
 which either lead to more questions or to a leaf node containing a
 recommended technique.
 
-
+% TODO QUESTION
 % shouldn't it also better be in threats to validity?
 % it is as well.
 %back for my thesis you said we should put it
@@ -1915,10 +1944,11 @@ automatic on-ward processing or interpretation of the result.
 
 
 \subsection{Using the Recommendation Scheme}
+% TODO QUESTION: which one do you mean here?
 % TODO Perhaps add introduction from recommendation scheme here?
 
 % TODO this is very nice again, perhaps a tiny bit on the trivial side.
-% Do reference Figure 17 more, thoguh
+% TODO CARO Do reference Figure 17 more, thoguh
 To illustrate how one would use the decision tree to find a suitable
 chunk retrieval technique we describe two concrete examples: a software
 team
@@ -2055,7 +2085,7 @@ of the chunk retrieval techniques.
 %It might be
 % the best future work I have ever read in an article.
 % One idea would be to sell it as such and tie a bit back to our
-% first literature sruvey.
+% first literature survey.
 %You can say you give a roadmap to guide
 % future research in the field, and sell it in abstract and intro!
 
@@ -2146,7 +2176,7 @@ user studies.
 
 \section{Conclusion}
 \label{sec:conclusion-fw}
-% TODO conclusion should be a bit longer and a little bit more in
+% TODO CARO conclusion should be a bit longer and a little bit more in
 % detail.
 %Mention general accuracy measures (techniques performed
 % up to in F1 score, which is x times better than RLR)
