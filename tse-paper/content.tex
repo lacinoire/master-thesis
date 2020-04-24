@@ -128,8 +128,7 @@ in the second research question we ask:
 
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 2}}
-What are the comparative strengths and weaknesses
-of promising build log analysis techniques?
+How do build log analysis techniques compare against each other?
 \end{simplebox}
 
 To answer this question, in the second step of the study
@@ -374,12 +373,13 @@ Specifically, we were interested in
 
 This lead us to the following research questions:
 \begin{simplebox}[attach boxed title to top center={yshift=-6mm}]
-{\textbf{RQ1:} What are the state-of-the-research
-techniques to analyze build logs?}
+{\textbf{RQ1:} What is the state-of-the-research on analyzing build logs?}
+% TODO (resolved): All of these are passive
+% TODO Swap RQ 1.2 and RQ 1.1 (logical order?)
 \begin{itemize}[leftmargin=2cm]
-  \item[\textbf{RQ1.1:}] Which information is targeted?
-  \item[\textbf{RQ1.2:}] Which techniques are used?
-  \item[\textbf{RQ1.3:}] Which build logs are analyzed?
+  \item[\textbf{RQ1.1:}] Which information in build logs is of interest?
+  \item[\textbf{RQ1.2:}] Which extraction techniques exist?
+  \item[\textbf{RQ1.3:}] Which kinds of build logs are subject to analysis?
 \end{itemize}
 \end{simplebox}
 
@@ -738,6 +738,8 @@ make manual analysis feasible''~\cite{zolfagharinia2017not}.
 We observed very little reuse of build log analysis tools.
 This can stem from the
 high specialization of the developed tools in regards to supported
+% TODO: build environments is used a bunch (also in the following), but
+% never defined.
 build environments and targeted information.
 
 Several articles noted the variety in log formats for different build
@@ -888,7 +890,7 @@ of log chunks and sketch out their implementation.
 % TODO QUESTION Somehow, we have to find a better place for this.
 %We have been
 % using the term 'chunk retrieval' beforehand already -- this
-% definition now comes to late.
+% definition now comes too late.
 %The first paragraph should already
 % apply to the literature mapping, the second of course only applies
 % here.
@@ -969,6 +971,7 @@ error message ``no program found.''
 % % kinda.
 % It does give a descriptive error message on no match (and
 % % that is not possible in other techniques)
+% TODO Caro: Can you given an example of such an error message?
 % % otherwise yes, nothing interesting happens in the application of pbe
 % % though for consistency we might need this section? or merge
 % config/application?
@@ -978,6 +981,8 @@ error message ``no program found.''
 % TODO Moritz: a regular expression can match an empty string
 % and that is different from not finding a match
 % it returns error messages in both cases
+% TODO: Ok, but what is the point of matching on an empty string (if I understand what you mean)? you would not normally define such an extraction?
+% If this distinction is important it needs to be made more clear 
 \subsubsection{Application}
 A run of PBE takes a build log file as input and applies the
 synthesized regular expression program.
@@ -1265,8 +1270,7 @@ This leads us to the following research questions:
 
 \begin{simplebox}[minipage boxed title*=-1.5cm,
 attach boxed title to top center={yshift=-6mm}]
-{\textbf{RQ2:} What are the comparative strengths and weaknesses
-of promising build log analysis techniques?}
+{\textbf{RQ2:} How do build log analysis techniques compare against each other?}
 \begin{itemize}[leftmargin=1.2cm]
   \item[\textbf{RQ2.1:}] How many examples does a technique need to
   perform best?
@@ -1789,16 +1793,9 @@ two training examples are enough input for PROSE to synthesize a regular
 expression program with good recall.
 In the study, additional training
 examples from the same structural category
-did not improve the chunk retrieval.
-% TODO QUESTION: maybe discuss this
-% Moritz: Why uncomment the following? Is it not true?
-% I think it is crucial.
-% In fact, unless they
-% were in some sense redundant, adding training examples above that even
-% hindered the applicability of PBE.
-% TODO: it's true.
-% Though this is because of the structural categories
-% which we discuss not in this paragraph but the one above.
+did not improve the chunk retrieval. In fact, unless they
+were in some sense redundant, adding more training examples even
+hindered the applicability of PBE.
 
 \noindent
 \textbf{Retrieval Output Usage.}
@@ -2068,17 +2065,16 @@ The fact that PBE and KWS performed best with already two training
 examples shows that the training set size is large enough to
 compare the three techniques.
 
-\textbf{Few Samples with Many Structural Categories}
+\textbf{Few Samples with Many Structural Categories.}
 Our comparison study shows fewer measurements with many structural
-categories than with one structural category category
-(50.25\% one, 33.75\% two, 13.75\% more than two).
-This stems from the fact that we investigated the chunk retrieval
-techniques on a real-world data set, where there were mostly few
-structural categories within one project.
-In addition, a third of the measurements were conducted with two
-structural categories present and these already showed the negative
-effect of the number of structural categories on the performance
-of the chunk retrieval techniques.
+categories than with one structural category category (50.25\% one,
+33.75\% two, 13.75\% more than two).  This stems from the fact that we
+investigated the chunk retrieval techniques on a real-world data set,
+where there were mostly few structural categories within one project.
+In addition, the third of the measurements we conducted with two
+structural categories already showed the negative effect of an
+increasing number of structural categories on the performance of the
+chunk retrieval techniques.
 
 \section{Future Work}
 % Actually, this future work is very, *very* good.
@@ -2183,17 +2179,15 @@ user studies.
 % TODO could also mention future research here: Finally, we gave an
 % outline to guide future research efforts in the area of build log
 % analysis.
-The goal of this paper was to support researchers and developers in
-their decision on how to analyze build logs.
-To this end, we conducted a systematic mapping study to uncover the
-state-of-research on build log analysis.
-We implemented three promising chunk retrieval techniques and
-compared their performance on the \emph{LogChunks} data set.
-Our results show that the structural
-representation of the targeted information in the build logs is the
-main factor to consider when choosing a suitable technique.
-Secondary
-factors are the desired confidence into recall and precision of the
-produced output and whether precision or recall is more important for
-the task at hand.
+The goal of this paper is to support practitioners and researchers in
+their decision on how to analyze build logs. To this end, we first
+conducted a systematic mapping study to map out the available build
+log analysis techniques.  We then
+implemented three promising chunk retrieval techniques and compared
+their performance on the \emph{LogChunks} data set.  Our results show
+that the structural representation of the targeted information in the
+build logs is the main factor to consider when choosing a suitable
+technique.  Secondary factors are the desired confidence in recall and
+precision of the produced output and whether precision or recall is
+more important for the task at hand. 
 
