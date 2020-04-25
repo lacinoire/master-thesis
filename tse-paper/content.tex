@@ -1253,7 +1253,10 @@ We implemented PBE in C\# based on the Microsoft PROSE
 library~\cite{prose2019webpage} and CTS, KWS, and RLR using
 R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 
-\section{Study Design}
+
+% TODO -- this is a wrong title -- !!
+% TODO find better one
+\section{Empirical Comparison Study}
 
 % TODO This section is not structured well.
 %First, it misses an
@@ -1294,26 +1297,25 @@ each other?}
 \end{itemize}
 \end{simplebox}
 
-In the following, we present the data set we created for this study,
-our study process (presented in \Cref{fig:study}), and the metrics
-we measure to answer our research questions.
-
 \begin{figure*}[tb]
 	\centering
 	\includegraphics[width=\textwidth, trim={1.6cm 1.6cm 0.2cm 5.6cm},
   clip]{img/study.pdf}
+  % TODO wrong caption!!! find adequate one
 	\caption{Design of the technique comparison study.}
 	\label{fig:study}
 \end{figure*}
 
+% TODO this might need some glue / intro text
 
-\subsection{LogChunks}
+\subsection{LogChunks Data Set}
+\label{sec:logchunks}
 To conduct the study in this paper, we created the
-\emph{LogChunks}  data set~\cite{brandt2020logchunks}.
+\emph{LogChunks} data set~\cite{brandt2020logchunks}.
 It encompasses 797 build logs from Travis CI,
 stemming from a broad range of 80 GitHub repositories and 29
 programming languages.
-For each file, the authors manually ``labeled
+For each file, we manually ``labeled
 the log part (chunk) describing why the build
 failed''.
 We included keywords, which we
@@ -1325,25 +1327,34 @@ If the chunks were surrounded by the same markings
 within the log, we assigned them the \emph{same structural category},
 as described in \Cref{sec:crt-example}.
 
-\subsection{Study Process}
-% FIXME introduce term example
-% FIXME mention study figure
+This, the build log text, the corresponding chunk,
+the search keywords, and the assigned structural categories
+make up one \emph{example}.
+Examples are the basic units in the training and test sets of our
+empirical comparison study.
+
+% TODO: find better title!!!!
+\subsection{Study Execution}
+\Cref{fig:study} gives an overview over the steps within our empirical
+comparison study.
+In the following, we each of the steps and the metrics
+we measure to answer our research quest
+
 % TODO: I think you need to introduce a concept that makes clear what one
-% ``folder'' consists of ...
-% TODO: What does this mean -- we begin by? Aren't we perhaps missing that
-% we operate on all repos in LogChunks?
-We begin by selecting all examples in \emph{LogChunks}
-that correspond to one GitHub repository---and thus the
-% TODO () is meant to reference the figure, but this the figure is not
-%actually mentioned.
-same build environment (1).
-% TODO: What does this mean? Of what nature are the examples? How were
-%they chosen?
-% Isn't it rather the case that for each repository, we built traning
-%ets of size 1, 2,
-% ...
-%5 build logs?
-One to five examples make up the training set (2).
+% ``folder'' consists of ...ions.
+
+
+We apply every one of the four chunk retrieval techniques
+% TODO Check abstraction level: leave out acronyms?
+(PBE, CTS, KWS, and RLR) on all 80 repositories represented in
+\emph{LogChunks} \circlenum{1}.
+For each repository, we select training sets of size 1, 2, \dots 5
+examples \circlenum{2}.
+% For this, we select all examples in \emph{LogChunks}
+% (as defined in \Cref{sec:logchunks})
+% We begin by selecting all examples
+% that correspond to one GitHub repository---and thus the
+% same build environment (1).
 We vary its size to measure how many examples we need to
 confidently configure a technique.
 The training set is so small because the examples have to be
@@ -1351,18 +1362,16 @@ manually created by a user.
 A larger training set would oppose our goal of providing techniques
 that can be configured with little effort
 (see \Cref{sec:lit-sur:discussion}).
-% TODO: The example? why only one? And what is an example? An example
-%build log?
-% Then it would be good to say so.
-The example chronologically after the training set makes up the
-test set (3).
+% TODO: The example? why only one?
+The test set consists of an example based on the build log produced
+chronologically after the build logs in the training set \circlenum{3}.
 In this way, we train on examples from past build logs and test on
 more recent logs.
-We chose a test set size of 1, as users of the techniques
-should receive reliable results on every build log they analyze.
-% TODO and why is this important? Doesn't everyone want such stability
+% We chose a test set size of 1, as users of the techniques
+% should receive reliable results on every build log they analyze.
+% M: and why is this important? Doesn't everyone want such stability
 %of results?
-% motivation why only one test example.
+% C: motivation why only one test example.
 % we can also leave that out
 % and answer if we are asked about it
 In the next step, we configure a chunk retrieval technique with
@@ -1382,7 +1391,7 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	\item $|\mbox{True\ Positives}| = \mathit{DesiredLines} \cap
 	\mathit{RetrievedLines}$ \vspace{0.2cm}\\
 	True positives are lines that appear both in the output of a
-	tool as well as what \textit{LogChunks} contains for the
+	technique as well as the chnuk defined in the
   test example.
 
 	% What about when a line is replicated twice?
@@ -1420,22 +1429,12 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	extracted, therefore when recall is one.
 \end{itemize}
 
-% This is a weird position for this paragraph
-% TODO What is ``this'' referring to? You just defined a bunch of
-%equations.
-This concludes one run within our evaluation.
-We conduct one run for each of the four chunk retrieval techniques,
-for each of the eighty repositories in \emph{LogChunks} (8)
-and for each of the five training set sizes (2).
-In total we perform 1600 runs, 400 for each of the implemented chunk
-retrieval
-technique.
-
 \section{Results}
+% TODO check abstraction level: mention PBE, CTS etc?
 This section first presents the results for each chunk retrieval
 technique separately.
-Afterwards, we compare the three techniques with each other and to RLR
-as a baseline.
+Afterwards, we compare the three techniques with each other and to a
+random baseline.
 
 \subsection{Program Synthesis by Example (PBE)}
 \label{sec:r:pbe}
