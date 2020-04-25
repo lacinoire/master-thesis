@@ -707,8 +707,11 @@ Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying},
 and several other articles studied.
 
-% TODO A and B should possibly be overlapping, otherwise there is an
-% area where neither A nor B makes sense?
+% when we argue about this later we leave out the middle so A and B
+% match.
+whe then say that the long tail benefits from the generic
+% solution.
+Yes all benefit, but I think it's simpler like this.
 \begin{figure}[tbhp]
 		\centering
 		\includegraphics[width=\columnwidth, trim={1.1cm 0.4cm
@@ -721,6 +724,12 @@ and several other articles studied.
 
 \subsection{Discussion}
 \label{sec:lit-sur:discussion}
+
+Our literature survey shows that despite its relatively young age
+(first mentioned in a paper in 2001, vast majority after
+2016), \textbf{build log analysis is an established technique}
+in the literature, with 61 articles making use of it.
+
 % TODO we are extracting failures in the following studies, which is
 %mainly what
 % literature does, too, right? Highlight here and mention later again
@@ -728,63 +737,77 @@ and several other articles studied.
 % TODO: this section is crucial.
 % maybe we can highlight important findings, by categorizing them either
 % as further subsubsections or making it bold in the text?
-% TODO: find values for X and Y
-Our literature survey shows that despite its relatively young age
-(first mentioned in a paper in 2001, vast majority after
-2016), \textbf{build log analysis is an established technique}
-in the literature, with 61 articles making use of it.
 
+We saw that various researchers analyze build logs, often because the
+logs are the only available source for the
+information they need for their studies~\cite{ren2018automated,
+seo2014programmers,beller2017oops,zampetti2017open,rausch2017empirical}.
 
-% TODO: this reads very hands-off and researchy.
-% I don't understand the first sentence and would simply cut it.
-We saw that various researchers process build logs, often because the
-logs provide more or the necessary
-information to the researchers~\cite{ren2018automated}.
+\textbf{most analysis aims to find out why the build failed}
+
+\textbf{most techniques retrieve chunks from build logs}
+
 \textbf{Most log analysis is automated.} Automated approaches are
-necessary as many studies target a large
-number of builds.
+necessary as many studies target a large number of builds.
 Articles
 which explicitly mention a manual analysis of the logs, mostly
 restrict their work to few logs or take a ``representative sample to
 make manual analysis feasible''~\cite{zolfagharinia2017not}.
-% The chunk retrieval techniques we investigate within this article are
-% automated, apart from their configuration through training examples.
+\textbf{Developing automated analysis tools requires a lot of effort.}
+Urli et al.~\cite{urli2018design} strongly discouraged from parsing
+build logs for information as it is ``too error prone,'' other
+articles pointed to the effort of developing a custom tool.
+Regular expressions are known to be tedious to
+maintain~\cite{michael2019regexes}.
 
-% TODO: draw a conclusion together with figure 5: if reuse were higher,
-%lots of effort could be saved?
-We observed very little reuse of build log analysis tools.
+We observed \textbf{very little reuse of build log analysis tools.}
 This can stem from the
 high specialization of the developed tools in regards to supported
 % TODO: build environments is used a bunch (also in the following), but
 % never defined.
 build environments and targeted information.
 
+% TODO: draw a conclusion together with figure 5: if reuse were higher,
+%lots of effort could be saved?
 Several articles noted the variety in log formats for different build
 environments, which requires customizing build log techniques for
 every supported build environment.
-\Cref{fig:litsur:log_producer} shows that many studies and tools target
-only a few distinct build environments (roughly, area A).
-% TODO: passive ...
+% The following two sentences are passive, however flipped around
+% have a different meaning (we want build env -> study count)
+\Cref{fig:litsur:log_producer} shows that only a few distinct
+build environments are the target of
+many studies and tools (roughly, area A).
 The majority of build environments was however only targeted by one
-article each (B).
-From this, we follow: (a) there is a niche for custom parsers or even
+article each (roughly, area B).
+From this we follow, that the large tail of
+\textbf{seldomly-investigated
+environments would benefit from the
+existence of a more generic solution.}
+
+% TODO we argue this in the intro!
+% problem: we have no data on this
+\textbf{techniques vary and seem rather randomly applied}
+
+\textbf{modifying the build output is not helpful}, as well as returning
+precise data through other documents than the log.
+This requires access to the build configuration, is also specific to
+the used build environment and prohibits the analysis of
+historical data.
+
+\textbf{TODO embed custom plugin discussion}
+% TODO very disconnected here
+From this, we follow: 1) there is a niche for custom parsers or even
 specialized plugins integrated into the build process to make
 post-factum
 parsing of logs redundant.
 Plugins  similar to, for example, the Maven plugin to report test
 executions Bell et al.
 %TODO cite
-wrote, still have the disadvantage of not being able to work on historic
+wrote, have the disadvantage of not being able to work on historic
 builds.
-(b) the large tail of seldomly-investigated environments would benefit
+2) the large tail of seldomly-investigated environments would benefit
 from the existence of a more generic
 solution.
-% TODO this is disconnected, at least here
-Urli et al.~\cite{urli2018design} strongly discouraged from parsing
-build logs for information as it is ``too error prone,'' other
-articles pointed to the effort of developing a custom tool.
-Regular expressions are known to be tedious to
-maintain~\cite{michael2019regexes}.
 
 % We implement build environment agnostic build log analysis
 % techniques, which are customized to a specific project by
@@ -811,6 +834,19 @@ maintain~\cite{michael2019regexes}.
 
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
+%TODO here we sell our techniques as superior.
+match in intro?
+%TODO: really? currently the discussion does not show this 'need'!
+The outcome of our literature survey shows the need for a new
+generation of techniques to analyze build logs.
+In this section we argue how our research sets the first step to
+address this need by introducing three techniques that retrieve
+specific substrings (chunks) from build logs.
+We present defining characteristics of these so called \emph{chunk
+retrieval techniques} and present the techniques we developed in
+detail.
+At the end we illustrate how the techniques operate on a concrete
+example and sketch out their implementation.
 
 \begin{table*}[htb]
 \centering
@@ -830,82 +866,54 @@ Random Line Retrieval	     & RLR     & Random sample
 & Line	      & Retrieval length	  \\
 \bottomrule
 \end{tabularx}
-\label{tab:ctr}
+\label{tab:techniques}
 \end{table*}
 
-% TODO CARO
-% start by defining in more detail what a chunk retrieval technique is
-% or: characteristics that distinguishe them / to specify them further
-% (To Moritz: we have short definitions before, the first time we use
-% 'chunk', this is far to detailed to be earlier than here)
-% Following that we present each of the techniques in detail.
-
-This section introduces key concepts of the three chunk retrieval
-techniques we study in this article, namely program synthesis by
-example (PBE), common text similarity (CTS), and keyword search (KWS).
-In addition, we present a comparison baseline of random line
-retrieval (RLR), illustrate the techniques on a concrete example
-of log chunks and sketch out their implementation.
-
-% TODO CARO this is not enough for Table 3.
-%Where does it come from?
-% How did it originate? Also: never single sentence abstracts
-\Cref{tab:ctr} shows a comparison of the implemented techniques.
-% TODO CARO move to end of characteristics section and say that it is
-% summary of the techniques along the aspects introducted
-% can lead reading / understanding of the future sections
-
-% TODO QUESTION Somehow, we have to find a better place for this.
-%We have been
-% using the term 'chunk retrieval' beforehand already -- this
-% definition now comes too late.
-%The first paragraph should already
-% apply to the literature mapping, the second of course only applies
-% here.
-
 \subsection{The case for chunk retrieval on build logs}
-
-% TODO: the following paragraphs have nothing to do with a discussion
-
+% FIXME Caro
 In summary, the results of the literature study show the need for
 build log
-analysis techniques that are automated, build-environment agnostic
-% TODO who is the user?
-and can be configured by a user with little effort.
-% We achieve this by developing three techniques for which the
-% information to be retrieved is specified through examples or keywords.
+analysis techniques that are \emph{automated},
+\emph{build-environment agnostic}
+and can be \emph{configured with little effort}.
 
-%of the literature survey results.
 % what we need is some derivation of the three techniques 1) regex 2)
 %cts 3) kws, best repeated here in the discussion and then from the lit
 %survey above, section 2.4.2
 For this reason, we are focussing on techniques that run automatically
 after being configured through examples or keywords.
-Examples consist of logs and corresponding chunks.
+\emph{Examples consist of logs and corresponding chunks.}
 The user provides these examples and keywords, which can simply be
 exchanged whenever new cases are introduced.
 
-We propose the notion of chunk retrieval techniques which retrieve
-a substring, that describes a specific information, from a build log.
-Generally, these can also be used to classify build logs and therefore
-cover the great majority of the type of log analysis we saw within
+To analyze build logs,
+we propose to use chunk retrieval techniques.
+These retrieve a substring,
+that describes a specific information, from a build log.
+Generally, chunk retrieval techniques
+can also be used to classify build logs, e.g.\ by checking
+which substring was retrieved.
+Therefore, chunk retrieval techniques
+cover the great majority of the types of log analysis we saw within
 our survey.
 
 We implement three chunk retrieval techniques based on approaches
-described by several articles:
+previously described by several articles:
 PBE mimics regular expressions and parsers while simplifying
 their development.
 We chose text similarity (CTS) as a common information retrieval
 technique and implement the ad-hoc approach of
 searching for specific strings or keywords within KWS\@.
 
-We evaluate the three chunk retrieval techniques on the
-\emph{LogChunks} data set because it encompasses a broad range of
+To evaluate and compare the three chunk retrieval techniques
+we create a data set with logs from failed builds and corresponding
+chunks that describe error messages or
+``the reason the build failed.''
+This was also the information
+most targeted by the articles in our survey
+In addition to that, our data set encompasses a broad range of
 build environments which enables us to measure the generic
 applicability of the techniques.
-The targeted chunks are describing error messages or
-``the reason the build failed,'' which was also the information
-most targeted by the articles in our survey.
 
 % The articles within our study mainly tried to retrieve or classify
 % errors or reasons for the build to fail from the logs.
@@ -918,13 +926,14 @@ most targeted by the articles in our survey.
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 \label{sec:crt-characteristics}
-In this article, we evaluate different techniques to automatically
-retrieve pieces of information that appear literally in the build
-logs.
-%, i.e., techniques that do not aggregate, combine, or deducted
-%information.
-We call such pieces of information from build logs
-\emph{chunks} and the techniques \emph{chunk retrieval techniques}.
+Next, we will present our definition of chunk retrieval techniques
+which automatically
+retrieve pieces of information that appear literally in build
+logs, i.e., techniques that do not aggregate, combine, or deduct
+information.
+We call such pieces of information in build logs
+\emph{chunks}.
+% and the techniques \emph{chunk retrieval techniques}.
 The techniques we investigate here do not require a formal lexer and
 parser to analyze the entire structure of build logs, but focus on
 ad-hoc extracting just one specific piece of information per
@@ -944,12 +953,16 @@ retrieval technique has a specific \textit{granularity}, i.e.,\ the
 smallest piece of text it can return (e.g., a line, or a word).
 % The
 % granularity might be adjustable by configuration.
+
 \emph{Running a
 chunk retrieval technique} means executing a fully configured
 technique to consumes as input a build log in plain text format and to
 produce an array as output.
 The array consists of substrings of the
 build log text.
+\Cref{tab:techniques} summarizes and distinguishes the techniques
+we present along the
+characteristics described above.
 
 \subsection{Program Synthesis by Example (PBE)}
 The concept of \emph{Programming by Example} aims to capture the
@@ -986,37 +999,16 @@ because the regular expression
 necessary is too complicated to synthesize, PBE returns the
 error message ``no program found.''
 
-% Moritz: The following is very obvious and could apply
-% to any
-% % technique.
-% % kinda.
-% It does give a descriptive error message on no match (and
-% % that is not possible in other techniques)
-% TODO Caro: Can you given an example of such an error message?
-% % otherwise yes, nothing interesting happens in the application of pbe
-% % though for consistency we might need this section? or merge
-% config/application?
-% Why does it return an error message? Shouldn't it also return
-% <empty string>? Does it not rather return an error message if no
-% program can be synthesized?
-% TODO Moritz: a regular expression can match an empty string
-% and that is different from not finding a match
-% it returns error messages in both cases
-% TODO: Ok, but what is the point of matching on an empty string?
-%(if I understand what you mean)? you would not normally define such
-%an extraction?
-% If this distinction is important it needs to be made more clear
-
-% TODO CARO: make more clear that not matching is an error cause
-% pattern didn't match?
 \subsubsection{Application}
 A run of PBE takes a build log file as input and applies the
 synthesized regular expression program.
 It then returns the substring
-of the build log matched by the program or an error message if the
-program found no match.
-
-
+of the build log matched by the program.
+% I hope this is fine, you can also cut this sentence if it still
+% bothers you :)
+If the program finds no match because the analyzed build logs
+does not contain the structure defined by the training examples,
+PBE returns an error message.
 
 \subsection{Common Text Similarity (CTS)}
 Text Similarity approaches are widely used to filter unstructured
@@ -1028,37 +1020,27 @@ similar to examples given by the user.
 
 \subsubsection{Configuration}
 To configure chunk retrieval through text similarity we chose to use
-the same concept of examples as for PBE
-% Moritz: your question was: More details on this.
-% How do you
-% 'apply' VSM? On what?
-% all the following sentences in this subsubsection describe our way
-% of determining text similarity which as far as I understand and
-% Annibale said is the VSM.
-% word tokens, tf-idf, similarity measure
-% I added a "as follows", think that is enough for explanation?
-% Moritz: I think it is good, but the VSM is still unexplained.
-%We need a
-% (at least) 1-sentence introduction to it, at its first reference
-% TODO Moritz: I removed all other references, this is now the first one.
-% I hope I got your comment right and now the first and only reference
-% is explained :)
-% TODO Slightly better, but I still have a problem with this -- what
-% exactly is the vector
-% space model here?
-% At a minimum, the text should mention what the vector is and how the
-% model is used
-and apply the Vector Space Model~\cite{schutze2008introduction}
-as follows:
-The lines of the output strings of the training examples define our
+the same concept of examples as for PBE.
+The lines of the output strings of the training examples define the
 search query.
-The algorithm splits the search query into single lines and
-identifies tokens, in this case words.
-Then we build a
-document-term-frequency matrix over the lines from the search query
-and prune very often or very rarely appearing words.
+We represent each line as a term vector where each entry counts
+how often a word appears within the line.
+These vectors exist in a space ith as many dimensions as different
+words appear in the log text.
+This Vector Space Model~\cite{schutze2008introduction} defines
+text lines as more similar if they contain the same words in the same
+frequencies, meaning their term vectors point in a similar direction
+in the vector space.
+We use the cosine function to calculate the angle between two
+term vectors.
+The smaller the angle between term vectors, the more similar are the
+corresponding lines.
+This is called \emph{cosine similarity}~\cite{korenius2007principal}.
+
+To improve the similarity calculation, we prune very often or
+very rarely appearing words.
 Finally, the
-algorithm applies TF-IDF to the matrix, a best practice for natural
+algorithm weighs the vectors using TF-IDF, a best practice for natural
 language queries~\cite{lee1997document}.
 
 \subsubsection{Application}
