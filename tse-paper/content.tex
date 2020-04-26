@@ -27,6 +27,8 @@
   belowskip=0pt
 }
 
+\tableofcontents
+
 Within the past two decades, Continuous Integration (CI) has become a
 ubiquitous best practice to streamline the build process of software
 projects~\cite{hilton2016usage,beller2017oops,staahl2014modeling}.
@@ -107,7 +109,7 @@ for keywords.
 Unfortunately, our survey also shows that
 less than half of the 61 works which rely on build log analysis
 describe it in sufficient detail and that
-% TODO Moritz: 14 is still quite big, it's 'impl available' when we saw
+% C: 14 is still quite big, it's 'impl available' when we saw
 % no overlap.
 Decide whether you want to keep this in :)
 only 14 independent implementations are available, one of which stems
@@ -388,8 +390,8 @@ Specifically, we were interested in
 This lead us to the following research questions:
 \begin{simplebox}[attach boxed title to top center={yshift=-6mm}]
 {\textbf{RQ1:} What is the state-of-the-research on analyzing build logs?}
-% TODO (resolved): All of these are passive
-% it says resolved, but they still are?
+% M: All of these are passive
+% C: it says resolved, but they still are?
 % I exchanged 'extracted' with targeted / analysis
 % 'information retrieved' or 'information extracted' will give us
 % this is not IR neither IE discussions again
@@ -835,7 +837,7 @@ solution.
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
 %TODO here we sell our techniques as superior.
-match in intro?
+% match in intro?
 %TODO: really? currently the discussion does not show this 'need'!
 The outcome of our literature survey shows the need for a new
 generation of techniques to analyze build logs.
@@ -869,8 +871,7 @@ Random Line Retrieval	     & RLR     & Random sample
 \label{tab:techniques}
 \end{table*}
 
-\subsection{The case for chunk retrieval on build logs}
-% FIXME Caro
+\subsection{The Case for Chunk Retrieval on Build Logs}
 In summary, the results of the literature study show the need for
 build log
 analysis techniques that are \emph{automated},
@@ -1092,12 +1093,6 @@ the average of lines in the output of the training examples.
 
 \subsection{Random Line Retrieval (RLR)}
 \label{sec:expl-rlr}
-% TODO: could you add two-three more references to the results of RLR in
-% the discussion, to show how even seemingly low numbers are much better
-% than RLR?
-% TODO QUESTION: should I add those here? as references to the disc?
-% or in the discussion? (you also already added some)
-% In general: I think we talk a lot about RLR and it gets wordy.
 
 To fully comprehend how difficult a task build log analysis really
 is without any a-priori knowledge, we include a comparison with a
@@ -1111,12 +1106,6 @@ For a fair comparison to the other techniques (whose number of
 returned lines is dynamic), we configure RLR to return the average
 number of lines in the chunks of the training examples, thus arguably
 giving it a slight advantage.
-
-% TODO: these next two sections do not belong under this section --
-%they are not a chunk retrieval technique.
-%One way to fix it would be to rename the section.
-% TODO QUESTION: Caro show whole structure
-% -> introduction to crts, investigated techniques, ???
 
 \subsection{Chunk Retrieval Example}
 \label{sec:crt-example}
@@ -1255,22 +1244,13 @@ R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 
 
 % TODO -- this is a wrong title -- !!
-% TODO find better one
+% find better one
 \section{Empirical Comparison Study}
 
-% TODO This section is not structured well.
-%First, it misses an
-% explanation of the bigger study design.
 %Second, What is the difference between Study Process and
 % Study Design? Third, the LogChunks section appears out of nowhere
 % and is not related to the section title (different abstraction
 % level).
-%Perhaps a solution would be to be a bit inspired by this
-% paper:
-%https://inventitech.com/publications/2018_beller_spruit_spinellis_zaidman_on_the_dichotomy_of_debugging_behavior_among_programmers.pdf
-% There is a research design section (which we are missing) and a
-% Research Method section (which is a mixture of the current section
-% titled Log Chunks and Study Process)
 
 \label{sec:study}
 
@@ -1338,11 +1318,7 @@ empirical comparison study.
 \Cref{fig:study} gives an overview over the steps within our empirical
 comparison study.
 In the following, we each of the steps and the metrics
-we measure to answer our research quest
-
-% TODO: I think you need to introduce a concept that makes clear what one
-% ``folder'' consists of ...ions.
-
+we measure to answer our research questions.
 
 We apply every one of the four chunk retrieval techniques
 % TODO Check abstraction level: leave out acronyms?
@@ -1362,7 +1338,6 @@ manually created by a user.
 A larger training set would oppose our goal of providing techniques
 that can be configured with little effort
 (see \Cref{sec:lit-sur:discussion}).
-% TODO: The example? why only one?
 The test set consists of an example based on the build log produced
 chronologically after the build logs in the training set \circlenum{3}.
 In this way, we train on examples from past build logs and test on
@@ -1427,8 +1402,8 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	\mathit{Recall} = 1, \mathit{false\ otherwise}\vspace{0.1cm}$
 
 	We define a successful retrieval as one where all desired
-	lines were
-	extracted, therefore when recall is one.
+	lines were extracted, therefore when recall is one.
+  % TODO introduce partially successful and (new) unsuccessful
 \end{itemize}
 
 \section{Results}
@@ -1469,7 +1444,8 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 	from line 5 of sass/components/_all.sass
 	from line 6 of bulma.sass
   \end{lstlisting}
-  \caption{Example for an unsuccessful retrieval (PBE retrieved only
+  \caption{Example for a partially successful retrieval
+  (PBE retrieved only
   two of the four targeted lines).}
   \label{lst:pbe-unsuccessful}
 \end{figure}
@@ -1500,36 +1476,41 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 (PBE)}
 \end{figure*}
 
-% TODO Say something about this being a pecularity of PBE ...
+% actually, we could cut this figure and move it's explanation
+% to the next one (this is an aggregation of the next one)
+% however, having them separate eases the entry into the results a bit
+% and we have explanation of the categories before the more complicated
+% aspect of the change with more structural categories
 \Cref{fig:failure-reason-PBE} shows the results of chunk
 retrieval with PBE.
+It shows how many of the retrieval runs were successful or
+partially successful, as well as the number of runs where the
+synthesized program did not match on the analyzed build log or where
+no program could be synthesized.
+% The last two results stem from the regular expressions and their
+% synthesis, therefore only apply to PBE.
 Out of the overall 400 runs, 5 per each one of the 80 example
 sets, PBE extracted all desired lines successfully in 138 cases.
 In 59 cases, PBE could synthesize a regular expression program, though
-it did not find match on the test build log.
+it did not match on the test build log.
 In 30 cases, the synthesized program only extracted a
 subset of the desired lines.
 For these 30 cases, the average recall
 was 28\%.
-% TODO: Perhaps we should call it partially successful? Let's
-% discuss this in a meeting
-% TODO QUESTION: yes we can :)
 \Cref{lst:pbe-unsuccessful} shows how an example of such
-an \emph{unsuccessful retrieval} looks like.
+an \emph{partially successful retrieval} looks like.
 In it, the synthesized program only
 retrieved two of the four targeted lines.
 In 173 of the 400 cases
 could PROSE not synthesize a program consistent with all of the training
 examples.
 
-% TODO introudce this fig at large.
-%Soemthing like: Zooming in
-% on only the successful retrievals from (...), Fig ...
-%shows ...
-
-\Cref{fig:failure-reason-categorycount-PBE} shows the results of PBE
+\Cref{fig:failure-reason-categorycount-PBE} shows how
+the results of PBE
 runs depend on the number of structural categories in the training and
 test examples.
+% It shows the categories from above change depending on how many
+% structural categories are present.
 The figure demonstrates that program synthesis mostly
 returns exactly the desired output when there is only one
 structural category present in the training and test examples.
@@ -1539,9 +1520,12 @@ PROSE could in most cases not synthesize a program.
 For four or more present
 categories PROSE could never synthesize a consistent program.
 
-\Cref{fig:recall-precision-examplecount-sythesisworked-PBE} shows
-precision and recall of the 227 runs where PBE could synthesize a
-program consistent with all training examples.
+Zooming in on only the 227 runs where PBE could synthesize a program,
+\Cref{fig:recall-precision-examplecount-sythesisworked-PBE}
+presents violin plots of the precision, the recall
+and the F$_{1}$-score
+of these runs compared with the number of examples in the training set.
+The black horizontal lines show the average of these measurements.
 When the training set
 size increases from one to two, recall, and F$_{1}$-score increase by
 about 25\%, precision increases by about 10\%.
@@ -1551,6 +1535,7 @@ precision around 96\%.
 
 \subsection{Common Text Similarity (CTS)}
 \label{sec:r:cts}
+
 \begin{figure*}
 \centering
     \textbf{Common Text Similarity (CTS)}\par\medskip
@@ -1572,29 +1557,32 @@ precision around 96\%.
 \end{subfigure}
 \caption{Precision, recall, and F$_{1}$-score of chunk
 retrieval with Common Text Similarity (CTS) compared by \ldots}
+\label{fig:results-CTS}
 \end{figure*}
 
-% TODO what about referencing the combined figure at first: something
-%like shows the results of CTS on two beanplots of ...
-%and ...., and then the subfigure
-% TODO this goes for all techniques
-% TODO QUESTION: yes, though then we have more redundant text
-% that repeats everywhere and is already in the captions
-% -> should we add it for the first time we include a type of figure?
-% TODO Yes, that sounds good.
-% FIXME CARO You might even say Figure 12-15 show two
+% You might even say Figure 12-15 show two
 % plots in the short text under the section heading.
 % It just makes the
 % text flow so much better.
-\Cref{fig:recall-precision-examplecount-CTS} presents precision,
-recall, and F$_{1}$-score of chunk retrieval using CTS for an
+
+% The following sections are each quite short...
+% we could merge them, but then it loses consistency with the other
+% result subsections where each plot gets an own paragraph
+
+\Cref{fig:results-CTS} shows violin plots
+of the precision,
+recall, and F$_{1}$-score of the chunk retrieval runs with CTS.
+%The black horizontal lines show the average of these measurements.
+
+\Cref{fig:recall-precision-examplecount-CTS} presents the
+measurements for an
 increasing number of training examples.
 When using one to five
 training examples, the size of the training set has no noticeable
 influence on precision, recall or F$_{1}$-score of the chunk retrieval
 with CTS.
 
-\Cref{fig:recall-precision-categorycount-CTS} shows the same
+\Cref{fig:recall-precision-categorycount-CTS} shows the
 measurements for an increasing number of structural categories in the
 training and test examples.
 With increasing category count, precision,
@@ -1625,11 +1613,17 @@ recall, and F$_{1}$-score decrease.
 \end{subfigure}
 \caption{Precision, recall, and F$_{1}$-score of chunk retrieval with
 Keyword Search (KWS) compared by \ldots}
+\label{fig:results-KWS}
 \end{figure*}
 
 
-\Cref{fig:recall-precision-examplecount-KWS} presents precision,
-recall, and F$_{1}$-score of chunk retrieval using KWS for different
+\Cref{fig:results-KWS} shows violin plots
+of the precision,
+recall, and F$_{1}$-score of the chunk retrieval runs with KWS.
+%The black horizontal lines show the average of these measurements.
+
+\Cref{fig:recall-precision-examplecount-KWS} presents these
+measurements for different
 numbers of training examples.
 The recall increases by about 12\% when
 increasing the size of the training set to more than one example,
@@ -1647,9 +1641,12 @@ For more than two structural
 categories there is no clear trend in precision, recall, or
 F$_{1}$-score.
 
-% TODO Perhaps, above in our section about logchunks, we would need some
+% M: Perhaps, above in our section about logchunks, we would need some
 % basic empirical stats -- e.g., how long are the files and how much
 % do we usually extract from the log
+% C: yup, that would be nice
+% sadly, it's quite a bit of work to get those :/
+% maybe I/We'll do it at the end
 \subsection{Random Line Retrieval}
 \label{sec:r:rlr}
 
@@ -1666,18 +1663,17 @@ increases from 6\%, for one structural category present, to 11\%, for
 three structural categories present and drops to 0\% again for more
 structural categories.
 
-
 \subsection{Comparison of All Techniques}
-%TODO too short
-% TODO CARO give outlook on results here
-In this section, we aggregate and compare the results from
-\Cref{sec:r:kws,sec:r:pbe,sec:r:cts,sec:r:rlr}.
+In this section, we compare the results of all four chunk retrieval
+techniques and show the impact of structural categories on precision,
+recall and F$_{1}$-scores of the different techniques.
 
-% TODO CARO? check type of graph introduced
-\Cref{fig:success-partial-all} compares the success of chunk
-retrievals differentiated by techniques in our study.
-% TODO It shows on the vertical axis the number of ?runs? ...
-% and on the horizontal ...
+% absolute results? is there a nice word for these results
+\Cref{fig:success-partial-all} compares the results all of chunk
+retrievals techniques in our study.
+It shows how many runs per technique were successful, partially
+successful or unsuccessful in retrieving the chunk defined in the
+test example.
 CTS and KWS
 extract at least some of the desired lines in 79\% and 88.5\%
 of the chunk retrieval runs.
@@ -1686,19 +1682,17 @@ successful extractions, followed by PBE with 34.5\%.
 PBE has the
 lowest number of partial retrievals with only 18 out of 400 chunk
 retrieval runs.
+All techniques clearly outperform the random baseline (RLR).
 
 \Cref{fig:recall-precision-singlecategory-all,fig:recall-precision-multicategory-all}
 show the influence of all training and test examples being from the
 same structural category compared to being multiple categories
 For more
 than one category being present, the recall of PBE decreases greatly.
-% TODO this is not a meaningful comparsion to RLR.
-%One would be to say that
-% all of these techniques beat RLR handsdown -> discussion!
-% TODO QUESTOIN: well they don't in this picture (PBE, multiple sc)
-% maybe we can say that one figure earlier?
 For CTS and KWS the values also decrease, while RLR is not affected by
 the number of structural categories present.
+Again, all techniques---except for PBE with multiple structural
+categories---yield better retrievals than RLR.
 
 \begin{figure}[!t]
 		\centering
@@ -1736,30 +1730,22 @@ techniques compared, split by structural category count.}
 \section{Discussion}
 \label{sec:discussion}
 
-% TODO decision tree -> recommendation schema? You can use the more
-%specific decision
-% tree when referencing the figure.
 For the interpretation of the study results, we look at each chunk
 retrieval technique separately.
-We give recommendations for
-which types of log chunks and how many training examples
-each technique is suited, as well as
-how their output can be used further.
-Following that, we discuss
-which of these criteria should influence the decision to use a certain
+Next, we discuss
+which criteria should influence the decision to use a certain
 chunk retrieval technique most.
 Based on the empirical comparison, we present a
 decision tree between the three techniques we investigated.
 
 \subsection{Interpretation of Study Results}
-% TODO CARO
-%Begin the section by saying what you do in there
-% Then at the end, say that you summarized it in Table 3 (or include
-%Table 3
-% in the discussion throughout the text.)
-\Cref{tab:single-technique-recommendations} summarizes the
-recommendations which we discuss
-in this section.
+Following from the results of the empirical study,
+we give recommendations for
+which types of log chunks and how many training examples
+each technique is suited, as well as
+how their output can be used further.
+We summarize these recommendations in
+\Cref{tab:single-technique-recommendations}.
 
 \begin{table}[tbp]
 \resizebox{\columnwidth}{!}{%
@@ -1798,7 +1784,7 @@ techniques.}
 
 \noindent
 \textbf{Configuration and Input.}
-Our study results show that chunk retrieval with PBE gives best
+The study results show that chunk retrieval with PBE gives best
 results when the log chunks are structurally identical.
 This is
 because PROSE has difficulty synthesizing OR-based
@@ -1890,50 +1876,46 @@ automated tools.
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/crt-recommendation.pdf}
-		\caption{Our preliminary recommendation scheme for chunk
+		\caption{Our decision tree for chunk
 		retrieval techniques.}
 		\label{fig:crt-recommendation}
 \end{figure}
 
 \subsection{Recommendation of Suitable Techniques}
-% TODO CARO Make intro less generic?
-After discussing the three chunk retrieval techniques separately we
-now want to unify the results into one recommendation scheme.
-% TODO Try to inductiviely let the figure emerge from the text, not this
-% ``here is the figure; eat it''.
-% C: ``How should I do this?''
-% TODO CARO
-% Already a better solution would be at the end of this section: We
-% summarized these conditions in the decision tree in Fig ...
-% also reference to the parts of the figure during the explanation
-\Cref{fig:crt-recommendation} presents a decision tree
-to answer the second research question;
+We saw, that each of the techniques is suited for different types of
+log chunks and the output of each is suited for different uses.
+Now, we unify these results into conditions to answer
+our second research questions;
 If researchers or developers want to retrieve chunks from build logs,
-they can follow the decision tree to identify the technique
+they can follow these conditions to identify the technique
 suited best for their use case.
-The decision tree is built up of questions
+% I want to ref the figure early bc I believe the text is easier
+% to follow when looking at the figure as well
+We summarize these conditions in the decision tree in
+\Cref{fig:crt-recommendation}.
+It is built up of questions
 which either lead to more questions or to a leaf node containing a
 recommended technique.
+At the end of this section we give two concrete examples on how to
+apply our decision tree.
 
-% TODO QUESTION
-% shouldn't it also better be in threats to validity?
-% it is as well.
-%back for my thesis you said we should put it
-% directly here to make it more prominent avoid angry critics
-% I think it's good here
-% but it's also self-contained so feel free to comment it out
 
-% TODO we can't just have a paragraph in a scientific paper start with
+% we can't just have a paragraph in a scientific paper start with
 % Caveat, I think ;-) Also, we should say why we THINK this is not
 %the case.
 % Otherwise we weaken our work unduly
-\textbf{Caveat!}
-This is a preliminary hypothesis based on the results
-from our comparison study.
-The recommendations could therefore be
-influenced by idiosyncrasies of our specific implementation of the
-chunk retrieval techniques as well as the \emph{LogChunks}
-data set.
+% Of course we can! xD
+% Agree with the rest.
+It's in TtV, quite close actually
+% so I'll comment this out
+% also #moreselling :D
+% \textbf{Caveat!}
+% This is a preliminary hypothesis based on the results
+% from our comparison study.
+% The recommendations could therefore be
+% influenced by idiosyncrasies of our specific implementation of the
+% chunk retrieval techniques as well as the \emph{LogChunks}
+% data set.
 
 The first and most important aspect that influences a choice for
 a chunk retrieval technique are the structural categories.
@@ -1941,17 +1923,21 @@ Are the targeted log chunks always presented in
 the same structural way within the build logs? Then the information
 chunks in all training examples and the analyzed build log are in the
 same structural category.
+This is why the first question in \Cref{fig:crt-recommendation} asks
+how many structural categories the targeted log chunks have.
 
 If the information chunks are from multiple structural categories
 and recall is more important than precision we recommend
 to use KWS\@.
 If precision is more important than recall, we
-recommend CTS\@.
+recommend CTS, as \Cref{fig:crt-recommendation} shows on the
+right half of the decision tree.
 We also recommend CTS when the log chunks are
 from one structural category, when the user does not require high
 confidence in the precision or recall of the outcome and when one
 would rather have output with low recall instead of no output at all.
-When the representations are from one structural category and the user
+On the leftmost path of the decision tree,
+when the representations are from one structural category and the user
 wishes high confidence in the correctness of the output or prefers
 no output over output with low recall, we recommend PBE\@.
 
@@ -1968,12 +1954,7 @@ include from which sub-tool it originated and thus facilitate
 automatic on-ward processing or interpretation of the result.
 
 
-\subsection{Using the Recommendation Scheme}
-% TODO QUESTION: which one do you mean here?
-% TODO Perhaps add introduction from recommendation scheme here?
-
-% TODO this is very nice again, perhaps a tiny bit on the trivial side.
-% TODO CARO Do reference Figure 17 more, thoguh
+\subsection{Using the Decision Tree}
 To illustrate how one would use the decision tree to find a suitable
 chunk retrieval technique we describe two concrete examples: a software
 team
@@ -1988,7 +1969,9 @@ this within the build log.
 As all log statements that report timing
 measurements are formatted the same way, the targeted log chunks are
 from one structural category.
-Therefore, the development team can use
+Therefore, following the leftmost path in
+\Cref{fig:crt-recommendation},
+the development team should use
 PBE to retrieve the duration of a build phase.
 
 In the second example, a researcher wants to investigate whether a small
@@ -1998,8 +1981,8 @@ They gather
 CI build logs from various projects.
 The task of the researcher is to extract the names of the
 failing test cases from each build log.
-When they use our
-recommendation scheme to select a chunk retrieval technique, they
+When they use the
+decision tree to select a chunk retrieval technique, they
 first have to estimate how uniform the representation of the failing
 test cases is in the investigated build logs.
 As the researcher is
@@ -2012,7 +1995,9 @@ As they have to manually inspect the results of both CTS
 and KWS, they choose recall over precision to avoid having to inspect
 the whole log in case the relevant information chunk was not
 retrieved.
-Therefore, the decision tree recommends the researcher to use KWS\@.
+Therefore, following the rightmost path in
+\Cref{fig:crt-recommendation},
+the decision tree recommends the researcher to use KWS\@.
 
 In case the researcher wants to avoid manually inspecting the
 retrieval results, they have to first separate the CI build logs
@@ -2084,11 +2069,8 @@ Especially the results for CTS might be influenced by the fact that we
 only trained on one to five examples.
 We chose this small training set
 size as a user has to provide the training examples
-per repository or project.
-We expect a developer or a researcher
-to not want to provide more examples than the
-small numbers we evaluated on.
-% TODO maybe reference back to little effort technique in lit discus.
+per repository or project and one of the central aims of the chunk
+retrieval techniques is that they can be set up wit little effort.
 The fact that PBE and KWS performed best with already two training
 examples shows that the training set size is large enough to
 compare the three techniques.
@@ -2205,9 +2187,6 @@ user studies.
 % detail.
 %Mention general accuracy measures (techniques performed
 % up to in F1 score, which is x times better than RLR)
-% TODO could also mention future research here: Finally, we gave an
-% outline to guide future research efforts in the area of build log
-% analysis.
 The goal of this paper is to support practitioners and researchers in
 their decision on how to analyze build logs.
 To this end, we first
