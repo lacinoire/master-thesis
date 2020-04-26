@@ -42,7 +42,7 @@ testing the software and running automated static analysis tools.
 The
 contents and format of build logs can vary highly depending on which tools
 are involved in the build process, how they are
-configured, and as projects and build tools evolve over time~\cite{}.
+configured, and as projects and build tools evolve over time~\cite{staahl2014modeling}.
 Typically, though, they are at least a semi-structured and
 somewhat stable journal of the commands executed during the build and
 their results.
@@ -54,8 +54,8 @@ manual activity is tedious and prone to
 error~\cite{santolucito2018statically}.
 As a single build log can be
 over 50 megabytes large~\cite{beller2017oops}, finding the small chunk
-of information in it which is linked to the error, is akin to
-searching for a needle in a haystack.
+of information in it which is linked to the actual error, is akin to
+searching for a needle in a haystack. The large numbers of unrelated, but amibguous warnings that many build logs regularly contain, further compounds this problem.
 In addition to helping
 understand and fix build failures, the information richness of build
 logs enables a plethora of other applications: with the help of build
@@ -65,7 +65,7 @@ testing practices~\cite{orellana2017differences,vassallo2017a-tale},
 train classifiers to do ``predictive CI'' on the build or test outcome
 and
 duration~\cite{ni2017cost,bisong2017built,haghighatkhah2018test,machalica2019predictive},
-or investigate static analysis tools in CI
+or investigate the role of automated static analysis tools (ASATs, \cite{beller2016analyzing}) in CI
 builds~\cite{zampetti2017open}.
 
 However, manual analysis of build logs does not
@@ -103,18 +103,16 @@ The literature
 survey identifies various strategies to
 analyze build logs, among which are developing
 custom parsers, using regular expressions, doing manual inspections,
-natural language processing, information retrieval, or searching
-for keywords.
+searching for keywords, or performing natural language processing.
+However, there is currently no guidance on when to use which of these approaches.
 Unfortunately, our survey also shows that
 less than half of the 61 works which rely on build log analysis
 describe it in sufficient detail and that
-% C: 14 is still quite big, it's 'impl available' when we saw
-% no overlap.
-Decide whether you want to keep this in :)
-only 14 independent implementations are available, one of which stems
-from the second author of this paper.
-Out of these implementations, all are based on either a custom parser
-or regular expressions.
+the few available implementations are all based on either a custom parser
+or regular expressions. These two approaches in particular are problematic, as their creation and maintenane is manual and expensive, does not generalize across build logs from different build environments, and is, as the experience of TravisTorrent has shown, prone to error. In fact, some even ``strongly discourage'' the creation of such
+bespoke parsers~\cite{urli2018design}. In summary, the outcome of our literature survey shows the need for a new
+generation of automated techniques to analyze build logs, which are documented in detail and which are openly available, together with guidance on when to use which tool.
+
 %Using 1) a set of
 % manually curated regular expressions,
 % similar to TravisTorrent~\cite{beller2017oops},
@@ -150,25 +148,26 @@ or regular expressions.
 %%   literature survey.
 %% \end{itemize}
 
+ 
+
 % TODO caro: maybe convert this into a proper ordered list?
-As a consequence, we took it upon ourselves (step 2) to provide
-implementations of the three most promising automatic build log analysis
-techniques we observed in the literature survey:
+To fill this gap, we adapted and implemented three novel, prototypical implementations to
+automatically analyze build logs. The ideas behind the implementations are based on promising approaches adopted from other research fields and automatic build log analysis
+techniques:
 a technique 1) able to automatically synthesize regular expressions,
 called \emph{Program Synthesis by Example (PBE)}, 2) based on information
 retrieval, using \emph{Common Text Similarity (CTS)}  and 3)
 inspired by the manual adhoc-search for key parts in the log, employing
 \emph{Keyword Search (KWS)}.
-Even though these three approaches---regular expressions, text similarity,
+These three approaches---regular expressions, text similarity,
 keyword search---
-have different strengths and weaknesses, the literature
-survey shows that their use often seems arbitrary.
+have different strengths and weaknesses.
 As a consequence,
 in the second research question we ask:
 
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 2}}
-How do build log analysis techniques compare against each other?
+How do build log analysis techniques compare?
 \end{simplebox}
 
 To answer this question, as a third step,
@@ -182,7 +181,7 @@ build tools and programming languages.
 Our results show that there is no technique that in general outperforms
 the others.
 However,
-% TODO 1-2 sentences about results, inclduing some accuracy measures
+% TODO Caro: 1-2 sentences about results, inclduing some accuracy measures
 
 Finally, due to this ambiguity, we develop a set of guidelines
 (\Cref{fig:overview}, step 4)
@@ -204,7 +203,7 @@ context of multiple lines around a finding---makes it generally
 unsuited for automatic on-ward processing.
 Instead, KWS requires a human
 to further inspect and interpret the output chunk.
-A hybrid-solution combining the three techniques might be the best
+A hybrid solution combining the three techniques might be the best
 all-round solution.
 Finally, we give a roadmap to guide future research in the field
 of build log analysis.
@@ -227,7 +226,7 @@ field.
 
 In this section, we survey the emerging field of build log
 analysis.
-We start with a differentiation to the related field of
+We start with a differentiation to the field of
 system log analysis.
 % ref to fig 2 so it can be here and above fig 3
 Then, we describe the methodology (\Cref{fig:lit-survey})
@@ -266,7 +265,7 @@ Example adapted from~\cite{he2017towards}.}
 \label{sec:system-log-analysis}
 A field related to build log analysis is the analysis of system
 logs which are produced during runtime of the system.
-The first difference here is that build logs are produced during runtime
+The first difference is that build logs are produced during runtime
 of the build of the system, not during runtime of the system itself.
 In terms of the contents of the logs, the main difference is that system
 logs are fundamentally structured
@@ -1265,8 +1264,7 @@ This leads us to the following research questions:
 
 \begin{simplebox}[minipage boxed title*=-1.5cm,
 attach boxed title to top center={yshift=-6mm}]
-{\textbf{RQ2:} How do build log analysis techniques compare against
-each other?}
+{\textbf{RQ2:} How do build log analysis techniques compare?}
 \begin{itemize}[leftmargin=1.2cm]
   \item[\textbf{RQ2.1:}] How many examples does a technique need to
   perform best?
