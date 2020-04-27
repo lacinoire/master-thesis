@@ -42,7 +42,8 @@ testing the software and running automated static analysis tools.
 The
 contents and format of build logs can vary highly depending on which tools
 are involved in the build process, how they are
-configured, and as projects and build tools evolve over time~\cite{staahl2014modeling}.
+configured, and as projects and build tools evolve over
+time~\cite{staahl2014modeling}.
 Typically, though, they are at least a semi-structured and
 somewhat stable journal of the commands executed during the build and
 their results.
@@ -55,7 +56,9 @@ error~\cite{santolucito2018statically}.
 As a single build log can be
 over 50 megabytes large~\cite{beller2017oops}, finding the small chunk
 of information in it which is linked to the actual error, is akin to
-searching for a needle in a haystack. The large numbers of unrelated, but amibguous warnings that many build logs regularly contain, further compounds this problem.
+searching for a needle in a haystack.
+The large numbers of unrelated, but amibguous warnings that many build
+logs regularly contain, further compounds this problem.
 In addition to helping
 understand and fix build failures, the information richness of build
 logs enables a plethora of other applications: with the help of build
@@ -65,7 +68,8 @@ testing practices~\cite{orellana2017differences,vassallo2017a-tale},
 train classifiers to do ``predictive CI'' on the build or test outcome
 and
 duration~\cite{ni2017cost,bisong2017built,haghighatkhah2018test,machalica2019predictive},
-or investigate the role of automated static analysis tools (ASATs, \cite{beller2016analyzing}) in CI
+or investigate the role of automated static analysis tools (ASATs,
+\cite{beller2016analyzing}) in CI
 builds~\cite{zampetti2017open}.
 
 However, manual analysis of build logs does not
@@ -104,14 +108,23 @@ survey identifies various strategies to
 analyze build logs, among which are developing
 custom parsers, using regular expressions, doing manual inspections,
 searching for keywords, or performing natural language processing.
-However, there is currently no guidance on when to use which of these approaches.
+However, there is currently no guidance on when to use which of these
+approaches.
 Unfortunately, our survey also shows that
 less than half of the 61 works which rely on build log analysis
 describe it in sufficient detail and that
 the few available implementations are all based on either a custom parser
-or regular expressions. These two approaches in particular are problematic, as their creation and maintenane is manual and expensive, does not generalize across build logs from different build environments, and is, as the experience of TravisTorrent has shown, prone to error. In fact, some even ``strongly discourage'' the creation of such
-bespoke parsers~\cite{urli2018design}. In summary, the outcome of our literature survey shows the need for a new
-generation of automated techniques to analyze build logs, which are documented in detail and which are openly available, together with guidance on when to use which tool.
+or regular expressions.
+These two approaches in particular are problematic, as their creation
+and maintenane is manual and expensive, does not generalize across build
+logs from different build environments, and is, as the experience of
+TravisTorrent has shown, prone to error.
+In fact, some even ``strongly discourage'' the creation of such
+bespoke parsers~\cite{urli2018design}.
+In summary, the outcome of our literature survey shows the need for a new
+generation of automated techniques to analyze build logs, which are
+documented in detail and which are openly available, together with
+guidance on when to use which tool.
 
 %Using 1) a set of
 % manually curated regular expressions,
@@ -148,11 +161,14 @@ generation of automated techniques to analyze build logs, which are documented i
 %%   literature survey.
 %% \end{itemize}
 
- 
+
 
 % TODO caro: maybe convert this into a proper ordered list?
-To fill this gap, we adapted and implemented three novel, prototypical implementations to
-automatically analyze build logs. The ideas behind the implementations are based on promising approaches adopted from other research fields and automatic build log analysis
+To fill this gap, we adapted and implemented three novel, prototypical
+implementations to
+automatically analyze build logs.
+The ideas behind the implementations are based on promising approaches
+adopted from other research fields and automatic build log analysis
 techniques:
 a technique 1) able to automatically synthesize regular expressions,
 called \emph{Program Synthesis by Example (PBE)}, 2) based on information
@@ -707,11 +723,7 @@ Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying},
 and several other articles studied.
 
-% when we argue about this later we leave out the middle so A and B
-% match.
-whe then say that the long tail benefits from the generic
-% solution.
-Yes all benefit, but I think it's simpler like this.
+% TODO Caro: adapt as discussed
 \begin{figure}[tbhp]
 		\centering
 		\includegraphics[width=\columnwidth, trim={1.1cm 0.4cm
@@ -1395,12 +1407,21 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	our results by correctly not finding lots of irrelevant log
 	lines.
 
+	% actually that is now giving recall another (nicer) name
+	% improved if we just talk about recall later?
 	\item Successful retrieval = $\mathit{true}\ \mathit{iff}\
 	\mathit{Recall} = 1, \mathit{false\ otherwise}\vspace{0.1cm}$
+	Partially Successful retrieval = $\mathit{true}\ \mathit{iff}\
+	0 < \mathit{Recall} < 1, \mathit{false\ otherwise}\vspace{0.1cm}$
+	Unsuccessful retrieval = $\mathit{true}\ \mathit{iff}\
+	\mathit{Recall} = 0, \mathit{false\ otherwise}\vspace{0.1cm}$
 
 	We define a successful retrieval as one where all desired
 	lines were extracted, therefore when recall is one.
-  % TODO introduce partially successful and (new) unsuccessful
+	A retrieval is partially successful if at least some of the
+	desired lines were extracted.
+	If the retrieved lines contain none of the desired lines
+	a retrieval was unsuccessful.
 \end{itemize}
 
 \section{Results}
@@ -1429,18 +1450,43 @@ random baseline.
 }
 \begin{figure}[!t]
   \centering
-  \begin{lstlisting}[breaklines=true]
-Test Output:
+\begin{subfigure}[b]{\columnwidth}
+  \begin{lstlisting}[breaklines=true,frame=tlr]
+[0K$ test/sass-compile-tester.sh
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[backgroundcolor=\color{Yellow!60},breaklines=true,frame=rl]
 Error: Invalid CSS after "2.3em": expected expression (e.g.
 1px, bold), was ";"
-	on line 86 of sass/components/dropdown.sass
-Desired Test Output:
+	on line 86 of sass/components/dropdown.
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[breaklines=true,frame=blr]
+	from line 5 of sass/components/_all.sass
+  \end{lstlisting}
+	\caption{Yellow: chunk retrieval output ($RetrievedLines$)}
+	\label{lst:pbe-part-success-output}
+\end{subfigure}
+
+\begin{subfigure}[b]{\columnwidth}
+  \begin{lstlisting}[breaklines=true,frame=tlr]
+[0K$ test/sass-compile-tester.sh
+  \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
 Error: Invalid CSS after "2.3em": expected expression (e.g.
 1px, bold), was ";"
 	on line 86 of sass/components/dropdown.sass
 	from line 5 of sass/components/_all.sass
 	from line 6 of bulma.sass
   \end{lstlisting}
+  \vspace{-\baselineskip}
+  \begin{lstlisting}[breaklines=true,frame=blr]
+  Use --trace for backtrace.
+  \end{lstlisting}
+	\caption{Blue: targeted chunk ($DesiredLines$)}
+	\label{lst:pbe-part-success-desired}
+\end{subfigure}
   \caption{Example for a partially successful retrieval
   (PBE retrieved only
   two of the four targeted lines).}
@@ -1488,16 +1534,18 @@ no program could be synthesized.
 % synthesis, therefore only apply to PBE.
 Out of the overall 400 runs, 5 per each one of the 80 example
 sets, PBE extracted all desired lines successfully in 138 cases.
+In 18 cases, the synthesized program only extracted a
+subset of the desired lines, while in 12 cases it extracted none of
+the desired lines.
+For these 18 partially successful, the average recall
+was 47\%.
+\Cref{lst:pbe-unsuccessful} shows how an example of such
+a partially successful retrieval looks like.
+In it, the synthesized program only
+retrieved two (\Cref{lst:pbe-part-success-output})
+of the four (\Cref{lst:pbe-part-success-desired}) targeted lines.
 In 59 cases, PBE could synthesize a regular expression program, though
 it did not match on the test build log.
-In 30 cases, the synthesized program only extracted a
-subset of the desired lines.
-For these 30 cases, the average recall
-was 28\%.
-\Cref{lst:pbe-unsuccessful} shows how an example of such
-an \emph{partially successful retrieval} looks like.
-In it, the synthesized program only
-retrieved two of the four targeted lines.
 In 173 of the 400 cases
 could PROSE not synthesize a program consistent with all of the training
 examples.
@@ -1569,7 +1617,9 @@ retrieval with Common Text Similarity (CTS) compared by \ldots}
 \Cref{fig:results-CTS} shows violin plots
 of the precision,
 recall, and F$_{1}$-score of the chunk retrieval runs with CTS.
-%The black horizontal lines show the average of these measurements.
+The black horizontal lines show the average of these measurements.
+If the figure shows no violin plot for a category, we only have one
+data point or all data points have the same value.
 
 \Cref{fig:recall-precision-examplecount-CTS} presents the
 measurements for an
@@ -1617,7 +1667,9 @@ Keyword Search (KWS) compared by \ldots}
 \Cref{fig:results-KWS} shows violin plots
 of the precision,
 recall, and F$_{1}$-score of the chunk retrieval runs with KWS.
-%The black horizontal lines show the average of these measurements.
+The black horizontal lines show the average of these measurements.
+If the figure shows no violin plot for a category, we only have one
+data point or all data points have the same value.
 
 \Cref{fig:recall-precision-examplecount-KWS} presents these
 measurements for different
@@ -1744,6 +1796,8 @@ how their output can be used further.
 We summarize these recommendations in
 \Cref{tab:single-technique-recommendations}.
 
+% capitalized headings / left title column
+% tried it out, I think it looks better with the rest lowercase
 \begin{table}[tbp]
 \resizebox{\columnwidth}{!}{%
 \centering
@@ -1751,11 +1805,11 @@ We summarize these recommendations in
   \toprule
   & \textbf{PBE} & \textbf{CTS} & \textbf{KWS} \\
   \midrule
-  \textbf{Structural categories} & 1 & less is better & \makecell[l]{best
+  \textbf{Structural Categories} & 1 & less is better & \makecell[l]{best
   1 \\
   multiple okay} \\
   \midrule
-  \textbf{Training set size} & 2 & no influence & 2 \\
+  \textbf{Training Set Size} & 2 & no influence & 2 \\
     \midrule
   \textbf{Precision} & \makecell[l]{high \\ (if synthesis succeeds)} &
   medium &
@@ -1765,10 +1819,10 @@ We summarize these recommendations in
   medium &
   high \\
     \midrule
-  \makecell[l]{\textbf{Confidence in} \\ \textbf{Output correctness}}
+  \makecell[l]{\textbf{Confidence in} \\ \textbf{Output Correctness}}
   & high & low &
   \makecell[l]{low (precision) \\ high (recall)} \\	\midrule
-  \textbf{Output consumer} & program & human & human \\
+  \textbf{Output Consumer} & program & human & human \\
   \bottomrule
 \end{tabular}%
 }
@@ -1903,7 +1957,7 @@ apply our decision tree.
 % Otherwise we weaken our work unduly
 % Of course we can! xD
 % Agree with the rest.
-It's in TtV, quite close actually
+% It's in TtV, quite close actually
 % so I'll comment this out
 % also #moreselling :D
 % \textbf{Caveat!}
@@ -2132,10 +2186,11 @@ This
 paper investigates the three chunk retrieval techniques PBE, CTS, and
 KWS\@.
 Our study design can be reused to evaluate other build log
-analysis techniques, such as the diff and information retrieval
-approach by Amar et al.~\cite{amar2019mining}.
-% TODO: mention an actual chunk retrieval technique from the survey
-% if possible
+analysis techniques, such as the parser Tomassi et al.
+used to create
+BugSwarm~\cite{tomassi2019bugswarm} or the regex-based approach
+Beller et al.
+used to create TravisTorrent~\cite{beller2017oops}.
 
 \textbf{Refinement of Retrieval Quality for each Technique.} We
 investigated basic configurations of existing techniques applied to
@@ -2182,8 +2237,8 @@ user studies.
 \label{sec:conclusion-fw}
 % TODO CARO conclusion should be a bit longer and a little bit more in
 % detail.
-%Mention general accuracy measures (techniques performed
-% up to in F1 score, which is x times better than RLR)
+ TODO Mention general accuracy measures (techniques performed
+up to in F1 score, which is x times better than RLR)
 The goal of this paper is to support practitioners and researchers in
 their decision on how to analyze build logs.
 To this end, we first
