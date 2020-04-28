@@ -464,7 +464,7 @@ text.
 For questions that did not require a boolean answer, we allowed assigning
 multiple tags or categories as the first part (``preparation phase'')
 of a virtual open card sorting~\cite{zimmermann2016card}.
-An example for this is the question ``What is the source of the build
+An example of this is the question ``What is the source of the build
 log?'',
 where we assigned tags such as ``Travis CI,''
 ``Industrial,'' ``Google,'' or
@@ -1020,7 +1020,8 @@ characteristics described above.
 
 \subsection{Program Synthesis by Example (PBE)}
 The concept of \emph{Programming by Example} aims to capture the
-intent of the user through examples which they provide in an automatically generated program.
+intent of the user through examples which they provide in an automatically
+generated program.
 Leveraging this approach, we implemented a chunk retrieval technique
 for build logs.
 The \emph{PROSE library}~\cite{prose2019webpage} is the basis of
@@ -1129,7 +1130,8 @@ compare KWS with PBE and CTS, we also configure it through examples.
 We associate each example with keywords which appear in the targeted
 chunk or close to it.
 
-% TODO: unclear. or do you mean: same number == all searched for ?
+% TODO: unclear.
+or do you mean: same number == all searched for ?
 KWS then searches for those keywords which are tied to the greatest
 number of examples in the training set.
 If several keywords are associated with the same number of training
@@ -1150,7 +1152,7 @@ the average of lines in the specification output of the training examples.
 \subsection{Random Line Retrieval (RLR)}
 \label{sec:expl-rlr}
 
-To fully comprehend how difficult a task build log analysis 
+To fully comprehend how difficult a task build log analysis
 is without any a-priori knowledge, we include a comparison with a
 base line of
 picking lines at random from the build log (RLR).
@@ -1165,6 +1167,7 @@ giving it a slight advantage over guessing without previous knowledge.
 
 \subsection{Chunk Retrieval Example}
 \label{sec:crt-example}
+
 
 \begin{figure}[tbp]
   \centering
@@ -1199,30 +1202,12 @@ FAILURE: Build failed with an exception.
 
 * Try:
   \end{lstlisting}
-\end{subfigure}
-  \caption{Two examples of log chunks explaining why an Android
+    \caption{Two examples of log chunks explaining why an Android
   build failed.}
   \label{lst:chunk-example}
-\end{figure}
+\end{subfigure}
 
-\lstset{language=caml, morekeywords={StartExtraction, RegexPosition,
-RegexPair,
-  EndExtraction}, keywordstyle=\bfseries\color{black}, escapeinside=//}
-\begin{figure}[tbp]
-  \centering
-  \lstinputlisting[breaklines=true]{listings/prose.txt}
-  \caption{Simplified regular expression produced by PBE when trained
-  with examples from \Cref{lst:chunk-example}}
-  \label{lst:prose-program-simplified}
-\end{figure}
-
-\lstset{
-  language=,
-  morekeywords={},
-  texcl=false
-}
-\begin{figure}[tbp]
-  \centering
+\begin{subfigure}[tbp]{\columnwidth}
   \begin{lstlisting}[breaklines=true,frame=tlr]
 === RUN   TestSeparator
   \end{lstlisting}
@@ -1232,9 +1217,25 @@ RegexPair,
   \begin{lstlisting}[breaklines=true,frame=blr]
 === RUN   TestGenerateHTML
   \end{lstlisting}
-  \caption{Example of a log chunk showing a linter error}
+  \caption{Example of a log chunk showing a linter error.}
   \label{lst:chunk-example-3}
+\end{subfigure}
+
+\caption{Examplary log excerpts.}
+\label{lst:logexamples}
 \end{figure}
+
+\lstset{language=caml, morekeywords={StartExtraction, RegexPosition,
+RegexPair,
+  EndExtraction}, keywordstyle=\bfseries\color{black}, escapeinside=//}
+\begin{figure}[tbp]
+  \centering
+  \lstinputlisting[breaklines=true]{listings/prose.txt}
+  \caption{Simplified regular expression produced by PBE when trained
+  with examples from \Cref{lst:chunk-example}.}
+  \label{lst:prose-program-simplified}
+\end{figure}
+
 
 % TODO: want to?
 % real-world log LogChunks ?
@@ -1459,10 +1460,10 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	% improved if we just talk about recall later?
 	\item Successful retrieval = $\mathit{true}\ \mathit{iff}\
 	\mathit{Recall} = 1, \mathit{false\ otherwise}\vspace{0.1cm}
-        \\$
+	\\$
 	Partially Successful retrieval = $\mathit{true}\ \mathit{iff}\
 	0 < \mathit{Recall} < 1, \mathit{false\ otherwise}\vspace{0.1cm}
-        \\$
+	\\$
 	Unsuccessful retrieval = $\mathit{true}\ \mathit{iff}\
 	\mathit{Recall} = 0, \mathit{false\ otherwise}\vspace{0.1cm}$
 
@@ -1498,7 +1499,7 @@ random baseline.
   keywordstyle=\textbf,
 	frame=single
 }
-\begin{figure}[!t]
+\begin{figure}[tbp]
   \centering
 \begin{subfigure}[b]{\columnwidth}
   \begin{lstlisting}[breaklines=true,frame=tlr]
@@ -1537,9 +1538,10 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 	\caption{Blue: targeted chunk ($DesiredLines$)}
 	\label{lst:pbe-part-success-desired}
 \end{subfigure}
-  \caption{Example for a partially successful retrieval
+  \caption{Example of a partially successful retrieval
   (PBE retrieved only
   two of the four targeted lines).}
+  % TODO: shouldn't the label be partially successful? ;-)
   \label{lst:pbe-unsuccessful}
 \end{figure}
 
@@ -1656,7 +1658,7 @@ retrieval with Common Text Similarity (CTS) compared by \ldots}
 \label{fig:results-CTS}
 \end{figure*}
 
-% TODO 
+% TODO
 % You might even say Figure 12-15 show two
 % plots in the short text under the section heading.
 % It just makes the
@@ -2021,7 +2023,8 @@ apply our decision tree.
 % data set.
 
 The first and most important aspect that influences a choice for
-a chunk retrieval technique are the structural categories. In other words,
+a chunk retrieval technique are the structural categories.
+In other words,
 are the targeted log chunks always presented in
 the same structural way within the build logs? Then the information
 chunks in all training examples and the analyzed build log are in the
