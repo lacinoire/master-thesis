@@ -327,7 +327,9 @@ bespoke approaches.
 % retrieval techniques are used as a part of log parsing
 
 \subsection{Literature Selection}
-The first step in a systematic literature study is to establish which works one wants to cover and how to find them~\cite{kitchenham2009systematic}.
+The first step in a systematic literature study is to
+establish which works one wants to cover and how to find
+them~\cite{kitchenham2009systematic}.
 Since the field of build log analysis is relatively young, we
 surveyed as broad a population of scientific material as possible.
 We did not limit the sources to specific Software Engineering
@@ -335,12 +337,15 @@ venues~\cite{petersen2015guidelines}, but included all sources
 monitored by Google Scholar, including Bachelor's theses, Master's
 theses, and academic slide decks.
 We use Google Scholar as opposed to Scopus or
-other databases because it is the search engine for scholarly material with
+other databases because it is the search engine for scholarly material
+with
 the broadest and most current index, including preprints.
 
 \Cref{fig:lit-survey} gives an overview of the study selection
-process. An initial Google Scholar search for variations of ``build log''
-returned more than 2.2 million results on the 15th of March 2020, many of which stem
+process.
+An initial Google Scholar search for variations of ``build log''
+returned more than 2.2 million results on the 15th of March 2020, many
+of which stem
 from unrelated fields such as construction or wood working.
 We refined the search criteria to exclude such obvious
 non-related fields and to exclude works on systems
@@ -352,10 +357,12 @@ To make handling so many search results feasible, we employed a
 three-pass filtering strategy:
 
 First, we filtered articles based on (a) their title and (b) the
-contextual information Google Scholar displayed on its search results overview page.
+contextual information Google Scholar displayed on its search results
+overview page.
 We included works at large that seemed to bear a resemblance to software
 engineering and building software.
-Following Kitchham's protocol~\cite{kitchenham2009systematic}, we excluded works written in a language unintelligible to the authors
+Following Kitchham's protocol~\cite{kitchenham2009systematic}, we excluded
+works written in a language unintelligible to the authors
 (i.e., not English or German), which disregarded fewer than 1\% of search
 hits.
 We then unified
@@ -374,7 +381,8 @@ This added five articles (eight before
 duplicate elimination), leading to a total of 261
 works.
 
-Second, we performed a finer filter phase by (1) reading their abstracts, and (2) downloading the
+Second, we performed a finer filter phase by (1) reading their abstracts,
+and (2) downloading the
 full text of the works and searching the
 full text
 for the occurrence of ``log.''
@@ -397,7 +405,7 @@ Having trimmed down the set of articles by 95\%, we investigated the
 remaining ones in-depth.
 We wanted to characterize how research works with build logs.
 
-% TODO  everything is in passive in the following
+% TODO	everything is in passive in the following
 Specifically, we were interested in
 \begin{itemize}
   \item what information is retrieved from the logs and
@@ -415,7 +423,8 @@ This lead us to the following research questions:
 {\textbf{RQ1:} What is the state-of-the-research on analyzing build logs?}
 % M: All of these are passive
 % C: it says resolved, but they still are?
-% M: Only the first one still is (don't know how to convert it), the others
+% M: Only the first one still is (don't know how to convert it),
+% the others
 % are not?
 % I exchanged 'extracted' with targeted / analysis
 % 'information retrieved' or 'information extracted' will give us
@@ -428,7 +437,8 @@ This lead us to the following research questions:
 \end{itemize}
 \end{simplebox}
 
-To support the data extraction we created a template that we filled out for each of the 61 works.
+To support the data extraction we created a template that we filled out
+for each of the 61 works.
 The template contained questions to answer RQ 1.1 through RQ 1.3,
 for example ``Is the technique explained in detail?'' and
 ``What is the source of the build logs?''
@@ -439,7 +449,8 @@ both authors extracted data from the same five articles and held a
 consensus meeting to unify their understanding
 of the data extraction template.
 We divided the remaining 56 articles evenly between the two authors
-and inspected each articlex as closely as necessary to fill out the template
+and inspected each articlex as closely as necessary to fill out the
+template
 with confidence,
 starting from occurrences of ``log'' or ``build'' within the article's
 text.
@@ -447,26 +458,115 @@ text.
 For questions that did not require a boolean answer, we allowed assigning
 multiple tags or categories as the first part (``preparation phase'')
 of a virtual open card sorting~\cite{zimmermann2016card}.
-An example for this is the question ``What is the source of the build log?'',
+An example for this is the question ``What is the source of the build
+log?'',
 where we assigned tags such as ``Travis CI,''
 ``Industrial,'' ``Google,'' or
 ``self-built.''
-Once we had classified all works, we went into the second phase of card sorting
+Once we had classified all works, we went into the second phase of
+card sorting
 (``execution phase''), in which we grouped tags
 together and found synonyms.
 % the following adds to the example but is maybe unneeded / too much
 For instance, in the case of the build log source we grouped
 ``Travis'' and ``Travis CI'' together and assigned ``Industrial'' to
 all articles that used build logs provided by a company.
-The replication package contains the data extraction template and all results of this step~\cite{brandt2020chunk-replication}.
-
-
-\subsection{Descriptive Study Statistics}
-To be done.
+The replication package contains the data extraction template and all
+results of this step~\cite{brandt2020chunk-replication}.
 
 
 \subsection{Results}
 \addtolength{\tabcolsep}{-5pt}
+
+In this section, we give a general overview over our paper population
+and then present the results of the analysis phase of the literature
+mapping along RQ 1.1 through RQ 1.3.
+
+
+\subsection{Descriptive Study Statistics}
+To be done.
+% TODO moritz: age of papers (graph), kind of
+% publication (master, paper)
+% published (y, n)
+
+
+\subsubsection{What information is targeted in build logs? (RQ 1.1)}
+
+\begin{figure}
+\centering
+\begin{subfigure}[t]{\columnwidth}
+		\centering
+		\includegraphics[width=\columnwidth,
+		clip]{img/lit-sur/info_target.pdf}
+		\caption{Information targeted in build log analysis.}
+		\label{fig:litsur:info_target}
+
+\end{subfigure}\hspace{\fill}
+\begin{subfigure}[t]{\columnwidth}
+		\centering
+				\includegraphics[width=\columnwidth,
+				clip]{img/lit-sur/use.pdf}
+		\caption{Purpose of build log analysis.}
+		\label{fig:litsur:use}
+
+\end{subfigure}
+
+\caption{Multi-label categorization of the 61 relevant articles.}
+\label{fig:litsur_r}
+\end{figure}
+
+In this section, we describe what sort of information papers usually
+extract from build logs, along the results depicted
+in \Cref{fig:litsur_r}.
+
+\Cref{fig:litsur:info_target} gives an overview over the frequency of
+the targeted information.
+The precise information targeted in the build logs varied from article
+to article, with a relatively long tail.
+Most prominent was the search for errors (39\%), followed by extracting
+the executed or the failing
+tests (both 11\%).
+There were also numerous works which targeted more specialized
+information, such as the environments used during the
+build~\cite{zolfagharinia2017not}, packages
+installed~\cite{selberg2012use}, or hints to source files which
+relate to build failures~\cite{ren2018automated}.
+
+\Cref{fig:litsur:use} shows the reason for the
+investigated articles to analyze build logs.
+The majority of articles (46\%) used the outcome of their build log
+analysis to drive further research.
+Seo et al.~\cite{seo2014programmers}, for example,
+categorized the types of compile errors encountered at
+Google.
+Other articles (10\%) used the gained insights to give feedback to
+developers.
+For 8\% of the articles was the retrieved information the input
+to a next automatic on-ward processing step:
+articles chose
+tests that should be part of a reduced but still effective test
+suite~\cite{shi2018evaluating} or filled a data structure with
+build information, an information source for further tools aiming
+to fix a failing build~\cite{vassallo2018un-break}.
+
+% TODO Moritz: add missing figure
+We also identified the type of information which the articles
+retrieved from the build logs.
+In most cases (51\%), the researchers retrieved a chunk of text.
+They scanned build logs for compilation
+errors~\cite{clemencic2014new} or
+the duration of tasks within the build~\cite{zhang2016android}.
+36\% of the articles classified the build logs into categories.
+For instance, they distinguish failures caused by developers from
+failures caused
+by infrastructure errors~\cite{lindqvist2019detection} or
+determine whether projects use automated static analysis
+tools~\cite{kavaler2019tool}.
+Other types of information (e.g.,\ counting
+lines, summarization) were only retrieved
+in one case each.
+
+\subsubsection{Which analysis techniques exist? (RQ 1.2)}
 \begin{table*}[tbhp]
 \tinyish
 \centering
@@ -561,80 +661,6 @@ Name			     & Sources	& Frequency	  \\
 \end{table*}
 \addtolength{\tabcolsep}{5pt}
 
-\begin{figure}
-\centering
-\begin{subfigure}[t]{\columnwidth}
-		\centering
-		\includegraphics[width=\columnwidth,
-		clip]{img/lit-sur/info_target.pdf}
-		\caption{Information targeted in build log analysis.}
-		\label{fig:litsur:info_target}
-
-\end{subfigure}\hspace{\fill}
-\begin{subfigure}[t]{\columnwidth}
-		\centering
-				\includegraphics[width=\columnwidth,
-				clip]{img/lit-sur/use.pdf}
-		\caption{Purpose of build log analysis.}
-		\label{fig:litsur:use}
-
-\end{subfigure}
-
-\caption{Multi-label categorization of the 61 relevant articles.}
-\end{figure}
-
-
-In this section, we present the results of the analysis phase of the
-literature mapping along RQ 1.1 through RQ 1.3.
-
-\subsubsection{What information is targeted in build logs? (RQ 1.1)}
-The precise information targeted in the build logs varied from article
-to article.
-\Cref{fig:litsur:info_target} gives an overview over the frequency of
-the targeted information.
-Most prominent was the search for errors (39\%), followed by extracting
-the executed or the failing
-tests (both 11\%).
-There were also numerous works which targeted more specialized
-information, such as the environments used during the
-build~\cite{zolfagharinia2017not}, packages
-installed~\cite{selberg2012use}, or hints to source files which
-relate to build failures~\cite{ren2018automated}.
-
-\Cref{fig:litsur:use} shows the reason for the
-investigated articles to analyze build logs.
-The majority of articles (46\%) used the outcome of their build log
-analysis to drive further research.
-Seo et al.~\cite{seo2014programmers}, for example,
-categorized the types of compile errors encountered at
-Google.
-Other articles (10\%) used the gained insights to give feedback to
-developers.
-For 8\% of the articles the retrieved information was the input
-to a next automatic on-ward processing step.
-Articles chose
-tests that should be part of a reduced but still effective test
-suite~\cite{shi2018evaluating} or filled a data structure with
-build information, an information source for further tools aiming
-to fix a failing build~\cite{vassallo2018un-break}.
-
-We also identified the type of information which the articles
-retrieved from the build logs.
-In most cases (51\%), the researchers retrieved a chunk of text.
-They scanned build logs for compilation
-errors~\cite{clemencic2014new} or
-the duration of tasks within the build~\cite{zhang2016android}.
-36\% of the articles classified the build logs into categories.
-For instance, they distinguish failures caused by developers from
-failures caused
-by infrastructure errors~\cite{lindqvist2019detection} or
-determine whether projects use automated static analysis
-tools~\cite{kavaler2019tool}.
-Other types of information (e.g.,\ counting
-lines, summarization) were only retrieved
-in one case each.
-
-\subsubsection{Which analysis techniques exist? (RQ 1.2)}
 \Cref{tab:litsur:techniques} presents the techniques that the articles
 described for analyzing build logs.
 43 of the 61 articles we inspected mentioned how they are analyzing
@@ -649,12 +675,9 @@ For such imprecise statements it was often not clear if they describe
 a complex parser (including a tokenizer, lexer, etc.) or refer to a
 simpler parsing tool based on regular expressions.
 If we saw evidence for the latter, we assigned the tag
-``regular expression'' instead of the tag ``parser''.
+``regular expression'' instead of the tag ``parser.''
 25\% of the articles described the use of regular expressions and 20\%
-inspected the logs manually.
-Another 8\% employed machine learning such as natural language
-processing or information retrieval techniques.
-For example,
+inspected the logs manually. For example,
 Seo et al.~\cite{seo2014programmers} developed a custom
 parser to classify error messages, while Vassallo et
 al.~\cite{vassallo2017a-tale} analyzed build logs with regular
@@ -664,6 +687,9 @@ They started with manual categorizing build logs and selecting
 search strings that identify the target category.
 Based on the search strings they created a script that automatically
 classifies the remaining logs.
+Another 8\% employed machine learning such as natural language
+processing or information retrieval techniques.
+
 
 Only 25\% of the articles claimed their implementation is available.
 Moreover, we
