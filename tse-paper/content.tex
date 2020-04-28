@@ -700,8 +700,9 @@ Five articles employed the tools used to create
 orellana2017differences,zhao2018comparing} or
 an updated version of them~\cite{rott2019empirische,
 shi2018evaluating}, two used the
-\emph{Maven Log Analyzer}~\cite{macho2018automatically,gallaba2018noise}, and
-another two 
+\emph{Maven Log Analyzer}~\cite{macho2018automatically,gallaba2018noise},
+and
+another two
 \emph{MAKAO}~\cite{wen2018blimp,adams2007design,adams2007makao}.
 
 \subsubsection{Which kinds of build logs are subject to
@@ -721,9 +722,11 @@ therefore \textbf{``parsers must be specialized to each build and test
 framework''}~\cite{tomassi2019bugswarm}.
 Sometimes, aspects separate from the build log analysis motivate
 the limitation to a specific build tool.
-For example, Shi et al. focussed on Maven
+For example, Shi et al.
+focussed on Maven
 build logs because they also chose the PIT tool to calculate coverage
-and mutation score~\cite{shi2018evaluating}. PIT is only available as a Maven plugin.
+and mutation score~\cite{shi2018evaluating}.
+PIT is only available as a Maven plugin.
 
 Only 7\% of the proposed methods claimed to be language-agnostic, while
 several described they are covering multiple source build tools.
@@ -837,9 +840,15 @@ historical data.
 From this, we follow: 1) there is a niche for custom parsers or even
 specialized plugins integrated into the build process to make
 post-factum
-parsing of logs redundant. Their advantage is that they can precisely report the information which is required.
-A downside of plugins, which are integrated into the CI flow similar to Deflaker by Bell et al.~\cite{bell2018deflaker}, is that they are unable to work on historic
-builds, i.e., before the moment they were being deployed and that if information has not been recorded from the beginning but turns out to be important, it is impossible to retrieve later.
+parsing of logs redundant.
+Their advantage is that they can precisely report the information which
+is required.
+A downside of plugins, which are integrated into the CI flow similar to
+Deflaker by Bell et al.~\cite{bell2018deflaker}, is that they are unable
+to work on historic
+builds, i.e., before the moment they were being deployed and that if
+information has not been recorded from the beginning but turns out to
+be important, it is impossible to retrieve later.
 2) the large tail of seldomly-investigated environments would benefit
 from the existence of a more generic
 solution.
@@ -918,7 +927,8 @@ and can be \emph{configured with little effort}.
 For this reason, we are focussing on techniques that run automatically
 after being configured through examples or keywords.
 \emph{Examples consist of logs and corresponding chunks.}
-The user provides these examples and keywords, which are easy to adapt whenever the user adds new examples.
+The user provides these examples and keywords, which are easy to adapt
+whenever the user adds new examples.
 
 To analyze build logs,
 we propose to use chunk retrieval techniques.
@@ -964,7 +974,8 @@ applicability of the techniques.
 % than other approaches?
 
 \label{sec:crt-characteristics}
-In this section, we formalize our use of chunk retrieval techniques. By this word, we refer to techniques that automatically
+In this section, we formalize our use of chunk retrieval techniques.
+By this word, we refer to techniques that automatically
 retrieve pieces of information that appear literally in build
 logs, i.e., techniques that do not aggregate, combine, or deduct
 information.
