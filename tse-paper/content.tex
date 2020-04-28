@@ -867,6 +867,8 @@ build log analysis enables us to analyze the wide range of information
 already baked into the build logs.
 Their advantage is that they can precisely report the information which
 is required.
+
+% TODO merge nicely
 A downside of plugins, which are integrated into the CI flow similar to
 Deflaker by Bell et al.~\cite{bell2018deflaker}, is that they are unable
 to work on historic
@@ -931,8 +933,8 @@ specific substrings (chunks) from build logs.
 We present defining characteristics of these so called \emph{chunk
 retrieval techniques} and present the techniques we developed in
 detail.
-% TODO At the end of what?
-At the end we illustrate how the techniques operate on a concrete
+At the end of this section we illustrate how the techniques
+operate on a concrete
 example and sketch out their implementation.
 
 \begin{table*}[htb]
@@ -1195,7 +1197,7 @@ the average of lines in the specification output of the training examples.
 To fully comprehend how difficult the task of build log analysis really
 is without any a-priori knowledge, we include a comparison with a
 base line of
-picking lines at random from the build log (RLR).
+picking lines at random from the build log.
 RLR mimics the
 situation of guessing blindly which lines are interesting.
 The only configuration option for RLR is the number of lines it should
@@ -1277,9 +1279,7 @@ RegexPair,
 \end{figure}
 
 
-% TODO: want to?
-% real-world log LogChunks ?
-To illustrate the chunk retrieval techniques further, we want to give
+To illustrate the chunk retrieval techniques further, we give
 an example of how the chunk retrieval techniques retrieve chunks from
 real-world build logs.
 \Cref{lst:chunk-example} shows two excerpts
@@ -1588,8 +1588,7 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
   \caption{Example of a partially successful retrieval
   (PBE retrieved only
   two of the four targeted lines).}
-  % TODO: shouldn't the label be partially successful? ;-)
-  \label{lst:pbe-unsuccessful}
+  \label{lst:pbe-partially-successful}
 \end{figure}
 
 \begin{figure*}
@@ -1638,7 +1637,7 @@ subset of the desired lines, while in 12 cases it extracted none of
 the desired lines.
 For these 18 partially successful, the average recall
 was 47\%.
-\Cref{lst:pbe-unsuccessful} shows how an example of such
+\Cref{lst:pbe-partially-successful} shows how an example of such
 a partially successful retrieval looks like.
 In it, the synthesized program only
 retrieved two (\Cref{lst:pbe-part-success-output})
