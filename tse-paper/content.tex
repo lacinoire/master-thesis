@@ -57,7 +57,7 @@ As a single build log can be
 over 50 megabytes large~\cite{beller2017oops}, finding the small chunk
 of information in it which is linked to the actual error, is akin to
 searching for a needle in a haystack.
-The large numbers of unrelated, but amibguous warnings that many build
+The large numbers of unrelated, but ambiguous warnings that many build
 logs regularly contain, further compounds this problem.
 In addition to helping
 understand and fix build failures, the information richness of build
@@ -67,7 +67,8 @@ errors~\cite{islam2017insights,seo2014programmers}, differentiate
 testing practices~\cite{orellana2017differences,vassallo2017a-tale},
 train classifiers to do ``predictive CI'' on the build or test outcome
 and
-duration~\cite{ni2017cost,bisong2017built,haghighatkhah2018test,machalica2019predictive},
+duration~\cite{ni2017cost,bisong2017built,haghighatkhah2018test,
+machalica2019predictive},
 or investigate the role of automated static analysis tools (ASATs,
 \cite{beller2016analyzing}) in CI
 builds~\cite{zampetti2017open}.
@@ -116,7 +117,7 @@ describe it in sufficient detail and that
 the few available implementations are all based on either a custom parser
 or regular expressions.
 These two approaches in particular are problematic, as their creation
-and maintenane is manual and expensive, does not generalize across build
+and maintenance is manual and expensive, does not generalize across build
 logs from different build environments, and is, as the experience of
 TravisTorrent has shown, prone to error.
 In fact, some even ``strongly discourage'' the creation of such
@@ -163,7 +164,9 @@ guidance on when to use which tool.
 
 
 
-% TODO caro: maybe convert this into a proper ordered list?
+% M: maybe convert this into a proper ordered list?
+% TODO Moritz: not sure what you mean here ?
+% I agree that the non-itemized looks better than before
 To fill this gap, we adapted and implemented three novel, prototypical
 implementations to
 automatically analyze build logs.
@@ -196,8 +199,11 @@ set~\cite{brandt2020logchunks}, which encompasses 797 build logs from
 build tools and programming languages.
 Our results show that there is no technique that in general outperforms
 the others.
-However,
-% TODO Caro: 1-2 sentences about results, inclduing some accuracy measures
+PBE has the best average precision of 95\%, while KWS has the largest
+recall with 70\% on average.
+However, CTS shows the best F$_{1}$-score
+of 51\% and all of the three techniques
+clearly outperform a random baseline.
 
 Finally, due to this ambiguity, we develop a set of guidelines
 (\Cref{fig:overview}, step 4)
@@ -2131,9 +2137,13 @@ Tuning the text similarity
 meta-parameters more to the specific use case of chunk retrieval from
 build logs would yield better chunk retrieval results.
 
-% TODO something like overall, we argue that our implementations and their
-% weaknesses stand prototypical for the techniques and tried to limit
-% idiosyncrazies as much as possible (give example)
+% kinda uncreative..
+not sure what another example would be?
+% not sure if this adds much on top of the sentences further up
+Overall, we believe our implementations and their weaknesses stand
+prototypical for the techniques.
+We tried to limit idiosyncrasies as much as possible, by choosing
+standard approaches and configurations.
 
 \textbf{Data Set.}
 The build logs from the \emph{LogChunks} data set highly affect
@@ -2272,30 +2282,44 @@ user studies.
 
 \section{Conclusion}
 \label{sec:conclusion-fw}
-% TODO CARO conclusion should be a bit longer and a little bit more in
-% detail.
- TODO Mention general accuracy measures (techniques performed
-up to in F1 score, which is x times better than RLR)
+
 The goal of this paper is to support practitioners and researchers in
 their decision on how to analyze build logs.
 To this end, we first
 conducted a systematic mapping study to map out the available build
 log analysis techniques.
-We then
-implemented three promising chunk retrieval techniques and compared
-their performance on the \emph{LogChunks} data set.
-Our results show
+We saw that while build log analysis is widely used, it is often
+a side-part of the article and implementations are rarely reused.
+This shows the need for a new generation of generic and automated
+build log analysis techniques that need little effort to set up.
+Based
+on common approaches we saw during the literature survey,
+we implemented three promising techniques to retrieve specific
+substrings (chunks) from build logs:
+PBE synthesizes regular expression programs based on examples of logs
+and corresponding chunks, CTS leverages a common text similarity
+measure to retrieve those lines which are most similar to example
+chunks, and KWS finds the targeted parts of a build log by searching
+for identifying keywords.
+We evaluated the performance of these chunk retrieval techniques on the
+\emph{LogChunks} data set and saw varying results.
+CTS had the highest average F$_{1}$-score with 51\%, while the other
+techniques showed higher average scores for precision (95\%, PBE)
+and recall (70\%, KWS).
+To guide researchers and developers on which technique to use for their
+we summarized our results in a decision tree.
+We found
 that the structural representation of the targeted information in the
-build logs is the main factor to consider when choosing a suitable
+build logs is the main factor a user should consider when they
+choose a suitable
 technique.
 Secondary factors are the desired confidence in recall and
 precision of the produced output and whether precision or recall is
 more important for the task at hand.
-
 Finally, we gave an
 outline to guide future research efforts in the area of build log
 analysis.
-Important themes are
-% TODO Caro complete :-)
-
+Important themes are a systematic investigation of industry approaches,
+benchmarks of existing build log analysis approaches and further
+refinement of the chunk retrieval techniques we proposed.
 
