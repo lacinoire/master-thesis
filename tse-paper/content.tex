@@ -289,11 +289,11 @@ through events.
 Each line in a log file represents one event with a
 set of fields: timestamp, verbosity level, and raw message
 content~\cite{he2017towards}.
-\Cref{lst:system-log} shows
-example lines from a system log.
+\Cref{lst:system-log} depicts two
+examplary lines from such a system log.
 
 The first goal in analyzing system log files is generally to
-separate constant and variable parts within a log
+separate the constant and variable parts within a log
 message~\cite{nagappan2010abstracting,he2017towards}.
 Next, the log
 messages are clustered into log events, unifying messages with
@@ -306,7 +306,7 @@ data mining processes.
 
 Some of the techniques developed to parse system logs can operate
 on build logs as well, such as methods to retrieve the
-values of variable parts in a log message, e.g.\ by using regular
+values of variable parts in a log message, e.g.\, by using regular
 expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 % This is the easiest example matching here
 % amar et al are not in our literature survey
@@ -326,37 +326,36 @@ bespoke approaches.
 % Chunk
 % retrieval techniques are used as a part of log parsing
 
-\subsection{Study Selection}
-\Cref{fig:lit-survey} presents an overview of the study selection
-process.
+\subsection{Literature Selection}
+The first step in a systematic literature study is to establish which works one wants to cover and how to find them~\cite{kitchenham2009systematic}.
 Since the field of build log analysis is relatively young, we
 surveyed as broad a population of scientific material as possible.
 We did not limit the sources to specific Software Engineering
-venues~\cite{petersen2015guidelines}, but survey all sources
+venues~\cite{petersen2015guidelines}, but included all sources
 monitored by Google Scholar, including Bachelor's theses, Master's
 theses, and academic slide decks.
 We use Google Scholar as opposed to Scopus or
-other databases because it is the search engine for academic articles with
+other databases because it is the search engine for scholarly material with
 the broadest and most current index, including preprints.
 
-An initial Google Scholar search for variations of ``build log''
-returned more than 2.2 million results (2020-03-15), many of which stem
-from unrelated fields such as construction and wood working.
+\Cref{fig:lit-survey} gives an overview of the study selection
+process. An initial Google Scholar search for variations of ``build log''
+returned more than 2.2 million results on the 15th of March 2020, many of which stem
+from unrelated fields such as construction or wood working.
 We refined the search criteria to exclude such obvious
-non-related fields and also to exclude works on systems
+non-related fields and to exclude works on systems
 or event logs (see \Cref{sec:system-log-analysis}).
-This left us with 1,552 search results
-(2020-03-15).
+This left us with 1,552 search results.
 % Our replication package documents the full search
 % queries~\cite{brandt2020chunk-replication}.
 To make handling so many search results feasible, we employed a
 three-pass filtering strategy:
 
 First, we filtered articles based on (a) their title and (b) the
-contextual information Google Scholar displayed.
+contextual information Google Scholar displayed on its search results overview page.
 We included works at large that seemed to bear a resemblance to software
 engineering and building software.
-We excluded works written in a language unintelligible to the authors
+Following Kitchham's protocol~\cite{kitchenham2009systematic}, we excluded works written in a language unintelligible to the authors
 (i.e., not English or German), which disregarded fewer than 1\% of search
 hits.
 We then unified
@@ -375,20 +374,30 @@ This added five articles (eight before
 duplicate elimination), leading to a total of 261
 works.
 
-Subsequently, we performed a second, finer filter phase by downloading the
-full text of the works, reading their abstracts, and searching the
+Second, we performed a finer filter phase by (1) reading their abstracts, and (2) downloading the
+full text of the works and searching the
 full text
 for the occurrence of ``log.''
 If a work showed traces of
-working with build logs, we included it in the survey.
+working with build logs, we included it for the next filter phase.
 In total, we
 were left with 87 works after the second filtering phases.
 
-\subsection{Article Classification}
-Having trimmed down the set of articles by 95\%, we investigated the
-remaining ones in depth.
-We wanted to characterize how research uses build logs.
+Third, since we had been careful to include rather than exclude borderline
+works, a deeper evaluation excluded another 15 articles from the 87
+works left after the second filter phase.
+Multiple articles were extensions of others.
+Of these, we only considered the earliest article which reported on
+the analyzing of build logs.
+This excluded another 11 articles.
+In sum, we extracted data from 61 articles.
 
+\subsection{Literature Classification}
+Having trimmed down the set of articles by 95\%, we investigated the
+remaining ones in-depth.
+We wanted to characterize how research works with build logs.
+
+% TODO  everything is in passive in the following
 Specifically, we were interested in
 \begin{itemize}
   \item what information is retrieved from the logs and
@@ -406,6 +415,8 @@ This lead us to the following research questions:
 {\textbf{RQ1:} What is the state-of-the-research on analyzing build logs?}
 % M: All of these are passive
 % C: it says resolved, but they still are?
+% M: Only the first one still is (don't know how to convert it), the others
+% are not?
 % I exchanged 'extracted' with targeted / analysis
 % 'information retrieved' or 'information extracted' will give us
 % this is not IR neither IE discussions again
@@ -417,27 +428,18 @@ This lead us to the following research questions:
 \end{itemize}
 \end{simplebox}
 
-Since we had been careful to include rather than exclude borderline
-works, this deeper evaluation excluded another 15 articles from the 87
-works left after the second filter phase.
-Multiple articles were extensions of others.
-Of these, we only considered the earliest article which reported on
-the analyzing of build logs.
-This excluded another 11 articles.
-In sum, we extracted data from 61 articles.
-
-To guide the data extraction we created a template.
-The template form contained questions to answer RQ 1.1 through RQ 1.3,
+To support the data extraction we created a template that we filled out for each of the 61 works.
+The template contained questions to answer RQ 1.1 through RQ 1.3,
 for example ``Is the technique explained in detail?'' and
 ``What is the source of the build logs?''
 As recommended by Petersen et
 al.~\cite{petersen2015guidelines}, we started the mapping study with a
-pilot study:
+pilot:
 both authors extracted data from the same five articles and held a
 consensus meeting to unify their understanding
 of the data extraction template.
 We divided the remaining 56 articles evenly between the two authors
-and inspected each as closely as necessary to fill out the template
+and inspected each articlex as closely as necessary to fill out the template
 with confidence,
 starting from occurrences of ``log'' or ``build'' within the article's
 text.
@@ -445,21 +447,25 @@ text.
 For questions that did not require a boolean answer, we allowed assigning
 multiple tags or categories as the first part (``preparation phase'')
 of a virtual open card sorting~\cite{zimmermann2016card}.
-An example for this is the source of the analyzed build logs,
-where we assigned tags such as ``Travis CI'',
-``Industrial'', ``Google'', or
-``self built''.
-Once we had classified all works, we went into the second phase
-(``execution phase'') in which we grouped tags
+An example for this is the question ``What is the source of the build log?'',
+where we assigned tags such as ``Travis CI,''
+``Industrial,'' ``Google,'' or
+``self-built.''
+Once we had classified all works, we went into the second phase of card sorting
+(``execution phase''), in which we grouped tags
 together and found synonyms.
 % the following adds to the example but is maybe unneeded / too much
 For instance, in the case of the build log source we grouped
-``Travis'' and ``travis ci'' together and assigned ``Industrial'' to
+``Travis'' and ``Travis CI'' together and assigned ``Industrial'' to
 all articles that used build logs provided by a company.
-The full data extraction template and our results of this step can be
-found in our replication package~\cite{brandt2020chunk-replication}.
+The replication package contains the data extraction template and all results of this step~\cite{brandt2020chunk-replication}.
 
 
+\subsection{Descriptive Study Statistics}
+To be done.
+
+
+\subsection{Results}
 \addtolength{\tabcolsep}{-5pt}
 \begin{table*}[tbhp]
 \tinyish
@@ -577,12 +583,11 @@ Name			     & Sources	& Frequency	  \\
 \caption{Multi-label categorization of the 61 relevant articles.}
 \end{figure}
 
-\subsection{Results}
+
 In this section, we present the results of the analysis phase of the
 literature mapping along RQ 1.1 through RQ 1.3.
 
 \subsubsection{What information is targeted in build logs? (RQ 1.1)}
-
 The precise information targeted in the build logs varied from article
 to article.
 \Cref{fig:litsur:info_target} gives an overview over the frequency of
