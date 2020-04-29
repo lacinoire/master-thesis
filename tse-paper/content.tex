@@ -25,7 +25,8 @@
 
 \tableofcontents
 
-In the past two decades, Continuous Integration (CI) has become a
+\IEEEPARstart{I}{n}
+the past two decades, Continuous Integration (CI) has become a
 ubiquitous best practice to streamline the build process of software
 projects~\cite{hilton2016usage,beller2017oops,staahl2014modeling}.
 Build logs are a textual by-product that these automatic software
@@ -166,7 +167,7 @@ guidance on when to use which technique.
 
 
 % turned into an itemize again cause the 'sentence' around it was
-% rather broken and itemish anyways
+% rather broken and item-ish anyways
 To fill this gap, we adapted and implemented three novel, prototypical
 implementations to
 automatically analyze build logs (step 2).
@@ -182,7 +183,7 @@ specific information:
 	automatically synthesize regular expressions,
 	\item a technique based on information
 	retrieval, using \emph{Common Text Similarity (CTS)}
-	\item inspired by the manual adhoc-search for key parts in the
+	\item inspired by the manual ad hoc search for key parts in the
 	log, a
 	technique employing \emph{Keyword Search (KWS)}
 \end{itemize}
@@ -190,7 +191,7 @@ specific information:
 % called \emph{Program Synthesis by Example (PBE)}, a technique
 % 2) based on information
 % retrieval, using \emph{Common Text Similarity (CTS)}	and 3)
-% inspired by the manual adhoc-search for key parts in the log, a
+% inspired by the manual ad hoc search for key parts in the log, a
 % technique employing \emph{Keyword Search (KWS)}.
 These three approaches---synthesized regular expressions,
 text similarity,
@@ -728,7 +729,7 @@ another two
 \Cref{fig:litsur:log_producer} shows the distribution of supported
 build tools.
 Of the articles we surveyed, 30\% analyzed
-Mave~\cite{maven2019website},
+Maven~\cite{maven2019website},
 16\% analyzed Gradle~\cite{gradle2020website},
 and 10\% analyzed Ant build logs~\cite{ant2020website}.
 
@@ -769,7 +770,7 @@ Ghaleb et al.~\cite{ghaleb2019studying},
 and several other articles studied.
 
 % TODO Caro: adapt as discussed
-% TODO: I think the axes labels are also unncessary for this graph.
+% TODO Caro: I think the axes labels are also unnecessary for this graph.
 %Our other graphs in the lit survey do not have them, either.
 \begin{figure}[tbhp]
 		\centering
@@ -868,7 +869,7 @@ already baked into the build logs.
 Their advantage is that they can precisely report the information which
 is required.
 
-% TODO merge nicely
+% TODO Caro: merge nicely
 A downside of plugins, which are integrated into the CI flow similar to
 Deflaker by Bell et al.~\cite{bell2018deflaker}, is that they are unable
 to work on historic
@@ -968,6 +969,7 @@ and can be \emph{configured with little effort}.
 % what we need is some derivation of the three techniques 1) regex 2)
 %cts 3) kws, best repeated here in the discussion and then from the lit
 %survey above, section 2.4.2
+% TODO Caro: merge!
 For this reason, we are focussing on techniques that run automatically
 after being configured through examples or keywords.
 \emph{Examples consist of logs and corresponding chunks.}
@@ -992,7 +994,7 @@ previously described by several articles:
 PBE mimics regular expressions, while simplifying
 their development.
 We chose text similarity (CTS) as a common information retrieval
-technique and implement the ad-hoc approach of
+technique and implement the ad hoc approach of
 searching for specific strings or keywords within KWS\@.
 
 To evaluate and compare the three chunk retrieval techniques
@@ -1018,7 +1020,7 @@ applicability of the techniques.
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 % TODO Caro: Wouldn't this place perhaps be better to contain
-%the pargraph about why chunk log techniques are more general
+%the paragraph about why chunk log techniques are more general
 % than other approaches?
 
 \label{sec:crt-characteristics}
@@ -1032,7 +1034,7 @@ We call such pieces of information in build logs
 % and the techniques \emph{chunk retrieval techniques}.
 The techniques we investigate here do not require a formal lexer and
 parser to analyze the entire structure of build logs, but focus on
-ad-hoc extracting just one specific piece of information per
+ad hoc extracting just one specific piece of information per
 configuration.
 
 With the term \textit{configuration}, we abstract over the training
@@ -1137,7 +1139,7 @@ This is called \emph{cosine similarity}~\cite{korenius2007principal}.
 To improve the similarity calculation, we prune very often or
 very rarely appearing words.
 Finally, the
-% TODO TF-IDF undefined
+% TODO Caro: TF-IDF undefined
 algorithm weighs the vectors using TF-IDF, a best practice for natural
 language queries~\cite{lee1997document}.
 
@@ -1157,7 +1159,7 @@ run.
 
 \subsection{Keyword Search (KWS)}
 When developers scavenge for a specific piece of information within a
-large amount of unstructured information, a first ad-hoc approach they
+large amount of unstructured information, a first ad hoc approach they
 use is to search for related keywords.
 Indeed, this was one of the
 most common approaches we took when searching for the reason a build
@@ -1168,11 +1170,11 @@ set~\cite{brandt2020logchunks}.
 A set of keywords configures the chunk retrieval with KWS\@.
 To better
 compare KWS with PBE and CTS, we also configure it through examples.
-% TODO: unclear
+% TODO Caro: unclear
 We associate each example with keywords which appear in the targeted
 chunk or close to it.
 
-% TODO: unclear.
+% TODO Caro: unclear.
 or do you mean: same number == all searched for ?
 KWS then searches for those keywords which are tied to the greatest
 number of examples in the training set.
@@ -1211,6 +1213,8 @@ giving it a slight advantage over guessing without previous knowledge.
 \label{sec:crt-example}
 
 % TODO Moritz: reference these in text properly
+
+\lstset{escapeinside=//}
 \begin{figure}[tbp]
   \centering
 \begin{subfigure}[tbp]{\columnwidth}
@@ -1257,20 +1261,20 @@ FAILURE: Build failed with an exception.
   \lstinputlisting[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]{listings/chunk2.txt}
   \vspace{-\baselineskip}
   % TODO Caro: Adapt frame= option to close frame properly
-  \begin{lstlisting}[breaklines=true,frame=lr]
+  \begin{lstlisting}[breaklines=true,frame=blr]
 === RUN   TestGenerateHTML
   \end{lstlisting}
   \caption{Example of a log chunk showing a linter error.}
   \label{lst:chunk-example-3}
 \end{subfigure}
 
-\caption{Examplary log excerpts.}
+\caption{Exemplary log excerpts.}
 \label{lst:logexamples}
 \end{figure}
 
 \lstset{language=caml, morekeywords={StartExtraction, RegexPosition,
 RegexPair,
-  EndExtraction}, keywordstyle=\bfseries\color{black}, escapeinside=//}
+  EndExtraction}, keywordstyle=\bfseries\color{black}}
 \begin{figure}[tbp]
   \centering
   \lstinputlisting[breaklines=true]{listings/prose.txt}
@@ -1312,7 +1316,7 @@ are in the \emph{same structural category}, while the chunk from
 \Cref{lst:chunk-example-3} is in a
 \emph{different structural category}.
 % TODO Moritz: is this fitting here?
-% or too much 'foreshadowing' too far down in the hierachy
+% or too much 'foreshadowing' too far down in the hierarchy
 The results of the empirical comparison study on the chunk retrieval
 techniques
 show that the structural representation of the targeted chunk greatly
@@ -1701,11 +1705,11 @@ precision around 96\%.
 \end{subfigure}
 \caption{Precision, recall, and F$_{1}$-score of chunk
 retrieval with Common Text Similarity (CTS) compared by \ldots}
-% TODO: where are the bean plots?
+% TODO Caro: check: where are the bean plots?
 \label{fig:results-CTS}
 \end{figure*}
 
-% TODO
+% TODO Caro: check
 % You might even say Figure 12-15 show two
 % plots in the short text under the section heading.
 % It just makes the
@@ -2061,7 +2065,7 @@ apply our decision tree.
 % Agree with the rest.
 % It's in TtV, quite close actually
 % so I'll comment this out
-% also #moreselling :D
+% also #more selling :D
 % \textbf{Caveat!}
 % This is a preliminary hypothesis based on the results
 % from our comparison study.
