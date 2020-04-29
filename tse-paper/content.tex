@@ -23,8 +23,6 @@
   belowskip=0pt
 }
 
-\tableofcontents
-
 \IEEEPARstart{I}{n}
 the past two decades, Continuous Integration (CI) has become a
 ubiquitous best practice to streamline the build process of software
@@ -263,6 +261,14 @@ field.
 \item a documented replication package~\cite{brandt2020chunk-replication}.
 \end{itemize}
 
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
+	\caption{Literature selection process, following
+	\cite{petersen2015guidelines}.}
+	\label{fig:lit-survey}
+\end{figure}
+
 \section{Systematic Literature Mapping Survey}
 \label{sec:survey}
 
@@ -279,15 +285,6 @@ guidelines by Petersen et
 al.~\cite{petersen2008systematic,petersen2015guidelines}.
 We close by summarizing how build logs are commonly
 analyzed in literature and discuss the implications of these findings.
-
-\begin{figure}[tb]
-	\centering
-	\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
-	\caption{Literature selection process, following
-	\cite{petersen2015guidelines}.}
-	\label{fig:lit-survey}
-\end{figure}
-
 
 \lstset{
   morekeywords={INFO, WARN, 2008, 11, 09},
@@ -773,18 +770,14 @@ Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying},
 and several other articles studied.
 
-% TODO Caro: adapt as discussed
-% TODO Caro: I think the axes labels are also unnecessary for this graph.
-%Our other graphs in the lit survey do not have them, either.
 \begin{figure}[tbhp]
 		\centering
-		\includegraphics[width=\columnwidth, trim={1.1cm 0.4cm
+		\includegraphics[width=\columnwidth, trim={1.5cm 0.4cm
 		1.5cm 0.5cm},
 		clip]{img/lit-sur/log_producer_annotated.pdf}
-		\caption{Frequency of supported log producers.}
+		\caption{Frequency of supported build tools.}
 		\label{fig:litsur:log_producer}
 \end{figure}
-
 
 \subsection{Discussion}
 \label{sec:lit-sur:discussion}
@@ -929,16 +922,39 @@ is required.
 %\section{Analyzing Build Logs with Chunk Retrieval Techniques}
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
-%TODO: really? currently the discussion does not show this 'need'!
-The outcome of our literature survey shows the need for a new
-generation of techniques to analyze build logs.
-In this section we argue how our research sets the first step to
-address this need by introducing three techniques that retrieve
-specific substrings (chunks) from build logs.
-We present defining characteristics of these so called \emph{chunk
-retrieval techniques} and present the techniques we developed in
-detail.
-At the end of this section we illustrate how the techniques
+
+In summary, the outcome of the literature survey show the need for
+build log
+analysis techniques that are \emph{automated},
+\emph{agnostic of the build environment}
+and can be \emph{configured with little effort}.
+
+To address this need,
+we propose a set of so called \emph{chunk retrieval techniques},
+which retrieve a specific substring (called chunk)
+from a build log.
+The techniques we propose run automatically
+and can be easily configured through examples.
+An example in this case consists of a build log together with the
+chunk that should be retrieved.
+A user---a developer or a researcher who wants to analyze
+build logs---provides these examples, which are easy to
+adapt whenever the analysis technique needs
+to support new cases.
+
+We designed and implemented three chunk retrieval
+techniques based on approaches
+previously described by several articles:
+PBE mimics regular expressions, while simplifying
+their development.
+We chose text similarity (CTS) as a common information retrieval
+technique and implement the ad hoc approach of
+searching for specific strings or keywords within KWS\@.
+
+In this section, we define our notion of chunk
+retrieval techniques and present each of the techniques
+we developed in detail.
+Following that, we illustrate how the techniques
 operate on a concrete
 example and sketch out their implementation.
 
@@ -963,68 +979,7 @@ Random Line Retrieval	     & RLR     & Random sample
 \label{tab:techniques}
 \end{table*}
 
-\subsection{A New Generation of Build Log Analysis Techniques}
-In summary, the results of the literature survey show the need for
-build log
-analysis techniques that are \emph{automated},
-\emph{agnostic of the build environment}
-and can be \emph{configured with little effort}.
-
-% what we need is some derivation of the three techniques 1) regex 2)
-%cts 3) kws, best repeated here in the discussion and then from the lit
-%survey above, section 2.4.2
-For this reason, we are focussing on techniques that run automatically
-after being configured through examples or keywords.
-\emph{Examples consist of logs and corresponding chunks.}
-A user---a developer or a researcher who wants to analyze
-build logs---provides these examples and keywords, which are easy to
-adapt whenever the analysis needs to be maintained.
-
-To analyze build logs,
-we propose to use chunk retrieval techniques.
-These retrieve a substring,
-that describes a specific information, from a build log.
-Generally, chunk retrieval techniques
-can also be used to classify build logs, e.g.\ by checking
-which substring was retrieved.
-Therefore, chunk retrieval techniques
-cover the great majority of the types of log analysis we saw within
-our survey.
-
-We implement three chunk retrieval techniques based on approaches
-previously described by several articles:
-PBE mimics regular expressions, while simplifying
-their development.
-We chose text similarity (CTS) as a common information retrieval
-technique and implement the ad hoc approach of
-searching for specific strings or keywords within KWS\@.
-
-To evaluate and compare the three chunk retrieval techniques
-we create a data set with logs from failed builds on Travis
-CI---the most-used source of build logs within our survey.
-For each log we marked the corresponding
-chunks that describe error messages or
-``the reason the build failed.''
-This was the information
-most targeted by the articles in our survey (see \Cref{sec:rq11}).
-In addition to that, our data set encompasses a broad range of
-build tools which enables us to measure the generic
-applicability of the techniques.
-
-% The articles within our study mainly tried to retrieve or classify
-% errors or reasons for the build to fail from the logs.
-% Therefore we chose the log chunk ``describing why the build failed''
-% ~\cite{brandt2020logchunks} for our empirical comparison study
-% of chunk retrieval techniques.
-% The techniques we implement are in principle agnostic to the targeted
-% log chunk, thus we believe our results can be generalized to other
-% kinds of log chunks.
-
 \subsection{Characteristics of Chunk Retrieval Techniques}
-% TODO Caro: Wouldn't this place perhaps be better to contain
-%the paragraph about why chunk log techniques are more general
-% than other approaches?
-
 \label{sec:crt-characteristics}
 In this section, we formalize our use of chunk retrieval techniques.
 By this word, we refer to techniques that automatically
@@ -1033,7 +988,14 @@ logs, i.e., techniques that do not aggregate, combine, or deduct
 information.
 We call such pieces of information in build logs
 \emph{chunks}.
-% and the techniques \emph{chunk retrieval techniques}.
+
+Generally, chunk retrieval techniques
+can also be used to classify build logs, e.g.\ by checking
+which substring was retrieved.
+Therefore, chunk retrieval techniques
+cover the great majority of the types of log analysis we saw within
+our survey.
+
 The techniques we investigate here do not require a formal lexer and
 parser to analyze the entire structure of build logs, but focus on
 ad hoc extracting just one specific piece of information per
@@ -1176,7 +1138,7 @@ compare KWS with PBE and CTS, we also configure it through examples.
 We associate a list of keywords with each example.
 The keywords should appear in the targeted
 chunk or close to it.
-Then, we merge these lists and use the most commonly occuring
+Then, we merge these lists and use the most commonly occurring
 keywords for the search with KWS.
 
 \subsubsection{Application}
@@ -1254,7 +1216,6 @@ FAILURE: Build failed with an exception.
   \vspace{-\baselineskip}
   \lstinputlisting[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]{listings/chunk2.txt}
   \vspace{-\baselineskip}
-  % TODO Caro: Adapt frame= option to close frame properly
   \begin{lstlisting}[breaklines=true,frame=blr]
 === RUN   TestGenerateHTML
   \end{lstlisting}
@@ -1384,19 +1345,25 @@ attach boxed title to top center={yshift=-6mm}]
 \end{itemize}
 \end{simplebox}
 
-In the following we will introduce the data set we created for this
+In the following, we introduce the data set we created for this
 study and describe the design of our comparison study.
 
 \subsection{LogChunks Data Set}
 \label{sec:logchunks}
 To conduct the study in this paper, we created the
 \emph{LogChunks} data set~\cite{brandt2020logchunks}.
-It encompasses 797 build logs from Travis CI,
-stemming from a broad range of 80 GitHub repositories and 29
+From Travis CI---the most-used source of build logs within
+according to our literature survey---we collected
+797 build logs that
+stem from a broad range of 80 GitHub repositories and 29
 programming languages.
-For each file, we manually marked
+This wide variety of projects, and the large number of different build
+tools they employ, enables us to measure the generic
+applicability of the chunk retrieval techniques.
+
+For each build log, we manually marked
 the chunk that describes why the build
-failed---the information targeted by most of the articles from our
+failed---the information targeted by most of the articles in our
 literature survey.
 To be able to configure the keyword search technique,
 the data set associates each chunk with keywords that we
@@ -1499,13 +1466,11 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	% actually that is now giving recall another (nicer) name
 	% improved if we just talk about recall later?
 	\item Successful retrieval = $\mathit{true}\ \mathit{iff}\
-	\mathit{Recall} = 1, \mathit{false\ otherwise}\vspace{0.1cm}
-	\\$
-	Partially Successful retrieval = $\mathit{true}\ \mathit{iff}\
-	0 < \mathit{Recall} < 1, \mathit{false\ otherwise}\vspace{0.1cm}
-	\\$
+	\mathit{Recall} = 1, \vspace{0.1cm}\\$
+	Partially successful retrieval = $\mathit{true}\ \mathit{iff}\
+	0<\mathit{Recall}<1, \vspace{0.1cm}\\$
 	Unsuccessful retrieval = $\mathit{true}\ \mathit{iff}\
-	\mathit{Recall} = 0, \mathit{false\ otherwise}\vspace{0.1cm}$
+	\mathit{Recall} = 0, \vspace{0.1cm}$
 
 	We define a successful retrieval as one where all desired
 	lines were extracted, therefore when recall is one.
@@ -2327,39 +2292,40 @@ user studies.
 
 The goal of this paper is to support practitioners and researchers in
 their decision on how to analyze build logs.
-To this end, we first
+To this end, we
 conducted a systematic mapping survey to map out the available build
 log analysis techniques.
-We saw that while build log analysis is widely used, it is often
+We saw that, while build log analysis is widely used, it is often
 a side part of an article and implementations are rarely reused.
 This shows the need for a new generation of generic and automated
 build log analysis techniques that need little effort to set up.
-Based
-on common approaches we saw during the literature survey,
-we implemented three promising techniques to retrieve specific
-substrings (chunks) from build logs:
+
+Based on common approaches we observed in literature,
+we implemented three promising chunk retrieval techniques:
 PBE synthesizes regular expression programs based on examples of logs
 and corresponding chunks, CTS leverages a common text similarity
 measure to retrieve those lines which are most similar to example
-chunks, and KWS finds the targeted parts of a build log by searching
+chunks, and KWS finds the targeted chunks in a build log by searching
 for identifying keywords.
+
 We evaluated the performance of these chunk retrieval techniques on the
 \emph{LogChunks} data set and saw varying results.
 CTS had the highest average F$_{1}$-score with 51\%, while the other
 techniques showed higher average scores for precision (95\%, PBE)
 and recall (70\%, KWS).
-To guide researchers and developers on which technique to use for their
+
+To guide researchers and developers on which technique suits their
+use case,
 we summarized our results in a decision tree.
 We found
 that the structural representation of the targeted information in the
 build logs is the main factor a user should consider when they
-choose a suitable
+choose a
 technique.
 Secondary factors are the desired confidence in recall and
 precision of the produced output and whether precision or recall is
 more important for the task at hand.
-% TODO Caro: bring more across why it is so important that this field
-% and the research there continues
+
 Finally, we gave an
 outline to guide future research efforts in the area of build log
 analysis.
