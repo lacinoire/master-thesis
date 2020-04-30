@@ -95,8 +95,6 @@ systematically
 analyze build logs has thus far not been systematically
 overviewed as a research topic, bringing us to the first
 research question:
-% TODO Discuss: is -research fine? or state-of-the-art more common and
-% still not missused (because industry m)
 \begin{simplebox}[minipage boxed title*=-5cm]{\textbf{Research Question
 1}}
 What is the state-of-research to analyze build logs?
@@ -330,7 +328,7 @@ This structured log can serve as input to various machine learning and
 data mining processes.
 
 Some of the techniques developed to parse system logs can operate
-on build logs as well, such as methods to retrieve the
+on build logs as well, such as approaches to retrieve the
 values of variable parts in a log message, e.g.\, by using regular
 expressions~\cite{nagappan2010abstracting,xu2009detecting}.
 % This is the easiest example matching here
@@ -686,16 +684,14 @@ Name			     & Sources	& Frequency	  \\
 
 Of the 61 articles we inspected, 43 mentioned how they analyzed
 build logs.
-% TODO Caro: check method vs technique
-However, only 16 of these described their method in detail.
+However, only 16 of these described their technique in detail.
 We summarize the techniques that the articles
 described for analyzing build logs in \Cref{tab:litsur:techniques}.
 
-% TODO Caro: test \emph{parser}, regex, manually, etc...
-The most mentioned method (34\%) was using a parser, where we also
+The most mentioned technique (34\%) was using a parser, where we also
 included
-rather imprecise statements like ``we parse the build logs''
-~\cite{rahman2018impact}.
+rather imprecise statements like ``we parse the build
+logs''~\cite{rahman2018impact}.
 For such imprecise statements it was often not clear if they describe
 a complex parser (including a tokenizer, lexer, etc.) or refer to a
 simpler parsing tool based on regular expressions.
@@ -753,7 +749,6 @@ and 10\% analyzed Ant build logs~\cite{ant2020website}.
 A large fraction of the articles analyze build logs
 from a small number of build tools.
 In most cases, this is because the format of build logs
-% TODO Caro: check for tilde after space or newline
 changes and
 therefore ``parsers must be specialized to each build and test
 framework''~\cite{tomassi2019bugswarm}.
@@ -765,7 +760,7 @@ build logs because they also chose the PIT tool~\cite{coles2016pit}
 to calculate coverage
 and mutation score~\cite{shi2018evaluating}.
 PIT is only available as a Maven plugin.
-Only 7\% of the proposed methods claimed to be
+Only 7\% of the proposed techniques claimed to be
 build tool-agnostic, while
 several described they are covering multiple source build tools.
 The majority of articles (42\%) analyzed logs produced by a build tool
@@ -802,7 +797,6 @@ and several other articles studied.
 \label{sec:lit-sur:discussion}
 % tense: present
 
-% TODO Caro: try emph instead of textbf
 % ----- descriptive / general -----
 Our literature survey shows that despite its relatively young age
 (first mentioned in a paper in 2001, vast majority after
@@ -2237,7 +2231,7 @@ Log Analysis.}
 Our survey is limited to academic work and articles.
 However, handling build logs is a challenge for a wide range of
 practitioners as well.
-We propose to investigate the methods used in industry to analyze
+We propose to investigate the techniques used in industry to analyze
 build logs.
 An example is the Jenkins \emph{build-failure-analyzer}
 plugin~\cite{jenkins2020failure-analyzer} or automatically
