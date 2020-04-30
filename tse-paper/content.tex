@@ -522,6 +522,14 @@ To be done.
 \begin{subfigure}[t]{\columnwidth}
 		\centering
 				\includegraphics[width=\columnwidth,
+				clip]{img/lit-sur/kind.pdf}
+		\caption{Class of information analyzed.}
+		\label{fig:litsur:kind}
+
+\end{subfigure}
+\begin{subfigure}[t]{\columnwidth}
+		\centering
+				\includegraphics[width=\columnwidth,
 				clip]{img/lit-sur/use.pdf}
 		\caption{Purpose of build log analysis.}
 		\label{fig:litsur:use}
@@ -534,7 +542,7 @@ To be done.
 
 In this section, we describe what sort of information the articles in
 our survey usually retrieved from build logs.
-These results are depicted in \Cref{fig:litsur_r}.
+\Cref{fig:litsur_r} depicts these results.
 
 \Cref{fig:litsur:info_target} gives an overview over the frequency of
 the targeted information.
@@ -549,29 +557,26 @@ build~\cite{zolfagharinia2017not}, packages
 installed~\cite{selberg2012use}, or hints to source files which
 relate to build failures~\cite{ren2018automated}.
 
-% TODO Moritz: add missing figure
-% C: this (to be 4b) is closer to 4a, therefore I moved it up
-% and the use/purpose down (to be 4c then)
-We also identified the type of information which the articles
-retrieved from the build logs.
-In most cases (51\%), the researchers retrieved a chunk of text.
-They scanned build logs for compilation
-errors~\cite{clemencic2014new} or
-the duration of tasks within the build~\cite{zhang2016android}.
-36\% of the articles classified the build logs into categories.
-For instance, they distinguish failures caused by developers from
-failures caused
-by infrastructure errors~\cite{lindqvist2019detection} or
-determine whether projects use automated static analysis
+\Cref{fig:litsur:kind} depicts that there are two widely used ways to
+extract information from build logs: either chunks (53\%) or
+classifications (41\%).
+Uses for chunks were extracting compilation errors,
+test failures, or the duration of build
+tasks~\cite{clemencic2014new,zhang2016android}.
+Examples for
+classifications were distinguishing failures caused by developers from
+failures caused by infrastructure errors~\cite{lindqvist2019detection}
+or determining whether projects use automated static analysis
 tools~\cite{kavaler2019tool}.
-Other types of information (e.g.,\ counting
-lines, summarization) were only retrieved
-in one case each.
+Categorization is the more abstract representation, chunks
+contain more information and could be turned into a categorization.
 
 \Cref{fig:litsur:use} shows the reason for the
-investigated articles to analyze build logs.
+investigated articles to analyze build logs, and the result also explains
+the prevalence of classification.
 The majority of articles (46\%) used the outcome of their build log
-analysis to drive further research.
+analysis to drive further research---and it is science aims to try to
+classify and abstract.
 Seo et al.~\cite{seo2014programmers}, for example,
 categorized the types of compile errors encountered at
 Google.
