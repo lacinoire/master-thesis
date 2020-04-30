@@ -119,9 +119,12 @@ and maintenance is manual and expensive, does not generalize across build
 % TODO Discuss/Moritz: should we say 'our' experience? or
 % 'one authors'?
 % the latter might be too cumbersome
+% Moritz: I have added a link to the disqus site of TT
+% (where this originates from and would leave it in the
+% current state)? Ok with you?
 logs from different build tools, and is prone to errors,
 as the experience of
-TravisTorrent has shown~\cite{beller2017travistorrent}.
+TravisTorrent has shown~\cite{beller2017travistorrent,travistorrentquestions}.
 In fact, some even ``strongly discourage'' the creation of such
 parsers~\cite{urli2018design}.
 In summary, the outcome of our literature survey shows the need for a new
@@ -349,6 +352,7 @@ bespoke approaches.
 % retrieval techniques are used as a part of log parsing
 
 \subsection{Literature Selection}
+\label{sec:litsel}
 % tense: past
 
 The first step in a systematic literature survey is to
@@ -498,11 +502,14 @@ results of this step~\cite{brandt2020chunk-replication}.
 \addtolength{\tabcolsep}{-5pt}
 
 In this section, we give a general overview over our paper population.
-We then present the results of the analysis phase along RQs 1.1 through 1.3.
+We then present the results of the analysis phase along RQs 1.1 through
+1.3.
 
 
 \subsubsection{Descriptive Study Statistics}
-To be done.
+After the third filtering phase, we finally included 61 works in the literature survey. The majority of these are scientific articles (81\%), of which all but three have been peer-reviewed and published (94\%). The remaining works are theses (14\%), two books, and one slide deck.
+
+\Cref{fig:failure-reason-PBE} depicts the year of appearance of these works. Although we applied no filtering by year in our initial search queries (see \Cref{sec:litsel}), the earliest work in our literature corpus stems only from 2001. There are various scattered works in the years between then and 2016, when the field of build log analysis started to grow rapidly.
 
 \begin{figure}[tbp]
 		\centering
@@ -512,9 +519,6 @@ To be done.
 		\label{fig:failure-reason-PBE}
 \end{figure}
 
-% TODO moritz: age of papers (graph), kind of
-% publication (master, paper)
-% published (y, n)
 
 
 \subsubsection{What information is targeted in build logs? (RQ 1.1)}
@@ -880,6 +884,9 @@ existence of a more generic solution.}
 % TODO Moritz: is this okay (here)?
 % maybe it's better to add it to Threats to Validity with the heading:
 % \texbf{Modifying the Build Process.}
+% Moritz: I think best to decided once we read the paper
+% top to bottom. For now, it seems ok
+
 An alternative to analyzing build logs, would be to integrate plugins
 that report precise data about the build process, such as the JUnit
 plugin for Jenkins~\cite{jenkins2020junit-plugin} or
@@ -1306,6 +1313,7 @@ are in the \emph{same structural category}, while the chunk from
 \emph{different structural category}.
 % TODO Moritz: is this fitting here?
 % or too much 'foreshadowing' too far down in the hierarchy
+% Would recommend to delete -- it simply follows later
 The results of the empirical comparison study on the chunk retrieval
 techniques
 show that the structural representation of the targeted chunk greatly
@@ -1817,7 +1825,7 @@ All techniques clearly outperform the random baseline (RLR).
 
 \Cref{fig:recall-precision-singlecategory-all,fig:recall-precision-multicategory-all}
 show the influence of all training and test examples being from the
-same structural category compared to being multiple categories
+same structural category compared to being from multiple categories.
 For more
 than one category being present, the recall of PBE decreases greatly.
 For CTS and KWS the values also decrease, while RLR is not affected by
@@ -2006,16 +2014,18 @@ The output of a chunk retrieval with KWS is
 well-suited to be read by humans, but ill-suited for consumption by
 automated tools.
 
-\begin{figure}[tb]
+
+\subsection{Recommendation of Suitable Techniques}
+
+\begin{figure}[bt]
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/crt-recommendation.pdf}
-		\caption{Our decision tree for chunk
+		\caption{Decision tree for chunk
 		retrieval techniques.}
 		\label{fig:crt-recommendation}
 \end{figure}
 
-\subsection{Recommendation of Suitable Techniques}
 We saw that each of the techniques is suited for different types of
 log chunks and the output of each is suited for different uses.
 Now, we unify these results into conditions to answer
