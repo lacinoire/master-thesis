@@ -47,7 +47,7 @@ When a build or one of its steps fails, developers typically scavenge
 the logs for information related to the source of the error.
 This
 manual activity is tedious and prone to
-error~\cite{santolucito2018statically}.
+errors~\cite{santolucito2018statically}.
 As a single build log can be
 over 50 megabytes large~\cite{beller2017oops}, finding the small chunk
 of information which is linked to the actual error, is akin to
@@ -65,8 +65,8 @@ train classifiers to do ``predictive CI'' on the build or test outcome
 and
 duration~\cite{ni2017cost,bisong2017built,haghighatkhah2018test,
 machalica2019predictive},
-or investigate the role of automated static analysis tools (ASATs,
-\cite{beller2016analyzing}) in CI
+or investigate the role of automated static analysis tools (ASATs)
+in CI
 builds~\cite{zampetti2017open}.
 
 However, manual analysis of build logs does not
@@ -272,19 +272,20 @@ field.
 \section{Systematic Literature Mapping Survey}
 \label{sec:survey}
 
-In this section, we survey the emerging field of build log
-analysis.
-We start with a differentiation to the field of
+We performed a systematic mapping study on the emerging field of
+build log analysis,
+to determine how various researchers analyze build logs.
+We start this section by explaining how build log analysis differs
+from the more established field of
 system log analysis.
 % ref to fig 2 so it can be here and above fig 3
 Then, we describe the methodology (\Cref{fig:lit-survey})
-and results of a systematic mapping
-study to
-determine the state-of-research on build log analysis following the
+and results of our systematic mapping
+survey following the
 guidelines by Petersen et
 al.~\cite{petersen2008systematic,petersen2015guidelines}.
-We close by summarizing how build logs are commonly
-analyzed in literature and discuss the implications of these findings.
+% We close by summarizing how build logs are commonly
+% analyzed in literature and discuss the implications of these findings.
 
 \lstset{
   morekeywords={INFO, WARN, 2008, 11, 09},
@@ -302,10 +303,9 @@ Example adapted from~\cite{he2017towards}.}
 
 \subsection{Distinction from System Log Analysis}
 \label{sec:system-log-analysis}
-A field related to build log analysis is the analysis of system
-logs which are produced during runtime of the system.
-The first difference is that build logs are produced during runtime
-of the build of the system, not during runtime of the system itself.
+A field related to build log analysis is the analysis of system logs.
+These system logs are produced during the runtime of a system, while
+build logs are produced during the runtime of the build of the system.
 In terms of the contents of the logs, the main difference is that system
 logs are fundamentally structured
 through events.
@@ -315,14 +315,13 @@ content~\cite{he2017towards}.
 \Cref{lst:system-log} depicts two
 exemplary lines from such a system log.
 
-The first goal in analyzing system log files is generally to
+When analyzing system log files, the first goal is generally to
 separate the constant and variable parts within a log
 message~\cite{nagappan2010abstracting,he2017towards}.
 Next, the log
 messages are clustered into log events, unifying messages with
 identical constant parts and varying parameters.
-Then, a log parser works on this intermediate representation.
-Its output is an ordered list of timed events and their corresponding
+The output is an ordered list of timed events and their corresponding
 parameter values~\cite{he2016evaluation}.
 This structured log can serve as input to various machine learning and
 data mining processes.
@@ -371,8 +370,8 @@ returned more than 2.2 million results on the 15th of March 2020, many
 of which stem
 from unrelated fields such as construction or wood working.
 We refined the search criteria to exclude such obvious
-non-related fields and to exclude works on systems
-or event logs (see \Cref{sec:system-log-analysis}).
+non-related fields and to exclude works on system
+logs (see \Cref{sec:system-log-analysis}).
 This left us with 1,552 search results.
 % Our replication package documents the full search
 % queries~\cite{brandt2020chunk-replication}.
@@ -381,7 +380,7 @@ three-pass filtering strategy:
 
 First, we filtered articles based on (a) their title and (b) the
 contextual information Google Scholar displayed on its search results
-overview page.
+page.
 We included works at large that seemed to bear a resemblance to software
 engineering and building software.
 Following Kitchenham's protocol~\cite{kitchenham2009systematic},
@@ -389,13 +388,14 @@ we excluded
 works written in a language unintelligible to the authors
 (i.e., not English or German), which disregarded fewer than 1\% of search
 hits.
-We then unified
-the results of the four search queries based on the link as the
-identifying element, removing 60 articles that appeared in more than
-one search query.
-We removed further duplicates based on the title and were
-left with 256 (16\%) of the original search results.
-% removed duplicates of data extraction pass already here
+% 'four' not clear and it gets lost that there are multiple search queries
+% therefore I'll cut this part completely
+% We then unified
+% the results of the four search queries based on the link as the
+% identifying element, removing 60 articles that appeared in more than
+% one search query.
+We removed duplicates based on the title and were
+left with 256 articles (16\% of the original search results).
 
 With these 256 remaining articles, we followed a backward snowball
 sampling for related work.
@@ -415,6 +415,8 @@ working with build logs, we included it for the next filter phase.
 In total, we
 were left with 87 works after the second filtering phases.
 
+% TODO Caro: check article vs.
+work occurrences, balance use
 Third, since we had been careful to include rather than exclude borderline
 works, a deeper evaluation excluded another 15 articles from the 87
 works left after the second filter phase.
@@ -422,22 +424,22 @@ Multiple articles were extensions of others.
 Of these, we only considered the earliest article which reported on
 the analyzing of build logs.
 This excluded another 11 articles.
-In sum, we extracted data from 61 articles.
+In sum, we classified 61 articles in detail.
 
 \subsection{Literature Classification}
 Having trimmed down the set of articles by 95\%, we investigated the
 remaining ones in-depth.
-We wanted to characterize how research works with build logs.
+Our aim is to characterize how researchers work with build logs.
 
 Specifically, we were interested in
 \begin{itemize}
   \item what information the researchers retrieve from build logs and
-  what this information is used for (\textbf{RQ1.1}),
-  \item which techniques they to process the build logs,
+  what they use this information for (\textbf{RQ1.1}),
+  \item which techniques they employ to process the build logs,
   in how much detail the techniques are described,
 	and whether their implemented tools are published
   (\textbf{RQ1.2}),
-  \item what kind of build logs the researchers analyze
+  \item which kinds of build logs the researchers analyze
 	and the origin of these logs (\textbf{RQ1.3}).
 \end{itemize}
 
@@ -452,11 +454,11 @@ This lead us to the following research questions:
 \end{itemize}
 \end{simplebox}
 
-To support the data extraction we created a template that we filled out
+To support the data extraction we created a template which we filled out
 for each of the 61 works.
 The template contained questions to answer RQ 1.1 through RQ 1.3,
 for example ``Is the technique explained in detail?'' and
-``What is the source of the build logs?''
+``What is the source of the build logs?''.
 As recommended by Petersen et
 al.~\cite{petersen2015guidelines}, we started the mapping survey with a
 pilot:
@@ -547,24 +549,9 @@ build~\cite{zolfagharinia2017not}, packages
 installed~\cite{selberg2012use}, or hints to source files which
 relate to build failures~\cite{ren2018automated}.
 
-\Cref{fig:litsur:use} shows the reason for the
-investigated articles to analyze build logs.
-The majority of articles (46\%) used the outcome of their build log
-analysis to drive further research.
-Seo et al.~\cite{seo2014programmers}, for example,
-categorized the types of compile errors encountered at
-Google.
-Other articles (10\%) used the gained insights to give feedback to
-developers.
-For 8\% of the articles was the retrieved information the input
-to a next automatic onward processing step:
-articles chose
-tests that should be part of a reduced but still effective test
-suite~\cite{shi2018evaluating} or filled a data structure with
-build information, an information source for further tools aiming
-to fix a failing build~\cite{vassallo2018un-break}.
-
 % TODO Moritz: add missing figure
+% C: this (to be 4b) is closer to 4a, therefore I moved it up
+% and the use/purpose down (to be 4c then)
 We also identified the type of information which the articles
 retrieved from the build logs.
 In most cases (51\%), the researchers retrieved a chunk of text.
@@ -580,6 +567,23 @@ tools~\cite{kavaler2019tool}.
 Other types of information (e.g.,\ counting
 lines, summarization) were only retrieved
 in one case each.
+
+\Cref{fig:litsur:use} shows the reason for the
+investigated articles to analyze build logs.
+The majority of articles (46\%) used the outcome of their build log
+analysis to drive further research.
+Seo et al.~\cite{seo2014programmers}, for example,
+categorized the types of compile errors encountered at
+Google.
+Other articles (10\%) used the gained insights to give feedback to
+developers.
+For 8\% of the articles the retrieved information was the input
+to a next automatic onward processing step:
+articles chose
+tests that should be part of a reduced but still effective test
+suite~\cite{shi2018evaluating} or filled a data structure with
+build information, an information source for further tools aiming
+to fix a failing build~\cite{vassallo2018un-break}.
 
 \subsubsection{Which analysis techniques exist? (RQ 1.2)}
 \begin{table*}[tbhp]
@@ -677,10 +681,13 @@ Name			     & Sources	& Frequency	  \\
 
 Of the 61 articles we inspected, 43 mentioned how they analyzed
 build logs.
+% TODO Caro: check method vs.
+technique
 However, only 16 of these described their method in detail.
-\Cref{tab:litsur:techniques} presents the techniques that the articles
-described for analyzing build logs.
+We summarize the techniques that the articles
+described for analyzing build logs in \Cref{tab:litsur:techniques}.
 
+% TODO Caro: test \emph{parser}, regex, manually, etc...
 The most mentioned method (34\%) was using a parser, where we also
 included
 rather imprecise statements like ``we parse the build logs''
@@ -689,7 +696,7 @@ For such imprecise statements it was often not clear if they describe
 a complex parser (including a tokenizer, lexer, etc.) or refer to a
 simpler parsing tool based on regular expressions.
 If we saw evidence for the latter, we assigned the tag
-``regular expression'' instead of the tag ``parser.''
+``Regular Expression'' instead of the tag ``Parser.''
 25\% of the articles described the use of regular expressions and 20\%
 inspected the logs manually.
 For example,
@@ -702,7 +709,8 @@ They started with a manual categorization of build logs and selected
 search strings that identify the target category.
 Based on the search strings they created a script that automatically
 classifies the remaining logs.
-Another 8\% employed machine learning such as natural language
+Another 8\% of the investigated articles
+employed machine learning such as natural language
 processing or information retrieval techniques.
 The rather general tags ``analysis'' and ``scan'' in
 \Cref{tab:litsur:techniques}, stem---similar to the imprecise
@@ -1239,7 +1247,8 @@ RegexPair,
 
 To illustrate the chunk retrieval techniques further, we give
 an example of how the chunk retrieval techniques retrieve chunks from
-real-world build logs in \Cref{lst:logexamples}. Marked in blue are the chunks
+real-world build logs in \Cref{lst:logexamples}.
+Marked in blue are the chunks
 which contain the information on why the
 corresponding build failed.
 
