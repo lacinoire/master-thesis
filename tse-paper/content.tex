@@ -116,12 +116,6 @@ the few available implementations are all based on either a custom parser
 or regular expressions.
 These two approaches are problematic, as their creation
 and maintenance is manual and expensive, does not generalize across build
-% TODO Discuss/Moritz: should we say 'our' experience? or
-% 'one authors'?
-% the latter might be too cumbersome
-% Moritz: I have added a link to the disqus site of TT
-% (where this originates from and would leave it in the
-% current state)? Ok with you?
 logs from different build tools, and is prone to errors,
 as the experience of
 TravisTorrent has
@@ -385,7 +379,7 @@ This left us with 1,552 search results.
 To make handling so many search results feasible, we employed a
 three-pass filtering strategy:
 
-First, we filtered articles based on (a) their title and (b) the
+First, we filtered works based on (a) their title and (b) the
 contextual information Google Scholar displayed on its search results
 page.
 We included works at large that seemed to bear a resemblance to software
@@ -396,19 +390,19 @@ works written in a language unintelligible to the authors
 (i.e., not English or German), which disregarded fewer than 1\% of search
 hits.
 % 'four' not clear and it gets lost that there are multiple search queries
-% therefore I'll cut this part completely
+% therefore I'll cut this part completely:
 % We then unified
 % the results of the four search queries based on the link as the
-% identifying element, removing 60 articles that appeared in more than
+% identifying element, removing 60 works that appeared in more than
 % one search query.
 We removed duplicates based on the title and were
-left with 256 articles (16\% of the original search results).
+left with 256 works (16\% of the original search results).
 
-With these 256 remaining articles, we followed a backward snowball
+With these 256 remaining works, we followed a backward snowball
 sampling for related work.
-If an article referenced a new work in the context
+If a work referenced a new work in the context
 of build log analysis, we added the new one to the literature set.
-This added five articles (eight before
+This added five works (eight before
 duplicate elimination), leading to a total of 261
 works.
 
@@ -422,18 +416,17 @@ working with build logs, we included it for the next filter phase.
 In total, we
 were left with 87 works after the second filtering phases.
 
-% TODO Caro: check article vs work occurrences, balance use
 Third, since we had been careful to include rather than exclude borderline
-works, a deeper evaluation excluded another 15 articles from the 87
+works, a deeper evaluation excluded another 15 works from the 87
 works left after the second filter phase.
-Multiple articles were extensions of others.
-Of these, we only considered the earliest article which reported on
+Multiple works were extensions of others.
+Of these, we only considered the earliest work which reported on
 the analyzing of build logs.
-This excluded another 11 articles.
-In sum, we classified 61 articles in detail.
+This excluded another 11 works.
+In sum, we classified 61 works in detail.
 
 \subsection{Literature Classification}
-Having trimmed down the set of articles by 95\%, we investigated the
+Having trimmed down the set of works by 95\%, we investigated the
 remaining ones in-depth.
 Our aim is to characterize how researchers work with build logs.
 
@@ -468,14 +461,14 @@ for example ``Is the technique explained in detail?'' and
 As recommended by Petersen et
 al.~\cite{petersen2015guidelines}, we started the mapping survey with a
 pilot:
-both authors extracted data from the same five articles and held a
+both authors extracted data from the same five works and held a
 consensus meeting to unify their understanding
 of the data extraction template.
-We divided the remaining 56 articles evenly between the two authors
-and inspected each article as closely as necessary to fill out the
+We divided the remaining 56 works evenly between the two authors
+and inspected each works as closely as necessary to fill out the
 template
 with confidence,
-starting from occurrences of ``log'' or ``build'' within the article's
+starting from occurrences of ``log'' or ``build'' within the works's
 text.
 
 For questions that did not require a boolean answer, we allowed assigning
@@ -493,7 +486,7 @@ together and found synonyms.
 % the following adds to the example but is maybe unneeded / too much
 For instance, in the case of the build log source we grouped
 ``Travis'' and ``Travis CI'' together and assigned ``Industrial'' to
-all articles that used build logs provided by a company.
+all works that used build logs provided by a company.
 The replication package contains the data extraction template and all
 results of this step~\cite{brandt2020chunk-replication}.
 
@@ -514,7 +507,7 @@ The majority of these are scientific articles (81\%), of which all but
 three have been peer-reviewed and published (94\%).
 The remaining works are theses (14\%), two books, and one slide deck.
 
-\Cref{fig:failure-reason-PBE} depicts the year of appearance of these
+\Cref{fig:lit-years} depicts the year of appearance of these
 works.
 Although we applied no filtering by year in our initial search queries
 (see \Cref{sec:litsel}), the earliest work in our literature corpus
@@ -527,7 +520,7 @@ when the field of build log analysis started to grow rapidly.
 		\includegraphics[width=\columnwidth,
 		clip]{img/lit-sur/years.pdf}
 		\caption{Number of works analyzing build logs per year.}
-		\label{fig:failure-reason-PBE}
+		\label{fig:lit-years}
 \end{figure}
 
 
@@ -561,18 +554,18 @@ when the field of build log analysis started to grow rapidly.
 
 \end{subfigure}
 
-\caption{Multi-label categorization of the 61 relevant articles.}
+\caption{Multi-label categorization of the 61 relevant works.}
 \label{fig:litsur_r}
 \end{figure}
 
-In this section, we describe what sort of information the articles in
+In this section, we describe what sort of information the works in
 our survey usually retrieved from build logs.
 \Cref{fig:litsur_r} depicts these results.
 
 \Cref{fig:litsur:info_target} gives an overview over the frequency of
 the targeted information.
-The precise information targeted in the build logs varied from article
-to article, with a relatively long tail.
+The precise information targeted in the build logs varied from work
+to work, with a relatively long tail.
 Most prominent was the search for errors (39\%), followed by extracting
 the executed or the failing
 tests (both 11\%).
@@ -597,19 +590,19 @@ Categorization is the more abstract representation, chunks
 contain more information and could be turned into a categorization.
 
 \Cref{fig:litsur:use} shows the reason for the
-investigated articles to analyze build logs, and the result also explains
+investigated works to analyze build logs, and the result also explains
 the prevalence of classification.
-The majority of articles (46\%) used the outcome of their build log
+The majority of works (46\%) used the outcome of their build log
 analysis to drive further research---and it is science aims to try to
 classify and abstract.
 Seo et al.~\cite{seo2014programmers}, for example,
 categorized the types of compile errors encountered at
 Google.
-Other articles (10\%) used the gained insights to give feedback to
+Other works (10\%) used the gained insights to give feedback to
 developers.
-For 8\% of the articles the retrieved information was the input
+For 8\% of the works the retrieved information was the input
 to a next automatic onward processing step:
-articles chose
+works chose
 tests that should be part of a reduced but still effective test
 suite~\cite{shi2018evaluating} or filled a data structure with
 build information, an information source for further tools aiming
@@ -709,10 +702,10 @@ Name			     & Sources	& Frequency	  \\
 \end{table*}
 \addtolength{\tabcolsep}{5pt}
 
-Of the 61 articles we inspected, 43 mentioned how they analyzed
+Of the 61 works we inspected, 43 mentioned how they analyzed
 build logs.
 However, only 16 of these described their technique in detail.
-We summarize the techniques that the articles
+We summarize the techniques that the works
 described for analyzing build logs in \Cref{tab:litsur:techniques}.
 
 The most mentioned technique (34\%) was using a parser, where we also
@@ -724,7 +717,7 @@ a complex parser (including a tokenizer, lexer, etc.) or refer to a
 simpler parsing tool based on regular expressions.
 If we saw evidence for the latter, we assigned the tag
 ``Regular Expression'' instead of the tag ``Parser.''
-25\% of the articles described the use of regular expressions and 20\%
+25\% of the works described the use of regular expressions and 20\%
 inspected the logs manually.
 For example,
 Seo et al.~\cite{seo2014programmers} developed a custom
@@ -736,7 +729,7 @@ They started with a manual categorization of build logs and selected
 search strings that identify the target category.
 Based on the search strings they created a script that automatically
 classifies the remaining logs.
-Another 8\% of the investigated articles
+Another 8\% of the investigated works
 employed machine learning such as natural language
 processing or information retrieval techniques.
 The rather general tags ``analysis'' and ``scan'' in
@@ -747,10 +740,10 @@ words authors used to describe their techniques.
 %``automatically analyzed [the build logs]''.
 
 
-Only 25\% of the articles claimed their implementation is available.
+Only 25\% of the works claimed their implementation is available.
 Moreover, we
 saw some reuse of the few available build log analysis tools.
-Five articles employed the tools used to create
+Five works employed the tools used to create
 \emph{TravisTorrent}~\cite{beller2017travistorrent,beller2017oops,
 orellana2017differences,zhao2018comparing} or
 an updated version of them~\cite{rott2019empirische,
@@ -767,13 +760,13 @@ build tools contributing to it~\cite{staahl2014modeling},
 we were interested in which (variety) build tools are
 investigate in literature.
 \Cref{fig:litsur:log_producer} shows the distribution of
-build tools whose logs were analyzed by the articles in our survey.
-Of the articles, 30\% analyzed
+build tools whose logs were analyzed by the works in our survey.
+Of the works, 30\% analyzed
 Maven~\cite{maven2019website},
 16\% analyzed Gradle~\cite{gradle2020website},
 and 10\% analyzed Ant build logs~\cite{ant2020website}.
 
-A large fraction of the articles analyze build logs
+A large fraction of the works analyze build logs
 from a small number of build tools.
 In most cases, this is because the format of build logs
 changes and
@@ -790,26 +783,26 @@ PIT is only available as a Maven plugin.
 Only 7\% of the proposed techniques claimed to be
 build tool-agnostic, while
 several described they are covering multiple source build tools.
-The majority of articles (42\%) analyzed logs produced by a build tool
-that no second article supported.
+The majority of works (42\%) analyzed logs produced by a build tool
+that no second work investigated.
 
-In 38\% of cases, the articles collected build logs from Travis
+In 38\% of cases, the works collected build logs from Travis
 CI~\cite{travisci2019webpage};
-18\% of the articles processed logs from TravisTorrent; and 8\% included
+18\% of the works analyzed logs from TravisTorrent; and 8\% included
 build logs from industrial projects.
-The number of logs analyzed varied greatly between the articles
+The number of logs analyzed varied greatly between the works
 and we were not always able to
 extract it confidently.
 
-23 of the articles analyzed more than a thousand build logs, while one
+23 of the works analyzed more than a thousand build logs, while one
 investigated up to 122 million logs.
-Of the surveyed articles, 31\% claim to have published their data to
+Of the surveyed works, 31\% claim to have published their data to
 enable further research.
 However, we found no clear reuse of build log data sets with the
 exception of TravisTorrent~\cite{beller2017travistorrent}, which
 Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying},
-and several other articles studied.
+and several other works studied.
 
 \begin{figure}[tbhp]
 		\centering
@@ -828,7 +821,7 @@ and several other articles studied.
 Our literature survey shows that despite its relatively young age
 (first mentioned in a paper in 2001, vast majority after
 2016), \textbf{build log analysis is an established technique}
-in the literature, with 61 articles making use of it.
+in the literature, with 61 works making use of it.
 
 We saw that various researchers analyze build logs, often because the
 logs are the only available source for the
@@ -846,25 +839,25 @@ text from the logs.}
 % ----- technique RQ 1.2 -----
 \textbf{Most log analysis is automated.} Automated approaches are
 necessary as many studies target a large number of builds.
-Articles
+works
 that explicitly mention a manual analysis of the logs, mostly
 restrict their work to few logs or take a ``representative sample to
 make manual analysis feasible''~\cite{zolfagharinia2017not}.
 We observed \textbf{very little reuse of build log analysis tools},
-even though articles reported that
+even though works reported that
 \textbf{developing automated analysis tools requires a lot of effort}.
 Urli et al.~\cite{urli2018design} strongly discouraged from parsing
 build logs for information as it is ``too error prone,'' while other
-articles pointed to the effort of developing a custom tool.
+works pointed to the effort of developing a custom tool.
 Regular expressions are known to be tedious to
 maintain~\cite{michael2019regexes}.
 % not sure if we can state that (no data on this, more 'impression')
-In addition, we rarely saw articles justifying why they use a certain
+In addition, we rarely saw works justifying why they use a certain
 technique to analyze build logs as there is a general \textbf{lack of
 guidance on when to use which technique}.
 
 % ----- kinds of build logs RQ1.3 -----
-Several articles noted the variety in log formats for different build
+Several works noted the variety in log formats for different build
 tools, which requires customizing build log techniques for
 every supported build tool.
 % The following two sentences are passive, however flipped around
@@ -873,14 +866,14 @@ every supported build tool.
 build tools are the target of
 many studies and tools (roughly, area A).
 The majority of build tools was however only targeted by one
-article each (roughly, area B).
+work each (roughly, area B).
 From this we follow that the large tail of
 \textbf{seldomly-investigated
 environments would benefit from the
 existence of a more generic solution.}
 % In most cases, \textbf{researchers analyze build logs from open
 % source projects}, obtained through Travis CI.
-% In addition, we saw several articles that targeted the logs of only
+% In addition, we saw several works that targeted the logs of only
 % one specific software project.
 
 % ----- custom build tools -----
@@ -991,7 +984,7 @@ to support new cases.
 
 We designed and implemented three chunk retrieval
 techniques based on approaches
-previously described by several articles:
+previously described by several works:
 \emph{Program Synthesis by Example (PBE)}
 mimics regular expressions, while simplifying
 their development.
@@ -1128,7 +1121,7 @@ Text Similarity approaches are widely used to filter unstructured
 textual software artifacts~\cite{runeson2007detection,
 marcus2005recovery,antoniol2002recovering,mccarey2006recommending}.
 These approaches fall into the broader area of information retrieval
-techniques, which several of the articles from our literature survey
+techniques, which several of the works from our literature survey
 used to analyze build logs.
 Similar to these approaches, we designed a chunk retrieval
 technique that
@@ -1323,14 +1316,6 @@ The chunks from \Cref{lst:chunk-example}
 are in the \emph{same structural category}, while the chunk from
 \Cref{lst:chunk-example-3} is in a
 \emph{different structural category}.
-% TODO Moritz: is this fitting here?
-% or too much 'foreshadowing' too far down in the hierarchy
-% Would recommend to delete -- it simply follows later
-The results of the empirical comparison study on the chunk retrieval
-techniques
-show that the structural representation of the targeted chunk greatly
-influences
-the performance of the chunk retrieval techniques.
 
 CTS will rank the lines from an analyzed build log which are most
 similar to the chunks in the training examples
@@ -1369,7 +1354,7 @@ R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 	\label{fig:study}
 \end{figure*}
 
-In the literature survey we saw that few articles justify why they
+In the literature survey we saw that few works justify why they
 use a certain build log analysis technique and concluded that there
 is a lack of guidance on when to use which technique.
 % add (see \Cref{sec:lit-sur:discussion}) ?
@@ -1417,7 +1402,7 @@ applicability of the chunk retrieval techniques.
 
 For each build log, we manually marked
 the chunk that describes why the build
-failed---the information targeted by most of the articles in our
+failed---the information targeted by most of the works in our
 literature survey.
 To be able to configure the keyword search technique,
 the data set associates each chunk with keywords that we
@@ -2352,7 +2337,7 @@ To this end, we
 conducted a systematic mapping survey to map out the available build
 log analysis techniques.
 We saw that, while build log analysis is widely used, it is often
-a side part of an article and implementations are rarely reused.
+a side part of an work and implementations are rarely reused.
 This shows the need for a new generation of generic and automated
 build log analysis techniques that need little effort to set up.
 
