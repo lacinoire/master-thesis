@@ -826,20 +826,19 @@ Our literature survey shows that despite its relatively young age
 2016), \emph{build log analysis is already an established technique,}
 with 61 works in different venues making use of it for a variety of
 purposes.
-We saw that various researchers analyze build logs, often because the
-logs are the only available source for the
+We saw that various researchers analyze build logs, with the
+logs often being the only available source for the
 information they need for their studies~\cite{ren2018automated,
 seo2014programmers,beller2017oops,zampetti2017open,rausch2017empirical}.
 
 % ----- information RQ 1.1 -----
 In regards to the information that is targeted, \emph{most build log
 analysis approaches aim to retrieve the reason a build failed} by
-targeting ``errors'' or ``failing tests.''
+targeting ``errors'' or ``failing tests.'' 
 % which is what we also do in LogChunks
 \emph{The majority of approaches retrieves specific chunks of
-text from the logs.} Chunks in some sense are the overarching concept to
-the almost equally used categorization, as a categorization can usually
-be deducted from chunks, but not vice versa.
+text from the logs.} Chunks are the overarching concept to
+the almost equally much used categorization: one can deduce a categorization from chunks, but not vice versa.
 
 % ----- technique RQ 1.2 -----
 \emph{Most log analysis is automated.} Automated approaches are
@@ -874,6 +873,14 @@ study (area \circlenum{B}).
 We follow that \emph{many seldomly-investigated
 environments would benefit from the
 existence of a more generic solution.}
+
+% TODO passive ...
+The literature survey shows the need for
+build log
+analysis techniques that are \emph{automated},
+\emph{build tool-agnostic}
+and can be \emph{configured with little effort}.
+
 % In most cases, \emph{researchers analyze build logs from open
 % source projects}, obtained through Travis CI.
 % In addition, we saw several works that targeted the logs of only
@@ -946,18 +953,18 @@ existence of a more generic solution.}
 \label{sec:techniques}
 % tense: past? except for general definitions / statements
 
-In summary, the outcome of the literature survey shows the need for
-build log
-analysis techniques that are \emph{automated},
-\emph{build tool-agnostic}
-and can be \emph{configured with little effort}.
+% TODO This introduction is weird
+In this section, we formally define the concept of chunk
+retrievals from build logs. Then, we motivate and present the choice of three such techqniues that we implemented for this study in detail.
 
-To address this need,
-we propose a set of so called \emph{chunk retrieval techniques},
-which retrieve a specific substring (called chunk)
-from a build log.
+In this section,
+we propose three so-called \emph{chunk retrieval techniques},
+which retrieve a specific substring (chunk)
+from a build log
+% TODO passive ....
 The techniques we propose run automatically
 and can be easily configured through examples.
+% TODO this should go under characteristics and not be in an introduction to the section ...
 An example in this case consists of a build log together with the
 chunk that should be retrieved.
 A user---a developer or a researcher who wants to analyze
@@ -965,62 +972,24 @@ build logs---provides these examples, which are easy to
 adapt whenever the analysis technique needs
 to support new cases.
 
-We designed and implemented three chunk retrieval
-techniques based on approaches
-previously described by several works:
-\emph{Program Synthesis by Example (PBE)}
-mimics regular expressions, while simplifying
-their development.
-From the field of information retrieval, we leverage a
-\emph{Common Text Similarity (CTS)} approach
-and implement the ad hoc approach of
-searching for specific strings as \emph{Keyword Search (KWS)}.
-
-In this section, we define our concept of chunk
-retrieval techniques and present each of the techniques
-we developed in detail.
-Following that, we illustrate how the techniques
-operate on a concrete
-example and sketch out their implementation.
-
-\begin{table*}[htb]
-\centering
-\caption{Chunk retrieval techniques.}
-\begin{tabularx}{\textwidth}{@{}llXll@{}}
-\toprule
-Name			     & Acronym & Identification Technique
-& Granularity & Configuration \\
-\midrule
-Program Synthesis by Example & PBE     & Regular expression program
-& Character   & In/output examples	\\
-Common Text Similarity	     & CTS     & TF-IDF \& cosine similarity,
-expected number of lines & Line        & Output examples	   \\
-Keyword Search		     & KWS     & Keywords, expected number of
-lines			 & Line        & Keywords, context length  \\
-Random Line Retrieval	     & RLR     & Random sample
-& Line	      & Retrieval length	  \\
-\bottomrule
-\end{tabularx}
-\label{tab:techniques}
-\end{table*}
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 \label{sec:crt-characteristics}
-Before introducing each of the techniques, we formalize
-we formalize our concept of chunk retrieval techniques.
-By this phrase, we refer to techniques that automatically
-retrieve pieces of information that appear literally in build
+% TODO (resolved) Never define a concept with the
+% words used in the term
+% Use a thesaurus to find synonyms
+
+With the term ``chunk retrieval technique,'' we refer to a way of automatically extracting strings that appear literally in build
 logs, i.e., techniques that do not aggregate, combine, or deduct
 information.
 We call such pieces of information in build logs
 \emph{chunks}.
 
 Generally, chunk retrieval techniques
-can also be used to classify build logs, e.g.\ by checking
+can also be used to classify build logs, e.g.\, by checking
 which substring was retrieved.
 Therefore, they
-cover the great majority of the types of log analysis we saw within
-our survey.
+cover the great majority of the types of log analysis we saw in \Cref{sec:lit-sur:discussion}.
 
 The techniques we investigate here do not require a formal lexer and
 parser to analyze the entire structure of build logs, but focus on
@@ -1047,8 +1016,60 @@ chunk retrieval technique} means applying a fully configured
 technique to a build log in plain text format.
 The technique then outputs a list that consists of substrings of the
 build log text.
+
+
+\subsection{Choice of Chunk Retrieval Techniques}
+For this article, we designed and implemented three automated chunk
+retrieval techniques. The strategies that underlie them were inspired
+based on techniques we found in the literature survey and other
+research fields. 
 In \Cref{tab:techniques}, we summarize and distinguish the techniques
 we present along the characteristics described above.
+
+Techniques based on custom parsers (\#1
+in \Cref{tab:litsur:techniques}) are inadquate for our comparison,
+since their creation is manual and such a technique would not
+generalize on the wide varitey of build logs we are interested in. The
+closest we could come to the second entry, regular expression, is a
+technique to automatically derive them: In particular, we implement a
+technique based on
+\emph{Program Synthesis by Example (PBE)}. This 
+mimics regular expressions, the second most frequently occurring whose while simplifying
+their development.
+
+To work effectively with build logs, many humans anecdotally search
+(``grep'') the logs for key phrases such as ``fail.'' Papers often
+resorted to such a strategy when doing manual analysis (\#2
+in \Cref{tab:litsur:techniques}), describing it with the word
+``scan.'' Imitating this ad hoc approach of searching for specific
+strings, we automatize it as \emph{Keyword Search (KWS)}.
+
+Finally, from the fields of information retrieval and natural language
+processing, we leverage a
+\emph{Common Text Similarity (CTS)} approach. The reason for it is that the relevant, failing parts of build logs often looks similar to each other, even if the exact failure reason might differ. 
+
+
+\begin{table*}[htb]
+\centering
+\caption{Chunk retrieval techniques.}
+\begin{tabularx}{\textwidth}{@{}llXll@{}}
+\toprule
+Name & Acronym & Identification Technique & Granularity &
+Configuration \\
+\midrule
+Program Synthesis by Example & PBE     & Regular expression program
+& Character   & In/output examples	\\
+% TODO: TF-IDF still not defined
+Common Text Similarity	     & CTS     & TF-IDF \& cosine similarity,
+expected number of lines & Line        & Output examples	   \\
+Keyword Search		     & KWS     & Keywords, expected number of
+lines			 & Line        & Keywords, context length  \\
+Random Line Retrieval	     & RLR     & Random sample
+& Line	      & Retrieval length	  \\
+\bottomrule
+\end{tabularx}
+\label{tab:techniques}
+\end{table*}
 
 \subsection{Program Synthesis by Example (PBE)}
 The concept of \emph{Programming by Example} aims to automatically
@@ -1387,6 +1408,7 @@ applicability of the chunk retrieval techniques.
 
 For each build log, we manually marked
 the chunk that describes why the build
+% TODO add back ref
 failed---the information targeted by most of the works in our
 literature survey.
 To be able to configure the keyword search technique,
