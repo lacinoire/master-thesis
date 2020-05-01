@@ -87,16 +87,6 @@ the entire build log.
 	\label{fig:overview}
 \end{figure*}
 
-
-% TODO Moritz: is this okay (here)?
-% maybe it's better to add it to Threats to Validity with the heading:
-% \texbf{Modifying the Build Process.}
-% Moritz: I think best to decided once we read the paper
-% top to bottom.
-%For now, it seems ok
-% Needs to go Threats or intro
-% TODO Caro: I moved it to the intro
-% --- please check how it works for you
 Retrospectively analyzing the build logs is not the only solution to
 the problem---an alternate would be to integrate live plugins into the
 build process
@@ -113,17 +103,14 @@ When using such a plugin, one has to decide
 beforehand which information should be reported, whereas
 build log analysis enables us to leverage all information
 present in the build logs.
-Moreover, build log analyis is the more general soltuion.
+Moreover, build log analysis is the more general solution.
 While they serve an important niche, custom plugins do not make build
 log analysis redundant.
 
 Despite its central role in helping developers and in enabling
 novel, onward processing applications,
 the process of how to
-% TODO
-%automatically
-% ^ we survey manual as well, though leaving it out includes too much
-% systematically twice -- avoid this
+automatically
 analyze build logs has thus far not been systematically
 overviewed as a research topic, bringing us to the first
 research question:
@@ -315,7 +302,7 @@ input to various machine learning and data mining processes.
 Apart
 from a large body of research on system logs, an equally mature amount
 of commercial-grade and
-opensource tooling exists to analyze system logs---such as, for
+open source tooling exists to analyze system logs---such as, for
 example, Elasticsearch, Logstash and Kiabana (the so-called ELK
 stack)~\cite{sanjappa2017analysis,bajer2017building}.
 
@@ -586,8 +573,6 @@ Categorization is the more abstract representation, chunks
 contain more information and could be turned into a categorization.
 
 \Cref{fig:litsur:use} shows the aim for the
-% TODO: isn't this discussion already?
-% Moritz: Not sure what is meant by that?
 investigated works to analyze build logs, and the result also explains
 the prevalence of classification in \Cref{fig:litsur:kind}.
 The majority of works (46\%) used the outcome of their build log
@@ -712,7 +697,7 @@ included
 rather imprecise statements like ``we parse the build
 logs''~\cite{rahman2018impact}.
 For such imprecise statements it was often not clear if they described
-a complex parser (including a tokenizer, lexer, etc.) or refered to a
+a complex parser (including a tokenizer, lexer, etc.) or referred to a
 simpler parsing tool based on regular expressions.
 If we saw evidence for the latter, we assigned the tag
 ``Regular Expression'' instead of the tag ``Parser.''
@@ -742,19 +727,15 @@ words authors used to describe their techniques.
 Only 25\% of the works claimed their implementation is available.
 Moreover, we
 saw some reuse of the few available build log analysis tools.
-% TODO The numbers here might look a bit strange
-% --- we say five but really it is six works we reference.
-% I assume this is because of only including the oldest ref?
-% Still, I think we need to fix the inconsistency.
 Five works employed the tools used to create
-\emph{TravisTorrent}~\cite{beller2017travistorrent,beller2017oops,
+\emph{TravisTorrent}~\cite{beller2017oops,
 orellana2017differences,zhao2018comparing} or
 an updated version of them~\cite{rott2019empirische,
 shi2018evaluating}, two used the
 \emph{Maven Log Analyzer}~\cite{macho2018automatically,gallaba2018noise},
 and
 another two
-\emph{MAKAO}~\cite{wen2018blimp,adams2007design,adams2007makao}.
+\emph{MAKAO}~\cite{wen2018blimp,adams2007design}.
 
 \subsubsection{Which kinds of build logs are subject to
   analysis? (RQ 1.3)}
@@ -804,8 +785,10 @@ However, we found no clear reuse of build log data sets with the
 exception of TravisTorrent~\cite{beller2017travistorrent}, which
 Vassallo et al.~\cite{vassallo2017a-tale},
 Ghaleb et al.~\cite{ghaleb2019studying},
-% TODO	include the several others as references?
-and several others have studied.
+and several others have studied~\cite{hassan2017change,
+hassan2019tackling,hassan2017automatic,orellana2017differences,
+haghighatkhah2018test,madeyski2017continuous,ghaleb2019empirical,
+santolucito2018statically,gallaba2018noise,shi2018evaluating}.
 
 \begin{figure}[tbp]
 		\centering
@@ -875,12 +858,11 @@ We follow that \emph{many seldomly-investigated
 environments would benefit from the
 existence of a more generic solution.}
 
-% TODO passive ...
 The literature survey shows the need for
 build log
 analysis techniques that are \emph{automated},
 \emph{build tool-agnostic}
-and can be \emph{configured with little effort}.
+and that a user can \emph{configure with little effort}.
 
 % In most cases, \emph{researchers analyze build logs from open
 % source projects}, obtained through Travis CI.
@@ -955,18 +937,19 @@ and can be \emph{configured with little effort}.
 
 In this section, we formally define the concept of chunk
 retrievals from build logs.
-Then, we motivate and present the choice of three such techqniues that
+Then, we motivate and present the choice of three such techniques that
 we implemented for this study in detail.
 
-% TODO Caro: Not sure what to do with this ...
+% TOO Caro: Not sure what to do with this ...
 %% In this section,
 %% we propose three so-called \emph{chunk retrieval techniques},
 %% which retrieve a specific substring (chunk)
 %% from a build log
-%% % TODO passive ....
+%% % TOO passive ....
 %% The techniques we propose run automatically
 %% and can be easily configured through examples.
-%% % TODO this should go under characteristics and not be in an introduction
+%% % TOO this should go under characteristics and not be in an
+% introduction
 %% to the section ...
 %% An example in this case consists of a build log together with the
 %% chunk that should be retrieved.
@@ -978,9 +961,6 @@ we implemented for this study in detail.
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 \label{sec:crt-characteristics}
-% TODO (resolved) Never define a concept with the
-% words used in the term
-% Use a thesaurus to find synonyms
 
 With the term ``chunk retrieval technique,'' we refer to a way of
 automatically extracting strings that appear literally in build
@@ -1022,7 +1002,6 @@ technique to a build log in plain text format.
 The technique then outputs a list that consists of substrings of the
 build log text.
 
-
 \subsection{Choice of Chunk Retrieval Techniques}
 For this article, we designed and implemented three automated chunk
 retrieval techniques.
@@ -1033,9 +1012,9 @@ In \Cref{tab:techniques}, we summarize and distinguish the techniques
 we present along the characteristics described above.
 
 Techniques based on custom parsers (\#1
-in \Cref{tab:litsur:techniques}) are inadquate for our comparison,
+in \Cref{tab:litsur:techniques}) are inadequate for our comparison,
 since their creation is manual and such a technique would not
-generalize to the wide varitey of build logs we are interested in.
+generalize to the wide variety of build logs we are interested in.
 The
 closest we could come to the second entry, regular expression, is a
 technique to automatically derive them: in particular, we implement a
@@ -1058,8 +1037,6 @@ The reason for it is that the relevant, failing parts of build logs
 often looks similar to each other, even if the exact failure reason
 might differ.
 
-
-
 \begin{table*}[htb]
 \centering
 \caption{Chunk retrieval techniques.}
@@ -1070,7 +1047,6 @@ Configuration \\
 \midrule
 Program Synthesis by Example & PBE     & Regular expression program
 & Character   & In/output examples	\\
-% TODO: TF-IDF still not defined
 Common Text Similarity	     & CTS     & TF-IDF \& cosine similarity,
 expected number of lines & Line        & Output examples	   \\
 Keyword Search		     & KWS     & Keywords, expected number of
@@ -1166,7 +1142,7 @@ To improve the similarity calculation, we prune very often or
 very rarely appearing words.
 Finally, the
 algorithm weighs the vectors using \emph{term frequency-inverse
-document frequency}, a best practice for natural
+document frequency (TF-IDF)}, a best practice for natural
 language queries~\cite{lee1997document}.
 
 \subsubsection{Application}
@@ -1419,9 +1395,8 @@ applicability of the chunk retrieval techniques.
 
 For each build log, we manually marked
 the chunk that describes why the build
-% TODO add back ref
 failed---the information targeted by most of the works in our
-literature survey.
+literature survey (see \Cref{sec:lit-sur:discussion}).
 To be able to configure the keyword search technique,
 the data set associates each chunk with keywords that we
 would use to search for the selected chunk within the log.
