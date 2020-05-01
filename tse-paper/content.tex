@@ -102,7 +102,7 @@ What is the state-of-research to analyze build logs?
 
 To answer this question, we start our investigation---pictured in
 \Cref{fig:overview}---with an
-extensive literature survey (step 1).
+extensive literature survey (step \circlenum{1}).
 The survey identifies various strategies to
 analyze build logs, among which are developing
 custom parsers, using regular expressions, doing manual inspections,
@@ -168,7 +168,7 @@ guidance on when to use which technique.
 % rather broken and item-ish anyways
 To fill this gap, we adapted and implemented three novel, prototypical
 implementations to
-automatically analyze build logs (step 2).
+automatically analyze build logs (step \circlenum{2}).
 The ideas behind the implementations are based on promising approaches
 adopted from other research fields and existing build log analysis
 techniques.
@@ -205,7 +205,7 @@ How do build log analysis techniques compare?
 To answer this question
 we conduct an empirical study assessing the performance
 of these chunk retrieval techniques in
-real-world projects under a variety of conditions (step 3).
+real-world projects under a variety of conditions (step \circlenum{3}).
 The study is based on the \emph{LogChunks} data
 set~\cite{brandt2020logchunks}, which encompasses 797 build logs from
 80 popular open-source projects and a broad range of different
@@ -220,7 +220,7 @@ clearly surpass a random baseline.
 
 Due to this ambiguity, we develop a set of guidelines
 on how to choose the most suitable build log analysis
-technique for the task at hand (step 4).
+technique for the task at hand (step \circlenum{4}).
 We recommend PBE for use cases where the desired information is always
 represented in the same structural way and high confidence in
 precision and recall of the chunk retrieval is required.
@@ -259,7 +259,8 @@ field.
 \begin{figure}[tb]
 	\centering
 	\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
-	\caption{Literature selection (following Petersen et al.~\cite{petersen2015guidelines}).}
+	\caption{Literature selection (following Petersen et
+	al.~\cite{petersen2015guidelines}).}
 	\label{fig:lit-survey}
 \end{figure}
 
@@ -291,8 +292,7 @@ al.~\cite{petersen2008systematic,petersen2015guidelines}.
 \begin{figure}[b]
   \centering
   \lstinputlisting[breaklines=true]{listings/syslog.txt}
-  \caption{System Log excerpt.
-Example adapted from~\cite{he2017towards}.}
+  \caption{System log excerpt (adapted from He et al.~\cite{he2017towards}).}
   \label{lst:system-log}
 \end{figure}
 
@@ -456,7 +456,7 @@ To support the data extraction we created a template which we filled out
 for each of the 61 works.
 The template contained questions to answer RQ 1.1 through RQ 1.3,
 for example ``Is the technique explained in detail?'' and
-``What is the source of the build logs?''.
+``What is the source of the build logs?''
 As recommended by Petersen et
 al.~\cite{petersen2015guidelines}, we started the mapping survey with a
 pilot:
@@ -1536,7 +1536,8 @@ random baseline.
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/failure-reason-pbe.pdf}
-		\caption{High-level results of chunk retrieval with Program Synthesis by Example (PBE).}
+		\caption{High-level results of chunk retrieval with
+		Program Synthesis by Example (PBE).}
 		\label{fig:failure-reason-PBE}
 \end{figure}
 
@@ -1559,7 +1560,8 @@ random baseline.
   \begin{lstlisting}[breaklines=true,frame=blr]
 	from line 5 of sass/components/_all.sass
   \end{lstlisting}
-	\caption{Actual chunk retrieval output ($RetrievedLines$ in yellow).}
+	\caption{Actual chunk retrieval output ($RetrievedLines$
+	in yellow).}
 	\label{lst:pbe-part-success-output}
 \end{subfigure}
 
@@ -1836,7 +1838,8 @@ categories---yield better retrievals than RLR.
 		\centering
 		\includegraphics[width=\columnwidth,
 		clip]{img/big-study/success-partial-all.pdf}
-		\caption{Success of chunk retrievals across all techniques.}
+		\caption{Success of chunk retrievals across all
+		techniques.}
 		\label{fig:success-partial-all}
 \end{figure}
 
