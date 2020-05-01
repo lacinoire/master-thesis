@@ -590,6 +590,7 @@ Categorization is the more abstract representation, chunks
 contain more information and could be turned into a categorization.
 
 \Cref{fig:litsur:use} shows the reason for the
+% TODO: isn't this discussion already?
 investigated works to analyze build logs, and the result also explains
 the prevalence of classification.
 The majority of works (46\%) used the outcome of their build log
@@ -1052,7 +1053,7 @@ by learning through provided examples.
 It is therefore a manual
 specification of which information the chunk retrieval should target.
 It also supplies the necessary information for the technique to
-identify the targeted information chunk in a build log.
+identify the targeted chunk in a build log.
 Each chunk
 retrieval technique has a specific \textit{granularity}, i.e.,\ the
 smallest piece of text it can return (e.g., a line, or a word).
@@ -1287,7 +1288,7 @@ RegexPair,
 
 To illustrate the chunk retrieval techniques further, we give
 an example of how the chunk retrieval techniques retrieve chunks from
-real-world build logs in \Cref{lst:logexamples}.
+the real-world build logs in \Cref{lst:logexamples}.
 Marked in blue are the chunks
 which contain the information on why the
 corresponding build failed.
@@ -1346,6 +1347,8 @@ R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 \section{Empirical Comparison Study}
 \label{sec:study}
 
+% TODO: decide if keep or redo
+% if keep, Caro do noted improvements
 \begin{figure*}[tb]
 	\centering
 	\includegraphics[width=\textwidth, trim={1.6cm 2.5cm 0.2cm 4.8cm},
@@ -1391,10 +1394,10 @@ study and describe the design of our comparison study.
 \label{sec:logchunks}
 To conduct the study in this paper, we created the
 \emph{LogChunks} data set~\cite{brandt2020logchunks}.
-From Travis CI---the most-used source of build logs within
+From Travis CI---the most-used source of build logs
 according to our literature survey---we collected
 797 build logs that
-stem from a broad range of 80 GitHub repositories and 29
+stem from a broad range of 80 GitHub projects and 29
 programming languages.
 This wide variety of projects, and the large number of different build
 tools they employ, enables us to measure the generic
@@ -1428,9 +1431,9 @@ and introduce the metrics that
 we measure to answer our research questions.
 
 We apply each of the chunk retrieval techniques
-on all of the 80 repositories represented in
+on all of the 80 projects in
 \emph{LogChunks} \circlenum{1}.
-For each repository, we select training sets of size 1, 2, \dots 5
+For each project, we select training sets of size 1, 2, \dots 5
 \circlenum{2}.
 We vary the training set size to measure how many examples we need to
 confidently configure a technique.
@@ -1497,7 +1500,7 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	In addition, we calculate the F$_{1}$-score, the harmonic mean
 	of precision and recall.
   We prefer F$_{1}$ to other aggregate
-	measures such as accuracy because for a
+	measures such as accuracy because of the
 	``needle-in-the-haystack'' scenario, we want to avoid bloating
 	our results by correctly not finding lots of irrelevant log
 	lines.
@@ -1524,7 +1527,7 @@ The empirical comparison study yielded diverse results for the
 different chunk retrieval techniques
 In this section, we first present the results for each chunk retrieval
 technique separately.
-Afterwards, we compare the three techniques with each other and to a
+Afterwards, we compare the three techniques with each other and with a
 random baseline.
 
 \subsection{Program Synthesis by Example (PBE)}
@@ -1551,11 +1554,8 @@ random baseline.
 [0K$ test/sass-compile-tester.sh
   \end{lstlisting}
   \vspace{-\baselineskip}
-  \begin{lstlisting}[backgroundcolor=\color{Yellow!60},breaklines=true,frame=rl]
-Error: Invalid CSS after "2.3em": expected expression (e.g.
-1px, bold), was ";"
-	on line 86 of sass/components/dropdown.
-  \end{lstlisting}
+  \lstinputlisting[backgroundcolor=\color{Yellow!60},breaklines=true,frame=rl]
+	{listings/chunk3.txt}
   \vspace{-\baselineskip}
   \begin{lstlisting}[breaklines=true,frame=blr]
 	from line 5 of sass/components/_all.sass
@@ -1569,10 +1569,10 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 [0K$ test/sass-compile-tester.sh
   \end{lstlisting}
   \vspace{-\baselineskip}
+  \lstinputlisting[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
+	{listings/chunk3.txt}
+  \vspace{-\baselineskip}
   \begin{lstlisting}[backgroundcolor=\color{Cerulean!60},breaklines=true,frame=rl]
-Error: Invalid CSS after "2.3em": expected expression (e.g.
-1px, bold), was ";"
-	on line 86 of sass/components/dropdown.sass
 	from line 5 of sass/components/_all.sass
 	from line 6 of bulma.sass
   \end{lstlisting}
@@ -1622,26 +1622,27 @@ Error: Invalid CSS after "2.3em": expected expression (e.g.
 % aspect of the change with more structural categories
 \Cref{fig:failure-reason-PBE} shows the results of chunk
 retrieval with PBE.
-It shows how many of the retrieval runs were successful or
-partially successful, as well as the number of runs where the
+It shows how many of the retrieval runs were successful,
+partially successful, or unsuccessful,
+as well as the number of runs where the
 synthesized program did not match on the analyzed build log or where
 no program could be synthesized.
 % The last two results stem from the regular expressions and their
 % synthesis, therefore only apply to PBE.
-Out of the overall 400 runs, 5 per each one of the 80 example
-sets, PBE extracted all desired lines successfully in 138 cases.
+Out of the 400 runs, 5 per each one of the 80 projects,
+PBE extracted all desired lines successfully in 138 cases.
 In 18 cases, the synthesized program only extracted a
 subset of the desired lines, while in 12 cases it extracted none of
 the desired lines.
-For these 18 partially successful, the average recall
+For the 18 partially successful runs, the average recall
 was 47\%.
-\Cref{lst:pbe-partially-successful} shows how an example of such
-a partially successful retrieval looks like.
+\Cref{lst:pbe-partially-successful} shows an example of such
+a partially successful retrieval.
 In it, the synthesized program only
 retrieved two (\Cref{lst:pbe-part-success-output})
 of the four (\Cref{lst:pbe-part-success-desired}) targeted lines.
 In 59 cases, PBE could synthesize a regular expression program, though
-it did not match on the test build log.
+the program did not match on the test build log.
 In 173 of the 400 cases
 could PROSE not synthesize a program consistent with all of the training
 examples.
@@ -1663,10 +1664,9 @@ categories PROSE could never synthesize a consistent program.
 
 Zooming in on only the 227 runs where PBE could synthesize a program,
 \Cref{fig:recall-precision-examplecount-sythesisworked-PBE}
-presents violin plots of the precision, the recall
+presents violin plots and averages of the precision, the recall
 and the F$_{1}$-score
 of these runs compared with the number of examples in the training set.
-The black horizontal lines show the average of these measurements.
 When the training set
 size increases from one to two, recall, and F$_{1}$-score increase by
 about 25\%, precision increases by about 10\%.
@@ -1760,14 +1760,14 @@ recall, and F$_{1}$-score of the chunk retrieval runs with KWS in
 Violin plots show the distribution the values of each measurement,
 while the black horizontal lines show their average.
 If the figure shows no violin plot for a measurement, we only have one
-data point or all data points have the same value.
+data point available or all values are the same.
 
 \Cref{fig:recall-precision-examplecount-KWS} presents these
 measurements for different
 numbers of training examples.
 The recall increases by about 12\% when
 increasing the size of the training set to more than one example,
-while the precision stays constant at around 16\%.
+while the precision stays constant around 16\%.
 The F$_{1}$-score
 stays around 26\%.
 
@@ -1797,7 +1797,7 @@ As expected, the size of the training set has no impact on precision
 or recall of retrieving chunks with RLR.
 With a larger number of structural categories within the training and
 test sets, the precision of RLR decreases from 7\% to 0\%, while
-the recall varies between 0\% end 11\%.
+the recall varies between 0\% and 11\%.
 
 \subsection{Comparison of All Techniques}
 In this section, we compare the results of all four chunk retrieval
@@ -1820,11 +1820,14 @@ lowest number of partial retrievals with only 18 out of 400 chunk
 retrieval runs.
 All techniques clearly outperform the random baseline (RLR).
 
-\Cref{fig:recall-precision-singlecategory-all,fig:recall-precision-multicategory-all}
-show the influence of all training and test examples being from the
-same structural category compared to being from multiple categories.
+\Cref{fig:category-all}
+shows the influence of all training and test examples being from the
+same structural category
+(\Cref{fig:recall-precision-singlecategory-all})
+compared to being from multiple categories
+(\Cref{fig:recall-precision-multicategory-all}).
 For more
-than one category being present, the recall of PBE decreases greatly.
+than one category present, the recall of PBE decreases greatly.
 For CTS and KWS the values also decrease, while RLR is not affected by
 the number of structural categories present.
 Again, all techniques---except for PBE with multiple structural
@@ -1861,6 +1864,7 @@ categories---yield better retrievals than RLR.
 \end{subfigure}
 \caption{Precision, recall, and F$_{1}$-score of all
 techniques compared, split by structural category count.}
+\label{fig:category-all}
 \end{figure*}
 
 \section{Discussion}
@@ -2026,7 +2030,7 @@ automated tools.
 We saw that each of the techniques is suited for different types of
 log chunks and the output of each is suited for different uses.
 Now, we unify these results into conditions to answer
-our second research questions;
+our second research question;
 If researchers or developers want to retrieve chunks from build logs,
 they can follow these conditions to identify the technique
 suited best for their use case.
@@ -2037,7 +2041,7 @@ We summarize these conditions in the decision tree in
 It is built up of questions
 which either lead to more questions or to a leaf node containing a
 recommended technique.
-At the end of this section we give two concrete examples on how to
+In the next section we give two concrete examples on how to
 apply our decision tree.
 
 
@@ -2060,15 +2064,16 @@ apply our decision tree.
 
 The first and most important aspect that influences a choice for
 a chunk retrieval technique are the structural categories.
-In other words,
+In other words:
 are the targeted log chunks always presented in
-the same structural way within the build logs? Then the information
+the same structural way within the build logs?
+Then the
 chunks in all training examples and the analyzed build log are in the
 same structural category.
 This is why the first question in \Cref{fig:crt-recommendation} asks
 how many structural categories the targeted log chunks have.
 
-If the information chunks are from multiple structural categories
+If the chunks are from multiple structural categories
 and recall is more important than precision we recommend
 to use KWS\@.
 If precision is more important than recall, we
@@ -2079,7 +2084,7 @@ from one structural category, when the user does not require high
 confidence in the precision or recall of the outcome and when one
 would rather have output with low recall instead of no output at all.
 On the leftmost path of the decision tree,
-when the representations are from one structural category and the user
+when the chunks are from one structural category and the user
 wishes high confidence in the correctness of the output or prefers
 no output over output with low recall, we recommend PBE\@.
 
@@ -2116,9 +2121,9 @@ Therefore, following the leftmost path in
 the development team should use
 PBE to retrieve the duration of a build phase.
 
-In the second example, a researcher wants to investigate whether a small
-or large group of test cases
-causes build failures.
+In the second example, a researcher wants to investigate whether
+small or large groups of test cases
+cause CI build failures.
 They gather
 CI build logs from various projects.
 The task of the researcher is to extract the names of the
@@ -2135,8 +2140,8 @@ The next question is whether they value precision
 over recall.
 As they have to manually inspect the results of both CTS
 and KWS, they choose recall over precision to avoid having to inspect
-the whole log in case the relevant information chunk was not
-retrieved.
+the whole log in case the relevant chunk---the name of the failing
+test case---was not retrieved.
 Therefore, following the rightmost path in
 \Cref{fig:crt-recommendation},
 the decision tree recommends the researcher to use KWS\@.
@@ -2215,7 +2220,7 @@ Especially the results for CTS might be influenced by the fact that we
 only trained on one to five examples.
 We chose this small training set
 size as a user has to provide the training examples
-per repository or project and one of the central aims of the chunk
+per project and one of the central aims of the chunk
 retrieval techniques is that they can be set up wit little effort.
 The fact that PBE and KWS performed best with already two training
 examples shows that the training set size is large enough to
@@ -2266,12 +2271,12 @@ The keywords, for example, can be
 investigated to answer which keywords are used to search for the
 reason the build failed within build logs.
 
-\textbf{Cross-Repository Build Log Analysis.}
+\textbf{Cross-Project Build Log Analysis.}
 We trained and
 tested each chunk retrieval technique on examples from the same
-repository.
+project.
 We propose to analyze how techniques could be trained
-across repositories, building the cornerstones for build
+across projects, building the cornerstones for build
 environment-agnostic analysis tools.
 This has the advantage of creating
 a default build log analyzer that would work without any pre-training.
@@ -2337,7 +2342,7 @@ To this end, we
 conducted a systematic mapping survey to map out the available build
 log analysis techniques.
 We saw that, while build log analysis is widely used, it is often
-a side part of an work and implementations are rarely reused.
+a side part of a work and implementations are rarely reused.
 This shows the need for a new generation of generic and automated
 build log analysis techniques that need little effort to set up.
 
@@ -2373,4 +2378,7 @@ analysis.
 Important themes are a systematic investigation of industry approaches,
 benchmarks of existing build log analysis approaches and further
 refinement of the chunk retrieval techniques we proposed.
-
+We strongly believe that further research into the techniques to
+analyze build logs will support researchers and developers alike to
+leverage the vast amounts of valuable information
+hidden within build logs.
