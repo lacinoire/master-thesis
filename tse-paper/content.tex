@@ -834,11 +834,12 @@ seo2014programmers,beller2017oops,zampetti2017open,rausch2017empirical}.
 % ----- information RQ 1.1 -----
 In regards to the information that is targeted, \emph{most build log
 analysis approaches aim to retrieve the reason a build failed} by
-targeting ``errors'' or ``failing tests.'' 
+targeting ``errors'' or ``failing tests.''
 % which is what we also do in LogChunks
 \emph{The majority of approaches retrieves specific chunks of
 text from the logs.} Chunks are the overarching concept to
-the almost equally much used categorization: one can deduce a categorization from chunks, but not vice versa.
+the almost equally much used categorization: one can deduce a
+categorization from chunks, but not vice versa.
 
 % ----- technique RQ 1.2 -----
 \emph{Most log analysis is automated.} Automated approaches are
@@ -955,7 +956,9 @@ and can be \emph{configured with little effort}.
 
 % TODO This introduction is weird
 In this section, we formally define the concept of chunk
-retrievals from build logs. Then, we motivate and present the choice of three such techqniues that we implemented for this study in detail.
+retrievals from build logs.
+Then, we motivate and present the choice of three such techqniues that
+we implemented for this study in detail.
 
 In this section,
 we propose three so-called \emph{chunk retrieval techniques},
@@ -964,7 +967,8 @@ from a build log
 % TODO passive ....
 The techniques we propose run automatically
 and can be easily configured through examples.
-% TODO this should go under characteristics and not be in an introduction to the section ...
+% TODO this should go under characteristics and not be in an introduction
+to the section ...
 An example in this case consists of a build log together with the
 chunk that should be retrieved.
 A user---a developer or a researcher who wants to analyze
@@ -979,7 +983,8 @@ to support new cases.
 % words used in the term
 % Use a thesaurus to find synonyms
 
-With the term ``chunk retrieval technique,'' we refer to a way of automatically extracting strings that appear literally in build
+With the term ``chunk retrieval technique,'' we refer to a way of
+automatically extracting strings that appear literally in build
 logs, i.e., techniques that do not aggregate, combine, or deduct
 information.
 We call such pieces of information in build logs
@@ -989,7 +994,8 @@ Generally, chunk retrieval techniques
 can also be used to classify build logs, e.g.\, by checking
 which substring was retrieved.
 Therefore, they
-cover the great majority of the types of log analysis we saw in \Cref{sec:lit-sur:discussion}.
+cover the great majority of the types of log analysis we saw in
+\Cref{sec:lit-sur:discussion}.
 
 The techniques we investigate here do not require a formal lexer and
 parser to analyze the entire structure of build logs, but focus on
@@ -1020,21 +1026,26 @@ build log text.
 
 \subsection{Choice of Chunk Retrieval Techniques}
 For this article, we designed and implemented three automated chunk
-retrieval techniques. The strategies that underlie them were inspired
+retrieval techniques.
+The strategies that underlie them were inspired
 based on techniques we found in the literature survey and other
-research fields. 
+research fields.
+
 In \Cref{tab:techniques}, we summarize and distinguish the techniques
 we present along the characteristics described above.
 
 Techniques based on custom parsers (\#1
 in \Cref{tab:litsur:techniques}) are inadquate for our comparison,
 since their creation is manual and such a technique would not
-generalize on the wide varitey of build logs we are interested in. The
+generalize on the wide varitey of build logs we are interested in.
+The
 closest we could come to the second entry, regular expression, is a
 technique to automatically derive them: In particular, we implement a
 technique based on
-\emph{Program Synthesis by Example (PBE)}. This 
-mimics regular expressions, the second most frequently occurring whose while simplifying
+\emph{Program Synthesis by Example (PBE)}.
+This
+mimics regular expressions, the second most frequently occurring whose
+while simplifying
 their development.
 
 To work effectively with build logs, many humans anecdotally search
@@ -1046,7 +1057,11 @@ strings, we automatize it as \emph{Keyword Search (KWS)}.
 
 Finally, from the fields of information retrieval and natural language
 processing, we leverage a
-\emph{Common Text Similarity (CTS)} approach. The reason for it is that the relevant, failing parts of build logs often looks similar to each other, even if the exact failure reason might differ. 
+\emph{Common Text Similarity (CTS)} approach.
+The reason for it is that the relevant, failing parts of build logs
+often looks similar to each other, even if the exact failure reason
+might differ.
+
 
 
 \begin{table*}[htb]
