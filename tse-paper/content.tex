@@ -1403,15 +1403,18 @@ This leads us to the following research questions:
 attach boxed title to top center={yshift=-6mm}]
 {\textbf{RQ2:} How do build log analysis techniques compare?}
 \begin{itemize}[leftmargin=1.2cm]
-  \item[\textbf{RQ2.1:}] With how many examples does a technique perform best?
-  \item[\textbf{RQ2.2:}] How structurally variable can configuration examples be?
+  \item[\textbf{RQ2.1:}] With how many examples does a technique
+  perform best?
+  \item[\textbf{RQ2.2:}] How structurally variable can configuration
+  examples be?
   \item[\textbf{RQ2.3:}] How accurate are the retrievals of a technique?
 \end{itemize}
 \end{simplebox}
 
 In the following, we first introduce the data set we created for this
 study, and then describe the study design and its
-results. We answer these RQs separately for each technique.
+results.
+We answer these RQs separately for each technique.
 
 \subsection{LogChunks Data Set}
 \label{sec:logchunks}
@@ -2043,7 +2046,8 @@ automated tools.
 
 \subsection{Usage Recommendation}
 In this section, we derive a decision tree to help practitioners and
-researchers choose a suitable chunk retrieval technique. We then
+researchers choose a suitable chunk retrieval technique.
+We then
 illustrate its use on two examples.
 
 \subsubsection{Derivation of Decision Tree}
@@ -2058,19 +2062,22 @@ illustrate its use on two examples.
 
 Abstractly, we have learned that every chunk retrieval technique
 differs in its suitability depending on the kinds of logs it should
-operate on and the sort of output one expects.  In this section, we
+operate on and the sort of output one expects.
+In this section, we
 unify these findings, culminating in the creation of a decision tree
 to help developers and researchers choose an adequate technique in
 \Cref{fig:crt-recommendation}.
 
 The first and most important aspect that influences the decision for a
 chunk retrieval technique is the presence of different structural
-categories in the log (or lack therefore).  Are the targeted log
+categories in the log (or lack therefore).
+Are the targeted log
 chunks always present in the same structural way within the build logs
 (first question in \Cref{fig:crt-recommendation})?  If so, the chunks
 in all training examples and the analyzed build log are in the same
 structural category
-%TODO ... and what? PBE is the best technique?
+%TODO ...
+and what? PBE is the best technique?
 If the chunks are from multiple structural categories and recall is
 more important than precision, we recommend to use KWS\@.
 % TODO because ?
@@ -2089,9 +2096,11 @@ no output over output with low recall, we recommend PBE\@.
 
 As a final recommendation, one could create a ``super analyzer'' by
 combining the different build log analysis techniques studied in this
-paper.  Such a super analyzer would likely always first employ PBE
+paper.
+Such a super analyzer would likely always first employ PBE
 (because of its high accuracy), followed by a combination of CTS and
-KWS\@.  Other than initial setup and training time, there is no
+KWS\@.
+Other than initial setup and training time, there is no
 downside to this approach if it is implemented in a transparent way:
 the output of the super analyzer could include from which
 sub-technique it originated and thus facilitate automatic onward
@@ -2100,7 +2109,8 @@ processing or interpretation of the result.
 
 \subsubsection{Example Use Cases}
 To illustrate how one would use the decision tree to find a suitable
-chunk retrieval technique we describe here two concrete examples: a software
+chunk retrieval technique we describe here two concrete examples:
+a software
 team
 wanting to monitor their build performance and a
 group of researchers investigating why builds fail.
@@ -2141,19 +2151,32 @@ the whole log in case the relevant chunk---the name of the failing
 test case---was not retrieved.
 Therefore, following the rightmost path in
 \Cref{fig:crt-recommendation},
-the decision tree recommends the researcher to use KWS\@.  An
+the decision tree recommends the researcher to use KWS\@.
+An
 alternate, potentially more laborious but also more precise solution
 could be for researchers to first separate the CI build logs by the
-test tool responsible for logging the test results.  Then, the
+test tool responsible for logging the test results.
+Then, the
 targeted log chunks are from one structural category and they can use
-PBE, trained with examples from each test tool separately. 
+PBE, trained with examples from each test tool separately.
+
 
 \section{Threats to Validity}
 In this section, we outline threats to the validity of our work and
 show how we mitigated them.
 
 % TODO Caro: fill in the maven analyzer plugin and others.
-\textbf{Limitation to Scholarly Articles.} We limited our literature survey to scholarly articles. However, the field of build log analysis is extremely relevant to practitioners, too. While it is difficult to systematically sight all such non-scientific material, we ran several Google search queries related to build log analysis and evaluted them informally. Our findings include the Jenkins build log analyzer and a web page on which Microsoft details how its CI service, Azure Pipes, uses a PBE-approach for certain log formats such as Python. This inspired the choice of PBE in \Cref{sec:choice}.
+\textbf{Limitation to Scholarly Articles.} We limited our literature
+survey to scholarly articles.
+However, the field of build log analysis is extremely relevant to
+practitioners, too.
+While it is difficult to systematically sight all such non-scientific
+material, we ran several Google search queries related to build log
+analysis and evaluted them informally.
+Our findings include the Jenkins build log analyzer and a web page
+on which Microsoft details how its CI service, Azure Pipes, uses a
+PBE-approach for certain log formats such as Python.
+This inspired the choice of PBE in \Cref{sec:choice}.
 
 
 \textbf{Implementation.}
@@ -2161,14 +2184,19 @@ Our results depend on the implementation of the investigated chunk
 retrieval techniques and the libraries we used.
 
 The program synthesis
-provided by PROSE is the basis for our implementation of PBE\@.  The
-idiosyncrasies of this framework influence the PBE results.  Other
+provided by PROSE is the basis for our implementation of PBE\@.
+The
+idiosyncrasies of this framework influence the PBE results.
+Other
 frameworks similar to PROSE might have somewhat different strengths
-and weaknesses.  For example, the need for examples from a single
+and weaknesses.
+For example, the need for examples from a single
 structural category stems from the fact that PROSE cannot learn
 regular expression programs with arbitrary boolean conjunctions and
-disjunctions~\cite{mayer2015user}.  PROSE introduced this constraint
-to keep the synthesis performance reasonable.  At the same time, this
+disjunctions~\cite{mayer2015user}.
+PROSE introduced this constraint
+to keep the synthesis performance reasonable.
+At the same time, this
 is clearly a current theoretical challenge of all PBE implementations,
 and we therefore attribute it to the technique itself, rather than the
 specific implementation.
@@ -2192,46 +2220,57 @@ build logs would yield better chunk retrieval results.
 % not sure if this adds much on top of the sentences further up
 %% Yup, it's super cool and I expanded it a bit
 Overall, we believe our implementations and their weaknesses stand
-prototypical for the techniques.  We tried to limit idiosyncrasies as
+prototypical for the techniques.
+We tried to limit idiosyncrasies as
 much as possible, by choosing standard approaches and minimizing
 configuration, instead of parameterizing and fine-tuning methods
 specific to our data set.
 
 \textbf{Data Set.}
-Just like the implementations, the specific build logs from the \emph{LogChunks} data set affect
+Just like the implementations, the specific build logs from the
+\emph{LogChunks} data set affect
 the outcomes of the comparison study.
 \emph{LogChunks} consists of build
 logs from open source projects and therefore it is unclear to which
 degree our results apply to industry projects that use build tools not
-popular in open source development.  However, since \emph{LogChunks}
+popular in open source development.
+However, since \emph{LogChunks}
 covers a wide array of build tools and programming languages, we
-believe that the findings do generalize. In addition, build log output
+believe that the findings do generalize.
+In addition, build log output
 of such a tool would need to be wildly different from how the over 27
 tools covered in our study do it---this seems unlikely.
 
 We collected build logs from
-Travis CI.  Yet, the format of the log chunk we chose for the
+Travis CI.
+Yet, the format of the log chunk we chose for the
 evaluation is largely independent of Travis CI\@, because the reason
 the build failed is described within the build logs by the tools
 themselves and not the Travis CI environment.
 
 \textbf{Training Set Size.}
 Especially the results for CTS might be influenced by the fact that we
-only trained on one to five examples.  We chose this small training
+only trained on one to five examples.
+We chose this small training
 set size as a human has to provide the training examples and one of
 the central aims of the chunk retrieval techniques is that they can be
-set up wit little effort.  The fact that KWS and CTS performed best
+set up wit little effort.
+The fact that KWS and CTS performed best
 with already two training examples indicates that the maximum training
 set size of five is sufficiently large for research evaluation.
 
 \textbf{Few Samples with Many Structural Categories.}
 Our comparison study includes fewer measurements with many structural
 categories than with one structural category category (50.25\% one,
-% TODO This does not add up to 1. Please no decimals,
-% we do not need so much precision here. Also tell % of what?
-33.75\% two, 13.75\% more than two).  This distribution mirrors the
+% TODO This does not add up to 1.
+Please no decimals,
+% we do not need so much precision here.
+Also tell % of what?
+33.75\% two, 13.75\% more than two).
+This distribution mirrors the
 structural categories in a real-world data set, where there were
-mostly few structural categories within one project.  In addition, the
+mostly few structural categories within one project.
+In addition, the
 third of the measurements we conducted with two structural categories
 already showed the negative effect of an increasing number of
 structural categories on the performance of the chunk retrieval
@@ -2239,18 +2278,23 @@ techniques.
 
 \section{Future Work}
 In this section, we describe what we believe are fruitful future
-research directions in the field of build log analysis. We base our
+research directions in the field of build log analysis.
+We base our
 assessment on the results of the literature survey and combine it with
 findings from our technique comparsion study.
 
 \textbf{Systematic Survey of Industry Approaches for Build
-Log Analysis.}  Our survey is limited to scholarly material.  However,
+Log Analysis.}	Our survey is limited to scholarly material.
+However,
 handling build logs is a challenge for a wide range of practitioners
-as well.  We propose to investigate the techniques used in industry to
-analyze build logs.  An example is the
+as well.
+We propose to investigate the techniques used in industry to
+analyze build logs.
+An example is the
 Jenkins \emph{build-failure-analyzer}
 plugin~\cite{jenkins2020failure-analyzer} or automatically inferred
-test results in Azure~\cite{azure2020inferred}. Such a study might
+test results in Azure~\cite{azure2020inferred}.
+Such a study might
 also need to tackle the more abstract problem of how to survey
 non-scholarly material systematically, which might be an important
 contribution to Software Engineering research.
@@ -2277,14 +2321,16 @@ This has the advantage of creating
 a default build log analyzer that would work without any pre-training.
 
 \textbf{Comparison with more Chunk Retrieval Techniques.}
-In this article, we investigated the three chunk retrieval techniques PBE, CTS, and
+In this article, we investigated the three chunk retrieval techniques PBE,
+CTS, and
 KWS\@.
 Our study design can be reused to evaluate other build log
 analysis techniques, such as the parser Tomassi et al.
 used to create
 BugSwarm~\cite{tomassi2019bugswarm} or the regex-based approach
 Beller et al.
-used to create TravisTorrent~\cite{beller2017oops}. 
+used to create TravisTorrent~\cite{beller2017oops}.
+
 
 \textbf{Refinement of Retrieval Quality.} We
 investigated basic configurations of existing techniques applied to
@@ -2331,16 +2377,21 @@ user studies.
 \label{sec:conclusion-fw}
 
 The goal of this paper is to support practitioners and researchers in
-their decision on how to analyze build logs.  To this end, we
+their decision on how to analyze build logs.
+To this end, we
 conducted a systematic mapping survey to map out the available build
-log analysis techniques.  We saw that build log analysis is an
-emerging field. At the same time, articles largely do not justify why
+log analysis techniques.
+We saw that build log analysis is an
+emerging field.
+At the same time, articles largely do not justify why
 they use a certain technique, nor do they document it in detail or
-open-sourced its implementation. Moreover, the survey showed that,
+open-sourced its implementation.
+Moreover, the survey showed that,
 while there is a niche for custom parsers and plugins for very popular
 tools such as the Java ecosystem, there is a wide variety of build
 tool and enviroment combinations for which the creation of such
-bespoke tooling is unlikely.  Overall, we showed the need for a new
+bespoke tooling is unlikely.
+Overall, we showed the need for a new
 generation of generic and automated build log analysis techniques that
 need little effort to set up, both for practitioners as well as
 researchers.
@@ -2357,7 +2408,8 @@ We evaluated the performance of these chunk retrieval techniques on the
 \emph{LogChunks} data set and saw varying results.
 CTS had the highest average F$_{1}$-score with 51\%, while the other
 techniques showed higher average scores for precision (95\%, PBE) and
-recall (70\%, KWS). Overall, all technqiues vastly outperformed a
+recall (70\%, KWS).
+Overall, all technqiues vastly outperformed a
 baseline of random line retrieval.
 
 To guide researchers and developers on which technique suits their
@@ -2365,7 +2417,7 @@ use case,
 we summarized our results in a decision tree.
 We found
 that the structural representation of the targeted information in the
-build logs is the main factor one should consider when 
+build logs is the main factor one should consider when
 choosing a build log analysis
 technique.
 Secondary factors are the desired confidence in recall and
