@@ -1062,7 +1062,9 @@ specific strings, we automatize it as \emph{Keyword Search (KWS)}.
 
 Finally, from the fields of information retrieval (IR) and natural
 language
-processing (NLP, see \Cref{tab:litsur:techniques}), we leverage widely-used text similarity measures and call this approach \emph{Common Text Similarity (CTS)}.
+processing (NLP, see \Cref{tab:litsur:techniques}), we leverage
+a widely-used text similarity measure and call this approach \emph{Common
+Text Similarity (CTS)}.
 The intuition behind it is that the relevant,
 failing parts of build logs often look similar to each other, even if
 the exact failure reasons might differ.
@@ -1133,7 +1135,7 @@ Model~\cite{schutze2008introduction} (VSM), an algebraic model for
 representing textual documents, we encode each line as a separate term
 vector.
 The terms that make up the dictionary are simply all words
-that appear in the example logs, where we separate words by spaces and
+that appear in the example logs. We separate words by spaces and
 punctuation.
 The vectors comprise points counting
 how many times a word out of the dictionary appears in the specific
@@ -2269,10 +2271,10 @@ structural categories on the performance of the chunk retrieval
 techniques.
 
 \section{Future Work}
-In this section, we describe what we believe are fruitful future
+In this section, we give an outline of fruitful future
 research directions in the field of build log analysis.
 We base our
-assessment on the results of the literature survey and combine it with
+suggestions on the results of the literature survey and the
 findings from our technique comparison study.
 
 \textbf{Systematic Survey of Industry Approaches for Build
@@ -2322,6 +2324,15 @@ BugSwarm~\cite{tomassi2019bugswarm} or the regex-based approach
 Beller et al.
 used to create TravisTorrent~\cite{beller2017oops}.
 
+One could also interpret the techniques we implemented
+differently. For example, for CTS, we look for similarity between the
+lines we want to extract. One could find similarity between the
+context that surrounds them, instead of the actual chunk to be
+extracted. The intuition behind this approach would be that often the
+error chunk is variable, but the context around it is
+stable---essentially the principle by which extraction by PBE
+works. Such a version of ``inverse CTS'' might yield better retrieval
+results.
 
 \textbf{Refinement of Retrieval Quality.} We
 investigated basic configurations of existing techniques applied to
@@ -2329,7 +2340,7 @@ chunk retrieval from build logs.
 In a next step, each of these
 techniques could be refined to better customize it to the domain of build
 logs.
-The \emph{LogChunks} data set and our study results act as a
+The \emph{LogChunks} data set and our study results can act as a
 baseline to benchmark such technique improvements.
 We propose the
 following improvements:
@@ -2338,10 +2349,10 @@ following improvements:
   synthesis through PROSE ranks possible programs according to
   what the user most likely intended.
   One could adapt the ranking
-  rules provided by the FlashExtract DSL to fit common build log
+  rules provided by the \emph{FlashExtract} DSL to fit common build log
   chunk retrieval tasks.
-  FlashExtract includes special tokens when
-  enumerating possible regular expressions.
+  \emph{FlashExtract} includes special tokens when
+  enumerating possible regular expressions~\cite{le2014flashextract:}.
   One could extend these
   with tokens found in build logs, such as ``-,''
 	``=,'' ``ERROR,''
@@ -2354,6 +2365,13 @@ following improvements:
   investigate improvements in preprocessing of the log text, in
   tokenization of the log lines into terms, and in stop words
   lists.
+  
+  For CTS, we currently have no concept of semantic
+  similarity. Therefore, the synonyms ``Fail'' and ``Failure'' would
+  fall into two different frequency counts. Using a
+  wordnet~\cite{pedersen2004wordnet} or other NLP techniques to
+  capture synonyms might improve similarity measure between related
+  lines, and therefore overall performance of CTS.
 \end{itemize}
 
 \textbf{Usability Analysis of Chunk Retrieval Output.}
