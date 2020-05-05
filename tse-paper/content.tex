@@ -1087,7 +1087,7 @@ text extraction DSL \emph{FlashExtract}~\cite{le2014flashextract:}.
 % retrieval without understanding the whole structure of
 % the build log.
 
-\subsubsection{Configuring}
+\subsubsection{Configuration}
 In- and output example pairs are the main driver of PBE;
 The \emph{input} is the full text of the build log file.
 The \emph{output} is
@@ -1105,7 +1105,7 @@ because the required regular expression
 is too complicated to be synthesized, PBE returns the
 error message ``no program found.''
 
-\subsubsection{Running}
+\subsubsection{Chunk Retrieval Run}
 A run of PBE takes a build log file as input and executes the
 synthesized regular expression program on it.
 It then returns the substring
@@ -1126,7 +1126,7 @@ technique that
 retrieves those lines from a build log which are most
 similar to the specified examples.
 
-\subsubsection{Configuring}
+\subsubsection{Configuration}
 To configure CTS we chose to use the same concept of examples as for
 PBE: lines of the targeted chunks from the training examples define
 the search query.
@@ -1159,7 +1159,7 @@ algorithm weighs the vectors using \emph{term frequency-inverse
 document frequency (TF-IDF)}, a best practice for natural
 language queries~\cite{lee1997document}.
 
-\subsubsection{Running}
+\subsubsection{Chunk Retrieval Run}
 To retrieve the desired information from a build log, we encode every
 line of the input build log in VSM.
 The algorithm calculates the cosine
@@ -1181,7 +1181,7 @@ To investigate the performance of this approach, we designed a chunk
 retrieval technique mimicking this human behavior based on keyword
 search.
 
-\subsubsection{Configuring}
+\subsubsection{Configuration}
 A set of keywords configures the chunk retrieval with KWS\@.
 To better
 compare KWS with PBE and CTS, we also configure it through examples.
@@ -1191,7 +1191,7 @@ in, or close to, the targeted chunk in a new build log.
 Finally, we merge the lists from all examples to build one unified
 list of the most commonly occurring keywords for the search with KWS.
 
-\subsubsection{Running}
+\subsubsection{Chunk Retrieval Run}
 For a retrieval run, we take an entire build log file as input and
 search for all exact occurrences of the search keywords.
 As keywords are
