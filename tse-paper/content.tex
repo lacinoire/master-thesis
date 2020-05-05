@@ -1375,19 +1375,20 @@ R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 
 \begin{figure*}[tb]
 \begin{algorithmic}[1]
-\ForEach{technique $\in\{PBE,CTS,KWS,RLR\}$}
- \ForEach{project  $\in$ \emph{LogChunks}}
+\ForEach{$technique \in\{PBE,CTS,KWS,RLR\}$}
+ \ForEach{$project  \in \emph{LogChunks}$}
  \Comment{$|\emph{LogChunks}|$=80}
-  \For{$i\gets 1, 5$}
-   \State $logs \gets getBuildLogsByTime(project, i)$  \Comment{Logs
+  \For{$i \in\{1,2,3,4,5\}$}
+   \State $training\_logs \gets getBuildLogsByTime(project, 0, i)$
+   \Comment{Logs
    returned ordered by time of creation.}
-   \State $rlog \gets  getBuildLogsByTime(project, 6)$
-   \State $n \gets |structuralCategories(logs)|$
+   \State $test\_log \gets  getBuildLogByTime(project, i)$
+   \State $n \gets |structuralCategories(test\_logs)|$
    \State
-   \State $train(technique, logs)$
-       \State $retrievedLines \gets run(technique, rlog)$
+   \State $train(technique, training\_logs)$
+       \State $retrievedLines \gets run(technique, test\_log)$
        \State $metrics \gets calculateMetrics(retrievedLines,
-       desiredLines(rlog))$
+       desiredLines(test\_log))$
        \State
        \State $saveMetrics(technique, project, n, i, metrics)$
 
@@ -1469,7 +1470,7 @@ up one \emph{example} in \emph{LogChunks}.
 
 \subsection{Study Procedure}
 
-In the following, we explain our study design
+In the following, we explain our study procedure
 and introduce the metrics that
 we measure to answer RQ2.
 \Cref{fig:study} depicts the individual steps of our study as an
@@ -1479,7 +1480,7 @@ For each chunk retrieval technique and each project, we create
 training example sets consisting of 1, 2, \dots 5 examples (lines
 \circlenum{1}--\circlenum{3}).
 We vary the training set size to measure how many examples we need to
-confidently configure a technique, adressing \textbf{RQ2.1}.
+confidently configure a technique, addressing \textbf{RQ2.1}.
 
 The test set consists of the first build log produced
 chronologically after the build logs in the training set \circlenum{5}.
@@ -1494,7 +1495,7 @@ are present in the trained logs and store this to be able to answer
 In the next step, we configure the chosen chunk retrieval technique with
 the examples from the training set \circlenum{8} and run the technique
 on the
-training set, producing the retrieval output \circlenum{9}.
+test set, producing the retrieval output \circlenum{9}.
 
 Based on this, we calculate the following metrics in
 \emph{calculateMetrics}, addressing \textbf{RQ2.3}:
