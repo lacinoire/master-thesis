@@ -1358,8 +1358,48 @@ We implemented PBE in C\# based on the Microsoft PROSE
 library~\cite{prose2019webpage} and CTS, KWS, and RLR using
 R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 
-\section{Empirical Comparison Study}
+\section{Chunk Retrieval Comparison}
 \label{sec:study}
+
+% TODO Caro: Not 100% sure about the 6 in the
+% algorithm below.
+% I had a set of rlogs before
+% that, but then I think you only always retrieve 1 build
+% log.
+% However, I also looked into the LogChunks data set and saw more
+% than 6 logs per project sometimes ...
+
+% TODO: In addition, if there
+% are more than 6 logs per project, aren't we missing another
+% indirection in the algorithm?
+
+\begin{figure*}[tb]
+\begin{algorithmic}[1]
+\ForEach{technique $\in\{PBE,CTS,KWS,RLR\}$}
+ \ForEach{project  $\in$ \emph{LogChunks}}
+ \Comment{$|\emph{LogChunks}|$=80}
+  \For{$i\gets 1, 5$}
+   \State $logs \gets getBuildLogsByTime(project, i)$  \Comment{Logs
+   returned ordered by time of creation.}
+   \State $rlog \gets  getBuildLogsByTime(project, 6)$
+   \State $n \gets |structuralCategories(logs)|$
+   \State
+   \State $train(technique, logs)$
+       \State $retrievedLines \gets run(technique, rlog)$
+       \State $metrics \gets calculateMetrics(retrievedLines,
+       desiredLines(rlog))$
+       \State
+       \State $saveMetrics(technique, project, n, i, metrics)$
+
+  \EndFor
+ \EndFor
+ \State $aggregateMetrics(technique)$
+\EndFor
+\end{algorithmic}
+
+	\caption{Study procedure.}
+	\label{fig:study}
+\end{figure*}
 
 
 In the literature survey, we noted that previous work seemed to choose
@@ -1427,50 +1467,7 @@ the chunk, the search keywords, and the assigned
 structural category make
 up one \emph{example} in \emph{LogChunks}.
 
-
-\subsection{Procedure}
-
-% TODO Caro: Not 100% sure about the 6 in the
-% algorithm below.
-% I had a set of rlogs before
-% that, but then I think you only always retrieve 1 build
-% log.
-% However, I also looked into the LogChunks data set and saw more
-% than 6 logs per project sometimes ...
-
-% TODO: In addition, if there
-% are more than 6 logs per project, aren't we missing another
-% indirection in the algorithm?
-
-
-\begin{figure*}[tb]
-\begin{algorithmic}[1]
-\ForEach{technique $\in\{PBE,CTS,KWS,RLR\}$}
- \ForEach{project  $\in$ \emph{LogChunks}}
- \Comment{$|\emph{LogChunks}|$=80}
-  \For{$i\gets 1, 5$}
-   \State $logs \gets getBuildLogsByTime(project, i)$  \Comment{Logs
-   returned ordered by time of creation.}
-   \State $rlog \gets  getBuildLogsByTime(project, 6)$
-   \State $n \gets |structuralCategories(logs)|$
-   \State
-   \State $train(technique, logs)$
-       \State $retrievedLines \gets run(technique, rlog)$
-       \State $metrics \gets calculateMetrics(retrievedLines,
-       desiredLines(rlog))$
-       \State
-       \State $saveMetrics(technique, project, n, i, metrics)$
-
-  \EndFor
- \EndFor
- \State $aggregateMetrics(technique)$
-\EndFor
-\end{algorithmic}
-
-	\caption{Study procedure of the empirical chunk retrieval
-	comparison study.}
-	\label{fig:study}
-\end{figure*}
+\subsection{Study Procedure}
 
 In the following, we explain our study design
 and introduce the metrics that
