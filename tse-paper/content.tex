@@ -194,7 +194,6 @@ recall with 70\% on average.
 However, CTS shows the best F$_{1}$-score
 of 51\%.
 
-
 Due to this ambiguity, we develop a set of guidelines
 on how to choose the most suitable build log analysis
 technique for the task at hand (step \circlenum{4}).
@@ -971,6 +970,8 @@ logs, i.e., techniques that do not aggregate, combine, or deduct
 information.
 We call such pieces of information in build logs
 \emph{chunks}.
+Depending on the format of the chunks within the build log we
+separate them into different \emph{structural categories}.
 
 Generally, chunk retrieval techniques
 can also be used to classify build logs, e.g.\, by checking
@@ -1134,8 +1135,8 @@ Model~\cite{schutze2008introduction} (VSM), an algebraic model for
 representing textual documents, we encode each line as a separate term
 vector.
 The terms that make up the dictionary are simply all words
-that appear in the example logs, where we separate words by spaces.
-% TODO Caro: complete above sentence if we separate by anything else
+that appear in the example logs, where we separate words by spaces and
+punctuation.
 The vectors comprise points counting
 how many times a word out of the dictionary appears in the specific
 line at hand.
@@ -1175,18 +1176,6 @@ run.
 When developers scavenge for a specific piece of information within a
 large amount of unstructured information, a first ad hoc approach they
 use is to search for related keywords.
-%% TODO Caro: I took this out as it interrupts reading flow.
-%% Do you
-%% agree?
-%% Indeed, this was one of the
-%% most common approaches we took when searching for the reason a build
-%% failed while creating the \emph{LogChunks} data
-%% set~\cite{brandt2020logchunks}.
-% ganz raus
-
-% C: motivation for KWS in LogChunks Paper
-% yeah we can maybe leave that out here (move to 'choice for crt'?)
-
 To investigate the performance of this approach, we designed a chunk
 retrieval technique mimicking this human behavior based on keyword
 search.
@@ -1195,17 +1184,9 @@ search.
 A set of keywords configures the chunk retrieval with KWS\@.
 To better
 compare KWS with PBE and CTS, we also configure it through examples.
-% TODO (resolved) associate is very abstract and tells us
-% less about what is going on than the new version
-
-% hope........
-% C: explain pure technique vs evaluate-able technique vs comparable
-% maybe! we can just replace the hope, or even refer to or logchunks
-% experience here / later TODO expect fix sentence!
-% TODO CARO extract a list of kewords that expecti nt the spec input and
 From each example, we extract a list of keywords that appeared in the
-training examples and that we exect to appear
-in, or close to, the targeted chunk of new input.
+training examples and that we expect to appear
+in, or close to, the targeted chunk in a new build log.
 Finally, we merge the lists from all examples to build one unified
 list of the most commonly occurring keywords for the search with KWS.
 
@@ -1327,21 +1308,6 @@ different.
 For example, it does not have the two extraneous newlines
 after the chunk.
 
-% TODO Caro: I like this explanation of structural categories and
-% would leave it here (slightly adapted), but I think
-% struct.
-%categ.
-%should be mentioned earlier -- not sure if you know a
-% better place, but how about sec.
-%3.1? i don't think people should
-% have to read an example section -- which they might skip -- to
-% get to know of this important concept!
-
-% C: indeed it's a bit too important to skip
-% though can we reasonably explain this without introducing the
-% exact techniques first?
-% we can also try to start with the example section
-
 When we train PBE with the two examples from \Cref{lst:chunk-example},
 it produces a regular expression program similar to the one presented
 in
@@ -1353,24 +1319,25 @@ to the training set (which has a
 different structural representation),
 PBE is not able to synthesize a program anymore and returns
 ``\texttt{no program found}.''
-% adapt because already introduced word TODO Caro
-% evtl kann man diesen satz rausnehmen
-We later express this difference in structural representation through
-separating log chunks into \emph{structural categories}.
 The chunks from \Cref{lst:chunk-example}
 are in the \emph{same structural category}, while the chunk from
 \Cref{lst:chunk-example-3} is in a
 \emph{different structural category}.
 
+
+If we train CTS with the example chunks from
+\Cref{lst:chunk-example},
 CTS will rank the lines from an analyzed build log which are most
-similar to the chunks in the training examples
-from \Cref{lst:chunk-example}.
+similar to the chunks in the training examples.
 It will then return the two lines ranked highest, as the chunks in
 the training examples have on average 2.0 lines.
-% TODO Caro: How well does it deal with the third example?
-% TS has so much magic & this example never ran in our study
-% note: I include no notice of how 'good' it runs here
-% if we look at the used words: they are very different in both examples
+In this example,
+CTS will have difficulty extracting the lines from
+\Cref{lst:chunk-example-3} as there are no words that appear
+in both the training and the test chunks.
+The same applies if we train with the first chunk from
+\Cref{lst:chunk-example} and try to retrieve the second chunk,
+as the only shared word is ``task''.
 
 Keywords that appear in or close to the chunk within
 the build log configure the technique KWS\@.
@@ -2102,35 +2069,24 @@ The first and most important aspect that influences the decision for a
 chunk retrieval technique is the presence of different structural
 categories in the log (or lack therefore).
 Are the targeted log
-chunks always present in the same structural way within the build logs
-?  If so, the chunks
+chunks always present in the same structural way
+within the build logs? If so, the chunks
 in all training examples and the analyzed build log are in the same
-structural category (first question in \Cref{fig:crt-recommendation})
-% TODO move up pbe then cts and then kws
-%TODO ...
-%and what? PBE is the best technique?
-% C: this is more a clearer 'introduction' to structural categories
-% if we believe this to be explained well enough here we can also
-% leave it out
+structural category (first question in \Cref{fig:crt-recommendation}).
 
-
-% TODO Caro: check that this does not get a mini paragraph
-If the chunks are from multiple structural categories and recall is
-more important than precision, we recommend to use KWS\@.
-% TODO because ?
-% C: looking for reference to tree figure or to results section?
-
-If precision is more important than recall, we
-recommend CTS, as \Cref{fig:crt-recommendation} shows on the
-right half of the decision tree.
-We also recommend CTS when the log chunks are
-from one structural category, when the user does not require high
-confidence in the precision or recall of the outcome, and when one
-would rather have output with low recall instead of no output at all.
 On the leftmost path of the decision tree,
 when the chunks are from one structural category and the user
 needs high confidence in the correctness of the output or prefers
 no output over output with low recall, we recommend PBE\@.
+If the user does not
+require high confidence in the correctness of the output and prefers
+to receive some output even with low recall, we recommend CTS\@.
+
+On the rightmost path of the decision tree,
+if the chunks are from multiple structural categories and recall is
+more important than precision, we recommend to use KWS\@.
+If precision is more important than recall, we
+recommend CTS\@.
 
 As a final recommendation, one could create a ``super analyzer'' by
 combining the different build log analysis techniques studied in this
@@ -2203,11 +2159,9 @@ PBE, trained with examples from each test tool separately.
 In this section, we outline threats to the validity of our work and
 show how we mitigated them.
 
-% TODO Caro: fill in the maven analyzer plugin and others.
-% C: aha did we evaluate them?...
-% C: so I'll add a few more and anecdotally say what each does?
-% the list will be in now way complete but maybe give an impression
-% as if we are close to what industry says.
+% M: fill in the maven analyzer plugin and others.
+% C: added to the jenkins bl analyzer, though I left out th maven
+% analyzer cause it has 1 star on github so kinda not 'industry' grade
 \textbf{Limitation to Scholarly Articles.} We limited our literature
 survey to scholarly articles.
 However, the field of build log analysis is extremely relevant to
@@ -2215,13 +2169,16 @@ practitioners, too.
 While it is difficult to systematically sight all such non-scientific
 material, we ran several Google search queries related to build log
 analysis and evaluated them informally.
-Our findings include the Jenkins build log analyzer and a web page
+Our findings include the Jenkins build log
+analyzer~\cite{jenkins2020failure-analyzer}, where a user can
+define custom regular expressions to parse a build log, and a web page
 on which Microsoft details how its CI service, Azure Pipelines, uses a
 PBE approach for certain log formats such as Python.
 This inspired the choice of PBE in \Cref{sec:choice}.
-% TODO Caro: end with claim that we are still close to
-% industry approaches
-
+Our impression is that non-scientific tools are often based on
+parsing with the help of regular expressions---similar to the
+techniques mentioned in scientific literature and the PBE technique
+we proposed.
 
 \textbf{Implementation.}
 Our results depend on the implementation of the investigated chunk
