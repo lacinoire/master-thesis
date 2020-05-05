@@ -1430,9 +1430,12 @@ up one \emph{example} in \emph{LogChunks}.
 
 \subsection{Procedure}
 
-% TODO Caro: Not 100% sure about the 6. I had a set of rlogs before
+% TODO Caro: Not 100% sure about the 6 in the
+% algorithm below.
+% I had a set of rlogs before
 % that, but then I think you only always retrieve 1 build
-% log. However, I also looked into the LogChunks data set and saw more
+% log.
+% However, I also looked into the LogChunks data set and saw more
 % than 6 logs per project sometimes ...
 
 % TODO: In addition, if there
@@ -1443,54 +1446,66 @@ up one \emph{example} in \emph{LogChunks}.
 \begin{figure*}[tb]
 \begin{algorithmic}[1]
 \ForEach{technique $\in\{PBE,CTS,KWS,RLR\}$}
- \ForEach{project  $\in$ \emph{LogChunks}} \Comment{$|\emph{LogChunks}|$=80}
-  \For{$i\gets 1, 5$} 
-   \State $logs \gets getBuildLogsByTime(project, i)$  \Comment{Logs returned ordered by time of creation.}
+ \ForEach{project  $\in$ \emph{LogChunks}}
+ \Comment{$|\emph{LogChunks}|$=80}
+  \For{$i\gets 1, 5$}
+   \State $logs \gets getBuildLogsByTime(project, i)$  \Comment{Logs
+   returned ordered by time of creation.}
    \State $rlog \gets  getBuildLogsByTime(project, 6)$
    \State $n \gets |structuralCategories(logs)|$
    \State
    \State $train(technique, logs)$
        \State $retrievedLines \gets run(technique, rlog)$
-       \State $metrics \gets calculateMetrics(retrievedLines, desiredLines(rlog))$
+       \State $metrics \gets calculateMetrics(retrievedLines,
+       desiredLines(rlog))$
        \State
        \State $saveMetrics(technique, project, n, i, metrics)$
-    
+
   \EndFor
  \EndFor
  \State $aggregateMetrics(technique)$
 \EndFor
 \end{algorithmic}
 
-	\caption{Study procedure of the empirical chunk retrieval comparison study.}
+	\caption{Study procedure of the empirical chunk retrieval
+	comparison study.}
 	\label{fig:study}
 \end{figure*}
 
 In the following, we explain our study design
 and introduce the metrics that
-we measure to answer RQ2. \Cref{fig:study} depicts the individual steps of our study as an algorithmic procedure.
+we measure to answer RQ2.
+\Cref{fig:study} depicts the individual steps of our study as an
+algorithmic procedure.
 
-For each chunk retrieval technique and each project, we create training example sets consisting of 1, 2, \dots 5 examples (lines \circlenum{1}--\circlenum{3}).
+For each chunk retrieval technique and each project, we create
+training example sets consisting of 1, 2, \dots 5 examples (lines
+\circlenum{1}--\circlenum{3}).
 We vary the training set size to measure how many examples we need to
 confidently configure a technique, adressing \textbf{RQ2.1}.
 
 The test set consists of the first build log produced
 chronologically after the build logs in the training set \circlenum{5}.
 This way, we train on examples from past build logs and test on
-a more recent log, just as one would apply these techniques in the real world.
+a more recent log, just as one would apply these techniques in the
+real world.
 
-In line \circlenum{6}, we obtain how many different structural categories are present in the trained logs and store this to be able to answer \textbf{RQ2.2}.
+In line \circlenum{6}, we obtain how many different structural categories
+are present in the trained logs and store this to be able to answer
+\textbf{RQ2.2}.
 
 In the next step, we configure the chosen chunk retrieval technique with
 the examples from the training set \circlenum{8} and run the technique
 on the
 training set, producing the retrieval output \circlenum{9}.
 
-Based on this, we calculate the following metrics in \emph{calculateMetrics}, addressing \textbf{RQ2.3}:
+Based on this, we calculate the following metrics in
+\emph{calculateMetrics}, addressing \textbf{RQ2.3}:
 
 \vspace{0.2cm}
 \begin{itemize}[leftmargin=0.4cm] \itemsep1em
-	\item $|\mbox{True\ Positives}| = \mathit{DesiredLines} \cap
-	\mathit{RetrievedLines}$ \vspace{0.2cm}\\
+	\item $|\mbox{True\ Positives}| = \mathit{desiredLines} \cap
+	\mathit{retrievedLines}$ \vspace{0.2cm}\\
 	True positives are lines that appear both in the output of a
 	technique as well as the chunk defined in the
   test example.
@@ -1501,12 +1516,12 @@ Based on this, we calculate the following metrics in \emph{calculateMetrics}, ad
 	% the same information so if someone asks we can defend I think
 
 	\item $\mbox{Precision} = \dfrac{|\mathit{True\
-	Positives}|}{|\mathit{RetrievedLines}|}$ \vspace{0.21cm} \\
+	Positives}|}{|\mathit{retrievedLines}|}$ \vspace{0.21cm} \\
 	Precision of a chunk retrieval describes which proportion of
 	the retrieved lines were actually desired.
 
 	\item $\mbox{Recall} =
-	\dfrac{|\mathit{True\ Positives}|}{|\mathit{DesiredLines}|}$
+	\dfrac{|\mathit{True\ Positives}|}{|\mathit{desiredLines}|}$
 	\vspace{0.2cm} \\
 	Recall of a chunk retrieval describes which proportion of the
 	desired lines were retrieved.
@@ -1541,7 +1556,9 @@ Based on this, we calculate the following metrics in \emph{calculateMetrics}, ad
 \vspace{0.2cm}
 
 \noindent
-Finally, we aggregate the results to be able to reason per technique \circlenum{15}, completing our study design to answer \textbf{RQ2} overall.
+Finally, we aggregate the results to be able to reason per technique
+\circlenum{15}, completing our study design to answer \textbf{RQ2}
+overall.
 
 \subsection{Results}
 In this section, we first present the metrics for each chunk retrieval
@@ -1580,7 +1597,7 @@ random baseline.
   \begin{lstlisting}[breaklines=true,frame=blr]
 	from line 5 of sass/components/_all.sass
   \end{lstlisting}
-	\caption{Actual chunk retrieval output ($RetrievedLines$
+	\caption{Actual chunk retrieval output ($retrievedLines$
 	in yellow).}
 	\label{lst:pbe-part-success-output}
 \end{subfigure}
@@ -1601,7 +1618,7 @@ random baseline.
   \begin{lstlisting}[breaklines=true,frame=blr]
   Use --trace for backtrace.
   \end{lstlisting}
-	\caption{Targeted chunk ($DesiredLines$ in blue).}
+	\caption{Targeted chunk ($desiredLines$ in blue).}
 	\label{lst:pbe-part-success-desired}
 \end{subfigure}
   \caption{Example of a partially successful retrieval
