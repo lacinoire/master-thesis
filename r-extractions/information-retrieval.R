@@ -77,6 +77,7 @@ run_learning_step <- function(train_examples, test_examples, step_results) {
       doc_proportion_max = 0.7,
       doc_proportion_min = 0
     )
+  
   vectorizer <- vocab_vectorizer(pruned_vocab)
   
   dtm_train <- create_dtm(it_train, vectorizer)
