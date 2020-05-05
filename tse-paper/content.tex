@@ -477,7 +477,7 @@ results of this step~\cite{brandt2020chunk-replication}.
 
 \subsection{Results}
 % tense: past
-\addtolength{\tabcolsep}{-5pt}
+
 \label{sec:litsurresults}
 
 In this section, we first give a general overview over our paper
@@ -593,6 +593,8 @@ build information, an information source for further tools aiming
 to fix a failing build~\cite{vassallo2018un-break}.
 
 \subsubsection{Which analysis techniques exist? (RQ 1.2)}
+
+\addtolength{\tabcolsep}{-5pt}
 \begin{table*}[tbhp]
 \tinyish
 \centering
@@ -1000,6 +1002,7 @@ smallest piece of text it can return (e.g., a line, or a word).
 \emph{Running a
 chunk retrieval technique} means
 % TODO what does it mean ``to apply?''
+% C: run vs apply / show 332 heading / maybe take only run
 applying a fully configured
 technique to a build log.
 The technique then outputs a (possibly empty) list of substrings of the
@@ -1060,8 +1063,10 @@ specific strings, we automatize it as \emph{Keyword Search (KWS)}.
 
 % TODO Caro, can you check this? Also I did not find any literature
 % references to CTS.
-It does not seem to be a common technique?
+% It does not seem to be a common technique?
 % Where does the name come from then?
+
+% C: text similarity and three letter acronyms
 Finally, from the fields of information retrieval (IR) and natural
 language
 processing (NLP), we leverage a
@@ -1185,8 +1190,12 @@ use is to search for related keywords.
 %% most common approaches we took when searching for the reason a build
 %% failed while creating the \emph{LogChunks} data
 %% set~\cite{brandt2020logchunks}.
+
+% C: motivation for KWS in LogChunks Paper
+% yeah we can maybe leave that out here (move to 'choice for crt'?)
+
 To investigate the performance of this approach, we designed a chunk
-retrieval technique mimcing this human behavior based on keyword
+retrieval technique mimicking this human behavior based on keyword
 search.
 
 \subsubsection{Configuration}
@@ -1195,6 +1204,11 @@ To better
 compare KWS with PBE and CTS, we also configure it through examples.
 % TODO (resolved) associate is very abstract and tells us
 % less about what is going on than the new version
+
+% hope........
+% C: explain pure technique vs evaluate-able technique vs comparable
+% maybe! we can just replace the hope, or even refer to or logchunks
+% experience here / later
 From each example, we extract a list of keywords that we hope should
 also appear in, or close to, the targeted chunk of new input.
 Finally, we merge the lists from all examples to build one unified
@@ -1221,7 +1235,10 @@ situation of guessing blindly which lines are interesting.
 The only configuration option for RLR is the number of lines it should
 retrieve.
 For a comparison to the other techniques (whose number of
-% TODO Caro: but wait, this is not really true for KWS, right?
+% M: but wait, this is not really true for KWS, right?
+% TODO Moritz: C: sure it is.
+
+% for KWS we vary the number of lines we extract around a found word
 returned lines is dynamic), we configure RLR to return the average
 number of lines in the chunks of the training examples.
 
@@ -1321,12 +1338,17 @@ after the chunk.
 % TODO Caro: I like this explanation of structural categories and
 % would leave it here (slightly adapted), but I think
 % struct.
-categ.
-should be mentioned earlier -- not sure if you know a
+%categ.
+%should be mentioned earlier -- not sure if you know a
 % better place, but how about sec.
-3.1? i don't think people should
+%3.1? i don't think people should
 % have to read an example section -- which they might skip -- to
 % get to know of this important concept!
+
+% C: indeed it's a bit too important to skip
+% though can we reasonably explain this without introducing the
+% exact techniques first?
+% we can also try to start with the example section
 
 When we train PBE with the two examples from \Cref{lst:chunk-example},
 it produces a regular expression program similar to the one presented
@@ -1352,6 +1374,9 @@ from \Cref{lst:chunk-example}.
 It will then return the two lines ranked highest, as the chunks in
 the training examples have on average 2.0 lines.
 % TODO Caro: How well does it deal with the third example?
+% TS has so much magic & this example never ran in our study
+% note: I include no notice of how 'good' it runs here
+% if we look at the used words: they are very different in both examples
 
 Keywords that appear in or close to the chunk within
 the build log configure the technique KWS\@.
@@ -1374,8 +1399,9 @@ R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 \section{Empirical Comparison Study}
 \label{sec:study}
 
-% TODO: decide if keep or redo
-% if keep, Caro do noted improvements
+% TODO Moritz: redo figure
+% depending on the size of changes / keeping figure uniformity
+% we can also do 'pair-animating'
 \begin{figure*}[tb]
 	\centering
 	\includegraphics[width=\textwidth, trim={1.6cm 2.5cm 0.2cm 4.8cm},
@@ -1385,7 +1411,7 @@ R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 \end{figure*}
 
 In the literature survey, we noted that previous work seemed to choose
-a log analysis technique arbitrarly and that is a lack of guidance on
+a log analysis technique arbitrarily and that is a lack of guidance on
 when to use which technique.
 % add (see \Cref{sec:lit-sur:discussion}) ?
 To address this, in this section, we conduct an empirical study
@@ -1402,10 +1428,11 @@ This leads us to the following research questions:
 \begin{simplebox}[minipage boxed title*=-1.5cm,
 attach boxed title to top center={yshift=-6mm}]
 {\textbf{RQ2:} How do build log analysis techniques compare?}
+% TODO: can we say 'training examples' in 22?
 \begin{itemize}[leftmargin=1.2cm]
-  \item[\textbf{RQ2.1:}] With how many examples does a technique
-  perform best?
-  \item[\textbf{RQ2.2:}] How structurally variable can configuration
+  \item[\textbf{RQ2.1:}] With how many training examples does a
+	technique perform best?
+  \item[\textbf{RQ2.2:}] How structurally variable can training
   examples be?
   \item[\textbf{RQ2.3:}] How accurate are the retrievals of a technique?
 \end{itemize}
@@ -1433,7 +1460,6 @@ the chunk that describes why the build
 failed---the information targeted by most of the works in our
 literature survey (see \Cref{sec:lit-sur:discussion}).
 To be able to configure the keyword search technique,
-% TODO (resolved) the data set cannot associate anything
 we associated each chunk in the data set with keywords that we
 would use to search for the selected chunk within the log.
 In
@@ -1441,6 +1467,7 @@ addition, we categorized the log chunks according to their format
 within the log.
 % TODO Are surrounding markings really the only structural
 % category element? I doubt that
+% C: ?
 If the chunks were, for example, surrounded by the same markings
 within the log, we assigned them the \emph{same structural category},
 as described in \Cref{sec:crt-example}.
@@ -1448,12 +1475,18 @@ as described in \Cref{sec:crt-example}.
 % TODO what does this refer to here? Make it clearer.
 %It would refer to the strcutrual categories but
 % that is already in the list?
+% C: are you talking about the following or the previous paragraph?
+% the following one is a more explicit definition of 'example' as
+% used in the study
 
 % TODO couldn't it also be chunks? why corresponding?
+% C: you took that out already? a (maybe unecessary) specification
+% it is always ONE chunk !
 As explained in \Cref{sec:crt-characteristics}, examples are the basic
 unit by which we configure each technique.
 The full build log text,
-chunk(s), search keywords, and the assigned structural categories make
+the chunk, the search keywords, and the assigned
+structural category make
 up one \emph{example} in \emph{LogChunks}.
 
 
@@ -1465,7 +1498,10 @@ we measure to answer RQ2.
 
 % TODO Didn't we above define ``run'' instead of apply?
 % Shouldn't we then also use it here?
+% C: see discussion further above about run vs apply
+% if we adapt the headings (332 and so on) we can use run
 % TODO wow, this starts already super confusing
+% C: T.T
 We run each of the three chunk retrieval techniques
 on all of the 80 projects in
 \emph{LogChunks} \circlenum{1}.
@@ -1923,28 +1959,41 @@ techniques.}
 
 \resizebox{\columnwidth}{!}{%
 \centering
-\begin{tabular}{llll}
+\begin{tabular}{lllll}
   \toprule
-  & \textbf{PBE} & \textbf{CTS} & \textbf{KWS} \\
+  & & \textbf{PBE} & \textbf{CTS} & \textbf{KWS} \\
+
+	\midrule
+
+	\textbf{RQ2.1} & \textbf{Training Set Size} & 2 & no influence &
+	2 \\
+
   \midrule
-  \textbf{Structural Categories} & 1 & less is better & \makecell[l]{best
-  1 \\
-  multiple okay} \\
-  \midrule
-  \textbf{Training Set Size} & 2 & no influence & 2 \\
-    \midrule
-  \textbf{Precision} & \makecell[l]{high \\ (if synthesis succeeds)} &
-  medium &
-  low \\
-    \midrule
-  \textbf{Recall} & \makecell[l]{high \\ (if synthesis succeeds)} &
-  medium &
-  high \\
-    \midrule
-  \makecell[l]{\textbf{Confidence in} \\ \textbf{Output Correctness}}
+
+	\textbf{RQ2.2} & \textbf{Structural Categories} & 1 & less
+	is better
+	& \makecell[l]{best 1 \\ multiple okay} \\
+
+	\midrule
+
+  \multirow{6}{*}{\textbf{RQ2.3}} & \textbf{Precision} &
+	\makecell[l]{high \\ (if synthesis succeeds)} &
+  medium & low \\
+
+	\cmidrule{2-5}
+
+  & \textbf{Recall} & \makecell[l]{high \\ (if synthesis succeeds)} &
+  medium & high \\
+
+	\cmidrule{2-5}
+
+  & \makecell[l]{\textbf{Confidence in} \\ \textbf{Output Correctness}}
   & high & low &
-  \makecell[l]{low (precision) \\ high (recall)} \\	\midrule
-  \textbf{Output Consumer} & program & human & human \\
+  \makecell[l]{low (precision) \\ high (recall)} \\
+
+	\cmidrule{2-5}
+
+  & \textbf{Output Consumer} & program & human & human \\
   \bottomrule
 \end{tabular}%
 }
@@ -1953,7 +2002,19 @@ techniques.}
 \subsubsection{Program Synthesis by Example (PBE)}
 
 \noindent
-\textbf{Configuration and Input.}
+\textbf{With how many training examples does PBE perform best? (RQ2.1).}
+When the training examples are of the same structure, one or two
+two training examples are enough input for PROSE to synthesize a regular
+expression program with good recall.
+In the study, additional training
+examples from the same structural category
+did not improve the chunk retrieval.
+In fact, unless they
+were in some sense redundant, adding more training examples even
+hindered the applicability of PBE.
+
+\noindent
+\textbf{How structurally variable can training examples be? (RQ2.2).}
 The study results show that chunk retrieval with PBE gives best
 results when the log chunks are structurally identical.
 This is
@@ -1966,18 +2027,8 @@ To extract for example the reason a build failed, the log
 passage describing the failure would always have to start and
 end the same way.
 
-When the training examples are of the same structure, one or two
-two training examples are enough input for PROSE to synthesize a regular
-expression program with good recall.
-In the study, additional training
-examples from the same structural category
-did not improve the chunk retrieval.
-In fact, unless they
-were in some sense redundant, adding more training examples even
-hindered the applicability of PBE.
-
 \noindent
-\textbf{Retrieval Output Usage.}
+\textbf{How accurate are the retrievals of PBE? (RQ2.3).}
 If the program synthesis succeeds and applying the regular expression
 program yields an output, PBE has high precision and recall.
 The technique
@@ -1991,12 +2042,9 @@ well-suited for machine consumption and therefore automatic onward
 processing.
 
 \subsubsection{Common Text Similarity (CTS)}
-\noindent
-\textbf{Configuration and Input.}
-Similar to PBE, chunk retrieval using CTS yields better results the
-fewer structural categories are present in the training and test
-examples.
 
+\noindent
+\textbf{With how many training examples does CTS perform best? (RQ2.1).}
 The number of training examples had no noticeable influence on
 precision or recall.
 Information retrieval techniques
@@ -2007,7 +2055,13 @@ examples yield improvements in the chunk retrieval over a single
 training example.
 
 \noindent
-\textbf{Retrieval Output Usage.}
+\textbf{How structurally variable can training examples be? (RQ2.2).}
+CTS yields better results the
+fewer structural categories are present in the training and test
+examples.
+
+\noindent
+\textbf{How accurate are the retrievals of CTS? (RQ2.3).}
 CTS has good precision and recall on average, though with a high
 variation.
 This means that the quality of an output by CTS is hard to
@@ -2018,7 +2072,14 @@ developers an email with the extracted build failure reason.
 
 \subsubsection{Keyword Search (KWS)}
 \noindent
-\textbf{Configuration and Input.}
+\textbf{With how many training examples does KWS perform best? (RQ2.1).}
+Going from one to two training examples, KWS's recall improves
+significantly.
+However, further enlarging the training set
+does not lead to further improvements.
+
+\noindent
+\textbf{How structurally variable can training examples be? (RQ2.2).}
 KWS has a higher recall than the two other techniques for multiple
 structural categories present in the training and test examples.
 This
@@ -2030,13 +2091,8 @@ if a build can fail in various steps logged by different build
 tools and no
 pre-categorization of where the build failed is available.
 
-Going from one to two training examples, KWS's recall improves
-significantly.
-However, further enlarging the training set
-does not lead to further improvements.
-
 \noindent
-\textbf{Retrieval Output Usage.}
+\textbf{How accurate are the retrievals of KWS? (RQ2.3).}
 While KWS has the highest recall of all three techniques, its
 precision is the lowest.
 The output of a chunk retrieval with KWS is
@@ -2077,10 +2133,17 @@ chunks always present in the same structural way within the build logs
 in all training examples and the analyzed build log are in the same
 structural category
 %TODO ...
-and what? PBE is the best technique?
+%and what? PBE is the best technique?
+% C: this is more a clearer 'introduction' to structural categories
+% if we believe this to be explained well enough here we can also
+% leave it out
+
+
+% TODO Caro: check that this does not get a mini paragraph
 If the chunks are from multiple structural categories and recall is
 more important than precision, we recommend to use KWS\@.
 % TODO because ?
+% C: looking for reference to tree figure or to results section?
 
 If precision is more important than recall, we
 recommend CTS, as \Cref{fig:crt-recommendation} shows on the
@@ -2166,17 +2229,23 @@ In this section, we outline threats to the validity of our work and
 show how we mitigated them.
 
 % TODO Caro: fill in the maven analyzer plugin and others.
+% C: aha did we evaluate them?...
+% C: so I'll add a few more and anecdotally say what each does?
+% the list will be in now way complete but maybe give an impression
+% as if we are close to what industry says.
 \textbf{Limitation to Scholarly Articles.} We limited our literature
 survey to scholarly articles.
 However, the field of build log analysis is extremely relevant to
 practitioners, too.
 While it is difficult to systematically sight all such non-scientific
 material, we ran several Google search queries related to build log
-analysis and evaluted them informally.
+analysis and evaluated them informally.
 Our findings include the Jenkins build log analyzer and a web page
 on which Microsoft details how its CI service, Azure Pipes, uses a
 PBE-approach for certain log formats such as Python.
 This inspired the choice of PBE in \Cref{sec:choice}.
+% TODO Caro: end with claim that we are still close to
+% industry approaches
 
 
 \textbf{Implementation.}
@@ -2214,11 +2283,6 @@ Tuning the text similarity
 meta-parameters more to the specific use case of chunk retrieval from
 build logs would yield better chunk retrieval results.
 
-% TODO (resolved)
-% kinda uncreative..
-% not sure what another example would be?
-% not sure if this adds much on top of the sentences further up
-%% Yup, it's super cool and I expanded it a bit
 Overall, we believe our implementations and their weaknesses stand
 prototypical for the techniques.
 We tried to limit idiosyncrasies as
@@ -2261,12 +2325,11 @@ set size of five is sufficiently large for research evaluation.
 
 \textbf{Few Samples with Many Structural Categories.}
 Our comparison study includes fewer measurements with many structural
-categories than with one structural category category (50.25\% one,
-% TODO This does not add up to 1.
-Please no decimals,
-% we do not need so much precision here.
-Also tell % of what?
-33.75\% two, 13.75\% more than two).
+categories than with one structural category category.
+50\% of the measurements were conducted with one structural category
+in the training and test sets
+(34\% with two, 16\% with more than two categories).
+% TODO check resolved: Also tell % of what?
 This distribution mirrors the
 structural categories in a real-world data set, where there were
 mostly few structural categories within one project.
@@ -2281,7 +2344,7 @@ In this section, we describe what we believe are fruitful future
 research directions in the field of build log analysis.
 We base our
 assessment on the results of the literature survey and combine it with
-findings from our technique comparsion study.
+findings from our technique comparison study.
 
 \textbf{Systematic Survey of Industry Approaches for Build
 Log Analysis.}	Our survey is limited to scholarly material.
@@ -2305,10 +2368,9 @@ We created the
 the comparative
 study in this paper, though it can be the basis for various further
 analyses of build log data.
-% TODO Passive overflow
-The keywords, for example, can be
-investigated to answer which keywords are used to search for the
-reason the build failed within build logs.
+For example, we can investigate the keywords to answer which
+keywords developers use to mark errors that lead to a build failure
+within build logs.
 
 \textbf{Cross-Project Build Log Analysis.}
 We trained and
@@ -2409,7 +2471,7 @@ We evaluated the performance of these chunk retrieval techniques on the
 CTS had the highest average F$_{1}$-score with 51\%, while the other
 techniques showed higher average scores for precision (95\%, PBE) and
 recall (70\%, KWS).
-Overall, all technqiues vastly outperformed a
+Overall, all techniques vastly outperformed a
 baseline of random line retrieval.
 
 To guide researchers and developers on which technique suits their
