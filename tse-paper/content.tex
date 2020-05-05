@@ -1135,7 +1135,8 @@ Model~\cite{schutze2008introduction} (VSM), an algebraic model for
 representing textual documents, we encode each line as a separate term
 vector.
 The terms that make up the dictionary are simply all words
-that appear in the example logs. We separate words by spaces and
+that appear in the example logs.
+We separate words by spaces and
 punctuation.
 The vectors comprise points counting
 how many times a word out of the dictionary appears in the specific
@@ -1360,16 +1361,6 @@ R and the {\tt text2vec} library~\cite{text2vec2019webpage}.
 \section{Empirical Comparison Study}
 \label{sec:study}
 
-% TODO Moritz: redo figure
-% depending on the size of changes / keeping figure uniformity
-% we can also do 'pair-animating'
-\begin{figure*}[tb]
-	\centering
-	\includegraphics[width=\textwidth, trim={1.6cm 2.5cm 0.2cm 4.8cm},
-  clip]{img/study.pdf}
-	\caption{Study design of the technique comparison study.}
-	\label{fig:study}
-\end{figure*}
 
 In the literature survey, we noted that previous work seemed to choose
 a log analysis technique arbitrarily and that is a lack of guidance on
@@ -1437,52 +1428,64 @@ structural category make
 up one \emph{example} in \emph{LogChunks}.
 
 
-\subsection{Study Design}
+\subsection{Procedure}
 
-In the following, we explain the individual steps of our study design
+% TODO Caro: Not 100% sure about the 6. I had a set of rlogs before
+% that, but then I think you only always retrieve 1 build
+% log. However, I also looked into the LogChunks data set and saw more
+% than 6 logs per project sometimes ...
+
+% TODO: In addition, if there
+% are more than 6 logs per project, aren't we missing another
+% indirection in the algorithm?
+
+
+\begin{figure*}[tb]
+\begin{algorithmic}[1]
+\ForEach{technique $\in\{PBE,CTS,KWS,RLR\}$}
+ \ForEach{project  $\in$ \emph{LogChunks}} \Comment{$|\emph{LogChunks}|$=80}
+  \For{$i\gets 1, 5$} 
+   \State $logs \gets getBuildLogsByTime(project, i)$  \Comment{Logs returned ordered by time of creation.}
+   \State $rlog \gets  getBuildLogsByTime(project, 6)$
+   \State $n \gets |structuralCategories(logs)|$
+   \State
+   \State $train(technique, logs)$
+       \State $retrievedLines \gets run(technique, rlog)$
+       \State $metrics \gets calculateMetrics(retrievedLines, desiredLines(rlog))$
+       \State
+       \State $saveMetrics(technique, project, n, i, metrics)$
+    
+  \EndFor
+ \EndFor
+ \State $aggregateMetrics(technique)$
+\EndFor
+\end{algorithmic}
+
+	\caption{Study procedure of the empirical chunk retrieval comparison study.}
+	\label{fig:study}
+\end{figure*}
+
+In the following, we explain our study design
 and introduce the metrics that
-we measure to answer RQ2.
+we measure to answer RQ2. \Cref{fig:study} depicts the individual steps of our study as an algorithmic procedure.
 
-We run each of the three chunk retrieval techniques
-on all of the 80 projects in
-\emph{LogChunks} \circlenum{1}.
-For each project, we select training sets of size 1, 2, \dots 5
-\circlenum{2}.
+For each chunk retrieval technique and each project, we create training example sets consisting of 1, 2, \dots 5 examples (lines \circlenum{1}--\circlenum{3}).
 We vary the training set size to measure how many examples we need to
-confidently configure a technique.
-The training set is so small because the examples have to be
-manually created by a user.
-A larger training set would oppose our goal of providing techniques
-that can be configured with little effort
-(see \Cref{sec:lit-sur:discussion}).
+confidently configure a technique, adressing \textbf{RQ2.1}.
 
-The test set consists of an example based on the build log produced
-chronologically after the build logs in the training set \circlenum{3}.
+The test set consists of the first build log produced
+chronologically after the build logs in the training set \circlenum{5}.
 This way, we train on examples from past build logs and test on
-more recent logs.
-% We chose a test set size of 1, as users of the techniques
-% should receive reliable results on every build log they analyze.
-% M: and why is this important? Doesn't everyone want such stability
-%of results?
-% C: motivation why only one test example.
-% we can also leave that out
-% and answer if we are asked about it
+a more recent log, just as one would apply these techniques in the real world.
 
-In the next step, we configure a chunk retrieval technique with
-the examples from the training set \circlenum{4} and run the technique
+In line \circlenum{6}, we obtain how many different structural categories are present in the trained logs and store this to be able to answer \textbf{RQ2.2}.
+
+In the next step, we configure the chosen chunk retrieval technique with
+the examples from the training set \circlenum{8} and run the technique
 on the
-training set \circlenum{5}, which produces the retrieval output
-\circlenum{6}.
+training set, producing the retrieval output \circlenum{9}.
 
-Based on this, we collect retrieval performance measurements \circlenum{7}
-for
-the size of the training set (\textbf{RQ2.1}),
-the number of structural categories in the training
-set (\textbf{RQ2.2}),
-the lines of the retrieval output ($\mathit{RetrievedLines}$),
-and the oracle: the output defined in the test example
-($\mathit{DesiredLines}$).
-From these we calculate accuracy metrics (\textbf{RQ2.3}):
+Based on this, we calculate the following metrics in \emph{calculateMetrics}, addressing \textbf{RQ2.3}:
 
 \vspace{0.2cm}
 \begin{itemize}[leftmargin=0.4cm] \itemsep1em
@@ -1535,9 +1538,13 @@ From these we calculate accuracy metrics (\textbf{RQ2.3}):
 	and if the retrieved lines contain none of the desired lines
 	a retrieval was unsuccessful.
 \end{itemize}
+\vspace{0.2cm}
+
+\noindent
+Finally, we aggregate the results to be able to reason per technique \circlenum{15}, completing our study design to answer \textbf{RQ2} overall.
 
 \subsection{Results}
-In this section, we first present the results for each chunk retrieval
+In this section, we first present the metrics for each chunk retrieval
 technique separately.
 Afterwards, we compare the three techniques with each other and with a
 random baseline.
@@ -2325,13 +2332,17 @@ Beller et al.
 used to create TravisTorrent~\cite{beller2017oops}.
 
 One could also interpret the techniques we implemented
-differently. For example, for CTS, we look for similarity between the
-lines we want to extract. One could find similarity between the
+differently.
+For example, for CTS, we look for similarity between the
+lines we want to extract.
+One could find similarity between the
 context that surrounds them, instead of the actual chunk to be
-extracted. The intuition behind this approach would be that often the
+extracted.
+The intuition behind this approach would be that often the
 error chunk is variable, but the context around it is
 stable---essentially the principle by which extraction by PBE
-works. Such a version of ``inverse CTS'' might yield better retrieval
+works.
+Such a version of ``inverse CTS'' might yield better retrieval
 results.
 
 \textbf{Refinement of Retrieval Quality.} We
@@ -2365,10 +2376,12 @@ following improvements:
   investigate improvements in preprocessing of the log text, in
   tokenization of the log lines into terms, and in stop words
   lists.
-  
+
   For CTS, we currently have no concept of semantic
-  similarity. Therefore, the synonyms ``Fail'' and ``Failure'' would
-  fall into two different frequency counts. Using a
+  similarity.
+Therefore, the synonyms ``Fail'' and ``Failure'' would
+  fall into two different frequency counts.
+Using a
   wordnet~\cite{pedersen2004wordnet} or other NLP techniques to
   capture synonyms might improve similarity measure between related
   lines, and therefore overall performance of CTS.
@@ -2400,7 +2413,7 @@ while there is a niche for custom parsers and plugins for very popular
 tools such as the Java ecosystem, there is a wide variety of build
 tool and environment combinations for which the creation of such
 bespoke tooling is unlikely.
-Overall, we showed the need for a new
+Overall, this study showed the need for a new
 generation of generic and automated build log analysis techniques that
 need little effort to set up, both for practitioners as well as
 researchers.
