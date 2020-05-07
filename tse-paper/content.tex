@@ -1156,8 +1156,9 @@ To improve the similarity calculation, we prune very often or
 very rarely appearing words.
 Finally, the
 algorithm weighs the vectors using \emph{term frequency-inverse
-document frequency (TF-IDF)}, a best practice for natural
-language queries~\cite{lee1997document}.
+document frequency (TF-IDF)}, an established technique to give a higher
+impact to words that occur in a smaller number of
+documents~\cite{lee1997document}.
 
 \subsubsection{Chunk Retrieval Run}
 To retrieve the desired information from a build log, we encode every
@@ -1857,6 +1858,16 @@ the number of structural categories present.
 Again, all techniques---except for PBE with multiple structural
 categories---yield better retrievals than RLR.
 
+The runtime of the evaluation varied from technique to technique.
+The 400 runs of PBE took 19 hours to complete on a dedicated server.
+This is due to the long time needed for the program synthesis to
+complete, which increases the more training examples are used and
+ranges from about 10 to 30 minutes.
+Running a configured technique takes a similar amount of time for all
+techniques.
+Executing the 400 evaluation run for CTS took 15 minutes, for KWS 25
+minutes and for RLR 5 minutes.
+
 \begin{figure}[!t]
 		\centering
 		\includegraphics[width=\columnwidth,
@@ -2114,52 +2125,36 @@ processing or interpretation of the result.
 \subsubsection{Example Use Cases}
 To illustrate how one would use the decision tree to find a suitable
 chunk retrieval technique we describe here two concrete examples:
-a software
-team
-wanting to monitor their build performance and a
+a software team monitoring build performance and a
 group of researchers investigating why builds fail.
 
 In the first example, a software development team wants to monitor
 the performance of the phases within their CI build.
 They are using
-Travis CI, which measures the duration of build phases and documents
-this within the build log.
-As all log statements that report timing
-measurements are formatted the same way, the targeted log chunks are
-from one structural category.
+Travis CI, which documents the duration of build phases
+within the build log.
+As all relevant log statements are formatted the same way,
+the targeted log chunks are from one structural category.
 Therefore, following the leftmost path in
 \Cref{fig:crt-recommendation},
-the development team should use
-PBE to retrieve the duration of a build phase.
+they should use PBE.
 
-In the second example, a researcher wants to investigate whether
-small or large groups of test cases
-cause CI failures.
-They gather
-CI build logs from various projects.
-Their aim is to extract the names of the
-failing test cases from the build logs.
-When they use the
-decision tree to select a chunk retrieval technique, they
-first have to estimate how uniform the representation of the failing
-test cases is in the investigated build logs.
-As the researchers are
-covering a wide range of test tools, the
-log chunks they target are in various, non-predictable structural
+In the second example, researchers wants to investigate the names
+of test cases that cause build failures.
+Their study should cover a wide range of test tools, therefore are the
+log chunks they target in various, non-predictable structural
 representations.
-The next question is whether they value precision
-over recall.
 As they have to manually inspect the results of both CTS
-and KWS, they choose recall over precision to avoid having to inspect
-the whole log in case the relevant chunk---the name of the failing
-test case---was not retrieved.
+and KWS, they prefer higher recall over higher precision to
+avoid inspecting
+the whole log in case the relevant chunk was not retrieved.
 Therefore, following the rightmost path in
 \Cref{fig:crt-recommendation},
 the decision tree recommends the researcher to use KWS\@.
-An
-alternate, potentially more laborious but also more precise solution
-could be for researchers to first separate the CI build logs by the
-test tool responsible for logging the test results.
+
+An alternate, more precise solution
+could be for researchers to first separate the build logs by the
+test tool responsible for logging the results.
 Then, the
 targeted log chunks are from one structural category and they can use
 PBE, trained with examples from each test tool separately.
