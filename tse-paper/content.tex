@@ -150,11 +150,15 @@ openly available and documented in detail, together with
 guidance on when to use which technique.
 
 To fill this gap, we created three novel, prototypical implementations
-to automatically analyze build logs (step \circlenum{2}) by retrieving a substring (chunk)
-from the build log.  Our
+to automatically analyze build logs (step \circlenum{2}) by retrieving
+a substring (chunk)
+from the build log.
+Our
 implementations are based on the most widely used approaches
 from the literature survey and as such, are meant to serve as
-the ``smallest common denominator,'' with as little tuning and optimization as possible to stand protoypical for the ideas they represent:
+the ``smallest common denominator,'' with as little tuning and
+optimization as possible to stand prototypical for the ideas
+they represent:
 \begin{itemize}
 	\item \emph{Programming by Example (PBE)}, a technique
 	able to
@@ -318,17 +322,6 @@ In addition, almost all of the techniques developed to analyze system logs
 leverage their inherent event structure.
 Build logs generally lack this
 structure and thus require different bespoke approaches.
-% if included: this explanation is not understandable.
-% It needs to better embedded in the surrounding text
-% One example is comparing execution traces to reference
-% traces of intended behavior to detect anomalies.
-% Amar et
-% al.~\cite{amar2019mining} employed a similar approach to detect
-% relevant lines in build logs.
-% In this article, we focus on extracting a single specified information
-% from the build log as a whole with chunk retrieval techniques.
-% Chunk
-% retrieval techniques are used as a part of log parsing
 
 \subsection{Literature Selection}
 \label{sec:litsel}
@@ -864,101 +857,13 @@ build log
 analysis techniques that are \emph{automated},
 \emph{build tool-agnostic}
 and that a user can \emph{configure with little effort}.
-
-% In most cases, \emph{researchers analyze build logs from open
-% source projects}, obtained through Travis CI.
-% In addition, we saw several works that targeted the logs of only
-% one specific software project.
-
-% ----- custom build tools -----
-
-% What about the alternate solution, installing plugins to report
-% precise data? Ie., maven plugins
-% - Lots of effort
-% - not a generic solution
-% - how to analyze history where such plugins were not installed
-% - unclear which information you want
-
-
-% A downside of plugins, which are integrated into the CI flow similar to
-% Deflaker by Bell et al.~\cite{bell2018deflaker}, is that they are unable
-% to work on historic
-% builds, i.e., before the moment they were being deployed and that if
-% information has not been recorded from the beginning but turns out to
-% be important, it is impossible to retrieve later.i
-
-% \textbf{modifying the build output is not helpful}, as well as returning
-% precise data through other documents than the log.
-% This requires access to the build configuration, is also specific to
-% the used build tool and prohibits the analysis of
-% historical data.
-
-% \textbf{ embed custom plugin discussion}
-% %  very disconnected here
-% From this, we follow: 1) there is a niche for custom parsers or even
-% specialized plugins integrated into the build process to make
-% post-factum
-% parsing of logs redundant.
-% Plugins  similar to, for example, the Maven plugin to report test
-% executions Bell et al.
-% % cite
-% wrote, have the disadvantage of not being able to work on historic
-% builds.
-% 2) the large tail of seldomly-investigated environments would benefit
-% from the existence of a more generic
-% solution.
-
-% We implement build tool agnostic build log analysis
-% techniques, which are customized to a specific project by
-% the training examples which the user provides.
-% In addition, the \emph{LogChunks}~\cite{brandt2020logchunks}
-% data set we chose for our evaluation covers a broad range of build
-% environments.
-% % Further, the training examples also specify the log chunk targeted
-% by the
-% % retrieval, which enable our chunk retrieval techniques to retrieve
-% % a broad range of information from build logs.
-
-
-% This task of retrieving specific chunks of text from the
-% build logs can be solved by the chunk retrieval techniques we compare
-% in this article.
-% Our results can support researchers in choosing a
-% suitable technique for their data set of build logs and the chunks
-% they want to retrieve.
-% By relieving them from building custom parsers
-% we enable them to cover a much wider range of languages and build
-% tools in their studies.
-
-% Alt:
-%\section{Analyzing Build Logs with Chunk Retrieval Techniques}
 \section{Chunk Retrieval Techniques}
 \label{sec:techniques}
-% tense: past? except for general definitions / statements
 
 In this section, we formally define the concept of chunk
 retrievals from build logs.
 Then, we motivate and present the choice of three such techniques that
 we implemented and evaluated for this study.
-
-% TOO Caro: Not sure what to do with this ...
-%% In this section,
-%% we propose three so-called \emph{chunk retrieval techniques},
-%% which retrieve a specific substring (chunk)
-%% from a build log
-%% % TOO passive ....
-%% The techniques we propose run automatically
-%% and can be easily configured through examples.
-%% % TOO this should go under characteristics and not be in an
-% introduction
-%% to the section ...
-%% An example in this case consists of a build log together with the
-%% chunk that should be retrieved.
-%% A user---a developer or a researcher who wants to analyze
-%% build logs---provides these examples, which are easy to
-%% adapt whenever the analysis technique needs
-%% to support new cases.
-
 
 \subsection{Characteristics of Chunk Retrieval Techniques}
 \label{sec:crt-characteristics}
@@ -1036,7 +941,8 @@ retrieval techniques.
 Our findings of techniques in the literature
 survey (~\Cref{sec:litsurresults} and \Cref{tab:litsur:techniques} in
 particular) inspired the strategies that underlie them.
-\Cref{tab:techniques} summarizes the techniques, which we describe here in detail.
+\Cref{tab:techniques} summarizes the techniques, which we describe here
+in detail.
 
 Techniques based on custom parsers (\#1
 in \Cref{tab:litsur:techniques}) are inadequate for our comparison,
@@ -1069,13 +975,18 @@ the exact failure reasons might differ.
 
 Other techniques, specifically ones based on deep learning, are
 thinkable, but we did not evaluate them in this article since they did
-not emerge from the literature survey. Moreover, they typically
-require lots of training and tuning. However, our premise was to ease
-the creation of build log analysis for developers. First having to
+not emerge from the literature survey.
+Moreover, they typically
+require lots of training and tuning.
+However, our premise was to ease
+the creation of build log analysis for developers.
+First having to
 label thousands of logs on their project before they can start to
-analyze build logs is therfore infeasible. Similarly, as a manual
+analyze build logs is therefore infeasible.
+Similarly, as a manual
 effort, the \emph{LogChunks} data set is not big enough to support the
-training of such supervised techniques. Finding a way to train them in
+training of such supervised techniques.
+Finding a way to train them in
 an unsupervised fashion would rapidly increase their applicability and
 appeal to build log analysis.
 
@@ -2345,7 +2256,9 @@ In this article, we investigated the three chunk retrieval techniques PBE,
 CTS, and
 KWS\@.
 Our study design can be reused to evaluate other build log
-analysis techniques, such as for example deep learning-based techniques (discussed in \Cref{sec:choice}) or manually-written programs such as the parser Tomassi et al.
+analysis techniques, such as for example deep learning-based
+techniques (discussed in \Cref{sec:choice}) or manually-written
+programs such as the parser Tomassi et al.
 created for
 BugSwarm~\cite{tomassi2019bugswarm} or the regex-based approach
 Beller et al.
@@ -2399,9 +2312,9 @@ following improvements:
 
   For CTS, we currently have no concept of semantic
   similarity.
-Therefore, the synonyms ``Fail'' and ``Failure'' would
+	Therefore, the synonyms ``Fail'' and ``Failure'' would
   fall into two different frequency counts.
-Using a
+	Using a
   wordnet~\cite{pedersen2004wordnet} or other NLP techniques to
   capture synonyms might improve similarity measure between related
   lines, and therefore overall performance of CTS.
