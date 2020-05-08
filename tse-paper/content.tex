@@ -149,12 +149,12 @@ generation of automated techniques to analyze build logs, which are
 openly available and documented in detail, together with
 guidance on when to use which technique.
 
-To fill this gap, we created three novel, prototypical
-implementations to
-automatically analyze build logs (step \circlenum{2}).
-The ideas behind the implementations are based on promising approaches
-adopted from other research fields and existing build log analysis
-techniques by retrieving a substring (chunk) from the build log:
+To fill this gap, we created three novel, prototypical implementations
+to automatically analyze build logs (step \circlenum{2}) by retrieving a substring (chunk)
+from the build log.  Our
+implementations are based on the most widely used approaches
+from the literature survey and as such, are meant to serve as
+the ``smallest common denominator,'' with as little tuning and optimization as possible to stand protoypical for the ideas they represent:
 \begin{itemize}
 	\item \emph{Programming by Example (PBE)}, a technique
 	able to
@@ -225,7 +225,7 @@ analysis.
 \item three prototypical open-sourced implementations of
 promising chunk retrieval techniques.
 \item a large empirical study comparing the three techniques.
-\item systematic guidelines on when to use which technique.
+\item guidelines on when to use which technique.
 \item a detailed research map to inspire future contributions to the
 field.
 \item a documented replication package~\cite{brandt2020chunk-replication}.
@@ -1036,8 +1036,7 @@ retrieval techniques.
 Our findings of techniques in the literature
 survey (~\Cref{sec:litsurresults} and \Cref{tab:litsur:techniques} in
 particular) inspired the strategies that underlie them.
-\Cref{tab:techniques} summarizes the techniques, which describe in detail
-in the following.
+\Cref{tab:techniques} summarizes the techniques, which we describe here in detail.
 
 Techniques based on custom parsers (\#1
 in \Cref{tab:litsur:techniques}) are inadequate for our comparison,
@@ -1067,6 +1066,18 @@ Text Similarity (CTS)}.
 The intuition behind it is that the relevant,
 failing parts of build logs often look similar to each other, even if
 the exact failure reasons might differ.
+
+Other techniques, specifically ones based on deep learning, are
+thinkable, but we did not evaluate them in this article since they did
+not emerge from the literature survey. Moreover, they typically
+require lots of training and tuning. However, our premise was to ease
+the creation of build log analysis for developers. First having to
+label thousands of logs on their project before they can start to
+analyze build logs is therfore infeasible. Similarly, as a manual
+effort, the \emph{LogChunks} data set is not big enough to support the
+training of such supervised techniques. Finding a way to train them in
+an unsupervised fashion would rapidly increase their applicability and
+appeal to build log analysis.
 
 \subsection{Programming by Example (PBE)}
 The idea behind \emph{Programming by Example} is to automatically
@@ -2334,11 +2345,11 @@ In this article, we investigated the three chunk retrieval techniques PBE,
 CTS, and
 KWS\@.
 Our study design can be reused to evaluate other build log
-analysis techniques, such as the parser Tomassi et al.
-used to create
+analysis techniques, such as for example deep learning-based techniques (discussed in \Cref{sec:choice}) or manually-written programs such as the parser Tomassi et al.
+created for
 BugSwarm~\cite{tomassi2019bugswarm} or the regex-based approach
 Beller et al.
-used to create TravisTorrent~\cite{beller2017oops}.
+created for TravisTorrent~\cite{beller2017oops}.
 
 One could also interpret the techniques we implemented
 differently.
