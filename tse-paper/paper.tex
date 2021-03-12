@@ -116,6 +116,7 @@ grestore
 \renewcommand{\arraystretch}{1.4}
 \usepackage{makecell}
 \usepackage{relsize}
+\usepackage{subcaption}
 
 \usepackage[most]{tcolorbox}
 \newtcolorbox{simplebox}[2][]{enhanced,
@@ -206,7 +207,7 @@ In this paper, we give a systematic overview of the emerging field of build log 
 In a broad literature mapping survey, we first survey and categorize the existing methods to
 extract information chunks from build logs.
 In the second part of the paper, we then develop prototypical implementations of three promising
-techniques to analyze build logsx, namely program synthesis
+techniques to analyze build logs, namely program synthesis
 by example, textual similarity, and keyword search.
 Finally, we evaluate the techniques in an empirical study on
 almost 800 build logs 
@@ -219,7 +220,7 @@ and provide a recommendation scheme for when developers or researchers might
 use which technique.
 We close with a roadmap of important open problems in the field of
 build log analysis.
-\keywords{Build Log Analysis \and Chunk Retrieval \and Continuous Integration}
+\keywords{Continuous Integration \and Build Log Analysis \and Chunk Retrieval}
 \end{abstract}
 
 \lstset{
@@ -442,15 +443,12 @@ analysis.
 \item three prototypical open-sourced implementations of
 promising chunk retrieval techniques.
 \item a large empirical study comparing the three techniques.
-\item guidelines on when to use which technique.
-\item a detailed research map to inspire future contributions to the
-field.
 \item a documented replication package~\citep{brandt2020chunk-replication}.
 \end{itemize}
 
 \begin{figure}[tb]
 	\centering
-	\includegraphics[width=\columnwidth, clip]{img/lit_survey.pdf}
+	\includegraphics[width=0.7\columnwidth, clip]{img/lit_survey_svg2.pdf}
 	\caption{Literature selection (following Petersen et
 	al.~\citep{petersen2015guidelines}).}
 	\label{fig:lit-survey}
@@ -718,30 +716,25 @@ when the field of build log analysis started to grow rapidly.
 \label{sec:rq11}
 \begin{figure}
 \centering
-\begin{subfigure}[t]{\columnwidth}
-		\centering
-		\includegraphics[width=\columnwidth,
-		clip]{img/lit-sur/info_target.pdf}
-		\caption{Information targeted in build log analysis.}
-		\label{fig:litsur:info_target}
-
-\end{subfigure}\hspace{\fill}
-\begin{subfigure}[t]{\columnwidth}
-		\centering
-				\includegraphics[width=\columnwidth,
-				clip]{img/lit-sur/kind.pdf}
-		\caption{Class of information analyzed.}
-		\label{fig:litsur:kind}
-
-\end{subfigure}
-\begin{subfigure}[t]{\columnwidth}
-		\centering
-				\includegraphics[width=\columnwidth,
-				clip]{img/lit-sur/use.pdf}
-		\caption{Purpose of build log analysis.}
-		\label{fig:litsur:use}
-
-\end{subfigure}
+\begin{minipage}[b]{0.45\textwidth}
+		\subcaptionbox{Information targeted in build log analysis.
+		\label{fig:litsur:info_target}}
+		{\includegraphics[width=\textwidth,
+    trim={2cm 0 0 0},
+		clip]{img/lit-sur/info_target.pdf}}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+		\subcaptionbox{Class of information analyzed
+		\label{fig:litsur:kind}}
+		{\includegraphics[width=\textwidth,
+    clip]{img/lit-sur/kind.pdf}}
+    \vskip\baselineskip
+    \subcaptionbox{Purpose of build log analysis.
+		\label{fig:litsur:use}}
+		{\includegraphics[width=\columnwidth,
+		clip]{img/lit-sur/use.pdf}}
+\end{minipage}
 
 \caption{Multi-label categorization of the 61 relevant works.}
 \label{fig:litsur_r}
@@ -1135,13 +1128,13 @@ build log text.
 Name & Acronym & Identification Technique & Granularity &
 Configuration \\
 \midrule
-Programming by Example & PBE	 & Regular expression program
+\makecell[l]{Programming\\by Example} & PBE	 & Regular expression program
 & Character   & In/output examples	\\
-Common Text Similarity	     & CTS     & TF-IDF \& cosine similarity,
+\makecell[l]{Common Text\\Similarity}	     & CTS     & TF-IDF \& cosine similarity,
 expected number of lines & Line        & Output examples	   \\
-Keyword Search		     & KWS     & Keywords, expected number of
-lines			 & Line        & Keywords, context length  \\
-Random Line Retrieval	     & RLR     & Random sample
+\makecell[l]{Keyword Search}		     & KWS     & Keywords, expected number of
+lines			 & Line        & \makecell[l]{Keywords,\\context length}  \\
+\makecell[l]{Random Line\\Retrieval}	     & RLR     & Random sample
 & Line	      & Retrieval length	  \\
 \bottomrule
 \end{tabularx}
@@ -2603,10 +2596,9 @@ analyze build logs will support researchers and developers alike to
 leverage the vast amounts of valuable information hidden
 in build logs.
 
-%\begin{acknowledgements}
-%If you'd like to thank anyone, place your comments here
-%and remove the percent signs.
-%\end{acknowledgements}
+\begin{acknowledgements}
+We would like to thank Annibale Panichella for his valuable input during the conception, implementation and evaluation of the chunk retrieval techniques.
+\end{acknowledgements}
 
 
 % Authors must disclose all relationships or interests that 
