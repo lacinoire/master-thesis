@@ -1097,7 +1097,9 @@ techniques:
 \begin{itemize}
   \item \textbf{\emph{Programming by Example (PBE)}}, which learns
   regular expressions based on few user-given log excerpts.
-  We rely on the PROSE Framework \caro{link!} that is also responsible for auto-filling
+  We rely on the PROSE
+  Framework\footnote{https://microsoft.github.io/prose/},
+  which also provides the auto-filling for
   cells in Microsoft Excel.
 
   \item Inspired by information retrieval, a
@@ -1382,6 +1384,10 @@ Finding a way to train deep learning techniques in
 an unsupervised fashion would rapidly increase their applicability and
 appeal to build log analysis.
 
+\todo{Intro section? In this section we discuss the details of our
+prototypes that apply the three chosen techniques to build log
+analysis.}
+
 \subsection{Programming by Example (PBE)}
 The idea behind \emph{Programming by Example} is to automatically
 generate a program, by capturing the
@@ -1393,37 +1399,22 @@ forms the basis for our implementation.
 This library builds on the generic program synthesis framework
 \emph{FlashMeta}~\citep{polozov2015flashmeta:} and the specialized
 text extraction DSL \emph{FlashExtract}~\citep{le2014flashextract:}.
-% Both enable \emph{PROSE} to synthesize regular expression programs
-% consistent~\citep{mitchell1982generalization} with a set of in-
-% and output examples.
-% The usage of example enables the user to configure a chunk
-% retrieval without understanding the whole structure of
-% the build log.
 
-\subsubsection{Configuration}
-In- and output example pairs are the main driver of PBE;
-The \emph{input} is the full text of the build log file.
-The \emph{output} is
-a substring of the log file text, representing the
-substring that the synthesized program should retrieve when
-given the corresponding input file.
-One or multiple examples, the
-training set, \emph{configure} a specific chunk retrieval with PBE:
-they define the chunk of a build log that should be retrieved.
+To configure our prototype, the user supplies one or more build logs
+together with the excerpt of these logs they would like to be
+retrieved.
 The PROSE program synthesis then tries to construct a program
 consistent with all training
 examples~\citep{mitchell1982generalization}.
 If PROSE cannot synthesize a program, e.g.,\
 because the required regular expression
-is too complicated to be synthesized, PBE returns the
+is too complicated to be synthesized, our prototype returns the
 error message ``no program found.''
 
-\subsubsection{Chunk Retrieval Run}
-A run of PBE takes a build log file as input and executes the
-synthesized regular expression program on it.
-It then returns the substring
-of the build log matched by the program.
-If the program finds no match because the analyzed build log
+When our PBE prototype analyzes a build log, it tries to match
+the synthesized regular expression program.
+It then returns the matched substring.
+If there is no match, because the analyzed build log
 does not contain the structure that the training examples define,
 PBE returns the error message ``no match found.''
 
@@ -1436,17 +1427,13 @@ techniques, which several of the works from our literature mapping
 used to analyze build logs.
 Similar to these approaches, we designed a chunk retrieval
 technique that
-retrieves those lines from a build log which are most
-similar to the specified examples.
+retrieves those lines from a build log which have a similar
+vocabulary to the log excerpts the user provides as configuration.
 
-\subsubsection{Configuration}
-To configure CTS we chose to use the same concept of examples as for
-PBE: lines of the targeted chunks from the training examples define
-the search query.
 Using a Vector Space
 Model~\citep{schutze2008introduction} (VSM), an algebraic model for
-representing textual documents, we encode each line as a separate term
-vector.
+representing textual documents, we encode each line of the
+user-provided log excerpts as a separate term vector.
 The terms that make up the dictionary are simply all words
 that appear in the example logs.
 We separate words by spaces and
@@ -1473,9 +1460,8 @@ document frequency (TF-IDF)}, an established technique to give a higher
 impact to words that occur in a smaller number of
 documents~\citep{lee1997document}.
 
-\subsubsection{Chunk Retrieval Run}
-To retrieve the desired information from a build log, we encode every
-line of the input build log in VSM.
+To analyze a build log, we encode every
+line of the build log in VSM.
 The algorithm calculates the cosine
 similarity to compare each line of the
 build log with each line of the search query.
@@ -1495,19 +1481,19 @@ To investigate the performance of this approach, we designed a chunk
 retrieval technique mimicking this human behavior based on keyword
 search.
 
-\subsubsection{Configuration}
-A set of keywords configures the chunk retrieval with KWS\@.
+The user provides a list of search terms to configure KWS.
+To analyze a build log, our prototype searches for all
+exact occurrences of the search keywords.
+
 To better
-compare KWS with PBE and CTS, we also configure it through examples.
-From each example, we extract a list of keywords that appeared in the
+compare KWS with the other two techniques,
+we also configure it through a set of log excerpts.
+From each excerpts, we manually extract a list of keywords that
+appear in the
 training examples and that we expect to appear
 in, or close to, the targeted chunk in a new build log.
 Finally, we merge the lists from all examples to build one unified
 list of the most commonly occurring keywords for the search with KWS.
-
-\subsubsection{Chunk Retrieval Run}
-For a retrieval run, we take an entire build log file as input and
-search for all exact occurrences of the search keywords.
 As keywords are
 often not directly describing the desired information, but rather
 appear close to it, KWS also retrieves a context of lines
@@ -1527,8 +1513,8 @@ The only configuration option for RLR is the number of lines it should
 retrieve.
 For a fair comparison to the other techniques (whose number of
 returned lines is largely determined by the training set),
-we configure RLR to return the average
-number of lines in the chunks of the training examples.
+we let RLR return the average
+number of lines in the log excerpts used as configuration.
 
 \subsection{Tool Implementation}
 For the comparison study, we implemented the three chunk retrieval
