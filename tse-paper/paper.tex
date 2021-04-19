@@ -270,10 +270,9 @@ somewhat stable journal of the commands executed during the build and
 their results.
 
 When a build or one of its steps fails, developers typically scavenge
-the logs for information related to the source of the error.
-\todo{cite bart paper?}
-This
-manual activity is tedious and prone to
+the logs for information related to the source of the error
+~\citep{vassallo2019every}.
+This manual activity is tedious and prone to
 errors~\citep{santolucito2018statically}.
 As a single build log can be
 over 50 megabytes large~\citep{beller2017oops} \todo{check, reviewer comment}, finding the small chunk
@@ -457,7 +456,7 @@ promising chunk retrieval techniques.
 
 \begin{figure}[tb]
 	\centering
-	\includegraphics[width=0.7\columnwidth, clip]{img/lit_mapping_svg2.pdf}
+	\includegraphics[width=0.7\columnwidth, clip]{img/lit_mapping.pdf}
 	\caption{Literature selection (following Petersen et
 	al.~\citep{petersen2015guidelines}).}
 	\label{fig:lit-mapping}
@@ -509,17 +508,22 @@ content~\citep{he2017towards}.
 \Cref{lst:system-log} depicts two
 exemplary lines from such a system log.
 
-When analyzing system log files, the first goal is generally to
-separate the constant and variable parts within a log
+Before system logs can be analyzed, the raw log data needs to be
+abstracted into a structured
+events list~\citep{el-masri2020a-systematic}.
+The first step of this log abstraction is to define or discover
+log message templates, e.g. by
+separating the constant and variable parts within a log
 message~\citep{nagappan2010abstracting,he2017towards}.
-Next, the log
-messages are clustered into log events, unifying messages with
-identical constant parts and varying parameters.
+In the second step of the log abstraction, the log
+messages are matched to the templates, unifying messages with
+identical constant parts and varying parameters under the same event.
 The output is an
 ordered list of timed events and their corresponding parameter
 values~\citep{he2016evaluation}.
 This structured log can serve as
-input to various machine learning and data mining processes.
+input to log analysis approaches based on, e.g.,
+machine learning and data mining processes.
 Apart
 from a large body of research on system logs, an equally mature amount
 of commercial-grade and
@@ -593,8 +597,6 @@ hits.
 We removed duplicates based on the title and were
 left with 256 works (16\% of the original search results).
 
-With these 256 remaining works, we followed a backward snowball
-sampling for related work.
 If a work referenced a new work in the context
 of build log analysis, we added the new one to the literature set.
 This added five works (eight before
